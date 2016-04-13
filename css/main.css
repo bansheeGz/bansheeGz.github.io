@@ -1,0 +1,145 @@
+body {
+    background-color: #f5f5f5;
+    margin: 0;
+}
+
+/* Disable ugly boxes around images in IE10 */
+a img{
+    border: 0px;
+}
+
+::-moz-selection {
+    background-color: #6ab344;
+    color: #fff;
+}
+
+::selection {
+    background-color: #6ab344;
+    color: #fff;
+}
+
+.bg-header-a {
+    color: #37474f;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.bg-header {
+    overflow: visible;
+    background-color: white;
+}
+
+.bg-header .material-icons {
+    color: #767777 !important;
+}
+
+.bg-header .mdl-layout__drawer-button {
+    background: transparent;
+    color: #767777;
+}
+
+.bg-header .mdl-navigation__link {
+    color: #757575;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.bg-navigation-bag {
+    /* Simple hack to make the overflow happen to the left instead... */
+    direction: rtl;
+    order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+    width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.bg-menu-mobile
+{
+    display: none;
+    order: 3;
+}
+.bg-menusub-mobile
+{
+    display: none;
+}
+
+
+.bg-footer-email {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.bg-link {
+    text-decoration: none;
+    color: #8bc34a !important;
+}
+
+.bg-link:hover {
+    color: #7cb342 !important;
+}
+
+.bg-link .material-icons {
+    position: relative;
+    top: -1px;
+    vertical-align: middle;
+}
+
+.bg-footer {
+    background-color: #fafafa;
+    position: relative;
+}
+
+.bg-navigation{
+    /* ... and now make sure the content is actually LTR */
+    direction: ltr;
+    justify-content: flex-end;
+    width: 800px;
+}
+.bg-navigation .mdl-navigation__link {
+    display: inline-block;
+    height: 60px;
+    line-height: 68px;
+    background-color: transparent !important;
+    border-bottom: 4px solid transparent;
+}
+
+.bg-navigation .mdl-navigation__link:hover {
+    border-bottom: 4px solid #8bc34a;
+}
+
+.bg-navigation_link_active {
+    border-bottom: 4px solid #8b4ac3 !important;
+}
+
+
+
+/**** Mobile layout ****/
+@media (max-width: 700px) {
+    .bg-navigation-bag {
+        display: none;
+    }
+
+    /* WebViews in iOS 9 break the "~" operator, and WebViews in OS X 10.10 break
+       consecutive "+" operators in some cases. Therefore, we need to use both
+       here to cover all the bases. */
+    .android.android-search-box.is-focused ~ .android-mobile-title,
+    .android-search-box.is-focused + .android-navigation-container + .android-mobile-title {
+        opacity: 0;
+    }
+
+    .android-footer .mdl-mega-footer--bottom-section {
+        display: none;
+    }
+
+    .bg-menu-mobile
+    {
+        display: inline !important;
+    }
+    .bg-menusub-mobile
+    {
+        display: inline !important;
+    }
+
+}
+

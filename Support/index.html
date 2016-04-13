@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BansheeGz, BG Curve, BGCurve Decorator, Unity assets, game development">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.min.css">
+
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/page.css">
+
+    <link rel="icon" type="image/png" href="../images/BGIcon.png"/>
+</head>
+<body>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================        Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="bg-header-title mdl-layout-title">
+              <a class="bg-header-a" href="/">BansheeGz</a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="../BGCurve">BG
+                        Curve</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="../BGCurveDecorator">BG Curve
+                        Decorator</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active" href="">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../BGCurveDecorator">BG Curve Decorator</a></li>
+                <li class="mdl-menu__item"><a href="">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+    <!--======================================================        Content               -->
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <div class="bg-main">
+            <div class="bg-main-title">
+                <h3>Support</h3>
+            </div>
+            <hr>
+            <div class="bg-main-contact_form" style="border-width: 1px;text-align: center">
+                Email us:
+                <script language="JavaScript">document.write("support" + "@" + "bansheegz.com");</script>
+            </div>
+            <hr>
+            <div style="max-width: 100px;margin-left: auto;margin-right: auto;text-align: center;">
+                <h4>Or</h4>
+            </div>
+            <div>
+                <script language="JavaScript">
+                    document.write("<form action=\"https://formspree.io/support" + "@" + "bansheegz.com" +"\" method=\"POST\"");
+                </script>
+                <div class="bg-main-contact_form mdl-grid">
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                        <label for="email">Email<em>*</em></label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                        <input type="email" name="_replyto" id="email">
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                        <label for="body">Text<em>*</em></label>
+                    </div>
+                    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                        <textarea name="body" id="body"></textarea>
+                    </div>
+                    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                        &nbsp;
+                    </div>
+                    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone">
+                        <input type="submit" value="Send">
+                    </div>
+                </div>
+                </form>
+            </div>
+            <hr>
+        </div>
+
+
+        <!--======================================================        Footer               -->
+        <footer class="bg-footer mdl-mega-footer">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <script language="JavaScript">
+                        document.write("Support: " + "support" + "@" + "bansheegz.com");
+                    </script>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick:true
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+.bg-main {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.bg-main-title {
+    width: 100%;
+    text-align: center;
+}
+
+.bg-main-contacts {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.bg-main-contacts_grid {
+    padding: 0;
+}
+
+.bg-main-contacts_grid .mdl-cell {
+    margin: 0;
+}
+
+.bg-gallery img {
+    width: 230px;
+    height: 180px;
+    border: 4px solid #00bfa5;
+    margin: 4px 10px;
+}
+
+.bg-main-underdevelopment {
+    width: 300px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    color: chocolate;
+}
+
+.bg-main-contact_form {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 4px solid #00bfa5;
+}
