@@ -22,6 +22,15 @@
 </head>
 <body>
 
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
     <!--======================================================        Header               -->
@@ -86,7 +95,7 @@
                     </div>
                     <hr>
                     <div class="mdl-card__supporting-text">
-                        <span class="mdl-typography--font-light mdl-typography--subhead">Generate procedural geometry along a curve (for Unity 5.3)</span>
+                        <span class="mdl-typography--font-light mdl-typography--subhead">Procedural Geometry Toolkit for Unity 5.3</span>
                     </div>
                     <div class="mdl-card__supporting-text">
                         <span class="mdl-typography--font-light mdl-typography--subhead">currently in development... (sorry)</span>
@@ -106,6 +115,11 @@
         <footer class="bg-footer mdl-mega-footer">
             <div class="mdl-mega-footer--top-section">
                 <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/" data-layout="standard" data-show-faces="true"></p>
+                    <a href="https://twitter.com/BansheeGz" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @BansheeGz</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    <br>
+                    <br>
                     <script language="JavaScript">
                         document.write("Support: " + "support" + "@" + "bansheegz.com" );
                     </script>

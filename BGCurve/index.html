@@ -23,6 +23,15 @@
 </head>
 <body>
 
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
     <!--======================================================        Header               -->
@@ -79,6 +88,10 @@
                     <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
                         <a href="https://goo.gl/l305A0">goo.gl/l305A0</a>
                     </div>
+                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+                        <img class="bg-img-indev" src="../images/BGCurveOptimize.gif">
+                    </div>
+
                 </div>
             </div>
             <hr>
@@ -122,6 +135,7 @@
                 <a href="../images/BGCurveScreen1Big.jpg"><img src="../images/BGCurveScreen1Small.jpg"></a>
                 <a href="../images/BGCurveScreen2Big.jpg"><img src="../images/BGCurveScreen2Small.jpg"></a>
                 <a href="../images/BGCurveScreen3Big.jpg"><img src="../images/BGCurveScreen3Small.jpg"></a>
+                <a href="../images/Example.jpg"><img src="../images/ExampleSmall.jpg"></a>
             </div>
             <hr>
         </div>
@@ -131,8 +145,13 @@
         <footer class="bg-footer mdl-mega-footer">
             <div class="mdl-mega-footer--top-section">
                 <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/" data-layout="standard" data-show-faces="true"></p>
+                    <a href="https://twitter.com/BansheeGz" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @BansheeGz</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    <br>
+                    <br>
                     <script language="JavaScript">
-                        document.write("Support: " + "support" + "@" + "bansheegz.com");
+                        document.write("Support: " + "support" + "@" + "bansheegz.com" );
                     </script>
                 </div>
             </div>
