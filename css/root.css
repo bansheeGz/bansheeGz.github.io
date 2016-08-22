@@ -50,3 +50,9 @@
     border-top: none;
     font-size: 16px;
 }
+
+.bg-main-status-root {
+    color: #8b4ac3 !important;
+    font-weight: bold !important;
+}
+

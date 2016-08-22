@@ -31,12 +31,13 @@
     margin: 4px 10px;
 }
 
-.bg-main-underdevelopment {
-    width: 300px;
+.bg-main-status {
+    width: 400px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-    color: chocolate;
+    color: #8b4ac3;
+    font-weight: bold !important;
 }
 
 .bg-main-contact_form {
