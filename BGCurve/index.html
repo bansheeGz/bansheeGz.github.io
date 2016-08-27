@@ -75,7 +75,7 @@
                 <h3>BG Curve</h3>
             </div>
             <div class="bg-main-status">
-                Status: v 1.1 in development (upd. 22.08.2016)
+                Status: v 1.1 in development (upd. 28.08.2016)
             </div>
             <br/>
             <div class="bg-main-contacts">
@@ -126,9 +126,14 @@
             <div>
                 <ul>
                     <li>Rectangular selection for points</li>
-                    <li>Math optimization</li>
+                    <li>Context menu for points and selections in SceneView</li>
+                    <li>Math optimization (BGCurveBaseMath)</li>
+                    <li>New points now has preview in Scene View before adding</li>
+                    <li>Point creation now respect tangents, controls are scaled properly, in 2D mode Ctrl+Click now respects curve's 2D plane, rather than some mesh.</li>
+                    <li>LineRenderer UI component is added for use without any scripting</li>
+                    <li>Show tangents option in SceneView</li>
+                    <li>Examples are reworked</li>
                     <li>Code cleanup and refactoring</li>
-                    <li>Show tangents in SceneView</li>
                 </ul>
             </div>
             <hr>
@@ -136,13 +141,14 @@
                 <h4>How to use it</h4>
             </div>
             <div>
-                Download and import BG Curve package from Unity asset store. Chose
-                'Game Object->Create Other->BansheeGz->BG Curve' to create a curve.
-                Then Ctrl+Shift+LeftClick to add a point at some distance from the camera or, alternatively, hover over
-                an existing mesh
-                and Ctrl+LeftClick to add a point snapped to a mesh. You can select several points and perform group
-                operations. You can chose
-                'Settings' tab and make changes to a lot of settings parameters.
+                Download and import BG Curve package from Unity asset store. 
+		Chose 'Game Object->Create Other->BansheeGz->BG Curve' to create a curve.
+		Chose curve's mode-3D or 2D.
+                Then Ctrl+Shift+LeftClick to add a point at some distance from the camera or, alternatively, 
+		Ctrl+LeftClick (for 3D mode): hover over an existing mesh and to add a point snapped to a mesh 
+		or (for 2D mode): add a point to a curve's plane.
+		You can select several points with rectangular selection and perform group operations. 
+		You can chose 'Settings' tab and make changes to a lot of settings parameters and save/load them.
             </div>
             <hr>
             <div>
