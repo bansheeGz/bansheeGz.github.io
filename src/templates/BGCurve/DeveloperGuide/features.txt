@@ -32,7 +32,7 @@ text=Tangent by distance ( (math.CalcTangentByDistance(float distance) and math.
 imageSmall=images/MathCalculateTangentByDistanceThumb.jpg
 imageBig=images/MathCalculateTangentByDistance.jpg
 
-text=Position and distance(optionally) for a point, which is on the curve and closest to some other point  (math.MathCalcPositionByClosestPoint(Vector3 point))
+text=Position and distance(optionally) for a point, which is on the curve and closest to some other point  (math.CalcPositionByClosestPoint(Vector3 point))
 imageSmall=images/MathCalcPositionByClosestPointThumb.jpg
 imageBig=images/MathCalcPositionByClosestPoint.jpg
 
