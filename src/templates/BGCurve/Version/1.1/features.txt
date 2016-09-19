@@ -2,6 +2,8 @@ feature=Components to use without scripting
 
 feature=Math optimized.
 
+feature=New Math function- calculate position and distance by closest point.
+
 feature=Rectangular selection in Scene View
 
 feature=Point and Selection Menu in Scene View
