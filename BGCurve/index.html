@@ -5,24 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="BG Curve is a free Bezier curve editor for Unity game engine">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
     <title>BansheeGz</title>
 
     <!-- Page styles -->
-
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.min.css">
-
-    <link rel="stylesheet" href="../css/magnific-popup.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
 
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/page.css">
 
-    <link rel="icon" type="image/png" href="../images/BGIcon.png"/>
+    <link rel="icon" type="image/png" href="../images/BGIcon.png" />
 </head>
 <body>
 
+<div id="fb-root"></div>
 <script>(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
@@ -31,12 +30,11 @@
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
-    <!--======================================================        Header               -->
+    <!--======================================================       Root  Header               -->
     <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
-        <div class="mdl-layout__header-row">
+        <div class="mdl-layout__header-row" id="header">
           <span class="bg-header-title mdl-layout-title">
               <a class="bg-header-a" href="/"><img src="../images/BGIconBig.png"></a>
           </span>
@@ -45,20 +43,16 @@
             <!-- Navigation -->
             <div class="bg-navigation-bag">
                 <nav class="bg-navigation mdl-navigation">
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active" href="">BG
-                        Curve</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="../BGCurveDecorator">BG Curve
-                        Decorator</a>
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="../Support">Support</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active" href="../BGCurve">BG Curve</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase " href="../BGCurveDecorator">BG Curve Decorator</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase " href="../Support">Support</a>
                 </nav>
             </div>
-            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
-                    id="more-button">
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
                 <i class="material-icons">more_vert</i>
             </button>
-            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
-                for="more-button">
-                <li class="mdl-menu__item"><a href="">BG Curve</a></li>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+                <li class="mdl-menu__item"><a href="../BGCurve">BG Curve</a></li>
                 <li class="mdl-menu__item"><a href="../BGCurveDecorator">BG Curve Decorator</a></li>
                 <li class="mdl-menu__item"><a href="../Support">Support</a></li>
             </ul>
@@ -66,106 +60,181 @@
     </div>
 
 
-    <!--======================================================        Content               -->
+
     <div class="mdl-layout__content">
         <a name="top"></a>
 
-        <div class="bg-main">
+
+    <!--======================================================        Content (from Root)              -->
+    
+
+
+
+
+<link rel="stylesheet" href="../css/bgcurve.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<!--======================================================       BG Curve Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul>
+            <li class="pli curveicon plic ">
+                <a class="pa" href="../BGCurve">BG Curve Home</a>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../BGCurve/UserGuide">User Guide</a>
+            </li>
+            <li class="pli ">
+                <a class="pa" href="../BGCurve/DeveloperGuide">For Programmers</a>
+            </li>
+            <li class="pli  ">
+                <a class="pa" href="../BGCurve/Cc">Components</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../BGCurve/Cc/BGCcMath">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGCurve/Cc/BGCcCursor">Cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGCurve/Cc/BGCcCursorObjectTranslate">Move by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli  ">
+                <a class="pa" href="../BGCurve/Version">Versions</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../BGCurve/Version/1.0">Version 1.0</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../BGCurve">BG Curve Home</a>
+        <a class="pa " href="../BGCurve/UserGuide">User Guide</a>
+        <a class="pa" href="../BGCurve/DeveloperGuide">For Programmers</a>
+        <a class="pa" href="../BGCurve/Cc">Components</a>
+        <a class="pa" href="../BGCurve/Version">Versions</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>BG Curve</h3>
+                <h3>BGCurve</h3>
             </div>
-            <div class="bg-main-status">
-                Status: v 1.1 in development (upd. 28.08.2016)
-            </div>
-            <br/>
-            <div class="bg-main-contacts">
-                <div class="bg-main-contacts_grid mdl-grid">
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                        Unity Asset Store (free):
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                        <a href="https://u3d.as/qn4" target="_blank">u3d.as/qn4</a>
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                        Github:
-                    </div>
-                    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                        <a href="https://goo.gl/l305A0">goo.gl/l305A0</a>
-                    </div>
-                    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-                        <img class="bg-img-indev" src="../images/BGCurveOptimize.gif">
-                    </div>
 
-                </div>
-            </div>
-            <hr>
-            <div>
-                <h4>What is it</h4>
-            </div>
-            <div>
-                Bezier curve editor for Unity 5.3
-            </div>
-            <hr>
+            <!--======================================================        Content (from Root)              -->
+            
 
-            <div>
-                <h4>Features</h4>
-            </div>
-            <div>
-                <ul>
-                    <li>Single Game Object (no additional objects for points)</li>
-                    <li>A lot of settings</li>
-                    <li>Ability to save settings on disk</li>
-                    <li>Base math for Bezier curves</li>
-                    <li>2D mode</li>
-                </ul>
-            </div>
-            <hr>
-            <div>
-                <h4>Features in development (v 1.1)</h4>
-            </div>
-            <div>
-                <ul>
-                    <li>Rectangular selection for points</li>
-                    <li>Context menu for points and selections in SceneView</li>
-                    <li>Math optimization (BGCurveBaseMath)</li>
-                    <li>New points now has preview in Scene View before adding</li>
-                    <li>Point creation now respect tangents, controls are scaled properly, in 2D mode Ctrl+Click now respects curve's 2D plane, rather than some mesh.</li>
-                    <li>LineRenderer UI component is added for use without any scripting</li>
-                    <li>Show tangents option in SceneView</li>
-                    <li>Examples are reworked</li>
-                    <li>Code cleanup and refactoring</li>
-                </ul>
-            </div>
-            <hr>
-            <div>
-                <h4>How to use it</h4>
-            </div>
-            <div>
-                Download and import BG Curve package from Unity asset store. 
-		Chose 'Game Object->Create Other->BansheeGz->BG Curve' to create a curve.
-		Chose curve's mode-3D or 2D.
-                Then Ctrl+Shift+LeftClick to add a point at some distance from the camera or, alternatively, 
-		Ctrl+LeftClick (for 3D mode): hover over an existing mesh and to add a point snapped to a mesh 
-		or (for 2D mode): add a point to a curve's plane.
-		You can select several points with rectangular selection and perform group operations. 
-		You can chose 'Settings' tab and make changes to a lot of settings parameters and save/load them.
-            </div>
-            <hr>
-            <div>
-                <h4>Screenshots</h4>
-            </div>
-            <div class="bg-gallery">
-                <a href="../images/BGCurveScreen1Big.jpg"><img src="../images/BGCurveScreen1Small.jpg"></a>
-                <a href="../images/BGCurveScreen2Big.jpg"><img src="../images/BGCurveScreen2Small.jpg"></a>
-                <a href="../images/BGCurveScreen3Big.jpg"><img src="../images/BGCurveScreen3Small.jpg"></a>
-                <a href="../images/Example.jpg"><img src="../images/ExampleSmall.jpg"></a>
-            </div>
-            <hr>
+<div class="bg-main-contacts">
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            Bezier curve editor for Unity 5.3
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            1.1
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity Asset Store (free) (v.1.02):
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <a href="https://u3d.as/qn4" target="_blank">u3d.as/qn4</a>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Github (v.1.1):
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <a href="https://goo.gl/l305A0">goo.gl/l305A0</a>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <img class="bg-img-indev" src="../images/BGCurveOptimize.gif">
+        </div>
+    </div>
+</div>
+<hr>
+
+
+<div>
+    <h4>Quick Demo and Tutorial</h4>
+</div>
+<div>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/8WW7nYb2Rnw" frameborder="0"
+            allowfullscreen></iframe>
+</div>
+<div>
+    <h4>Features</h4>
+</div>
+<div>
+    <ul>
+        <li>Single Game Object (no additional objects for points)</li>
+        <li>Base math for Bezier curves (get Total Distance, get Position by distance,
+            get Tangent by distance, get Position and Distance by Closest point to a curve)
+        </li>
+        <li>2D mode</li>
+        <li>Components (no scripting required)</li>
+        <li>Rectangular selection for points</li>
+        <li>Context menu for points and selections in SceneView</li>
+        <li>New points has preview in Scene View before adding</li>
+        <li>A lot of Editor settings</li>
+        <li>Save/Load settings</li>
+    </ul>
+</div>
+<div>
+    <h4>Screenshots</h4>
+</div>
+<div class="bg-gallery">
+    <a href="../images/Screen1.png"><img src="../images/Screen1Thumb.png"></a>
+    <a href="../images/Screen2.png"><img src="../images/Screen2Thumb.png"></a>
+</div>
+
+<br/>
+<br/>
+<br/>
+
+
+            <!--======================================================       BG Curve Footer               -->
         </div>
 
+    </div>
+</div>
 
-        <!--======================================================        Footer               -->
-        <footer class="bg-footer mdl-mega-footer">
+
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
             <div class="mdl-mega-footer--top-section">
                 <div class="mdl-mega-footer--middle-section bg-footer-email">
                     <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/" data-layout="standard" data-show-faces="true"></p>
@@ -181,21 +250,10 @@
         </footer>
     </div>
 </div>
-<script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="../js/jquery.magnific-popup.min.js"></script>
 
 <script>
-    $(document).ready(function () {
-        $('.bg-gallery').magnificPopup({
-            delegate: 'a',
-            type: 'image',
-//            gallery:{enabled:true},
-            closeOnContentClick:true
-        });
-    });
-
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
                 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)

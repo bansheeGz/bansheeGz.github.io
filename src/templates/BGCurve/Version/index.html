@@ -1,0 +1,21 @@
+#set page=Versions
+#set _skipTemplate=true
+
+<div>
+    <h4>Versions</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+
+#iterate versions.txt
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone ">
+        <a href="#path BGCurve/Version/#get version"> #get version</a>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone ">
+        <a href="#path BGCurve/Version/#get version">#get date</a>
+    </div>
+    <hr>
+#enditerate
+</div>
+
+
+

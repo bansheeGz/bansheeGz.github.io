@@ -1,0 +1,9 @@
+paramName=speed
+paramDescription=Speed for moving cursor. Final speed is determined as speed*Time.deltaTime
+
+paramName=overflowControl
+paramDescription=Action, taken then cursor overflows curve's length. Cycle - cursor moves to opposite end and start moving with the same speed. PingPong - speed changes to opposite and cursor starts moving back with the same speed. Stop - speed is set to zero.
+
+paramName=adjustByTotalLength
+paramDescription=If curve's length changed, cursor position be adjusted with curve's length to ensure visually constant speed along the curve. You may need this if you are constantly changing the curve slightly.
+

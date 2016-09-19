@@ -1,0 +1,54 @@
+title=General information
+mode=1
+text=Using Components, you can use some curve's related functions without any scripting. Components are standard MonoBehaviour subclasses.
+
+
+title=Math
+mode=2
+path=BGCcMath
+text=Math component gives you access to math functions. Currently 4 functions are supported ( 1) get curve's length, 2) get position, 3) get tangent and 4) get position and distance of a point on the curve, which is closest to a given point)
+imageSmall=images/GifCcMathThumb.gif
+imageBig=images/GifCcMath.gif
+
+
+title=Line Renderer
+mode=2
+path=BGCcVisualizationLineRenderer
+text=Visualize the curve with LineRenderer Unity's component in Play mode.
+imageSmall=images/GifCcLineRendererThumb.gif
+imageBig=images/GifCcLineRenderer.gif
+
+
+title=Cursor
+mode=2
+path=BGCcCursor
+text=Identify the distance along the curve.
+imageSmall=images/GifCcCursorThumb.gif
+imageBig=images/GifCcCursor.gif
+
+
+title=Move by Cursor
+mode=2
+path=BGCcCursorObjectTranslate
+text=Moves an object to the cursor position every frame
+imageSmall=images/GifCcMoveByCursorThumb.gif
+imageBig=images/GifCcMoveByCursor.gif
+
+
+title=Rotate by Cursor
+mode=2
+path=BGCcCursorObjectRotate
+text=Rotates an object according to the curve's tangent on the position, defined by a cursor
+imageSmall=images/GifCcRotateByCursorThumb.gif
+imageBig=images/GifCcRotateByCursor.gif
+
+
+title=Lerp Cursor
+mode=2
+path=BGCcCursorChangeLinear
+text=Change cursor position linearly every frame
+imageSmall=images/GifCcCursorLerpThumb.gif
+imageBig=images/GifCcCursorLerp.gif
+
+
+

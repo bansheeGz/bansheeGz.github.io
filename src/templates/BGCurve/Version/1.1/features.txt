@@ -1,0 +1,12 @@
+feature=Components to use without scripting
+
+feature=Math optimized.
+
+feature=Rectangular selection in Scene View
+
+feature=Point and Selection Menu in Scene View
+
+feature=Preview for new points.
+
+feature=New points now take curve's tangent into account.
+

@@ -1,0 +1,8 @@
+feature=Single object
+
+feature=Basic Math (not optimized)
+
+feature=Curve Settings, that could be saved and loaded
+
+feature=2D mode
+

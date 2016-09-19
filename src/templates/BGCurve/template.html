@@ -1,0 +1,95 @@
+#set pageCss=css/page.css
+#set GA=UA-76367732-2
+#set section=BGCurve
+#set description=BG Curve is a free Bezier curve editor for Unity game engine
+
+<link rel="stylesheet" href="#path css/bgcurve.css">
+<link rel="stylesheet" href="#path css/magnific-popup.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="#path js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<!--======================================================       BG Curve Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul>
+            <li class="pli curveicon #if page=BGCurve plic #endif">
+                <a class="pa" href="#path BGCurve">BG Curve Home</a>
+            </li>
+            <li class="pli #if page='User Guide' plic #endif">
+                <a class="pa " href="#path BGCurve/UserGuide">User Guide</a>
+            </li>
+            <li class="pli #if page='Developer Guide' plic #endif">
+                <a class="pa" href="#path BGCurve/DeveloperGuide">For Programmers</a>
+            </li>
+            <li class="pli #if page='Curve Components' plic #endif #if _path=_contains(BGCurve/Cc/) alic #endif">
+                <a class="pa" href="#path BGCurve/Cc">Components</a>
+                <ul>
+                    <li class="cli #if page='Math [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcMath">Math</a>
+                    </li>
+                    <li class="cli #if page='Line Renderer [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
+                    </li>
+                    <li class="cli #if page='Cursor [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcCursor">Cursor</a>
+                    </li>
+                    <li class="cli #if page='Translate Object by Cursor [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcCursorObjectTranslate">Move by cursor</a>
+                    </li>
+                    <li class="cli #if page='Rotate Object By Cursor [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli #if page='Change Cursor Linearly [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli #if page='Versions' plic #endif #if _path=_contains(BGCurve/Version/) alic #endif">
+                <a class="pa" href="#path BGCurve/Version">Versions</a>
+                <ul>
+                    <li class="cli #if page='Version 1.0' plic #endif">
+                        <a class="ca" href="#path BGCurve/Version/1.0">Version 1.0</a>
+                    </li>
+                    <li class="cli #if page='Version 1.1' plic #endif">
+                        <a class="ca" href="#path BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="#path BGCurve">BG Curve Home</a>
+        <a class="pa " href="#path BGCurve/UserGuide">User Guide</a>
+        <a class="pa" href="#path BGCurve/DeveloperGuide">For Programmers</a>
+        <a class="pa" href="#path BGCurve/Cc">Components</a>
+        <a class="pa" href="#path BGCurve/Version">Versions</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>#get page </h3>
+            </div>
+
+            <!--======================================================        Content (from Root)              -->
+            #get _content
+
+
+            <!--======================================================       BG Curve Footer               -->
+        </div>
+
+    </div>
+</div>
+

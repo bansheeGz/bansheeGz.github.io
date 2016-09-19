@@ -1,0 +1,31 @@
+#set page=Curve Components
+#set _skipTemplate=true
+
+#iterate features.txt
+#header
+<div>
+    <h4>#get title </h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+    #content
+    #if mode=1
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        #get text
+    </div>
+    <hr>
+    #endif
+    #if mode=2
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="#path BGCurve/Cc/#get path">#get text</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="#path #get imageBig "><img src="#path #get imageSmall "></a>
+    </div>
+    <hr>
+    #endif
+    #footer
+</div>
+#enditerate
+
+
+

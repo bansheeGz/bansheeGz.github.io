@@ -1,0 +1,22 @@
+paramName=fields
+paramDescription=Which fields to calculate ('Position' Or 'Position With Tangent'). Position only is approximately 1.8x times faster, so if you do not need tangents, keep it PositionsOnly.
+
+paramName=sectionParts
+paramDescription=Number of parts to split every section of the curve. Currently Math is approximating all data by splitting curve's section on even parts. More parts- more precise approximation and less performance.
+
+paramName=usePositionToCalculateTangents
+paramDescription=Use points positions to calculate tangents instead of formula.
+
+paramName=optimizeStraightLines
+paramDescription=Do not split straight lines and use 2 points for such sections. Tangents may behave differently in this mode.
+
+paramName=updateMode
+paramDescription=Updating math takes some time and resources. You can fine-tune in which cases math is updated (for the sake of performance).<br/>1) Always- always update <br/>2) AabbVisible- update only if AABB (Axis Aligned Bounding Box) around points and controls is visible by any camera (including Editor's SceneView camera)<br/>3) RendererVisible- update only if some renderer is visible
+
+paramName=rendererForUpdateCheck
+paramDescription=Renderer for RendererVisible update mode. Any Game Object with some Renderer attached. Math will be updated only if this object is visible by any camera (including Editor's SceneView camera).
+
+
+
+
+

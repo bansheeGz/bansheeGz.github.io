@@ -1,0 +1,16 @@
+test page start
+
+set test #set rrr=" value1 "->1
+set test #set title=THIS_IS_TITLE ->2
+
+get test rrr=#get rrr ->1
+get test title=#get title ->2
+
+if test: rrr=" value1 "#if rrr=" value1 "true#elsefalse#endif->1
+if test: rrr=" value2 "#if rrr=" value_C "true#elsefalse#endif->2
+if test: title=THIS_IS_TITLE#if title=THIS_IS_TITLE true#elsefalse#endif->3
+if test: title=THIS_IS_TITLE_C#if title=THIS_IS_TITLE_C true#elsefalse#endif->4
+if test: title=THIS_IS_TITLE#if title=THIS_IS_TITLE true#endif->5
+if test: title=THIS_IS_TITLE_C#if title=THIS_IS_TITLE_C false#endif->6
+
+test page end

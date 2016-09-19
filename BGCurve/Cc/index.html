@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Curve is a free Bezier curve editor for Unity game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../images/BGIcon.png" />
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span class="bg-header-title mdl-layout-title">
+              <a class="bg-header-a" href="/"><img src="../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active" href="../../BGCurve">BG Curve</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase " href="../../BGCurveDecorator">BG Curve Decorator</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase " href="../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+                <li class="mdl-menu__item"><a href="../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../BGCurveDecorator">BG Curve Decorator</a></li>
+                <li class="mdl-menu__item"><a href="../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+
+    <!--======================================================        Content (from Root)              -->
+    
+
+
+
+
+<link rel="stylesheet" href="../../css/bgcurve.css">
+<link rel="stylesheet" href="../../css/magnific-popup.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<!--======================================================       BG Curve Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul>
+            <li class="pli curveicon ">
+                <a class="pa" href="../../BGCurve">BG Curve Home</a>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../BGCurve/UserGuide">User Guide</a>
+            </li>
+            <li class="pli ">
+                <a class="pa" href="../../BGCurve/DeveloperGuide">For Programmers</a>
+            </li>
+            <li class="pli  plic  ">
+                <a class="pa" href="../../BGCurve/Cc">Components</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcMath">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursor">Cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectTranslate">Move by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli  ">
+                <a class="pa" href="../../BGCurve/Version">Versions</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Version/1.0">Version 1.0</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../BGCurve">BG Curve Home</a>
+        <a class="pa " href="../../BGCurve/UserGuide">User Guide</a>
+        <a class="pa" href="../../BGCurve/DeveloperGuide">For Programmers</a>
+        <a class="pa" href="../../BGCurve/Cc">Components</a>
+        <a class="pa" href="../../BGCurve/Version">Versions</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Curve Components</h3>
+            </div>
+
+            <!--======================================================        Content (from Root)              -->
+            
+
+
+<div>
+    <h4>General information</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        Using Components, you can use some curve's related functions without any scripting. Components are standard MonoBehaviour subclasses.
+    </div>
+    <hr>
+    
+    
+    </div>
+<div>
+    <h4>Math</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcMath">Math component gives you access to math functions. Currently 4 functions are supported ( 1) get curve's length, 2) get position, 3) get tangent and 4) get position and distance of a point on the curve, which is closest to a given point)</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcMath.gif"><img src="../../images/GifCcMathThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4>Line Renderer</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcVisualizationLineRenderer">Visualize the curve with LineRenderer Unity's component in Play mode.</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcLineRenderer.gif"><img src="../../images/GifCcLineRendererThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4>Cursor</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcCursor">Identify the distance along the curve.</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcCursor.gif"><img src="../../images/GifCcCursorThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4>Move by Cursor</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcCursorObjectTranslate">Moves an object to the cursor position every frame</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcMoveByCursor.gif"><img src="../../images/GifCcMoveByCursorThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4>Rotate by Cursor</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcCursorObjectRotate">Rotates an object according to the curve's tangent on the position, defined by a cursor</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcRotateByCursor.gif"><img src="../../images/GifCcRotateByCursorThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4>Lerp Cursor</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcCursorChangeLinear">Change cursor position linearly every frame</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcCursorLerp.gif"><img src="../../images/GifCcCursorLerpThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+
+
+
+
+
+
+            <!--======================================================       BG Curve Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/" data-layout="standard" data-show-faces="true"></p>
+                    <a href="https://twitter.com/BansheeGz" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @BansheeGz</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    <br>
+                    <br>
+                    <script language="JavaScript">
+                        document.write("Support: " + "support" + "@" + "bansheegz.com" );
+                    </script>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-76367732-2', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

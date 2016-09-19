@@ -1,0 +1,15 @@
+issue=Math do not calculate local positions and local tangents anymore. if you need them use curve.ToLocal() for position and curve.ToLocalDirection() for tangent.
+
+issue=By default math calculates Positions only. If you need tangents as well, create Math like this- new BGCurveBaseMath(curve, new BGCurveBaseMath.Config(BGCurveBaseMath.Fields.PositionAndTangent)); or even better use BGCcMath component (it has this parameter).
+
+issue=Curve's change events are fired once per frame now (in Update or LateUpdate). Also Curve's events do not use arguments by default (args are null by default). if you need them by some reason, set curve.UseEventsArgs to true (but it's very bad for performance and GC). 
+
+issue=There was a bug with curve.CreatePointFromWorldPosition. When curve object was rotated, the controls were calculating wrong. The right version is - new BGCurvePoint(this, transform.InverseTransformPoint(worldPos), controlType, transform.InverseTransformDirection(control1WorldPos - worldPos),transform.InverseTransformDirection(control2WorldPos - worldPos));. So if you used this wrong code to create points at runtime, you may need to change it accordingly. Contact us, if you have problems with it.
+
+issue=Points Control Positions are set to zero by default (instead of Vector3.right and Vector3.left)
+
+issue=Some Editor classes for internal use (but public interface) may be changed.
+
+
+
+
