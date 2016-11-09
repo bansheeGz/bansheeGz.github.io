@@ -1,9 +1,25 @@
+paramName=speedField
+paramDescription=Custom field to get values for speed (for example speed from point 0 is active between point0 and point1 etc.). #
+It should be a float field. Final speed is determined as speed*Time.deltaTime.
+
 paramName=speed
-paramDescription=Speed for moving cursor. Final speed is determined as speed*Time.deltaTime
+paramDescription=Speed for moving cursor. Final speed is determined as speed*Time.deltaTime. This parameter is active only if speedField is not set.
+
+paramName=delayField
+paramDescription=Custom field to get values for delays (for example delay at point 0 occurs then cursor reaches point0 etc.). It should be a float field.
+
+paramName=delay
+paramDescription=Delay to occur then cursor reaches some point. This parameter is active only if delayField is not set.
 
 paramName=overflowControl
-paramDescription=Action, taken then cursor overflows curve's length. Cycle - cursor moves to opposite end and start moving with the same speed. PingPong - speed changes to opposite and cursor starts moving back with the same speed. Stop - speed is set to zero.
+paramDescription=Action, taken then cursor overflows spline's length. #
+<br/>Cycle - cursor moves to opposite end and start moving with the same speed. #
+<br/>PingPong - speed changes to opposite and cursor starts moving back with the same speed.#
+<br/>Stop - speed is set to zero.
 
 paramName=adjustByTotalLength
-paramDescription=If curve's length changed, cursor position be adjusted with curve's length to ensure visually constant speed along the curve. You may need this if you are constantly changing the curve slightly.
+paramDescription=If spline's length changed, cursor position be adjusted with spline's length to ensure visually constant speed along the spline. #
+You may need this if you are constantly changing the spline slightly.
 
+paramName=pointPassed
+paramDescription=This is a standard Unity persistent event to be fired then cursor reaches some point. It's defined as pointPassed(int pointIndex)

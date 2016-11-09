@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Curve is a free Bezier curve editor for Unity game engine">
+    <meta name="description" content="BG Curve is a free Bezier spline editor for Unity game engine">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -96,12 +96,48 @@
         <ul>
             <li class="pli curveicon ">
                 <a class="pa" href="../../BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli  plic ">
                 <a class="pa " href="../../BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
-                <a class="pa" href="../../BGCurve/DeveloperGuide">For Programmers</a>
+                <a class="pa" href="../../BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli  ">
                 <a class="pa" href="../../BGCurve/Cc">Components</a>
@@ -113,6 +149,12 @@
                         <a class="ca" href="../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursor">Cursor</a>
                     </li>
                     <li class="cli ">
@@ -120,6 +162,9 @@
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
@@ -130,10 +175,13 @@
                 <a class="pa" href="../../BGCurve/Version">Versions</a>
                 <ul>
                     <li class="cli ">
-                        <a class="ca" href="../../BGCurve/Version/1.0">Version 1.0</a>
+                        <a class="ca" href="../../BGCurve/Version/1.2">Version 1.2</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Version/1.0">Version 1.0</a>
                     </li>
                 </ul>
             </li>
@@ -155,271 +203,33 @@
             <!--======================================================        BG Curve Content              -->
             
 
+
 <div>
-    <h4>General information</h4>
+    <h4><a href="Points">Manipulating points</a></h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        All actions are duplicated in Scene View and in the Inspector.
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        Learn how to create a spline, how to add, edit, delete and select Points.
     </div>
     <hr>
-    
-    
-    
     </div>
 <div>
-    <h4>How to create a curve</h4>
+    <h4><a href="Curve">Spline Properties</a></h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        1
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        Chose from menu 'Game Object -> Create Other -> BansheeGz -> BG Curve'
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGCreateCurveMenu.gif"><img src="../../images/GifUGCreateCurveMenuThumb.gif"></a>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        Learn about 2D Mode, Snapping, Animation, Points modes, Custom Fields and Components.
     </div>
     <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        2
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        Create empty GameObject and 'Add Component->BGCurve' in the Inspector.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGCreateCurveAddComponent.gif"><img src="../../images/GifUGCreateCurveAddComponentThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
     </div>
 <div>
-    <h4>How to add points</h4>
+    <h4><a href="Settings">Spline Settings</a></h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        1
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        (3D mode) [In Scene View] hover over an object with a mesh and collider attached and Ctrl+Click
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGCreatePointsCtrlClick3D.gif"><img src="../../images/GifUGCreatePointsCtrlClick3DThumb.gif"></a>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        Learn about Spline Settings.
     </div>
     <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        2
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        (2D mode) [In Scene View] Hover over the Curve's 2D plane and Ctrl+Click
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGCreatePointsCtrlClick2D.gif"><img src="../../images/GifUGCreatePointsCtrlClick2DThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        3
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        (Any mode) [In Scene View] Ctrl+Shift+Click to add a point at some distance from SceneView camera. You can change the distance at settings
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGCreatePointsCtrlShiftClick.gif"><img src="../../images/GifUGCreatePointsCtrlShiftClickThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        4
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Inspector] use Points Menu (press Add icon)
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGCreatePointsPointMenu.gif"><img src="../../images/GifUGCreatePointsPointMenuThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-    </div>
-<div>
-    <h4>How to edit points</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        1
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Scene view] use handles to change positions
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGEditPointsHandles.gif"><img src="../../images/GifUGEditPointsHandlesThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        2
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Scene view] use Point and Selection menus (hold Ctrl over point or selection handles)
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGEditPointsCtrlMenu.gif"><img src="../../images/GifUGEditPointsCtrlMenuThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        3
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Inspector] use Points Menu
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGEditPointsCtrlMenu.gif"><img src="../../images/GifUGEditPointsCtrlMenuThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-    </div>
-<div>
-    <h4>How to select points</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        1
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Scene view] use rectangular selection.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGSelectPointsRectangular.gif"><img src="../../images/GifUGSelectPointsRectangularThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        2
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Inspector] use Tick icons
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGSelectPointsPointMenu.gif"><img src="../../images/GifUGSelectPointsPointMenuThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        3
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Scene View] use Point and Selection menu (hold Ctrl over point or selection handles)
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGSelectPointsCtrlMenu.gif"><img src="../../images/GifUGSelectPointsCtrlMenuThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-    </div>
-<div>
-    <h4>How to delete points</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        1
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Scene View] use Point and Selection menu (hold Ctrl over point or selection handles)
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGDeletePointsCtrlMenu.gif"><img src="../../images/GifUGDeletePointsCtrlMenuThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-        
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        2
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        [In Inspector] use Delete icons
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGCreatePointsPointMenu.gif"><img src="../../images/GifUGCreatePointsPointMenuThumb.gif"></a>
-    </div>
-    <hr>
-    
-    
-    </div>
-<div>
-    <h4>How to add, edit and remove Components</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Components let you use some functionality without scripting. They are standard MonoBehaviour scripts however they have custom tree view in Inspector (you can turn it off, if you want). Check Components gallery for available components. <br><br> Chose 'Components' tab and hit plus icon to add a component. Some components depend on others and will be added automatically. Change settings in the Inspector. Click on Delete icon to remove.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGComponents.gif"><img src="../../images/GifUGComponentsThumb.gif"></a>
-    </div>
-    <hr>
-    
-    </div>
-<div>
-    <h4>How to change and Save/Load Settings</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Settings are stored under 2 tabs- Fields (for positions and controls ) and Settings (curve related). After you make all the changes you can save settings either as default or some custom profile.Chose Settings tab and open 'Save/Load' foldout.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/GifUGSettings.gif"><img src="../../images/GifUGSettingsThumb.gif"></a>
-    </div>
-    <hr>
-    
     </div>
 
 

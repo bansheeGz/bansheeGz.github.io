@@ -1,6 +1,9 @@
 paramName=objectToManipulate
 paramDescription=Object to rotate
 
+paramName=rotationField
+paramDescription=Custom rotation point field to be used instead of tangent. It should be a Quaternion field.
+
 paramName=rotationInterpolation
 paramDescription=Rotation interpolation (between current rotation and tangent rotation). By lowering this parameter you will make rotation slower. Lerp - Linear. Slerp - Spherical linear.
 
@@ -11,10 +14,19 @@ paramName=slerpSpeed
 paramDescription=speed for Slerp interpolation. Final interpolation is calculated as Quaternion.Slerp(from,to, slerpSpeed * Time.deltaTime)
 
 paramName=upMode
-paramDescription=Mode for up vector for Quaternion.LookRotation. <br/> 1) WorldUp - use Vector.up <br/> 2) WorldCustom - use custom Vector in world coordinates <br/>3) LocalUp - use Vector.up in local coordinates. <br/>4) LocalCustom - use custom Vector in local coordinates <br/>5) TargetParentUp - use Vector.up in target object parent's local coordinates <br/>6) TargetParentUpCustom- use custom Vector in target object parent's local coordinates
+paramDescription=Mode for up vector for Quaternion.LookRotation. <br/> #
+1) WorldUp - use Vector.up <br/> #
+2) WorldCustom - use custom Vector in world coordinates <br/>#
+3) LocalUp - use Vector.up in local coordinates. <br/>#
+4) LocalCustom - use custom Vector in local coordinates <br/>#
+5) TargetParentUp - use Vector.up in target object parent's local coordinates <br/>#
+6) TargetParentUpCustom- use custom Vector in target object parent's local coordinates
 
 paramName=upCustom
 paramDescription=up Vector for custom 'upMode' modes.
+
+paramName=offsetAngle
+paramDescription=Constant euler angles to be added to final rotation.
 
 paramName=showHandles
 paramDescription=This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.

@@ -161,9 +161,11 @@
 .bg-sm .pli{
     border-top: 1px solid rgba(0,0,0,.5);
     padding: 4px 0;
+    background-color: rgb(231, 231, 231);
 }
 .bg-sm .cli{
     border-top: 1px solid rgba(0,0,0,.1);
+    background-color: rgb(247, 247, 247);
 }
 
 .bg-sm .pa {
@@ -200,14 +202,14 @@ h3{
 }
 
 .plic{
-    background-color: white !important;
+    background-color: #edd9ff !important;
 }
 
 .alic{
-    background-color: rgba(220,220,220,.6) !important;
+    /*background-color: rgba(219, 230, 214, 0.6) !important;*/
 }
 .alic ul{
-    background-color: rgba(255,255,255,.6) !important;
+    /*background-color: rgba(255,255,255,.6) !important;*/
 }
 
 .curveicon{
@@ -225,4 +227,20 @@ h3{
     font-size: 16px;
     padding-bottom: 10px;
     color: #757575;
+}
+
+.v12{
+    padding-left: 42px;
+    background: url(../images/v12.png) no-repeat left;
+    min-height: 32px;
+}
+.v11{
+    padding-left: 42px;
+    background: url(../images/v11.png) no-repeat left;
+    min-height: 32px;
+}
+.v10{
+    padding-left: 42px;
+    background: url(../images/v10.png) no-repeat left;
+    min-height: 32px;
 }

@@ -106,7 +106,7 @@ public class SourcesChecker
 
         if (isCurve && !isEditor)
         {
-            if ((source.contains("Cc") && !csSourceFile.getName().equals("BGCc.cs")) || source.contains("Components"))
+            if (source.contains("BGSpline.Components"))
             {
                 throw new Exception("Illegal reference to Cc package from Curve package " + csSourceFile.getName());
             }

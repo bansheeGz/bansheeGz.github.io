@@ -96,12 +96,48 @@
         <ul>
             <li class="pli curveicon ">
                 <a class="pa" href="../../../BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
                 <a class="pa " href="../../../BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
-                <a class="pa" href="../../../BGCurve/DeveloperGuide">For Programmers</a>
+                <a class="pa" href="../../../BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli  alic ">
                 <a class="pa" href="../../../BGCurve/Cc">Components</a>
@@ -113,6 +149,12 @@
                         <a class="ca" href="../../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursor">Cursor</a>
                     </li>
                     <li class="cli ">
@@ -120,6 +162,9 @@
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
@@ -130,10 +175,13 @@
                 <a class="pa" href="../../../BGCurve/Version">Versions</a>
                 <ul>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGCurve/Version/1.0">Version 1.0</a>
+                        <a class="ca" href="../../../BGCurve/Version/1.2">Version 1.2</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Version/1.0">Version 1.0</a>
                     </li>
                 </ul>
             </li>
@@ -163,10 +211,10 @@
 
 
 <div>
-    <h4>Description</h4>
+    <h4 class="v11">Description</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         Math gives you access to Math functions for the curve. Currently 4 functions are supported <br/>1) getDistance() [total curves length], <br/>2) getPosition() [point position on the curve], <br/>3) getTangent() [curve's point tangent] <br/>4) getPositionByClosestPoint() [point position (and optionally distance) on the curve, which is closest to a given point]) <br><br>See more details in 'For Programmers' section.
     </div>
 </div>
@@ -184,17 +232,31 @@
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        mathType
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Type of spline's approximation. <br/>1) Base- split every section uniformly to N even parts. <br/>2) Adaptive- split every section non-uniformly based on spline's curvature. This can greatly reduce the number of required points. <br/>See more details in "For Programmers" section.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
         sectionParts
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Number of parts to split every section of the curve. Currently Math is approximating all data by splitting curve's section on even parts. More parts- more precise approximation and less performance.
+        Number of parts to split every section of the spline for Base mathType (approximation). More parts- more precise approximation and lesser performance.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        tolerance
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        parameter to control Adaptive mathType (approximation). Lesser this parameter- more points are created and lesser performance.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
         usePositionToCalculateTangents
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Use points positions to calculate tangents instead of formula.
+        Use points positions to calculate tangents instead of formula. You absolutely need this parameter if you use snapping.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
@@ -208,7 +270,7 @@
         updateMode
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Updating math takes some time and resources. You can fine-tune in which cases math is updated (for the sake of performance).<br/>1) Always- always update <br/>2) AabbVisible- update only if AABB (Axis Aligned Bounding Box) around points and controls is visible by any camera (including Editor's SceneView camera)<br/>3) RendererVisible- update only if some renderer is visible
+        Updating math takes some time and resources. You can fine-tune in which cases math is updated (for the sake of performance). <br/>1) Always- always update then spline's changed<br/>2) AabbVisible- update only if AABB (Axis Aligned Bounding Box) around points and controls is visible by any camera (including Editor's SceneView camera)<br/>3) RendererVisible- update only if some renderer is visible <br/>4) ForceEveryFrame- update even if spline's not changed. You need this mode then you use Unity Animation (which changes private fields and no events are fired)
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
@@ -216,6 +278,41 @@
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
         Renderer for RendererVisible update mode. Any Game Object with some Renderer attached. Math will be updated only if this object is visible by any camera (including Editor's SceneView camera).
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        mathChanged
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        This is a standard Unity persistent event to be fired then math is recalculated. Math is recalculated then spline's changed. It's defined as mathChanged()
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        showHandles
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresScale
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Adjust spheres scale. Each sphere represent point, calculated during spline's approximation.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresColor
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Set spheres color.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresCount
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        The number of first N points (spheres) to show. The number is restricted for performance reason.
     </div>
     <hr>
 

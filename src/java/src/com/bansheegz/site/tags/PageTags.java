@@ -48,7 +48,7 @@ public class PageTags
             {
                 StringBuilder sectionBuilder = new StringBuilder();
 
-                Properties sectionProperties = new Properties();
+                Properties sectionProperties = new Properties(props);
                 if (tag.getHeader() != null)
                 {
                     for (TagIterate.Item item : section.getItems())
@@ -118,7 +118,7 @@ public class PageTags
             }
 
 
-            if (tag.evaluate(value))
+            if (tag.evaluate(value, props))
             {
                 tag.replaceWith(tag.getContent());
             }

@@ -1,5 +1,8 @@
 paramName=splitMode
-paramDescription=The mode for splitting a curve. 1) TotalSections -total sections for whole curve. 2) PartSections - each part (between 2 points) will use the same amount of splits 3) UseMathData -use data, precalculated by Math component. Note, you can tweak some params at Math as well
+paramDescription=The mode for splitting a spline. #
+1) PartsTotal - use specified number parts for whole spline. #
+2) PartsPerSection - use specified number parts for each section (between 2 points)  #
+3) UseMathData -use data, precalculated by Math component. Note, you can tweak some params at Math as well
 
 paramName=partsTotal
 paramDescription=The number of splits for TotalSections mode. The actual number of parts can be less than partsTotal due to optimization, but never more.

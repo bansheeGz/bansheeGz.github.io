@@ -1,8 +1,8 @@
 paramName=distance
-paramDescription=Distance in standard Unity units along the curve. if distance overflows curve's length (<0 or > totalDistance), it will be clamped.
+paramDescription=Distance in standard Unity units along the spline. if distance overflows spline's length (<0 or > totalDistance), it will be clamped.
 
 paramName=distanceRatio
-paramDescription=Normalized distance [Range(0,1)]. 0- start of the curve, 1- end.
+paramDescription=Normalized distance [Range(0,1)]. 0- start of the spline, 1- end.
 
 paramName=showHandles
 paramDescription=This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.

@@ -1,0 +1,34 @@
+title=Math methods
+mode=3
+text=Spline's distance ( math.GetDistance() )
+imageSmall=DGMathGetDistanceThumb.jpg
+imageBig=DGMathGetDistance.jpg
+
+text=Position by distance ( math.CalcPositionByDistance(float distance) or math.CalcPositionByDistanceRatio(float distanceRatio) [Range (0,1)])
+imageSmall=DGMathCalculatePositionByDistanceThumb.jpg
+imageBig=DGMathCalculatePositionByDistance.jpg
+
+text=Tangent by distance ( (math.CalcTangentByDistance(float distance) and math.CalcTangentByDistanceRatio(float distanceRatio) [Range (0,1)])
+imageSmall=DGMathCalculateTangentByDistanceThumb.jpg
+imageBig=DGMathCalculateTangentByDistance.jpg
+
+text=Position and distance(optionally) for a point, which is on the spline and closest to some other point, which is not on the spline  (math.CalcPositionByClosestPoint(Vector3 point))
+imageSmall=DGMathCalcPositionByClosestPointThumb.jpg
+imageBig=DGMathCalcPositionByClosestPoint.jpg
+
+
+title=Understanding Math
+mode=2
+text=@
+Math gives you access to some of the essential methods for dealing with splines.
+Math calculates it's data by splitting the spline to small straight lines. There are 2 types of approximations available with BGCurve:
+<br/>1) Uniform (by splitting every spline section to even parts) and
+<br/>2) Adaptive (also uniform, but points may be skipped based on spline's curvature and added then necessary).
+Adaptive split may result with much lesser points and better approximation (however it may be slower).
+<br/><br/>If spline changed, math recalculates it's state. Math is contained in separate classes (BGCurveBaseMath and BGCurveAdaptiveMath).
+If you were using math and do not need it anymore, you'd better call math.Dispose() method ASAP.
+If you need math, we recommend you to use BGCcMath component, which gives you easy access to math parameters and operations. Read about BGCcMath under components section.@
+imageSmall=DGMathThumb.jpg
+imageBig=DGMath.jpg
+
+

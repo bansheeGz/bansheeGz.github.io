@@ -3,6 +3,8 @@ package com.bansheegz.site.tags;
 import com.bansheegz.site.Page;
 import com.bansheegz.site.PageException;
 
+import java.util.Properties;
+
 class TagIf extends TagSet
 {
     private final String content;
@@ -11,7 +13,7 @@ class TagIf extends TagSet
 
     TagIf(Page page, StringBuilder content, int start) throws PageException
     {
-        super(page, "if", content, start,false);
+        super(page, "if", content, start, false);
 
         int contentStart = end;
         end = getIndex(contentStart, "if tag not closed. ", "#endif") + "#endif".length();
@@ -32,14 +34,15 @@ class TagIf extends TagSet
 
         final boolean startsWith = getValue().startsWith("_startsWith");
         final boolean contains = getValue().startsWith("_contains");
-        if(startsWith || contains)
+//        final boolean has = getValue().startsWith("_has");
+        if (startsWith || contains)
         {
-            function =startsWith ? new FunctionStartsWith() : new FunctionContains();
+            function = startsWith ? new FunctionStartsWith() : new FunctionContains();
 
-            int pStart = indexOf(0, getValue() , "(", "Can not find ( symbol for function FunctionStartsWith");
-            int pEnd = indexOf(pStart,value , ")", "Can not find ) symbol for function FunctionStartsWith");
+            int pStart = indexOf(0, getValue(), "(", "Can not find ( symbol for function FunctionStartsWith");
+            int pEnd = indexOf(pStart, value, ")", "Can not find ) symbol for function FunctionStartsWith");
 
-            value = getValue().substring(pStart+1, pEnd);
+            value = getValue().substring(pStart + 1, pEnd);
         }
         else
         {
@@ -57,30 +60,31 @@ class TagIf extends TagSet
         return contentElse;
     }
 
-    public boolean evaluate(String value)
+    public boolean evaluate(String value, Properties props)
     {
-        return function.evaluate(getValue(), value);
+        return function.evaluate(getValue(), value, props);
     }
 
 
     private interface Function
     {
-        boolean evaluate(String value, String toCompare);
+        boolean evaluate(String value, String toCompare, Properties props);
 
     }
 
     private class FunctionEquals implements Function
     {
         @Override
-        public boolean evaluate(String value, String toCompare)
+        public boolean evaluate(String value, String toCompare, Properties props)
         {
             return value.equals(toCompare);
         }
     }
+
     private class FunctionStartsWith implements Function
     {
         @Override
-        public boolean evaluate(String value, String toCompare)
+        public boolean evaluate(String value, String toCompare, Properties props)
         {
             return toCompare.startsWith(value);
         }
@@ -89,10 +93,21 @@ class TagIf extends TagSet
     private class FunctionContains implements Function
     {
         @Override
-        public boolean evaluate(String value, String toCompare)
+        public boolean evaluate(String value, String toCompare, Properties props)
         {
             return toCompare.contains(value);
         }
     }
+
+/*
+    private class FunctionHas implements Function
+    {
+        @Override
+        public boolean evaluate(String value, String toCompare, Properties props)
+        {
+            return props.getProperty(value) != null;
+        }
+    }
+*/
 
 }

@@ -86,12 +86,75 @@ public class TagIterate extends Tag
                     }
 
                     spaceCount = 0;
-                    String[] parts = value.split("=");
-                    if (parts.length != 2)
+                    int equalSignIndex = value.indexOf('=');
+                    if (equalSignIndex < 0)
                     {
-                        throw new PageException(page, "Wrong format in file " + getName() + ": " + value);
+                        throw new PageException(page, "Wrong format in file " + getName() + ": No equal sign " + value);
                     }
-                    currentItem.add(parts[0].trim(), parts[1].trim());
+                    final String key = value.substring(0, equalSignIndex).trim();
+                    String finalValue = value.substring(equalSignIndex + 1, value.length());
+                    boolean insidePrettyPrint = false;
+                    if (finalValue.startsWith("@"))
+                    {
+                        String nextLine;
+                        finalValue = "";
+                        while (true)
+                        {
+                            nextLine = reader.readLine();
+                            if (nextLine == null)
+                            {
+                                break;
+                            }
+                            if(insidePrettyPrint && nextLine.contains("</pre>"))
+                            {
+                                insidePrettyPrint=false;
+                            }
+
+                            if(insidePrettyPrint)
+                            {
+                                nextLine = nextLine.replaceAll("<", "&lt;");
+                                nextLine = nextLine.replaceAll(">", "&gt;");
+                            }
+
+                            finalValue += nextLine + "\r\n";
+                            if (nextLine.endsWith("@"))
+                            {
+                                finalValue = finalValue.substring(0, finalValue.lastIndexOf('@'));
+                                break;
+                            }
+                            if(nextLine.contains("prettyprint"))
+                            {
+                                insidePrettyPrint=true;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        char lastChar = finalValue.charAt(finalValue.length() - 1);
+                        if (lastChar == '#' || lastChar == '~')
+                        {
+                            //multiline
+                            String nextLine = finalValue;
+                            finalValue = "";
+                            while (nextLine != null && nextLine.length() > 0 && (nextLine.charAt(nextLine.length() - 1) == '#' || nextLine.charAt(nextLine.length() - 1) == '~'))
+                            {
+                                boolean returnRequired = nextLine.charAt(nextLine.length() - 1) == '~';
+                                finalValue += nextLine.substring(0, nextLine.length() - 1);
+                                if (returnRequired)
+                                {
+                                    finalValue += "\r\n";
+                                }
+                                nextLine = reader.readLine();
+                            }
+
+                            if (nextLine != null)
+                            {
+                                finalValue += nextLine;
+                            }
+                        }
+                    }
+
+                    currentItem.add(key, finalValue);
                 }
 
                 value = reader.readLine();

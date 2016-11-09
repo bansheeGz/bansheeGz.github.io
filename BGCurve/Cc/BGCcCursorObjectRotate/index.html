@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Rotates the object to curve's tangent, defined by Cursor position. It uses Quaternion.LookRotation method. It does not change the cursor itself, you need another component to change cursor position (like Cursor Change Linear)">
+    <meta name="description" content="Rotates the object to curve's tangent or custom rotation field, which are determined by Cursor position. It uses Quaternion.LookRotation method. It does not change the cursor itself, you need another component to change cursor position (like Cursor Change Linear)">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -96,12 +96,48 @@
         <ul>
             <li class="pli curveicon ">
                 <a class="pa" href="../../../BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
                 <a class="pa " href="../../../BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
-                <a class="pa" href="../../../BGCurve/DeveloperGuide">For Programmers</a>
+                <a class="pa" href="../../../BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli  alic ">
                 <a class="pa" href="../../../BGCurve/Cc">Components</a>
@@ -113,6 +149,12 @@
                         <a class="ca" href="../../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursor">Cursor</a>
                     </li>
                     <li class="cli ">
@@ -120,6 +162,9 @@
                     </li>
                     <li class="cli  plic ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
@@ -130,10 +175,13 @@
                 <a class="pa" href="../../../BGCurve/Version">Versions</a>
                 <ul>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGCurve/Version/1.0">Version 1.0</a>
+                        <a class="ca" href="../../../BGCurve/Version/1.2">Version 1.2</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Version/1.0">Version 1.0</a>
                     </li>
                 </ul>
             </li>
@@ -163,11 +211,11 @@
 
 
 <div>
-    <h4>Description</h4>
+    <h4 class="v11">Description</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        Rotates the object to curve's tangent, defined by Cursor position. It uses Quaternion.LookRotation method. It does not change the cursor itself, you need another component to change cursor position (like Cursor Change Linear)
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        Rotates the object to curve's tangent or custom rotation field, which are determined by Cursor position. It uses Quaternion.LookRotation method. It does not change the cursor itself, you need another component to change cursor position (like Cursor Change Linear)
     </div>
 </div>
 
@@ -181,6 +229,13 @@
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
         Object to rotate
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        rotationField
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Custom rotation point field to be used instead of tangent. It should be a Quaternion field.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
@@ -216,6 +271,13 @@
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
         up Vector for custom 'upMode' modes.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        offsetAngle
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Constant euler angles to be added to final rotation.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">

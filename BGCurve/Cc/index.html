@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Curve is a free Bezier curve editor for Unity game engine">
+    <meta name="description" content="BG Curve is a free Bezier spline editor for Unity game engine">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -96,12 +96,48 @@
         <ul>
             <li class="pli curveicon ">
                 <a class="pa" href="../../BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
                 <a class="pa " href="../../BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
-                <a class="pa" href="../../BGCurve/DeveloperGuide">For Programmers</a>
+                <a class="pa" href="../../BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli  plic  ">
                 <a class="pa" href="../../BGCurve/Cc">Components</a>
@@ -113,6 +149,12 @@
                         <a class="ca" href="../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursor">Cursor</a>
                     </li>
                     <li class="cli ">
@@ -120,6 +162,9 @@
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
@@ -130,10 +175,13 @@
                 <a class="pa" href="../../BGCurve/Version">Versions</a>
                 <ul>
                     <li class="cli ">
-                        <a class="ca" href="../../BGCurve/Version/1.0">Version 1.0</a>
+                        <a class="ca" href="../../BGCurve/Version/1.2">Version 1.2</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Version/1.0">Version 1.0</a>
                     </li>
                 </ul>
             </li>
@@ -157,25 +205,31 @@
 
 
 <div>
+    
     <h4>General information</h4>
+    
+    
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
         
     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        Using Components, you can use some curve's related functions without any scripting. Components are standard MonoBehaviour subclasses.
+        Using Components, you can use some spline's related functions without any scripting. Components are standard MonoBehaviour subclasses.
     </div>
     <hr>
     
     
     </div>
 <div>
-    <h4>Math</h4>
+    
+    
+    <h4 class="v11">Math</h4>
+    
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
         
     
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        <a href="../../BGCurve/Cc/BGCcMath">Math component gives you access to math functions. Currently 4 functions are supported ( 1) get curve's length, 2) get position, 3) get tangent and 4) get position and distance of a point on the curve, which is closest to a given point)</a>
+        <a href="../../BGCurve/Cc/BGCcMath">Math component gives you access to math functions. Currently 4 functions are supported <br/> 1) get spline's length <br/>2) get position <br/>3) get tangent and <br/>4) get position and distance of a point on the spline, which is closest to a given point</a>
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
         <a href="../../images/GifCcMath.gif"><img src="../../images/GifCcMathThumb.gif"></a>
@@ -184,13 +238,16 @@
     
     </div>
 <div>
-    <h4>Line Renderer</h4>
+    
+    
+    <h4 class="v11">Line Renderer</h4>
+    
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
         
     
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        <a href="../../BGCurve/Cc/BGCcVisualizationLineRenderer">Visualize the curve with LineRenderer Unity's component in Play mode.</a>
+        <a href="../../BGCurve/Cc/BGCcVisualizationLineRenderer">Visualize the spline with LineRenderer Unity's component in Play mode.</a>
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
         <a href="../../images/GifCcLineRenderer.gif"><img src="../../images/GifCcLineRendererThumb.gif"></a>
@@ -199,13 +256,52 @@
     
     </div>
 <div>
-    <h4>Cursor</h4>
+    
+    
+    <h4 class="v12">Triangulate 2D</h4>
+    
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
         
     
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        <a href="../../BGCurve/Cc/BGCcCursor">Identify the distance along the curve.</a>
+        <a href="../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D spline (simple polygons only).</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcTriangulate2D.gif"><img src="../../images/GifCcTriangulate2DThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    
+    
+    <h4 class="v12">Polyline Splitter</h4>
+    
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcSplitterPolyline">Split spline to polyline.</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcSplitterPolyline.gif"><img src="../../images/GifCcSplitterPolylineThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    
+    
+    <h4 class="v11">Cursor</h4>
+    
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcCursor">Identify the distance along the spline.</a>
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
         <a href="../../images/GifCcCursor.gif"><img src="../../images/GifCcCursorThumb.gif"></a>
@@ -214,7 +310,10 @@
     
     </div>
 <div>
-    <h4>Move by Cursor</h4>
+    
+    
+    <h4 class="v11">Move by Cursor</h4>
+    
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
         
@@ -229,13 +328,16 @@
     
     </div>
 <div>
-    <h4>Rotate by Cursor</h4>
+    
+    
+    <h4 class="v11">Rotate by Cursor</h4>
+    
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
         
     
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        <a href="../../BGCurve/Cc/BGCcCursorObjectRotate">Rotates an object according to the curve's tangent on the position, defined by a cursor</a>
+        <a href="../../BGCurve/Cc/BGCcCursorObjectRotate">Rotates an object according to the spline's tangent or custom field value at the position, defined by a cursor</a>
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
         <a href="../../images/GifCcRotateByCursor.gif"><img src="../../images/GifCcRotateByCursorThumb.gif"></a>
@@ -244,7 +346,28 @@
     
     </div>
 <div>
-    <h4>Lerp Cursor</h4>
+    
+    
+    <h4 class="v12">Scale by Cursor</h4>
+    
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="../../BGCurve/Cc/BGCcCursorObjectScale">Scales the object, based on custom field value, defined by a cursor position</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/GifCcScaleByCursor.gif"><img src="../../images/GifCcScaleByCursorThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    
+    
+    <h4 class="v11">Lerp Cursor</h4>
+    
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
         

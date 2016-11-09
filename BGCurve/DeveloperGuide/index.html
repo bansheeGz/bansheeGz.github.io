@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Curve is a free Bezier curve editor for Unity game engine">
+    <meta name="description" content="BG Curve is a free Bezier spline editor for Unity game engine">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -96,12 +96,48 @@
         <ul>
             <li class="pli curveicon ">
                 <a class="pa" href="../../BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
                 <a class="pa " href="../../BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli  plic ">
-                <a class="pa" href="../../BGCurve/DeveloperGuide">For Programmers</a>
+                <a class="pa" href="../../BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli  ">
                 <a class="pa" href="../../BGCurve/Cc">Components</a>
@@ -113,6 +149,12 @@
                         <a class="ca" href="../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursor">Cursor</a>
                     </li>
                     <li class="cli ">
@@ -120,6 +162,9 @@
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
@@ -130,10 +175,13 @@
                 <a class="pa" href="../../BGCurve/Version">Versions</a>
                 <ul>
                     <li class="cli ">
-                        <a class="ca" href="../../BGCurve/Version/1.0">Version 1.0</a>
+                        <a class="ca" href="../../BGCurve/Version/1.2">Version 1.2</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Version/1.0">Version 1.0</a>
                     </li>
                 </ul>
             </li>
@@ -155,138 +203,44 @@
             <!--======================================================        BG Curve Content              -->
             
 
+
 <div>
-    <h4>General information</h4>
+    <h4><a href="Coordinates">Coordinates</a></h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        You can add a curve, change it's position, rotation and scale, and also you can add, change and remove its points at runtime (Play mode).
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        Learn about Coordinate spaces for points.
     </div>
     <hr>
-    
-    
-    
     </div>
 <div>
-    <h4>Understanding Coordinates</h4>
+    <h4><a href="Math">Math</a></h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        The picture explains how curve's attributes are calculated
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/DGCoordinates.jpg"><img src="../../images/DGCoordinatesThumb.jpg"></a>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        Learn more about Math types and functions.
     </div>
     <hr>
-    
-    
     </div>
 <div>
-    <h4>Understanding Math</h4>
+    <h4><a href="Examples">Examples</a></h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Math gives you access to some of the essential methods for dealing with splines. It calculates data by splitting every curve section to even parts. If curve changed, math recalculates it's state. Math is contained in separate class (BGCurveBaseMath). If you were using math and do not need it anymore, you'd better call math.Dispose() method ASAP. If you need math, we recommend you to use BGCcMath component, which gives you easy access to math operations and more. Read about BGCcMath under components section.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/Math.jpg"><img src="../../images/MathThumb.jpg"></a>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        Learn by examples.
     </div>
     <hr>
-    
-    
     </div>
 <div>
-    <h4>Math methods</h4>
+    <h4><a href="Overview">Overview</a></h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        1
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        Curve's distance ( math.GetDistance() )
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/MathGetDistance.jpg"><img src="../../images/MathGetDistanceThumb.jpg"></a>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        Brief overview of the rest options
     </div>
     <hr>
-    
-        
-    
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        2
     </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        Position by distance ( math.CalcPositionByDistance(float distance) or math.CalcPositionByDistanceRatio(float distanceRatio) [Range (0,1)])
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/MathCalculatePositionByDistance.jpg"><img src="../../images/MathCalculatePositionByDistanceThumb.jpg"></a>
-    </div>
-    <hr>
-    
-        
-    
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        3
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        Tangent by distance ( (math.CalcTangentByDistance(float distance) and math.CalcTangentByDistanceRatio(float distanceRatio) [Range (0,1)])
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/MathCalculateTangentByDistance.jpg"><img src="../../images/MathCalculateTangentByDistanceThumb.jpg"></a>
-    </div>
-    <hr>
-    
-        
-    
-    
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--1-col-tablet mdl-cell--1-col-phone ">
-        4
-    </div>
-    <div class="mdl-cell mdl-cell--8-col mdl-cell--5-col-tablet mdl-cell--2-col-phone ">
-        Position and distance(optionally) for a point, which is on the curve and closest to some other point  (math.CalcPositionByClosestPoint(Vector3 point))
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../images/MathCalcPositionByClosestPoint.jpg"><img src="../../images/MathCalcPositionByClosestPointThumb.jpg"></a>
-    </div>
-    <hr>
-    
-    </div>
-<div>
-    <h4>Understanding Components</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        Components are the standard Unity MonoBehaviour subclasses, which gives you access to some additional curve's related functions at Play mode without any scripting. We recommend to use them unless they do not cover your needs. For example, if you need math, do not create BGCurveBaseMath yourself, simply attach  BGCcMath component and reference it instead of BGCurve.
-    </div>
-    <hr>
-    
-    
-    
-    </div>
-<div>
-    <h4>Understanding Events</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        Curve.Changed event is fired once per frame in Update (or LateUpdate (configurable)) curve's method if curve is changed. Math uses this event to update it's cached data. if you need to update some data after math is changed, use math.Changed event instead of curve.Changed.
-    </div>
-    <hr>
-    
-    
-    
-    </div>
+
 
 
 

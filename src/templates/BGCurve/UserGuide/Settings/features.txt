@@ -1,0 +1,27 @@
+title=Personal Settings for each spline
+mode=3
+version=v10
+text=There are settings, that allocated for each spline. These settings can be saved/loaded to/from disk. They include #
+different colors, different settings for each field (like position, controls etc.), spline showing options etc. #
+There are a lot of things you can customize. #
+These settings are located under Fields and Settings tabs.
+imageSmall=GifUGPersonalSettingsThumb.gif
+imageBig=GifUGPersonalSettings.gif
+
+
+title=How to change and Save/Load Personal Settings
+mode=3
+version=v10
+text=Settings are stored under 2 tabs- Fields (for positions and controls ) and Settings (spline related). #
+After you make all the changes you can save settings either as default or some custom profile.Chose Settings tab and open 'Save/Load' foldout.
+imageSmall=GifUGSettingsThumb.gif
+imageBig=GifUGSettings.gif
+
+
+title=Shared Settings for all spline
+mode=3
+version=v11
+text=There are also settings, that are shared by all splines. These include color of rectangular selection, on/off mode for menus etc.#
+These settings are accessed by pressing Gear icon.
+imageSmall=GifUGSharedSettingsThumb.gif
+imageBig=GifUGSharedSettings.gif

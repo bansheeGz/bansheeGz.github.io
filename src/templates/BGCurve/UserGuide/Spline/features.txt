@@ -1,0 +1,82 @@
+title=How to Animate a spline
+mode=3
+version=v12
+text=You can animate a spline (points and controls positions) with standard Unity AnimationView Window. To do this, #
+<br/> 1) Make sure "Points Mode" is set to GameObjectsNoTransform (under Points tab).#
+<br/> 2) If spline is not moving at runtime, make sure that BGCurve have ForceChangedEventMode set to EditorAndRuntime. #
+<br/> 3) Set spline's eventMode to LateUpdate <br/> #
+That's all, animate the spline just like any other object with children.#
+<br><br>Note: you can not change point's type or animate custom fields or add/remove points in animation.
+imageSmall=GifUGAnimateThumb.gif
+imageBig=GifUGAnimate.gif
+
+
+title=How to add, edit and remove Components
+mode=3
+version=v11
+text=Components let you use some functionality without scripting. They are standard MonoBehaviour scripts however they have custom tree view in Inspector (you can turn it off, if you want). #
+Check Components gallery for available components. <br><br> Chose 'Components' tab and hit plus icon to add a component. Some components depend on others and will be added automatically. #
+Change settings in the Inspector. Click on Delete icon to remove.
+imageSmall=GifUGComponentsThumb.gif
+imageBig=GifUGComponents.gif
+
+
+title=How to use Snapping
+mode=3
+version=v12
+text=You can snap a spline to another object with collider (like Terrain). You can snap spline's points only or snap whole spline #
+(in this case every approximation point, used for splitting the spline will be snapped). <br/>#
+To turn on the snapping, set snapType (under Points tab) to Points or Curve and snapAxis to Y (for terrain). #
+You may also want to use  Snap Layer Mask to isolate terrain from other objects with colliders (this can be an important step if you have other objects with colliders around). #
+Also, probably, you can get better results while using Base Math instead of Adaptive. You can also turn on double-sided collision for snapping (not necessary for terrains).
+imageSmall=GifUGSnappingThumb.gif
+imageBig=GifUGSnapping.gif
+
+
+title=How to use Custom Fields
+mode=3
+version=v12
+text=Custom fields are additional fields, attached to every curve's point. Add new fields under Fields tab, and assign new values to these fields under Points tab. #
+Handles are used to visualize fields in the SceneView. Note, that rotation (Quaternion) fields can be visualized only one at the time, #
+so if you have more than one rotation field- visualize them one-by-one by enabling and disabling handles under Fields tab.
+imageSmall=GifUGCustomFieldsThumb.gif
+imageBig=GifUGCustomFields.gif
+
+
+title=Points modes
+mode=3
+version=v12
+text=Points mode is about the way how points are stored.<br/> #
+<br/> 1) Inline- points are stored inlined along with a curve. You can not reference individual point.#
+<br/> 2) Components- points are stored as MonoBehaviour derived components attached to curve's GameObject. You can reference individual point.#
+To do so, create a public field with BGCurvePointComponent type.#
+<br/> 3) GameObjectNoTransform- points are stored as MonoBehaviour derived components attached to individual GameObjects. #
+Each point has it's own GameObject. GameObjects transforms do not affect any value.  You can reference individual point.#
+To do so, create a public field with BGCurvePointGO type.#
+<br/> 4) GameObjectTransform- the same as GameObjectNoTransform, but GameObject's transform is used as point's position, #
+and also affects controls positions#
+<br><br>Note: you should not move GameObjects, generated for points. If you want to use some object's transform as curve's point, you can do it with #
+point's Transform system field, as described below.
+imageSmall=GifUGPointsModesThumb.gif
+imageBig=GifUGPointsModes.gif
+
+
+title=Point's Transform system field
+mode=3
+version=v12
+text=You can "plug" any transform to a point and use it as point's position. #
+To do so, enable Transform system field under Fields tab, and assign it to some existing transform under Points tab. #
+Transform's position will be a point's position, and Rotation and Scale will affect controls positions. #
+Spline's transform will be completely ignored unless you make point's transform a child of the spline. #
+Also, switch to Non-Inlined points mode (any of Components, GameObjectNoTransform or GameObjectTransform) to be able to edit the curve then transform is selected.#
+<br/><br/>Note: 2D mode with transformation applied to the spline's transform does not currently supported for this field.
+imageSmall=GifUGPointsTransformsThumb.gif
+imageBig=GifUGPointsTransforms.gif
+
+
+title=2D mode
+mode=3
+version=v11
+text=If your spline is supposed to be 2D only, we recommend you to turn 2D mode on, cause it has builtin Editor support.
+imageSmall=GifUG2dModeThumb.gif
+imageBig=GifUG2dMode.gif

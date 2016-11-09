@@ -1,0 +1,46 @@
+paramName=splitMode
+paramDescription=The mode for splitting a spline. #
+1) PartsTotal - use specified number parts for whole spline. #
+2) PartsPerSection - use specified number parts for each section (between 2 points)  #
+3) UseMathData -use data, precalculated by Math component. Note, you can tweak some params at Math as well
+
+paramName=partsTotal
+paramDescription=The number of splits for TotalSections mode. The actual number of parts can be less than partsTotal due to optimization, but never more.
+
+paramName=partsPerSection
+paramDescription=The number of splits for PartSections mode. The actual number of parts can be less than partsPerSection due to optimization, but never more.
+
+paramName=doNotOptimizeStraightLines
+paramDescription=Split straight lines. Straight lines are optimized by default and are not split, but you can override it with this parameter.
+
+paramName=flip
+paramDescription=Flips faces (normals)
+
+paramName=scaleUV
+paramDescription=Scale UV coordinates
+
+paramName=offsetUV
+paramDescription=Offset UV coordinates
+
+paramName=doubleSided
+paramDescription=Generate mesh for backside. This will double the amount of vertices and triangles.
+
+paramName=scaleBackUV
+paramDescription=Scale back UV coordinates
+
+paramName=offsetBackUV
+paramDescription=Offset back UV coordinates
+
+paramName=showHandles
+paramDescription=This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
+
+paramName=spheresScale
+paramDescription=Adjust spheres scale. Each sphere represent one point of the generated mesh.
+
+paramName=spheresColor
+paramDescription=Set spheres color.
+
+paramName=spheresCount
+paramDescription=The number of first N points (spheres) to show. The number is restricted for performance reason.
+
+

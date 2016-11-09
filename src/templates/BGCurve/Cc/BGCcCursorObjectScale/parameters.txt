@@ -1,0 +1,6 @@
+paramName=objectToManipulate
+paramDescription=Object to scale
+
+paramName=scaleField
+paramDescription=Custom field to take values from. It should be of type Vector3.
+

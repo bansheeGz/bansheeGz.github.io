@@ -1,49 +1,18 @@
-title=General information
-mode=1
-text=You can add a curve, change it's position, rotation and scale, and also you can add, change and remove its points at runtime (Play mode).
+title=Coordinates
+link=Coordinates
+text=Learn about Coordinate spaces for points.
 
 
-title=Understanding Coordinates
-mode=2
-text=The picture explains how curve's attributes are calculated
-imageSmall=images/DGCoordinatesThumb.jpg
-imageBig=images/DGCoordinates.jpg
+title=Math
+link=Math
+text=Learn more about Math types and functions.
 
 
-
-title=Understanding Math
-mode=2
-text=Math gives you access to some of the essential methods for dealing with splines. It calculates data by splitting every curve section to even parts. If curve changed, math recalculates it's state. Math is contained in separate class (BGCurveBaseMath). If you were using math and do not need it anymore, you'd better call math.Dispose() method ASAP. If you need math, we recommend you to use BGCcMath component, which gives you easy access to math operations and more. Read about BGCcMath under components section.
-imageSmall=images/MathThumb.jpg
-imageBig=images/Math.jpg
+title=Examples
+link=Examples
+text=Learn by examples.
 
 
-title=Math methods
-mode=3
-text=Curve's distance ( math.GetDistance() )
-imageSmall=images/MathGetDistanceThumb.jpg
-imageBig=images/MathGetDistance.jpg
-
-text=Position by distance ( math.CalcPositionByDistance(float distance) or math.CalcPositionByDistanceRatio(float distanceRatio) [Range (0,1)])
-imageSmall=images/MathCalculatePositionByDistanceThumb.jpg
-imageBig=images/MathCalculatePositionByDistance.jpg
-
-text=Tangent by distance ( (math.CalcTangentByDistance(float distance) and math.CalcTangentByDistanceRatio(float distanceRatio) [Range (0,1)])
-imageSmall=images/MathCalculateTangentByDistanceThumb.jpg
-imageBig=images/MathCalculateTangentByDistance.jpg
-
-text=Position and distance(optionally) for a point, which is on the curve and closest to some other point  (math.CalcPositionByClosestPoint(Vector3 point))
-imageSmall=images/MathCalcPositionByClosestPointThumb.jpg
-imageBig=images/MathCalcPositionByClosestPoint.jpg
-
-
-title=Understanding Components
-mode=1
-text=Components are the standard Unity MonoBehaviour subclasses, which gives you access to some additional curve's related functions at Play mode without any scripting. We recommend to use them unless they do not cover your needs. For example, if you need math, do not create BGCurveBaseMath yourself, simply attach  BGCcMath component and reference it instead of BGCurve.
-
-
-title=Understanding Events
-mode=1
-text=Curve.Changed event is fired once per frame in Update (or LateUpdate (configurable)) curve's method if curve is changed. Math uses this event to update it's cached data. if you need to update some data after math is changed, use math.Changed event instead of curve.Changed.
-
-
+title=Overview
+link=Overview
+text=Brief overview of the rest options

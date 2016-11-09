@@ -1,95 +1,13 @@
-title=General information
-mode=1
-text=All actions are duplicated in Scene View and in the Inspector.
+title=Manipulating points
+link=Points
+text=Learn how to create a spline, how to add, edit, delete and select Points.
 
 
-title=How to create a curve
-mode=2
-text=Chose from menu 'Game Object -> Create Other -> BansheeGz -> BG Curve'
-imageSmall=images/GifUGCreateCurveMenuThumb.gif
-imageBig=images/GifUGCreateCurveMenu.gif
-
-text=Create empty GameObject and 'Add Component->BGCurve' in the Inspector.
-imageSmall=images/GifUGCreateCurveAddComponentThumb.gif
-imageBig=images/GifUGCreateCurveAddComponent.gif
+title=Spline Properties
+link=Curve
+text=Learn about 2D Mode, Snapping, Animation, Points modes, Custom Fields and Components.
 
 
-
-title=How to add points
-mode=2
-text=(3D mode) [In Scene View] hover over an object with a mesh and collider attached and Ctrl+Click
-imageSmall=images/GifUGCreatePointsCtrlClick3DThumb.gif
-imageBig=images/GifUGCreatePointsCtrlClick3D.gif
-
-text=(2D mode) [In Scene View] Hover over the Curve's 2D plane and Ctrl+Click
-imageSmall=images/GifUGCreatePointsCtrlClick2DThumb.gif
-imageBig=images/GifUGCreatePointsCtrlClick2D.gif
-
-text=(Any mode) [In Scene View] Ctrl+Shift+Click to add a point at some distance from SceneView camera. You can change the distance at settings
-imageSmall=images/GifUGCreatePointsCtrlShiftClickThumb.gif
-imageBig=images/GifUGCreatePointsCtrlShiftClick.gif
-
-text=[In Inspector] use Points Menu (press Add icon)
-imageSmall=images/GifUGCreatePointsPointMenuThumb.gif
-imageBig=images/GifUGCreatePointsPointMenu.gif
-
-
-
-title=How to edit points
-mode=2
-text=[In Scene view] use handles to change positions
-imageSmall=images/GifUGEditPointsHandlesThumb.gif
-imageBig=images/GifUGEditPointsHandles.gif
-
-text=[In Scene view] use Point and Selection menus (hold Ctrl over point or selection handles)
-imageSmall=images/GifUGEditPointsCtrlMenuThumb.gif
-imageBig=images/GifUGEditPointsCtrlMenu.gif
-
-text=[In Inspector] use Points Menu
-imageSmall=images/GifUGEditPointsCtrlMenuThumb.gif
-imageBig=images/GifUGEditPointsCtrlMenu.gif
-
-
-
-title=How to select points
-mode=2
-text=[In Scene view] use rectangular selection.
-imageSmall=images/GifUGSelectPointsRectangularThumb.gif
-imageBig=images/GifUGSelectPointsRectangular.gif
-
-text=[In Inspector] use Tick icons
-imageSmall=images/GifUGSelectPointsPointMenuThumb.gif
-imageBig=images/GifUGSelectPointsPointMenu.gif
-
-text=[In Scene View] use Point and Selection menu (hold Ctrl over point or selection handles)
-imageSmall=images/GifUGSelectPointsCtrlMenuThumb.gif
-imageBig=images/GifUGSelectPointsCtrlMenu.gif
-
-
-
-title=How to delete points
-mode=2
-text=[In Scene View] use Point and Selection menu (hold Ctrl over point or selection handles)
-imageSmall=images/GifUGDeletePointsCtrlMenuThumb.gif
-imageBig=images/GifUGDeletePointsCtrlMenu.gif
-
-text=[In Inspector] use Delete icons
-imageSmall=images/GifUGCreatePointsPointMenuThumb.gif
-imageBig=images/GifUGCreatePointsPointMenu.gif
-
-
-
-title=How to add, edit and remove Components
-mode=3
-text=Components let you use some functionality without scripting. They are standard MonoBehaviour scripts however they have custom tree view in Inspector (you can turn it off, if you want). Check Components gallery for available components. <br><br> Chose 'Components' tab and hit plus icon to add a component. Some components depend on others and will be added automatically. Change settings in the Inspector. Click on Delete icon to remove.
-imageSmall=images/GifUGComponentsThumb.gif
-imageBig=images/GifUGComponents.gif
-
-
-
-title=How to change and Save/Load Settings
-mode=3
-text=Settings are stored under 2 tabs- Fields (for positions and controls ) and Settings (curve related). After you make all the changes you can save settings either as default or some custom profile.Chose Settings tab and open 'Save/Load' foldout.
-imageSmall=images/GifUGSettingsThumb.gif
-imageBig=images/GifUGSettings.gif
-
+title=Spline Settings
+link=Settings
+text=Learn about Spline Settings.

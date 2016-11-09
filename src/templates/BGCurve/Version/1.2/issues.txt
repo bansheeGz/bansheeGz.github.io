@@ -1,0 +1,13 @@
+issue=We had to switch to List instead of arrays inside BGCurveBaseMath (for BGCurveBaseMath.SectionInfos and SectionInfo.Points), cause there was not any other way to get rid of Garbage Collection #
+for newly introduced Adaptive Math. Basically, replacing "Length" with "Count" should be enough to fix existing code.
+
+issue=EventModeEnum.Immediate mode of BGCurve moved to separate bool field (immediateChangeEvents) and  eventMode became a persistent field. This was required to properly support animations.
+
+issue=BGCurveChangedArgs and BeforeChange events args constructors became private. #
+Reusable instances are used now. To access this instances, use BGCurveChangedArgs.GetInstance(..) and BGCurveChangedArgs.BeforeChange.GetInstance(operation)
+
+issue=BGCcVisualizationLineRenderer does not update Unity's LineRenderer at Start method anymore #
+If you need it to be updated, use updateAtStart parameter
+
+issue=BGCurvePoint's CloneTo(BGCurve curve) method is removed.  #
+Use var clonePoint = new BGCurvePoint(Curve, point.PositionLocal, point.ControlType, point.ControlFirstLocal, point.ControlSecondLocal); instead.

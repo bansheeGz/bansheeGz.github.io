@@ -4,7 +4,12 @@
 #iterate features.txt
 #header
 <div>
+    #if mode=1
     <h4>#get title </h4>
+    #endif
+    #if mode=2
+    <h4 class="#get version">#get title </h4>
+    #endif
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     #content
@@ -19,7 +24,7 @@
         <a href="#path BGCurve/Cc/#get path">#get text</a>
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="#path #get imageBig "><img src="#path #get imageSmall "></a>
+        <a href="../../images/#get imageBig "><img src="../../images/#get imageSmall "></a>
     </div>
     <hr>
     #endif

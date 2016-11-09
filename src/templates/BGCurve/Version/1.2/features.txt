@@ -1,0 +1,18 @@
+feature=Custom fields for points
+
+feature=Animation support
+
+feature=Snapping (to terrain etc.)
+
+feature=New components (Scale and Triangulate)
+
+feature=Components (ChangeCursor and Rotate) are upgraded to support custom points fields
+
+feature=New approximation type (Adaptive)
+
+feature=Base math switched to fastest algorithm available for approximation (25% faster)
+
+feature=Points store options (inlined, component, gameobjects)
+
+feature=Vertex snapping (V key) for points configurable handles (in Scene View)
+

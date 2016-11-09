@@ -1,7 +1,7 @@
 #set pageCss=css/page.css
 #set GA=UA-76367732-2
 #set section=BGCurve
-#set description=BG Curve is a free Bezier curve editor for Unity game engine
+#set description=BG Curve is a free Bezier spline editor for Unity game engine
 
 <link rel="stylesheet" href="#path css/bgcurve.css">
 <link rel="stylesheet" href="#path css/magnific-popup.css">
@@ -27,12 +27,48 @@
         <ul>
             <li class="pli curveicon #if page=BGCurve plic #endif">
                 <a class="pa" href="#path BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli #if page='Features' plic #endif">
+                        <a class="ca" href="#path BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli #if page='Videos' plic #endif">
+                        <a class="ca" href="#path BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli #if page='Screenshots' plic #endif">
+                        <a class="ca" href="#path BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli #if page='User Guide' plic #endif">
                 <a class="pa " href="#path BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli #if page='Manipulating Points' plic #endif">
+                        <a class="ca" href="#path BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli #if page='Spline Properties' plic #endif">
+                        <a class="ca" href="#path BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli #if page='Spline Settings' plic #endif">
+                        <a class="ca" href="#path BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli #if page='Developer Guide' plic #endif">
-                <a class="pa" href="#path BGCurve/DeveloperGuide">For Programmers</a>
+                <a class="pa" href="#path BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli #if page='Coordinates' plic #endif">
+                        <a class="ca" href="#path BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli #if page='Math' plic #endif">
+                        <a class="ca" href="#path BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli #if page='Examples' plic #endif">
+                        <a class="ca" href="#path BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli #if page='Overview' plic #endif">
+                        <a class="ca" href="#path BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli #if page='Curve Components' plic #endif #if _path=_contains(BGCurve/Cc/) alic #endif">
                 <a class="pa" href="#path BGCurve/Cc">Components</a>
@@ -43,6 +79,12 @@
                     <li class="cli #if page='Line Renderer [Component]' plic #endif">
                         <a class="ca" href="#path BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
+                    <li class="cli #if page='Triangulate 2D spline [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli #if page='Splitter Polyline [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
+                    </li>
                     <li class="cli #if page='Cursor [Component]' plic #endif">
                         <a class="ca" href="#path BGCurve/Cc/BGCcCursor">Cursor</a>
                     </li>
@@ -52,6 +94,9 @@
                     <li class="cli #if page='Rotate Object By Cursor [Component]' plic #endif">
                         <a class="ca" href="#path BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
                     </li>
+                    <li class="cli #if page='Scale Object By Cursor [Component]' plic #endif">
+                        <a class="ca" href="#path BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
+                    </li>
                     <li class="cli #if page='Change Cursor Linearly [Component]' plic #endif">
                         <a class="ca" href="#path BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
                     </li>
@@ -60,11 +105,14 @@
             <li class="pli #if page='Versions' plic #endif #if _path=_contains(BGCurve/Version/) alic #endif">
                 <a class="pa" href="#path BGCurve/Version">Versions</a>
                 <ul>
-                    <li class="cli #if page='Version 1.0' plic #endif">
-                        <a class="ca" href="#path BGCurve/Version/1.0">Version 1.0</a>
+                    <li class="cli #if page='Version 1.2' plic #endif">
+                        <a class="ca" href="#path BGCurve/Version/1.2">Version 1.2</a>
                     </li>
                     <li class="cli #if page='Version 1.1' plic #endif">
                         <a class="ca" href="#path BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli #if page='Version 1.0' plic #endif">
+                        <a class="ca" href="#path BGCurve/Version/1.0">Version 1.0</a>
                     </li>
                 </ul>
             </li>

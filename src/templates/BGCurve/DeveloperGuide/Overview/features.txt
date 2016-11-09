@@ -1,0 +1,50 @@
+title=Project Structure
+mode=2
+text=The project can be roughly divided into 4 parts. #
+<br/>1) Minimal Set - Spline itself, spline's point and one of math's implementation (Uniform or Adaptive). #
+<br/>2) "Extended" Set - Some useful but "not absolutely required" additions to minimal set. #
+<br/>3) Curve's components (Cc)- set of classes, adding some additional functions to spline, like moving an object along etc.#
+<br/>4) Editor- Unity Editor related classes. These classes are not thoroughly commented, but normally you won't need to know anything about these classes.#
+<br/><br/>Note: the classification above does not imply code dependancies.
+imageSmall=DGProjectStructureThumb.jpg
+imageBig=DGProjectStructure.jpg
+
+
+
+title=Spline Components
+mode=1
+text=Components are the standard Unity MonoBehaviour subclasses, which gives you access to some additional spline's related functions at Play mode without any scripting. #
+We recommend to use them unless they do not cover your needs. For example, if you need math, do not create BGCurveBaseMath yourself, simply attach  BGCcMath component and reference it instead of BGCurve.
+
+
+title=Creating Custom Component
+mode=1
+text=You can create your own custom component. There are 4 requirements for it: #
+<br/>1) Component should extends BGCc class. #
+<br/>2) Component's editor should extends BGCcEditor class (see existing components for example)  #
+<br/>3) Component should have a descriptor attribute (CcDescriptor) attached. #
+<br/>4) Component should have only one (0-min, 1-max) RequireComponent of type BGCc, which will be considered as it's parent.
+
+
+title=Custom Fields
+mode=1
+text=Custom fields are additional fields, that can be attached to every point. #
+There is a set of supported types, that can be used as type of custom field, but you can attach any type #
+(even if it's not supported) by using Unity's standard Component type and assigning your MonoBehaviour's derived object to it.
+
+
+title=Points store options
+mode=1
+text=Points of the spline can be stored: #
+<br/>1) Inlined (right inside spline's component (BGCurve) with minimum memory and serialization overhead). Default option.  #
+<br/> 2) As Components (every point is extended from MonoBehaviour and attached to spline's GameObject). This will add the possibility to reference separate point.  #
+<br/> 3) As GameObjects with No Transform (every point is attached to it's own separate GameObject), transform is ignored. #
+<br/> 4) As GameObjects with Transform (every point is attached to it's own separate GameObject), transform is used as point position and affects controls positions.
+
+
+title=Events
+mode=1
+text=BGCurve.Changed event is fired once per frame in Update (or LateUpdate (configurable)) spline's method if spline is changed. #
+Math uses this event to update it's cached data. if you need to update some data after math is changed, use math.Changed event instead of curve.Changed. #
+Or alternatively use BGCcMath component, which has Unity standard persistent event (mathChanged) as well as non persistent one.
+

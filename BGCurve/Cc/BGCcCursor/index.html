@@ -96,12 +96,48 @@
         <ul>
             <li class="pli curveicon ">
                 <a class="pa" href="../../../BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
                 <a class="pa " href="../../../BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli ">
-                <a class="pa" href="../../../BGCurve/DeveloperGuide">For Programmers</a>
+                <a class="pa" href="../../../BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
             </li>
             <li class="pli  alic ">
                 <a class="pa" href="../../../BGCurve/Cc">Components</a>
@@ -111,6 +147,12 @@
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
                     </li>
                     <li class="cli  plic ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursor">Cursor</a>
@@ -122,6 +164,9 @@
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
                     </li>
                 </ul>
@@ -130,10 +175,13 @@
                 <a class="pa" href="../../../BGCurve/Version">Versions</a>
                 <ul>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGCurve/Version/1.0">Version 1.0</a>
+                        <a class="ca" href="../../../BGCurve/Version/1.2">Version 1.2</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Version/1.0">Version 1.0</a>
                     </li>
                 </ul>
             </li>
@@ -163,10 +211,10 @@
 
 
 <div>
-    <h4>Description</h4>
+    <h4 class="v11">Description</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         Let you define a position on the curve by distance or distance ratio [Range(0,1]. This component does nothing except defining this position.
     </div>
 </div>
@@ -180,14 +228,14 @@
         distance
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Distance in standard Unity units along the curve. if distance overflows curve's length (<0 or > totalDistance), it will be clamped.
+        Distance in standard Unity units along the spline. if distance overflows spline's length (<0 or > totalDistance), it will be clamped.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
         distanceRatio
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Normalized distance [Range(0,1)]. 0- start of the curve, 1- end.
+        Normalized distance [Range(0,1)]. 0- start of the spline, 1- end.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">

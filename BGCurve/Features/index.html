@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Curve is a free Bezier spline editor for Unity game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../images/BGIcon.png" />
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span class="bg-header-title mdl-layout-title">
+              <a class="bg-header-a" href="/"><img src="../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active" href="../../BGCurve">BG Curve</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase " href="../../BGCurveDecorator">BG Curve Decorator</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase " href="../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+                <li class="mdl-menu__item"><a href="../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../BGCurveDecorator">BG Curve Decorator</a></li>
+                <li class="mdl-menu__item"><a href="../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+
+    <!--======================================================        Content (from Root)              -->
+    
+
+
+
+
+<link rel="stylesheet" href="../../css/bgcurve.css">
+<link rel="stylesheet" href="../../css/magnific-popup.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<!--======================================================       BG Curve Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul>
+            <li class="pli curveicon ">
+                <a class="pa" href="../../BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa" href="../../BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli  ">
+                <a class="pa" href="../../BGCurve/Cc">Components</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcMath">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursor">Cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectTranslate">Move by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli  ">
+                <a class="pa" href="../../BGCurve/Version">Versions</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Version/1.2">Version 1.2</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGCurve/Version/1.0">Version 1.0</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../BGCurve">BG Curve Home</a>
+        <a class="pa " href="../../BGCurve/UserGuide">User Guide</a>
+        <a class="pa" href="../../BGCurve/DeveloperGuide">For Programmers</a>
+        <a class="pa" href="../../BGCurve/Cc">Components</a>
+        <a class="pa" href="../../BGCurve/Version">Versions</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Features</h3>
+            </div>
+
+            <!--======================================================        BG Curve Content              -->
+            
+
+<div>
+    <ul class="mdl-list">
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v12">
+                Two types of approximation 1) Uniform 2) Adaptive
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v12">
+            Animation support
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v12">
+            Custom fields for points
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v12">
+            Point store options: 1) Inlined, 2) as Components, 3) as Game Objects
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v12">
+                <!--<i class="material-icons mdl-list__item-icon">info_outline</i>-->
+            Snapping (to terrain etc.)
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v11">
+            Base math for Bezier splines (get Total Distance, get Position by distance,
+            get Tangent by distance, get Position and Distance by Closest point to a spline)
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v11">
+            2D mode
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v11">
+                <a href="../Cc">Components (no scripting required)</a>
+            </span>
+
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v11">
+            Rectangular selection for points in SceneView
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v11">
+            Context menu in SceneView for 1) points 2) points selection
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v11">
+            New points has preview in SceneView before adding
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v10">
+            A lot of Editor settings
+            </span>
+        </li>
+        <li class="mdl-list__item">
+            <span class="mdl-list__item-primary-content v10">
+            Save/Load settings
+            </span>
+        </li>
+    </ul>
+</div>
+
+
+            <!--======================================================       BG Curve Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/" data-layout="standard" data-show-faces="true"></p>
+                    <a href="https://twitter.com/BansheeGz" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @BansheeGz</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    <br>
+                    <br>
+                    <script language="JavaScript">
+                        document.write("Support: " + "support" + "@" + "bansheegz.com" );
+                    </script>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-76367732-2', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>

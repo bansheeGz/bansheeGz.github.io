@@ -1,0 +1,135 @@
+title=Accessing points
+mode=1
+text=@
+<pre class="prettyprint">
+    private BGCurve curve;
+
+    void Start()
+    {
+        curve = GetComponent<BGCurve>();
+
+        //cache the point
+        var point = curve[0];
+
+        //position
+        print("Position World=" + point.PositionWorld);
+        print("Position Local=" + point.PositionLocal);
+        print("Position Local Transformed=" + point.PositionLocalTransformed);
+
+        //control type
+        print("Control Type=" + point.ControlType);
+
+        //control 1 (Inbound)
+        print("Control 1 World=" + point.ControlFirstWorld);
+        print("Control 1 Local=" + point.ControlFirstLocal);
+        print("Control 1 Local Transformed=" + point.ControlFirstLocalTransformed);
+
+        //control 2 (Outbound)
+        print("Control 2 World=" + point.ControlSecondWorld);
+        print("Control 2 Local=" + point.ControlSecondLocal);
+        print("Control 2 Local Transformed=" + point.ControlSecondLocalTransformed);
+
+        //all properties have corresponding 'setter'
+        //see 'Coordinates' section for detailed explanation of coordinate spaces
+    }
+</pre>@
+
+
+title=Iterating points
+mode=1
+text=@
+<br/> <pre class="prettyprint">
+    //cache the points and count
+    var points = curve.Points;
+    var pointsCount = points.Length;
+
+    //use 'for' loop
+    for (var i = 0; i < pointsCount; i++)
+    {
+        var point = points[i];
+        //do something here
+    }
+</pre>@
+
+
+title=Accessing spline's properties
+mode=1
+text=@
+<br/> <pre class="prettyprint">
+        //closed (last first points connected)
+        print("Closed:" + curve.Closed);
+
+        //use curve.Fields to access fields
+        print("# of curstom fields:" + curve.FieldsCount);
+
+        //2D mode
+        print("2D mode:" + curve.Mode2D);
+
+        //snapping (use curve.SnapXXX to access other snap related properties)
+        print("Snap type:" + curve.SnapType);
+
+        //points mode (Inlined, Components, GameObjects)
+        print("Points mode:" + curve.PointsMode);
+</pre>@
+
+
+title=Create a spline at runtime
+mode=1
+text=@
+<pre class="prettyprint">
+    private BGCurve curve;
+    private BGCcMath math;
+
+    void Start()
+    {
+        //add spline
+        curve = gameObject.AddComponent<BGCurve>();
+
+        //add points
+        curve.AddPoint(new BGCurvePoint(curve, Vector3.zero, BGCurvePoint.ControlTypeEnum.Absent));
+        curve.AddPoint(new BGCurvePoint(curve, Vector3.right, BGCurvePoint.ControlTypeEnum.BezierSymmetrical,
+            new Vector3(-0.5f, 0.5f, 0), new Vector3(0.5f, -0.5f, 0)));
+
+        //add math solver
+        math = gameObject.AddComponent<BGCcMath>();
+
+        //print calculated values
+        print("Spline's Length=" + math.GetDistance());
+        print("Position at the middle=" + math.CalcByDistanceRatio(BGCurveBaseMath.Field.Position, .5f));
+        print("Point, closest to Vector3.one, =" + math.CalcPositionByClosestPoint(Vector3.one));
+    }
+</pre>@
+
+
+title=Accessing custom fields
+mode=1
+text=@
+<br/>
+<pre class="prettyprint">
+        var point = curve[0];
+
+        //all supported types listed below
+        //C#
+        var @bool = point.GetBool("yourFieldNameGoHere");
+        var @int = point.GetInt("yourFieldNameGoHere");
+        var @float = point.GetFloat("yourFieldNameGoHere");
+        var @string = point.GetField<string>("yourFieldNameGoHere");
+
+        //Unity structs
+        var bounds = point.GetBounds("yourFieldNameGoHere");
+        var color = point.GetColor("yourFieldNameGoHere");
+        var vector3 = point.GetVector3("yourFieldNameGoHere");
+        var quaternion = point.GetQuaternion("yourFieldNameGoHere");
+
+        //Unity objects
+        var animationCurve = point.GetField<AnimationCurve>("yourFieldNameGoHere");
+        var component = point.GetField<Component>("yourFieldNameGoHere");
+        var go = point.GetField<GameObject>("yourFieldNameGoHere");
+
+        // BG Curve related
+        var bgCurve = point.GetField<BGCurve>("yourFieldNameGoHere");
+        var pointComponent = point.GetField<BGCurvePointComponent>("yourFieldNameGoHere");
+        var pointGo = point.GetField<BGCurvePointGO>("yourFieldNameGoHere");
+
+        //use corresponding SetXXX for setters
+</pre>@

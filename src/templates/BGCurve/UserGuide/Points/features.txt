@@ -1,0 +1,78 @@
+title=How to create a spline
+mode=2
+version=v11
+text=Chose from menu 'Game Object -> Create Other -> BansheeGz -> BG Curve'
+imageSmall=GifUGCreateCurveMenuThumb.gif
+imageBig=GifUGCreateCurveMenu.gif
+
+text=Create empty GameObject and 'Add Component->BGCurve' in the Inspector.
+imageSmall=GifUGCreateCurveAddComponentThumb.gif
+imageBig=GifUGCreateCurveAddComponent.gif
+
+
+
+title=How to add points
+mode=2
+version=v11
+text=(3D mode) [In Scene View] hover over an object with a mesh and collider attached and Ctrl+Click
+imageSmall=GifUGCreatePointsCtrlClick3DThumb.gif
+imageBig=GifUGCreatePointsCtrlClick3D.gif
+
+text=(2D mode) [In Scene View] Hover over the Spline's 2D plane and Ctrl+Click
+imageSmall=GifUGCreatePointsCtrlClick2DThumb.gif
+imageBig=GifUGCreatePointsCtrlClick2D.gif
+
+text=(Any mode) [In Scene View] Ctrl+Shift+Click to add a point at some distance from SceneView camera. You can change the distance at settings
+imageSmall=GifUGCreatePointsCtrlShiftClickThumb.gif
+imageBig=GifUGCreatePointsCtrlShiftClick.gif
+
+text=[In Inspector] use Points Menu (press Add icon)
+imageSmall=GifUGCreatePointsPointMenuThumb.gif
+imageBig=GifUGCreatePointsPointMenu.gif
+
+
+
+title=How to edit points
+mode=2
+version=v11
+text=[In Scene view] use handles to change positions. You can use vertex snapping (V-key) for points, if HandlesType is set to Configurable.
+imageSmall=GifUGEditPointsHandlesThumb.gif
+imageBig=GifUGEditPointsHandles.gif
+
+text=[In Scene view] use Point and Selection menus (hold Ctrl over point or selection handles)
+imageSmall=GifUGEditPointsCtrlMenuThumb.gif
+imageBig=GifUGEditPointsCtrlMenu.gif
+
+text=[In Inspector] use Points Menu
+imageSmall=GifUGEditPointsCtrlMenuThumb.gif
+imageBig=GifUGEditPointsCtrlMenu.gif
+
+
+
+title=How to select points
+mode=2
+version=v11
+text=[In Scene view] use rectangular selection.
+imageSmall=GifUGSelectPointsRectangularThumb.gif
+imageBig=GifUGSelectPointsRectangular.gif
+
+text=[In Inspector] use Tick icons
+imageSmall=GifUGSelectPointsPointMenuThumb.gif
+imageBig=GifUGSelectPointsPointMenu.gif
+
+text=[In Scene View] use Point and Selection menu (hold Ctrl over point or selection handles)
+imageSmall=GifUGSelectPointsCtrlMenuThumb.gif
+imageBig=GifUGSelectPointsCtrlMenu.gif
+
+
+
+title=How to delete points
+mode=2
+version=v11
+text=[In Scene View] use Point and Selection menu (hold Ctrl over point or selection handles)
+imageSmall=GifUGDeletePointsCtrlMenuThumb.gif
+imageBig=GifUGDeletePointsCtrlMenu.gif
+
+text=[In Inspector] use Delete icons
+imageSmall=GifUGCreatePointsPointMenuThumb.gif
+imageBig=GifUGCreatePointsPointMenu.gif

@@ -1,0 +1,31 @@
+title=Understanding Coordinates
+mode=2
+text=The picture explains how spline's coordinates are calculated.
+imageSmall=DGCoordinatesThumb.jpg
+imageBig=DGCoordinates.jpg
+
+
+title=Local Transformed Coordinates
+mode=1
+text=@
+Local coordinates are not affected by any transformations and
+corresponds to real world coordinates you see in the Editor only if no transformation is applied.
+There are also LocalTransformed positions, which returns local coordinates with all transformations applied. For example,
+<br/>
+<pre class="prettyprint">
+        //assuming there is a spline with no parent and at least one point
+        //set spline's position
+        curve.transform.position = new Vector3(1, 0, 0);
+        //scale on X axis
+        curve.transform.localScale = new Vector3(2, 1, 1);
+        //set local position (which is not affected by spline's transform)
+        curve[0].PositionLocal = new Vector3(1, 0, 0);
+        // = (3,0,0)
+        print("Point's World Pos=" + curve[0].PositionWorld);
+        // = (1,0,0)
+        print("Point's Local Pos=" + curve[0].PositionLocal);
+        // = (2,0,0). Local transformed is affected by spline's scale
+        // and shows the "real" local position you see in the Editor
+        print("Point's LocalTransformed Pos=" + curve[0].PositionLocalTransformed);
+</pre>@
+

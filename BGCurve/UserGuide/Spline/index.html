@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Curve is a free Bezier spline editor for Unity game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../images/BGIcon.png" />
+</head>
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span class="bg-header-title mdl-layout-title">
+              <a class="bg-header-a" href="/"><img src="../../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active" href="../../../BGCurve">BG Curve</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase " href="../../../BGCurveDecorator">BG Curve Decorator</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase " href="../../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
+                <li class="mdl-menu__item"><a href="../../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../../BGCurveDecorator">BG Curve Decorator</a></li>
+                <li class="mdl-menu__item"><a href="../../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+
+    <!--======================================================        Content (from Root)              -->
+    
+
+
+
+
+<link rel="stylesheet" href="../../../css/bgcurve.css">
+<link rel="stylesheet" href="../../../css/magnific-popup.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<!--======================================================       BG Curve Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul>
+            <li class="pli curveicon ">
+                <a class="pa" href="../../../BGCurve">BG Curve Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Features">Features</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGCurve/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa" href="../../../BGCurve/DeveloperGuide">Developer Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Coordinates">Coordinates</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Math">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Examples">Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/DeveloperGuide/Overview">Overview</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli  ">
+                <a class="pa" href="../../../BGCurve/Cc">Components</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcMath">Math</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcTriangulate2D">Triangulate 2D</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcSplitterPolyline">Polyline Splitter</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcCursor">Cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectTranslate">Move by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectRotate">Rotate by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcCursorObjectScale">Scale by cursor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcCursorChangeLinear">Lerp cursor</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli  ">
+                <a class="pa" href="../../../BGCurve/Version">Versions</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Version/1.2">Version 1.2</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Version/1.1">Version 1.1</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Version/1.0">Version 1.0</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../../BGCurve">BG Curve Home</a>
+        <a class="pa " href="../../../BGCurve/UserGuide">User Guide</a>
+        <a class="pa" href="../../../BGCurve/DeveloperGuide">For Programmers</a>
+        <a class="pa" href="../../../BGCurve/Cc">Components</a>
+        <a class="pa" href="../../../BGCurve/Version">Versions</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Spline Properties</h3>
+            </div>
+
+            <!--======================================================        BG Curve Content              -->
+            <div>
+    <h4 class="v12">How to Animate a spline</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        You can animate a spline (points and controls positions) with standard Unity AnimationView Window. To do this, <br/> 1) Make sure "Points Mode" is set to GameObjectsNoTransform (under Points tab).<br/> 2) If spline is not moving at runtime, make sure that BGCurve have ForceChangedEventMode set to EditorAndRuntime. <br/> 3) Set spline's eventMode to LateUpdate <br/> That's all, animate the spline just like any other object with children.<br><br>Note: you can not change point's type or animate custom fields or add/remove points in animation.
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../../images/GifUGAnimate.gif"><img src="../../../images/GifUGAnimateThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4 class="v11">How to add, edit and remove Components</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Components let you use some functionality without scripting. They are standard MonoBehaviour scripts however they have custom tree view in Inspector (you can turn it off, if you want). Check Components gallery for available components. <br><br> Chose 'Components' tab and hit plus icon to add a component. Some components depend on others and will be added automatically. Change settings in the Inspector. Click on Delete icon to remove.
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../../images/GifUGComponents.gif"><img src="../../../images/GifUGComponentsThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4 class="v12">How to use Snapping</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        You can snap a spline to another object with collider (like Terrain). You can snap spline's points only or snap whole spline (in this case every approximation point, used for splitting the spline will be snapped). <br/>To turn on the snapping, set snapType (under Points tab) to Points or Curve and snapAxis to Y (for terrain). You may also want to use  Snap Layer Mask to isolate terrain from other objects with colliders (this can be an important step if you have other objects with colliders around). Also, probably, you can get better results while using Base Math instead of Adaptive. You can also turn on double-sided collision for snapping (not necessary for terrains).
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../../images/GifUGSnapping.gif"><img src="../../../images/GifUGSnappingThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4 class="v12">How to use Custom Fields</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Custom fields are additional fields, attached to every curve's point. Add new fields under Fields tab, and assign new values to these fields under Points tab. Handles are used to visualize fields in the SceneView. Note, that rotation (Quaternion) fields can be visualized only one at the time, so if you have more than one rotation field- visualize them one-by-one by enabling and disabling handles under Fields tab.
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../../images/GifUGCustomFields.gif"><img src="../../../images/GifUGCustomFieldsThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4 class="v12">Points modes</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Points mode is about the way how points are stored.<br/> <br/> 1) Inline- points are stored inlined along with a curve. You can not reference individual point.<br/> 2) Components- points are stored as MonoBehaviour derived components attached to curve's GameObject. You can reference individual point.To do so, create a public field with BGCurvePointComponent type.<br/> 3) GameObjectNoTransform- points are stored as MonoBehaviour derived components attached to individual GameObjects. Each point has it's own GameObject. GameObjects transforms do not affect any value.  You can reference individual point.To do so, create a public field with BGCurvePointGO type.<br/> 4) GameObjectTransform- the same as GameObjectNoTransform, but GameObject's transform is used as point's position, and also affects controls positions<br><br>Note: you should not move GameObjects, generated for points. If you want to use some object's transform as curve's point, you can do it with point's Transform system field, as described below.
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../../images/GifUGPointsModes.gif"><img src="../../../images/GifUGPointsModesThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4 class="v12">Point's Transform system field</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        You can "plug" any transform to a point and use it as point's position. To do so, enable Transform system field under Fields tab, and assign it to some existing transform under Points tab. Transform's position will be a point's position, and Rotation and Scale will affect controls positions. Spline's transform will be completely ignored unless you make point's transform a child of the spline. Also, switch to Non-Inlined points mode (any of Components, GameObjectNoTransform or GameObjectTransform) to be able to edit the curve then transform is selected.<br/><br/>Note: 2D mode with transformation applied to the spline's transform does not currently supported for this field.
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../../images/GifUGPointsTransforms.gif"><img src="../../../images/GifUGPointsTransformsThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+<div>
+    <h4 class="v11">2D mode</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    
+    
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        If your spline is supposed to be 2D only, we recommend you to turn 2D mode on, cause it has builtin Editor support.
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../../images/GifUG2dMode.gif"><img src="../../../images/GifUG2dModeThumb.gif"></a>
+    </div>
+    <hr>
+    
+    </div>
+
+
+
+
+
+
+            <!--======================================================       BG Curve Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/" data-layout="standard" data-show-faces="true"></p>
+                    <a href="https://twitter.com/BansheeGz" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @BansheeGz</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    <br>
+                    <br>
+                    <script language="JavaScript">
+                        document.write("Support: " + "support" + "@" + "bansheegz.com" );
+                    </script>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-76367732-2', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
