@@ -30,6 +30,11 @@ class TagSet extends Tag
             value = content.substring(nameEnd + 1, end).trim();
         }
         end = end + 1;
+
+/*
+        value = value.replaceAll("<", "&lt;");
+        value = value.replaceAll(">", "&gt;");
+*/
     }
 
     String getValue()
