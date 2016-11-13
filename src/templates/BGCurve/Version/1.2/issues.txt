@@ -12,5 +12,3 @@ If you need it to be updated, use updateAtStart parameter
 issue=BGCurvePoint's CloneTo(BGCurve curve) method is removed.  #
 Use var clonePoint = new BGCurvePoint(Curve, point.PositionLocal, point.ControlType, point.ControlFirstLocal, point.ControlSecondLocal); instead.
 
-issue=Change Cursor Linearly does not change speed for PingPong, but use boolean field (SpeedReversed) to indicate speed is reversed
-
