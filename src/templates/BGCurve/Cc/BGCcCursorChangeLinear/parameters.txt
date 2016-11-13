@@ -6,7 +6,7 @@ paramName=speed
 paramDescription=Speed for moving cursor. Final speed is determined as speed*Time.deltaTime. This parameter is active only if speedField is not set.
 
 paramName=delayField
-paramDescription=Custom field to get values for delays (for example delay at point 0 occurs then cursor reaches point0 etc.). It should be a float field.
+paramDescription=Custom field to get values for delays (for example delay at point 0 occurs then cursor reaches point0 etc.). It should be a float field. It works correctly only if spline is not changing.
 
 paramName=delay
 paramDescription=Delay to occur then cursor reaches some point. This parameter is active only if delayField is not set.
@@ -22,4 +22,4 @@ paramDescription=If spline's length changed, cursor position be adjusted with sp
 You may need this if you are constantly changing the spline slightly.
 
 paramName=pointPassed
-paramDescription=This is a standard Unity persistent event to be fired then cursor reaches some point. It's defined as pointPassed(int pointIndex)
+paramDescription=This is a standard Unity persistent event to be fired then cursor reaches some point. It's defined as pointPassed(int pointIndex). It works correctly only if spline is not changing.
