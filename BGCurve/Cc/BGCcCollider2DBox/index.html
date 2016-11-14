@@ -4,7 +4,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Curve is a free Bezier spline editor for Unity game engine">
+    <meta name="description" content="Generates a set of 2D Box colliders along 2D spline. The spline should be in XY 2D mode. Also, there should not be any GameObject with 2D Box colliders immediately under the spline object, #">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -117,7 +117,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/UserGuide/Points">Manipulating Points</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/UserGuide/Spline">Spline Properties</a>
                     </li>
                     <li class="cli ">
@@ -142,7 +142,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="pli  ">
+            <li class="pli  alic ">
                 <a class="pa" href="../../../BGCurve/Cc">Components</a>
                 <ul>
                     <li class="cli ">
@@ -151,7 +151,7 @@
                     <li class="cli collidersicon ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCollider3DBox">Collider 3D Box</a>
                     </li>
-                    <li class="cli collidersicon ">
+                    <li class="cli collidersicon  plic ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCollider2DBox">Collider 2D Box</a>
                     </li>
                     <li class="cli collidersicon ">
@@ -209,126 +209,166 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Spline Properties</h3>
+                <h3>Collider 2D Box [Component]</h3>
             </div>
 
             <!--======================================================        BG Curve Content              -->
-            <div>
-    <h4 class="v12">How to Animate a spline</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
+            <div class="bg-main-contacts">
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <img style="width:400px;height: auto" src="../../../images/GifColliders2DBox.gif">
+        </div>
         
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        You can animate a spline (points and controls positions) with standard Unity AnimationView Window. To do this, <br/> 1) Make sure "Points Mode" is set to GameObjectsNoTransform (under Points tab).<br/> 2) If spline is not moving at runtime, make sure that BGCurve have ForceChangedEventMode set to EditorAndRuntime. <br/> 3) Set spline's eventMode to LateUpdate <br/> That's all, animate the spline just like any other object with children.<br><br>Note: you can not change point's type or animate custom fields or add/remove points in animation.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../../images/GifUGAnimate.gif"><img src="../../../images/GifUGAnimateThumb.gif"></a>
-    </div>
-    <hr>
-    
-    </div>
-<div>
-    <h4 class="v11">How to add, edit and remove Components</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone" style="margin-top: 10px;text-align: center">
+            This Component is part of <a href="../../BGSplineColliders">BG Spline Colliders</a>
+        </div>
         
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Components let you use some functionality without scripting. They are standard MonoBehaviour scripts however they have custom tree view in Inspector (you can turn it off, if you want). Check Components gallery for available components. <br><br> Chose 'Components' tab and hit plus icon to add a component. Some components depend on others and will be added automatically. Change settings in the Inspector. Click on Delete icon to remove.
     </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../../images/GifUGComponents.gif"><img src="../../../images/GifUGComponentsThumb.gif"></a>
-    </div>
-    <hr>
-    
-    </div>
-<div>
-    <h4 class="v12">How to use Snapping</h4>
 </div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        You can snap a spline to another object with collider (like Terrain). You can snap spline's points only or snap whole spline (in this case every approximation point, used for splitting the spline will be snapped). <br/>To turn on the snapping, set snapType (under Points tab) to Points or Curve and snapAxis to Y (for terrain). You may also want to use  Snap Layer Mask to isolate terrain from other objects with colliders (this can be an important step if you have other objects with colliders around). Also, probably, you can get better results while using Base Math instead of Adaptive. You can also turn on double-sided collision for snapping (not necessary for terrains).
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../../images/GifUGSnapping.gif"><img src="../../../images/GifUGSnappingThumb.gif"></a>
-    </div>
-    <hr>
-    
-    </div>
-<div>
-    <h4 class="v12">How to use Custom Fields</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Custom fields are additional fields, attached to every curve's point. Add new fields under Fields tab, and assign new values to these fields under Points tab. Handles are used to visualize fields in the SceneView. Note, that rotation (Quaternion) fields can be visualized only one at the time, so if you have more than one rotation field- visualize them one-by-one by enabling and disabling handles under Fields tab.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../../images/GifUGCustomFields.gif"><img src="../../../images/GifUGCustomFieldsThumb.gif"></a>
-    </div>
-    <hr>
-    
-    </div>
-<div>
-    <h4 class="v12">Points modes</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Points mode is about the way how points are stored.<br/> <br/> 1) Inline- points are stored inlined along with a curve. You can not reference individual point.<br/> 2) Components- points are stored as MonoBehaviour derived components attached to curve's GameObject. You can reference individual point.To do so, create a public field with BGCurvePointComponent type.<br/> 3) GameObjectNoTransform- points are stored as MonoBehaviour derived components attached to individual GameObjects. Each point has it's own GameObject. GameObjects transforms do not affect any value.  You can reference individual point.To do so, create a public field with BGCurvePointGO type.<br/> 4) GameObjectTransform- the same as GameObjectNoTransform, but GameObject's transform is used as point's position, and also affects controls positions<br><br>Note: you should not move GameObjects, generated for points. If you want to use some object's transform as curve's point, you can do it with point's Transform system field, as described below.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../../images/GifUGPointsModes.gif"><img src="../../../images/GifUGPointsModesThumb.gif"></a>
-    </div>
-    <hr>
-    
-    </div>
-<div>
-    <h4 class="v12">Point's Transform system field</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        You can "plug" any transform to a point and use it as point's position. To do so, enable Transform system field under Fields tab, and assign it to some existing transform under Points tab. Transform's position will be a point's position, and Rotation and Scale will affect controls positions. Spline's transform will be completely ignored unless you make point's transform a child of the spline. Also, switch to Non-Inlined points mode (any of Components, GameObjectNoTransform or GameObjectTransform) to be able to edit the curve then transform is selected.<br/><br/>Note: 2D mode with transformation applied to the spline's transform does not currently supported for this field.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../../images/GifUGPointsTransforms.gif"><img src="../../../images/GifUGPointsTransformsThumb.gif"></a>
-    </div>
-    <hr>
-    
-    </div>
-<div>
-    <h4 class="v11">2D mode</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        If your spline is supposed to be 2D only, we recommend you to turn 2D mode on, cause it has builtin Editor support.
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../../images/GifUG2dMode.gif"><img src="../../../images/GifUG2dModeThumb.gif"></a>
-    </div>
-    <hr>
-    
-    </div>
 
 
+<div>
+    <h4 class="colliders">Description</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        Generates a set of 2D Box colliders along 2D spline. The spline should be in XY 2D mode. Also, there should not be any GameObject with 2D Box colliders immediately under the spline object, #
+    </div>
+</div>
 
 
+<div>
+    <h4>Parameters</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        splitMode
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        The mode for splitting a spline. 1) PartsTotal - use specified number parts for whole spline. 2) PartsPerSection - use specified number parts for each section (between 2 points)  3) UseMathData -use data, precalculated by Math component. Note, you can tweak some params at Math as well
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        partsTotal
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        The number of splits for TotalSections mode. The actual number of parts can be less than partsTotal due to optimization, but never more.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        partsPerSection
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        The number of splits for PartSections mode. The actual number of parts can be less than partsPerSection due to optimization, but never more.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        doNotOptimizeStraightLines
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Split straight lines. Straight lines are optimized by default and are not split, but you can override it with this parameter.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        height
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Height for colliders
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        heightOffset
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        offset along Y axis
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        lengthExtends
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        increase or decrease the length of colliders along Z axis
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        maxNumberOfColliders
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        maximum number of created colliders
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        isTrigger
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        if created colliders should be triggers
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        material
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        material for colliders
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        usedByEffector
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        should collider be used by 2D effector
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        effector
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        effector to add to every collider
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        showHandles
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresScale
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Adjust spheres scale. Each sphere represent one point of the generated mesh.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresColor
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Set spheres color.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresCount
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        The number of first N points (spheres) to show. The number is restricted for performance reason.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        showIfNotSelected
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Show colliders even if object is not selected in Editor
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        collidersColor
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Color of colliders for showIfNotSelected mode
+    </div>
+    <hr>
+
+</div>
 
 
             <!--======================================================       BG Curve Footer               -->
@@ -367,7 +407,7 @@
             m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-    ga('create', 'UA-76367732-2', 'auto');
+    ga('create', 'UA-76367732-5', 'auto');
     ga('send', 'pageview');
 
 </script>

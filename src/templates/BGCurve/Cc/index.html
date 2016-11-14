@@ -10,6 +10,9 @@
     #if mode=2
     <h4 class="#get version">#get title </h4>
     #endif
+    #if mode=3
+    <h4 class="#get pack">#get title </h4>
+    #endif
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     #content
@@ -20,6 +23,15 @@
     <hr>
     #endif
     #if mode=2
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        <a href="#path BGCurve/Cc/#get path">#get text</a>
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="../../images/#get imageBig "><img src="../../images/#get imageSmall "></a>
+    </div>
+    <hr>
+    #endif
+    #if mode=3
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
         <a href="#path BGCurve/Cc/#get path">#get text</a>
     </div>

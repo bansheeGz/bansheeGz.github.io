@@ -220,6 +220,11 @@ h3{
     padding-left: 24px !important;
 }
 
+.collidersicon {
+    background: url(../images/ColliderPack.png) no-repeat 5px 12px;
+    background-size: 16px;
+}
+
 .bg-desc{
     font-family: "Roboto","Helvetica","Arial",sans-serif;
     font-weight: bold;
@@ -242,5 +247,11 @@ h3{
 .v10{
     padding-left: 42px;
     background: url(../images/v10.png) no-repeat left;
+    min-height: 32px;
+}
+
+.colliders{
+    padding-left: 42px;
+    background: url(../images/ColliderPack.png) no-repeat left;
     min-height: 32px;
 }

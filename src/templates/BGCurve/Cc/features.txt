@@ -13,6 +13,33 @@ imageSmall=GifCcMathThumb.gif
 imageBig=GifCcMath.gif
 
 
+title=Collider 3D Box
+mode=3
+pack=colliders
+path=BGCcCollider3DBox
+text=Create a set of Box Colliders along 3D spline.
+imageSmall=GifColliders3DBoxThumb.gif
+imageBig=GifColliders3DBox.gif
+
+
+title=Collider 2D Box
+mode=3
+pack=colliders
+path=BGCcCollider2DBox
+text=Create a set of 2D Box Colliders along 2D spline.
+imageSmall=GifColliders2DBoxThumb.gif
+imageBig=GifColliders2DBox.gif
+
+
+title=Collider 2D Edge
+mode=3
+pack=colliders
+path=BGCcCollider2DEdge
+text=Fill points of 2D Edge Collider along 2D spline.
+imageSmall=GifColliders2DEdgeThumb.gif
+imageBig=GifColliders2DEdge.gif
+
+
 title=Line Renderer
 mode=2
 version=v11
