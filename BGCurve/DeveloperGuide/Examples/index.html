@@ -356,26 +356,26 @@
 
         //all supported types listed below
         //C#
-        var @bool = point.GetBool("yourFieldNameGoHere");
-        var @int = point.GetInt("yourFieldNameGoHere");
-        var @float = point.GetFloat("yourFieldNameGoHere");
-        var @string = point.GetField&lt;string&gt;("yourFieldNameGoHere");
+        var @bool = point.GetBool("yourFieldName");
+        var @int = point.GetInt("yourFieldName");
+        var @float = point.GetFloat("yourFieldName");
+        var @string = point.GetField&lt;string&gt;("yourFieldName");
 
         //Unity structs
-        var bounds = point.GetBounds("yourFieldNameGoHere");
-        var color = point.GetColor("yourFieldNameGoHere");
-        var vector3 = point.GetVector3("yourFieldNameGoHere");
-        var quaternion = point.GetQuaternion("yourFieldNameGoHere");
+        var bounds = point.GetBounds("yourFieldName");
+        var color = point.GetColor("yourFieldName");
+        var vector3 = point.GetVector3("yourFieldName");
+        var quaternion = point.GetQuaternion("yourFieldName");
 
         //Unity objects
-        var animationCurve = point.GetField&lt;AnimationCurve&gt;("yourFieldNameGoHere");
-        var component = point.GetField&lt;Component&gt;("yourFieldNameGoHere");
-        var go = point.GetField&lt;GameObject&gt;("yourFieldNameGoHere");
+        var animationCurve = point.GetField&lt;AnimationCurve&gt;("yourFieldName");
+        var component = point.GetField&lt;Component&gt;("yourFieldName");
+        var go = point.GetField&lt;GameObject&gt;("yourFieldName");
 
         // BG Curve related
-        var bgCurve = point.GetField&lt;BGCurve&gt;("yourFieldNameGoHere");
-        var pointComponent = point.GetField&lt;BGCurvePointComponent&gt;("yourFieldNameGoHere");
-        var pointGo = point.GetField&lt;BGCurvePointGO&gt;("yourFieldNameGoHere");
+        var bgCurve = point.GetField&lt;BGCurve&gt;("yourFieldName");
+        var pointComponent = point.GetField&lt;BGCurvePointComponent&gt;("yourFieldName");
+        var pointGo = point.GetField&lt;BGCurvePointGO&gt;("yourFieldName");
 
         //use corresponding SetXXX for setters
 </pre>

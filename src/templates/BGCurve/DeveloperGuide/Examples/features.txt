@@ -110,26 +110,26 @@ text=@
 
         //all supported types listed below
         //C#
-        var @bool = point.GetBool("yourFieldNameGoHere");
-        var @int = point.GetInt("yourFieldNameGoHere");
-        var @float = point.GetFloat("yourFieldNameGoHere");
-        var @string = point.GetField<string>("yourFieldNameGoHere");
+        var @bool = point.GetBool("yourFieldName");
+        var @int = point.GetInt("yourFieldName");
+        var @float = point.GetFloat("yourFieldName");
+        var @string = point.GetField<string>("yourFieldName");
 
         //Unity structs
-        var bounds = point.GetBounds("yourFieldNameGoHere");
-        var color = point.GetColor("yourFieldNameGoHere");
-        var vector3 = point.GetVector3("yourFieldNameGoHere");
-        var quaternion = point.GetQuaternion("yourFieldNameGoHere");
+        var bounds = point.GetBounds("yourFieldName");
+        var color = point.GetColor("yourFieldName");
+        var vector3 = point.GetVector3("yourFieldName");
+        var quaternion = point.GetQuaternion("yourFieldName");
 
         //Unity objects
-        var animationCurve = point.GetField<AnimationCurve>("yourFieldNameGoHere");
-        var component = point.GetField<Component>("yourFieldNameGoHere");
-        var go = point.GetField<GameObject>("yourFieldNameGoHere");
+        var animationCurve = point.GetField<AnimationCurve>("yourFieldName");
+        var component = point.GetField<Component>("yourFieldName");
+        var go = point.GetField<GameObject>("yourFieldName");
 
         // BG Curve related
-        var bgCurve = point.GetField<BGCurve>("yourFieldNameGoHere");
-        var pointComponent = point.GetField<BGCurvePointComponent>("yourFieldNameGoHere");
-        var pointGo = point.GetField<BGCurvePointGO>("yourFieldNameGoHere");
+        var bgCurve = point.GetField<BGCurve>("yourFieldName");
+        var pointComponent = point.GetField<BGCurvePointComponent>("yourFieldName");
+        var pointGo = point.GetField<BGCurvePointGO>("yourFieldName");
 
         //use corresponding SetXXX for setters
 </pre>@
