@@ -19,9 +19,6 @@ paramDescription=maximum number of created colliders
 paramName=isTrigger
 paramDescription=if created colliders should be triggers
 
-paramName=material
-paramDescription=material for colliders
-
 paramName=showHandles
 paramDescription=This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
 
