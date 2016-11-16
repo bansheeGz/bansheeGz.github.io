@@ -22,4 +22,4 @@ paramDescription=If spline's length changed, cursor position be adjusted with sp
 You may need this if you are constantly changing the spline slightly.
 
 paramName=pointPassed
-paramDescription=This is a standard Unity persistent event to be fired then cursor reaches some point. It's defined as pointPassed(int pointIndex). It works correctly only if spline is not changing.
+paramDescription=This is a standard Unity persistent event to be fired then cursor reaches some point. It's defined as pointPassed(int pointIndex). <span style="color: red" >It works correctly only if spline is not changing.</span>
