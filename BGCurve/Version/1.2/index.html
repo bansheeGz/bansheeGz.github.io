@@ -253,7 +253,7 @@
     </div>
     <hr>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        Base math switched to fastest algorithm available for approximation (25% faster)
+        Base math switched to fastest algorithm available for approximation (~25% faster)
     </div>
     <hr>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
@@ -290,6 +290,10 @@
     <hr>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
         BGCurvePoint's CloneTo(BGCurve curve) method is removed.  Use var clonePoint = new BGCurvePoint(Curve, point.PositionLocal, point.ControlType, point.ControlFirstLocal, point.ControlSecondLocal); instead.
+    </div>
+    <hr>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        BGCurve now expose an interface (BGCurvePointI) rather than point's class (BGCurvePoint), cause now points may be represented by different classes (except AddPoint(s) methods)
     </div>
     <hr>
     

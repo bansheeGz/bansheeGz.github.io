@@ -10,7 +10,7 @@ feature=Components (ChangeCursor and Rotate) are upgraded to support custom poin
 
 feature=New approximation type (Adaptive)
 
-feature=Base math switched to fastest algorithm available for approximation (25% faster)
+feature=Base math switched to fastest algorithm available for approximation (~25% faster)
 
 feature=Points store options (inlined, component, gameobjects)
 
