@@ -223,7 +223,7 @@
     
     
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        You can animate a spline (points and controls positions) with standard Unity AnimationView Window. To do this, <br/> 1) Make sure "Points Mode" is set to GameObjectsNoTransform (under Points tab).<br/> 2) If spline is not moving at runtime, make sure that BGCurve have ForceChangedEventMode set to EditorAndRuntime. <br/> 3) Set spline's eventMode to LateUpdate <br/> That's all, animate the spline just like any other object with children.<br><br>Note: you can not change point's type or animate custom fields or add/remove points in animation.
+        You can animate a spline (points and controls positions) with standard Unity AnimationView Window. To do this, <br/> 1) Make sure "Points Mode" is set to GameObjectsNoTransform (under Points tab).<br/> 2) If spline is not moving at runtime, make sure that BGCurve have ForceChangedEventMode set to EditorAndRuntime. <br/> 3) Set spline's eventMode to LateUpdate <br/> That's all, animate the spline just like any other object with children.<br><br>Note 1: you can not change point's type or animate custom fields or add/remove points in animation.<br>Note 2: Updating spline every frame takes some resources. You may want to disable ForceChangedEventMode as soon as it's not needed anymore (for example if spline is not visible by any camera).
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
         <a href="../../../images/GifUGAnimate.gif"><img src="../../../images/GifUGAnimateThumb.gif"></a>

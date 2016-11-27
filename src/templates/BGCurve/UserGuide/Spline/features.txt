@@ -6,7 +6,9 @@ text=You can animate a spline (points and controls positions) with standard Unit
 <br/> 2) If spline is not moving at runtime, make sure that BGCurve have ForceChangedEventMode set to EditorAndRuntime. #
 <br/> 3) Set spline's eventMode to LateUpdate <br/> #
 That's all, animate the spline just like any other object with children.#
-<br><br>Note: you can not change point's type or animate custom fields or add/remove points in animation.
+<br><br>Note 1: you can not change point's type or animate custom fields or add/remove points in animation.#
+<br>Note 2: Updating spline every frame takes some resources. You may want to disable ForceChangedEventMode as soon as it's not needed anymore#
+ (for example if spline is not visible by any camera).
 imageSmall=GifUGAnimateThumb.gif
 imageBig=GifUGAnimate.gif
 
