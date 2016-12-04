@@ -234,6 +234,11 @@ h3{
     color: #757575;
 }
 
+.v121{
+    padding-left: 42px;
+    background: url(../images/v121.png) no-repeat left;
+    min-height: 32px;
+}
 .v12{
     padding-left: 42px;
     background: url(../images/v12.png) no-repeat left;
