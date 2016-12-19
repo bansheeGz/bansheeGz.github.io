@@ -216,6 +216,70 @@
 
             <!--======================================================        BG Curve Content              -->
             <div>
+    <h4>Using Math</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        <pre class="prettyprint">
+        //get math
+        var math = GetComponent&lt;BGCcMath&gt;();
+
+        //====Total length
+        //get total spline's length
+        var totalDistance = math.GetDistance();
+
+        //====Position
+        //get position at 1 meter from the start
+        var positionAtOneMeter = math.CalcByDistance(BGCurveBaseMath.Field.Position, 1);
+        //get position at the center of the spline
+        var positionAtSplineCenter = math.CalcByDistanceRatio(BGCurveBaseMath.Field.Position, .5f);
+
+        //====Tangent
+        //get tangent at 1 meter from the start
+        var tangentAtOneMeter = math.CalcByDistance(BGCurveBaseMath.Field.Tangent, 1);
+        //get tangent at the center of the spline
+        var tangentAtSplineCenter = math.CalcByDistanceRatio(BGCurveBaseMath.Field.Tangent, .5f);
+
+        //====Position and Tangent
+        //get position and tangent at 1 meter from the start
+        Vector3 tangAtOneMeter;
+        var posAtOneMeter = math.CalcPositionAndTangentByDistance(1, out tangAtOneMeter);
+        //get position and tangent at the center of the spline
+        Vector3 tangAtSplineCenter;
+        var posAtSplineCenter = math.CalcPositionAndTangentByDistanceRatio(.5f, out tangAtSplineCenter);
+
+        //====Section index
+        //get section index at 1 meter from the start
+        var sectionIndexAtOneMeterFromStart = math.CalcSectionIndexByDistance(1);
+        //get section index at the center of the spline
+        var sectionIndexAtSplineCenter = math.CalcSectionIndexByDistanceRatio(.5f);
+
+        //====Distance to point
+        //get distance at point #1 (#0-start point, #1-second point from start)
+        var distanceToFirstPoint = math.Math[1].DistanceFromStartToOrigin;
+        //or
+        var distanceToFirstPointAlternative = math.Math[0].DistanceFromEndToOrigin;
+
+        //====Position and Distance to closest point
+        //use this picture as a reference http://www.bansheegz.com/images/DGMathCalcPositionByClosestPoint.jpg
+        //assuming green point is Vector3.zero
+        //positionYellow - the position of the yellow point
+        var positionYellow = math.CalcPositionByClosestPoint(Vector3.zero);
+        //distanceYellow - the length of yellow arrow
+        float distanceYellow;
+        //positionYellow2 - the position of the yellow point
+        var positionYellow2 = math.CalcPositionByClosestPoint(Vector3.zero, out distanceYellow);
+        //distanceGreen- the length of green arrow
+        var distanceGreen = Vector3.Distance(math.CalcPositionByClosestPoint(Vector3.zero), Vector3.zero);
+</pre>
+    </div>
+    <hr>
+    
+    
+    
+    </div>
+<div>
     <h4>Accessing points</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
