@@ -37,9 +37,8 @@ text=@
 
         //====Distance to point
         //get distance at point #1 (#0-start point, #1-second point from start)
-        var distanceToFirstPoint = math.Math[1].DistanceFromStartToOrigin;
-        //or
-        var distanceToFirstPointAlternative = math.Math[0].DistanceFromEndToOrigin;
+        //math.Math[0] return info about 1st section
+        var distanceToFirstPoint = math.Math[0].DistanceFromEndToOrigin;
 
         //====Position and Distance to closest point
         //use this picture as a reference http://www.bansheegz.com/images/DGMathCalcPositionByClosestPoint.jpg
