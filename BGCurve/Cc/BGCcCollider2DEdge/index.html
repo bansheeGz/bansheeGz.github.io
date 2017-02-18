@@ -18,15 +18,16 @@
     <link rel="stylesheet" href="../../../css/main.css">
     <link rel="stylesheet" href="../../../css/page.css">
 
-    <link rel="icon" type="image/png" href="../../../images/BGIcon.png" />
+    <link rel="icon" type="image/png" href="../../../images/BGIcon.png"/>
 </head>
 <body>
 
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
+<script>(function (d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
+    js = d.createElement(s);
+    js.id = id;
     js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
@@ -45,40 +46,54 @@
             <div class="bg-navigation-bag">
                 <nav class="bg-navigation mdl-navigation">
                     <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase"
-                       href="https://www.twitch.tv/deliriumtrip" style="background-position: 42%;"  target="_blank" >We_______Twitch</a>
+                       href="https://www.twitch.tv/deliriumtrip" style="background-position: 42%;" target="_blank">We_______Twitch</a>
                     <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase"
-                       href="https://www.youtube.com/watch?v=xWiJPGUvlZs" style="background-position: 37%;"  target="_blank" >We_______Youtube</a>
+                       href="https://www.youtube.com/watch?v=xWiJPGUvlZs" style="background-position: 37%;"
+                       target="_blank">We_______Youtube</a>
                     <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase bg-navigation_link_active"
-                       href="../../../Unity3DAssets" style="background-position: 39%;" >We_______Unity3D</a>
+                       href="../../../Unity3DAssets" style="background-position: 39%;">We_______Unity3D</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
                        href="../../../Support" style="background-position: 24%;">We_______Our_Customers</a>
                 </nav>
             </div>
-            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
                 <i class="material-icons">more_vert</i>
             </button>
-            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect" for="more-button">
-                <li class="mdl-menu__item"> --- Live translations --- </li>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"> --- Live translations ---</li>
                 <li class="mdl-menu__item"><a href="https://www.twitch.tv/deliriumtrip">Twitch</a></li>
                 <li class="mdl-menu__item"><a href="https://www.youtube.com/watch?v=xWiJPGUvlZs">Youtube</a></li>
-                <li class="mdl-menu__item"> --- Unity3D Assets --- </li>
+                <li class="mdl-menu__item"> --- Unity3D Assets ---</li>
                 <li class="mdl-menu__item"><a href="../../../BGCurve">BG Curve</a></li>
                 <li class="mdl-menu__item"><a href="../../../BGProceduralKit">BG Procedural Kit</a></li>
                 <li class="mdl-menu__item"><a href="../../../BGGameDatabase">BG Game Database</a></li>
-                <li class="mdl-menu__item"> --- Feedback --- </li>
+                <li class="mdl-menu__item"> --- Feedback ---</li>
                 <li class="mdl-menu__item"><a href="../../../Support">Support</a></li>
             </ul>
         </div>
     </div>
 
 
+    <div style="min-height: 5px;background-color: #CCCCCC"></div>
+    <div style="background-color: red;height: 20px;color: white;text-align: center;">
+        <b>
+            Soon, live streams from
+            <a href="https://ru.wikipedia.org/wiki/The_Elder_Scrolls_V:_Skyrim"
+               style="color: white;font: 15px Helvetica, Arial, Sans-Serif;" target="_blank"><b>TES V:SKYRIM</b></a>
+            on Twitch and YouTube
+            <!--todo add icon-->
+            <!--<img src="../../../images/new-icons.jpg"/>-->
+        </b>
+    </div>
 
     <div class="mdl-layout__content">
         <a name="top"></a>
 
 
-    <!--======================================================        Content (from Root)              -->
-    
+        <!--======================================================        Content (from Root)              -->
+        
 
 
 
@@ -348,20 +363,29 @@
 
 
 
-
-
         <!--======================================================      Root Footer               -->
         <footer class="bg-footer mdl-mega-footer" style="clear:both;">
             <div class="mdl-mega-footer--top-section">
                 <div class="mdl-mega-footer--middle-section bg-footer-email">
-                    <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/" data-layout="standard" data-show-faces="true"></p>
-                    <a href="https://twitter.com/BansheeGz" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @BansheeGz</a>
-                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                    <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/"
+                       data-layout="standard" data-show-faces="true"></p>
+                    <a href="https://twitter.com/BansheeGz" class="twitter-follow-button" data-show-count="false"
+                       data-size="large">Follow @BansheeGz</a>
+                    <script>!function (d, s, id) {
+                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                        if (!d.getElementById(id)) {
+                            js = d.createElement(s);
+                            js.id = id;
+                            js.src = p + '://platform.twitter.com/widgets.js';
+                            fjs.parentNode.insertBefore(js, fjs);
+                        }
+                    }(document, 'script', 'twitter-wjs');</script>
                     <br>
                     <br>
                     <script language="JavaScript">
-                        document.write("Contact us: " + "support" + "@" + "bansheegz.com" );
-                        document.write("<div style='font-size: 8px'>Heart icon is honestly stolen from  <a href='http://getyourexbackpermanently.com'>http://getyourexbackpermanently.com</a></div>" );
+                        document.write("Contact us: " + "support" + "@" + "bansheegz.com");
+                        document.write("<div style='font-size: 8px'>'Heart' icon is honestly stolen from  <a href='http://getyourexbackpermanently.com'>http://getyourexbackpermanently.com</a></div>");
+//                        document.write("<div style='font-size: 8px'>'New' icon is honestly stolen from  <a href='http://anysnapshot.com'>http://anysnapshot.com</a></div>");
                     </script>
                 </div>
             </div>
@@ -372,10 +396,17 @@
 
 
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-76367732-5', 'auto');
     ga('send', 'pageview');
