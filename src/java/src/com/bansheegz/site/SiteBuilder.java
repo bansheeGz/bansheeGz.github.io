@@ -156,6 +156,6 @@ public class SiteBuilder
             throw new IllegalArgumentException("Argument syntax is wrong." + fullArgument + ". The right is -arg=value");
         }
 
-        return fullArgument.substring(index, fullArgument.length());
+        return fullArgument.substring(index + 1, fullArgument.length());
     }
 }
