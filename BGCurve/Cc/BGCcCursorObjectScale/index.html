@@ -14,7 +14,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Curve is a free Bezier spline editor for Unity game engine">
+    <meta name="description" content="BG Curve is a free Bezier spline editor for Unity3d Game Engine">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -23,8 +23,9 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css" />
-    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css" />
+    <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.css"/>
+    <link type="text/css" rel="stylesheet"
+          href="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials-theme-flat.css"/>
     <link rel="stylesheet" href="../../../css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
 
@@ -38,9 +39,11 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
 <script src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
 <style>
     #aBox a {
-        color: white;font: 15px Helvetica, Arial, Sans-Serif;
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
     }
-    #bg-navigation a{
+
+    #bg-navigation a {
         background-position: 50px;
     }
 </style>
@@ -58,18 +61,15 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
 
 <script>
     function writeEmail(whom, at) {
-        document.write("<a href='mail" + "to:" + whom +"@" + at +"'>" + whom + "@" + at +"</a>");
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
     }
 </script>
 
 <script>
-/*
-    $("#share").jsSocials({
-        shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp"]
-    });
-*/
-    $("#share").jsSocials({
-        shares: ["twitter"]
+    $(function () {
+        $("#share").jsSocials({
+            shares: ["email", "twitter", "facebook", "googleplus", "linkedin", "pinterest", "stumbleupon", "whatsapp", "telegram", "viber", "pocket", "messenger", "vkontakte"]
+        });
     });
 </script>
 
@@ -87,31 +87,25 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
             <div class="bg-navigation-bag" id="bg-navigation">
                 <nav class="bg-navigation mdl-navigation">
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="../../../LiveStreaming" >Live_Streaming</a>
+                       href="../../../LiveStreaming">Live_Streaming</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
-                       href="../../../Unity3DAssets" >Unity3D</a>
+                       href="../../../Unity3DAssets">Unity3D</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
                        href="../../../Support">Support</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
                        href="../../../About" style="color: #ff1493;">About_Us</a>
                 </nav>
             </div>
-            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
                 <i class="material-icons">more_vert</i>
             </button>
             <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
                 for="more-button">
-                <li class="mdl-menu__item"> --- LIVE Streams ---</li>
-                <li class="mdl-menu__item"><a href="https://www.twitch.tv/deliriumtrip">Twitch</a></li>
-                <li class="mdl-menu__item"><a href="https://www.youtube.com/channel/UCLJdcbPI2rlQnLKhTR67DUQ/live">Youtube</a></li>
-                <li class="mdl-menu__item"><a href="https://beam.pro/deliriumtrip">Beam</a></li>
-                <li class="mdl-menu__item"><a href="http://www.hitbox.tv/deliriumtrip">HitBox</a></li>
-                <li class="mdl-menu__item"> --- Unity3D Assets ---</li>
-                <li class="mdl-menu__item"><a href="../../../BGCurve">BG Curve</a></li>
-                <li class="mdl-menu__item"><a href="../../../BGProceduralKit">BG Procedural Kit</a></li>
-                <li class="mdl-menu__item"><a href="../../../BGGameDatabase">BG Game Database</a></li>
-                <li class="mdl-menu__item"> --- Feedback ---</li>
+                <li class="mdl-menu__item"><a href="../../../LiveStreaming">Live Streaming</a></li>
+                <li class="mdl-menu__item"><a href="../../../Unity3DAssets">Unity Assets</a></li>
                 <li class="mdl-menu__item"><a href="../../../Support">Support</a></li>
+                <li class="mdl-menu__item"><a href="../../../About">About Us</a></li>
             </ul>
         </div>
     </div>
@@ -120,7 +114,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     <div style="min-height: 5px;background-color: #CCCCCC"></div>
     <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
         <b>
-            Announcement: join our live streams from <a href="../../../GamesStreaming"><b>TES V:SKYRIM</b></a>
+            Announcement: join our live streams from <a href="../../../LiveStreaming"><b>TES V:SKYRIM</b></a>
             <!--todo add icon-->
             <!--<img src="../../../images/new-icons.jpg"/>-->
         </b>
@@ -330,21 +324,28 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
         <footer class="bg-footer mdl-mega-footer" style="clear:both;">
             <div class="mdl-mega-footer--top-section">
                 <div class="mdl-mega-footer--middle-section bg-footer-email">
-                    <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/"
-                       data-layout="standard" data-show-faces="true"></p>
-                    <a href="https://twitter.com/BansheeGz" class="twitter-follow-button" data-show-count="false"
-                       data-size="large">Follow @BansheeGz</a>
-                    <script>!function (d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                        if (!d.getElementById(id)) {
-                            js = d.createElement(s);
-                            js.id = id;
-                            js.src = p + '://platform.twitter.com/widgets.js';
-                            fjs.parentNode.insertBefore(js, fjs);
-                        }
-                    }(document, 'script', 'twitter-wjs');</script>
-                    <br>
-                    <br>
+                    <table>
+                        <tr>
+                            <td>
+                                <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/"
+                                   data-layout="standard" data-show-faces="true"></p>
+                            </td>
+                            <td>
+                                <a href="https://twitter.com/BansheeGz" class="twitter-follow-button"
+                                   data-show-count="false"
+                                   data-size="large">Follow @BansheeGz</a>
+                                <script>!function (d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
+                                    if (!d.getElementById(id)) {
+                                        js = d.createElement(s);
+                                        js.id = id;
+                                        js.src = p + '://platform.twitter.com/widgets.js';
+                                        fjs.parentNode.insertBefore(js, fjs);
+                                    }
+                                }(document, 'script', 'twitter-wjs');</script>
+                            </td>
+                        </tr>
+                    </table>
                     <table>
                         <tr>
                             <td>
@@ -364,9 +365,14 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
                     </table>
                 </div>
             </div>
-            <div id="share"></div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
         </footer>
     </div>
+</div>
+
+
 </div>
 
 <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
