@@ -113,10 +113,10 @@ a img{
     height: 60px;
     max-height: 68px;
     line-height: 68px;
-    background-color: transparent !important;
     border-bottom: 4px solid transparent;
-    background-image: url(../images/heartArrowPink.png);
-    background-repeat: no-repeat;
+    /*background-color: transparent !important;*/
+    /*background-image: url(../images/heart.png);*/
+    /*background-repeat: no-repeat;*/
 }
 
 .bg-navigation .mdl-navigation__link:hover{
