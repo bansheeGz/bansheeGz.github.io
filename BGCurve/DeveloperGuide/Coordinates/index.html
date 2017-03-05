@@ -35,6 +35,9 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     #aBox a {
         color: white;font: 15px Helvetica, Arial, Sans-Serif;
     }
+    #bg-navigation a{
+        background-position: 50px;
+    }
 </style>
 
 
@@ -48,6 +51,12 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom +"@" + at +"'>" + whom + "@" + at +"</a>");
+    }
+</script>
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
     <!--======================================================       Root  Header               -->
@@ -59,14 +68,16 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
             <!-- Add spacer, to align navigation to the right in desktop -->
             <div class="mdl-layout-spacer"></div>
             <!-- Navigation -->
-            <div class="bg-navigation-bag">
+            <div class="bg-navigation-bag" id="bg-navigation">
                 <nav class="bg-navigation mdl-navigation">
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="../../../GamesStreaming" style="background-position: 23%;">We_______Games_Streaming</a>
+                       href="../../../GamesStreaming" >We_____Live_Streaming</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
-                       href="../../../Unity3DAssets" style="background-position: 39%;">We_______Unity3D</a>
+                       href="../../../Unity3DAssets" >We_____Unity3D</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="../../../Support" style="background-position: 24%;">We_______Our_Customers</a>
+                       href="../../../Support">We_____Our_Customers</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../About" style="background-image: none !important;color: #ff1493">About_Us</a>
                 </nav>
             </div>
             <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect" id="more-button">
@@ -335,9 +346,7 @@ There are also LocalTransformed positions, which returns local coordinates with 
                     <br>
                     <br>
                     <script language="JavaScript">
-                        document.write("Contact us: " + "support" + "@" + "bansheegz.com");
-//                        document.write("<div style='font-size: 8px'>'Heart' icon is honestly stolen from  <a href='http://getyourexbackpermanently.com'>http://getyourexbackpermanently.com</a></div>");
-//                        document.write("<div style='font-size: 8px'>'New' icon is honestly stolen from  <a href='http://anysnapshot.com'>http://anysnapshot.com</a></div>");
+                        writeEmail("support", "bansheegz.com")
                     </script>
                 </div>
             </div>
