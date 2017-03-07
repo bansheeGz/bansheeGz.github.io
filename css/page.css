@@ -60,6 +60,7 @@
 
 .bg-table, .bg-table td {
     border: 1px dotted #ffc0cb;
+    background-color: white;
 }
 .bg-table td{
     text-align: center;

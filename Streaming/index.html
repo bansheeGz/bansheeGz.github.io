@@ -136,47 +136,14 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
         height: 32px;
         text-align: center;
     }
-
-    #bg-twitch {
-        background: url('../images/twitchC.gif');
-    }
-
-    #bg-twitch:hover {
-        background: url('../images/twitchHoverC.gif');
-    }
-
-    #bg-youtube {
-        background: url('../images/youtubeC.gif');
-    }
-
-    #bg-youtube:hover {
-        background: url('../images/youtubeHoverC.gif');
-    }
-
-    #bg-beampro {
-        background: url('../images/beamproC.gif');
-    }
-
-    #bg-beampro:hover {
-        background: url('../images/beamproHoverC.gif');
-    }
-
-    #bg-hitboxtv {
-        background: url('../images/hitboxtvC.gif');
-    }
-
-    #bg-hitboxtv:hover {
-        background: url('../images/hitboxtvHoverC.gif');
-    }
-
-    .stream-url{
-        height: 32px;
-        background-repeat: no-repeat !important;
-        margin-left: 10%;
-    }
     .stream-details{
         font-family: "Roboto","Helvetica","Arial",sans-serif;
         font-size: 12px;
+    }
+    #bg-game-streaming .url{
+        font-family: "Roboto","Helvetica","Arial",sans-serif;
+        font-size: 24px;
+        font-weight: bold;
     }
 </style>
 
@@ -185,7 +152,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
 <hr/>
 
 <h4>LIVE Games Streams (Soon):</h4>
-<table class="bg-table" width="100%" cellpadding="5" cellspacing="0">
+<table id="bg-game-streaming" class="bg-table" width="100%" cellpadding="5" cellspacing="0">
     <tr>
         <th width="15%">
             Game
@@ -220,8 +187,8 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
             Yes
         </td>
         <td>
-            <a href="https://www.twitch.tv/deliriumtrip" target="_blank">
-                <div id="bg-twitch" class="stream-url"></div>
+            <a class="url" style="color: #8a2be2;" href="https://www.twitch.tv/deliriumtrip" target="_blank">
+                TWITCH
             </a>
         </td>
         <td>
@@ -245,11 +212,6 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
         </td>
         <td>
             Youtube (URL is N/A yet)
-<!--
-            <a href="https://www.youtube.com/channel/UCLJdcbPI2rlQnLKhTR67DUQ/live" target="_blank">
-                <div id="bg-youtube" class="stream-url"></div>
-            </a>
--->
         </td>
         <td>
             <div class="stream-details">
@@ -272,8 +234,8 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
             Yes
         </td>
         <td>
-            <a href="https://beam.pro/deliriumtrip" target="_blank">
-                <div id="bg-beampro" class="stream-url"></div>
+            <a class="url" style="color: #0a2ae2;" href="https://beam.pro/deliriumtrip" target="_blank">
+                BEAM.PRO
             </a>
         </td>
         <td>
@@ -297,8 +259,8 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
             Yes
         </td>
         <td>
-            <a href="http://www.hitbox.tv/deliriumtrip" target="_blank">
-                <div id="bg-hitboxtv" class="stream-url"></div>
+            <a class="url" style="color: #808080" href="http://www.hitbox.tv/deliriumtrip" target="_blank">
+                HITBOX.TV
             </a>
         </td>
         <td>
