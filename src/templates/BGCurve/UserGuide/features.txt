@@ -4,8 +4,8 @@ text=Learn how to create a spline, how to add, edit, delete and select Points.
 
 
 title=Spline Properties
-link=Curve
-text=Learn about 2D Mode, Snapping, Animation, Points modes, Custom Fields and Components.
+link=Spline
+text=Learn about 2D Mode, Snapping, Animation, Points modes, Custom Fields and Components, System's Transform field.
 
 
 title=Spline Settings
