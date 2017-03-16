@@ -82,12 +82,3 @@ version=v11
 text=If your spline is supposed to be 2D only, we recommend you to turn 2D mode on, cause it has builtin Editor support.
 imageSmall=GifUG2dModeThumb.gif
 imageBig=GifUG2dMode.gif
-
-
-title=System's Transform field
-mode=1
-version=v12
-text=Every point has hidden system field, called 'Transform'. It means any point can be snapped to any GameObject in the scene. Also, you can join 2 points from different splines. #
-To enable Transform field: Go to Fields tab, scroll all the way down and turn it on. After that the Transform field will be shown under Points tab. #
-To snap the point to some GameObject, drag GameObject to this field as usual.#
-To join 2 (or more) points from different splines, drag the same GameObject to Transform field of different points from different splines.

@@ -35,8 +35,19 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     <link rel="icon" type="image/png" href="../../../images/BGIcon.png"/>
 </head>
 <body>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+
 <style>
     #aBox a {
         color: white;
@@ -48,16 +59,6 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     }
 </style>
 
-
-<div id="fb-root"></div>
-<script>(function (d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s);
-    js.id = id;
-    js.src = "//connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v2.6";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
 <script>
     function writeEmail(whom, at) {
@@ -392,9 +393,9 @@ If you need math, we recommend you to use BGCcMath component, which gives you ea
                                 }(document, 'script', 'twitter-wjs');</script>
                             </td>
                             <td valign="center">
-                                <div style="height: 16px;"></div>
-                                <p class="fb-follow" data-href="https://www.facebook.com/BansheeGz-1183614011671007/"
-                                   data-layout="button" data-size="large" ></p>
+                                <div class="fb-follow" data-href="https://www.facebook.com/BansheeGz/"
+                                     data-width="163" data-height="28" data-layout="button" data-size="large" data-show-faces="true">
+                                </div>
                             </td>
                         </tr>
                     </table>
