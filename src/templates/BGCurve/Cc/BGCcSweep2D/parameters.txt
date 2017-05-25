@@ -1,0 +1,48 @@
+paramName=splitMode
+paramDescription=The mode for splitting a spline. #
+1) PartsTotal - use specified number parts for whole spline. #
+2) PartsPerSection - use specified number parts for each section (between 2 points)  #
+3) UseMathData -use data, precalculated by Math component. Note, you can tweak some params at Math as well
+
+paramName=doNotOptimizeStraightLines
+paramDescription=Split straight lines. Straight lines are optimized by default and are not split, but you can override it with this parameter.
+
+paramName=profileMode
+paramDescription=Line or 2D spline
+
+paramName=profileSpline
+paramDescription=2D (XY) spline for Spline profile mode.
+
+paramName=uCoordinateStart
+paramDescription=U coordinate (normally between 0 and 1) to use at first point of profile line or spline.
+
+paramName=uCoordinateEnd
+paramDescription=U coordinate (normally between 0 and 1) to use at last point of profile line or spline.
+
+paramName=swapUV
+paramDescription=should we use U coordinate as V coordinate
+
+paramName=swapNormals
+paramDescription=reverse normals direction
+
+paramName=vCoordinateScale
+paramDescription=scale V coordinates (default is 1)
+
+paramName=showHandles
+paramDescription=This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
+
+paramName=spheresScale
+paramDescription=Adjust spheres scale. Each sphere represent one point of the polyline.
+
+paramName=spheresColor
+paramDescription=Set spheres color.
+
+paramName=spheresCount
+paramDescription=The number of first N points (spheres) to show. The number is restricted for performance reason.
+
+
+
+
+
+
+

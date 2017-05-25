@@ -203,7 +203,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
             <li class="pli  alic ">
                 <a class="pa" href="../../../BGCurve/Cc">Components</a>
                 <ul>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcMath">Math</a>
                     </li>
                     <li class="cli collidersicon ">
@@ -270,14 +270,14 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Math [Component]</h3>
+                <h3>BGCcSweep2D [Component]</h3>
             </div>
 
             <!--======================================================        BG Curve Content              -->
             <div class="bg-main-contacts">
     <div class="bg-main-contacts_grid mdl-grid">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-            <img style="width:400px;height: auto" src="../../../images/GifCcMath.gif">
+            <img style="width:400px;height: auto" src="../../../images/GifCcSweep2D.gif">
         </div>
         
     </div>
@@ -285,11 +285,11 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
 
 
 <div>
-    <h4 class="v11">Description</h4>
+    <h4 class="v12">Description</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        Math gives you access to Math functions for the curve. Currently 4 functions are supported <br/>1) getDistance() [total curves length], <br/>2) getPosition() [point position on the curve], <br/>3) getTangent() [curve's point tangent] <br/>4) getPositionByClosestPoint() [point position (and optionally distance) on the curve, which is closest to a given point]) <br><br>See more details in 'For Programmers' section.
+        Sweep a line or 2D spline(profile) along another 2D spline. Note, at sharp angles polygons may overlap.
     </div>
 </div>
 
@@ -299,66 +299,66 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        fields
+        splitMode
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Which fields to calculate ('Position' Or 'Position With Tangent'). Position only is approximately 1.8x times faster, so if you do not need tangents, keep it PositionsOnly.
+        The mode for splitting a spline. 1) PartsTotal - use specified number parts for whole spline. 2) PartsPerSection - use specified number parts for each section (between 2 points)  3) UseMathData -use data, precalculated by Math component. Note, you can tweak some params at Math as well
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        mathType
+        doNotOptimizeStraightLines
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Type of spline's approximation. <br/>1) Base- split every section uniformly to N even parts. <br/>2) Adaptive- split every section non-uniformly based on spline's curvature. This can greatly reduce the number of required points. <br/>See more details in "For Programmers" section.
+        Split straight lines. Straight lines are optimized by default and are not split, but you can override it with this parameter.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        sectionParts
+        profileMode
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Number of parts to split every section of the spline for Base mathType (approximation). More parts- more precise approximation and lesser performance.
+        Line or 2D spline
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        tolerance
+        profileSpline
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        parameter to control Adaptive mathType (approximation). Lesser this parameter- more points are created and lesser performance.
+        2D (XY) spline for Spline profile mode.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        usePositionToCalculateTangents
+        uCoordinateStart
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Use points positions to calculate tangents instead of formula. You absolutely need this parameter if you use snapping.
+        U coordinate (normally between 0 and 1) to use at first point of profile line or spline.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        optimizeStraightLines
+        uCoordinateEnd
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Do not split straight lines and use 2 points for such sections. Tangents may behave differently in this mode.
+        U coordinate (normally between 0 and 1) to use at last point of profile line or spline.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        updateMode
+        swapUV
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Updating math takes some time and resources. You can fine-tune in which cases math is updated (for the sake of performance). <br/>1) Always- always update then spline's changed<br/>2) AabbVisible- update only if AABB (Axis Aligned Bounding Box) around points and controls is visible by any camera (including Editor's SceneView camera)<br/>3) RendererVisible- update only if some renderer is visible <br/>4) ForceEveryFrame- update even if spline's not changed. You need this mode then you use Unity Animation (which changes private fields and no events are fired)
+        should we use U coordinate as V coordinate
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        rendererForUpdateCheck
+        swapNormals
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Renderer for RendererVisible update mode. Any Game Object with some Renderer attached. Math will be updated only if this object is visible by any camera (including Editor's SceneView camera).
+        reverse normals direction
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        mathChanged
+        vCoordinateScale
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        This is a standard Unity persistent event to be fired then math is recalculated. Math is recalculated then spline's changed. It's defined as mathChanged()
+        scale V coordinates (default is 1)
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
@@ -372,7 +372,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
         spheresScale
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Adjust spheres scale. Each sphere represent point, calculated during spline's approximation.
+        Adjust spheres scale. Each sphere represent one point of the polyline.
     </div>
     <hr>
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">

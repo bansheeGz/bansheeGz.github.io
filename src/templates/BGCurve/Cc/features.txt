@@ -67,6 +67,15 @@ imageSmall=GifCcSplitterPolylineThumb.gif
 imageBig=GifCcSplitterPolyline.gif
 
 
+title=Sweep2D
+mode=2
+version=v12
+path=BGCcSweep2D
+text=Sweep a line or 2D spline (profile) along another 2D spline.
+imageSmall=GifCcSweep2DThumb.gif
+imageBig=GifCcSweep2D.gif
+
+
 title=Cursor
 mode=2
 version=v11
