@@ -286,19 +286,19 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
         //get total spline's length
         var totalDistance = math.GetDistance();
 
-        //====Position
+        //====Position (World)
         //get position at 1 meter from the start
         var positionAtOneMeter = math.CalcByDistance(BGCurveBaseMath.Field.Position, 1);
         //get position at the center of the spline
         var positionAtSplineCenter = math.CalcByDistanceRatio(BGCurveBaseMath.Field.Position, .5f);
 
-        //====Tangent
+        //====Tangent (World)
         //get tangent at 1 meter from the start
         var tangentAtOneMeter = math.CalcByDistance(BGCurveBaseMath.Field.Tangent, 1);
         //get tangent at the center of the spline
         var tangentAtSplineCenter = math.CalcByDistanceRatio(BGCurveBaseMath.Field.Tangent, .5f);
 
-        //====Position and Tangent
+        //====Position and Tangent (World)
         //get position and tangent at 1 meter from the start
         Vector3 tangAtOneMeter;
         var posAtOneMeter = math.CalcPositionAndTangentByDistance(1, out tangAtOneMeter);
