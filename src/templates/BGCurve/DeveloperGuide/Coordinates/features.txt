@@ -1,6 +1,6 @@
 title=Understanding Coordinates
 mode=2
-text=The picture explains how spline's coordinates are calculated.
+text=The picture explains how spline's coordinates are calculated. Note: included Math component always work with world coordinates.
 imageSmall=DGCoordinatesThumb.jpg
 imageBig=DGCoordinates.jpg
 
