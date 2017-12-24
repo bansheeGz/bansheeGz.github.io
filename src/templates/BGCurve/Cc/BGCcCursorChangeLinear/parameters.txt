@@ -1,3 +1,6 @@
+paramName=useFixedUpdate
+paramDescription=Use Unity's FixedUpdate instead of Update callback to move the cursor
+
 paramName=speedField
 paramDescription=Custom field to get values for speed (for example speed from point 0 is active between point0 and point1 etc.). #
 It should be a float field. Final speed is determined as speed*Time.deltaTime.
