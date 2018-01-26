@@ -44,15 +44,15 @@ imageSmall=GifUGEditPointsCtrlMenuThumb.gif
 imageBig=GifUGEditPointsCtrlMenu.gif
 
 text=[In Inspector] use Points Menu
-imageSmall=GifUGEditPointsCtrlMenuThumb.gif
-imageBig=GifUGEditPointsCtrlMenu.gif
+imageSmall=GifUGEditPointsPointMenuThumb.gif
+imageBig=GifUGEditPointsPointMenu.gif
 
 
 
 title=How to select points
 mode=2
 version=v11
-text=[In Scene view] use rectangular selection.
+text=[In Scene view] use rectangular selection. Hold Shift, LeftMouse Click + Drag. Also, you can lock Scene View to disable selecting any other object (Lock View button in the Inspector).
 imageSmall=GifUGSelectPointsRectangularThumb.gif
 imageBig=GifUGSelectPointsRectangular.gif
 
