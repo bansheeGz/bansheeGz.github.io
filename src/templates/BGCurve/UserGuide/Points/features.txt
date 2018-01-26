@@ -74,5 +74,5 @@ imageSmall=GifUGDeletePointsCtrlMenuThumb.gif
 imageBig=GifUGDeletePointsCtrlMenu.gif
 
 text=[In Inspector] use Delete icons
-imageSmall=GifUGCreatePointsPointMenuThumb.gif
-imageBig=GifUGCreatePointsPointMenu.gif
+imageSmall=GifUGDeletePointsCtrlMenuThumb.gif
+imageBig=GifUGDeletePointsPointsMenu.gif
