@@ -46,7 +46,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>
+<!--<script src="https://cdn.jsdelivr.net/jquery.jssocials/1.4.0/jssocials.min.js"></script>-->
 
 <style>
     #aBox a {
@@ -66,6 +66,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
     }
 </script>
 
+<!--
 <script>
     $(function () {
         $("#share").jsSocials({
@@ -73,6 +74,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
         });
     });
 </script>
+-->
 
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
@@ -129,30 +131,99 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
 
 
 
+<link rel="stylesheet" href="../css/bgcurve.css">
+<link rel="stylesheet" href="../css/magnific-popup.css">
+<script src="../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-gallery').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul>
+            <li class="pli curveicon ">
+                <a class="pa" href="../BGDatabase">BG Database Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../BGDatabase/QuickStart">Quick Start</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGDatabase/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGDatabase/Screenshots">Screenshots</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../BGDatabase/UserGuide">User Guide</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../BGDatabase/UserGuide/Points">Manipulating Points</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGDatabase/UserGuide/Spline">Spline Properties</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../BGDatabase/UserGuide/Settings">Spline Settings</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../BGDatabase">BG BGDatabase Home</a>
+        <a class="pa " href="../BGDatabase/UserGuide">User Guide</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>BGDatabase</h3>
+            </div>
+
+            <!--======================================================        BG Curve Content              -->
+            
+
+
+
+
+
 
 <link rel="stylesheet" href="../css/bgcurve.css">
 
-<div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-    <div class="bg-main mdl-shadow--3dp" style="margin-top: 20px;min-height: 400px;">
-        <div class="bg-main-title">
-            <h3>BG Game Database</h3>
-        </div>
 
-        <div class="bg-main-contacts">
-            <div class="bg-main-contacts_grid mdl-grid">
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-                    In-game data management system for Unity 5.3
-                </div>
-                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                    Version:
-                </div>
-                <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-                    PreAlpha
-                </div>
-                <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-                    <img src="../images/under_construction_hammerC.gif">
-                </div>
-            </div>
+<div class="bg-main-contacts">
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            Fast, InMemory, No SQL, Extendable Database for your Unity 3D in-game data
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Beta
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <img src="../images/under_construction_hammerC.gif">
+        </div>
+    </div>
+</div>
+
+
+
+
+            <!--======================================================       BG Curve Footer               -->
         </div>
 
     </div>
@@ -167,6 +238,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
                     <table>
                         <tr>
                             <td>
+<!--
                                 <a href="https://twitter.com/BansheeGz" class="twitter-follow-button"
                                    data-show-count="false"
                                    data-size="large">Follow @BansheeGz</a>
@@ -179,6 +251,7 @@ L=-L=-  L===-L======-L=-  L=-L=-L======-   L=-   L======-L=-  L===-   L=-       
                                         fjs.parentNode.insertBefore(js, fjs);
                                     }
                                 }(document, 'script', 'twitter-wjs');</script>
+-->
                             </td>
                             <td valign="center">
                                 <div class="fb-follow" data-href="https://www.facebook.com/BansheeGz/"
