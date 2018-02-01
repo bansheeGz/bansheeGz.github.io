@@ -1,0 +1,107 @@
+#set page=Supported Fields
+<style>
+    #fieldsTable{
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #fieldsTable td,#fieldsTable th{
+        border: 1px solid black;
+        padding: 4px;
+    }
+    #fieldsTable p {
+        margin: 0;
+    }
+</style>
+
+This is all fields types, BGDatabase currently supports. Note, you can create your own field if you need to.
+<table id="fieldsTable">
+    <tr>
+        <th>
+            Field Group
+        </th>
+        <th>
+            Field Type
+        </th>
+    </tr>
+    <tr>
+        <td>Primitives</td>
+        <td>
+            <p>int</p>
+            <p>long</p>
+            <p>float</p>
+            <p>double</p>
+            <p>bool</p>
+            <p>Guid</p>
+            <p>string</p>
+            <p>text</p>
+        </td>
+    </tr>
+    <tr>
+        <td>Unity Primitives</td>
+        <td>
+            <p>Vector2</p>
+            <p>Vector3</p>
+            <p>Vector4</p>
+            <p>Quaternion</p>
+            <p>Rect</p>
+            <p>Bounds</p>
+            <p>Color</p>
+            <p>Ray</p>
+            <p>Ray2d</p>
+            <p>KeyCode</p>
+        </td>
+    </tr>
+    <tr>
+        <td>Unity Assets</td>
+        <td>
+            <p>Texture</p>
+            <p>Texture2d</p>
+            <p>Sprite</p>
+            <p>Material</p>
+            <p>Prefab</p>
+            <p>Font</p>
+            <p>AudioClip</p>
+            <p>UnityObject (Any Unity Asset)</p>
+        </td>
+    </tr>
+    <tr>
+        <td>List of Primitives</td>
+        <td>
+            <p>list of bool</p>
+            <p>list of double</p>
+            <p>list of float</p>
+            <p>list of Guid</p>
+            <p>list of int</p>
+            <p>list of long</p>
+            <p>list of string</p>
+        </td>
+    </tr>
+    <tr>
+        <td>List of Unity Primitives</td>
+        <td>
+            <p>list of Vector2s</p>
+            <p>list of Vector3s</p>
+            <p>list of Vector4s</p>
+            <p>list of Quaternions</p>
+            <p>list of Colors</p>
+        </td>
+    </tr>
+    <tr>
+        <td>Relations</td>
+        <td>
+            <p>single</p>
+            <p>multiple</p>
+            <p>nested</p>
+        </td>
+    </tr>
+    <tr>
+        <td>Unity Scene</td>
+        <td>
+            <p>ref to entityGo</p>
+            <p>ref to list of entityGos</p>
+            <p>ref to UnityObject</p>
+            <p>ref to list of UnityObjects</p>
+        </td>
+    </tr>
+</table>
