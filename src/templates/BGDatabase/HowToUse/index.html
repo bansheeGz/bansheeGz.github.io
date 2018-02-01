@@ -1,0 +1,99 @@
+#set page=How to use
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+
+<h4>General information</h4>
+Database consists of 4 main substances:
+<ol>
+        <li>Table (called meta)</li>
+        <li>Table field </li>
+        <li>Table row (called entity) </li>
+        <li>Database addon</li>
+</ol>
+todo image
+Every table, field and entity has unique id (based on Guid generation) and name (table and field has unique name, 32 char max)
+
+
+<h4>Accessing the database</h4>
+Once you setup and created a new database, you can access it in 2 main ways:
+<ol>
+    <li>Through code</li>
+    <li>You can hook up any GameObject to database row by adding BGEntityGo component to it and choosing a row.</li>
+</ol>
+
+<h4>Accessing database by code without code generation</h4>
+<p>
+    BGDatabase has very easy, slim and minimalistic API. However using CodeGeneration this API can be even easier (we
+    strongly recommend to use it).
+    Learn more about Code Generation <a href="../CodeGeneration">here</a>
+</p>
+<p>
+    Here is how you can access database without code generation:
+</p>
+<pre class="prettyprint">
+         //get access to database
+        var repo = BGRepo.I;
+
+        //====================      WORKING WITH TABLES (called metas)
+        //get access to table by name(called meta)
+        var meta = repo["MyTable"];
+
+        //iterate over all tables, whose name start with "My"
+        repo.ForEachMeta(m =>
+        {
+            //do something
+        }, m => m.Name.StartsWith("My"));
+
+        //number of tables
+        var metaCount = repo.CountMeta;
+
+        //check if table exists
+        var isMetaExists = repo.HasMeta("MyTable");
+
+        //some methods are ommitted!
+
+        //====================      WORKING WITH TABLE ROWS (called entities)
+        //iterate over all rows, whose name start with "My"
+        meta.ForEachEntity(e =>
+        {
+            //do something
+        }, e => e.Name.StartsWith("My"));
+
+        //number of entities
+        var entityCount = meta.CountEntities;
+
+        //get entity by id
+        var entity = meta[new BGId("some-id-here")];
+
+        //find first entity with name starting with "My"
+        entity = meta.FindEntity(e => e.Name.StartsWith("My"));
+
+        //get field value from entity (int should be substituted with actual field type)
+        var value = entity.Get&lt;int&gt;("someIntField");
+
+        //set field value to entity
+        entity.Set("someIntField", value);
+
+        //some methods are ommitted!
+
+        //====================      WORKING WITH TABLE FIELDS
+        //is field exists
+        var isFieldExists = meta.HasField("MyField");
+
+        //get field
+        var field = meta.GetField("MyField");
+
+        //get field with type int
+        var intField = meta.GetField&lt;int&gt;("MyField");
+
+        //some methods are ommitted!
+</pre>
+
+<h4>Accessing database by adding BGEntityGo component</h4>
+You can easily hook up any GameObject to a database row by adding BGEntityGo component to it.
+Just add the component, select table (meta) and then select a row (entity)
+todo image
+After that all fields will be immediately available for reading and writing.
+CodeGeneration can greatly simplify this access by generating classes out of your tables description.
+Learn more about Code Generation <a href="../CodeGeneration">here</a>

@@ -134,7 +134,10 @@
                 <a class="pa" href="../../BGDatabase">BG Database Home</a>
                 <ul>
                     <li class="cli ">
-                        <a class="ca" href="../../BGDatabase/QuickStart">Quick Start</a>
+                        <a class="ca" href="../../BGDatabase/Setup">Setup</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/HowToUse">How to use</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
@@ -197,12 +200,44 @@
             <div id="content">
             
 
-Code Generation makes already pretty easy BGDatabase API even easier.
-<ol>
-    <li>
-        Import the package
-    </li>
-</ol>
+Code Generation is a key element for simplifying access to database.
+There are 2 main types of code generation, lets look at them.
+
+<table class="contentTable">
+    <tr>
+        <th>
+        </th>
+        <th>
+            Extension Classes
+        </th>
+        <th>
+            MonoBehaviour Classes
+        </th>
+    </tr>
+    <tr>
+        <td>When is used</td>
+        <td>
+            These classes are inherited from basic BGEntity.
+            When CodeGen is enabled, database populated not with basic BGEntity objects, but with these extension classes.
+            These classes can not be added to GameObject, cause they are not Unity's MonoBehaviour.
+        </td>
+        <td>
+            Those classes are inherited from BGEntityGo, which in turn is inherited from Unity's MonoBehaviour.
+            So these classes are Unity standard components and can be added to any GameObject in the Inspector.
+            After that you can chose which row should be connected.
+        </td>
+    </tr>
+    <tr>
+        <td>How to enable</td>
+        <td>
+            This CodeGen is embedded to database via Database addon, called CodeGeneration.
+            After enabling this addon you will be able to generate these classes.
+        </td>
+        <td>
+            This classes is not embedded to database and can be generated on Settings tab in the BGDatabase window
+        </td>
+    </tr>
+</table>
             </div>
 
             <!--======================================================       BG Database Footer               -->

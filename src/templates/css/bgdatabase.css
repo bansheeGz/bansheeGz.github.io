@@ -285,3 +285,16 @@ code::before, code::after {
     letter-spacing: -.2em;
     content: "\00a0";
 }
+
+.contentTable{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+.contentTable td,.contentTable th{
+    border: 1px solid black;
+    padding: 4px;
+}
+.contentTable p {
+    margin: 0;
+}
