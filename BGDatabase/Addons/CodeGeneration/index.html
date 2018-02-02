@@ -143,15 +143,12 @@
                         <a class="ca" href="../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/API">API</a>
-                    </li>
-                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/SupportedFields">Supported Fields</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/CodeGeneration">Code Generation</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ExportImport">Export Import</a>
                     </li>
                 </ul>
@@ -176,11 +173,28 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/SaveLoad">Save Load</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGField">BGField</a>
                     </li>
                 </ul>
             </li>
@@ -193,19 +207,75 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Export Import</h3>
+                <h3>Code Generation Addon</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-Code Generation makes already very easy BGDatabase API much easier.
-<ol>
-    <li>
-        Import the package
-    </li>
-</ol>
+<p>
+    Code Generation makes already pretty easy BGDatabase API even easier.
+    If you use this addon- database will use generated classes instead of basic BGEntity while populating table rows.
+    Each generated class defines additional properties to access the data.
+</p>
+<p>
+    Here is an example: lets assume you have a table named "MyTable" which has one single field: intField of type int.
+</p>
+<p>
+    To access it without CodeGen you would use something like this:
+    <code>
+        var intValue = entity.Get&lt;int&gt;("intField");
+    </code>
+</p>
+<p>
+    As you can see, you should provide field name and field type.
+</p>
+
+<p>
+    With CodeGen you would use something like this
+    <code>
+        var intValue = entity.intField;
+    </code>
+</p>
+<p>
+    So all fields with their types will be generated for you for maximum ease of use.
+</p>
+
+<p>
+    The only drawback CodeGen has- you need to regenerate the classes each time you change database structure (e.g. adding/removing tables or fields)
+</p>
+
+<table class="contentTable">
+    <tr>
+        <th>
+            Parameter name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Code Generator</td>
+        <td>Class to use for code generation. You can leave the default one, if you do not need any customization</td>
+    </tr>
+    <tr>
+        <td>Source file</td>
+        <td>Source file to use for generated classes. All classes will be put into one single .cs file</td>
+    </tr>
+    <tr>
+        <td>Package</td>
+        <td>Package for generated classes. For example (BansheeGz.BGDatabase.Example)</td>
+    </tr>
+    <tr>
+        <td>Class names prefix</td>
+        <td>Prefix to use for each class. So if you use BGE_ prefix, the final class for "MyTable" table will be named BGE_MyTable</td>
+    </tr>
+    <tr>
+        <td>Field names prefix</td>
+        <td>Prefix to use for each generated property. So if you use f_ prefix, the final class for "name" field will be named f_name</td>
+    </tr>
+</table>
             </div>
 
             <!--======================================================       BG Database Footer               -->

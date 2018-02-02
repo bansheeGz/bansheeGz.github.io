@@ -1,0 +1,38 @@
+#set page=BGField API
+
+<p>
+    BGField.cs -is a table field, which has it's own type.
+</p>
+<p>
+    Strictly speaking, each type has it's own field.
+    For example, BGFieldInt.cs - is a field of type int, etc.
+    However you do not have to know anything about these classes, all you need to know is field's type
+</p>
+
+<h4>Main API</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>this[BGId id]</td>
+        <td>T</td>
+        <td>Get/Set value by entity id. T means generic is used, so for int field- T meas int value, for long T means long etc.</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get entity value by it's id
+var entityValue = field[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
+//set value
+field[new BGId("HThOdRCxlEGU1aefSG+Nbw")] = entityValue;</pre>
+        </td>
+    </tr>
+
+
+</table>
+
+<h4>Additional API</h4>

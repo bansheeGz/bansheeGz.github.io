@@ -1,8 +1,32 @@
-#set page=Export Import
+#set page=Save Load
 
-Code Generation makes already very easy BGDatabase API much easier.
+<p>
+    Save/Load addon enable you to save/load the state of the database to/from byte array.
+    You can define which table and which fields you want to be saved/loaded.
+</p>
+
+<p>
+    Generally speaking, you want as less data to be saved as possible.
+    You do not need to include data, that is "static" and can not be changed during play session.
+</p>
+
+<p>
+    The rules are very simple:
 <ol>
     <li>
-        Import the package
+        If you have some field, which value can be changed during the play session and you want this change to be
+        persistent,
+        you need to mark this field to be included to save/load.
+        Example from our example scenes: we want the amount of gold, player gathered to be remembered between game
+        sessions-
+        so we marked this field to be saved and loaded.
+    </li>
+    <li>
+        If you have some table, whose rows can be changed during gameplay and you want these changes to be remembered,
+        you need to mark this table to be included to the save/load by setting following setting to true:
+        "Add missing", "Remove Orphaned", "Update matching".
+        These setting will ensure, that all rows from this table will be saved and loaded.
+        Example from our example scenes: Collectable table rows can be changed, so we marked them as described above.
     </li>
 </ol>
+

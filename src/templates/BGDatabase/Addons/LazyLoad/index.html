@@ -1,8 +1,31 @@
-#set page=Export Import
+#set page=Lazy Load
 
-Code Generation makes already very easy BGDatabase API much easier.
-<ol>
-    <li>
-        Import the package
-    </li>
-</ol>
+<p>
+    Lazy Load enable lazy-loading of database. Database will not be loaded until the moment you query it.
+    This can greatly simplify development process, cause you will not have to load database data until the moment you need it.
+    However we strongly advise you against using it for builds, cause lazy loading requires much more memory and actually slower if you want to load full database.
+</p>
+
+<table class="contentTable">
+    <tr>
+        <th>
+            Parameter name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Disconnect entities</td>
+        <td>
+            If you set it to true BGEntityGo components will not try to connect to database while you in the Editor.
+            BGEntityGo components - are the special components you can use to hook up any GameObject to the database row.
+        </td>
+    </tr>
+    <tr>
+        <td>Enable in Build</td>
+        <td>
+            We recommend to not use it. Lazy Load is meant to be used during development. This toggle enable you to use lazy loading for builds and this is not recommended.
+        </td>
+    </tr>
+</table>

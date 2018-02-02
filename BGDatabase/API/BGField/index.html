@@ -162,7 +162,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Spline">Google Sheets</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
                     </li>
                 </ul>
@@ -193,7 +193,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/API/BGField">BGField</a>
                     </li>
                 </ul>
@@ -207,19 +207,49 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Playmaker</h3>
+                <h3>BGField API</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-Code Generation makes already very easy BGDatabase API much easier.
-<ol>
-    <li>
-        Import the package
-    </li>
-</ol>
+<p>
+    BGField.cs -is a table field, which has it's own type.
+</p>
+<p>
+    Strictly speaking, each type has it's own field.
+    For example, BGFieldInt.cs - is a field of type int, etc.
+    However you do not have to know anything about these classes, all you need to know is field's type
+</p>
+
+<h4>Main API</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>this[BGId id]</td>
+        <td>T</td>
+        <td>Get/Set value by entity id. T means generic is used, so for int field- T meas int value, for long T means long etc.</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get entity value by it's id
+var entityValue = field[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
+//set value
+field[new BGId("HThOdRCxlEGU1aefSG+Nbw")] = entityValue;</pre>
+        </td>
+    </tr>
+
+
+</table>
+
+<h4>Additional API</h4>
             </div>
 
             <!--======================================================       BG Database Footer               -->

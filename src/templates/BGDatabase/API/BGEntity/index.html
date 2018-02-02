@@ -1,0 +1,94 @@
+#set page=BGEntity API
+
+<p>
+    BGEntity.cs -is a table row, containing 1-n field values.
+</p>
+
+<h4>Main API</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>Get&lt;type&gt;(string name)</td>
+        <td>type</td>
+        <td>Get field value by field's name. Type should correspond to field's type.</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get int value of "intField" field
+var intValue = entity.Get&lt;int&gt;("intField");</pre>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>Set&lt;type&gt;(string name, type value)</td>
+        <td>void</td>
+        <td>Set field value by field's name. value should have the same type as field does.</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//set int value of "intField" field
+var intValue=0;
+entity.Set("intField", intValue);</pre>
+        </td>
+    </tr>
+
+
+</table>
+
+<h4>Additional API</h4>
+
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>Id</td>
+        <td>BGId</td>
+        <td>Get table row id</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get entity id
+var id = entity.Id;</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Name</td>
+        <td>string</td>
+        <td>Get table row name. Name is special field of type string. You can also access it by calling <code>entity.Get&lt;string&gt;("name");</code></td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get entity name
+var name = entity.Name;</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Meta</td>
+        <td>BGMetaEntity</td>
+        <td>Get the table, this row belongs to</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get entity Meta
+var meta = entity.Meta;</pre>
+        </td>
+    </tr>
+
+</table>

@@ -143,15 +143,12 @@
                         <a class="ca" href="../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/API">API</a>
-                    </li>
-                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/SupportedFields">Supported Fields</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/CodeGeneration">Code Generation</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ExportImport">Export Import</a>
                     </li>
                 </ul>
@@ -173,7 +170,7 @@
             <li class="pli ">
                 <a class="pa " href="../../../BGDatabase/Addons">Addons</a>
                 <ul>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/Addons/SaveLoad">Save Load</a>
                     </li>
                     <li class="cli ">
@@ -181,6 +178,23 @@
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGField">BGField</a>
                     </li>
                 </ul>
             </li>
@@ -193,19 +207,43 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Export Import</h3>
+                <h3>Save Load</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-Code Generation makes already very easy BGDatabase API much easier.
+<p>
+    Save/Load addon enable you to save/load the state of the database to/from byte array.
+    You can define which table and which fields you want to be saved/loaded.
+</p>
+
+<p>
+    Generally speaking, you want as less data to be saved as possible.
+    You do not need to include data, that is "static" and can not be changed during play session.
+</p>
+
+<p>
+    The rules are very simple:
 <ol>
     <li>
-        Import the package
+        If you have some field, which value can be changed during the play session and you want this change to be
+        persistent,
+        you need to mark this field to be included to save/load.
+        Example from our example scenes: we want the amount of gold, player gathered to be remembered between game
+        sessions-
+        so we marked this field to be saved and loaded.
+    </li>
+    <li>
+        If you have some table, whose rows can be changed during gameplay and you want these changes to be remembered,
+        you need to mark this table to be included to the save/load by setting following setting to true:
+        "Add missing", "Remove Orphaned", "Update matching".
+        These setting will ensure, that all rows from this table will be saved and loaded.
+        Example from our example scenes: Collectable table rows can be changed, so we marked them as described above.
     </li>
 </ol>
+
             </div>
 
             <!--======================================================       BG Database Footer               -->

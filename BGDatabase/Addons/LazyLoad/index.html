@@ -143,15 +143,12 @@
                         <a class="ca" href="../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/API">API</a>
-                    </li>
-                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/SupportedFields">Supported Fields</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/CodeGeneration">Code Generation</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ExportImport">Export Import</a>
                     </li>
                 </ul>
@@ -179,8 +176,25 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGField">BGField</a>
                     </li>
                 </ul>
             </li>
@@ -193,19 +207,42 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Export Import</h3>
+                <h3>Lazy Load</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-Code Generation makes already very easy BGDatabase API much easier.
-<ol>
-    <li>
-        Import the package
-    </li>
-</ol>
+<p>
+    Lazy Load enable lazy-loading of database. Database will not be loaded until the moment you query it.
+    This can greatly simplify development process, cause you will not have to load database data until the moment you need it.
+    However we strongly advise you against using it for builds, cause lazy loading requires much more memory and actually slower if you want to load full database.
+</p>
+
+<table class="contentTable">
+    <tr>
+        <th>
+            Parameter name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Disconnect entities</td>
+        <td>
+            If you set it to true BGEntityGo components will not try to connect to database while you in the Editor.
+            BGEntityGo components - are the special components you can use to hook up any GameObject to the database row.
+        </td>
+    </tr>
+    <tr>
+        <td>Enable in Build</td>
+        <td>
+            We recommend to not use it. Lazy Load is meant to be used during development. This toggle enable you to use lazy loading for builds and this is not recommended.
+        </td>
+    </tr>
+</table>
             </div>
 
             <!--======================================================       BG Database Footer               -->

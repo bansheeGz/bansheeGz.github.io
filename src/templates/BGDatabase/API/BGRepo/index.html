@@ -1,0 +1,100 @@
+#set page=BGRepo API
+
+BGRepo.cs - is a database itself. use <code>BGRepo.I</code> to get access to default database.
+
+<h4>Main API</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>I</td>
+        <td>BGRepo</td>
+        <td>Get access to database (static property)</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get access to database
+var repo = BGRepo.I;</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>this[string name]</td>
+        <td>BGMetaEntity</td>
+        <td>Get table by name</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get table named MyTable
+var meta = repo["MyTable"];</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>this[BGId id]</td>
+        <td>BGMetaEntity</td>
+        <td>Get table by id</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get table with id
+var meta = repo[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</pre>
+        </td>
+    </tr>
+</table>
+
+<h4>Additional API</h4>
+
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>ForEachMeta(Action&lt;BGMetaEntity&gt; action)</td>
+        <td>void</td>
+        <td>Execute action for each table</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//print every table name
+repo.ForEachMeta(meta => Debug.Log(meta.Name));</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>ForEachMeta(Action&lt;BGMetaEntity&gt; action, Predicate&lt;BGMetaEntity&gt; filter)</td>
+        <td>void</td>
+        <td>Execute action for each table, which comply to the filter</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//print every table name, which name starts with My
+repo.ForEachMeta(meta => Debug.Log(meta.Name),
+                meta => meta.Name.StartsWith("My"));</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>CountMeta</td>
+        <td>int</td>
+        <td>Number of tables</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//print the number of tables
+Debug.Log(repo.CountMeta);</pre>
+        </td>
+    </tr>
+
+</table>

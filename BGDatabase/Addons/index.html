@@ -143,15 +143,12 @@
                         <a class="ca" href="../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../BGDatabase/API">API</a>
-                    </li>
-                    <li class="cli ">
                         <a class="ca" href="../../BGDatabase/SupportedFields">Supported Fields</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGDatabase/CodeGeneration">Code Generation</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../BGDatabase/ExportImport">Export Import</a>
                     </li>
                 </ul>
@@ -170,7 +167,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="pli ">
+            <li class="pli  plic ">
                 <a class="pa " href="../../BGDatabase/Addons">Addons</a>
                 <ul>
                     <li class="cli ">
@@ -184,6 +181,23 @@
                     </li>
                 </ul>
             </li>
+            <li class="pli ">
+                <a class="pa " href="../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
@@ -193,17 +207,28 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Export Import</h3>
+                <h3>Addons</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-Code Generation makes already very easy BGDatabase API much easier.
+Addons are special classes that extends database functionality
 <ol>
     <li>
-        Import the package
+        <a href="SaveLoad">SaveLoad</a>
+        - Defines settings for saving and loading database state.
+        You can define which tables and fields you wish to be saved.
+    </li>
+    <li>
+        <a href="CodeGeneration">CodeGeneration</a>
+        - Code generation greatly simplify database access
+    </li>
+    <li>
+        <a href="LazyLoad">LazyLoad</a>
+        - Enable this addon to enable lazy loading of the database.
+        This can be very helpful during development to avoid loading full database each time.
     </li>
 </ol>
             </div>

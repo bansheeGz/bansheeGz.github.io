@@ -143,9 +143,6 @@
                         <a class="ca" href="../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../BGDatabase/API">API</a>
-                    </li>
-                    <li class="cli ">
                         <a class="ca" href="../../BGDatabase/SupportedFields">Supported Fields</a>
                     </li>
                     <li class="cli ">
@@ -184,6 +181,23 @@
                     </li>
                 </ul>
             </li>
+            <li class="pli ">
+                <a class="pa " href="../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
         </ul>
     </div>
     <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
@@ -200,12 +214,34 @@
             <div id="content">
             
 
-Code Generation makes already very easy BGDatabase API much easier.
-<ol>
-    <li>
-        Import the package
-    </li>
-</ol>
+<p>
+    You can edit database data in external tools, such as Excel/Open Office/Libre Office or Google Sheets.
+</p>
+<p>
+    BG Database provide export/import functions to xls files, Google Sheets and json.
+</p>
+<p>
+    This article describes common procedure and ideas, you can find provider' specific instruction here:
+    for <a href="../ThirdParty/Excel">Excel/Open Office</a>, for <a href="../ThirdParty/GoogleSheets">Google Sheets</a>
+</p>
+
+<h4>Common idea</h4>
+Here is the illustration, how export/import works and how BGDatabase data are mapped to spreadsheets.
+todo image
+
+<h4>Adding rows</h4>
+Create new data, leave _id column empty and make sure your settings has "ADd Missing" setting turned on.
+
+<h4>Updating rows</h4>
+Update data and leave _id column intact.
+
+<h4>Deleting rows</h4>
+Delete rows and make sure your settings has "Remove Orphaned" setting turned on.
+
+<h4>How export/import settings work</h4>
+You can fine-tune how data from BGDatabase will be synchronized with data from external tools.
+You can select which table and fields will be included in synchronization and what operation should be performed on individual rows.
+Here is the illustration, which show how it works: todo image
             </div>
 
             <!--======================================================       BG Database Footer               -->

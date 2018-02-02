@@ -162,7 +162,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Spline">Google Sheets</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
                     </li>
                 </ul>
@@ -187,7 +187,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/API/BGRepo">BGRepo</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
                     </li>
                     <li class="cli ">
@@ -207,19 +207,157 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Playmaker</h3>
+                <h3>BGMetaEntity API</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-Code Generation makes already very easy BGDatabase API much easier.
-<ol>
-    <li>
-        Import the package
-    </li>
-</ol>
+<p>
+    BGMetaEntity.cs -is a database table, containing 1-n fields and 0-n rows.
+</p>
+
+<h4>Main API</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>this[int index]</td>
+        <td>BGEntity</td>
+        <td>Get table row by it's index</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get first row
+var entity = meta[0];</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>this[BGId id]</td>
+        <td>BGEntity</td>
+        <td>Get table row by it's id</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get row by it's id
+var entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>ForEachEntity(Action&lt;BGEntity&gt; action, Predicate&lt;BGEntity&gt; filter)</td>
+        <td>void</td>
+        <td>Search entities by filter. For each found entity action will be called</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//print entities names, whose name starts with "My"
+meta.ForEachEntity(entity => Debug.Log(entity.Name), entity => entity.Name.StartsWith("My"));</pre>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>CountEntities</td>
+        <td>int</td>
+        <td>The number of rows</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//print the number of rows
+Debug.Log(meta.CountEntities);</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>NewEntity</td>
+        <td>BGEntity</td>
+        <td>Create new row</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//print the number of rows
+var newEntity = meta.NewEntity();</pre>
+        </td>
+    </tr>
+
+</table>
+
+<h4>Additional API</h4>
+
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>Id</td>
+        <td>BGId</td>
+        <td>table id</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get table id
+var id = meta.Id;</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Name</td>
+        <td>string</td>
+        <td>table name</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get table name
+var name = meta.Name;</pre>
+        </td>
+    </tr>
+
+
+    <tr>
+        <td>ForEachField(Action&lt;BGField&gt; action)</td>
+        <td>void</td>
+        <td>Execute action for each field</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//print all field names
+meta.ForEachField(field => Debug.Log(field.Name));</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>ForEachField(Action&lt;BGField&gt; action, Predicate&lt;BGField&gt; filter)</td>
+        <td>void</td>
+        <td>Execute action for each field, complying to the filter</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//print all field names, whose value type is int
+meta.ForEachField(field => Debug.Log(field.Name),
+                field => field.ValueType==typeof(int));</pre>
+        </td>
+    </tr>
+
+</table>
             </div>
 
             <!--======================================================       BG Database Footer               -->

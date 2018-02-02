@@ -67,6 +67,11 @@
     </li>
 </ol>
 
+<h4>Save/Load settings</h4>
+Let's look at the save/load setting to understand how they can be used to save/load your data during gameplay.
+todo
+
+
 <h4>About Code Generation</h4>
 <div>
     <p>
@@ -118,36 +123,37 @@
         </ol>
 
         <pre class="prettyprint">
-            public class BGCollectable : BGM_Collectable
-            {
-                public TextMesh Text
-                {
-                    get { return GetComponentInChildren&lt;TextMesh&gt;(); }
-                }
+public class BGCollectable : BGM_Collectable
+{
+    public TextMesh Text
+    {
+        get { return GetComponentInChildren&lt;TextMesh&gt;(); }
+    }
 
-                //this method is called when underlying table row is changed (e.g. then this object is hooked to a database)
-                public override void EntityChanged()
-                {
-                    Text.text = "Gold:" + m_gold;
-                }
+    //this method is called when underlying table row is changed
+    //(e.g. then this object is hooked to a database)
+    public override void EntityChanged()
+    {
+        Text.text = "Gold:" + m_gold;
+    }
 
-                //this method is called then player collides with this GameObject
-                public void Collected()
-                {
+    //this method is called then player collides with this GameObject
+    public void Collected()
+    {
 
-                    //play sound
-                    var audioSource = FindObjectOfType&lt;BGPlayer&gt;().GetComponent&lt;AudioSource&gt;();
-                    audioSource.clip = m_type.f_audio;
-                    audioSource.Play();
+        //play sound
+        var audioSource = FindObjectOfType&lt;BGPlayer&gt;().GetComponent&lt;AudioSource&gt;();
+        audioSource.clip = m_type.f_audio;
+        audioSource.Play();
 
-                    //remove from database & scene
-                    Entity.Delete();
-                    Destroy(gameObject);
+        //remove from database & scene
+        Entity.Delete();
+        Destroy(gameObject);
 
-                    //spawn new collectables if needed
-                    FindObjectOfType&lt;BGSpawner&gt;().CheckForNewSpawns();
-                }
-            }
+        //spawn new collectables if needed
+        FindObjectOfType&lt;BGSpawner&gt;().CheckForNewSpawns();
+    }
+}
         </pre>
     </li>
     <li><code>BGGoToScene.cs</code>- this script is attached to a portal to another scene.
@@ -156,93 +162,93 @@
         When the player collides with this object, script read data about this scene from database, updates Player table
         with position and rotation from Scene table and loads target scene.
         <pre class="prettyprint">
-            public class BGGoToScene : BGM_Scene
-            {
-                //this method is called then player collides with this GameObject
-                public void Load()
-                {
-                    //get reference to player
-                    var player = FindObjectOfType&lt;BGPlayer&gt;();
+public class BGGoToScene : BGM_Scene
+{
+    //this method is called then player collides with this GameObject
+    public void Load()
+    {
+        //get reference to player
+        var player = FindObjectOfType&lt;BGPlayer&gt;();
 
-                    //set player position & rotation to scene's spawn position & rotation
-                    player.m_position = m_spawnPosition;
-                    player.m_rotation = Quaternion.Euler(m_spawnRotation);
+        //set player position & rotation to scene's spawn position & rotation
+        player.m_position = m_spawnPosition;
+        player.m_rotation = Quaternion.Euler(m_spawnRotation);
 
-                    //load the scene
-                    SceneManager.LoadScene(Entity.Name);
-                }
-            }
+        //load the scene
+        SceneManager.LoadScene(Entity.Name);
+    }
+}
         </pre>
 
     </li>
     <li><code>BGSpawner.cs</code>- this script fills database with new objects and also spawn them to the scene.
         It hooked up to <code>Scene</code> table.
         <pre class="prettyprint">
-            public class BGSpawner :BGM_Scene
+public class BGSpawner :BGM_Scene
+{
+    public override void  Start()
+    {
+        base.Start();
+        Spawn();
+    }
+
+    //spawn unity's gameobjects - corresponding to Repo objects
+    private void Spawn()
+    {
+        //fetch collectables from database
+        var collectables = m_Collectable;
+
+        //no collectables- no luck
+        if (BGUtil.IsEmpty(collectables)) return;
+
+        //spawn collectables objects
+        foreach (var collectable in collectables)
+        {
+            //create collectable GameObject
+            var newCollectable = Instantiate(collectable.f_type.f_prefab,
+                collectable.f_position, Quaternion.identity);
+
+            //we know - collectable prefab has BGCollectable script attached - so init it with data
+            newCollectable.GetComponent&lt;BGCollectable&gt;().Entity = collectable;
+        }
+    }
+
+    //this method is called by BGCollectable when it's collected.
+    //It spawns new collectables randomly to all scenes if all objects are collected
+    public void CheckForNewSpawns()
+    {
+        //there are still some collectables
+        if (BGE_Collectable.CountEntities > 0) return;
+
+        //ok, we gathered all objects- lets spawn new ones
+        BGE_Scene.ForEachEntity(scene =>
+        {
+
+            //number of collectables for one scene
+            var count = Random.Range(3, 6);
+            for (var i = 0; i < count; i++)
             {
-                public override void  Start()
-                {
-                    base.Start();
-                    Spawn();
-                }
+                //nested meta has utility method, which auto assign new collectable to owner entity (scene)
+                var newCollectable = BGE_Collectable.NewEntity(scene);
 
-                //spawn unity's gameobjects - corresponding to Repo objects
-                private void Spawn()
-                {
-                    //fetch collectables from database
-                    var collectables = m_Collectable;
+                //set gold
+                newCollectable.f_gold = Random.Range(1, 10);
 
-                    //no collectables- no luck
-                    if (BGUtil.IsEmpty(collectables)) return;
+                //bounds determines scene's frontiers
+                var bounds = scene.f_bounds;
+                //set position
+                newCollectable.f_position = new Vector3(Random.Range(bounds.min.x, bounds.max.x),
+                    bounds.center.y, Random.Range(bounds.min.z, bounds.max.z));
 
-                    //spawn collectables objects
-                    foreach (var collectable in collectables)
-                    {
-                        //create collectable GameObject
-                        var newCollectable = Instantiate(collectable.f_type.f_prefab,
-                            collectable.f_position, Quaternion.identity);
-
-                        //we know - collectable prefab has BGCollectable script attached - so init it with data
-                        newCollectable.GetComponent&lt;BGCollectable&gt;().Entity = collectable;
-                    }
-                }
-
-                //this method is called by BGCollectable when it's collected.
-                //It spawns new collectables randomly to all scenes if all objects are collected
-                public void CheckForNewSpawns()
-                {
-                    //there are still some collectables
-                    if (BGE_Collectable.CountEntities > 0) return;
-
-                    //ok, we gathered all objects- lets spawn new ones
-                    BGE_Scene.ForEachEntity(scene =>
-                    {
-
-                        //number of collectables for one scene
-                        var count = Random.Range(3, 6);
-                        for (var i = 0; i < count; i++)
-                        {
-                            //nested meta has utility method, which auto assign new collectable to owner entity (scene)
-                            var newCollectable = BGE_Collectable.NewEntity(scene);
-
-                            //set gold
-                            newCollectable.f_gold = Random.Range(1, 10);
-
-                            //bounds determines scene's frontiers
-                            var bounds = scene.f_bounds;
-                            //set position
-                            newCollectable.f_position = new Vector3(Random.Range(bounds.min.x, bounds.max.x),
-                                bounds.center.y, Random.Range(bounds.min.z, bounds.max.z));
-
-                            //set type
-                            newCollectable.f_type = BGE_CollectableType.GetEntity(Random.Range(0, BGE_CollectableType.CountEntities));
-                        }
-                    });
-
-                    //spawn GameObjects for current scene
-                    Spawn();
-                }
+                //set type
+                newCollectable.f_type = BGE_CollectableType.GetEntity(Random.Range(0, BGE_CollectableType.CountEntities));
             }
+        });
+
+        //spawn GameObjects for current scene
+        Spawn();
+    }
+}
         </pre>
     </li>
     <li><code>BGPlayer.cs</code>- this script is attached to the player and hooked up to a first row of <code>Player</code> table via extending from BGM_Player.
@@ -252,95 +258,95 @@
             In this method it saves it's own position and amount of gold to the database, so while saving those values will be put to the save file.</li>
         </ol>
         <pre class="prettyprint">
-            public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
-            {
-                public int Gold
-                {
-                    set
-                    {
-                        m_gold = value;
-                        BGUi.Instance.Gold = value;
-                    }
-                }
+public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
+{
+    public int Gold
+    {
+        set
+        {
+            m_gold = value;
+            BGUi.Instance.Gold = value;
+        }
+    }
 
-                [NonSerialized] private bool active = true;
+    [NonSerialized] private bool active = true;
 
-                public bool Active
-                {
-                    get { return active; }
-                    set
-                    {
-                        active = value;
-                        GetComponent&lt;BGFirstPersonController&gt;().enabled = value;
-                    }
-                }
+    public bool Active
+    {
+        get { return active; }
+        set
+        {
+            active = value;
+            GetComponent&lt;BGFirstPersonController&gt;().enabled = value;
+        }
+    }
 
-                public override void Start()
-                {
-                    base.Start();
+    public override void Start()
+    {
+        base.Start();
 
-                    BGUi.Instance.Gold = m_gold;
+        BGUi.Instance.Gold = m_gold;
 
-                    //get pos and rotation from the table
-                    transform.position = m_position;
-                    transform.rotation = m_rotation;
-                }
+        //get pos and rotation from the table
+        transform.position = m_position;
+        transform.rotation = m_rotation;
+    }
 
-                //this is called when player collides with something
-                void OnControllerColliderHit(ControllerColliderHit hit)
-                {
-                    var collectable = hit.gameObject.GetComponent&lt;BGCollectable&gt;();
-                    if (collectable != null)
-                    {
-                        Gold = m_gold + collectable.m_gold;
-                        collectable.Collected();
-                    }
+    //this is called when player collides with something
+    void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        var collectable = hit.gameObject.GetComponent&lt;BGCollectable&gt;();
+        if (collectable != null)
+        {
+            Gold = m_gold + collectable.m_gold;
+            collectable.Collected();
+        }
 
-                    var gotoScene = hit.gameObject.GetComponent&lt;BGGoToScene&gt;();
-                    if (gotoScene != null) gotoScene.Load();
-                }
+        var gotoScene = hit.gameObject.GetComponent&lt;BGGoToScene&gt;();
+        if (gotoScene != null) gotoScene.Load();
+    }
 
-                //this method is called before saving
-                void BGAddonSaveLoad.BeforeSaveReciever.OnBeforeSave()
-                {
-                    m_position = transform.position;
-                    m_rotation = transform.rotation;
-                    m_scene = BGE_Scene.FindEntity(scene => string.Equals(scene.Name, SceneManager.GetActiveScene().name));
-                }
-            }
+    //this method is called before saving
+    void BGAddonSaveLoad.BeforeSaveReciever.OnBeforeSave()
+    {
+        m_position = transform.position;
+        m_rotation = transform.rotation;
+        m_scene = BGE_Scene.FindEntity(scene => string.Equals(scene.Name, SceneManager.GetActiveScene().name));
+    }
+}
         </pre>
     </li>
     <li>
         <code>BGSavingLoading.cs</code>
         It Provides Save/Load functions via SaveLoad addon. More information about Save/Load addon can be found <a href="../Addons/SaveLoad">here</a>
         <pre class="prettyprint">
-            public class BGSavingLoading : MonoBehaviour
-            {
-                //... some code is omitted
-                public void Save()
-                {
-                    //save
-                    var bytes = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save();
-                    Debug.Log("Saving "+bytes.Length+" bytes to " + SaveFilePath);
-                    File.WriteAllBytes(SaveFilePath, bytes);
-                    Debug.Log("saved");
-                }
+public class BGSavingLoading : MonoBehaviour
+{
+    //... some code is omitted
+    public void Save()
+    {
+        //save
+        var bytes = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save();
+        Debug.Log("Saving "+bytes.Length+" bytes to " + SaveFilePath);
+        File.WriteAllBytes(SaveFilePath, bytes);
+        Debug.Log("saved");
+    }
 
-                public void Load()
-                {
-                    //load
-                    Debug.Log("Load requested");
-                    if (!HasSavedFile) return;
+    public void Load()
+    {
+        //load
+        Debug.Log("Load requested");
+        if (!HasSavedFile) return;
 
-                    Debug.Log("Loading..");
-                    var content = File.ReadAllBytes(SaveFilePath);
+        Debug.Log("Loading..");
+        var content = File.ReadAllBytes(SaveFilePath);
 
-                    BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(content);
+        BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(content);
 
-                    //load saved scene
-                    SceneManager.LoadScene(R.Player.d_scene.Get(PlayerEntity).Name);
-                }
-            }
+        //load saved scene
+        SceneManager.LoadScene(R.Player.d_scene.Get(PlayerEntity).Name);
+    }
+}
         </pre>
     </li>
 </ol>
