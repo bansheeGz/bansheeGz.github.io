@@ -115,7 +115,7 @@
 
 <script>
     $(document).ready(function () {
-        $('.bg-gallery').magnificPopup({
+        $('.bg-image').magnificPopup({
             delegate: 'a',
             type: 'image',
 //            gallery:{enabled:true},
@@ -222,7 +222,7 @@ There are 2 main types of code generation, lets look at them.
     <li>MonoBehaviour Classes</li>
 </ol>
 
-<h3>Extension classes</h3>
+<h4>Extension classes</h4>
 <p>
     These classes are inherited from basic BGEntity.
     These classes can not be added to GameObject, cause they are not Unity's MonoBehaviour.
@@ -297,7 +297,7 @@ public static BGE_MyTable NewEntity()
 </p>
 
 
-<h3>MonoBehaviour Classes</h3>
+<h4>MonoBehaviour Classes</h4>
 <p>
     Those classes are inherited from BGEntityGo, which in turn is inherited from Unity's MonoBehaviour.
     So these classes are Unity standard components and can be added to any GameObject in the Inspector.

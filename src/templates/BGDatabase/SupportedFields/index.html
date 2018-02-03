@@ -39,7 +39,7 @@ This is all fields types, BGDatabase currently supports. Note, you can create yo
         </td>
     </tr>
     <tr>
-        <td>Unity Assets</td>
+        <td>Unity Assets <a href="#unityassets">#1</a></td>
         <td>
             <p>Texture</p>
             <p>Texture2d</p>
@@ -78,11 +78,11 @@ This is all fields types, BGDatabase currently supports. Note, you can create yo
         <td>
             <p>single</p>
             <p>multiple</p>
-            <p>nested</p>
+            <p>nested <a href="#nested">#2</a></p>
         </td>
     </tr>
     <tr>
-        <td>Unity Scene</td>
+        <td>Unity Scene <a href="#unityscene">#3</a></td>
         <td>
             <p>ref to entityGo</p>
             <p>ref to list of entityGos</p>
@@ -91,3 +91,45 @@ This is all fields types, BGDatabase currently supports. Note, you can create yo
         </td>
     </tr>
 </table>
+
+<h4 id="unityassets">Unity Asset Fields (#1)</h4>
+<p>
+    All these fields are read only.
+    You can reference any Unity asset (UnityObject can be used to reference any asset).
+    This reference will be resolved by a path.
+    It means all unity asset fields store the path to an asset.
+    There is 2 ways this path can be properly resolved:
+</p>
+<ol>
+    <li>
+        Asset should be stored under Resources folder. This is very simple way to reference an asset.
+        All you have to do is to place your asset under Resources folder
+    </li>
+    <li>
+        Asset should be included in the asset bundle. This is super complicated way.
+        To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to query this field.
+        Note, we do not manage asset bundles in any way.
+    </li>
+</ol>
+
+<h4 id="nested">Nested Field (#2)</h4>
+<p>
+    Nested field is a special field, which creates a whole new meta (table), which has many-to-one relation to owner meta.
+    It means, you can create a linked list with any fields that are supported by BGDatabase.
+    It is a readonly field (to change it's value- delete or add nested Entities)
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SupportedFields1.png"><img style="width: 400px" src="#path images/BGDatabase/SupportedFields1.png"></a>
+</div>
+
+<h4 id="unityscene">Unity Scene Fields (#3)</h4>
+<p>
+    There are 2 ways to reference GameObject in the scene
+</p>
+<ol>
+    <li>if this object has BGEntityGo component attached. BGEntityGo is used to reference a row from a database and you can use it's id to get reference to GameObject</li>
+    <li>if this object has BGWithId component attached. BGWithId is simple component with generated id, you can use this id to get reference to GameObject</li>
+</ol>
+<p>
+    Both methods use UnityObject.FindComponentOfType method and super slow.
+</p>

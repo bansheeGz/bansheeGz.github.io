@@ -6,94 +6,96 @@
 <h4>General information</h4>
 Database consists of 4 main substances:
 <ol>
-        <li>Table (called meta)</li>
-        <li>Table field </li>
-        <li>Table row (called entity) </li>
-        <li>Database addon</li>
+    <li>Table (called meta)</li>
+    <li>Table field</li>
+    <li>Table row (called entity)</li>
+    <li>Database addon</li>
 </ol>
-todo image
 Every table, field and entity has unique id (based on Guid generation) and name (table and field has unique name, 32 char max)
+<div class="bg-image">
+    <a href="#path images/BGDatabase/HoToUse1.png"><img style="width: 400px" src="#path images/BGDatabase/HoToUse1.png"></a>
+</div>
+
 
 
 <h4>Accessing the database</h4>
-Once you setup and created a new database, you can access it in 2 main ways:
+Once you setup and created a new database, you can access it in 4 distinct ways:
 <ol>
-    <li>Through code</li>
-    <li>You can hook up any GameObject to database row by adding BGEntityGo component to it and choosing a row.</li>
+    <li>Through code using basic API</li>
+    <li>Through code using generated classes (highly recommended over basic API)</li>
+    <li>By adding BGEntityGo component to any GameObject and choosing table and row.</li>
+    <li>Instead of using BGEntityGo component, you can use generated class. (highly recommended over using BGEntityGo)
+    </li>
 </ol>
-
-<h4>Accessing database by code without code generation</h4>
 <p>
-    BGDatabase has very easy, slim and minimalistic API. However using CodeGeneration this API can be even easier (we
-    strongly recommend to use it).
-    Learn more about Code Generation <a href="../CodeGeneration">here</a>
+    Let's take a look at each of these methods.
 </p>
+
+<h4>1) Accessing the database using basic API</h4>
 <p>
-    Here is how you can access database without code generation:
+    Here is minimalistic example about how you can access database without code generation:
 </p>
 <pre class="prettyprint">
-         //get access to database
-        var repo = BGRepo.I;
-
-        //====================      WORKING WITH TABLES (called metas)
-        //get access to table by name(called meta)
-        var meta = repo["MyTable"];
-
-        //iterate over all tables, whose name start with "My"
-        repo.ForEachMeta(m =>
-        {
-            //do something
-        }, m => m.Name.StartsWith("My"));
-
-        //number of tables
-        var metaCount = repo.CountMeta;
-
-        //check if table exists
-        var isMetaExists = repo.HasMeta("MyTable");
-
-        //some methods are ommitted!
-
-        //====================      WORKING WITH TABLE ROWS (called entities)
-        //iterate over all rows, whose name start with "My"
-        meta.ForEachEntity(e =>
-        {
-            //do something
-        }, e => e.Name.StartsWith("My"));
-
-        //number of entities
-        var entityCount = meta.CountEntities;
-
-        //get entity by id
-        var entity = meta[new BGId("some-id-here")];
-
-        //find first entity with name starting with "My"
-        entity = meta.FindEntity(e => e.Name.StartsWith("My"));
-
-        //get field value from entity (int should be substituted with actual field type)
-        var value = entity.Get&lt;int&gt;("someIntField");
-
-        //set field value to entity
-        entity.Set("someIntField", value);
-
-        //some methods are ommitted!
-
-        //====================      WORKING WITH TABLE FIELDS
-        //is field exists
-        var isFieldExists = meta.HasField("MyField");
-
-        //get field
-        var field = meta.GetField("MyField");
-
-        //get field with type int
-        var intField = meta.GetField&lt;int&gt;("MyField");
-
-        //some methods are ommitted!
+ //get reference to database
+var repo = BGRepo.I;
+//get reference to table(called meta) MyTable by name
+var meta = repo["MyTable"];
+//get entity by id
+var entity = meta[new BGId("some-id-here")];
+//get int field value
+var fieldValue = entity.Get&lt;int&gt;("myField");
+//set int field value
+entity.Set("myField", fieldValue + 1);
 </pre>
 
-<h4>Accessing database by adding BGEntityGo component</h4>
-You can easily hook up any GameObject to a database row by adding BGEntityGo component to it.
-Just add the component, select table (meta) and then select a row (entity)
-todo image
-After that all fields will be immediately available for reading and writing.
-CodeGeneration can greatly simplify this access by generating classes out of your tables description.
-Learn more about Code Generation <a href="../CodeGeneration">here</a>
+<h4>2) Accessing the database using generated classes</h4>
+<p>
+    You can remove all boilerplate code by using generated classes.
+    Here is the same example but written with help of generated classes.
+</p>
+<pre class="prettyprint">
+var entity = BGE_MyTable.GetEntity(new BGId("some-id-here"));
+entity.myField = entity.myField + 1;
+</pre>
+<p>
+    As you can see, using generated classes removes all boilerplate code and also adds compile time check
+    in case the database structure is changed.
+    E.g. for example, if you remove field myField or change it's name and regenerate the classes-
+    you'll get compile-time errors, that myField property is not found.
+</p>
+<p>
+    So using generated classes is highly recommended.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/HoToUse2.png"><img style="width: 400px" src="#path images/BGDatabase/HoToUse2.png"></a>
+</div>
+
+
+
+<h4>3) Accessing database by adding BGEntityGo component</h4>
+<p>
+    You can easily hook up any GameObject to a database row by adding BGEntityGo component to it.
+    Just add the component, select table (meta) and then select a row (entity)
+    After that all fields will be immediately available for reading and writing.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/HoToUse3.png"><img style="width: 400px" src="#path images/BGDatabase/HoToUse3.png"></a>
+</div>
+
+<p>
+    However in this scenario you'll have to use basic API, which has a lot of boilerplate code.
+</p>
+<p>
+    So, instead of this method, we highly recommend to use method 4, described below.
+</p>
+
+<h4>4) Instead of using BGEntityGo component, use generated classes</h4>
+<p>
+    Apart from CodeGeneration, described in method 2, there is another type of CodeGeneration, which generates classes,
+    inherited from Unity's MonoBehaviour class. These classes can be added to Unity's GameObject, just like BGEntityGo component,
+    but all of them have additional properties for each table field, so you can use them instead of basic API.
+    We highly recommend to use this method instead of method 3.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/HoToUse4.png"><img style="width: 400px" src="#path images/BGDatabase/HoToUse4.png"></a>
+</div>
