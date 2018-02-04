@@ -1,20 +1,49 @@
 #set page=Setup
 
-    <ol>
-        <li>
-            Import the package
-        </li>
-        <li>
-            View our <a href="../ExampleBreakdown">example breakdown</a>, if you wish to understand more about how BGDatabase works.
-        </li>
-        <li>
-            Create your own database. By default example's database is used. Go to <code>Settings-> Main</code> and chose <code>Create new database</code>
-        </li>
-        <li>
-            Go to <code>Configuration</code> and create tables (called Metas)
-        </li>
-        <li>
-            Go to <code>Database</code> and create data for tables (called Entities)
-        </li>
+<h4 >Create your own database</h4>
+<ol>
+    <li>
+        Import the package
+    </li>
+    <li>
+        By default BGDatabase use database, created for our example, so at this point you may want to look at our
+        <a href="../ExampleBreakdown">example breakdown</a>, if you wish to understand more about how BGDatabase works.
+        Or you can revert your database to example database later to look into example code, here is <a href="#revert">how
+        to do it</a>
+    </li>
+    <li>
+        Create your own database.
+        Open <code>Window->BGDatabase</code>.
+        Go to <code>Settings-> Main</code>.
+        Fill Database Folder and Setting folder and hit <code>Create</code> button
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Setup1.png"><img style="width: 400px" src="#path images/BGDatabase/Setup1.png"></a>
+        </div>
+        empty database will be created at specified location
+    </li>
+    <li>
+        Go to <code>Configuration</code> and create table (called Meta)
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Setup2.png"><img style="width: 400px" src="#path images/BGDatabase/Setup2.png"></a>
+        </div>
 
-    </ol>
+    </li>
+    <li>
+        Add fields
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Setup3.png"><img style="width: 400px" src="#path images/BGDatabase/Setup3.png"></a>
+        </div>
+    </li>
+    <li>
+        Go to <code>Database</code> and create data for tables (called Entities)
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Setup4.png"><img style="width: 400px" src="#path images/BGDatabase/Setup4.png"></a>
+        </div>
+
+    </li>
+
+</ol>
+
+<h4 id="setup">Details about how database files are organized</h4>
+
+<h4 id="revert">Reverting database to default (example) database</h4>

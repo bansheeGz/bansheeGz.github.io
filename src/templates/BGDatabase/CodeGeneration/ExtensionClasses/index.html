@@ -1,0 +1,116 @@
+#set page=Code Generation (Extension classes)
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<h4>Description</h4>
+<p>
+    Main purpose of these classes- is to be used as table rows instead of generic BGEntity class.
+</p>
+<p>
+    This is the main type of Code Generation. It removes all boilerplate code and provides super easy and slim API for
+    accessing table rows and their fields.
+</p>
+<p>
+    Accessing fields without CodeGeneration (A picture is worth a thousand words)
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/CodeGenExtensionClasses1.png"><img style="width: 400px"
+                                                                        src="#path images/BGDatabase/CodeGenExtensionClasses1.png"></a>
+</div>
+
+<p>
+    Accessing fields with CodeGeneration
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/CodeGenExtensionClasses2.png"><img style="width: 400px"
+                                                                        src="#path images/BGDatabase/CodeGenExtensionClasses2.png"></a>
+</div>
+
+<p>
+    Accessing rows without/with CodeGeneration
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/CodeGenExtensionClasses3.png"><img style="width: 400px"
+                                                                        src="#path images/BGDatabase/CodeGenExtensionClasses3.png"></a>
+</div>
+
+
+<h4>Details</h4>
+<p>
+    Generated classes are inherited from generic BGEntity class.
+    These classes can not be added to GameObject, cause they are not Unity's MonoBehaviour.
+    When this CodeGen is enabled, database populated not with basic BGEntity objects, but with these extension classes.
+    So when you access database like this <code>var entity=meta[0];</code> <code>entity</code> variable has this
+    extension type with all the fields generated as properties.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/HoToUse2.png"><img style="width: 400px" src="#path images/BGDatabase/HoToUse2.png"></a>
+</div>
+
+<p>
+    Additionally, you will get all main table(meta) methods alternatives as static methods of that particular class,
+    like this:
+</p>
+<pre class="prettyprint">
+public static BGE_MyTable FindEntity(Predicate&lt;BGE_MyTable&gt; filter)
+{
+}
+public static List&lt;BGE_MyTable&gt; FindEntities(Predicate&lt;BGE_MyTable&gt; filter)
+{
+}
+public static void ForEachEntity(Action&lt;BGE_MyTable&gt; action, Predicate&lt;BGE_MyTable&gt; filter=null)
+{
+}
+public static BGE_MyTable GetEntity(BGId entityId)
+{
+}
+public static BGE_MyTable GetEntity(int index)
+{
+}
+public static BGE_MyTable NewEntity()
+{
+}
+</pre>
+<p>
+    so instead of doing this, for example:
+</p>
+<pre class="cs">
+    var repo = BGRepo.I;
+    var meta = repo["MyTable"];
+    BGE_MyTable entity = (BGE_MyTable) meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
+</pre>
+you can do this:
+<pre class="cs">
+    BGE_MyTable entity = BGE_MyTable.GetEntity(new BGId("HThOdRCxlEGU1aefSG+Nbw"));
+</pre>
+<p>
+    using generated <code>BGE_MyTable</code> class.
+</p>
+
+<h4>How to enable/disable</h4>
+<p>
+    1) Open BGDatabase window from Unity menu <code>Window->BGDatabase</code>
+</p>
+<p>
+    2) Chose <code>Addons->CodeGen</code>
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/CodeGenExtensionClasses4.png"><img style="width: 400px"
+                                                                        src="#path images/BGDatabase/CodeGenExtensionClasses4.png"></a>
+</div>
+<p>
+    3) Toggle enabled on and fill all parameters:
+</p>
+<ol>
+    <li>Code Generator - leave it as it is</li>
+    <li>Source file - all generated classes will use one single .cs file. You can place it anywhere in your project, but not under Editor folder</li>
+    <li>Package - package (namespace) for you classes.</li>
+    <li>Classes names prefix - prefix for your classes names. For example you can use prefix like D_ to distinct your database classes from the rest of the project classes</li>
+    <li>Field names prefix - the same as classes names prefix, but for fields.</li>
+</ol>
+<p>
+    After you fill all parameters, press <code>Generate</code> button to generate classes.
+</p>
+<div class="importantNote">
+    Note, you should regenerate these classes after each change to database structure (e.g. if you add/remove tables or fields, or changing their names)
+</div>
+

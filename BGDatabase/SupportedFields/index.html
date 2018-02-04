@@ -146,10 +146,21 @@
                         <a class="ca" href="../../BGDatabase/SupportedFields">Supported Fields</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../BGDatabase/CodeGeneration">Code Generation</a>
+                        <a class="ca" href="../../BGDatabase/ExportImport">Export Import</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../BGDatabase/CodeGeneration">Code Generation</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../BGDatabase/ExportImport">Export Import</a>
+                        <a class="ca" href="../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior Classes</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
                     </li>
                 </ul>
             </li>
@@ -221,7 +232,7 @@ This is all fields types, BGDatabase currently supports. Note, you can create yo
             Field Group
         </th>
         <th>
-            Field Type
+            Field Name(type)
         </th>
     </tr>
     <tr>
@@ -268,40 +279,40 @@ This is all fields types, BGDatabase currently supports. Note, you can create yo
     <tr>
         <td>List of Primitives</td>
         <td>
-            <p>list of bool</p>
-            <p>list of double</p>
-            <p>list of float</p>
-            <p>list of Guid</p>
-            <p>list of int</p>
-            <p>list of long</p>
-            <p>list of string</p>
+            <p>list of bool (List&lt;bool&gt;)</p>
+            <p>list of double (List&lt;double&gt;)</p>
+            <p>list of float (List&lt;float&gt;)</p>
+            <p>list of Guid (List&lt;Guid&gt;)</p>
+            <p>list of int (List&lt;int&gt;)</p>
+            <p>list of long (List&lt;long&gt;)</p>
+            <p>list of string (List&lt;string&gt;)</p>
         </td>
     </tr>
     <tr>
         <td>List of Unity Primitives</td>
         <td>
-            <p>list of Vector2s</p>
-            <p>list of Vector3s</p>
-            <p>list of Vector4s</p>
-            <p>list of Quaternions</p>
-            <p>list of Colors</p>
+            <p>list of Vector2s (List&lt;Vector2&gt;)</p>
+            <p>list of Vector3s (List&lt;Vector3&gt;)</p>
+            <p>list of Vector4s (List&lt;Vector4&gt;)</p>
+            <p>list of Quaternions (List&lt;Quaternion&gt;)</p>
+            <p>list of Colors (List&lt;Color&gt;)</p>
         </td>
     </tr>
     <tr>
         <td>Relations</td>
         <td>
-            <p>single</p>
-            <p>multiple</p>
-            <p>nested <a href="#nested">#2</a></p>
+            <p>single (BGEntity)</p>
+            <p>multiple (List&lt;BGEntity&gt;)</p>
+            <p>nested (List&lt;BGEntity&gt;) <a href="#nested">#2</a></p>
         </td>
     </tr>
     <tr>
         <td>Unity Scene <a href="#unityscene">#3</a></td>
         <td>
-            <p>ref to entityGo</p>
-            <p>ref to list of entityGos</p>
-            <p>ref to UnityObject</p>
-            <p>ref to list of UnityObjects</p>
+            <p>ref to entityGo (BGEntityGo)</p>
+            <p>ref to list of entityGos (List&lt;BGEntityGo&gt;)</p>
+            <p>ref to UnityObject (BGWithId)</p>
+            <p>ref to list of UnityObjects (List&lt;BGWithId&gt;)</p>
         </td>
     </tr>
 </table>
@@ -342,7 +353,7 @@ This is all fields types, BGDatabase currently supports. Note, you can create yo
 </p>
 <ol>
     <li>if this object has BGEntityGo component attached. BGEntityGo is used to reference a row from a database and you can use it's id to get reference to GameObject</li>
-    <li>if this object has BGWithId component attached. BGWithId is simple component with generated id, you can use to get reference to GameObject</li>
+    <li>if this object has BGWithId component attached. BGWithId is simple component with generated id, you can use this id to get reference to GameObject</li>
 </ol>
 <p>
     Both methods use UnityObject.FindComponentOfType method and super slow.

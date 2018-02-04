@@ -1,99 +1,11 @@
 #set page=Code Generation
 
 Code Generation is a key element for simplifying access to database.
-There are 2 main types of code generation, lets look at them.
+There are 3 different types of code generation, lets look at them.
 
 <ol>
-    <li>Extension classes</li>
-    <li>MonoBehaviour Classes</li>
+    <li><a href="ExtensionClasses">Extension classes</a> (highly recommended)</li>
+    <li><a href="MonoBehaviourClasses">MonoBehaviour Classes</a> (highly recommended)</li>
+    <li><a href="DnaClasses">Dna Classes</a> (should be avoided)</li>
 </ol>
 
-<h4>Extension classes</h4>
-<p>
-    These classes are inherited from basic BGEntity.
-    These classes can not be added to GameObject, cause they are not Unity's MonoBehaviour.
-    When this CodeGen is enabled, database populated not with basic BGEntity objects, but with these extension classes.
-    So when you access database like this <code>var entity=meta[0];</code> <code>entity</code> variable has this extension type,
-    with all fields generated as properties.
-</p>
-<p>
-    This CodeGen is embedded to database via Database addon, called CodeGeneration.
-    After enabling this addon you will be able to generate these classes.
-</p>
-<p>
-    Here is an example. Let's say you have a table called MyTable which has one field, called intField of type int.
-    So the generated class will look like this
-</p>
-<pre class="cs">
-public partial class BGE_MyTable : BGEntity
-{
-    public System.Int32 f_intField
-	{
-		get
-		{
-			return Get&lt;System.Int32&gt;("intField");
-		}
-		set
-		{
-			Set("intField", value);
-		}
-	}
-}</pre>
-
-<p>
-    As you can see all boilerplate code will be generated, so you can simply use <code>entity.f_intField</code> to get or set value of type int
-</p>
-<p>
-    Additionally, you will get all main table(meta) methods overridden as static methods of that particular class, like this:
-</p>
-<pre class="cs">
-public static BGE_MyTable FindEntity(Predicate&lt;BGE_MyTable&gt; filter)
-{
-}
-public static List&lt;BGE_MyTable&gt; FindEntities(Predicate&lt;BGE_MyTable&gt; filter)
-{
-}
-public static void ForEachEntity(Action&lt;BGE_MyTable&gt; action, Predicate&lt;BGE_MyTable&gt; filter=null)
-{
-}
-public static BGE_MyTable GetEntity(BGId entityId)
-{
-}
-public static BGE_MyTable GetEntity(int index)
-{
-}
-public static BGE_MyTable NewEntity()
-{
-}
-</pre>
-<p>
-    so instead of doing this, for example:
-</p>
-<pre class="cs">
-    var repo = BGRepo.I;
-    var meta = repo["MyTable"];
-    var entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
-</pre>
-    you can do this:
-<pre class="cs">
-    var entity = BGE_MyTable.GetEntity(new BGId("HThOdRCxlEGU1aefSG+Nbw"));
-</pre>
-<p>
-    using generated <code>BGE_MyTable</code> class.
-</p>
-
-
-<h4>MonoBehaviour Classes</h4>
-<p>
-    Those classes are inherited from BGEntityGo, which in turn is inherited from Unity's MonoBehaviour.
-    So these classes are Unity standard components and can be added to any GameObject in the Inspector.
-    After that you can chose which row should be connected.
-    So these classes are designed to be added to GameObject in the Inspector
-</p>
-<p>
-    This CodeGen is embedded to database via Database addon, called CodeGeneration.
-    After enabling this addon you will be able to generate these classes.
-</p>
-<p>
-    This classes is not embedded to database and can be generated on Settings tab in the BGDatabase window
-</p>

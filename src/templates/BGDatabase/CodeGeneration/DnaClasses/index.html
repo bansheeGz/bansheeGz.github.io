@@ -1,0 +1,47 @@
+#set page=Code Generation (Dna classes)
+
+<h4>Description</h4>
+<p>
+    Main purpose of these classes- is to be non intrusive replacement for <a href="../ExtensionClasses">ExtensionClasses</a> generator.
+    Generally you do not want to use it, cause ExtensionClasses provides much better code.
+    This generator is supposed to be used for special purposes.
+</p>
+<p>
+    For ExtensionClasses to work, they should be recognizable by core engine.
+    So core engine should "know" about those classes and use them while creating objects for table's rows instead of generic BGEntity class.
+</p>
+<p>
+    Dna classes generate additional properties for each table's field, however still using basic BGEntity object
+</p>
+
+<p>
+    Here is an example:
+</p>
+<pre class="cs">
+public partial class Repo : BGDna
+{
+    public static BGD_MyTable MyTable
+    {
+        get
+        {
+            return I.MyTable;
+        }
+    }
+
+    public partial class BGD_MyTable : BGDnaMeta
+    {
+        public BGDnaField&lt;System.Int32&gt; myField;
+    }
+}
+</pre>
+<p>
+    to access MyTable.myField int field, use this code
+</p>
+<pre class="cs">
+//getter
+var intValue = Repo.MyTable.myField.Get(entity);
+
+//setter
+Repo.MyTable.myField.Set(entity, 1);
+</pre>
+

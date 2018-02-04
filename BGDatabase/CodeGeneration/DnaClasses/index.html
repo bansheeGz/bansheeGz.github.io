@@ -159,7 +159,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior Classes</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
                     </li>
                 </ul>
@@ -201,7 +201,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
                     </li>
                     <li class="cli ">
@@ -218,105 +218,58 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>BGEntity API</h3>
+                <h3>Code Generation (Dna classes)</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
+<h4>Description</h4>
 <p>
-    BGEntity.cs -is a table row, containing 1-n field values.
+    Main purpose of these classes- is to be non intrusive replacement for <a href="../ExtensionClasses">ExtensionClasses</a> generator.
+    Generally you do not want to use it, cause ExtensionClasses provides much better code.
+    This generator is supposed to be used for special purposes.
+</p>
+<p>
+    For ExtensionClasses to work, they should be recognizable by core engine.
+    So core engine should "know" about those classes and use them while creating objects for table's rows instead of generic BGEntity class.
+</p>
+<p>
+    Dna classes generate additional properties for each table's field, however still using basic BGEntity object
 </p>
 
-<h4>Main API</h4>
-<table class="contentTable">
-    <tr>
-        <th>Method/Property</th>
-        <th>Returns</th>
-        <th>Description</th>
-    </tr>
+<p>
+    Here is an example:
+</p>
+<pre class="cs">
+public partial class Repo : BGDna
+{
+    public static BGD_MyTable MyTable
+    {
+        get
+        {
+            return I.MyTable;
+        }
+    }
 
-    <tr>
-        <td>Get&lt;type&gt;(string name)</td>
-        <td>type</td>
-        <td>Get field value by field's name. Type should correspond to field's type.</td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <pre class="cs">
-//get int value of "intField" field
-var intValue = entity.Get&lt;int&gt;("intField");</pre>
-        </td>
-    </tr>
+    public partial class BGD_MyTable : BGDnaMeta
+    {
+        public BGDnaField&lt;System.Int32&gt; myField;
+    }
+}
+</pre>
+<p>
+    to access MyTable.myField int field, use this code
+</p>
+<pre class="cs">
+//getter
+var intValue = Repo.MyTable.myField.Get(entity);
 
+//setter
+Repo.MyTable.myField.Set(entity, 1);
+</pre>
 
-    <tr>
-        <td>Set&lt;type&gt;(string name, type value)</td>
-        <td>void</td>
-        <td>Set field value by field's name. value should have the same type as field does.</td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <pre class="cs">
-//set int value of "intField" field
-var intValue=0;
-entity.Set("intField", intValue);</pre>
-        </td>
-    </tr>
-
-
-</table>
-
-<h4>Additional API</h4>
-
-<table class="contentTable">
-    <tr>
-        <th>Method/Property</th>
-        <th>Returns</th>
-        <th>Description</th>
-    </tr>
-
-    <tr>
-        <td>Id</td>
-        <td>BGId</td>
-        <td>Get table row id</td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <pre class="cs">
-//get entity id
-var id = entity.Id;</pre>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Name</td>
-        <td>string</td>
-        <td>Get table row name. Name is special field of type string. You can also access it by calling <code>entity.Get&lt;string&gt;("name");</code></td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <pre class="cs">
-//get entity name
-var name = entity.Name;</pre>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Meta</td>
-        <td>BGMetaEntity</td>
-        <td>Get the table, this row belongs to</td>
-    </tr>
-    <tr>
-        <td colspan="3">
-            <pre class="cs">
-//get entity Meta
-var meta = entity.Meta;</pre>
-        </td>
-    </tr>
-
-</table>
             </div>
 
             <!--======================================================       BG Database Footer               -->

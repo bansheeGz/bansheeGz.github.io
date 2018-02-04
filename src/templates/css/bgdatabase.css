@@ -301,7 +301,7 @@ code::before, code::after {
 /*code sample*/
 .cs{
     background-color: rgba(0, 0, 0, .06);
-    margin: 0;
+    margin: 0 0 10px;
     font-size: 12px;
 }
 
@@ -314,4 +314,12 @@ code::before, code::after {
     margin-left: auto;
     margin-right: auto;
     display: block;
+}
+.importantNote{
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 12px;
+    border: 1px dotted #ff84d8;
+    background-color: pink;
+    text-align: center;
+    padding: 8px;
 }
