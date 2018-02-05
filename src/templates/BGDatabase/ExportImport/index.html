@@ -4,27 +4,85 @@
     You can edit database data in external tools, such as Excel/Open Office/Libre Office or Google Sheets.
 </p>
 <p>
-    BG Database provide export/import functions to xls files, Google Sheets and json.
+    BG Database provide export/import functions to xls files, Google Sheets and json (backup only).
 </p>
 <p>
-    This article describes common procedure and ideas, you can find provider' specific instruction here:
+    This article describes common procedure and ideas, common for both Excel and Google Sheets.
+    You can find provider' specific instruction here:
     for <a href="../ThirdParty/Excel">Excel/Open Office</a>, for <a href="../ThirdParty/GoogleSheets">Google Sheets</a>
 </p>
 
 <h4>Common idea</h4>
-Here is the illustration, how export/import works and how BGDatabase data are mapped to spreadsheets.
-todo image
+Here is the illustration, how BGDatabase data is mapped to spreadsheets.
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport1.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport1.png"></a>
+</div>
 
-<h4>Adding rows</h4>
-Create new data, leave _id column empty and make sure your settings has "ADd Missing" setting turned on.
+<h4>Using merge settings</h4>
+<p>
+    You have full control over which data you want to synchronize: you can add, delete, update and you can chose which
+    fields you wish to update.
+</p>
+<p>
+    Here is how it works:
+    Every synchronization has a source and a destination.
+    If you are exporting data from BDDatabase to, let's say, Excel file- the source is BGDatabase and a destination- is
+    Excel file.
+    Here is how data is classified during syncing:
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport2.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport2.png"></a>
+</div>
+<p>
+    So, there are 3 types of rows during syncing:
+</p>
+<ol>
+    <li>Matching rows : they exists in the Source and in the Destination. Can be updated and you can chose which fields to update.</li>
+    <li>Missing rows : they exists only in the Source. Can be added to Destination.</li>
+    <li>Orphaned rows : they exists only in the Destination. Can be removed from Destination.</li>
+</ol>
+<p>
+    Let's look at merge settings and find out how we can define actions to take during syncing
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport3.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport3.png"></a>
+</div>
 
-<h4>Updating rows</h4>
-Update data and leave _id column intact.
 
-<h4>Deleting rows</h4>
-Delete rows and make sure your settings has "Remove Orphaned" setting turned on.
+<h4>Field value string format</h4>
+<p>
+We use Acute (Back quote) symbol <code>`</code> to separate tokens of single value, for example Vector3.zero  is <code>0`0`0</code>
+</p>
+<p>
+We use Vertical bar (Pipe) symbol <code>|</code> to separate values of the list, for example List&lt;bool&gt;  is <code>0|1|0</code>
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport4.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport4.png"></a>
+</div>
 
-<h4>How export/import settings work</h4>
-You can fine-tune how data from BGDatabase will be synchronized with data from external tools.
-You can select which table and fields will be included in synchronization and what operation should be performed on individual rows.
-Here is the illustration, which show how it works: todo image
+
+<h4>Adding rows in external tools</h4>
+<p>
+Each row has it's own id- 22 symbols string.
+It's computer-generated value, based on Guid generation.
+</p>
+<p>
+    While creating rows in external tool, you can leave it blank, and it will be updated during importing procedure
+    (make sure you toggled "Update Ids on Import" on)
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport5.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport5.png"></a>
+</div>
+
+
+<h4>What's next?</h4>
+Read product specific guides next
+<ol>
+    <li><a href="../ThirdParty/Excel">Excel/Open Office</a></li>
+    <li><a href="../ThirdParty/GoogleSheets">Google Sheets</a></li>
+</ol>

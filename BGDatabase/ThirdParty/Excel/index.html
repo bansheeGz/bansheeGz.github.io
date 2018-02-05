@@ -168,10 +168,10 @@
                 <a class="pa " href="../../../BGDatabase/ThirdParty">Third-Party Integration</a>
                 <ul>
                     <li class="cli  plic ">
-                        <a class="ca" href="../../../BGDatabase/ThirdParty/Points">Excel</a>
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Excel">Excel</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/ThirdParty/Spline">Google Sheets</a>
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
@@ -225,12 +225,59 @@
             <div id="content">
             
 
-Code Generation makes already very easy BGDatabase API much easier.
-<ol>
-    <li>
-        Import the package
-    </li>
-</ol>
+<p>
+You can export/import BGDatabase data to/from Excel xls format
+(supported by many programs, including Microsoft Excel, OpenOffice and LibreOffice)
+</p>
+<p>
+    You can find more information about Import/Export procedure <a href="../../ExportImport">here</a>
+</p>
+<h4>Step 1: Create Excel Datasource</h4>
+<p>
+    Open BGDatabase window <code>Window->BGDatabase</code>
+</p>
+<p>
+    Go to <code>DataSources</code> tab, press plus icon, chose <code>Datasource type</code>  to be <code>excel</code> and click <code>Add</code> button
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Excel1.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel1.png"></a>
+</div>
+
+<p>
+    Chose xls file location.
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Excel2.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel2.png"></a>
+</div>
+
+<h4>Step 2: Create Export/Import Task</h4>
+<p>
+    Go to <code>Export/Import</code> tab, press plus icon, chose <code>Job type</code>  to be <code>excel</code> and click <code>Add</code> button
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Excel3.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel3.png"></a>
+</div>
+
+<p>
+    Chose xls datasource, created in step 1. Set up metas (tables) you wish to update.
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Excel4.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel4.png"></a>
+</div>
+
+
+<h4>Step 3: Running Export/Import Task</h4>
+<p>
+    Press <code>Export</code> or <code>Import</code> button to run the task you just created.
+</p>
+
+<p>
+    [Optionally] After job is finished, open <code>Log</code> tab to see full log of all actions performed.
+    Pay attention to Warning messages (colored red). Every error or unexpected event happened during syncing will be colored red.
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Excel5.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel5.png"></a>
+</div>
             </div>
 
             <!--======================================================       BG Database Footer               -->
