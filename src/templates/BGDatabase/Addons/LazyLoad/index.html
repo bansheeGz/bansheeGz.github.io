@@ -2,7 +2,9 @@
 
 <p>
     Lazy Load enable lazy-loading of database. Database will not be loaded until the moment you query it.
-    This can greatly simplify development process, cause you will not have to load database data until the moment you need it.
+    This can greatly simplify development process, cause you will not have to load database data every time Unity reload assemblies,
+    e.e every time you change your script or hit Play/Stop button.
+    The actual loading will be delayed until the moment you need BGDatabase data, so there is a chance it will not be loaded at all.
     However we strongly advise you against using it for builds, cause lazy loading requires much more memory and actually slower if you want to load full database.
 </p>
 

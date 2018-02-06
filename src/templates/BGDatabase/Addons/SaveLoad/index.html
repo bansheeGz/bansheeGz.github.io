@@ -1,18 +1,25 @@
 #set page=Save Load
 
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<h4>Description</h4>
 <p>
     Save/Load addon enable you to save/load the state of the database to/from byte array.
     You can define which table and which fields you want to be saved/loaded.
     You can find <code>Save Load</code> addon under <code>Addons->Save Load</code>.
 </p>
 
+
+<h4>Using Merge settings</h4>
 <p>
-    Generally speaking, you want as less data to be saved as possible.
+    Using Merge settings you can chose which data to save/load.
+    You want as less data to be saved as possible.
     You do not need to include data, that is "static" and can not be changed during play session.
 </p>
 
 <p>
     The rules are very simple:
+</p>
 <ol>
     <li>
         If you have some field, which value can be changed during the play session and you want this change to be
@@ -31,3 +38,39 @@
     </li>
 </ol>
 
+<p>
+    Merge settings for this addon is the same as merge settings for Export/Import. You can learn more about merge settings <a href="../../ExportImport#mergeSettings">here</a>
+</p>
+
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SaveLoad1.png"><img style="width: 400px"
+                                                                     src="#path images/BGDatabase/SaveLoad1.png"></a>
+</div>
+
+<h4>How to use</h4>
+
+<pre class="prettyprint">
+//to save
+byte[] bytes = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save();
+
+//to load
+BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
+</pre>
+
+You can declare you MonoBehavior script to be a receiver of BeforeSave event, so the could update the database before saving (code from example project)
+<pre class="prettyprint">
+//this class implement BGAddonSaveLoad.BeforeSaveReciever interface,
+//so OnBeforeSave method will be called before saving
+public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
+{
+    ...
+    //this method is called before saving
+    void BGAddonSaveLoad.BeforeSaveReciever.OnBeforeSave()
+    {
+        //save current position , rotation and scene to the database
+        m_position = transform.position;
+        m_rotation = transform.rotation;
+        m_scene = BGE_Scene.FindEntity(scene => string.Equals(scene.Name, SceneManager.GetActiveScene().name));
+    }
+}
+</pre>

@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="en">
 <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-1');
+    </script>
+
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -93,7 +103,7 @@
     <div style="min-height: 5px;background-color: #CCCCCC"></div>
     <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
         <b>
-            Announcement: <a href="../BGCurve/BGSplineColliders"><b>BG Spline Colliders</b></a>  v.1.0.2 is out
+            Announcement: Please, enroll to our beta program for <a href="../BGDatabase"><b>BG Database</b></a>
             <!--todo add icon-->
             <!--<img src="../images/new-icons.jpg"/>-->
         </b>
@@ -111,12 +121,37 @@
 
 
 <div class="bg-products">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+        <div class="mdl-card__title">
+            <h4 class="mdl-card__title-text">BG Database</h4>
+        </div>
+        <hr style="margin-top: 0">
+        <div class="mdl-card__media">
+            <img style="width: 700px" src="../images/BGDatabase/Main2.png">
+        </div>
+        <div class="mdl-card__supporting-text">
+            <span class="mdl-typography--font-light mdl-typography--subhead">Fast, In Memory, No SQL Database with Excel and GoogleSheets support for Unity 3D 2017.</span>
+        </div>
+        <div class="mdl-card__actions">
+            <a class="bg-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="../BGDatabase">
+                More info
+                <i class="material-icons">chevron_right</i>
+            </a>
+            <a class="bg-link mdl-button mdl-js-button mdl-typography--text-uppercase" href="../BGDatabase">
+                Enroll to our Beta Program
+                <i class="material-icons">chevron_right</i>
+            </a>
+        </div>
+    </div>
+
+
+
     <div class="bg-products-bag mdl-grid">
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone mdl-card mdl-shadow--3dp">
             <div class="mdl-card__title">
                 <h4 class="mdl-card__title-text">BG Curve</h4>
             </div>
-            <hr>
+            <hr style="margin-top: 0">
             <div class="mdl-card__media">
                 <img src="../images/DemoGifBGCurve.gif">
             </div>
@@ -135,7 +170,7 @@
             <div class="mdl-card__title">
                 <h4 class="mdl-card__title-text">BG Spline Colliders</h4>
             </div>
-            <hr>
+            <hr style="margin-top: 0">
             <div class="mdl-card__media">
                 <img src="../images/DemoGifBGSplineColliders.gif">
             </div>
@@ -216,6 +251,7 @@
 
 <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
 
+<!--
 <script>
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -233,6 +269,7 @@
     ga('send', 'pageview');
 
 </script>
+-->
 
 </body>
 </html>
