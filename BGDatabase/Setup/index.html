@@ -32,16 +32,6 @@
     <link rel="icon" type="image/png" href="../../images/BGIcon.png"/>
 </head>
 <body>
-<div id="fb-root"></div>
-<!--
-<script>(function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8";
-    fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
--->
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -77,10 +67,12 @@
             <!-- Navigation -->
             <div class="bg-navigation-bag" id="bg-navigation">
                 <nav class="bg-navigation mdl-navigation">
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="../../Games">Our_Games</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
-                       href="../../Unity3D">Unity3D</a>
+                       href="../../BGDatabase">BG_DATABASE</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGCurve">BG_CURVE</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGCurve/BGSplineColliders">BG_SPLINE_COLLIDERS</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
                        href="../../Support">Support</a>
                 </nav>
@@ -91,8 +83,8 @@
             </button>
             <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
                 for="more-button">
-                <li class="mdl-menu__item"><a href="../../Games">Games</a></li>
-                <li class="mdl-menu__item"><a href="../../Unity3D">Unity Assets</a></li>
+                <li class="mdl-menu__item"><a href="../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../BGCurve">BG Curve</a></li>
                 <li class="mdl-menu__item"><a href="../../Support">Support</a></li>
                 <li class="mdl-menu__item"><a href="../../About">About Us</a></li>
             </ul>
@@ -280,8 +272,36 @@
 </ol>
 
 <h4 id="setup">Details about how database files are organized</h4>
+<p>
+    Database file, named <code>bansheegz_database.bytes</code> should be placed right under Resources folder.
+    Resources folder can be anywhere in your project but not under <code>Editor</code> folder.
+    Additional file (named bansheegz_database_settings.json ) should be placed in the same folder as the database file.
+    This file has an information about database settings file location, which can be anywhere on your PC, like this:
+</p>
+<pre class="cs">
+{
+    "editorSettingsPath": "D:/Unity/Database/bansheegz_database_editor.json"
+}
+</pre>
+<p>
+    This setting file (<code>bansheegz_database_editor.json</code>) has some additional information about database,
+    like widths of the tables columns, data about Export/Import tasks etc.
+</p>
 
 <h4 id="revert">Reverting database to default (example) database</h4>
+<p>
+By default, BGDatabase uses default database, located at <code>Assets\BansheeGz\BGDatabase\Examples\Resources\bansheegz_database_default.bytes</code>
+As soon as you create your own database, your database, named <code>bansheegz_database.bytes</code> will be used.
+But you may want to revert to default database, for example, to test how our example scenes are working.
+</p>
+<p>
+    This is very easy to do- locate your <code>bansheegz_database.bytes</code> file (you can find it's location under <code>Settings->Main</code>) and rename or move it to another location,
+    then return to <code>Window->BGDatabase</code> and press <code>Reload</code> button.
+    Default database will be loaded.
+</p>
+<p>
+    As soon as you do not need it anymore: rename your database file back to <code>bansheegz_database.bytes</code> or move it back from another folder and hit <code>Reload</code>
+</p>
             </div>
 
             <!--======================================================       BG Database Footer               -->
@@ -296,33 +316,6 @@
         <footer class="bg-footer mdl-mega-footer" style="clear:both;">
             <div class="mdl-mega-footer--top-section">
                 <div class="mdl-mega-footer--middle-section bg-footer-email">
-<!--
-                    <table>
-                        <tr>
-                            <td>
-
-                                <a href="https://twitter.com/BansheeGz" class="twitter-follow-button"
-                                   data-show-count="false"
-                                   data-size="large">Follow @BansheeGz</a>
-                                <script>!function (d, s, id) {
-                                    var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https';
-                                    if (!d.getElementById(id)) {
-                                        js = d.createElement(s);
-                                        js.id = id;
-                                        js.src = p + '://platform.twitter.com/widgets.js';
-                                        fjs.parentNode.insertBefore(js, fjs);
-                                    }
-                                }(document, 'script', 'twitter-wjs');</script>
-
-                            </td>
-                            <td valign="center">
-                                <div class="fb-follow" data-href="https://www.facebook.com/BansheeGz/"
-                                     data-width="163" data-height="28" data-layout="button" data-size="large" data-show-faces="true">
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
--->
                     <table>
                         <tr>
                             <td>
@@ -353,26 +346,6 @@
 </div>
 
 <script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
-
-<!--
-<script>
-    (function (i, s, o, g, r, a, m) {
-        i['GoogleAnalyticsObject'] = r;
-        i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-        a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0];
-        a.async = 1;
-        a.src = g;
-        m.parentNode.insertBefore(a, m)
-    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-
-    ga('create', 'UA-76367732-7', 'auto');
-    ga('send', 'pageview');
-
-</script>
--->
 
 </body>
 </html>

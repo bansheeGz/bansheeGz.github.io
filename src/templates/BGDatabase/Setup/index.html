@@ -45,5 +45,33 @@
 </ol>
 
 <h4 id="setup">Details about how database files are organized</h4>
+<p>
+    Database file, named <code>bansheegz_database.bytes</code> should be placed right under Resources folder.
+    Resources folder can be anywhere in your project but not under <code>Editor</code> folder.
+    Additional file (named bansheegz_database_settings.json ) should be placed in the same folder as the database file.
+    This file has an information about database settings file location, which can be anywhere on your PC, like this:
+</p>
+<pre class="cs">
+{
+    "editorSettingsPath": "D:/Unity/Database/bansheegz_database_editor.json"
+}
+</pre>
+<p>
+    This setting file (<code>bansheegz_database_editor.json</code>) has some additional information about database,
+    like widths of the tables columns, data about Export/Import tasks etc.
+</p>
 
 <h4 id="revert">Reverting database to default (example) database</h4>
+<p>
+By default, BGDatabase uses default database, located at <code>Assets\BansheeGz\BGDatabase\Examples\Resources\bansheegz_database_default.bytes</code>
+As soon as you create your own database, your database, named <code>bansheegz_database.bytes</code> will be used.
+But you may want to revert to default database, for example, to test how our example scenes are working.
+</p>
+<p>
+    This is very easy to do- locate your <code>bansheegz_database.bytes</code> file (you can find it's location under <code>Settings->Main</code>) and rename or move it to another location,
+    then return to <code>Window->BGDatabase</code> and press <code>Reload</code> button.
+    Default database will be loaded.
+</p>
+<p>
+    As soon as you do not need it anymore: rename your database file back to <code>bansheegz_database.bytes</code> or move it back from another folder and hit <code>Reload</code>
+</p>
