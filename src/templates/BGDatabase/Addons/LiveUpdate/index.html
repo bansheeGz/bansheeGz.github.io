@@ -1,0 +1,45 @@
+#set page=Live Update
+
+<p>
+    Live update let you update database data on player's devices using Google Sheets.
+</p>
+<p>
+    This is how it works:
+</p>
+<ol>
+    <li>First time your game is launched and database is loaded, it'll try to read data from Google Sheets</li>
+    <li>If step 1 is successful, every time database is loaded, it will be merged with data from Google Sheets, thus applying the update.</li>
+    <li>If step 1 is unsuccessful, database data will remain intact.</li>
+</ol>
+<p>
+    LiveUpdate addon uses public GoogleSheets Json API. It means your spreadsheet need to be publicly available.
+</p>
+
+<table class="contentTable">
+    <tr>
+        <th>
+            Parameter name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Spreadsheet Id</td>
+        <td>
+            Id of your spreadsheet. Learn how to obtain it <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">here</a>
+        </td>
+    </tr>
+    <tr>
+        <td>API key</td>
+        <td>
+            API key to use for request. Learn how to create it <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">here</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Merge Settings</td>
+        <td>
+            The same merge settings you use for Export/Import or Saving/Loading. Learn more about merge settings <a href="../../ExportImport#mergeSettings">here</a>
+        </td>
+    </tr>
+</table>

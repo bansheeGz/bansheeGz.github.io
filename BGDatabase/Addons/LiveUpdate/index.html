@@ -189,10 +189,10 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
                     </li>
                 </ul>
@@ -223,7 +223,7 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Lazy Load</h3>
+                <h3>Live Update</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
@@ -231,11 +231,18 @@
             
 
 <p>
-    Lazy Load enable lazy-loading of database. Database will not be loaded until the moment you query it.
-    This can greatly simplify development process, cause you will not have to load database data every time Unity reload assemblies,
-    e.e every time you change your script or hit Play/Stop button.
-    The actual loading will be delayed until the moment you need BGDatabase data, so there is a chance it will not be loaded at all.
-    However we strongly advise you against using it for builds, cause lazy loading requires much more memory and actually slower if you want to load full database.
+    Live update let you update database data on player's devices using Google Sheets.
+</p>
+<p>
+    This is how it works:
+</p>
+<ol>
+    <li>First time your game is launched and database is loaded, it'll try to read data from Google Sheets</li>
+    <li>If step 1 is successful, every time database is loaded, it will be merged with data from Google Sheets, thus applying the update.</li>
+    <li>If step 1 is unsuccessful, database data will remain intact.</li>
+</ol>
+<p>
+    LiveUpdate addon uses public GoogleSheets Json API. It means your spreadsheet need to be publicly available.
 </p>
 
 <table class="contentTable">
@@ -248,16 +255,21 @@
         </th>
     </tr>
     <tr>
-        <td>Disconnect entities</td>
+        <td>Spreadsheet Id</td>
         <td>
-            If you set it to true BGEntityGo components will not try to connect to database while you in the Editor.
-            BGEntityGo components - are the special components you can use to hook up any GameObject to the database row.
+            Id of your spreadsheet. Learn how to obtain it <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">here</a>
         </td>
     </tr>
     <tr>
-        <td>Enable in Build</td>
+        <td>API key</td>
         <td>
-            We recommend to not use it. Lazy Load is meant to be used during development. This toggle enable you to use lazy loading for builds and this is not recommended.
+            API key to use for request. Learn how to create it <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">here</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Merge Settings</td>
+        <td>
+            The same merge settings you use for Export/Import or Saving/Loading. Learn more about merge settings <a href="../../ExportImport#mergeSettings">here</a>
         </td>
     </tr>
 </table>
