@@ -1,0 +1,38 @@
+#set page=Events
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<h4>What is events?</h4>
+
+<p>
+    Events let use listen to database changes, like changing the field or entity, adding or removing entities.
+</p>
+
+<h4>How to use?</h4>
+
+<p>
+    Add your listeners, like this
+</p>
+<pre class="prettyprint">
+		var events = BGRepo.I.Events;
+
+		//listen to particular entity (row)
+		events.AddEntityUpdatedListener(new BGId("some-entity-id"), EntityUpdated);
+		events.AddEntityDeletedListener(new BGId("some-entity-id"), EntityDeleted);
+
+		//listen to all entities (rows)
+		events.AddAnyEntityAddedListener(new BGId("some-meta-id"), SomeEntityAdded);
+		events.AddAnyEntityDeletedListener(new BGId("some-meta-id"), SomeEntityDeleted);
+		events.AddAnyEntityUpdatedListener(new BGId("some-meta-id"), SomeEntityUpdated);
+
+		//listen to some field change
+		events.AddFieldListener(new BGId("some-field-id"), FieldChanged);
+</pre>
+
+<p>
+    Do not forget to remove listeners, as soon as they are not needed.
+    For example in you MonoBehaviour classes, use OnDestroy method to remove listeners.
+</p>
+<p>
+    Use corresponding events.RemoveXXX method to remove a listener.
+</p>

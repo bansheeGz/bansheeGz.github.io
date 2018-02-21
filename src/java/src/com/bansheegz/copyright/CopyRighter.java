@@ -21,7 +21,7 @@ public class CopyRighter
                 "<copyright file=\"__file__\" company=\"BansheeGz\">\n" +
                 "    Copyright (c) 2018 All Rights Reserved\n" +
                 "</copyright>\n" +
-                "*/\n";
+                "*/\n\n";
 
         ignoreNames.add("SimpleJSON.cs");
     }

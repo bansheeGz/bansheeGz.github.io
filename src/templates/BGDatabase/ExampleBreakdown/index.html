@@ -125,37 +125,38 @@ You can find more information about Save/Load <a href="../Addons/SaveLoad">here<
                 m_gold;</code>.
                 <code>m_gold</code> field reads/write data from/to database
             </li>
+            <li>Add some gold to the player</li>
             <li>Play sound effect when object's collected.</li>
             <li>Remove the object when it's collected from scene and from database.</li>
-            <li>Notify <code>BGSpawner.cs</code> so it can check if all objects are collected and new objects have to be
-                spawned
-            </li>
         </ol>
 
         <pre class="prettyprint">
 public class BGCollectable : BGM_Collectable
 {
-    //this method is called when underlying table row is changed
-    //(e.g. then this object is hooked to a database)
+    //this callback is called then connected entity is changed
     public override void EntityChanged()
     {
         Text.text = "Gold:" + m_gold;
     }
 
-    //this method is called then player collides with this GameObject
-    public void Collected()
+    private void OnTriggerEnter(Collider other)
     {
-        //play sound
-        var audioSource = FindObjectOfType&lt;BGPlayer&gt;().GetComponent&lt;AudioSource&gt;();
-        audioSource.clip = m_type.f_audio;
-        audioSource.Play();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            var player = other.GetComponent&lt;BGPlayer&gt;();
 
-        //remove from database & scene
-        Entity.Delete();
-        Destroy(gameObject);
+            //add gold
+            player.m_gold += m_gold;
 
-        //spawn new collectables if needed
-        FindObjectOfType&lt;BGSpawner&gt;().CheckForNewSpawns();
+            //play sound
+            var audioSource = player.GetComponent&lt;AudioSource&gt;();
+            audioSource.clip = m_type.f_audio;
+            audioSource.Play();
+
+            //remove from database & scene
+            Entity.Delete();
+            Destroy(gameObject);
+        }
     }
 }
         </pre>
@@ -168,25 +169,27 @@ public class BGCollectable : BGM_Collectable
         <pre class="prettyprint">
 public class BGGoToScene : BGM_Scene
 {
-    //this method is called then player collides with this GameObject
-    public void Load()
+    private void OnTriggerEnter(Collider other)
     {
-        //get reference to player
-        var player = FindObjectOfType&lt;BGPlayer&gt;();
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //get reference to player
+            var player = other.GetComponent&lt;BGPlayer&gt;();
 
-        //set player position & rotation to scene's spawn position & rotation
-        player.m_position = m_spawnPosition;
-        player.m_rotation = Quaternion.Euler(m_spawnRotation);
+            //set player position & rotation to scene's spawn position & rotation
+            player.m_position = m_spawnPosition;
+            player.m_rotation = Quaternion.Euler(m_spawnRotation);
 
-        //load the scene
-        SceneManager.LoadScene(Entity.Name);
+            //load the scene
+            SceneManager.LoadScene(Entity.Name);
+        }
     }
 }
         </pre>
 
     </li>
     <li><code>BGSpawner.cs</code>- this script fills database with new objects and also spawn them to the scene.
-        It hooked up to <code>Scene</code> table.
+        It hooked up to <code>Scene</code> table. It uses database events, to find the moment all objects are collected.
         <pre class="prettyprint">
 public class BGSpawner :BGM_Scene
 {
@@ -194,6 +197,14 @@ public class BGSpawner :BGM_Scene
     {
         base.Start();
         Spawn();
+        //use database events to keep track the moment, when all collectables are gathered
+        BGRepo.I.Events.AddAnyEntityDeletedListener(BGE_Collectable.MetaDefault.Id, CheckForNewSpawns);
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        BGRepo.I.Events.RemoveAnyEntityDeletedListener(BGE_Collectable.MetaDefault.Id, CheckForNewSpawns);
     }
 
     //spawn unity's gameobjects - corresponding to Repo objects
@@ -217,9 +228,8 @@ public class BGSpawner :BGM_Scene
         }
     }
 
-    //this method is called by BGCollectable when it's collected.
-    //It spawns new collectables randomly to all scenes if all objects are collected
-    public void CheckForNewSpawns()
+    //This method create new collectables randomly for all scenes if all objects are collected
+    public void CheckForNewSpawns(object sender, BGEventArgsAnyEntity args)
     {
         //there are still some collectables
         if (BGE_Collectable.CountEntities > 0) return;
@@ -257,51 +267,19 @@ public class BGSpawner :BGM_Scene
     </li>
     <li><code>BGPlayer.cs</code>- this script is attached to the player and hooked up to a first row of <code>Player</code> table via extending from BGM_Player.
         <ol>
-            <li>It initialize it's position and rotation from database in the Start method and reads the amount of collected gold from database</li>
+            <li>It initialize it's position and rotation from database in the Start method</li>
             <li>It implements <code>BGAddonSaveLoad.BeforeSaveReciever</code> interface to ensure <code>OnBeforeSave</code> method is called before saving.
             In this method it saves it's own position and amount of gold to the database, so while saving those values will be put to the save file.</li>
         </ol>
         <pre class="prettyprint">
 public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
 {
-    public int Gold
-    {
-        set
-        {
-            m_gold = value;
-            BGUi.Instance.Gold = value;
-        }
-    }
-
     public override void Start()
     {
         base.Start();
-
-        //show the amount of gold gathered
-        BGUi.Instance.Gold = m_gold;
-
         //get pos and rotation from the table
         transform.position = m_position;
         transform.rotation = m_rotation;
-    }
-
-    //this is called when player collides with something
-    void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        var collectable = hit.gameObject.GetComponent&lt;BGCollectable&gt;();
-        if (collectable != null)
-        {
-            //player collided with collectable object
-            Gold = m_gold + collectable.m_gold;
-            collectable.Collected();
-        }
-
-        var gotoScene = hit.gameObject.GetComponent&lt;BGGoToScene&gt;();
-        if (gotoScene != null)
-        {
-            //player collided with a teleport to another scene
-            gotoScene.Load();
-        }
     }
 
     //this method is called before saving
