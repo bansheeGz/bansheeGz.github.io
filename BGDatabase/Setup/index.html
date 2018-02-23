@@ -284,17 +284,11 @@
 <p>
     Database file, named <code>bansheegz_database.bytes</code> should be placed right under Resources folder.
     Resources folder can be anywhere in your project but not under <code>Editor</code> folder.
-    Additional file (named bansheegz_database_settings.json ) should be placed in the same folder as the database file.
-    This file has an information about database settings file location, which can be anywhere on your PC, like this:
 </p>
-<pre class="cs">
-{
-    "editorSettingsPath": "D:/Unity/Database/bansheegz_database_editor.json"
-}
-</pre>
 <p>
-    This setting file (<code>bansheegz_database_editor.json</code>) has some additional information about database,
-    like widths of the tables columns, data about Export/Import tasks etc.
+    Settings file (default name is <code>bansheegz_database_settings.json</code>) has some additional information about database,
+    like widths of the tables columns, data about Export/Import tasks etc. It can be placed in Resources folder next to database file,
+    however you can place it anywhere on your computer. Go to Settings->Main to chose its path.
 </p>
 
 <h4 id="revert">Reverting database to default (example) database</h4>
