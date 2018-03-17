@@ -98,7 +98,7 @@ This is all fields types, BGDatabase currently supports. Note, you can create yo
     You can reference any Unity asset (UnityObject can be used to reference any asset).
     This reference will be resolved by a path.
     It means all unity asset fields store the path to an asset.
-    There is 2 ways this path can be properly resolved:
+    There are 2 ways this path can be properly resolved:
 </p>
 <ol>
     <li>
@@ -107,7 +107,7 @@ This is all fields types, BGDatabase currently supports. Note, you can create yo
     </li>
     <li>
         Asset should be included in the asset bundle. This is super complicated way.
-        To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to query this field.
+        To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to query this field, otherwise null will be returned.
         Note, we do not manage asset bundles in any way.
     </li>
 </ol>

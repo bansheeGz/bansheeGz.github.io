@@ -1,0 +1,75 @@
+#set pageCss=css/page.css
+#set GA=UA-76367732-8
+#set section=BGLocalization
+#set metadescription=BG Localization is an addon for BG Database, enabling fields localization.
+
+<link rel="stylesheet" href="#path css/bgdatabase.css">
+<link rel="stylesheet" href="#path css/magnific-popup.css">
+<script src="#path js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul>
+            <li class="pli curveicon #if page=BGLocalization plic #endif">
+                <a class="pa" href="#path BGLocalization">BG Localization Home</a>
+                <ul>
+                    <li class="cli #if page='How it works' plic #endif">
+                        <a class="ca" href="#path BGLocalization/HowItWorks">How it works</a>
+                    </li>
+                    <li class="cli #if page='How to use' plic #endif">
+                        <a class="ca" href="#path BGLocalization/HowToUse">How to use</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli #if page='Translation' plic #endif">
+                <a class="pa " href="#path BGLocalization/Translation">Translation</a>
+                <ul>
+                    <li class="cli #if page='Yandex Translate' plic #endif">
+                        <a class="ca" href="#path BGLocalization/Translation/Yandex">Yandex Translate</a>
+                    </li>
+                    <li class="cli #if page='IBM Watson Translate' plic #endif">
+                        <a class="ca" href="#path BGLocalization/Translation/Watson">IBM Watson Translate</a>
+                    </li>
+                    <li class="cli #if page='Google Translate' plic #endif">
+                        <a class="ca" href="#path BGLocalization/Translation/Google">Google Translate</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="#path BGLocalization">BG BGLocalization Home</a>
+        <a class="pa " href="#path BGLocalization/HowToUse">How To Use</a>
+        <a class="pa " href="#path BGLocalization/Translation">Translation</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>#get page </h3>
+            </div>
+
+            <!--======================================================        BG Database Content              -->
+            <div id="content">
+            #get _content
+            </div>
+
+            <!--======================================================       BG Database Footer               -->
+        </div>
+
+    </div>
+</div>
+

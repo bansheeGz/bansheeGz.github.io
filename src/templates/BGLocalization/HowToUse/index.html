@@ -1,0 +1,77 @@
+#set page=How to use
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<h4>Setup</h4>
+<ol>
+    <li>
+        Import BGLocalization package
+    </li>
+    <li>
+        Create your own database ( <a href="../../BGDatabase/Setup">more info</a>)
+    </li>
+    <li>
+        Enable localization addon
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/HowToUse1.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse1.png"></a>
+        </div>
+    </li>
+    <li>
+        Go to Database->Localization and add your locales. Locale name- letters only, 8 chars maximum.
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/HowToUse2.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse2.png"></a>
+        </div>
+        Note, locales is just a regular table, so you can add your own fields, like native spelling, flag icons etc.
+    </li>
+    <li>
+        Go to Configuration and create a table for your locale data (type of the table is Localization), chose the type of data to be stored.
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/HowToUse3.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse3.png"></a>
+        </div>
+    </li>
+    <li>
+        Create a normal table (row)
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/HowToUse4.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse4.png"></a>
+        </div>
+    </li>
+    <li>
+        Add a localized field to this table
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/HowToUse5.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse5.png"></a>
+        </div>
+    </li>
+    <li>
+        Go to Database->"Your created table", add some rows. You can edit localized values here (current locale will be used)
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/HowToUse6.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse6.png"></a>
+        </div>
+    </li>
+    <li>
+        Another option- is to chose "localization" table and edit values for all locales at once. You can use Auto-translation here
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/HowToUse7.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse7.png"></a>
+        </div>
+    </li>
+    <li>
+        Learn more about auto-translation <a href="../Translation">here</a>
+    </li>
+    <li>
+        Once you data is ready, you can localize your Components (any field or property). Add BGLocalizationGo to your GameObject,
+        chose one of the "localization" tables, assign an entity and chose target component and field/property
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/HowToUse8.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse8.png"></a>
+        </div>
+
+    </li>
+
+</ol>
+
+<h4>How to change locale</h4>
+<pre class="prettyprint">
+    var addon = BGRepo.I.Addons.Get&lt;BGAddonLocalization&gt;();
+    addon.CurrentLocale = "en"; // replace en with your locale name
+</pre>
+<br/>
+<br/>
+<br/>

@@ -1,0 +1,43 @@
+#set page=Google Translate
+
+<div class="importantNote">
+    Google Translate does not have a free layer, so it's not integrated to our asset.
+    But you can use Google Translate via Google Sheets
+</div>
+
+<h4>Setup</h4>
+<ol>
+    <li>
+        Export your "localization" table with string/text field type to Google Sheets
+        (more information about how to do it is <a href="../../../BGDatabase/ThirdParty/GoogleSheets">here</a>)
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Google1.png"><img style="width: 400px" src="#path images/BGLocalization/Google1.png"></a>
+        </div>
+
+    </li>
+    <li>
+        You can use the following formula to translate cell content
+        <code>=GoogleTranslate(Cell, "source language","target language")</code>
+        In our case this formula will be <code>=GoogleTranslate(C2, "en", "fr")</code>
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Google2.png"><img style="width: 400px" src="#path images/BGLocalization/Google2.png"></a>
+        </div>
+
+    </li>
+    <li>
+        Once one cell is translated, you can translate the rest rows by clicking on blue dot and dragging your mouse to the last row
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Google3.png"><img style="width: 400px" src="#path images/BGLocalization/Google3.png"></a>
+        </div>
+
+        Once you release the mouse, all rows will be translated
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Google4.png"><img style="width: 400px" src="#path images/BGLocalization/Google4.png"></a>
+        </div>
+    </li>
+    <li>
+        Import data from Google Sheets back to BGDatabase (more information about Export/Import can be found <a href="../../../BGDatabase/ExportImport">here</a>).
+    </li>
+</ol>

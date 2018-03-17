@@ -1,0 +1,38 @@
+#set page=How it works
+
+
+<h4>General information</h4>
+<p>
+    Localization is an addon to BG Database asset. It adds several fields, which support localization.
+</p>
+
+<div class="bg-image">
+    <a href="#path images/BGLocalization/LocalizedFields.png"><img style="width: 400px" src="#path images/BGLocalization/LocalizedFields.png"></a>
+</div>
+
+<p>
+    The fields can be string/text or unity asset (some restriction apply- asset should be placed under Resources folder or in asset bundle)
+</p>
+
+<p>
+    Locale fields can change their values, depending on which locale is set as current locale.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGLocalization/HowItWorks2.png"><img style="width: 400px" src="#path images/BGLocalization/HowItWorks2.png"></a>
+</div>
+
+<h4>Under the hood</h4>
+<p>
+    Locale fields does not store the value itself, but a reference to another row of special table, which has one column per locale
+</p>
+<div class="bg-image">
+    <a href="#path images/BGLocalization/HowItWorks3.png"><img style="width: 400px" src="#path images/BGLocalization/HowItWorks3.png"></a>
+</div>
+
+<p>
+    Also, all localized data are stored in separate files, cause only one locale can be set as current,
+    so we don't need to load data which relates to another locales.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGLocalization/HowItWorks4.png"><img style="width: 400px" src="#path images/BGLocalization/HowItWorks4.png"></a>
+</div>

@@ -1,0 +1,61 @@
+#set page=IBM Watson Translate
+
+<div class="importantNote">
+    Watson by default has very limited translation languages pairs available.
+    You can find out which pairs are available as described <a href="https://www.ibm.com/watson/developercloud/language-translator/api/v2/?curl#list-models">here</a>
+    If pair is not available you will encounter error message "model not found".
+    In this case, you will need to create your own model as described here
+    <a href="https://www.ibm.com/watson/developercloud/language-translator/api/v2/?curl#create-model">here</a>.
+    For us it looks as super overcomplicated procedure, so we did not try or test it
+</div>
+
+<h4>Setup</h4>
+<ol>
+    <li>
+        Go to Configuration->Locale and add field of type string, named "watsonLanguage"
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Watson1.png"><img style="width: 400px" src="#path images/BGLocalization/Watson1.png"></a>
+        </div>
+
+    </li>
+    <li>
+        Sign up for IBM translation service as described here
+        <a href="https://console.bluemix.net/docs/services/language-translator/getting-started.html#gettingstarted">here</a>
+    </li>
+    <li>
+        Get your user/password pair as described <a href="https://console.bluemix.net/docs/services/watson/getting-started-credentials.html#getting-credentials-manually">here</a>
+    </li>
+    <li>
+        Go to Settings->Translation and fill in your user and password and set Language field to "watsonLanguage"
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Watson2.png"><img style="width: 400px" src="#path images/BGLocalization/Watson2.png"></a>
+        </div>
+
+    </li>
+
+    <li>Go to Database->Localization and for each locale fill "watsonLanguage" field with the right language
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Watson3.png"><img style="width: 400px" src="#path images/BGLocalization/Watson3.png"></a>
+        </div>
+
+    </li>
+
+    <li>
+        Chose any table with "localization" (Locale) type and string/text field type.
+        Click on Setup and chose Watson as translation service.
+        Chose your source language and destination languages.
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Watson4.png"><img style="width: 400px" src="#path images/BGLocalization/Watson4.png"></a>
+        </div>
+    </li>
+
+    <li>Click "Run" to translate several rows. Click T↑ to translate one row to all locales. Click T↓ to translate current row to one locale
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Watson5.png"><img style="width: 400px" src="#path images/BGLocalization/Watson5.png"></a>
+        </div>
+
+    </li>
+
+</ol>
