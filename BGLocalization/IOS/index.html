@@ -141,10 +141,10 @@
                     <li class="cli ">
                         <a class="ca" href="../../BGLocalization/HowItWorks">How it works</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../BGLocalization/HowToUse">How to use</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../BGLocalization/IOS">Building for IOS</a>
                     </li>
                 </ul>
@@ -173,7 +173,7 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>How to use</h3>
+                <h3>Building for IOS</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
@@ -182,79 +182,45 @@
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
-<h4>Setup</h4>
-<ol>
-    <li>
-        Import BGLocalization package
-    </li>
-    <li>
-        Create your own database ( <a href="../../BGDatabase/Setup">more info</a>)
-    </li>
-    <li>
-        Enable localization addon
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse1.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse1.png"></a>
-        </div>
-    </li>
-    <li>
-        Go to Database->Localization and add your locales. Locale name- letters only, 8 chars maximum.
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse2.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse2.png"></a>
-        </div>
-        Note, locales is just a regular table, so you can add your own fields, like native spelling, flag icons etc.
-    </li>
-    <li>
-        Go to Configuration and create a table for your locale data (type of the table is Localization), chose the type of data to be stored.
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse3.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse3.png"></a>
-        </div>
-    </li>
-    <li>
-        Create a normal table (row)
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse4.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse4.png"></a>
-        </div>
-    </li>
-    <li>
-        Add a localized field to this table
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse5.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse5.png"></a>
-        </div>
-    </li>
-    <li>
-        Go to Database->"Your created table", add some rows. You can edit localized values here (current locale will be used)
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse6.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse6.png"></a>
-        </div>
-    </li>
-    <li>
-        Another option- is to chose "localization" table and edit values for all locales at once. You can use Auto-translation here
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse7.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse7.png"></a>
-        </div>
-    </li>
-    <li>
-        Learn more about auto-translation <a href="../Translation">here</a>
-    </li>
-    <li>
-        Once you data is ready, you can localize your Components (any field or property). Add BGLocalizationGo to your GameObject,
-        chose one of the "localization" tables, assign an entity and chose target component and field/property
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse8.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse8.png"></a>
-        </div>
+<h4>Building for IOS</h4>
+<p>
+    We are using Reflection to localize the properties (or fields)
+</p>
+<p>
+    If you are targeting IOS, you may encounter the situation, that property can be stripped (removed) from the build.
+</p>
 
-    </li>
+<p>
+    If you use only properties, marked as recommended (prefixed [RECOMMENDED]), you have nothing to worry about
+</p>
 
-</ol>
+<p>
+    However if you are using another properties, you want to force compiler to include them in the build.
+</p>
 
-<h4>How to change locale</h4>
+<p>
+    There are couple of methods how to do it, the most straightforward is: to make direct references in the code.
+</p>
+
+<p>
+    Create a simple class, add private method, reference the properties you are using and add it to one of your scenes.
+</p>
+
+<p>
+    Here is an example:
+</p>
+
 <pre class="prettyprint">
-    var addon = BGRepo.I.Addons.Get&lt;BGAddonLocalization&gt;();
-    addon.CurrentLocale = "en"; // replace en with your locale name
+public class PreventIosFromStripping : MonoBehaviour
+{
+    private void Unused()
+    {
+        GetComponent&gt;MyComponent&lt;().myProperty1 = null;
+        GetComponent&gt;MyComponent&lt;().myProperty2 = null;
+        //etc.
+    }
+}
 </pre>
-<br/>
-<br/>
-<br/>
             </div>
 
             <!--======================================================       BG Database Footer               -->
