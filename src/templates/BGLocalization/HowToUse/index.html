@@ -2,7 +2,7 @@
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
-<h4>Setup</h4>
+<h4>Common Setup</h4>
 <ol>
     <li>
         Import BGLocalization package
@@ -23,6 +23,25 @@
         </div>
         Note, locales is just a regular table, so you can add your own fields, like native spelling, flag icons etc.
     </li>
+</ol>
+<h4>Setup single value table</h4>
+<p>
+    Single value table is easy to use, but can have only one field.
+</p>
+<ol>
+    <li>
+        Go to Configuration and create a table (type of the table is LocalizationSingleValue), chose the type of data to be stored.
+    </li>
+    <li>
+        Go to Database->"Your created table", add some rows. You can edit values for all locales here.
+        Also you can use machine translation (Learn more about auto-translation <a href="../Translation">here</a>)
+    </li>
+</ol>
+<h4>Setup embedded fields</h4>
+<p>
+    Embedded fields allow you to embed localization fields into normal rows along with other fields and require more actions.
+</p>
+<ol>
     <li>
         Go to Configuration and create a table for your locale data (type of the table is Localization), chose the type of data to be stored.
         <div class="bg-image">
@@ -36,7 +55,7 @@
         </div>
     </li>
     <li>
-        Add a localized field to this table
+        Add a localized field to this table. You will need to chose a related table (created at step 1) here
         <div class="bg-image">
             <a href="#path images/BGLocalization/HowToUse5.png"><img style="width: 400px" src="#path images/BGLocalization/HowToUse5.png"></a>
         </div>

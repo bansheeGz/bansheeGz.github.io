@@ -187,34 +187,69 @@
 </p>
 
 <div class="bg-image">
-    <a href="../../images/BGLocalization/LocalizedFields.png"><img style="width: 400px" src="../../images/BGLocalization/LocalizedFields.png"></a>
+    <a href="../../images/BGLocalization/LocalizedFields.png"><img style="width: 400px"
+                                                                   src="../../images/BGLocalization/LocalizedFields.png"></a>
 </div>
 
 <p>
-    The fields can be string/text or unity asset (some restriction apply- asset should be placed under Resources folder or in asset bundle)
+    The fields can be string/text or unity asset (some restriction apply- asset should be placed under Resources folder
+    or in asset bundle)
 </p>
 
 <p>
-    Locale fields can change their values, depending on which locale is set as current locale.
-</p>
-<div class="bg-image">
-    <a href="../../images/BGLocalization/HowItWorks2.png"><img style="width: 400px" src="../../images/BGLocalization/HowItWorks2.png"></a>
-</div>
-
-<h4>Under the hood</h4>
-<p>
-    Locale fields does not store the value itself, but a reference to another row of special table, which has one column per locale
-</p>
-<div class="bg-image">
-    <a href="../../images/BGLocalization/HowItWorks3.png"><img style="width: 400px" src="../../images/BGLocalization/HowItWorks3.png"></a>
-</div>
-
-<p>
-    Also, all localized data are stored in separate files, cause only one locale can be set as current,
+    All localized data are stored in separate files, cause only one locale can be set as current,
     so we don't need to load data which relates to another locales.
 </p>
 <div class="bg-image">
-    <a href="../../images/BGLocalization/HowItWorks4.png"><img style="width: 400px" src="../../images/BGLocalization/HowItWorks4.png"></a>
+    <a href="../../images/BGLocalization/HowItWorks4.png"><img style="width: 400px"
+                                                               src="../../images/BGLocalization/HowItWorks4.png"></a>
+</div>
+
+<p>
+    There are 2 main ways to use localized values:
+</p>
+<ol>
+    <li>
+        Single value tables- one row stores all locales values for only one field
+    </li>
+    <li>
+        Embedded localized fields- localized fields are embedded into normal rows along with other fields.
+    </li>
+</ol>
+
+<h4>Using single values tables</h4>
+<p>
+    The easiest way to create locale data- is to use single values localization tables.
+    These tables store one row per each value. No other fields are allowed.
+    Each row has value of one single field for all locales.
+</p>
+<p>
+    Example: Gui messages, like "Menu", "Options" etc. You have one row which stores one value for "Menu" for all
+    locales.
+</p>
+
+<h4>Using embedded fields</h4>
+<p>
+    Embedded fields are the fields, which can be embedded to normal rows along with other fields.
+    Embedded Locale fields can change their values, depending on which locale is set as current locale.
+</p>
+<p>
+    Example: Inventory item, name should be localized, however, along with this field, you may want to store icon,
+    damage etc. which are just normal fields.
+</p>
+
+<div class="bg-image">
+    <a href="../../images/BGLocalization/HowItWorks2.png"><img style="width: 400px"
+                                                               src="../../images/BGLocalization/HowItWorks2.png"></a>
+</div>
+
+<p>
+    Embedded Locale fields does not store the value itself, but a reference to another row of special table, which has
+    one column per locale
+</p>
+<div class="bg-image">
+    <a href="../../images/BGLocalization/HowItWorks3.png"><img style="width: 400px"
+                                                               src="../../images/BGLocalization/HowItWorks3.png"></a>
 </div>
             </div>
 
