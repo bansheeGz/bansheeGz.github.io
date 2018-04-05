@@ -205,7 +205,19 @@
 <p>
     Create a simple class, add private method, reference the properties you are using and add it to one of your scenes.
 </p>
-
+<p>
+    After that add link.xml to you project with following content
+</p>
+<pre class="prettyprint">
+<linker>
+       <assembly fullname="Assembly-CSharp.dll">
+               <type fullname="PreventIosFromStripping" preserve="all"/>
+       </assembly>
+</linker>
+</pre>
+<p>
+    More info about link.xml can be found <a href="https://docs.unity3d.com/540/Documentation/Manual/iphone-playerSizeOptimization.html">here</a>
+</p>
 <p>
     Here is an example:
 </p>
