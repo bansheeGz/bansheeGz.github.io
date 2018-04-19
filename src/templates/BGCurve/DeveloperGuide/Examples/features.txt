@@ -54,6 +54,33 @@ text=@
 </pre>@
 
 
+title=Minimalistic example for moving and rotating some object along the spline
+mode=1
+text=@
+<pre class="prettyprint">
+using UnityEngine;
+using BansheeGz.BGSpline.Components;
+
+[RequireComponent(typeof(BGCcMath))]
+public class Test : MonoBehaviour
+{
+   public Transform ObjectToMove;
+   private float distance;
+
+   void Update()
+   {
+       //increase distance
+       distance += 5 * Time.deltaTime;
+
+       //calculate position and tangent
+       Vector3 tangent;
+       ObjectToMove.position = GetComponent<BGCcMath>().CalcPositionAndTangentByDistance(distance, out tangent);
+       ObjectToMove.rotation = Quaternion.LookRotation(tangent);
+   }
+}
+</pre>@
+
+
 title=Accessing points
 mode=1
 text=@

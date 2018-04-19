@@ -321,6 +321,40 @@
     
     </div>
 <div>
+    <h4>Minimalistic example for moving and rotating some object along the spline</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        <pre class="prettyprint">
+using UnityEngine;
+using BansheeGz.BGSpline.Components;
+
+[RequireComponent(typeof(BGCcMath))]
+public class Test : MonoBehaviour
+{
+   public Transform ObjectToMove;
+   private float distance;
+
+   void Update()
+   {
+       //increase distance
+       distance += 5 * Time.deltaTime;
+
+       //calculate position and tangent
+       Vector3 tangent;
+       ObjectToMove.position = GetComponent&lt;BGCcMath&gt;().CalcPositionAndTangentByDistance(distance, out tangent);
+       ObjectToMove.rotation = Quaternion.LookRotation(tangent);
+   }
+}
+</pre>
+    </div>
+    <hr>
+    
+    
+    
+    </div>
+<div>
     <h4>Accessing points</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
