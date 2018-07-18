@@ -193,13 +193,15 @@
     <li>
         Enable localization addon
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse1.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse1.png"></a>
+            <a href="../../images/BGLocalization/HowToUse1.png"><img style="width: 400px"
+                                                                     src="../../images/BGLocalization/HowToUse1.png"></a>
         </div>
     </li>
     <li>
         Go to Database->Localization and add your locales. Locale name- letters only, 8 chars maximum.
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse2.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse2.png"></a>
+            <a href="../../images/BGLocalization/HowToUse2.png"><img style="width: 400px"
+                                                                     src="../../images/BGLocalization/HowToUse2.png"></a>
         </div>
         Note, locales is just a regular table, so you can add your own fields, like native spelling, flag icons etc.
     </li>
@@ -210,67 +212,101 @@
 </p>
 <ol>
     <li>
-        Go to Configuration and create a table (type of the table is LocalizationSingleValue), chose the type of data to be stored.
+        Go to Configuration and create a table (type of the table is LocalizationSingleValue), chose the type of data to
+        be stored.
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse9.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse9.png"></a>
+            <a href="../../images/BGLocalization/HowToUse9.png"><img style="width: 400px"
+                                                                     src="../../images/BGLocalization/HowToUse9.png"></a>
         </div>
     </li>
     <li>
         Go to Database->"Your created table", add some rows. You can edit values for all locales here.
         Also you can use machine translation (Learn more about auto-translation <a href="../Translation">here</a>)
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse10.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse10.png"></a>
+            <a href="../../images/BGLocalization/HowToUse10.png"><img style="width: 400px"
+                                                                      src="../../images/BGLocalization/HowToUse10.png"></a>
         </div>
     </li>
 </ol>
 <h4>Setup embedded fields</h4>
 <p>
-    Embedded fields allow you to embed localization fields into normal rows along with other fields and require more actions.
+    Embedded fields allow you to embed localization fields into normal rows along with other fields and require more
+    actions.
 </p>
 <ol>
     <li>
-        Go to Configuration and create a table for your locale data (type of the table is Localization), chose the type of data to be stored.
+        Go to Configuration and create a table for your locale data (type of the table is Localization), chose the type
+        of data to be stored.
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse3.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse3.png"></a>
+            <a href="../../images/BGLocalization/HowToUse3.png"><img style="width: 400px"
+                                                                     src="../../images/BGLocalization/HowToUse3.png"></a>
         </div>
     </li>
     <li>
         Create a normal table (row)
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse4.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse4.png"></a>
+            <a href="../../images/BGLocalization/HowToUse4.png"><img style="width: 400px"
+                                                                     src="../../images/BGLocalization/HowToUse4.png"></a>
         </div>
     </li>
     <li>
         Add a localized field to this table. You will need to chose a related table (created at step 1) here
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse5.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse5.png"></a>
+            <a href="../../images/BGLocalization/HowToUse5.png"><img style="width: 400px"
+                                                                     src="../../images/BGLocalization/HowToUse5.png"></a>
         </div>
     </li>
     <li>
-        Go to Database->"Your created table", add some rows. You can edit localized values here (current locale will be used)
+        Go to Database->"Your created table", add some rows. You can edit localized values here (current locale will be
+        used)
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse6.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse6.png"></a>
+            <a href="../../images/BGLocalization/HowToUse6.png"><img style="width: 400px"
+                                                                     src="../../images/BGLocalization/HowToUse6.png"></a>
         </div>
     </li>
     <li>
-        Another option- is to chose "localization" table and edit values for all locales at once. You can use Auto-translation here
+        Another option- is to chose "localization" table and edit values for all locales at once. You can use
+        Auto-translation here
         <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse7.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse7.png"></a>
+            <a href="../../images/BGLocalization/HowToUse7.png"><img style="width: 400px"
+                                                                     src="../../images/BGLocalization/HowToUse7.png"></a>
         </div>
     </li>
     <li>
         Learn more about auto-translation <a href="../Translation">here</a>
     </li>
     <li>
-        Once you data is ready, you can localize your Components (any field or property). Add BGLocalizationGo to your GameObject,
-        chose one of the "localization" tables, assign an entity and chose target component and field/property
-        <div class="bg-image">
-            <a href="../../images/BGLocalization/HowToUse8.png"><img style="width: 400px" src="../../images/BGLocalization/HowToUse8.png"></a>
-        </div>
-
+        Once you data is ready, you can localize your Components (any field or property). For more details, please read
+        the following section
     </li>
 
 </ol>
+
+<h4>How to localize fields/properties </h4>
+<p>More details can be found <a href="../../BGDatabase/DataBinding">here</a></p>
+<p>If you need to localize single field/property, use BGDataBinderFieldGo component (or legacy BGLocalizationGo)</p>
+<div class="bg-image">
+    <a href="../../images/BGLocalization/DataBinding1.png"><img style="width: 400px"
+                                                             src="../../images/BGLocalization/DataBinding1.png"></a>
+</div>
+<p>If you need to use text template, use BGDataBinderTemplateGo component</p>
+<div class="bg-image">
+    <a href="../../images/BGLocalization/DataBinding2.png"><img style="width: 400px"
+                                                             src="../../images/BGLocalization/DataBinding2.png"></a>
+</div>
+
+<p>
+    Localization plugin adds the following features to data binding:
+</p>
+<ol>
+    <li>
+        For single value localization, it adds special <b>$locale</b> field, if your meta has localizationSingleValue type
+    </li>
+    <li>
+        For templates you can also use <b>$locale</b> as field name, if your meta has localizationSingleValue type
+    </li>
+</ol>
+
 
 <h4>How to change locale</h4>
 <pre class="prettyprint">
