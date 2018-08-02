@@ -12,6 +12,10 @@
         New method: BGMetaEntity.GetEntity(string entityName). Get the row by it's name
     </li>
     <li>
+        New feature: Code Generator can generate static properties for accessing entities directly,if there are less than 1024 entities in the table and each of it has unique name.
+        So, for example to access weapon type Short Sword, you could use WeaponType.ShortSword. (WeaponType is the name of the table and "Short Sword" - is the name of the row)
+    </li>
+    <li>
         Multiple microoptimizations
     </li>
     <li>
