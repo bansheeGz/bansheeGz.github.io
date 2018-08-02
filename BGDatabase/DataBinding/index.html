@@ -261,7 +261,7 @@
 <h4>What is data binding?</h4>
 With data binding you can:
 <ol>
-    <li>Inject value from database to any field of any component (except lists and relations)</li>
+    <li>Inject value from database to any field of any component</li>
     <li>Monitor field(s) changes and inject value again if value is changed</li>
     <li>For string fields you can combine static text with multiple values from database</li>
 </ol>
@@ -278,6 +278,7 @@ With data binding you can:
 <ol>
     <li>For single field value injection, use BGDataBindingFieldGo component</li>
     <li>For text templates value injection, use BGDataBindingTemplateGo component</li>
+    <li>For multiple values injection, use BGDataBindingBatchGo component</li>
 </ol>
 
 <h4>How to use single field binder</h4>
@@ -301,12 +302,24 @@ With data binding you can:
     <li>Chose the target field/property to inject a value to.
         The dropdown will contain all fields/properties from all attached Components, which has string type.
     </li>
-    <li>Fill template text (please read about template format below</li>
+    <li>Fill template text (please read about template format below)</li>
     <li>Toggle "Live Update" on, if you want all field values to be monitored. If value of one of the field is changed, binder inject it again</li>
 </ol>
 <div class="bg-image">
     <a href="../../images/BGDatabase/DataBinding2.png"><img style="width: 400px" src="../../images/BGDatabase/DataBinding2.png"></a>
 </div>
+
+<h4>How to use batch field binder</h4>
+<ol>
+    <li>Attach BGDataBindingBatchGo component</li>
+    <li>Drag GameObjects to either "Field Binders" or "Template Binders" table</li>
+    <li>For field binders, chose 1)target component and field/property and 2) chose source Meta, Field and Entity</li>
+    <li>For template binders, 1) chose target component and field/property and 2) fill in template (please read about template format below)</li>
+</ol>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/DataBinding3.png"><img style="width: 400px" src="../../images/BGDatabase/DataBinding3.png"></a>
+</div>
+
 
 <h4>Template format</h4>
 <p>
@@ -335,7 +348,7 @@ With data binding you can:
 </p>
 
 <p>
-    If you use only properties, marked as recommended (prefixed [RECOMMENDED]), you have nothing to worry about
+    If you use only properties, marked as recommended (prefixed [RECOMMENDED]) (see full list below), you have nothing to worry about
 </p>
 
 <p>
@@ -378,7 +391,17 @@ public class PreventIosFromStripping : MonoBehaviour
 }
 </pre>
 
-
+<h4>Full list of recommended properties</h4>
+<ol>
+    <li>SpriteRenderer.sprite</li>
+    <li>Material.mainTexture</li>
+    <li>MeshRenderer.sharedMaterial</li>
+    <li>MeshRenderer.sharedMaterial.mainTexture</li>
+    <li>Text.text</li>
+    <li>TextMesh.text</li>
+    <li>Image.sprite</li>
+    <li>AudioSource.clip</li>
+</ol>
             </div>
 
             <!--======================================================       BG Database Footer               -->
