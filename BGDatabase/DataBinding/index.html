@@ -277,7 +277,9 @@ With data binding you can:
 <ol>
     <li>For single field value injection, use BGDataBindingFieldGo component</li>
     <li>For text templates value injection, use BGDataBindingTemplateGo component</li>
-    <li>For multiple values injection (instead of multiple field and template binders) use single BGDataBindingBatchGo component</li>
+    <li>For multiple values injection to multiple different GameObjects (instead of several fields and template binders)
+        use single BGDataBindingBatchGo component
+    </li>
 </ol>
 
 <h4>How to use single field binder (BGDataBindingFieldGo)</h4>
@@ -314,6 +316,9 @@ With data binding you can:
     <li>Drag GameObjects to either "Field Binders" or "Template Binders" table</li>
     <li>For field binders, chose 1)target component and field/property and 2) chose source Meta, Field and Entity</li>
     <li>For template binders, 1) chose target component and field/property and 2) fill in template (please read about template format below)</li>
+    <li>Important: if you plan to make a prefab out of the GameObject with attached batch binder,
+        do not reference any other GameObject, than its own children
+    </li>
 </ol>
 <div class="bg-image">
     <a href="../../images/BGDatabase/DataBinding3.png"><img style="width: 400px" src="../../images/BGDatabase/DataBinding3.png"></a>
