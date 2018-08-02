@@ -168,11 +168,11 @@
 }
 
 .bg-sm .pa {
-    padding: 8px 12px;
+    padding: 8px 4px;
 }
 
 .bg-sm .ca {
-    padding: 8px 24px;
+    padding: 8px 4px;
 
 }
 
@@ -204,7 +204,7 @@ h3 {
 }
 
 .plic {
-    background-color: #edd9ff !important;
+    background-color: #cce0dd !important;
 }
 
 .alic {
@@ -220,7 +220,7 @@ h3 {
     background-size: 16px;
 }
 
-.curveicon a {
+#leftmenu  a {
     padding-left: 24px !important;
 }
 

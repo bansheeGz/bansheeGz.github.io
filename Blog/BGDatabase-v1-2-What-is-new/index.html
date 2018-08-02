@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-1');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BansheeGz is Games and Unity assets Developer.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/root.css">
+
+    <link rel="icon" type="image/png" href="../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span class="bg-header-title mdl-layout-title">
+              <a class="bg-header-a" href="/"><img src="../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGDatabase">BG&#176;Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGLocalization">BG&#176;Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGCurve">BG&#176;Curve</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGCurve/BGSplineColliders">BG&#176;Spline_Colliders</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../Support">Support</a></li>
+                <li class="mdl-menu__item"><a href="../../About">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--
+        <div style="min-height: 5px;background-color: #CCCCCC"></div>
+        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                Announcement: <a href="../../BGDatabase"><b>BG Database</b></a> v. 1.1 is out!
+        </b>
+    </div>
+    -->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+
+        <!--======================================================        Content (from Root)              -->
+        <div style="width: 100%">
+    <div style="width: 70%;margin: 0 auto">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <div class="bg-main mdl-shadow--3dp">
+                <div id="blog" style="padding: 12px;">
+                    <a href="../">Back to blog</a>
+                    <div class="bg-main-title">
+                        <h4>BG Database v1.2: What is new?</h4>
+                    </div>
+                    <div style="padding-bottom: 12px;">08/2018</div>
+
+                    
+
+
+<ol>
+    <li>
+        New fields: Nullable structs, namely int?,long?,float?,double?,bool?,Vector2?,Vector3?,Vector4?,Quaternion?,Color?
+    </li>
+    <li>
+        New binder: Batch binder (BGDataBinderBatchGo). Bind multiple fields/properties from different GameObjects with single batch binder Component.
+    </li>
+    <li>
+        New method: BGMetaEntity.GetEntity(string entityName). Get the row by it's name
+    </li>
+    <li>
+        Multiple microoptimizations
+    </li>
+    <li>
+        GoogleSheets integration is improved
+    </li>
+    <li>
+        Very rare bug with GoogleSheets id column values: please, make a clean export to make sure you are not affected.
+    </li>
+</ol>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                OR
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

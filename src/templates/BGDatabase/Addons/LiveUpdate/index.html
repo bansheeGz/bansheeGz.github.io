@@ -1,5 +1,6 @@
 #set page=Live Update
 
+<h4>Description</h4>
 <p>
     Live update let you update database data on player's devices using Google Sheets.
 </p>
@@ -12,9 +13,25 @@
     <li>If step 1 is unsuccessful, database data will remain intact.</li>
 </ol>
 <p>
-    LiveUpdate addon uses public GoogleSheets Json API. It means your spreadsheet need to be publicly available.
+    LiveUpdate addon uses public GoogleSheets Json API. It means your spreadsheet needs to be publicly available ("public" or "people with link" access levels).
+</p>
+<p>
+    You can check if you set up config properly by accessing this address from your browser (make sure it returns valid json, not some error )
+    https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Name of one of your metas]?key=[Your API key], example
+    https://sheets.googleapis.com/v4/spreadsheets/MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ/values/Items?key=WAIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc
 </p>
 
+<h4>Restrictions</h4>
+<ol>
+    <li>WebGl platform is not supported</li>
+    <li>
+        Plugin uses cell's value, not input value. Input value is raw data, and cell's value is formatted raw value
+        If you use float fields (float, float?, List&lt;float&gt;), make sure displayed value for these fields are the same as input values
+        (you may need to change cells formatting)
+    </li>
+</ol>
+
+<h4>Parameters</h4>
 <table class="contentTable">
     <tr>
         <th>

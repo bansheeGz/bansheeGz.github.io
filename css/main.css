@@ -18,6 +18,11 @@ a img{
     color: #fff;
 }
 
+
+a{
+    color: #0087cb;
+}
+
 .bg-header-a {
     color: #37474f;
     font-size: 24px;
@@ -33,7 +38,7 @@ a img{
 
 .bg-header {
     overflow: visible;
-    background-color: white;
+    background-color: #51777b;
 }
 
 .bg-header .material-icons {
@@ -46,9 +51,9 @@ a img{
 }
 
 .bg-header .mdl-navigation__link {
-    color: #757575;
-    font-weight: 700;
+    font-weight: 500;
     font-size: 14px;
+    font-family: 'Roboto','Helvetica','Arial',sans-serif;
 }
 
 .bg-navigation-bag {
@@ -85,7 +90,7 @@ a img{
 }
 
 .bg-link:hover {
-    color: #7cb342 !important;
+    color: #aae3cc !important;
 }
 
 .bg-link .material-icons {
@@ -120,11 +125,11 @@ a img{
 }
 
 .bg-navigation .mdl-navigation__link:hover{
-    border-bottom: 4px solid #8bc34a;
+    border-bottom: 4px solid #aae3cc;
 }
 
 .bg-navigation_link_active {
-    border-bottom: 4px solid #8b4ac3 !important;
+    border-bottom: 4px solid #afebee !important;
 }
 
 .breadcrumb {
@@ -174,9 +179,4 @@ a img{
     {
         display: inline !important;
     }
-}
-
-
-#header{
-    padding: 0 !important;
 }
