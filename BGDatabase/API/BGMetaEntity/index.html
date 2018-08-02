@@ -268,7 +268,7 @@
     </tr>
 
     <tr>
-        <td>this[int index]</td>
+        <td>this[int entityIndex]</td>
         <td>BGEntity</td>
         <td>Get table row by it's index</td>
     </tr>
@@ -281,7 +281,7 @@ var entity = meta[0];</pre>
     </tr>
 
     <tr>
-        <td>this[BGId id]</td>
+        <td>this[BGId entityId]</td>
         <td>BGEntity</td>
         <td>Get table row by it's id</td>
     </tr>
@@ -290,6 +290,19 @@ var entity = meta[0];</pre>
             <pre class="cs">
 //get row by it's id
 var entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>this[string entityName]</td>
+        <td>BGEntity</td>
+        <td>Get the first table row, whose name is equal to entityName</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get the first row by it's name
+var entity = meta["BigSword"];</pre>
         </td>
     </tr>
 
