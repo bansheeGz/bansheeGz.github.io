@@ -54,13 +54,41 @@ var entity = meta["BigSword"];</pre>
     <tr>
         <td>ForEachEntity(Action&lt;BGEntity&gt; action, Predicate&lt;BGEntity&gt; filter)</td>
         <td>void</td>
-        <td>Search entities by filter. For each found entity action will be called</td>
+        <td>Search and iterate entities by filter. For each found entity action will be called</td>
     </tr>
     <tr>
         <td colspan="3">
             <pre class="cs">
 //print entities names, whose name starts with "My"
 meta.ForEachEntity(entity => Debug.Log(entity.Name), entity => entity.Name.StartsWith("My"));</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>FindEntity(Predicate&lt;BGEntity&gt; filter)</td>
+        <td>BGEntity</td>
+        <td>Find the first entity by filter</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//find first entity, which name starts with "My"
+BGEntity result = meta.FindEntity(entity => entity.Name.StartsWith("My"));</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>FindEntities(Predicate&lt;BGEntity&gt; filter)</td>
+        <td>List&lt;BGEntity&gt;</td>
+        <td>Search entities by filter. Note:(at the moment temporary list is used to get rid of Garbage Collection.
+            We'll add optional List&lt;BGEntity&gt; parameter to the next version for this purpose)
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//find all entities, whose name starts with "My"
+List&lt;BGEntity&gt; result = meta.FindEntities(entity => entity.Name.StartsWith("My"));</pre>
         </td>
     </tr>
 
