@@ -406,7 +406,8 @@
     Nested field is a special field, which creates a whole new meta (table), which has many-to-one relation to owner meta.
     It means, you can create a linked list with any fields that are supported by BGDatabase.
     It is a readonly field (to change it's value- delete or add nested Entities).
-    To create a nested Entity use special method, which accept the owner of nested entity <code>BGMetaEntity.NewEntity(BGEntity owner)</code>
+    To create a nested Entity use special method, which accept the owner of nested entity <code>BGMetaNested.NewEntity(BGEntity owner)</code>.
+    BGMetaNested is a class for nested tables (to be used instead of generic BGMetaRow)
 </p>
 <div class="bg-image">
     <a href="../../images/BGDatabase/SupportedFields1.png"><img style="width: 400px" src="../../images/BGDatabase/SupportedFields1.png"></a>

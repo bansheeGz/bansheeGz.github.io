@@ -297,7 +297,8 @@
 <h4>Details</h4>
 <p>
     Generated classes are inherited from generic BGEntity class.
-    These classes can not be added to GameObject, cause they are not Unity's MonoBehaviour.
+    These classes can not be added to GameObject, cause they are not Unity's MonoBehaviour
+    (there are also another generated classes, which can be added to GameObjects, learn more <a href="../MonoBehaviourClasses">here</a>).
     When this CodeGen is enabled, database populated not with basic BGEntity objects, but with these extension classes.
     So when you access database like this <code>var entity=meta[0];</code> <code>entity</code> variable has this
     extension type with all the fields generated as properties.
