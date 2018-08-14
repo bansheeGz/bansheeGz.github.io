@@ -9,6 +9,14 @@
     This is the main type of Code Generation. It removes all boilerplate code and provides super easy and slim API for
     accessing table rows and their fields.
 </p>
+<h4>Advantages of using CodeGen</h4>
+<ol>
+    <li>No boilerplate code</li>
+    <li>Fastest available method for accessing field values</li>
+    <li>Compile time check (if field names are changed you'll get compilation error)</li>
+</ol>
+
+<h4>Details</h4>
 <p>
     Accessing fields without CodeGeneration
 </p>
@@ -34,11 +42,12 @@
 </div>
 
 
-<h4>Details</h4>
+<h4>More Details</h4>
 <p>
     Generated classes are inherited from generic BGEntity class.
     These classes can not be added to GameObject, cause they are not Unity's MonoBehaviour
-    (there are also another generated classes, which can be added to GameObjects, learn more <a href="../MonoBehaviourClasses">here</a>).
+    (there are also another generated classes, which can be added to GameObjects, learn more <a
+        href="../MonoBehaviourClasses">here</a>).
     When this CodeGen is enabled, database populated not with basic BGEntity objects, but with these extension classes.
     So when you access database like this <code>var entity=meta[0];</code> <code>entity</code> variable has this
     extension type with all the fields generated as properties.
@@ -103,15 +112,20 @@ you can do this:
 </p>
 <ol>
     <li>Code Generator - leave it as it is</li>
-    <li>Source file - all generated classes will use one single .cs file. You can place it anywhere in your project, but not under Editor folder</li>
+    <li>Source file - all generated classes will use one single .cs file. You can place it anywhere in your project, but
+        not under Editor folder
+    </li>
     <li>Package - package (namespace) for you classes.</li>
-    <li>Classes names prefix - prefix for your classes names. For example you can use prefix like D_ to distinct your database classes from the rest of the project classes</li>
+    <li>Classes names prefix - prefix for your classes names. For example you can use prefix like D_ to distinct your
+        database classes from the rest of the project classes
+    </li>
     <li>Field names prefix - the same as classes names prefix, but for fields.</li>
 </ol>
 <p>
     After you fill all parameters, press <code>Generate</code> button to generate classes.
 </p>
 <div class="importantNote">
-    Note, you should regenerate these classes after each change to database structure (e.g. if you add/remove tables or fields, or changing their names)
+    Note, you should regenerate these classes after each change to database structure (e.g. if you add/remove tables or
+    fields, or changing their names)
 </div>
 
