@@ -163,11 +163,9 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Events">Events</a>
                     </li>
-<!--
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Multithreading">Multithreading</a>
                     </li>
--->
                 </ul>
             </li>
             <li class="pli ">
@@ -261,7 +259,7 @@
             
 
 <p>
-    BGMetaEntity.cs -is a database table, containing 1-n fields and 0-n rows.
+    BGMetaEntity.cs -is a database table, containing 1-n fields and 0-n rows. The API list is not full.
 </p>
 
 <h4>Main API</h4>
@@ -312,9 +310,9 @@ var entity = meta["BigSword"];</pre>
     </tr>
 
     <tr>
-        <td>ForEachEntity(Action&lt;BGEntity&gt; action, Predicate&lt;BGEntity&gt; filter)</td>
+        <td>ForEachEntity(Action&lt;BGEntity&gt; action, Predicate&lt;BGEntity&gt; filter=null, Comparison&lt;BGEntity&gt; sort=null)</td>
         <td>void</td>
-        <td>Search and iterate entities by filter. For each found entity action will be called</td>
+        <td>Search and iterate entities by filter. For each found entity action will be called. Sort delegate allows to sort entities</td>
     </tr>
     <tr>
         <td colspan="3">
@@ -338,10 +336,9 @@ BGEntity result = meta.FindEntity(entity => entity.Name.StartsWith("My"));</pre>
     </tr>
 
     <tr>
-        <td>FindEntities(Predicate&lt;BGEntity&gt; filter)</td>
+        <td>FindEntities(Predicate&lt;BGEntity&gt; filter, List&lt;BGEntity&gt; result=null, Comparison&lt;BGEntity&gt; sort=null)</td>
         <td>List&lt;BGEntity&gt;</td>
-        <td>Search entities by filter. Note:(at the moment temporary list is used to get rid of Garbage Collection.
-            We'll add optional List&lt;BGEntity&gt; parameter to the next version for this purpose)
+        <td>Search entities by filter. Pass in 'result' list to get rid of Garbage Collection. 'sort' allows to sort entities
         </td>
     </tr>
     <tr>
@@ -416,6 +413,19 @@ var name = meta.Name;</pre>
         </td>
     </tr>
 
+    <tr>
+        <td>DeleteEntities</td>
+        <td>void</td>
+        <td>Delete several rows</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//delete all entities, which names start with 'My'
+meta.DeleteEntities(new HashSet&lt;BGEntity&gt;(meta.FindEntities(entity => entity.Name.StartsWith("My"))));</pre>
+        </td>
+    </tr>
+
 
     <tr>
         <td>ForEachField(Action&lt;BGField&gt; action)</td>
@@ -431,7 +441,7 @@ meta.ForEachField(field => Debug.Log(field.Name));</pre>
     </tr>
 
     <tr>
-        <td>ForEachField(Action&lt;BGField&gt; action, Predicate&lt;BGField&gt; filter)</td>
+        <td>ForEachField(Action&lt;BGField&gt; action, Predicate&lt;BGField&gt; filter = null)</td>
         <td>void</td>
         <td>Execute action for each field, complying to the filter</td>
     </tr>
@@ -439,8 +449,7 @@ meta.ForEachField(field => Debug.Log(field.Name));</pre>
         <td colspan="3">
             <pre class="cs">
 //print all field names, whose value type is int
-meta.ForEachField(field => Debug.Log(field.Name),
-                field => field.ValueType==typeof(int));</pre>
+meta.ForEachField(field => Debug.Log(field.Name), field => field.ValueType==typeof(int));</pre>
         </td>
     </tr>
 

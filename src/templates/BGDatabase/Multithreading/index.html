@@ -2,15 +2,12 @@
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
-This page is work in progress.........................
 
 <h4>Current state of multithreading support</h4>
 <ol>
-	<li>Multithreading is not currently supported.
-		Database is not thread-safe.
-		It's meant to be called from main thread only
-	</li>
-	<li>We are looking for opportunities to add multithreading and integration at some level with Unity's Jobs and ECS</li>
+	<li>Multithreading is not currently supported. Database is not thread-safe.
+		It's meant to be called from main thread only (from MonoBehaviour scripts)	</li>
+	<li>We are looking for opportunities to add multithreading support and integration at some level with Unity's Jobs and ECS</li>
 </ol>
 
 <h4>How to use database with Unity's ECS and Jobs</h4>
@@ -18,11 +15,12 @@ This page is work in progress.........................
 	<li>Make sure you call database only from main thread (e.g. from MonoBehaviour classes)</li>
 	<li>Create Unity ECS entities out of database information from MonoBehaviour class</li>
 	<li>If you need some of these Unity ECS entities to be persistent, (e.g. they needs to be saved/loaded),
-		store them back to database the moment they needs to be persisted, e.g, when the game needs to be saved
-		(see example below)
+		store them back to database the moment they needs to be persisted, e.g, when the game needs to be saved.
+		Run saving/loading on main thread.
 	</li>
 	<li>
-		If by some reason you need to call database from multithreaded environment, use the class below.
+		If you need to call database from multithreaded environment, use <code>BGMainThreadRunner.RunOnMainThread(Action action)</code>.
+		This will add action to the jobs list to be run on main thread.
 		Make sure you call at sparingly, at some relatively rare condition, otherwise it can become a bottleneck.
 	</li>
 </ol>

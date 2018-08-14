@@ -2,19 +2,19 @@
 <html lang="en">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-7"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-8"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-76367732-7');
+        gtag('config', 'UA-76367732-8');
     </script>
 
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Localization is an addon for BG Database, enabling fields localization.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -67,9 +67,9 @@
             <!-- Navigation -->
             <div class="bg-navigation-bag" id="bg-navigation">
                 <nav class="bg-navigation mdl-navigation">
-                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
-                       href="../../../BGDatabase">BG`Database</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
                        href="../../../BGLocalization">BG`Localization</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
                        href="../../../BGCurve">BG`Curve</a>
@@ -137,131 +137,98 @@
     <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
         <ul id="leftmenu">
             <li class="pli curveicon ">
-                <a class="pa" href="../../../BGDatabase">BG Database Home</a>
+                <a class="pa" href="../../../BGLocalization">BG Localization Home</a>
                 <ul>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/Setup">Setup</a>
+                        <a class="ca" href="../../../BGLocalization/HowItWorks">How it works</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/HowToUse">How to use</a>
+                        <a class="ca" href="../../../BGLocalization/HowToUse">How to use</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/Videos">Videos</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/SupportedFields">Supported Fields</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/ExportImport">Export Import</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/DataBinding">Data Binding</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/Events">Events</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/Multithreading">Multithreading</a>
+                        <a class="ca" href="../../../BGLocalization/IOS">Building for IOS</a>
                     </li>
                 </ul>
             </li>
             <li class="pli ">
-                <a class="pa " href="../../../BGDatabase/CodeGeneration">Code Generation</a>
+                <a class="pa " href="../../../BGLocalization/Translation">Translation</a>
                 <ul>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior Classes</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="pli ">
-                <a class="pa " href="../../../BGDatabase/ThirdParty">Third-Party Integration</a>
-                <ul>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/ThirdParty/Excel">Excel</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="pli ">
-                <a class="pa " href="../../../BGDatabase/Addons">Addons</a>
-                <ul>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/Addons/SaveLoad">Save Load</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
-                    </li>
                     <li class="cli  plic ">
-                        <a class="ca" href="../../../BGDatabase/Addons/Localization">Localization</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="pli ">
-                <a class="pa " href="../../../BGDatabase/API">API</a>
-                <ul>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/API/BGRepo">BGRepo</a>
+                        <a class="ca" href="../../../BGLocalization/Translation/Amazon">Amazon Translate</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                        <a class="ca" href="../../../BGLocalization/Translation/Yandex">Yandex Translate</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
+                        <a class="ca" href="../../../BGLocalization/Translation/Watson">IBM Watson Translate</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/API/BGField">BGField</a>
+                        <a class="ca" href="../../../BGLocalization/Translation/Google">Google Translate</a>
                     </li>
                 </ul>
             </li>
         </ul>
     </div>
     <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
-        <a class="pa" href="../../../BGDatabase">BG BGDatabase Home</a>
-        <a class="pa" href="../../../BGDatabase/Setup">Setup</a>
-        <a class="pa" href="../../../BGDatabase/HowToUse">How To Use</a>
-        <a class="pa" href="../../../BGDatabase/Videos">Videos</a>
-        <a class="pa" href="../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
-        <a class="pa" href="../../../BGDatabase/SupportedFields">Supported Fields</a>
-        <a class="pa" href="../../../BGDatabase/ExportImport">Export Import</a>
-        <a class="pa" href="../../../BGDatabase/DataBinding">Data Binding</a>
-        <a class="pa" href="../../../BGDatabase/Events">Events</a>
-        <a class="pa" href="../../../BGDatabase/CodeGeneration">Code Generation</a>
-        <a class="pa" href="../../../BGDatabase/Addons">Addons</a>
+        <a class="pa" href="../../../BGLocalization">BG BGLocalization Home</a>
+        <a class="pa " href="../../../BGLocalization/HowToUse">How To Use</a>
+        <a class="pa " href="../../../BGLocalization/Translation">Translation</a>
     </div>
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Localization</h3>
+                <h3>Amazon Translate</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-<p>
-    <a href="../../../BGLocalization">BG Localization</a>- is a paid addon in development.
-    Main objective is to support data localization (string/text or Unity assets).
-</p>
+<h4>Setup</h4>
+<ol>
+    <li>
+        Go to Configuration->Locale and add field of type string, named "amazonLanguage"
+        <div class="bg-image">
+            <a href="../../../images/BGLocalization/Amazon1.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon1.png"></a>
+        </div>
+
+    </li>
+    <li>Get a API key and Secret Key for Amazon Translate as described <a href="https://docs.aws.amazon.com/translate/latest/dg/auth-and-access-control.html">here</a></li>
+    <li>Go to Settings->Translation, and paste your keys
+
+        <div class="bg-image">
+            <a href="../../../images/BGLocalization/Amazon2.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon2.png"></a>
+        </div>
+
+    </li>
+    <li>Go to Database->Localization and for each locale fill "amazonLanguage" field with the right language
+
+        <div class="bg-image">
+            <a href="../../../images/BGLocalization/Amazon3.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon3.png"></a>
+        </div>
+
+    </li>
+    <li>
+        Chose any table with "localization" (Locale) or "localizationSingleValue" (Locale-S) types and string/text field type.
+        Click on Setup and chose Amazon as translation service.
+        Chose your source language and destination languages.
+        <div class="bg-image">
+            <a href="../../../images/BGLocalization/Amazon4.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon4.png"></a>
+        </div>
+    </li>
+
+    <li>Click "Run" to translate several rows. Click T↑ to translate one row to all locales. Click T↓ to translate current row to one locale
+
+        <div class="bg-image">
+            <a href="../../../images/BGLocalization/Amazon5.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon5.png"></a>
+        </div>
+
+    </li>
+</ol>
+
+<h4>Known issues</h4>
+Currently Amazon service does not produce any error if set up is wrong.
+If you have any issue with setup, please, contact our support.
             </div>
 
             <!--======================================================       BG Database Footer               -->

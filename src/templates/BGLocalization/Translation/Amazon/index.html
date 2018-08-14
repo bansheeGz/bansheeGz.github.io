@@ -1,0 +1,47 @@
+#set page=Amazon Translate
+
+<h4>Setup</h4>
+<ol>
+    <li>
+        Go to Configuration->Locale and add field of type string, named "amazonLanguage"
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Amazon1.png"><img style="width: 400px" src="#path images/BGLocalization/Amazon1.png"></a>
+        </div>
+
+    </li>
+    <li>Get a API key and Secret Key for Amazon Translate as described <a href="https://docs.aws.amazon.com/translate/latest/dg/auth-and-access-control.html">here</a></li>
+    <li>Go to Settings->Translation, and paste your keys
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Amazon2.png"><img style="width: 400px" src="#path images/BGLocalization/Amazon2.png"></a>
+        </div>
+
+    </li>
+    <li>Go to Database->Localization and for each locale fill "amazonLanguage" field with the right language
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Amazon3.png"><img style="width: 400px" src="#path images/BGLocalization/Amazon3.png"></a>
+        </div>
+
+    </li>
+    <li>
+        Chose any table with "localization" (Locale) or "localizationSingleValue" (Locale-S) types and string/text field type.
+        Click on Setup and chose Amazon as translation service.
+        Chose your source language and destination languages.
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Amazon4.png"><img style="width: 400px" src="#path images/BGLocalization/Amazon4.png"></a>
+        </div>
+    </li>
+
+    <li>Click "Run" to translate several rows. Click T↑ to translate one row to all locales. Click T↓ to translate current row to one locale
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Amazon5.png"><img style="width: 400px" src="#path images/BGLocalization/Amazon5.png"></a>
+        </div>
+
+    </li>
+</ol>
+
+<h4>Known issues</h4>
+Currently Amazon service does not produce any error if set up is wrong.
+If you have any issue with setup, please, contact our support.

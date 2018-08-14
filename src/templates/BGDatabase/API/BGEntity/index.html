@@ -1,7 +1,7 @@
 #set page=BGEntity API
 
 <p>
-    BGEntity.cs -is a table row, containing 1-n field values.
+    BGEntity.cs -is a table row, containing 1-n field values.  The API list is not full.
 </p>
 
 <h4>Main API</h4>
@@ -88,6 +88,19 @@ var name = entity.Name;</pre>
             <pre class="cs">
 //get entity Meta
 var meta = entity.Meta;</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Delete()</td>
+        <td>void</td>
+        <td>Delete the row. Do not use this method to delete several rows, cause it's way too slow for this. Use BGMetaEntity.DeleteEntities instead</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//delete entity
+entity.Delete();</pre>
         </td>
     </tr>
 

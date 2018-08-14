@@ -45,6 +45,7 @@
 </ol>
 
 <h4 id="setup">Details about how database files are organized</h4>
+
 <p>
     There are 2 files BGDatabase operates with. The first file is the file with actual database data-
     it's shared among all users and it's available at runtime.
@@ -63,6 +64,9 @@
         This also means, that settings file location is not transferable between different PCs and need to be chosen separately for each PC.
     </li>
 </ol>
+<div class="importantNote">
+    Settings file may contain sensitive information, so it's not recommended to keep it public
+</div>
 
 <h4 id="revert">Reverting database to default (example) database</h4>
 <p>
