@@ -200,6 +200,9 @@
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCollider2DEdge">Collider 2D Edge</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../../BGCurve/Cc/BGCcTrs">TRS</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
@@ -329,6 +332,23 @@ If you need math, we recommend you to use BGCcMath component, which gives you ea
         <a href="../../../images/DGMath.jpg"><img src="../../../images/DGMathThumb.jpg"></a>
     </div>
     <hr>
+    
+    
+    </div>
+<div>
+    <h4>Updating Math</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        By default if curve is changed math is recalculating its data once per frame.
+It's done like this to minimize overhead for multiple changes.
+If you need all the changes to be immediately reflected in math component, you can manually call math.Recalculate() method.
+
+
+    </div>
+    <hr>
+    
     
     
     </div>

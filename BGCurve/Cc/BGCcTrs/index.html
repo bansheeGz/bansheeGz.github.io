@@ -179,12 +179,12 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/DeveloperGuide/Examples">Examples</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/DeveloperGuide/Overview">Overview</a>
                     </li>
                 </ul>
             </li>
-            <li class="pli  ">
+            <li class="pli  alic ">
                 <a class="pa" href="../../../BGCurve/Cc">Components</a>
                 <ul>
                     <li class="cli ">
@@ -199,7 +199,7 @@
                     <li class="cli collidersicon ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCollider2DEdge">Collider 2D Edge</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcTrs">TRS</a>
                     </li>
                     <li class="cli ">
@@ -246,98 +246,176 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Overview</h3>
+                <h3>TRS [Component]</h3>
             </div>
 
             <!--======================================================        BG Curve Content              -->
-            <div>
-    <h4>Project Structure</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
+            <div class="bg-main-contacts">
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <img style="width:400px;height: auto" src="../../../images/GifCcTrs.gif">
+        </div>
         
-    
-    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        The project can be roughly divided into 4 parts. <br/>1) Minimal Set - Spline itself, spline's point and one of math's implementation (Uniform or Adaptive). <br/>2) "Extended" Set - Some useful but "not absolutely required" additions to minimal set. <br/>3) Curve's components (Cc)- set of classes, adding some additional functions to spline, like moving an object along etc.<br/>4) Editor- Unity Editor related classes. These classes are not thoroughly commented, but normally you won't need to know anything about these classes.<br/><br/>Note: the classification above does not imply code dependancies.
     </div>
-    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        <a href="../../../images/DGProjectStructure.jpg"><img src="../../../images/DGProjectStructureThumb.jpg"></a>
-    </div>
-    <hr>
-    
-    
-    </div>
+</div>
+
+
 <div>
-    <h4>Spline Components</h4>
+    <h4 class="v12">Description</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        Components are the standard Unity MonoBehaviour subclasses, which gives you access to some additional spline's related functions at Play mode without any scripting. We recommend to use them unless they do not cover your needs. For example, if you need math, do not create BGCurveBaseMath yourself, simply attach  BGCcMath component and reference it instead of BGCurve.
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        This component allows you to translate, rotate and scale some object. This component has all the basic functions of other 5 components (Cursor+CursorLerp+MoveByCursor+TranslateByCursor+ScaleByCursor)
     </div>
-    <hr>
-    
-    
-    
-    </div>
+</div>
+
+
 <div>
-    <h4>Creating Custom Component</h4>
+    <h4>Parameters</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        You can create your own custom component. There are 4 requirements for it: <br/>1) Component should extends BGCc class. <br/>2) Component's editor should extends BGCcEditor class (see existing components for example)  <br/>3) Component should have a descriptor attribute (CcDescriptor) attached. <br/>4) Component should have only one (0-min, 1-max) RequireComponent of type BGCc, which will be considered as it's parent.
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        objectToManipulate
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Object to move/rotate/scale
     </div>
     <hr>
-    
-    
-    
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        distance
     </div>
-<div>
-    <h4>Custom Fields</h4>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Distance in standard Unity units along the spline. if distance overflows spline's length (<0 or > totalDistance), it will be clamped.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        distanceRatio
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Normalized distance [Range(0,1)]. 0- start of the spline, 1- end.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        useFixedUpdate
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Use Unity's FixedUpdate instead of Update callback to move the cursor
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        cursorChangeMode
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        How cursor position should be updated. <br/>1) Constant- move cursor with constant speed (speed parameter is used)<br/>2) LinearField- speed value for each section is stored in float point field<br/>3) LinearFieldInterpolate- like LinearField, but the final speed value is interpolation (based on distance) between 2 points values <br/>
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        speedField
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Custom field to get values for speed (for LinearField and LinearFieldInterpolate modes). It should be a float field.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        speed
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Speed for moving cursor. Final speed is determined as speed*Time.deltaTime. This parameter is active only for 'Constant' cursor change mode.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        overflowControl
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Action, taken then cursor overflows spline's length. <br/>Cycle - cursor moves to opposite end and start moving with the same speed. <br/>PingPong - speed changes to opposite and cursor starts moving back with the same speed.<br/>Stop - speed is set to zero.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        moveObject
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Should object be moved or not. True by default.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        rotateObject
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Should object be rotated or not. False by default.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        offsetAngle
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Constant euler angles to be added to final rotation.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        rotationField
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Custom rotation point field to be used instead of tangent. It should be a Quaternion field.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        rotationInterpolation
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Rotation interpolation (between current rotation and tangent rotation). By lowering this parameter you will make rotation slower. Lerp - Linear. Slerp - Spherical linear.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        lerpSpeed
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        speed for Lerp interpolation. Final interpolation is calculated as Quaternion.Lerp(from,to, lerpSpeed * Time.deltaTime)
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        slerpSpeed
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        speed for Slerp interpolation. Final interpolation is calculated as Quaternion.Slerp(from,to, slerpSpeed * Time.deltaTime)
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        scaleObject
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Should object be scaled or not. False by default.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        scaleField
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Custom field to take values from. It should be of type Vector3.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        showHandles
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        handlesScale
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Adjust handles scale.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        handlesColor
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Set handles color.
+    </div>
+    <hr>
+
 </div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        Custom fields are additional fields, that can be attached to every point. There is a set of supported types, that can be used as type of custom field, but you can attach any type (even if it's not supported) by using Unity's standard Component type and assigning your MonoBehaviour's derived object to it.
-    </div>
-    <hr>
-    
-    
-    
-    </div>
-<div>
-    <h4>Points store options</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        Points of the spline can be stored: <br/>1) Inlined (right inside spline's component (BGCurve) with minimum memory and serialization overhead). Default option.  <br/> 2) As Components (every point is extended from MonoBehaviour and attached to spline's GameObject). This will add the possibility to reference separate point.  <br/> 3) As GameObjects with No Transform (every point is attached to it's own separate GameObject), transform is ignored. <br/> 4) As GameObjects with Transform (every point is attached to it's own separate GameObject), transform is used as point position and affects controls positions.
-    </div>
-    <hr>
-    
-    
-    
-    </div>
-<div>
-    <h4>Events</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-        
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
-        BGCurve.Changed event is fired once per frame in Update (or LateUpdate (configurable)) spline's method if spline is changed. Math uses this event to update it's cached data. if you need to update some data after math is changed, use math.Changed event instead of curve.Changed. Or alternatively use BGCcMath component, which has Unity standard persistent event (mathChanged) as well as non persistent one.
-    </div>
-    <hr>
-    
-    
-    
-    </div>
-
-
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
-
-
-
-
 
 
             <!--======================================================       BG Curve Footer               -->

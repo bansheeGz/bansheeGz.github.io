@@ -40,6 +40,15 @@ imageSmall=GifColliders2DEdgeThumb.gif
 imageBig=GifColliders2DEdge.gif
 
 
+title=TRS
+mode=2
+version=v12
+path=BGCcVisualizationLineRenderer
+text=Move/Rotate/Scale some object with single component.
+imageSmall=GifCcTrs.gif
+imageBig=GifCcTrs.gif
+
+
 title=Line Renderer
 mode=2
 version=v11

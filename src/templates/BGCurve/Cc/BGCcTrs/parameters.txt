@@ -1,0 +1,66 @@
+paramName=objectToManipulate
+paramDescription=Object to move/rotate/scale
+
+paramName=distance
+paramDescription=Distance in standard Unity units along the spline. if distance overflows spline's length (<0 or > totalDistance), it will be clamped.
+
+paramName=distanceRatio
+paramDescription=Normalized distance [Range(0,1)]. 0- start of the spline, 1- end.
+
+paramName=useFixedUpdate
+paramDescription=Use Unity's FixedUpdate instead of Update callback to move the cursor
+
+paramName=cursorChangeMode
+paramDescription=How cursor position should be updated. #
+<br/>1) Constant- move cursor with constant speed (speed parameter is used)<br/>#
+2) LinearField- speed value for each section is stored in float point field<br/>#
+3) LinearFieldInterpolate- like LinearField, but the final speed value is interpolation (based on distance) between 2 points values <br/>
+
+paramName=speedField
+paramDescription=Custom field to get values for speed (for LinearField and LinearFieldInterpolate modes). #
+It should be a float field.
+
+paramName=speed
+paramDescription=Speed for moving cursor. Final speed is determined as speed*Time.deltaTime. This parameter is active only for 'Constant' cursor change mode.
+
+paramName=overflowControl
+paramDescription=Action, taken then cursor overflows spline's length. #
+<br/>Cycle - cursor moves to opposite end and start moving with the same speed. #
+<br/>PingPong - speed changes to opposite and cursor starts moving back with the same speed.#
+<br/>Stop - speed is set to zero.
+
+paramName=moveObject
+paramDescription=Should object be moved or not. True by default.
+
+paramName=rotateObject
+paramDescription=Should object be rotated or not. False by default.
+
+paramName=offsetAngle
+paramDescription=Constant euler angles to be added to final rotation.
+
+paramName=rotationField
+paramDescription=Custom rotation point field to be used instead of tangent. It should be a Quaternion field.
+
+paramName=rotationInterpolation
+paramDescription=Rotation interpolation (between current rotation and tangent rotation). By lowering this parameter you will make rotation slower. Lerp - Linear. Slerp - Spherical linear.
+
+paramName=lerpSpeed
+paramDescription=speed for Lerp interpolation. Final interpolation is calculated as Quaternion.Lerp(from,to, lerpSpeed * Time.deltaTime)
+
+paramName=slerpSpeed
+paramDescription=speed for Slerp interpolation. Final interpolation is calculated as Quaternion.Slerp(from,to, slerpSpeed * Time.deltaTime)
+
+paramName=scaleObject
+paramDescription=Should object be scaled or not. False by default.
+
+paramName=scaleField
+paramDescription=Custom field to take values from. It should be of type Vector3.
+
+paramName=showHandles
+paramDescription=This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
+
+paramName=handlesScale
+paramDescription=Adjust handles scale.
+
+paramName=handlesColor
+paramDescription=Set handles color.

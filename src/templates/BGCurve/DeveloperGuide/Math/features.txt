@@ -33,3 +33,11 @@ imageSmall=DGMathThumb.jpg
 imageBig=DGMath.jpg
 
 
+title=Updating Math
+mode=1
+text=@
+By default if curve is changed math is recalculating its data once per frame.
+It's done like this to minimize overhead for multiple changes.
+If you need all the changes to be immediately reflected in math component, you can manually call math.Recalculate() method.
+
+
