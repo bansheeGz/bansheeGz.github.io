@@ -1,14 +1,20 @@
 title=Project Structure
 mode=2
-text=The project can be roughly divided into 4 parts. #
-<br/>1) Minimal Set - Spline itself, spline's point and one of math's implementation (Uniform or Adaptive). #
-<br/>2) "Extended" Set - Some useful but "not absolutely required" additions to minimal set. #
-<br/>3) Curve's components (Cc)- set of classes, adding some additional functions to spline, like moving an object along etc.#
-<br/>4) Editor- Unity Editor related classes. These classes are not thoroughly commented, but normally you won't need to know anything about these classes.#
-<br/><br/>Note: the classification above does not imply code dependancies.
+text=There are 3 distinctive modular layers, each on top of the others. Lower layers are not aware of the layers above them (this also imply code dependencies). #
+<br/>1) Spline core (spline itself with points and fields). Mostly data only. #
+<br/>2) Two math implementations (Uniform and Adaptive) on top of the core. #
+<br/>3) Curve's components (Cc)- set of classes, adding some additional functions to spline, like moving an object along etc. #
+<br/><br/>Note: the core itself is not customizable, however you can customize any other layer.#
+For example, you can implement your own math implementation or add your own components.
+imageSmall=DGProjectStructure2.png
+imageBig=DGProjectStructure2.png
+
+
+title=Source Code Structure
+mode=2
+text= Overall idea how source code is organized.
 imageSmall=DGProjectStructureThumb.jpg
 imageBig=DGProjectStructure.jpg
-
 
 
 title=Spline Components
