@@ -1,6 +1,6 @@
 title=General information
 mode=1
-text=Using Components, you can use some spline's related functions without any scripting. Components are standard MonoBehaviour subclasses.
+text=Using Components, you can add some functionality to the spline without any scripting. Components are standard MonoBehaviour subclasses. Also, use component's code as an example to develop your own custom components.
 
 
 title=Math
