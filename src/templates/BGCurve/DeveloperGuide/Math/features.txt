@@ -12,7 +12,7 @@ text=Tangent by distance ( (math.CalcTangentByDistance(float distance) and math.
 imageSmall=DGMathCalculateTangentByDistanceThumb.jpg
 imageBig=DGMathCalculateTangentByDistance.jpg
 
-text=Position and distance(optionally) for a point, which is on the spline and closest to some other point, which is not on the spline  (math.CalcPositionByClosestPoint(Vector3 point)). <a href="../Examples">Example</a>
+text=Position and distance(optionally) for a point, which is on the spline and closest to some other point, which can be anywhere  (math.CalcPositionByClosestPoint(Vector3 point)). <a href="../Examples">Example</a>
 imageSmall=DGMathCalcPositionByClosestPointThumb.jpg
 imageBig=DGMathCalcPositionByClosestPoint.jpg
 
