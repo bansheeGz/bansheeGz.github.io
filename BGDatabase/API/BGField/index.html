@@ -146,6 +146,9 @@
                         <a class="ca" href="../../../BGDatabase/HowToUse">How to use</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeExamples">Code Examples</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Videos">Videos</a>
                     </li>
                     <li class="cli ">
@@ -276,9 +279,24 @@
     </tr>
 
     <tr>
-        <td>this[BGId id]</td>
+        <td>this[int entityIndex]</td>
         <td>T</td>
-        <td>Get/Set value by entity id. T means generic is used, so for int field- T meas int value, for long T means long etc.</td>
+        <td>Get/Set value by entity index. This is the fastest method to get entity value. T means generic is used, so for int field- T meas int value, for long T means long etc.</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <pre class="cs">
+//get entity value by it's index (first entity)
+var entityValue = field[0];
+//set value
+field[0] = entityValue;</pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>this[BGId entityId]</td>
+        <td>T</td>
+        <td>Get/Set value by entity id. This is much slower method, than getting value by entity Index. T means generic is used, so for int field- T meas int value, for long T means long etc.</td>
     </tr>
     <tr>
         <td colspan="3">
