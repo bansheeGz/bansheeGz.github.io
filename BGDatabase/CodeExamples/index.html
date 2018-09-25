@@ -282,14 +282,6 @@
         BGField newField = new BGFieldInt(newTable, "NewField");
 
 
-        //populate new table with 10 records
-        for (var i = 0; i < 10; i++) new BGEntity(newTable).Name ="Entity #" + i;
-
-
-        //number of rows for table "NewTable"
-        int numberOfRows = BGRepo.I["NewTable"].CountEntities;
-
-
         //number of columns (fields) for table "Table"
         int numberOfFields = BGRepo.I["NewTable"].CountFields;
 
@@ -305,6 +297,14 @@
 
 <h4>Working with data</h4>
 <pre class="prettyprint">
+
+        //populate new table with 10 records
+        for (var i = 0; i < 10; i++) newTable.NewEntity().Name ="Entity #" + i;
+
+
+        //number of rows for table "NewTable"
+        int numberOfRows = BGRepo.I["NewTable"].CountEntities;
+
 
         //find entities, which names contains '5'
         List<BGEntity> entities = newTable.FindEntities(entity => entity.Name.IndexOf('5') != -1);
