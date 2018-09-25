@@ -2,6 +2,10 @@
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
+<h4>Examples</h4>
+<p>
+        You can copy examples below to Start() method of some MonoBehaviour class and run it.
+</p>
 
 <h4>Working with meta data</h4>
 <pre class="prettyprint">
@@ -64,11 +68,11 @@
 
 
         //print all entities names
-        newTable.ForEachEntity(entity => print(entity.Index));
+        newTable.ForEachEntity(entity => print(entity.Name));
 
 
         //print all entities names, which contains "5"
-        newTable.ForEachEntity(entity => print(entity.Index), entity => entity.Name.IndexOf('5') != -1 );
+        newTable.ForEachEntity(entity => print(entity.Name), entity => entity.Name.IndexOf('5') != -1 );
 
 
         // query new table and increase NewField by 1, for each NewField value which is lesser than 5,
