@@ -138,6 +138,7 @@
         Asset should be included in the asset bundle. This is super complicated way.
         To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to query this field, otherwise null will be returned.
         Note, we do not manage asset bundles in any way.
+        Also, asset bundles should be built before assets from this bundle can be properly resolved when working with database in Editor.
     </li>
 </ol>
 
