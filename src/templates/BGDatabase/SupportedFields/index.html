@@ -1,5 +1,8 @@
 #set page=Supported Fields
 
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+
 <h4>Fields overview</h4>
 <div class="bg-image">
     <a href="#path images/BGDatabase/FieldsReview.png"><img style="width: 400px" src="#path images/BGDatabase/FieldsReview.png"></a>
@@ -68,7 +71,7 @@
         </td>
     </tr>
     <tr>
-        <td>Unity Assets <a href="#unityassets">#1</a></td>
+        <td>Unity Assets <a href="#unityassets">#3</a></td>
         <td>
             <p>Texture</p>
             <p>Texture2d</p>
@@ -107,11 +110,11 @@
         <td>
             <p>single (BGEntity)</p>
             <p>multiple (List&lt;BGEntity&gt;)</p>
-            <p>nested (List&lt;BGEntity&gt;) <a href="#nested">#2</a></p>
+            <p>nested (List&lt;BGEntity&gt;) <a href="#nested">#1</a></p>
         </td>
     </tr>
     <tr>
-        <td>Unity Scene <a href="#unityscene">#3</a></td>
+        <td>Unity Scene <a href="#unityscene">#2</a></td>
         <td>
             <p>ref to entityGo (BGEntityGo)</p>
             <p>ref to list of entityGos (List&lt;BGEntityGo&gt;)</p>
@@ -121,28 +124,8 @@
     </tr>
 </table>
 
-<h4 id="unityassets">Unity Asset Fields (#1)</h4>
-<p>
-    All these fields are read only.
-    You can reference any Unity asset (UnityObject can be used to reference any asset).
-    This reference will be resolved by a path.
-    It means all unity asset fields store the path to an asset.
-    There are 2 ways this path can be properly resolved:
-</p>
-<ol>
-    <li>
-        Asset should be stored under Resources folder. This is very simple way to reference an asset.
-        All you have to do is to place your asset under Resources folder
-    </li>
-    <li>
-        Asset should be included in the asset bundle. This is super complicated way.
-        To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to query this field, otherwise null will be returned.
-        Note, we do not manage asset bundles in any way.
-        Also, asset bundles should be built before assets from this bundle can be properly resolved when working with database in Editor.
-    </li>
-</ol>
 
-<h4 id="nested">Nested Field (#2)</h4>
+<h4 id="nested">Nested Field (#1)</h4>
 <p>
     Nested field is a special field, which creates a whole new meta (table), which has many-to-one relation to owner meta.
     It means, you can create a linked list with any fields that are supported by BGDatabase.
@@ -154,7 +137,7 @@
     <a href="#path images/BGDatabase/SupportedFields1.png"><img style="width: 400px" src="#path images/BGDatabase/SupportedFields1.png"></a>
 </div>
 
-<h4 id="unityscene">Unity Scene Fields (#3)</h4>
+<h4 id="unityscene">Unity Scene Fields (#2)</h4>
 <p>
     There are 2 ways to reference GameObject in the scene
 </p>
@@ -165,3 +148,53 @@
 <p>
     Both methods use UnityObject.FindComponentOfType method and super slow.
 </p>
+
+<h4 id="unityassets">Unity Asset Fields (#3)</h4>
+<p>
+    All these fields are read only.
+    You can reference any Unity asset (UnityObject can be used to reference any asset).
+    This reference will be resolved by a path.
+    It means all unity asset fields store the path to an asset.
+    There are 3 ways this path can be properly resolved:
+</p>
+<ol>
+    <li>
+        Asset should be stored under Resources folder. This is very simple way to reference an asset.
+        All you have to do is to place your asset under Resources folder
+    </li>
+    <li>
+        Asset should be included in the asset bundle. This is super complicated way.
+        To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to query this field, otherwise null will be returned.
+        Note, we do not manage asset bundles in any way.
+        Also, asset bundles should be built before assets from this bundle can be properly resolved when working with BGDatabase in Editor.
+    </li>
+    <li>
+        Use newly introduced Unity's <a href="https://forum.unity.com/threads/addressables-are-here.536304/">Addressables</a>
+        package (which is not ready yet, still in preview).
+        We have added experimental support for this package (built and tested against 0.3.5-preview version).
+        Just like with asset bundles, you need to preload assets to be able to properly resolve them,
+        but unlike asset bundles, you do not have to build addressables to resolve them while working with BGDatabase in Editor.
+        <p>
+            To preload the assets, please use the following code (replace Test with actual meta name and SomeUnityField with actual field name):
+        </p>
+        <pre class="prettyprint">
+        var addresses = new List&lt;object&gt;();
+        var meta = BGRepo.I["Test"];
+        var addressableField = (BGStorable&lt;string&gt;) meta.GetField("SomeUnityField");
+        meta.ForEachEntity(entity =>
+        {
+            var address = addressableField.GetStoredValue(entity.Index);
+            if (!string.IsNullOrEmpty(address)) addresses.Add(address);
+        });
+        //add other fields here if needed
+
+        //load
+        Addressables.LoadAssets&lt;Object&gt;(addresses, null).Completed += operation =>
+        {
+            //all assets are ready to be used here
+            //print("Addressable value=" + meta[0].Get&lt;Texture&gt;("SomeUnityField"));
+        };
+
+        </pre>
+    </li>
+</ol>
