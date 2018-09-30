@@ -169,30 +169,62 @@
         Also, asset bundles should be built before assets from this bundle can be properly resolved when working with BGDatabase in Editor.
     </li>
     <li>
-        Use newly introduced Unity's <a href="https://forum.unity.com/threads/addressables-are-here.536304/">Addressables</a>
-        package (which is not ready yet, still in preview).
-        We have added experimental support for this package (built and tested against 0.3.5-preview version).
-        Just like with asset bundles, you need to preload assets to be able to properly resolve them,
-        but unlike asset bundles, you do not have to build addressables to resolve them while working with BGDatabase in Editor.
+        <p>
+            Use newly introduced Unity's <a href="https://forum.unity.com/threads/addressables-are-here.536304/">Addressables</a>
+            package (which is not ready yet, still in preview).
+            We have added experimental support for this package (built and tested against 0.3.5-preview version).
+            Just like with asset bundles, you need to preload assets to be able to properly resolve them,
+            but unlike asset bundles, you do not have to build addressables to resolve them while working with BGDatabase in Editor.
+        </p>
+        <p>
+            To add support for addressables, install addressables package and import unity package,
+            located at Assets\BansheeGz\BGDatabase\Pins\Addressables\BGDatabase.Addressables.unitypackage
+        </p>
         <p>
             To preload the assets, please use the following code (replace Test with actual meta name and SomeUnityField with actual field name):
         </p>
         <pre class="prettyprint">
-        var addresses = new List&lt;object&gt;();
-        var meta = BGRepo.I["Test"];
-        var addressableField = (BGStorable&lt;string&gt;) meta.GetField("SomeUnityField");
-        meta.ForEachEntity(entity =>
+       //---------- this code is tested against 0.3.5-preview version
+        //find addresses to load
+        IList&lt;object&gt; addresses = new List&lt;object&gt;();
+        BGRepo.I.ForEachMeta(meta =&gt;
         {
-            var address = addressableField.GetStoredValue(entity.Index);
-            if (!string.IsNullOrEmpty(address)) addresses.Add(address);
+            //find all fields with addressables loader
+            List&lt;BGStorable&lt;string&gt;&gt; fieldsWithLoaders = null;
+            meta.ForEachField(field =&gt;
+            {
+                if (!(field is BGAssetLoaderA.WithLoaderI) || !(field is BGStorable&lt;string&gt;)) return;
+
+                var fieldWithLoader = (BGAssetLoaderA.WithLoaderI) field;
+
+                if (!(fieldWithLoader.AssetLoader is BGAssetLoaderAddressables)) return;
+
+                fieldsWithLoaders = fieldsWithLoaders ?? new List&lt;BGStorable&lt;string&gt;&gt;();
+                fieldsWithLoaders.Add((BGStorable&lt;string&gt;) field);
+            });
+
+            if (fieldsWithLoaders == null) return;
+
+            //find all entities with some value
+            meta.ForEachEntity(entity =&gt;
+            {
+                for (var i = 0; i &lt; fieldsWithLoaders.Count; i++)
+                {
+                    var address = fieldsWithLoaders[i].GetStoredValue(entity.Index);
+                    if (!string.IsNullOrEmpty(address)) addresses.Add(address);
+                }
+            });
+
         });
-        //add other fields here if needed
+        
+        //remove duplicates
+        addresses=addresses.Distinct().ToList();
 
         //load
-        Addressables.LoadAssets&lt;Object&gt;(addresses, null).Completed += operation =>
+        var asyncOperation = Addressables.LoadAssets&lt;Object&gt;(addresses, null, Addressables.MergeMode.Union);
+        asyncOperation.Completed += operation =&gt;
         {
-            //all assets are ready to be used here
-            //print("Addressable value=" + meta[0].Get&lt;Texture&gt;("SomeUnityField"));
+            //all assets are ready to use
         };
 
         </pre>
