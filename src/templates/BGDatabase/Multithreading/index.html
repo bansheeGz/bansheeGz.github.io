@@ -59,6 +59,13 @@
 	</li>
 </ol>
 
+<h4>Scenario # 2 (What I need to know before using MT Addon?)</h4>
+<ol>
+	<li>Lists fields, Unity assets fields and fields, which reference Unity objects are not supported.</li>
+	<li>All entities are structs, not classes. If result can be null, BGMTEntity? is used</li>
+	<li>Entities are only marked as deleted inside transaction, the actual removal takes place at the end of transaction</li>
+</ol>
+
 <h4>Scenario # 2 (How to use MT addon?)</h4>
 <p>
 	We tried our best to make multithreaded API very similar to single-threaded one. Also, we provide code generation for MT addon.
@@ -105,10 +112,3 @@
 		});
 </pre>
 
-
-<h4>Scenario # 2 (What I need to know before using MT Addon?)</h4>
-<ol>
-	<li>Lists fields, Unity assets fields and fields, which reference Unity objects are not supported.</li>
-	<li>All entities are structs, not classes. If result can be null, BGMTEntity? is used</li>
-	<li>Entities are only marked as deleted inside transaction, the actual removal takes place at the end of transaction</li>
-</ol>
