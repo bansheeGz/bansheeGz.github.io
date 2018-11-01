@@ -328,6 +328,8 @@
 	<li>Lists fields, Unity assets fields and fields, which reference Unity objects are not supported.</li>
 	<li>All entities are structs, not classes. If result can be null, BGMTEntity? is used</li>
 	<li>Entities are only marked as deleted inside transaction, the actual removal takes place at the end of transaction</li>
+	<li>Write transactions can be executed asynchronously, so do not expect changes take effect right after the method call.
+		If you need some code to be run after transaction finish, use (Action callback) as second parameter to BGRepo.M.Write method</li>
 </ol>
 
 <h4>Scenario # 2 (How to use MT addon?)</h4>
@@ -347,7 +349,9 @@
 	    //start write transaction (the only option)
 	    BGRepo.M.Write(mtRepo =>
         {
-            //you can read and change data here
+            // you can read and change data here.
+			// This transaction can be run asynchronously (on separate thread),
+			// so do not expect changes take effect right after the method call
         });
 </pre>
 <p>
