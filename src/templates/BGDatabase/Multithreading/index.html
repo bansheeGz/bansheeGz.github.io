@@ -70,7 +70,9 @@
 
 <h4>Scenario # 2 (How to use MT addon?)</h4>
 <p>
-	We tried our best to make multithreaded API very similar to single-threaded one. Also, we provide code generation for MT addon.
+	We tried our best to make multithreaded API very similar to single-threaded one.
+	Also, we provide code generation for MT addon.
+	Start working with multithreading environment by creating read-only or write transactions.
 </p>
 <pre class="prettyprint">
         //start read-only transaction (option 1)
@@ -79,7 +81,7 @@
 	    //start read-only transaction (option 2)
 	    BGRepo.M.Read(mtRepo =>
         {
-            //access data here
+            //access data from mtRepo here
         });
 
 	    //start write transaction (the only option)
