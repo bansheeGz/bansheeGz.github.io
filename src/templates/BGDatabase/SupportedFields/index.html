@@ -5,7 +5,8 @@
 
 <h4>Fields overview</h4>
 <div class="bg-image">
-    <a href="#path images/BGDatabase/FieldsReview.png"><img style="width: 400px" src="#path images/BGDatabase/FieldsReview.png"></a>
+    <a href="#path images/BGDatabase/FieldsReview.png"><img style="width: 400px"
+                                                            src="#path images/BGDatabase/FieldsReview.png"></a>
 </div>
 
 <h4>Fields table</h4>
@@ -127,14 +128,17 @@
 
 <h4 id="nested">Nested Field (#1)</h4>
 <p>
-    Nested field is a special field, which creates a whole new meta (table), which has many-to-one relation to owner meta.
+    Nested field is a special field, which creates a whole new meta (table), which has many-to-one relation to owner
+    meta.
     It means, you can create a linked list with any fields that are supported by BGDatabase.
     It is a readonly field (to change it's value- delete or add nested Entities).
-    To create a nested Entity use special method, which accept the owner of nested entity <code>BGMetaNested.NewEntity(BGEntity owner)</code>.
+    To create a nested Entity use special method, which accept the owner of nested entity <code>BGMetaNested.NewEntity(BGEntity
+    owner)</code>.
     BGMetaNested is a class for nested tables (to be used instead of generic BGMetaRow)
 </p>
 <div class="bg-image">
-    <a href="#path images/BGDatabase/SupportedFields1.png"><img style="width: 400px" src="#path images/BGDatabase/SupportedFields1.png"></a>
+    <a href="#path images/BGDatabase/SupportedFields1.png"><img style="width: 400px"
+                                                                src="#path images/BGDatabase/SupportedFields1.png"></a>
 </div>
 
 <h4 id="unityscene">Unity Scene Fields (#2)</h4>
@@ -142,8 +146,12 @@
     There are 2 ways to reference GameObject in the scene
 </p>
 <ol>
-    <li>if this object has BGEntityGo component attached. BGEntityGo is used to reference a row from a database and you can use it's id to get reference to GameObject</li>
-    <li>if this object has BGWithId component attached. BGWithId is simple component with generated id, you can use this id to get reference to GameObject</li>
+    <li>if this object has BGEntityGo component attached. BGEntityGo is used to reference a row from a database and you
+        can use it's id to get reference to GameObject
+    </li>
+    <li>if this object has BGWithId component attached. BGWithId is simple component with generated id, you can use this
+        id to get reference to GameObject
+    </li>
 </ol>
 <p>
     Both methods use UnityObject.FindComponentOfType method and super slow.
@@ -164,9 +172,11 @@
     </li>
     <li>
         Asset should be included in the asset bundle. This is super complicated way.
-        To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to query this field, otherwise null will be returned.
+        To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to
+        query this field, otherwise null will be returned.
         Note, we do not manage asset bundles in any way.
-        Also, asset bundles should be built before assets from this bundle can be properly resolved when working with BGDatabase in Editor.
+        Also, asset bundles should be built before assets from this bundle can be properly resolved when working with
+        BGDatabase in Editor.
     </li>
     <li>
         <p>
@@ -174,14 +184,20 @@
             package (which is not ready yet, still in preview).
             We have added experimental support for this package (built and tested against 0.3.5-preview version).
             Just like with asset bundles, you need to preload assets to be able to properly resolve them,
-            but unlike asset bundles, you do not have to build addressables to resolve them while working with BGDatabase in Editor.
+            but unlike asset bundles, you do not have to build addressables to resolve them while working with
+            BGDatabase in Editor.
         </p>
+        <div>
+            To add support for addressables:
+            <ol>
+                <li>Install Unity's addressables package</li>
+                <li>Unpackage Assets\BansheeGz\BGDatabase\Pins\Addressables\BGDatabase.Addressables.unitypackage</li>
+                <li>Unpackage Assets\BansheeGz\BGDatabase\Editor\Pins\Addressables\BGDatabaseEditor.Addressables.unitypackage</li>
+            </ol>
+        </div>
         <p>
-            To add support for addressables, install addressables package and import unity package,
-            located at Assets\BansheeGz\BGDatabase\Pins\Addressables\BGDatabase.Addressables.unitypackage
-        </p>
-        <p>
-            To preload the assets, please use the following code (replace Test with actual meta name and SomeUnityField with actual field name):
+            To preload the assets, please use the following code (replace Test with actual meta name and SomeUnityField
+            with actual field name):
         </p>
         <pre class="prettyprint">
        //---------- this code is tested against 0.3.5-preview version
