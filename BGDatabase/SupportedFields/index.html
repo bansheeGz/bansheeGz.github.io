@@ -283,7 +283,7 @@
             Field Group
         </th>
         <th>
-            Field Name(type)
+            Field Type (Comments)
         </th>
     </tr>
     <tr>
@@ -294,7 +294,7 @@
             <p>float</p>
             <p>double</p>
             <p>bool</p>
-            <p>Guid</p>
+            <p>guid</p>
             <p>string</p>
             <p>text</p>
         </td>
@@ -307,85 +307,89 @@
             <p>float?</p>
             <p>double?</p>
             <p>bool?</p>
-            <p>Guid?</p>
+            <p>guid?</p>
         </td>
     </tr>
     <tr>
         <td>Unity Primitives</td>
         <td>
-            <p>Vector2</p>
-            <p>Vector3</p>
-            <p>Vector4</p>
-            <p>Quaternion</p>
-            <p>Rect</p>
-            <p>Bounds</p>
-            <p>Color</p>
-            <p>Ray</p>
-            <p>Ray2d</p>
-            <p>KeyCode</p>
+            <p>vector2</p>
+            <p>vector3</p>
+            <p>vector4</p>
+            <p>quaternion</p>
+            <p>rect</p>
+            <p>bounds</p>
+            <p>color</p>
+            <p>ray</p>
+            <p>ray2d</p>
+            <p>keyCode</p>
         </td>
     </tr>
     <tr>
         <td>Unity Primitive nullable</td>
         <td>
-            <p>Vector2?</p>
-            <p>Vector3?</p>
-            <p>Vector4?</p>
-            <p>Quaternion?</p>
-            <p>Color?</p>
+            <p>vector2?</p>
+            <p>vector3?</p>
+            <p>vector4?</p>
+            <p>quaternion?</p>
+            <p>color?</p>
         </td>
     </tr>
     <tr>
         <td>Unity Assets <a href="#unityassets">#3</a></td>
         <td>
-            <p>Texture</p>
-            <p>Texture2d</p>
-            <p>Sprite</p>
-            <p>Material</p>
-            <p>Prefab</p>
-            <p>Font</p>
-            <p>AudioClip</p>
-            <p>UnityObject (Any Unity Asset)</p>
+            <p>unityTexture (value type is Texture)</p>
+            <p>unityTexture2d (value type is Texture2D)</p>
+            <p>unitySprite (value type is Sprite)</p>
+            <p>unityMaterial (value type is Material)</p>
+            <p>unityPrefab (value type is GameObject)</p>
+            <p>unityFont (value type is Font)</p>
+            <p>unityAudioClip (value type is AudioClip )</p>
+            <p>unityObject (Any Unity Asset, value type is UnityEngine.Object)</p>
         </td>
     </tr>
     <tr>
         <td>List of Primitives</td>
         <td>
-            <p>list of bool (List&lt;bool&gt;)</p>
-            <p>list of double (List&lt;double&gt;)</p>
-            <p>list of float (List&lt;float&gt;)</p>
-            <p>list of Guid (List&lt;Guid&gt;)</p>
-            <p>list of int (List&lt;int&gt;)</p>
-            <p>list of long (List&lt;long&gt;)</p>
-            <p>list of string (List&lt;string&gt;)</p>
+            <p>listBool (bool list, e.g. List&lt;bool&gt;)</p>
+            <p>listDouble (double list, e.g. List&lt;double&gt;)</p>
+            <p>listFloat (float list, e.g. List&lt;float&gt;)</p>
+            <p>listGuid (Guid list, e.g. List&lt;Guid&gt;)</p>
+            <p>listInt (int list, e.g. List&lt;int&gt;)</p>
+            <p>listLong (long list, e.g. List&lt;long&gt;)</p>
+            <p>listString (string list, e.g. List&lt;string&gt;)</p>
         </td>
+        <td></td>
     </tr>
     <tr>
         <td>List of Unity Primitives</td>
         <td>
-            <p>list of Vector2s (List&lt;Vector2&gt;)</p>
-            <p>list of Vector3s (List&lt;Vector3&gt;)</p>
-            <p>list of Vector4s (List&lt;Vector4&gt;)</p>
-            <p>list of Quaternions (List&lt;Quaternion&gt;)</p>
-            <p>list of Colors (List&lt;Color&gt;)</p>
+            <p>listVector2 (Vector2 list, e.g. List&lt;Vector2&gt;)</p>
+            <p>listVector3 (Vector3 list, e.g. List&lt;Vector3&gt;)</p>
+            <p>listVector4 (Vector4 list, e.g. List&lt;Vector4&gt;)</p>
+            <p>listQuaternion (Quaternion list, e.g. List&lt;Quaternion&gt;)</p>
+            <p>listColor (Color list, e.g. List&lt;Color&gt;)</p>
         </td>
+        <td></td>
     </tr>
     <tr>
         <td>Relations</td>
         <td>
-            <p>single (BGEntity)</p>
-            <p>multiple (List&lt;BGEntity&gt;)</p>
-            <p>nested (List&lt;BGEntity&gt;) <a href="#nested">#1</a></p>
+            <p>relationSingle (value type is BGEntity)</p>
+            <p>relationMultiple (value type is List&lt;BGEntity&gt;)</p>
+            <p>nested (value type is List&lt;BGEntity&gt;) <a href="#nested">#1</a></p>
         </td>
+        <td></td>
     </tr>
     <tr>
         <td>Unity Scene <a href="#unityscene">#2</a></td>
         <td>
-            <p>ref to entityGo (BGEntityGo)</p>
-            <p>ref to list of entityGos (List&lt;BGEntityGo&gt;)</p>
-            <p>ref to UnityObject (BGWithId)</p>
-            <p>ref to list of UnityObjects (List&lt;BGWithId&gt;)</p>
+            <p>entityReference (reference to entityGo, value type is BGEntityGo)</p>
+            <p>entityListReference (reference to list of entityGos, value type is List&lt;BGEntityGo&gt;)</p>
+            <p>objectReference (reference to UnityObject, value type is BGWithId)</p>
+            <p>objectListReference (reference to a list of UnityObjects, value type is List&lt;BGWithId&gt;)</p>
         </td>
+        <td></td>
     </tr>
 </table>
 
