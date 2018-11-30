@@ -267,8 +267,9 @@
 <h4>What can I do with export/import?</h4>
 <ol>
     <li>Export/import any data to/from GoogleSheets/Excel in Editor (during game development)</li>
-    <li>Update database data on players devices at runtime with <a href="../Addons/LiveUpdate">LiveUpdate</a> plugin</li>
-    <li>There is no way to update GoogleSheets data at runtime from players devices</li>
+    <li>Update database data on players devices at runtime with <a href="../Addons/LiveUpdate">LiveUpdate</a> plugin
+    </li>
+    <li>There is no way to update GoogleSheets data at runtime from players devices (<a href="#why">Why not?</a>)</li>
     <li>Backup/restore database in json format in Editor</li>
 </ol>
 
@@ -323,7 +324,9 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     So, there are 3 types of rows during syncing:
 </p>
 <ol>
-    <li>Matching rows : they exists in the Source and in the Destination. Can be updated and you can chose which fields to update.</li>
+    <li>Matching rows : they exists in the Source and in the Destination. Can be updated and you can chose which fields
+        to update.
+    </li>
     <li>Missing rows : they exists only in the Source. Can be added to Destination.</li>
     <li>Orphaned rows : they exists only in the Destination. Can be removed from Destination.</li>
 </ol>
@@ -338,10 +341,12 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 
 <h4>Field value string format</h4>
 <p>
-We use Acute (Back quote) symbol <code>`</code> to separate tokens of single value, for example Vector3.zero  is <code>0`0`0</code>
+    We use Acute (Back quote) symbol <code>`</code> to separate tokens of single value, for example Vector3.zero is
+    <code>0`0`0</code>
 </p>
 <p>
-We use Vertical bar (Pipe) symbol <code>|</code> to separate values of the list, for example List&lt;bool&gt;  is <code>0|1|0</code>
+    We use Vertical bar (Pipe) symbol <code>|</code> to separate values of the list, for example List&lt;bool&gt; is
+    <code>0|1|0</code>
 </p>
 <div class="bg-image">
     <a href="../../images/BGDatabase/ExportImport4.png"><img style="width: 400px"
@@ -351,8 +356,8 @@ We use Vertical bar (Pipe) symbol <code>|</code> to separate values of the list,
 
 <h4>Adding rows in external tools</h4>
 <p>
-Each row has it's own id- 22 symbols string.
-It's computer-generated value, based on Guid generation.
+    Each row has it's own id- 22 symbols string.
+    It's computer-generated value, based on Guid generation.
 </p>
 <p>
     While creating rows in external tool, you can leave it blank, and it will be updated during importing procedure
@@ -366,10 +371,27 @@ It's computer-generated value, based on Guid generation.
 <h4>Creating database backup in json format</h4>
 <p>
     Exporting data to json allows you to create a full database backup in human readable form as json file.
-    With json you can not chose which data you want to be exported/imported, full data including database structure will be included.
+    With json you can not chose which data you want to be exported/imported, full data including database structure will
+    be included.
 </p>
 <p>
     You can use this backup later to fully restore the database (including structure)
+</p>
+
+<h4 id="why">Why you do not provide an option to update GoogleSheets data from player devices?</h4>
+<p>
+    We believe giving write direct GoogleSheets access to player devices does not make any sense, due to the following
+    reasons:
+<ol>
+    <li>Security problem: giving write access means giving credentials to change data, and there is no way to make sure these credentials will not be hacked</li>
+    <li>Durability problem: there is no way to make sure some change will not erase previous change.
+        Let's say you want to store the number of times your app was launched.
+        So you read cell value, you increase it by 1 and you write it back.
+        But if 10 players launch your game simultaneously,
+        they all read initial zero value from GoogleSheets, increase it by one and write it back, so the final value will be 1, not 10.
+    </li>
+    <li>GoogleSheets is not fast enough to be used as online database for big amount of users. Also there is 2 million cells max restriction</li>
+</ol>
 </p>
 
 <h4>What's next?</h4>
