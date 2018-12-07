@@ -4,9 +4,13 @@
 #set metadescription=BG Spline Colliders is a Procedural Colliders Generator along Bezier spline for Unity3d Game Engine
 
 <style>
-    .hh{
+    .hh {
         margin: 8px;
         font-size: 14px;
+    }
+
+    .nlist li {
+        list-style: decimal outside!important;
     }
 </style>
 
@@ -56,59 +60,64 @@
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        BGCcCollider2DEdge - generates points for attached EdgeCollider 2D.<br/>
-        BGCcCollider3DBox - generate a set of children GameObjects with single attached BoxCollider. GameObjects are positioned and rotated properly.<br/>
-        BGCcCollider2DBox - the same as BGCcCollider3DBox, however children GameObjects may have optional Effector2D attached.<br/>
-        <br/>
-        <span style="color: red" >Note: for Box Colliders you should not place your own Colliders right under the spline, cause they may be reused and deleted.</span>
+        <ol class="nlist">
+            <li>2D Edge- generates points for attached EdgeCollider 2D.<br/></li>
+            <li>3D Box - generate a set of children GameObjects with single attached BoxCollider. GameObjects are
+                positioned and rotated properly.
+            </li>
+            <li>2D Box - the same as BGCcCollider3DBox, however children GameObjects may have optional Effector2D
+                attached.
+            </li>
+        </ol>
+        <span style="color: red">Note: if you use 2d/3d Box Colliders, please, do not attach your own 2d/3d box colliders to child GameObjects right under the spline,
+            cause they may be reused and deleted.</span>
+    </div>
+</div>
+
+<div>
+    <h4>How to change spline with colliders at runtime</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+        <ol class="nlist">
+            <li>Animate spline with script or Unity animation (<a href="../UserGuide/Spline">more info</a>)</li>
+            <li>Set "Math Type" parameter of Math component to "Base". Adjust "Section Parts" parameter value to be as
+                little as possible
+            </li>
+            <li>For 2d/3d box components, toggle on "Generate kinematic rigidbodies" parameter. For 2d edge, add
+                RigidBody2D component and toggle "isKinematic" on
+            </li>
+        </ol>
     </div>
 </div>
 
 <div>
     <h4><a href="../Cc/BGCcCollider3DBox">BGCcCollider3DBox</a></h4>
 </div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
+<div class="bg-feature mdl-shadow--2dp">
     <div class="hh">
-        Generate a set of &nbsp; <a href="https://docs.unity3d.com/Manual/class-BoxCollider.html">Box colliders</a> &nbsp;
+        Generate a set of &nbsp; <a href="https://docs.unity3d.com/Manual/class-BoxCollider.html">Box colliders</a>
+        &nbsp;
         for 3D spline
     </div>
     <div>
-        <ul class="mdl-list">
-            <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
+        <ol class="nlist">
+            <li>Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
                 &nbsp;&nbsp;(<a href="../UserGuide/Points/">Text Guide</a>)
-            </span>
             </li>
-            <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Turn on snapping (Under Points tab) if you need it. Setup "Snap Layer Mask" for collisions.
-            </span>
+            <li>Turn on snapping (Under Points tab) if you need it. Setup "Snap Layer Mask" for collisions.</li>
+            <li>Add "Collider 3D Box" component (under Components tab). This component reuses 1 level children
+                GameObjects with BoxCollider attached,
+                so do not place any additional BoxColliders under spline's GameObject.
             </li>
-            <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Add "Collider 3D Box" component (under Components tab). This component reuses 1 level children GameObjects with BoxCollider attached,
-                so do not place any additional  BoxColliders under spline's GameObject.
-            </span>
+            <li>Adjust Resolution. You can adjust the number of points you want to split the spline to by adjusting
+                Math's components properties (if you set SplitMode to 'UseMathData'),
+                or you can change SplitMode to PartsTotal or PartsPerSection and assign the number os splits directly.
+                We recommend to set SplitMode to 'UseMathData' (default) and change MathType of Math component to
+                Adaptive and adjust Tolerance.
             </li>
-            <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Adjust Resolution. You can adjust the number of points you want to split the spline to by adjusting Math's components properties (if you set SplitMode to 'UseMathData'),
-                 or you can change SplitMode to PartsTotal or PartsPerSection and assign the number os splits directly.
-                We recommend to set SplitMode to 'UseMathData' (default) and change MathType of Math component to Adaptive and adjust Tolerance.
-            </span>
-            </li>
-            <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Adjust "Collider 3D Box" component properties if needed (like Width, Heigth, OffSet etc.)
-            </span>
-            </li>
-        </ul>
+            <li>Adjust "Collider 3D Box" component properties if needed (like Width, Heigth, OffSet etc.)</li>
+        </ol>
     </div>
 
 </div>
@@ -116,80 +125,50 @@
 <div>
     <h4><a href="../Cc/BGCcCollider2DBox">BGCcCollider2DBox</a></h4>
 </div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
+<div class="bg-feature mdl-shadow--2dp">
     <div class="hh">
         Generate a set of &nbsp; <a href="https://docs.unity3d.com/Manual/class-BoxCollider2D.html">Box Colliders 2D</a>
         &nbsp; for 2D spline
     </div>
-    <ul class="mdl-list">
-        <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
+    <div>
+        <ol class="nlist">
+            <li>Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
                 &nbsp;&nbsp;(<a href="../UserGuide/Points/">Text Guide</a>)
-            </span>
-        </li>
-        <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Set spline's 2D Mode to XY (under Points tab).
-            </span>
-        </li>
-        <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Add "Collider 2D Box" component (under Components tab). This component reuses 1 level children GameObjects with BoxCollider2D attached,
-                so do not place any additional  BoxCollider2D under spline's GameObject.
-            </span>
-        </li>
-        <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Adjust Resolution. You can adjust the number of points you want to split the spline to by adjusting Math's components properties (if you set SplitMode to 'UseMathData'),
-                 or you can change SplitMode to PartsTotal or PartsPerSection and assign the number os splits directly.
-                We recommend to set SplitMode to 'UseMathData' (default) and change MathType of Math component to Adaptive and adjust Tolerance.
-            </span>
-        </li>
-        <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Adjust "Collider 2D Box" component properties if needed (like Heigth, OffSet etc.)
-            </span>
-        </li>
-    </ul>
-
+            </li>
+            <li>Set spline's 2D Mode to XY (under Points tab).</li>
+            <li>Add "Collider 2D Box" component (under Components tab). This component reuses 1 level children
+                GameObjects with BoxCollider2D attached,
+                so do not place any additional BoxCollider2D under spline's GameObject.
+            </li>
+            <li>Adjust Resolution. You can adjust the number of points you want to split the spline to by adjusting
+                Math's components properties (if you set SplitMode to 'UseMathData'),
+                or you can change SplitMode to PartsTotal or PartsPerSection and assign the number os splits directly.
+                We recommend to set SplitMode to 'UseMathData' (default) and change MathType of Math component to
+                Adaptive and adjust Tolerance.
+            </li>
+            <li>Adjust "Collider 2D Box" component properties if needed (like Heigth, OffSet etc.)</li>
+        </ol>
+    </div>
 </div>
 
 <div>
     <h4><a href="../Cc/BGCcCollider2DEdge">BGCcCollider2DEdge</a></h4>
 </div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
+<div class="bg-feature mdl-shadow--2dp">
     <div class="hh">
         Generate points positions for &nbsp; <a href="https://docs.unity3d.com/Manual/class-EdgeCollider2D.html">Edge
         Collider 2D</a>
         &nbsp; Unity's Component for 2D spline
     </div>
-    <ul class="mdl-list">
-        <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
+    <div>
+        <ol class="nlist">
+            <li>Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
                 &nbsp;&nbsp;(<a href="../UserGuide/Points/">Text Guide</a>)
-            </span>
-        </li>
-        <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Set spline's 2D Mode to XY (under Points tab).
-            </span>
-        </li>
-        <li class="mdl-list__item">
-            <span class="mdl-list__item-primary-content">
-                <i class="material-icons mdl-list__item-icon">info</i>
-                Add "Collider 2D Edge" component (under Components tab).
-            </span>
-        </li>
-    </ul>
+            </li>
+            <li>Set spline's 2D Mode to XY (under Points tab).</li>
+            <li>Add "Collider 2D Edge" component (under Components tab).</li>
+        </ol>
+    </div>
 </div>
 
 <br/>
