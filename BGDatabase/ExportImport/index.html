@@ -269,7 +269,7 @@
     <li>Export/import any data to/from GoogleSheets/Excel in Editor (during game development)</li>
     <li>Update database data on players devices at runtime with <a href="../Addons/LiveUpdate">LiveUpdate</a> plugin
     </li>
-    <li>There is no way to update GoogleSheets data at runtime from players devices (<a href="#why">Why not?</a>)</li>
+    <li>Currently there is no way to update GoogleSheets data at runtime from players devices (<a href="#why">Why not?</a>)</li>
     <li>Backup/restore database in json format in Editor</li>
 </ol>
 
@@ -383,13 +383,14 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     We believe giving direct write GoogleSheets access to player devices does not make any sense, due to the following
     reasons:
 <ol>
-    <li>Security problem: giving write access means giving credentials to change data, and there is no way to make sure these credentials will not be hacked</li>
-    <li>Durability problem: there is no way to make sure some change will not erase previous change.
+    <li>Durability problem: thi is the main reason- there is no way to make sure some change will not erase previous change.
         Let's say you want to store the number of times your app was launched.
         So you read cell value, you increase it by 1 and you write it back.
         But if 10 players launch your game simultaneously,
         they all read initial zero value from GoogleSheets, increase it by one and write it back, so the final value will be 1, not 10.
+        This problem apply to any shared data.
     </li>
+    <li>Security problem: giving write access means giving credentials to change data, and there is no way to make sure these credentials will not be hacked</li>
     <li>Performance problem: GoogleSheets is not fast enough to be used as online database for big amount of users. Also there is 2 million cells max restriction</li>
 </ol>
 </p>
