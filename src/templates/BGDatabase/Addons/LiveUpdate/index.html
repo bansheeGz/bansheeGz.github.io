@@ -1,32 +1,49 @@
 #set page=Live Update
 
+<style>
+    .llink {
+        font-size: 12px;
+        margin: 0;
+    }
+</style>
+
 <h4>Description</h4>
 <p>
     Live update let you update database data on player's devices using Google Sheets.
 </p>
-<p>
-    This is how it works:
-</p>
+<h4>How it works</h4>
 <ol>
     <li>First time your game is launched and database is loaded, it'll try to read data from Google Sheets</li>
-    <li>If step 1 is successful, every time database is loaded, it will be merged with data from Google Sheets, thus applying the update.</li>
+    <li>If step 1 is successful, every time database is loaded, it will be merged with data from Google Sheets, thus
+        applying the update.
+    </li>
     <li>If step 1 is unsuccessful, database data will remain intact.</li>
 </ol>
+
+<h4>Setting up</h4>
 <p>
-    LiveUpdate addon uses public GoogleSheets Json API. It means your spreadsheet needs to be publicly available ("public" or "people with link" access levels).
+    LiveUpdate addon uses public GoogleSheets Json API. It means your spreadsheet needs to be publicly available
+    ("public" or "people with link" access levels). Also, you will need to fill in "Spreadsheet Id" and "API key"
+    (Learn how to obtain them in Parameters table below)
 </p>
-<p>
-    You can check if you set up config properly by accessing this address from your browser (make sure it returns valid json, not some error )
-    https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Name of one of your metas]?key=[Your API key], example
-    https://sheets.googleapis.com/v4/spreadsheets/MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ/values/Items?key=WAIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc
-</p>
+<div>
+    You can check if you set up config properly by accessing this address from your browser (make sure it returns valid
+    json, not some error )
+<p class="llink">
+    https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Name of one of your metas]?key=[Your API key]</p>
+For example, (SpreadsheetId=MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ, ApiKey=WAIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc and Meta=Items)
+<p class="llink">
+    https://sheets.googleapis.com/v4/spreadsheets/MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ/values/Items?key=WAIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc</p>
+
+</div>
 
 <h4>Restrictions</h4>
 <ol>
     <li>WebGl platform is not supported</li>
     <li>
         Plugin uses cell's value, not input value. Input value is raw data, and cell's value is formatted raw value
-        If you use float fields (float, float?, List&lt;float&gt;), make sure displayed value for these fields are the same as input values
+        If you use float fields (float, float?, List&lt;float&gt;), please, make sure displayed value for these fields
+        are the same as input values
         (you may need to change cells formatting)
     </li>
 </ol>
@@ -44,19 +61,45 @@
     <tr>
         <td>Spreadsheet Id</td>
         <td>
-            Id of your spreadsheet. Learn how to obtain it <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">here</a>
+            Id of your spreadsheet. Learn how to obtain it <a
+                href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">here</a>
         </td>
     </tr>
     <tr>
         <td>API key</td>
         <td>
-            API key to use for request. Learn how to create it <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">here</a>
+            API key to use for request. Learn how to create it <a
+                href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">here</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Timeout</td>
+        <td>
+            Timeout for connection. Value (in seconds) is between 1-30, default is 5
+        </td>
+    </tr>
+    <tr>
+        <td>Manual Load</td>
+        <td>
+            Set it to true if you do not want this addon to be executed automatically.
+            In this case, you will need to manually trigger the loading by calling
+            <pre>
+BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load(true);
+</pre>
+        </td>
+    </tr>
+    <tr>
+        <td>In Builds Only</td>
+        <td>
+            Setting this to true will disable addon if your game is run in Editor. It will work in builds only.
+            It is recommended to set it to true as soon as you are sure the addon works correctly.
         </td>
     </tr>
     <tr>
         <td>Merge Settings</td>
         <td>
-            The same merge settings you use for Export/Import or Saving/Loading. Learn more about merge settings <a href="../../ExportImport#mergeSettings">here</a>
+            The same merge settings you use for Export/Import or Saving/Loading. Learn more about merge settings <a
+                href="../../ExportImport#mergeSettings">here</a>
         </td>
     </tr>
 </table>
