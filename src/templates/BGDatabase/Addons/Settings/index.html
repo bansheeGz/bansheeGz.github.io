@@ -1,0 +1,60 @@
+#set page=Settings
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<p>
+    "Settings" addon let you specify some parameters for database
+</p>
+
+<table class="contentTable">
+    <tr>
+        <th>
+            Parameter name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Multithreaded loading</td>
+        <td>
+            "Multithreaded loading" can reduce the loading time if your database is big enough. <a href="#test">How do I know</a> if database is big enough?
+            "Multithreaded loading" does not work with "Lazy Load" addon enabled.
+        </td>
+    </tr>
+    <tr>
+        <td>Zipped content</td>
+        <td>
+            "Zipped content" means the database content is compressed before saving and decompressed before loading.
+            It can reduce the size of the database, but loading/saving will take a little bit longer.
+        </td>
+    </tr>
+</table>
+
+<h4 id="test">How do I measure performance?</h4>
+<p>
+    To measure the effects of "Multithreaded loading" and "Zipped content" on performance, you may want to benchmark the database loading time. This is how:
+</p>
+<ol>
+    <li>Create an empty scene</li>
+    <li>Create C# script, named BGDatabaseLoadingBenchmark.cs</li>
+    <li>Copy/paste the content of BGDatabaseLoadingBenchmark.cs, which is listed below</li>
+    <li>Add new GameObject to the scene and add BGDatabaseLoadingBenchmark.cs script to this GameObject</li>
+    <li>Run the scene</li>
+    <li>Loading time will be printed to the console</li>
+</ol>
+
+<pre class="prettyprint">
+using UnityEngine;
+using BansheeGz.BGDatabase;
+public class BGDatabaseLoadingBenchmark : MonoBehaviour
+{
+    void Start()
+    {
+        BGUtil.Measure("Database loading", () =>
+        {
+            var repo = BGRepo.I;
+        });
+    }
+}
+</pre>

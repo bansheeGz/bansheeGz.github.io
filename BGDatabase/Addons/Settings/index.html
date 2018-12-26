@@ -191,7 +191,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Excel">Excel</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
                     </li>
                     <li class="cli ">
@@ -202,7 +202,7 @@
             <li class="pli ">
                 <a class="pa " href="../../../BGDatabase/Addons">Addons</a>
                 <ul>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/Addons/Settings">Settings</a>
                     </li>
                     <li class="cli ">
@@ -260,120 +260,71 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Google Sheets</h3>
+                <h3>Settings</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-<div class="importantNote">
-    Main article about Export/Import is <a href="../../ExportImport">here</a>
-</div>
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
-<h4>Description</h4>
-Setting up Google sheets may take a while, however it's one-time procedure
-
-<h4>Create Google Sheets DataSource</h4>
 <p>
-    Open BGDatabase window <code>Window->BGDatabase</code>
+    "Settings" addon let you specify some parameters for database
 </p>
-<p>
-    Go to <code>DataSources</code> tab, press plus icon, chose <code>Datasource type</code>  to be <code>GoogleSheets</code> and click <code>Add</code> button
-</p>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/GoogleSheets4.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets4.png"></a>
-</div>
 
+<table class="contentTable">
+    <tr>
+        <th>
+            Parameter name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Multithreaded loading</td>
+        <td>
+            "Multithreaded loading" can reduce the loading time if your database is big enough. <a href="#test">How do I know</a> if database is big enough?
+            "Multithreaded loading" does not work with "Lazy Load" addon enabled.
+        </td>
+    </tr>
+    <tr>
+        <td>Zipped content</td>
+        <td>
+            "Zipped content" means the database content is compressed before saving and decompressed before loading.
+            It can reduce the size of the database, but loading/saving will take a little bit longer.
+        </td>
+    </tr>
+</table>
 
-<h4>Create Google client Id</h4>
+<h4 id="test">How do I measure performance?</h4>
 <p>
-    Here is our step-by-step guide how to do it (alternatively use this Google support <a href="https://support.google.com/googleapi/answer/6158849">article</a>)
+    To measure the effects of "Multithreaded loading" and "Zipped content" on performance, you may want to benchmark the database loading time. This is how:
 </p>
 <ol>
-    <li>Log in to <a href="https://console.developers.google.com/">Google Console</a></li>
-    <li>Select or create a project
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets1.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets1.png"></a>
-        </div>
-    </li>
-    <li>Select <code>Credentials</code> , click on <code>Create credentials</code> and chose <code>Oath client Id</code>
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets2.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets2.png"></a>
-        </div>
-    </li>
-    <li>Chose <code>Other</code> and click <code>Create</code>
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets3.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets3.png"></a>
-        </div>
-    </li>
-    <li>A popup will show up with your client id and client secret. Copy them to your Datasource settings
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets5.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets5.png"></a>
-        </div>
-    </li>
+    <li>Create an empty scene</li>
+    <li>Create C# script, named BGDatabaseLoadingBenchmark.cs</li>
+    <li>Copy/paste the content of BGDatabaseLoadingBenchmark.cs, which is listed below</li>
+    <li>Add new GameObject to the scene and add BGDatabaseLoadingBenchmark.cs script to this GameObject</li>
+    <li>Run the scene</li>
+    <li>Loading time will be printed to the console</li>
 </ol>
 
-<h4>Get Oath tokens from Google</h4>
-<ol>
-    <li>Fill <code>Application name</code> with any string value, <code>Spreadsheet name</code> with the name of you spreadsheet and click <code>Get new tokens</code>
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets6.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets6.png"></a>
-        </div>
-    </li>
-    <li>Your browser will open up, with login to Google account and permission request. Login and click <code>Allow</code>
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets7.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets7.png"></a>
-        </div>
-    </li>
-    <li>Single page will be displayed with single text field. Copy it's value and switch back to Unity
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets8.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets8.png"></a>
-        </div>
-    </li>
-
-    <li>Unity will display a small popup window with single text field. Paste the copied value and press <code>Go!</code>
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets9.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets9.png"></a>
-        </div>
-    </li>
-
-    <li>That's it. Tokens field will be filled and you can save settings- datasource is ready.
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/GoogleSheets10.png"><img style="width: 400px;" src="../../../images/BGDatabase/GoogleSheets10.png"></a>
-        </div>
-    </li>
-</ol>
-
-<h4>Create Export/Import task</h4>
-<p>
-    Go to <code>Export/Import</code> tab, press plus icon, chose <code>Job type</code>  to be <code>GoogleSheets</code> and click <code>Add</code> button
-</p>
-<p>
-    Chose GoogleSheets datasource, created above. Set up metas (tables) you wish to update.
-</p>
-
-<h4>Running Export/Import Task</h4>
-<p>
-    Press <code>Export</code> or <code>Import</code> button to run the task you just created.
-</p>
-
-<p>
-    [Optionally] After job is finished, open <code>Log</code> tab to see full log of all actions performed.
-    Pay attention to Warning messages (colored red). Every error or unexpected event happened during syncing will be colored red.
-</p>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/Excel5.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel5.png"></a>
-</div>
-
-
-<h4>Using Google sheets as shared remote database</h4>
-<p>
-    You can use Google Sheets as remote shared database to be used by several developers.
-</p>
-<p>
-    //todo locking
-</p>
+<pre class="prettyprint">
+using UnityEngine;
+using BansheeGz.BGDatabase;
+public class BGDatabaseLoadingBenchmark : MonoBehaviour
+{
+    void Start()
+    {
+        BGUtil.Measure("Database loading", () =>
+        {
+            var repo = BGRepo.I;
+        });
+    }
+}
+</pre>
             </div>
 
             <!--======================================================       BG Database Footer               -->
