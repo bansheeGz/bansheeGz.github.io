@@ -118,8 +118,9 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 <p>
     We believe giving direct write GoogleSheets access to player devices does not make any sense, due to the following
     reasons:
+</p>
 <ol>
-    <li>Durability problem: thi is the main reason- there is no way to make sure some change will not erase previous change.
+    <li>Durability problem: this is the main reason- there is no way to make sure some change will not erase previous change.
         Let's say you want to store the number of times your app was launched.
         So you read cell value, you increase it by 1 and you write it back.
         But if 10 players launch your game simultaneously,
@@ -127,9 +128,14 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
         This problem apply to any shared data.
     </li>
     <li>Security problem: giving write access means giving credentials to change data, and there is no way to make sure these credentials will not be hacked</li>
-    <li>Performance problem: GoogleSheets is not fast enough to be used as online database for big amount of users. Also there is 2 million cells max restriction</li>
+    <li>Performance problem: GoogleSheets is not fast enough to be used as online database for big amount of users.
+        Many tasks will require to read data first before updating, and it can take a lot of time.
+        Also there is 2 million cells max restriction.</li>
 </ol>
+<p>
+    All this problems can be solved with a proxy server, but it means there is no need for direct access to GoogleSheets.
 </p>
+
 
 <h4>What's next?</h4>
 Read product specific guides next
