@@ -74,6 +74,73 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
                                                              src="#path images/BGDatabase/ExportImport3.png"></a>
 </div>
 
+<h4 id="rowlevel">Row-level control for merge settings</h4>
+<p>Merge settings let you configure which table/fields you want to add/delete/update, but it does not give you the opportunity to define which rows you want to add/delete/update</p>
+<p>For row-level control, you can implement C# controller class, which can cancel any operation if some condition is met. This is how:</p>
+<ul>
+    <li>Create your own C# class with unique name, set this class name to "Controller Type" field of merge settings (using the full name with namespace).</li>
+    <li>Implement any number of interfaces (namespace is <code>BansheeGz.BGDatabase</code>, interfaces defined inside class <code>BGMergeSettingsEntity</code>),
+        listed below to receive callback method invocations. Return true from this methods to cancel operation</li>
+</ul>
+<table  class="contentTable">
+    <tr>
+        <th width="20%">Interface type</th>
+        <th width="40%">method(s) to implement</th>
+        <th width="40%">description</th>
+    </tr>
+    <tr>
+        <td>IMergeReceiver</td>
+        <td>
+            <code>public bool OnBeforeMerge(BGRepo from, BGRepo to)</code>
+            <br>
+            <code>public void OnAfterMerge(BGRepo @from, BGRepo to)</code>
+        </td>
+        <td>
+            Callbacks to be called before after merging. Return true from OnBeforeMerge to cancel merging
+        </td>
+    </tr>
+    <tr>
+        <td>IRemoveOrphanedReceiver</td>
+        <td>
+            <code>public bool OnBeforeDelete(BGEntity toEntity)</code>
+        </td>
+        <td>
+            Callbacks to be called before deleting the row. Return true to cancel removal.
+        </td>
+    </tr>
+    <tr>
+        <td>IAddMissingReceiver</td>
+        <td>
+            <code>public bool OnBeforeAdd(BGEntity fromEntity)</code>
+        </td>
+        <td>
+            Callbacks to be called before adding the row. Return true to cancel adding.
+        </td>
+    </tr>
+    <tr>
+        <td>IUpdateMatchingReceiver</td>
+        <td>
+            <code>public bool OnBeforeUpdate(BGEntity @from, BGEntity to)</code>
+        </td>
+        <td>
+            Callbacks to be called before updating the row. Return true to cancel updating.
+        </td>
+    </tr>
+    <tr>
+        <td>IUpdateMatchingFieldReceiver</td>
+        <td>
+            <code>public bool OnBeforeFieldUpdate(BGField fromField, BGField toField, BGEntity @from, BGEntity to)</code>
+        </td>
+        <td>
+            Callbacks to be called before updating the row' field. The same as <code>IUpdateMatchingReceiver</code>,
+            but it's called on per field basis. <code>IUpdateMatchingReceiver</code> is called before this callback,
+            and if <code>IUpdateMatchingReceiver</code> return true, this callback will never be invoked (cause updating entity will be cancelled by <code>IUpdateMatchingReceiver</code>)
+        </td>
+    </tr>
+</table>
+<p>
+    You can find an example of such controller class on <a href="../Addons/SaveLoad#rowlevelexample">Save/Load</a> addon page.
+</p>
 
 <h4>Field value string format</h4>
 <p>
@@ -130,7 +197,8 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     <li>Security problem: giving write access means giving credentials to change data, and there is no way to make sure these credentials will not be hacked</li>
     <li>Performance problem: GoogleSheets is not fast enough to be used as online database for big amount of users.
         Many tasks will require to read data first before updating, and it can take a lot of time.
-        Also there is 2 million cells max restriction.</li>
+        Also there is 2 million cells max restriction.
+    </li>
 </ol>
 <p>
     All this problems can be solved with a proxy server, but it means there is no need for direct access to GoogleSheets.
