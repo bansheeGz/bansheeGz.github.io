@@ -315,3 +315,13 @@ code::before, code::after {
     margin-right: auto;
     display: block;
 }
+.moreinfo{
+    border: #0b0b0b dashed 1px;
+    background-color: rgb(233, 241, 241);
+    font-size: small;
+    padding-left: 15px;
+    padding-right: 5px;
+}
+.moreinfo ul{
+    font-size: small;
+}

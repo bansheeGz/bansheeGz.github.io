@@ -27,27 +27,41 @@ Chose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for sav
     Here is the quick explanation why it works like this and why it's way much better then simply saving the whole database.
 </p>
 <p>
-    The main reason why it works the way it works- is because we want to be able to change database during public game releases and we want all old saves to be compatible with new database.
+    The main reasons why it works the way it works- is because:
 </p>
+<ol>
+    <li>we want to be able to change database between public game releases</li>
+    <li>we want to make sure the old saves, which are made with old version of database will remain compatible with new database</li>
+    <li>As a result of loading old save, we want to keep all saved data + we want to keep all data we made to default database (shipped with a game)</li>
+</ol>
 <p>
-    Here is a quick example illustration, using the example database shipped with our package.
+    Here is the detailed illustration about what we want to achieve:
 </p>
 <div class="bg-image">
-    <a href="#path images/BGDatabase/SaveLoadAddon2.png"><img style="width: 400px"
-                                                              src="#path images/BGDatabase/SaveLoadAddon2.png"></a>
+    <a href="#path images/BGDatabase/SaveLoadAddon3.png"><img style="width: 400px"
+                                                              src="#path images/BGDatabase/SaveLoadAddon3.png"></a>
 </div>
-<p>For more information about:
-<ul>
-    <li>
-        How it works, read <a href="#compatible">How to change your database and keep it compatible with old save files</a> section below.
-    </li>
-    <li>
-        How to implement row-level access, read <a href="#rowlevelexample">Row-level controller</a> section below.
-    </li>
-    <li>
-        How our example work, please, read <a href="../../ExampleBreakdown">example breakdown</a> article
-    </li>
-</ul>
+
+<p>
+    And here is the detailed illustration about how we want to achieve it and how save/load addon actually works:
+</p>
+
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SaveLoadAddon4.png"><img style="width: 400px"
+                                                              src="#path images/BGDatabase/SaveLoadAddon4.png"></a>
+</div>
+
+<div class="moreinfo">
+    For more information about:
+    <ul>
+        <li>
+            How to change your database and keep it compatible with old save files- read the <a href="#compatible">section below</a> .
+        </li>
+        <li>
+            How to implement row-level control over merging- read <a href="#rowlevelexample">Row-level controller</a> section below.
+        </li>
+    </ul>
+</div>
 
 <h4>How to use?</h4>
 
@@ -98,34 +112,7 @@ BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
 </div>
 
 
-
 <h4 id="compatible">How to change you database and keep it compatible with old save files?</h4>
-<p>
-    What we want to achieve:
-</p>
-<ul>
-    <li>We want to be able to change database with new public game versions</li>
-    <li>We want to make sure the old saves, which are made with old version of database will remain compatible with new database</li>
-    <li>As a result of loading old save, we want to keep all saved data + we want to keep all data we made to default database (shipped with a game)</li>
-</ul>
-<p>
-    Here is the detailed illustration about what we want to achieve:
-</p>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/SaveLoadAddon3.png"><img style="width: 400px"
-                                                              src="#path images/BGDatabase/SaveLoadAddon3.png"></a>
-</div>
-<p>
-    Here is the detailed illustration about how save/load actually works:
-</p>
-
-<div class="bg-image">
-    <a href="#path images/BGDatabase/SaveLoadAddon4.png"><img style="width: 400px"
-                                                              src="#path images/BGDatabase/SaveLoadAddon4.png"></a>
-</div>
-<p>
-    So how we could achieve these goals? Here is the rules:
-</p>
 <ul>
     <li>Do not include static data (the data, which can not be changed during game session) to save/load merge settings</li>
     <li>While developing new, public version of your game- you can change <i>anything</i> in your static data with one simple exception:
@@ -138,7 +125,8 @@ BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
                 if in <a href="#mergesettings">merge settings</a> you mark the field for updating it will be updated during loading (if target row stills exist in default database),
             </li>
             <li>
-                if in merge settings you mark the rows for adding/deleting ("Add missing"/"Remove Orphaned") the whole table will be updated with values from the saved file (if this table still exists in default database).
+                if in merge settings you mark the rows for adding/deleting ("Add missing"/"Remove Orphaned") the whole table will be updated with values from the saved file (if this table still exists
+                in default database).
             </li>
             <li>
                 if you want fine-grained, row-level control over loading - you can do it with C# controller class (read the <a href="#rowlevelexample">next section</a> for more details).
@@ -147,6 +135,22 @@ BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
 
     </li>
 </ul>
+<p>
+    Here en example from our default database and default example scenes:
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SaveLoadAddon2.png"><img style="width: 400px"
+                                                              src="#path images/BGDatabase/SaveLoadAddon2.png"></a>
+</div>
+<div class="moreinfo">
+    For more information about:
+    <ul>
+        <li>
+            How our example scenes work- read <a href="../../ExampleBreakdown">example breakdown</a> article
+        </li>
+    </ul>
+</div>
+
 
 <h4 id="rowlevelexample">Row-level control over loading</h4>
 <p>
@@ -170,12 +174,13 @@ BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
 <pre class="prettyprint">
 using BansheeGz.BGDatabase;
 
- // Warning!!! this controller is implemented without code generation and may contains ugly boilerplate code
- public class MyCustomSaveLoadController : BGMergeSettingsEntity.IMergeReceiver, BGMergeSettingsEntity.IRemoveOrphanedReceiver
+    // Warning!!! this controller is implemented without code generation
+    //and may contains ugly boilerplate code
+ public class MyCustomSaveLoadController : BGMergeSettingsEntity.IMergeReceiver,BGMergeSettingsEntity.IRemoveOrphanedReceiver
  {
      private bool loading;
 
-     public bool OnBeforeMerge(BGRepo @from, BGRepo to)
+     public bool OnBeforeMerge(BGRepo from, BGRepo to)
      {
          //here we want to know, if it's loading or saving?
          //... Note (currently there is no merging on saving, but it can be implemented in future releases)
@@ -183,7 +188,7 @@ using BansheeGz.BGDatabase;
          return false;
      }
 
-     public void OnAfterMerge(BGRepo @from, BGRepo to)
+     public void OnAfterMerge(BGRepo from, BGRepo to)
      {
          //no need to write anything here
      }
@@ -235,9 +240,15 @@ using BansheeGz.BGDatabase;
         Also, you can run the same example without controller assigned to see the difference
     </li>
 </ul>
-<p>
-    For more information about row-level controller, please read article about <a href="../../ExportImport#rowlevel">export/import</a>
-</p>
+<div class="moreinfo">
+    For more information about:
+    <ul>
+        <li>
+            row-level controller, please read article about <a href="../../ExportImport#rowlevel">export/import</a>
+        </li>
+    </ul>
+</div>
+
 
 <h4>BeforeSave event</h4>
 You can declare you MonoBehavior script to be a receiver of BeforeSave event, so it could update the database before saving (code from the example project)
