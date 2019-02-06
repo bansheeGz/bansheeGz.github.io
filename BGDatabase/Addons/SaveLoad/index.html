@@ -272,8 +272,9 @@
 <h4>What can I do with Save/Load addon?</h4>
 <ul>
     <li>Save/load the state of the database to/from byte array during runtime on players devices</li>
-    <li>Define which table and which fields you want to be saved/loaded using <a href="#mergesettings">merge settings</a> <span style="color: red">(it won't work if you omit this step)</span></li>
+    <li>Define which table and which fields you want to be saved/loaded using <a href="#mergesettings">merge settings</a> <span style="color: red">(it won't work if you skip this step)</span></li>
     <li>Create C# class for fine-grained row-level control.</li>
+    <li>You can save the whole database without Save/Load addon (<a href="#saveAll">click</a>)</li>
 </ul>
 
 <h4>How can I enable it?</h4>
@@ -337,7 +338,7 @@ byte[] bytes = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save();
 BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
 </pre>
 
-<h4>Is it possible to save/load the whole database?</h4>
+<h4 id="saveAll">Is it possible to save/load the whole database?</h4>
 <pre class="prettyprint">
 // !!!! This is not recommended !!!!
 //to save
