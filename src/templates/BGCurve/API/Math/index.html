@@ -77,6 +77,15 @@
         <td><a href="../Section">BGCurveBaseMath.SectionInfo</a></td>
         <td>Returns information about spline's section.</td>
     </tr>
+    <tr>
+        <td>Recalculate(bool force = false)</td>
+        <td>void </td>
+        <td>
+            Force math internal data to be recalculated.
+            Usually math recalculates its data (in case of curve is changed) once per frame at Update or LateUpdate methods.
+            If you need all the changes to take effect immediately, call this method
+        </td>
+    </tr>
 
 </table>
 <br/><br/>
