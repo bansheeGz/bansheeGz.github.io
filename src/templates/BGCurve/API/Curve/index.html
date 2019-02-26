@@ -1,0 +1,211 @@
+#set page=API Reference (Curve)
+
+<p>
+    This page is API reference for a curve class (BansheeGz.BGSpline.Curve.BGCurve)
+</p>
+
+<h4>Points</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>Points</td>
+        <td><a href="../Point">BGCurvePointI</a>[]</td>
+        <td>Returns all points</td>
+    </tr>
+    <tr>
+        <td>PointsCount</td>
+        <td>int</td>
+        <td>Returns the total number of points</td>
+    </tr>
+    <tr>
+        <td>[int index]</td>
+        <td><a href="../Point">BGCurvePointI</a></td>
+        <td>Get a point by its index</td>
+    </tr>
+    <tr>
+        <td>IndexOf(BGCurvePointI point)</td>
+        <td>int</td>
+        <td>Returns point's index if found or -1 if not found</td>
+    </tr>
+    <tr>
+        <td>AddPoint(BGCurvePoint point)</td>
+        <td><a href="../Point">BGCurvePointI</a></td>
+        <td>add a point to the end of the curve</td>
+    </tr>
+    <tr>
+        <td>AddPoint(BGCurvePoint point, int index)</td>
+        <td><a href="../Point">BGCurvePointI</a></td>
+        <td>add a point at specified index</td>
+    </tr>
+    <tr>
+        <td>AddPoints(BGCurvePoint[] points)</td>
+        <td>void</td>
+        <td>add several points to the end of the curve</td>
+    </tr>
+    <tr>
+        <td>AddPoints(BGCurvePoint[] points, int index)</td>
+        <td>void</td>
+        <td>add several points at specified index</td>
+    </tr>
+    <tr>
+        <td>Delete(BGCurvePointI point)</td>
+        <td>void</td>
+        <td>delete a point</td>
+    </tr>
+    <tr>
+        <td>Delete(int index)</td>
+        <td>void</td>
+        <td>delete a point at specified index</td>
+    </tr>
+    <tr>
+        <td>Delete(BGCurvePointI[] points)</td>
+        <td>void</td>
+        <td>delete several points</td>
+    </tr>
+    <tr>
+        <td>Swap(int index1, int index2)</td>
+        <td>void</td>
+        <td>swap 2 points</td>
+    </tr>
+    <tr>
+        <td>Reverse()</td>
+        <td>void</td>
+        <td>Reverses all points orders and keeping curve intact</td>
+    </tr>
+    <tr>
+        <td>Clear()</td>
+        <td>void</td>
+        <td>Remove all poitns</td>
+    </tr>
+</table>
+
+
+<h4>Fields</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>Fields</td>
+        <td>BGCurvePointField[]</td>
+        <td>Returns all fields</td>
+    </tr>
+    <tr>
+        <td>FieldsCount</td>
+        <td>int</td>
+        <td>Returns the number of fields</td>
+    </tr>
+    <tr>
+        <td>AddField(string name, BGCurvePointField.TypeEnum type)</td>
+        <td>BGCurvePointField</td>
+        <td>Add a field with specified type</td>
+    </tr>
+    <tr>
+        <td>DeleteField(BGCurvePointField field)</td>
+        <td>void</td>
+        <td>Delete a field</td>
+    </tr>
+    <tr>
+        <td>GetField(string name)</td>
+        <td>BGCurvePointField</td>
+        <td>Get a field by its name</td>
+    </tr>
+    <tr>
+        <td>HasField(string name)</td>
+        <td>bool</td>
+        <td>Returns true if field with specified name exists</td>
+    </tr>
+</table>
+
+
+<h4>Snapping</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>SnapType</td>
+        <td>SnapTypeEnum</td>
+        <td>Curve's snapping mode. Off- snapping mode is off. Points- points are snapped to nearby geometry. Curve- points and approximation points are snapped to nearby geometry
+            (approximation points are the points, created by a math component to split curve's section to small straight lines)</td>
+    </tr>
+    <tr>
+        <td>SnapDistance</td>
+        <td>float</td>
+        <td>Max distance for snapping</td>
+    </tr>
+    <tr>
+        <td>SnapToBackFaces</td>
+        <td>bool</td>
+        <td>Should snapping take back faces into account</td>
+    </tr>
+    <tr>
+        <td>SnapLayerMask</td>
+        <td>LayerMask</td>
+        <td>Unity's layer mask for snapping</td>
+    </tr>
+    <tr>
+        <td>SnapMonitoring</td>
+        <td>bool</td>
+        <td>Should curve monitor surrounding environment every frame. This is super costly in terms of performance</td>
+    </tr>
+    <tr>
+        <td>SnapAxis</td>
+        <td>SnapAxisEnum</td>
+        <td>Which axis is used for snapping (X,Y,Z)</td>
+    </tr>
+    <tr>
+        <td>SnapTriggerInteraction</td>
+        <td>QueryTriggerInteraction</td>
+        <td>Should snapping take triggers into account</td>
+    </tr>
+</table>
+
+
+<h4>Misc</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+
+    <tr>
+        <td>Closed</td>
+        <td>bool</td>
+        <td>if the curve is closed (e.g. there is a section between last and first points)</td>
+    </tr>
+    <tr>
+        <td>Mode2D</td>
+        <td>Mode2DEnum</td>
+        <td>if the curve is in 2D mode. Off- curve is in 3D mode. XY, XZ, YZ - curve is in 2D mode for specified plane. (XY- is the most useful mode for standard 2D mode in Unity)</td>
+    </tr>
+    <tr>
+        <td>PointsMode</td>
+        <td>PointsModeEnum</td>
+        <td>Identifies which class is used for points and how points are stored and behaves.
+            Inlined- points are stored as inlined C# class (BGCurvePoint).
+            Components- points are stored as Unity's components (BGCurvePointComponent, extended from MonoBehaviour).
+            GameObjectsNoTransform- Points are stored as separate components(BGCurvePointGO, extended from MonoBehaviour) attached to their own GameObjects. Unity's transform is not used.
+            GameObjectsTransform-Points are stored as separate components(BGCurvePointGO, extended from MonoBehaviour) attached to their own GameObjects. Unity's transform position is used as point position. Rotation and Scale affects controls positions.
+        </td>
+    </tr>
+    <tr>
+        <td>EventMode</td>
+        <td>EventModeEnum</td>
+        <td>How events are fired. Update- events are fired once per frame in Update method. LateUpdate-events are fired once per frame in LateUpdate. Use it if you are using animations.
+            NoEvents-events are suppressed
+        </td>
+    </tr>
+</table>
+<br/><br/>

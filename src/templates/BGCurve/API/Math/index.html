@@ -1,0 +1,82 @@
+#set page=API Reference (Math)
+
+<p>
+    This page is API reference for a curve's math (BansheeGz.BGSpline.Curve.BGCurveMathI).
+    Class, which implements this interface give you an access to the set of different utility methods for spline approximation.
+    Read more about this methods <a href="../../DeveloperGuide/Math">here</a>
+    Commonly, you want to use <a href="../../Cc/BGCcMath">BGCcMath</a> component, which implements this interface.
+</p>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>GetDistance(int pointIndex = -1)</td>
+        <td>float</td>
+        <td>Returns spline's length. Optionally specify pointIndex to get a distance to specified point</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByDistanceRatio(float distanceRatio, bool useLocal = false)</td>
+        <td>Vector3</td>
+        <td>Calculate position by distance ratio.</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByDistance(float distance, bool useLocal = false)</td>
+        <td>Vector3</td>
+        <td>Calculate position by distance.</td>
+    </tr>
+    <tr>
+        <td>CalcTangentByDistanceRatio(float distanceRatio, bool useLocal = false)</td>
+        <td>Vector3</td>
+        <td>Calculate tangent by distance ratio.</td>
+    </tr>
+    <tr>
+        <td>CalcTangentByDistance(float distance, bool useLocal = false)</td>
+        <td>Vector3</td>
+        <td>Calculate tangent by distance.</td>
+    </tr>
+    <tr>
+        <td>CalcPositionAndTangentByDistanceRatio(float distanceRatio, out Vector3 tangent, bool useLocal = false)</td>
+        <td>float</td>
+        <td>Calculate position and tangent by distance ratio. Returns position</td>
+    </tr>
+    <tr>
+        <td>CalcPositionAndTangentByDistance(float distance, out Vector3 tangent, bool useLocal = false)</td>
+        <td>float</td>
+        <td>Calculate position and tangent by distance. Returns position</td>
+    </tr>
+    <tr>
+        <td>CalcSectionIndexByDistanceRatio(float ratio)</td>
+        <td>int</td>
+        <td>Calculate spline's section using distance ratio</td>
+    </tr>
+    <tr>
+        <td>CalcSectionIndexByDistance(float distance)</td>
+        <td>int</td>
+        <td>Calculate spline's section using distance</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByClosestPoint(Vector3 point, bool skipSectionsOptimization = false, bool skipPointsOptimization = false)</td>
+        <td>Vector3</td>
+        <td>Calculate spline's world point position by a point, which is closest to a given point.</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByClosestPoint(Vector3 point, out float distance, bool skipSectionsOptimization = false, bool skipPointsOptimization = false)</td>
+        <td>Vector3</td>
+        <td>Calculate spline's world point position and distance by a point, which is closest to a given point.</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByClosestPoint(Vector3 point, out float distance, out Vector3 tangent, bool skipSectionsOptimization = false, bool skipPointsOptimization = false</td>
+        <td>Vector3</td>
+        <td>Calculate spline's world point position, distance and tangent by a point, which is closest to a given point.</td>
+    </tr>
+    <tr>
+        <td>[int sectionIndex]</td>
+        <td><a href="../Section">BGCurveBaseMath.SectionInfo</a></td>
+        <td>Returns information about spline's section.</td>
+    </tr>
+
+</table>
+<br/><br/>

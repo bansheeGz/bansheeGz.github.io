@@ -1,0 +1,72 @@
+#set page=API Reference (Section)
+
+<p>
+    This page is API reference for a curve's section (BansheeGz.BGSpline.Curve.BGCurveBaseMath.SectionInfo) and approximation point (BansheeGz.BGSpline.Curve.BGCurveBaseMath.SectionPointInfo).
+    You can access SectionInfo via <a href="../Math">math</a> object.
+    Math approximates the spline by adding a set of points along the spline's section and uses straight lines between these points for all calculations.
+    You can access section information and these approximation points if you need to.
+</p>
+
+<h4>Section (BansheeGz.BGSpline.Curve.BGCurveBaseMath.SectionInfo)</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>DistanceFromStartToOrigin</td>
+        <td>float</td>
+        <td>Distance from curve's start to the start point of this section</td>
+    </tr>
+    <tr>
+        <td>DistanceFromEndToOrigin</td>
+        <td>float</td>
+        <td>Distance from curve's start to the end point of this section</td>
+    </tr>
+    <tr>
+        <td>Distance</td>
+        <td>float</td>
+        <td>Section's length</td>
+    </tr>
+    <tr>
+        <td>Points</td>
+        <td>List&lt;SectionPointInfo&gt;</td>
+        <td>List of approximation points</td>
+    </tr>
+    <tr>
+        <td>PointsCount</td>
+        <td>int</td>
+        <td>Total number of approximation points</td>
+    </tr>
+    <tr>
+        <td>[int index]</td>
+        <td>SectionPointInfo</td>
+        <td>Get approximation point by its index</td>
+    </tr>
+</table>
+
+<h4>Section approximation points (BansheeGz.BGSpline.Curve.BGCurveBaseMath.SectionPointInfo)</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Position</td>
+        <td>Vector3</td>
+        <td>Point's world position</td>
+    </tr>
+    <tr>
+        <td>Tangent</td>
+        <td>Vector3</td>
+        <td>Point's world tangent. Note: math should calculate tangents for this field to have a correct value</td>
+    </tr>
+    <tr>
+        <td>DistanceToSectionStart</td>
+        <td>float</td>
+        <td>distance from the start of the section to this point</td>
+    </tr>
+</table>
+<br/><br/>

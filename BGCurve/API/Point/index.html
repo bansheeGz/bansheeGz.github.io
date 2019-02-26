@@ -190,7 +190,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/API/Curve">Curve</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGCurve/API/Point">Point</a>
                     </li>
                     <li class="cli ">
@@ -201,7 +201,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="pli  alic ">
+            <li class="pli  ">
                 <a class="pa" href="../../../BGCurve/Cc">Components</a>
                 <ul>
                     <li class="cli ">
@@ -219,7 +219,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcTrs">TRS</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
@@ -263,64 +263,193 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Line Renderer [Component]</h3>
+                <h3>API Reference (Point)</h3>
             </div>
 
             <!--======================================================        BG Curve Content              -->
-            <div class="bg-main-contacts">
-    <div class="bg-main-contacts_grid mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-            <img style="width:400px;height: auto" src="../../../images/GifCcLineRenderer.gif">
-        </div>
-        
-    </div>
-</div>
+            
 
+<p>
+    This page is API reference for a curve's point (BansheeGz.BGSpline.Curve.BGCurvePointI).
+    BGCurvePointI is an interface, implementation class depends on curve's <a href="../Curve">PointsMode</a>
+</p>
 
-<div>
-    <h4 class="v11">Description</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        This component let you visualize a Curve with Unity's standard <a href="https://docs.unity3d.com/Manual/class-LineRenderer.html">LineRenderer Component</a> in Play Mode. If you are updating the curve and visualizing it with this component, you may want to set related 'Math' updateMode parameter to AabbVisible, so the 'Math' and 'Line Renderer' update their data only if it's really needed (e.g. they are visible by any camera).
-    </div>
-</div>
+<h4>Position</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>PositionLocal</td>
+        <td>Vector3</td>
+        <td>Local position. It's relative to curve's origin. All transformations are ignored</td>
+    </tr>
+    <tr>
+        <td>PositionLocalTransformed</td>
+        <td>Vector3</td>
+        <td>Local position. It's relative to curve's origin. All transformations are applied</td>
+    </tr>
+    <tr>
+        <td>PositionWorld</td>
+        <td>Vector3</td>
+        <td>World position.</td>
+    </tr>
+</table>
 
+<h4>Controls</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>ControlFirstLocal</td>
+        <td>Vector3</td>
+        <td>Local position for first control (inbound). It's relative to point's position, all transformations are ignored</td>
+    </tr>
+    <tr>
+        <td>ControlFirstLocalTransformed</td>
+        <td>Vector3</td>
+        <td>Local position for first control (inbound). It's relative to point's position with all transformations applied</td>
+    </tr>
+    <tr>
+        <td>ControlFirstWorld</td>
+        <td>Vector3</td>
+        <td>World position for first control (inbound)</td>
+    </tr>
+    <tr>
+        <td>ControlSecondLocal</td>
+        <td>Vector3</td>
+        <td>Local position for second control (outbound). It's relative to point's position, all transformations are ignored</td>
+    </tr>
+    <tr>
+        <td>ControlSecondLocalTransformed</td>
+        <td>Vector3</td>
+        <td>Local position for second control (outbound). It's relative to point's position with all transformations applied</td>
+    </tr>
+    <tr>
+        <td>ControlSecondWorld</td>
+        <td>Vector3</td>
+        <td>World position for second control (outbound)</td>
+    </tr>
+</table>
 
-<div>
-    <h4>Parameters</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        splitMode
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        The mode for splitting a spline. 1) PartsTotal - use specified number parts for whole spline. 2) PartsPerSection - use specified number parts for each section (between 2 points)  3) UseMathData -use data, precalculated by Math component. Note, you can tweak some params at Math as well
-    </div>
-    <hr>
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        partsTotal
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        The number of splits for TotalSections mode. The actual number of parts can be less than partsTotal due to optimization, but never more.
-    </div>
-    <hr>
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        partsPerSection
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        The number of splits for PartSections mode. The actual number of parts can be less than partsPerSection due to optimization, but never more.
-    </div>
-    <hr>
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        doNotOptimizeStraightLines
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Split straight lines. Straight lines are optimized by default and are not split, but you can override it with this parameter.
-    </div>
-    <hr>
+<h4>Misc</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>ControlType</td>
+        <td>ControlTypeEnum</td>
+        <td>Point's controls type. Absent- no controls, BezierSymmetrical- symmetrical Bezier, BezierIndependant- both controls are independent of each other</td>
+    </tr>
+    <tr>
+        <td>PointTransform</td>
+        <td>Transform</td>
+        <td>Unity's transform to use as point's position</td>
+    </tr>
+    <tr>
+        <td>Curve</td>
+        <td><a href="../Curve">BGCurve</a></td>
+        <td>Returns a curve (readonly)</td>
+    </tr>
+</table>
 
-</div>
+<h4>Custom Fields</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>GetField&lt;T&gt;(string name)</td>
+        <td>T</td>
+        <td>Get custom field value by field's name</td>
+    </tr>
+    <tr>
+        <td>GetFloat(string name)</td>
+        <td>float</td>
+        <td>Get custom field value by field's name</td>
+    </tr>
+    <tr>
+        <td>GetBool(string name)</td>
+        <td>bool</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetInt(string name)</td>
+        <td>int</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetVector3(string name)</td>
+        <td>Vector3</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetQuaternion(string name)</td>
+        <td>Quaternion</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetBounds(string name)</td>
+        <td>Bounds</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetColor(string name)</td>
+        <td>Color</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetField&lt;T&gt;(string name, T value)</td>
+        <td>void</td>
+        <td>Set custom field value by field's name</td>
+    </tr>
+    <tr>
+        <td>SetFloat(string name, float value)</td>
+        <td>void</td>
+        <td>Set custom field value by field's name</td>
+    </tr>
+    <tr>
+        <td>SetBool(string name, bool value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetInt(string name, int value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetVector3(string name, Vector3 value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetQuaternion(string name, Quaternion value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetBounds(string name, Bounds value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetColor(string name, Color value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+</table>
+<br/><br/>
 
 
             <!--======================================================       BG Curve Footer               -->

@@ -260,3 +260,16 @@ h3{
     background: url(../images/ColliderPack.png) no-repeat left;
     min-height: 32px;
 }
+
+.contentTable{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+.contentTable td,.contentTable th{
+    border: 1px solid black;
+    padding: 4px;
+}
+.contentTable p {
+    margin: 0;
+}

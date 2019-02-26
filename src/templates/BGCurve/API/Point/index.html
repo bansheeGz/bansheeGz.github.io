@@ -1,0 +1,183 @@
+#set page=API Reference (Point)
+
+<p>
+    This page is API reference for a curve's point (BansheeGz.BGSpline.Curve.BGCurvePointI).
+    BGCurvePointI is an interface, implementation class depends on curve's <a href="../Curve">PointsMode</a>
+</p>
+
+<h4>Position</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>PositionLocal</td>
+        <td>Vector3</td>
+        <td>Local position. It's relative to curve's origin. All transformations are ignored</td>
+    </tr>
+    <tr>
+        <td>PositionLocalTransformed</td>
+        <td>Vector3</td>
+        <td>Local position. It's relative to curve's origin. All transformations are applied</td>
+    </tr>
+    <tr>
+        <td>PositionWorld</td>
+        <td>Vector3</td>
+        <td>World position.</td>
+    </tr>
+</table>
+
+<h4>Controls</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>ControlFirstLocal</td>
+        <td>Vector3</td>
+        <td>Local position for first control (inbound). It's relative to point's position, all transformations are ignored</td>
+    </tr>
+    <tr>
+        <td>ControlFirstLocalTransformed</td>
+        <td>Vector3</td>
+        <td>Local position for first control (inbound). It's relative to point's position with all transformations applied</td>
+    </tr>
+    <tr>
+        <td>ControlFirstWorld</td>
+        <td>Vector3</td>
+        <td>World position for first control (inbound)</td>
+    </tr>
+    <tr>
+        <td>ControlSecondLocal</td>
+        <td>Vector3</td>
+        <td>Local position for second control (outbound). It's relative to point's position, all transformations are ignored</td>
+    </tr>
+    <tr>
+        <td>ControlSecondLocalTransformed</td>
+        <td>Vector3</td>
+        <td>Local position for second control (outbound). It's relative to point's position with all transformations applied</td>
+    </tr>
+    <tr>
+        <td>ControlSecondWorld</td>
+        <td>Vector3</td>
+        <td>World position for second control (outbound)</td>
+    </tr>
+</table>
+
+<h4>Misc</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>ControlType</td>
+        <td>ControlTypeEnum</td>
+        <td>Point's controls type. Absent- no controls, BezierSymmetrical- symmetrical Bezier, BezierIndependant- both controls are independent of each other</td>
+    </tr>
+    <tr>
+        <td>PointTransform</td>
+        <td>Transform</td>
+        <td>Unity's transform to use as point's position</td>
+    </tr>
+    <tr>
+        <td>Curve</td>
+        <td><a href="../Curve">BGCurve</a></td>
+        <td>Returns a curve (readonly)</td>
+    </tr>
+</table>
+
+<h4>Custom Fields</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>GetField&lt;T&gt;(string name)</td>
+        <td>T</td>
+        <td>Get custom field value by field's name</td>
+    </tr>
+    <tr>
+        <td>GetFloat(string name)</td>
+        <td>float</td>
+        <td>Get custom field value by field's name</td>
+    </tr>
+    <tr>
+        <td>GetBool(string name)</td>
+        <td>bool</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetInt(string name)</td>
+        <td>int</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetVector3(string name)</td>
+        <td>Vector3</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetQuaternion(string name)</td>
+        <td>Quaternion</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetBounds(string name)</td>
+        <td>Bounds</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>GetColor(string name)</td>
+        <td>Color</td>
+        <td>Get custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetField&lt;T&gt;(string name, T value)</td>
+        <td>void</td>
+        <td>Set custom field value by field's name</td>
+    </tr>
+    <tr>
+        <td>SetFloat(string name, float value)</td>
+        <td>void</td>
+        <td>Set custom field value by field's name</td>
+    </tr>
+    <tr>
+        <td>SetBool(string name, bool value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetInt(string name, int value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetVector3(string name, Vector3 value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetQuaternion(string name, Quaternion value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetBounds(string name, Bounds value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+    <tr>
+        <td>SetColor(string name, Color value)</td>
+        <td>void</td>
+        <td>Set custom field value  by field's name</td>
+    </tr>
+</table>
+<br/><br/>

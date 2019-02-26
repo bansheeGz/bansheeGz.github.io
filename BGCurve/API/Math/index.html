@@ -193,7 +193,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/API/Point">Point</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGCurve/API/Math">Math</a>
                     </li>
                     <li class="cli ">
@@ -201,7 +201,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="pli  alic ">
+            <li class="pli  ">
                 <a class="pa" href="../../../BGCurve/Cc">Components</a>
                 <ul>
                     <li class="cli ">
@@ -219,7 +219,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcTrs">TRS</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
@@ -263,64 +263,92 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Line Renderer [Component]</h3>
+                <h3>API Reference (Math)</h3>
             </div>
 
             <!--======================================================        BG Curve Content              -->
-            <div class="bg-main-contacts">
-    <div class="bg-main-contacts_grid mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-            <img style="width:400px;height: auto" src="../../../images/GifCcLineRenderer.gif">
-        </div>
-        
-    </div>
-</div>
+            
 
+<p>
+    This page is API reference for a curve's math (BansheeGz.BGSpline.Curve.BGCurveMathI).
+    Class, which implements this interface give you an access to the set of different utility methods for spline approximation.
+    Read more about this methods <a href="../../DeveloperGuide/Math">here</a>
+    Commonly, you want to use <a href="../../Cc/BGCcMath">BGCcMath</a> component, which implements this interface.
+</p>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>GetDistance(int pointIndex = -1)</td>
+        <td>float</td>
+        <td>Returns spline's length. Optionally specify pointIndex to get a distance to specified point</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByDistanceRatio(float distanceRatio, bool useLocal = false)</td>
+        <td>Vector3</td>
+        <td>Calculate position by distance ratio.</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByDistance(float distance, bool useLocal = false)</td>
+        <td>Vector3</td>
+        <td>Calculate position by distance.</td>
+    </tr>
+    <tr>
+        <td>CalcTangentByDistanceRatio(float distanceRatio, bool useLocal = false)</td>
+        <td>Vector3</td>
+        <td>Calculate tangent by distance ratio.</td>
+    </tr>
+    <tr>
+        <td>CalcTangentByDistance(float distance, bool useLocal = false)</td>
+        <td>Vector3</td>
+        <td>Calculate tangent by distance.</td>
+    </tr>
+    <tr>
+        <td>CalcPositionAndTangentByDistanceRatio(float distanceRatio, out Vector3 tangent, bool useLocal = false)</td>
+        <td>float</td>
+        <td>Calculate position and tangent by distance ratio. Returns position</td>
+    </tr>
+    <tr>
+        <td>CalcPositionAndTangentByDistance(float distance, out Vector3 tangent, bool useLocal = false)</td>
+        <td>float</td>
+        <td>Calculate position and tangent by distance. Returns position</td>
+    </tr>
+    <tr>
+        <td>CalcSectionIndexByDistanceRatio(float ratio)</td>
+        <td>int</td>
+        <td>Calculate spline's section using distance ratio</td>
+    </tr>
+    <tr>
+        <td>CalcSectionIndexByDistance(float distance)</td>
+        <td>int</td>
+        <td>Calculate spline's section using distance</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByClosestPoint(Vector3 point, bool skipSectionsOptimization = false, bool skipPointsOptimization = false)</td>
+        <td>Vector3</td>
+        <td>Calculate spline's world point position by a point, which is closest to a given point.</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByClosestPoint(Vector3 point, out float distance, bool skipSectionsOptimization = false, bool skipPointsOptimization = false)</td>
+        <td>Vector3</td>
+        <td>Calculate spline's world point position and distance by a point, which is closest to a given point.</td>
+    </tr>
+    <tr>
+        <td>CalcPositionByClosestPoint(Vector3 point, out float distance, out Vector3 tangent, bool skipSectionsOptimization = false, bool skipPointsOptimization = false</td>
+        <td>Vector3</td>
+        <td>Calculate spline's world point position, distance and tangent by a point, which is closest to a given point.</td>
+    </tr>
+    <tr>
+        <td>[int sectionIndex]</td>
+        <td><a href="../Section">BGCurveBaseMath.SectionInfo</a></td>
+        <td>Returns information about spline's section.</td>
+    </tr>
 
-<div>
-    <h4 class="v11">Description</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        This component let you visualize a Curve with Unity's standard <a href="https://docs.unity3d.com/Manual/class-LineRenderer.html">LineRenderer Component</a> in Play Mode. If you are updating the curve and visualizing it with this component, you may want to set related 'Math' updateMode parameter to AabbVisible, so the 'Math' and 'Line Renderer' update their data only if it's really needed (e.g. they are visible by any camera).
-    </div>
-</div>
-
-
-<div>
-    <h4>Parameters</h4>
-</div>
-<div class="mdl-grid bg-feature mdl-shadow--2dp">
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        splitMode
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        The mode for splitting a spline. 1) PartsTotal - use specified number parts for whole spline. 2) PartsPerSection - use specified number parts for each section (between 2 points)  3) UseMathData -use data, precalculated by Math component. Note, you can tweak some params at Math as well
-    </div>
-    <hr>
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        partsTotal
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        The number of splits for TotalSections mode. The actual number of parts can be less than partsTotal due to optimization, but never more.
-    </div>
-    <hr>
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        partsPerSection
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        The number of splits for PartSections mode. The actual number of parts can be less than partsPerSection due to optimization, but never more.
-    </div>
-    <hr>
-    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
-        doNotOptimizeStraightLines
-    </div>
-    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
-        Split straight lines. Straight lines are optimized by default and are not split, but you can override it with this parameter.
-    </div>
-    <hr>
-
-</div>
+</table>
+<br/><br/>
 
 
             <!--======================================================       BG Curve Footer               -->
