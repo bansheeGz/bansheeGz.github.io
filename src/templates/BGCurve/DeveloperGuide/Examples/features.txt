@@ -219,3 +219,74 @@ text=@
 
         //use corresponding SetXXX for setters
 </pre>@
+
+
+title=Adding curve's components at runtime
+mode=1
+text=@
+<br/>
+<pre class="prettyprint">
+using UnityEngine;
+using BansheeGz.BGSpline.Curve;
+using BansheeGz.BGSpline.Components;
+
+/// <summary>
+/// Spawn a curve+components and move an object along it
+/// </summary>
+public class CurveSpawner : MonoBehaviour
+{
+    //object which needs to be moved
+    public Transform ObjectToMove;
+
+    //if this flag is set, single Trs component is used, otherwise 3 components are used (cursor+changelinear+translate)
+    public bool UseTrsComponent;
+
+    void Start()
+    {
+        //add a curve
+        var curve = gameObject.AddComponent<BGCurve>();
+
+        //add points
+        curve.AddPoint(new BGCurvePoint(curve, Vector3.zero));
+        curve.AddPoint(new BGCurvePoint(curve, new Vector3(10,10,10)));
+
+        //add math
+        var math = AddCurveComponent<BGCcMath>();
+
+        //add component(s), required to move an object
+        if (UseTrsComponent) AddTrs(math);
+        else AddCursorComponents(math);
+    }
+
+    //adds 1 single component (Trs), which requires to move an object along a curve
+    private void AddTrs(BGCcMath math)
+    {
+        //add Trs
+        var trs = AddCurveComponent<BGCcTrs>(math);
+        trs.ObjectToManipulate = ObjectToMove;
+    }
+
+
+    //adds 3 component, which requires to move an object along a curve
+    private void AddCursorComponents(BGCcMath math)
+    {
+        //add cursor
+        var cursor = AddCurveComponent<BGCcCursor>(math);
+
+        //add changelinear
+        var cursorChange = AddCurveComponent<BGCcCursorChangeLinear>(cursor);
+
+        //add translate
+        var translateObject = AddCurveComponent<BGCcCursorObjectTranslate>(cursor);
+        translateObject.ObjectToManipulate = ObjectToMove;
+    }
+
+    //adds curve's component and assign a parent
+    private T AddCurveComponent<T>(BGCc parent = null) where T : BGCc
+    {
+        var component = gameObject.AddComponent<T>();
+        if (parent != null) component.SetParent(parent);
+        return component;
+    }
+}
+</pre>@

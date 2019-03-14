@@ -539,6 +539,84 @@ public class Test : MonoBehaviour
     
     
     </div>
+<div>
+    <h4>Adding curve's components at runtime</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+        
+    <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone ">
+        <br/>
+<pre class="prettyprint">
+using UnityEngine;
+using BansheeGz.BGSpline.Curve;
+using BansheeGz.BGSpline.Components;
+
+/// &lt;summary&gt;
+/// Spawn a curve+components and move an object along it
+/// &lt;/summary&gt;
+public class CurveSpawner : MonoBehaviour
+{
+    //object which needs to be moved
+    public Transform ObjectToMove;
+
+    //if this flag is set, single Trs component is used, otherwise 3 components are used (cursor+changelinear+translate)
+    public bool UseTrsComponent;
+
+    void Start()
+    {
+        //add a curve
+        var curve = gameObject.AddComponent&lt;BGCurve&gt;();
+
+        //add points
+        curve.AddPoint(new BGCurvePoint(curve, Vector3.zero));
+        curve.AddPoint(new BGCurvePoint(curve, new Vector3(10,10,10)));
+
+        //add math
+        var math = AddCurveComponent&lt;BGCcMath&gt;();
+
+        //add component(s), required to move an object
+        if (UseTrsComponent) AddTrs(math);
+        else AddCursorComponents(math);
+    }
+
+    //adds 1 single component (Trs), which requires to move an object along a curve
+    private void AddTrs(BGCcMath math)
+    {
+        //add Trs
+        var trs = AddCurveComponent&lt;BGCcTrs&gt;(math);
+        trs.ObjectToManipulate = ObjectToMove;
+    }
+
+
+    //adds 3 component, which requires to move an object along a curve
+    private void AddCursorComponents(BGCcMath math)
+    {
+        //add cursor
+        var cursor = AddCurveComponent&lt;BGCcCursor&gt;(math);
+
+        //add changelinear
+        var cursorChange = AddCurveComponent&lt;BGCcCursorChangeLinear&gt;(cursor);
+
+        //add translate
+        var translateObject = AddCurveComponent&lt;BGCcCursorObjectTranslate&gt;(cursor);
+        translateObject.ObjectToManipulate = ObjectToMove;
+    }
+
+    //adds curve's component and assign a parent
+    private T AddCurveComponent&lt;T&gt;(BGCc parent = null) where T : BGCc
+    {
+        var component = gameObject.AddComponent&lt;T&gt;();
+        if (parent != null) component.SetParent(parent);
+        return component;
+    }
+}
+</pre>
+    </div>
+    <hr>
+    
+    
+    
+    </div>
 
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
