@@ -9,7 +9,7 @@
 
 <h4>Description</h4>
 <p>
-    Live update let you update database data on player's devices using Google Sheets.
+    Live update let you update database data on player's devices using Google Sheets, using public GoogleSheets Json API.
 </p>
 <h4>How it works</h4>
 <ol>
@@ -21,20 +21,48 @@
 </ol>
 
 <h4>Setting up</h4>
-<p>
-    LiveUpdate addon uses public GoogleSheets Json API. It means your spreadsheet needs to be publicly available
-    ("public" or "people with link" access levels). Also, you will need to fill in "Spreadsheet Id" and "API key"
-    (Learn how to obtain them in Parameters table below)
-</p>
-<div>
-    You can check if you set up config properly by accessing this address from your browser (make sure it returns valid
-    json, not some error )
-<p class="llink">
-    https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Name of one of your metas]?key=[Your API key]</p>
-For example, (SpreadsheetId=MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ, ApiKey=WAIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc and Meta=Items)
-<p class="llink">
-    https://sheets.googleapis.com/v4/spreadsheets/MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ/values/Items?key=WAIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc</p>
+<ol>
+    <li>
+        Enable LiveUpdate plugin (under addons->LiveUpdate)
+    </li>
+    <li>
+        Get <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">"API key"</a> from Google. Assign it to <b>API key</b> LiveUpdate addon parameter
+    </li>
+    <li>
+        Get <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">Spreadsheet Id</a> from Google. Assign it to <b>Spreadsheet Id</b> LiveUpdate addon parameter
+    </li>
+    <li>
+        Make sure to share target spreadsheet. Open target spreadsheet, click on Share button on the top right and set access level to "public" or "people with link".
+        Otherwise you will get 403 error from GoogleSheets
+    </li>
+</ol>
 
+<h4>Checking if setup was correct</h4>
+<div>
+    You can check if you set up config properly by accessing this address from your browser (make sure it returns valid json, not some error )
+    <p class="llink">
+        https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Name of one of your metas]?key=[Your API key]
+    </p>
+
+</div>
+<div>
+    For example, for the following parameters
+    <ol>
+        <li>
+            SpreadsheetId=MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ
+        </li>
+        <li>
+            ApiKey=RYIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc
+        </li>
+        <li>
+            Meta=Items
+        </li>
+    </ol>
+        the correct URL would be:
+    <p class="llink">
+        https://sheets.googleapis.com/v4/spreadsheets/<b>MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ</b>/values/<b>Items</b>?key=<b>RYIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc</b>
+    </p>
+    This is not a working example, it's just an example how to substitute parameters.
 </div>
 
 <h4>Restrictions</h4>

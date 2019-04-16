@@ -285,16 +285,54 @@ With data binding you can:
     the database, the text field will also be updated. And with our localization addon, "Hit Points" string can be easily localized as well.
 </p>
 
-<h4>How to use it</h4>
-<ol>
-    <li>For single field value injection, use BGDataBindingFieldGo component</li>
-    <li>For text templates value injection, use BGDataBindingTemplateGo component</li>
-    <li>For multiple values injection to multiple different GameObjects (instead of several fields and template binders)
-        use single BGDataBindingBatchGo component
-    </li>
-</ol>
+<h4>Binders overview</h4>
 
-<h4>How to use single field binder (BGDataBindingFieldGo)</h4>
+<table class="contentTable">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td><a href="#fieldBinder">BGDataBindingFieldGo</a></td>
+        <td>
+            Inject one single value from database to a component
+        </td>
+    </tr>
+    <tr>
+        <td><a href="#templateBinder">BGDataBindingTemplateGo</a></td>
+        <td>
+            Inject value, derived from a text template from database to a component
+        </td>
+    </tr>
+    <tr>
+        <td><a href="#batchBinder">BGDataBindingBatchGo</a></td>
+        <td>
+            The same as several fields and templates binders in one single binder
+        </td>
+    </tr>
+    <tr>
+        <td><a href="#rowBinder">BGDataBindingRowGo</a></td>
+        <td>
+            This binder is used to inject multiple values from one single row. It uses the same naming convention to resolve fields/properties as BGDataBindingDatabaseGo
+        </td>
+    </tr>
+    <tr>
+        <td><a href="#databaseBinder">BGDataBindingDatabaseGo</a></td>
+        <td>
+            This binder is used for binder-less setup.
+            One single binder is used to inject all values.
+            It scans all components, which have BGDatabaseEntityId string field with assigned id and uses naming convention to inject the values
+            (fields/properties must be named exactly as database fields and have the same type)
+        </td>
+    </tr>
+</table>
+
+
+<h4 id="fieldBinder">How to use single field binder (BGDataBindingFieldGo)</h4>
 <ol>
     <li>Attach BGDataBindingFieldGo component</li>
     <li>Chose the type of the field to inject. The dropdown will contain all field types from your database</li>
@@ -309,7 +347,7 @@ With data binding you can:
     <a href="../../images/BGDatabase/DataBinding1.png"><img style="width: 400px" src="../../images/BGDatabase/DataBinding1.png"></a>
 </div>
 
-<h4>How to use template  binder (BGDataBindingTemplateGo)</h4>
+<h4 id="templateBinder">How to use template  binder (BGDataBindingTemplateGo)</h4>
 <ol>
     <li>Attach BGDataBindingTemplateGo component</li>
     <li>Chose the target field/property to inject a value to.
@@ -322,7 +360,7 @@ With data binding you can:
     <a href="../../images/BGDatabase/DataBinding2.png"><img style="width: 400px" src="../../images/BGDatabase/DataBinding2.png"></a>
 </div>
 
-<h4>How to use batch field binder (BGDataBindingBatchGo)</h4>
+<h4 id="batchBinder">How to use batch field binder (BGDataBindingBatchGo)</h4>
 <ol>
     <li>Attach BGDataBindingBatchGo component</li>
     <li>Drag GameObjects to either "Field Binders" or "Template Binders" table</li>
@@ -334,6 +372,29 @@ With data binding you can:
 </ol>
 <div class="bg-image">
     <a href="../../images/BGDatabase/DataBinding3.png"><img style="width: 400px" src="../../images/BGDatabase/DataBinding3.png"></a>
+</div>
+
+<h4 id="rowBinder">How to use row binder (BGDataBindingRowGo)</h4>
+<ol>
+    <li>Attach BGDataBindingRowGo component</li>
+    <li>Create your own script and name its fields exactly like database columns (case-sensitive). They also need to have exact types</li>
+    <li>Attach you script to the same GameObject and chose it as a target component for data binding. (If your script was named exactly as table and added before BGDataBindingRowGo, it will be auto assigned as target component)</li>
+    <li>Chose the source (table and entity)</li>
+    <li>Toggle "Live Update" on, if you want all field values to be monitored. If value of one of the field is changed, binder inject it again</li>
+</ol>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/DataBinding4.png"><img style="width: 400px" src="../../images/BGDatabase/DataBinding4.png"></a>
+</div>
+
+<h4 id="databaseBinder">How to use database binder (BGDataBindingDatabaseGo)</h4>
+<ol>
+    <li>Attach BGDataBindingDatabaseGo component to any GameObject. [Important!] You need to have one single binder in your scene</li>
+    <li>Create your own scripts and name their fields exactly like database columns (case-sensitive). They also need to have exact types</li>
+    <li>Also add BGDatabaseEntityId string field to these components</li>
+    <li>Attach any number of your scripts to any GameObjects and assign their BGDatabaseEntityId fields to valid row database ids. No need to attach any binder</li>
+</ol>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/DataBinding5.png"><img style="width: 400px" src="../../images/BGDatabase/DataBinding5.png"></a>
 </div>
 
 

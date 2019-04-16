@@ -142,7 +142,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     You can find an example of such controller class on <a href="../Addons/SaveLoad#rowlevelexample">Save/Load</a> addon page.
 </p>
 
-<h4>Field value string format</h4>
+<h4>Default field value string format</h4>
 <p>
     We use Acute (Back quote) symbol <code>`</code> to separate tokens of single value, for example Vector3.zero is
     <code>0`0`0</code>
@@ -155,6 +155,13 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     <a href="#path images/BGDatabase/ExportImport4.png"><img style="width: 400px"
                                                              src="#path images/BGDatabase/ExportImport4.png"></a>
 </div>
+
+
+<h4>Custom field value string format</h4>
+<p>
+    Most of the fields support custom string format (except for Unity assets and relations).
+    You can create your own class, implementing BGStringFormatter&lt;T&gt; interface (T is a field value type) and assign it under "M" menu as a custom string value formatter
+</p>
 
 
 <h4>Adding rows in external tools</h4>
