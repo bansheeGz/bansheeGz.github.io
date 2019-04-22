@@ -271,34 +271,213 @@
 
 <h4>Description</h4>
 <p>
-Code Generator for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/playmaker-368">Playmaker</a> creates custom Actions to access BGDatabase data (not all fields are supported though)
+Code Generator for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/playmaker-368">Playmaker</a> creates custom Actions to access BGDatabase data (many fields are supported, but not all the fields)
 </p>
 <p>
     Apart from Code Generation, you can use Playmaker's <code>GetProperty</code> and <code>SetProperty</code> actions
     with Generated <a href="../../CodeGeneration/MonoBehaviourClasses">MonoBehaviour</a> to get/set any property
     from GameObject, hooked up to database.
 </p>
-There are 5 custom actions created by CodeGenerator for each table:
-<ol>
-    <li>GetById- retrieve a row (entity) using unique id and fill the fields values</li>
-    <li>SetById- set the field values using unique id</li>
-    <li>GetByIndex -retrieve a row (entity) using index and fill the fields value</li>
-    <li>SetByIndex - set the field values using index</li>
-    <li>Count -retrieve the number of rows</li>
-</ol>
+
+<h4>Supported custom actions</h4>
+With custom actions you have full control over database data- you can select/add/update/delete rows.
+Custom actions are generated for each table
+<table class="contentTable">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Action
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>GetByIndex</td>
+        <td>
+            Retrieve field values from database by row's index. This is the best method to use inside for-each loop
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>GetById</td>
+        <td>
+            Retrieve field values from database by row's id.
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>GetByName</td>
+        <td>
+            Retrieve field values from database by row's name.
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>SetByIndex</td>
+        <td>
+            Set field values to database by row's index.
+        </td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>SetById</td>
+        <td>
+            Set field values to database by row's id.
+        </td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>SetByName</td>
+        <td>
+            Set field values to database by row's name.
+        </td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Count</td>
+        <td>
+            Retrieve total number of rows
+        </td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Create</td>
+        <td>
+            Create a new row
+        </td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Delete</td>
+        <td>
+            Delete a row by its index
+        </td>
+    </tr>
+</table>
 
 <h4>Supported fields</h4>
-<ol>
-    <li><code>int</code> = <code>FsmInt</code></li>
-    <li><code>float</code> = <code>FsmFloat</code></li>
-    <li><code>bool</code> = <code>FsmBool</code></li>
-    <li><code>string</code> = <code>FsmString</code></li>
-    <li><code>color</code> = <code>FsmColor</code></li>
-    <li><code>rect</code> = <code>FsmRect</code></li>
-    <li><code>vector2</code> = <code>FsmVector2</code></li>
-    <li><code>vector3</code> = <code>FsmVector3</code></li>
-    <li><code>quaternion</code> = <code>FsmQuaternion</code></li>
-</ol>
+<table class="contentTable">
+    <tr>
+        <th>
+            Database Field
+        </th>
+        <th>
+            Playmaker Field
+        </th>
+        <th>
+            Comments
+        </th>
+    </tr>
+    <tr>
+        <td>int</td>
+        <td>FsmInt</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>float</td>
+        <td>FsmFloat</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bool</td>
+        <td>FsmBool</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>string</td>
+        <td>FsmString</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>color</td>
+        <td>FsmColor</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>rect</td>
+        <td>FsmRect</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>vector2</td>
+        <td>FsmVector2</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>vector3</td>
+        <td>FsmVector3</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>quaternion</td>
+        <td>FsmQuaternion</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>relationSingle</td>
+        <td>FsmInt</td>
+        <td>Playmakers int field stores the index of related row</td>
+    </tr>
+    <tr>
+        <td>relationMultiple</td>
+        <td>FsmArray[int]</td>
+        <td>Playmakers int array field stores the related rows array of indices</td>
+    </tr>
+    <tr>
+        <td>nested</td>
+        <td>FsmArray[int]</td>
+        <td>Just like relationMultiple, but read only</td>
+    </tr>
+    <tr>
+        <td>GameObject</td>
+        <td>FsmGameObject</td>
+        <td>Prefab asset, field is readonly</td>
+    </tr>
+    <tr>
+        <td>Object</td>
+        <td>FsmObject</td>
+        <td>Any Unity asset, field is readonly</td>
+    </tr>
+    <tr>
+        <td>Material</td>
+        <td>FsmMaterial</td>
+        <td>Unity material asset, field is readonly</td>
+    </tr>
+    <tr>
+        <td>Texture</td>
+        <td>FsmTexture</td>
+        <td>Unity texture asset, field is readonly</td>
+    </tr>
+    <tr>
+        <td>AudioClip</td>
+        <td>FsmObject</td>
+        <td>Unity audio asset, field is readonly</td>
+    </tr>
+    <tr>
+        <td>Font</td>
+        <td>FsmObject</td>
+        <td>Unity font asset, field is readonly</td>
+    </tr>
+    <tr>
+        <td>Texture2D</td>
+        <td>FsmObject</td>
+        <td>Unity texture2D asset, field is readonly</td>
+    </tr>
+    <tr>
+        <td>Sprite</td>
+        <td>FsmObject</td>
+        <td>Unity sprite asset, field is readonly</td>
+    </tr>
+    <tr>
+        <td>Sprite[]</td>
+        <td>FsmArray</td>
+        <td>Unity sprite array asset, field is readonly</td>
+    </tr>
+</table>
 <p>
     If field type is not supported, it will be omitted
 </p>
@@ -320,264 +499,28 @@ There are 5 custom actions created by CodeGenerator for each table:
 
 
 <h4>Example</h4>
-Here is an example for a meta called MyTable with single intField field of type int
-<pre class="prettyprint">
-//=============================================================
-//||                   Generated by BansheeGz Code Generator ||
-//=============================================================
-namespace MyPackage
-{
-    //=============================================================
-    //||                   Generated by BansheeGz Code Generator ||
-    //=============================================================
-
-    [ActionCategory("BansheeGz")]
-    [HutongGames.PlayMaker.Tooltip("Fetch row data for MyTable meta from GameRepo database by id")]
-    public partial class MyTableGetById : FsmStateAction
-    {
-        [UIHint(UIHint.Variable)]
-        [HutongGames.PlayMaker.Tooltip("Entity id")]
-        [RequiredField]
-        public FsmString _Id;
-        [UIHint(UIHint.Variable)]
-        public FsmString name;
-        [UIHint(UIHint.Variable)]
-        public FsmInt intField;
-        public override void Reset()
-        {
-            _Id = null;
-            name = null;
-            intField = null;
-        }
-        public override void OnEnter()
-        {
-            if (_Id.IsNone || _Id.Value==null)
-            {
-                Debug.LogWarning("Required field _Id is not set");
-                return;
-            }
-            var id = BGId.Empty;
-            try
-            {
-                id = new BGId(_Id.Value);
-            }
-            catch
-            {
-                Debug.LogWarning("Unable to parse id " + _Id.Value);
-                return;
-            }
-            var meta = BGRepo.I.GetMeta("MyTable");
-            if (meta == null)
-            {
-                Debug.LogWarning("No meta found, name=MyTable");
-                return;
-            }
-            var entity = meta[id];
-            if (entity == null)
-            {
-                Debug.LogWarning("No entity found, id=" + id);
-                return;
-            }
-            if(!name.IsNone)
-            {
-                name.Value = entity.Get<System.String>("name");
-            }
-            if(!intField.IsNone)
-            {
-                intField.Value = entity.Get<System.Int32>("intField");
-            }
-        }
-    }
-
-
-    //=============================================================
-    //||                   Generated by BansheeGz Code Generator ||
-    //=============================================================
-
-    [ActionCategory("BansheeGz")]
-    [HutongGames.PlayMaker.Tooltip("Set row data for MyTable meta from GameRepo database by id")]
-    public partial class MyTableSetById : FsmStateAction
-    {
-        [UIHint(UIHint.Variable)]
-        [HutongGames.PlayMaker.Tooltip("Entity id")]
-        [RequiredField]
-        public FsmString _Id;
-        [UIHint(UIHint.Variable)]
-        public FsmString name;
-        [UIHint(UIHint.Variable)]
-        public FsmInt intField;
-        public override void Reset()
-        {
-            _Id = null;
-            name = null;
-            intField = null;
-        }
-        public override void OnEnter()
-        {
-            if (_Id.IsNone || _Id.Value==null)
-            {
-                Debug.LogWarning("Required field _Id is not set");
-                return;
-            }
-            var id = BGId.Empty;
-            try
-            {
-                id = new BGId(_Id.Value);
-            }
-            catch
-            {
-                Debug.LogWarning("Unable to parse id " + _Id.Value);
-                return;
-            }
-            var meta = BGRepo.I.GetMeta("MyTable");
-            if (meta == null)
-            {
-                Debug.LogWarning("No meta found, name=MyTable");
-                return;
-            }
-            var entity = meta[id];
-            if (entity == null)
-            {
-                Debug.LogWarning("No entity found, id=" + id);
-                return;
-            }
-            if(!name.IsNone)
-            {
-                entity.Set<System.String>("name", name.Value);
-            }
-            if(!intField.IsNone)
-            {
-                entity.Set<System.Int32>("intField", intField.Value);
-            }
-        }
-    }
-
-
-    //=============================================================
-    //||                   Generated by BansheeGz Code Generator ||
-    //=============================================================
-
-    [HutongGames.PlayMaker.Tooltip("Get the number of rows for MyTable meta")]
-    public class MyTableCount : FsmStateAction
-    {
-        [UIHint(UIHint.Variable)]
-        [HutongGames.PlayMaker.Tooltip("Entity index")]
-        public FsmInt Count;
-        public override void OnEnter()
-        {
-            if(Count != null)
-            {
-                Count.Value = BGRepo.I.GetMeta("MyTable").CountEntities;
-            }
-        }
-    }
-
-
-    //=============================================================
-    //||                   Generated by BansheeGz Code Generator ||
-    //=============================================================
-
-    [ActionCategory("BansheeGz")]
-    [HutongGames.PlayMaker.Tooltip("Fetch row data for MyTable meta from GameRepo database by index")]
-    public partial class MyTableGetByIndex : FsmStateAction
-    {
-        [RequiredField]
-        [UIHint(UIHint.Variable)]
-        [HutongGames.PlayMaker.Tooltip("Entity index")]
-        public FsmInt _Index;
-        [UIHint(UIHint.Variable)]
-        [HutongGames.PlayMaker.Tooltip("Entity id")]
-        public FsmString _Id;
-        [UIHint(UIHint.Variable)]
-        public FsmString name;
-        [UIHint(UIHint.Variable)]
-        public FsmInt intField;
-        public override void Reset()
-        {
-            _Id = null;
-            _Index=null;
-            name = null;
-            intField = null;
-        }
-        public override void OnEnter()
-        {
-            if (_Index.IsNone)
-            {
-                Debug.LogWarning("Required field _Index is not set");
-                return;
-            }
-            var meta = BGRepo.I.GetMeta("MyTable");
-            if (meta == null)
-            {
-                Debug.LogWarning("No meta found, name=MyTable");
-                return;
-            }
-            var entity = meta[_Index.Value];
-            if(!name.IsNone)
-            {
-                name.Value = entity.Get<System.String>("name");
-            }
-            if(!intField.IsNone)
-            {
-                intField.Value = entity.Get<System.Int32>("intField");
-            }
-        }
-    }
-
-
-    //=============================================================
-    //||                   Generated by BansheeGz Code Generator ||
-    //=============================================================
-
-    [ActionCategory("BansheeGz")]
-    [HutongGames.PlayMaker.Tooltip("Set row data for MyTable meta from GameRepo database by index")]
-    public partial class MyTableSetByIndex : FsmStateAction
-    {
-        [RequiredField]
-        [UIHint(UIHint.Variable)]
-        [HutongGames.PlayMaker.Tooltip("Entity index")]
-        public FsmInt _Index;
-        [UIHint(UIHint.Variable)]
-        [HutongGames.PlayMaker.Tooltip("Entity id")]
-        public FsmString _Id;
-        [UIHint(UIHint.Variable)]
-        public FsmString name;
-        [UIHint(UIHint.Variable)]
-        public FsmInt intField;
-        public override void Reset()
-        {
-            _Id = null;
-            _Index=null;
-            name = null;
-            intField = null;
-        }
-        public override void OnEnter()
-        {
-            if (_Index.IsNone)
-            {
-                Debug.LogWarning("Required field _Index is not set");
-                return;
-            }
-            var meta = BGRepo.I.GetMeta("MyTable");
-            if (meta == null)
-            {
-                Debug.LogWarning("No meta found, name=MyTable");
-                return;
-            }
-            var entity = meta[_Index.Value];
-            if(!name.IsNone)
-            {
-                entity.Set<System.String>("name", name.Value);
-            }
-            if(!intField.IsNone)
-            {
-                entity.Set<System.Int32>("intField", intField.Value);
-            }
-        }
-    }
-}
-
-</pre>
+<table class="contentTable">
+    <tr>
+        <th>
+            Link
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td><a href="BGDatabasePlaymakerMin.cs">BGDatabasePlaymakerMin.cs</a></td>
+        <td>
+            Minimalistic example with single table and single name field
+        </td>
+    </tr>
+    <tr>
+        <td><a href="BGDatabasePlaymakerMax.cs">BGDatabasePlaymakerMax.cs</a></td>
+        <td>
+            Single table with all supported fields.
+        </td>
+    </tr>
+</table>
             </div>
 
             <!--======================================================       BG Database Footer               -->
