@@ -197,7 +197,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Bolt</a>
                     </li>
                 </ul>
@@ -208,7 +208,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/Settings">Settings</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/SaveLoad">Save Load</a>
                     </li>
                     <li class="cli ">
@@ -263,288 +263,111 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Save Load</h3>
+                <h3>Bolt</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+<h4>Description</h4>
+<p>
+Code Generator for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/bolt-87491">Bolt</a> creates custom Units to manage BGDatabase data.
+    All fields are supported (but some BGDatabase fields are readonly, <a href="../../SupportedFields">more info</a>)
+</p>
 
-<h4>What can I do with Save/Load addon?</h4>
+
+<h4>Supported custom units</h4>
+With custom units you have full control over database data- you can select/add/update/delete rows.
+Custom units are generated for each table
+<table class="contentTable">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Unit
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>GetByIndex</td>
+        <td>
+            Retrieve field values from database by row's index. This is the best method to use inside for-each loop
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>GetById</td>
+        <td>
+            Retrieve field values from database by row's id.
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>GetByName</td>
+        <td>
+            Retrieve field values from database by row's name.
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>SetByIndex</td>
+        <td>
+            Set field values to database by row's index.
+        </td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>SetById</td>
+        <td>
+            Set field values to database by row's id.
+        </td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>SetByName</td>
+        <td>
+            Set field values to database by row's name.
+        </td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Count</td>
+        <td>
+            Retrieve total number of rows
+        </td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Create</td>
+        <td>
+            Create a new row
+        </td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Delete</td>
+        <td>
+            Delete a row by its index
+        </td>
+    </tr>
+</table>
+
+<h4>How to generate</h4>
 <ul>
-    <li>Save/load the state of the database to/from byte array during runtime on players devices</li>
-    <li>Define which table and which fields you want to be saved/loaded using <a href="#mergesettings">merge settings</a> <span style="color: red">(it won't work if you skip this step)</span></li>
-    <li>Create C# class for fine-grained row-level control.</li>
-    <li>You can save the whole database without Save/Load addon (<a href="#saveAll">click</a>)</li>
+    <li>Open BGDatabase window <code>Window->BGDatabase</code></li>
+    <li>Select <code>Settings</code> tab, and chose <code>Bolt</code></li>
+    <li>Fill in parameters and press <code>Generate</code> button</li>
+    <li>After units was generated, update Bolt units database, by pressing Tools->Bolt->Build Unit Options (or Full Extract if you use Bolt 2.0)</li>
 </ul>
 
-<h4>How can I enable it?</h4>
-Chose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for saving/loading and save the database.
-
-<h4>How it works?</h4>
-<p>
-    SaveLoad addon can create multiple, configurable snapshots of database data and it can restore database state from these snapshots.
-    Snapshots are constructed from the data, you marked as <i>changeable</i>, using <a href="#mergesettings">Merge settings</a>, described below. (<a href="#why">Why it works like this?</a>)
-    Please, make sure you marked all data you want to be saved.
-</p>
 <div class="bg-image">
-    <a href="../../../images/BGDatabase/SaveLoadAddonReview.png"><img style="width: 400px" src="../../../images/BGDatabase/SaveLoadAddonReview.png"></a>
+    <a href="../../../images/BGDatabase/Bolt1.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt1.png"></a>
 </div>
-
-<h4 id="why">Why it works like this?</h4>
-<p>
-    Here is the quick explanation and main reasons why it works the way it works and why it's much better then simply saving the whole database.
-</p>
-<ol>
-    <li>we want to be able to change database between public game releases</li>
-    <li>we want to make sure the old saves, which are made with old version of database will remain compatible with new database</li>
-    <li>As a result of loading old save, we want to keep all saved data + we want to keep all data we made to default database (shipped with a game)</li>
-</ol>
-<p>
-    Here is the detailed illustration about what we want to achieve:
-</p>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/SaveLoadAddon3.png"><img style="width: 400px"
-                                                              src="../../../images/BGDatabase/SaveLoadAddon3.png"></a>
-</div>
-
-<p>
-    And here is the detailed illustration about how we want to achieve it and how save/load addon actually works:
-</p>
-
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/SaveLoadAddon4.png"><img style="width: 400px"
-                                                              src="../../../images/BGDatabase/SaveLoadAddon4.png"></a>
-</div>
-
-<div class="moreinfo">
-    For more information about:
-    <ul>
-        <li>
-            How to change your database and keep it compatible with old save files- read the <a href="#compatible">section below</a> .
-        </li>
-        <li>
-            How to implement row-level control over merging- read <a href="#rowlevelexample">Row-level controller</a> section below.
-        </li>
-    </ul>
-</div>
-
-<h4>How to use?</h4>
-
-<pre class="prettyprint">
-//to save
-byte[] bytes = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save();
-
-//to load
-BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
-</pre>
-
-<h4 id="saveAll">Is it possible to save/load the whole database?</h4>
-<pre class="prettyprint">
-// !!!! This is not recommended !!!!
-//to save
-byte[] bytes = BGRepo.I.Save();
-
-//to load
-BGRepo.I.Load(bytes);
-</pre>
-
-<h4 id="mergesettings">Using Merge settings</h4>
-<p>
-    Using Merge settings you can chose which data to save/load.
-    You want as less data to be saved as possible.
-    You do not need to include data, that is "static" and can not be changed during play session.
-</p>
-
-<p>
-    The rules are very simple:
-</p>
-<ol>
-    <li>
-        If you have some field, which value can be changed during the play session and you want this change to be
-        persistent,
-        you need to mark this field to be included to save/load.
-        Example from our example scenes: we want the amount of gold, player gathered to be remembered between game
-        sessions-
-        so we marked this field to be saved and loaded.
-    </li>
-    <li>
-        If you have some table, whose rows can be changed during gameplay and you want these changes to be remembered,
-        you need to mark this table to be included to the save/load by setting following setting to true:
-        "Add missing", "Remove Orphaned", "Update matching".
-        These setting will ensure, that all rows from this table will be saved and loaded.
-        Example from our example scenes: Collectable table rows can be changed, so we marked them as described above.
-    </li>
-</ol>
-
-<p>
-    Merge settings for this addon is the same as merge settings for Export/Import. You can learn more about merge settings <a href="../../ExportImport#mergeSettings">here</a>
-</p>
-
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/SaveLoad1.png"><img style="width: 400px"
-                                                         src="../../../images/BGDatabase/SaveLoad1.png"></a>
-</div>
-
-
-<h4 id="compatible">How to change your database and keep it compatible with old save files?</h4>
-<ul>
-    <li>Do not include static data (the data, which can not be changed during game session) to save/load merge settings</li>
-    <li>While developing new, public version of your game- you can change <i>anything</i> in your static data with one simple exception:
-        you can not delete rows which may be referenced from saved data.
-        Well, actually you can, but in this case you need to make sure your code should handle null relation values properly.(and they will be null if you remove the rows)
-    </li>
-    <li>As for the data, which is saved within database snapshot (save file),
-        <ul>
-            <li>
-                if in <a href="#mergesettings">merge settings</a> you mark the field for updating it will be updated during loading (if target row stills exist in default database),
-            </li>
-            <li>
-                if in merge settings you mark the rows for adding/deleting ("Add missing"/"Remove Orphaned") the whole table will be updated with values from the saved file (if this table still exists
-                in default database).
-            </li>
-            <li>
-                if you want fine-grained, row-level control over loading - you can do it with C# controller class (read the <a href="#rowlevelexample">next section</a> for more details).
-            </li>
-        </ul>
-
-    </li>
-</ul>
-<p>
-    Here is an example from our default database and default example scenes:
-</p>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/SaveLoadAddon2.png"><img style="width: 400px"
-                                                              src="../../../images/BGDatabase/SaveLoadAddon2.png"></a>
-</div>
-<div class="moreinfo">
-    For more information about:
-    <ul>
-        <li>
-            How our example scenes work- read <a href="../../ExampleBreakdown">example breakdown</a> article
-        </li>
-    </ul>
-</div>
-
-
-<h4 id="rowlevelexample">Row-level control over loading</h4>
-<p>
-    Merge settings give you control over which tables/fields you want to save. But what about particular rows?
-    What if you want to update/add/delete only those rows which comply to some condition?
-</p>
-<p>
-    This can be done with C# controller class, which can cancel update operation before it actually takes place.
-    Currently there is no any merging on saving data, only on loading (but we reserved "merging on saving" option for future releases)
-</p>
-<p>
-    Here is a quick example of custom controller class, which uses the default example database, shipped with our package.
-    For detailed explanation about how our example works, please, read <a href="../../ExampleBreakdown">example breakdown</a> article.
-</p>
-<p>
-    The main objective of this example controller is to prevent deleting Collectable rows for added scenes (scenes which was added between public game releases)
-</p>
-<p>
-    Here is the code
-</p>
-<pre class="prettyprint">
-using BansheeGz.BGDatabase;
-
-    // Warning!!! this controller is implemented without code generation
-    //and may contains ugly boilerplate code
- public class MyCustomSaveLoadController : BGMergeSettingsEntity.IMergeReceiver,BGMergeSettingsEntity.IRemoveOrphanedReceiver
- {
-     private bool loading;
-
-     public bool OnBeforeMerge(BGRepo from, BGRepo to)
-     {
-         //here we want to know, if it's loading or saving?
-         //... Note (currently there is no merging on saving, but it can be implemented in future releases)
-         loading = to == BGRepo.I;
-         return false;
-     }
-
-     public void OnAfterMerge(BGRepo from, BGRepo to)
-     {
-         //no need to write anything here
-     }
-
-     //this callback is invoked before row removal. Return true to cancel this operation
-     public bool OnBeforeDelete(BGEntity toEntity)
-     {
-         if (loading)
-         {
-             if ("Collectable".Equals(toEntity.Meta.Name))
-             {
-                 //before deleting Collectable row, we want to make sure- it's not connected to newly added scene
-                 var scene = toEntity.Get&lt;BGEntity&gt;("Scene");
-                 //if scene's version more than 0 - cancel removing by returning true
-                 return scene != null && scene.Get&lt;int&gt;("version") > 0;
-             }
-         }
-
-         return false;
-     }
- }
-
-</pre>
-<p>
-    To see this controller in action:
-</p>
-<ul>
-    <li>Run example scene (Assets\BansheeGz\BGDatabase\Examples\Scenes\BGExample1.unity) using default database.
-        (If you already created your own database, here is some information about how to temporarily <a href="../../Setup#revert">revert it to default</a>)
-    </li>
-    <li>Collect some objects and save the game</li>
-    <li>
-        We pretend this was made by a real player with our game version 1, and now we want to develop version 1.1 and we want to add a new scene.
-        We could add a new scene without any controller and without any issue, but we want to populate this scene with Collectable rows,
-        and we do not want them to be deleted while loading save file.
-        Without this controller, all Collectable rows will be overriden with the data from the save file,
-        cause in SaveLoad merge settings we marked this table for "addingMissing" and "removingOrphaned" (which basically mean the whole table will be restored from save file)
-    </li>
-    <li>At this point we start to develop game version 1.1. We will omit real scene creating, cause all we want- is to make sure our save file will be loaded properly
-        and it will not erase our newly added collectables for new scene
-    </li>
-    <li>Open BGDatabase window, chose <code>Configuration->Scene</code> and add new int field, call it "version"</li>
-    <li>Then chose <code>Database->Scene</code> and add a new scene</li>
-    <li>For newly created scene assign "version" field to 1</li>
-    <li>Chose "Collectable" field for new scene and add some Collectables</li>
-    <li>Now chose <code>Addons->SaveLoad</code>, and assign "Controller Type" field to MyCustomSaveLoadController (this is a class name of our controller)</li>
-    <li>Save the database and run BGExample1.unity scene again</li>
-    <li>Load the game, chose <code>Database->Scene</code> and make sure all saved Collectables remain intact, just like newly added Collectables for our new scene.
-        Also, you can run the same example without controller assigned to see the difference
-    </li>
-</ul>
-<div class="moreinfo">
-    For more information about:
-    <ul>
-        <li>
-            row-level controller, please read article about <a href="../../ExportImport#rowlevel">export/import</a>
-        </li>
-    </ul>
-</div>
-
-
-<h4>BeforeSave event</h4>
-You can declare you MonoBehavior script to be a receiver of BeforeSave event, so it could update the database before saving (code from the example project)
-<pre class="prettyprint">
-//this class implement BGAddonSaveLoad.BeforeSaveReciever interface,
-//so OnBeforeSave method will be called before saving
-public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
-{
-    ...
-    //this method is called before saving
-    void BGAddonSaveLoad.BeforeSaveReciever.OnBeforeSave()
-    {
-        //save current position , rotation and scene to the database
-        m_position = transform.position;
-        m_rotation = transform.rotation;
-        m_scene = BGE_Scene.FindEntity(scene => string.Equals(scene.Name, SceneManager.GetActiveScene().name));
-    }
-}
-</pre>
             </div>
 
             <!--======================================================       BG Database Footer               -->

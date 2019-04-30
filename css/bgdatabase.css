@@ -167,15 +167,6 @@
     background-color: rgb(247, 247, 247);
 }
 
-.bg-sm .pa {
-    padding: 8px 4px;
-}
-
-.bg-sm .ca {
-    padding: 8px 4px;
-
-}
-
 h3 {
     margin: 0 !important;
     padding: 10px 0 !important;
@@ -285,18 +276,6 @@ code::before, code::after {
     content: "\00a0";
 }
 
-.contentTable{
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 100%;
-}
-.contentTable td,.contentTable th{
-    border: 1px solid black;
-    padding: 4px;
-}
-.contentTable p {
-    margin: 0;
-}
 /*code sample*/
 .cs{
     background-color: rgba(0, 0, 0, .06);

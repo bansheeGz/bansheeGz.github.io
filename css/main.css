@@ -157,7 +157,7 @@ a{
     border: 1px dotted #ff84d8;
     background-color: pink;
     text-align: center;
-    padding: 8px;
+    padding: 2px;
 }
 
 /**** Mobile layout ****/
@@ -187,3 +187,27 @@ a{
         display: inline !important;
     }
 }
+
+.contentTable{
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 100%;
+}
+.contentTable th{
+    background-color: #68979c;
+    color: white;
+}
+.contentTable td,.contentTable th{
+    border: 1px solid black;
+    padding: 4px;
+}
+.contentTable p {
+    margin: 0;
+}
+
+.bg-sm .pa,  .bg-sm .ca {
+    padding: 2px 1px;
+    font-weight: 400 !important;
+    font-size: 15px !important;
+}
+

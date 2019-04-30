@@ -1,0 +1,100 @@
+#set page=Bolt
+
+<h4>Description</h4>
+<p>
+Code Generator for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/bolt-87491">Bolt</a> creates custom Units to manage BGDatabase data.
+    All fields are supported (but some BGDatabase fields are readonly, <a href="../../SupportedFields">more info</a>)
+</p>
+
+
+<h4>Supported custom units</h4>
+With custom units you have full control over database data- you can select/add/update/delete rows.
+Custom units are generated for each table
+<table class="contentTable">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Unit
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>GetByIndex</td>
+        <td>
+            Retrieve field values from database by row's index. This is the best method to use inside for-each loop
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>GetById</td>
+        <td>
+            Retrieve field values from database by row's id.
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>GetByName</td>
+        <td>
+            Retrieve field values from database by row's name.
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>SetByIndex</td>
+        <td>
+            Set field values to database by row's index.
+        </td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>SetById</td>
+        <td>
+            Set field values to database by row's id.
+        </td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>SetByName</td>
+        <td>
+            Set field values to database by row's name.
+        </td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Count</td>
+        <td>
+            Retrieve total number of rows
+        </td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Create</td>
+        <td>
+            Create a new row
+        </td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Delete</td>
+        <td>
+            Delete a row by its index
+        </td>
+    </tr>
+</table>
+
+<h4>How to generate</h4>
+<ul>
+    <li>Open BGDatabase window <code>Window->BGDatabase</code></li>
+    <li>Select <code>Settings</code> tab, and chose <code>Bolt</code></li>
+    <li>Fill in parameters and press <code>Generate</code> button</li>
+    <li>After units was generated, update Bolt units database, by pressing Tools->Bolt->Build Unit Options (or Full Extract if you use Bolt 2.0)</li>
+</ul>
+
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Bolt1.png"><img style="width: 400px" src="#path images/BGDatabase/Bolt1.png"></a>
+</div>

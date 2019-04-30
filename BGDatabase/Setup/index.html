@@ -197,6 +197,9 @@
                     <li class="cli ">
                         <a class="ca" href="../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
                     </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/ThirdParty/Bolt">Bolt</a>
+                    </li>
                 </ul>
             </li>
             <li class="pli ">
@@ -267,22 +270,19 @@
             <div id="content">
             
 
-<h4 >Create your own database</h4>
+<h4>Create your own database</h4>
+<div class="importantNote">
+    This step is required!
+</div>
 <ol>
     <li>
         Import the package
     </li>
     <li>
-        By default BGDatabase use database, created for our example, so at this point you may want to look at our
-        <a href="../ExampleBreakdown">example breakdown</a>, if you wish to understand more about how BGDatabase works.
-        Or you can revert your database to example database later to look into example code, here is <a href="#revert">how
-        to do it</a>
-    </li>
-    <li>
         Create your own database.
         Open <code>Window->BGDatabase</code>.
-        Go to <code>Settings-> Main</code>.
-        Fill Database Folder and Setting folder and hit <code>Create</code> button
+        Select <code>Settings-> Main->Create new database</code> tab.
+        Fill 'Database Folder' and 'Setting folder' and hit <code>Create</code> button
         <div class="bg-image">
             <a href="../../images/BGDatabase/Setup1.png"><img style="width: 400px" src="../../images/BGDatabase/Setup1.png"></a>
         </div>
@@ -337,17 +337,17 @@
 
 <h4 id="revert">Reverting database to default (example) database</h4>
 <p>
-By default, BGDatabase uses default database, located at <code>Assets\BansheeGz\BGDatabase\Examples\Resources\bansheegz_database_default.bytes</code>
-As soon as you create your own database, your database, named <code>bansheegz_database.bytes</code> will be used.
-But you may want to revert to default database, for example, to test how our example scenes are working.
+    By default, BGDatabase uses default database, located at <code>Assets\BansheeGz\BGDatabase\Examples\Resources\bansheegz_database_default.bytes</code>
+    As soon as you create your own database, <code>bansheegz_database.bytes</code> file will be used as database.
+    But you may want to revert to default database temporarily, for example, to test how our example scenes are working.
 </p>
 <p>
     This is very easy to do- locate your <code>bansheegz_database.bytes</code> file (you can find it's location under <code>Settings->Main</code>) and rename or move it to another location,
-    then return to <code>Window->BGDatabase</code> and press <code>Reload</code> button.
+    then return to <code>Window->BGDatabase</code> and press <code>Reload</code> button. (top left corner of BGDatabase window)
     Default database will be loaded.
 </p>
 <p>
-    As soon as you do not need it anymore: rename your database file back to <code>bansheegz_database.bytes</code> or move it back from another folder and hit <code>Reload</code>
+    As soon as you do not need it anymore: rename your database file back to <code>bansheegz_database.bytes</code> or move it back from another folder and hit <code>Reload</code> button.
 </p>
             </div>
 

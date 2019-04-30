@@ -168,14 +168,6 @@
     background-color: rgb(247, 247, 247);
 }
 
-.bg-sm .pa {
-    padding: 8px 4px;
-}
-.bg-sm .ca {
-    padding: 8px 4px;
-
-}
-
 h3{
     margin: 0  !important;
     padding: 10px 0  !important;
@@ -259,17 +251,4 @@ h3{
     padding-left: 42px;
     background: url(../images/ColliderPack.png) no-repeat left;
     min-height: 32px;
-}
-
-.contentTable{
-    border: 1px solid black;
-    border-collapse: collapse;
-    width: 100%;
-}
-.contentTable td,.contentTable th{
-    border: 1px solid black;
-    padding: 4px;
-}
-.contentTable p {
-    margin: 0;
 }
