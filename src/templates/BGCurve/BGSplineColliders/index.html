@@ -51,7 +51,7 @@
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        Colliders pack consists of 3 components for BG Curve, which generate colliders along Bezier spline.
+        Colliders pack consists of 4 components for BG Curve, which generate colliders along Bezier spline.
     </div>
 </div>
 
@@ -61,15 +61,18 @@
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
         <ol class="nlist">
-            <li>2D Edge- generates points for attached EdgeCollider 2D.<br/></li>
-            <li>3D Box - generate a set of children GameObjects with single attached BoxCollider. GameObjects are
+            <li>3D Box - generate a set of children GameObjects with attached BoxCollider. GameObjects are
                 positioned and rotated properly.
             </li>
+            <li>Capsule - generate a set of children GameObjects with attached CapsuleCollider. GameObjects are
+                positioned and rotated properly.
+            </li>
+            <li>2D Edge- generates points for attached EdgeCollider 2D.<br/></li>
             <li>2D Box - the same as BGCcCollider3DBox, however children GameObjects may have optional Effector2D
                 attached.
             </li>
         </ol>
-        <span style="color: red">Note: if you use 2d/3d Box Colliders, please, do not attach your own 2d/3d box colliders to child GameObjects right under the spline,
+        <span style="color: red">Note: if you use 2d/3d Box or Capsule Colliders, please, do not attach your own 2d/3d box colliders to child GameObjects right under the spline,
             cause they may be reused and deleted.</span>
     </div>
 </div>
@@ -119,7 +122,36 @@
             <li>Adjust "Collider 3D Box" component properties if needed (like Width, Heigth, OffSet etc.)</li>
         </ol>
     </div>
+</div>
 
+<div>
+    <h4><a href="../Cc/BGCcColliderCapsule">BGCcColliderCapsule</a></h4>
+</div>
+<div class="bg-feature mdl-shadow--2dp">
+    <div class="hh">
+        Generate a set of &nbsp; <a href="https://docs.unity3d.com/Manual/class-CapsuleCollider.html">Capsule colliders</a>
+        &nbsp;
+        for 3D spline
+    </div>
+    <div>
+        <ol class="nlist">
+            <li>Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
+                &nbsp;&nbsp;(<a href="../UserGuide/Points/">Text Guide</a>)
+            </li>
+            <li>Turn on snapping (Under Points tab) if you need it. Setup "Snap Layer Mask" for collisions.</li>
+            <li>Add "Collider Capsule" component (under Components tab). This component reuses 1 level children
+                GameObjects with CapsuleCollider attached,
+                so do not place any additional CapsuleColliders under spline's GameObject.
+            </li>
+            <li>Adjust Resolution. You can adjust the number of points you want to split the spline to by adjusting
+                Math's components properties (if you set SplitMode to 'UseMathData'),
+                or you can change SplitMode to PartsTotal or PartsPerSection and assign the number os splits directly.
+                We recommend to set SplitMode to 'UseMathData' (default) and change MathType of Math component to
+                Adaptive and adjust Tolerance.
+            </li>
+            <li>Adjust "Collider Capsule" component properties if needed (like Radius and LengthExtends etc.)</li>
+        </ol>
+    </div>
 </div>
 
 <div>

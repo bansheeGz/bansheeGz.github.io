@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-2"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-5"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
 
-        gtag('config', 'UA-76367732-2');
+        gtag('config', 'UA-76367732-5');
     </script>
 
     <meta charset="utf-8">
@@ -210,7 +210,7 @@
                     <li class="cli collidersicon ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcCollider3DBox">Collider 3D Box</a>
                     </li>
-                    <li class="cli collidersicon ">
+                    <li class="cli collidersicon  plic ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcColliderCapsule">Collider Capsule</a>
                     </li>
                     <li class="cli collidersicon ">
@@ -222,7 +222,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcTrs">TRS</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGCurve/Cc/BGCcVisualizationLineRenderer">Line Renderer</a>
                     </li>
                     <li class="cli ">
@@ -266,14 +266,18 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Line Renderer [Component]</h3>
+                <h3>Collider Capsule [Component]</h3>
             </div>
 
             <!--======================================================        BG Curve Content              -->
             <div class="bg-main-contacts">
     <div class="bg-main-contacts_grid mdl-grid">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-            <img style="width:400px;height: auto" src="../../../images/GifCcLineRenderer.gif">
+            <img style="width:400px;height: auto" src="../../../images/GifCollidersCapsule.gif">
+        </div>
+        
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone" style="margin-top: 10px;text-align: center">
+            This Component is part of <a href="../../BGSplineColliders">BG Spline Colliders</a>
         </div>
         
     </div>
@@ -281,11 +285,11 @@
 
 
 <div>
-    <h4 class="v11">Description</h4>
+    <h4 class="colliders">Description</h4>
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        This component let you visualize a Curve with Unity's standard <a href="https://docs.unity3d.com/Manual/class-LineRenderer.html">LineRenderer Component</a> in Play Mode. If you are updating the curve and visualizing it with this component, you may want to set related 'Math' updateMode parameter to AabbVisible, so the 'Math' and 'Line Renderer' update their data only if it's really needed (e.g. they are visible by any camera).
+        Generates a set of <a href="https://docs.unity3d.com/Manual/class-CapsuleCollider.html">Capsule colliders</a> along the spline. <span style="color: red" >Note, there should not be any GameObject with Capsule colliders right under the spline object, cause it's reusing them for it's own need. If by some reason you need some independent GameObject with CapsuleCollider under the spline, place it under another object without CapsuleCollider.</span>
     </div>
 </div>
 
@@ -320,6 +324,104 @@
     </div>
     <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
         Split straight lines. Straight lines are optimized by default and are not split, but you can override it with this parameter.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        radius
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        colliders radius
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        lengthExtends
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        increase or decrease the length of colliders along Z axis
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        maxNumberOfColliders
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        maximum number of created colliders
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        isTrigger
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        if created colliders should be triggers
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        material
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        material for colliders
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        prefab
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        prefab to use for creating GameObjects
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        inheritLayer
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        all children GameObjects with colliders inherit this GameObject's layer
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        layer
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        assign specified layer to all children GameObjects with colliders
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        showHandles
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresScale
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Adjust spheres scale. Each sphere represent one point of the generated mesh.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresColor
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Set spheres color.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        spheresCount
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        The number of first N points (spheres) to show. The number is restricted for performance reason.
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        showIfNotSelected
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Show colliders even if object is not selected in Editor
+    </div>
+    <hr>
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        collidersColor
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Color of colliders for showIfNotSelected mode
     </div>
     <hr>
 

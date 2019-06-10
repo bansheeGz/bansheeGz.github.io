@@ -34,6 +34,15 @@ paramDescription=if created colliders should be triggers
 paramName=material
 paramDescription=material for colliders
 
+paramName=prefab
+paramDescription=prefab to use for creating GameObjects
+
+paramName=inheritLayer
+paramDescription=all children GameObjects with colliders inherit this GameObject's layer
+
+paramName=layer
+paramDescription=assign specified layer to all children GameObjects with colliders
+
 paramName=showHandles
 paramDescription=This component supports handles in Scene View. Enable this flag to show handles. Handles are not interactive.
 
