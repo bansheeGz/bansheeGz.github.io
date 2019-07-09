@@ -1,6 +1,36 @@
 #set page=BGCcSweep2D [Component]
 #set version=v12
 #set imageBig=images/GifCcSweep2D.gif
-#set description=Sweep a line or 2D spline(profile) along another 2D spline. Note, at sharp angles polygons may overlap.
+#set description=Sweep a line or 2D spline(profile) along another 2D spline. This component has serious limitations (please, read below)
+
+<div>
+    <h4>How it works?</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        Cross spline is duplicated at each split point along the main spline. The direction is calculated as cross product of Up vector and spline's tangent
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="#path images/Sweep1.png"><img src="#path images/Sweep1.png"></a>
+    </div>
+    <hr>
+</div>
 
 
+<div>
+    <h4>Limitations</h4>
+</div>
+<div class="mdl-grid bg-feature mdl-shadow--2dp">
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone ">
+        This component has 2 very serious limitations:
+        <ol>
+            <li>1) Both splines should be in 2D mode</li>
+            <li>2) At steep curves generated polygons may overlap (and mesh looks like broken)</li>
+        </ol>
+        Due to these limitations, this component has very limited use scenarios, but it still can be used as an example for building your own procedural meshes.
+    </div>
+    <div class="bg-gallery mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--1-col-phone ">
+        <a href="#path images/Sweep2.png"><img src="#path images/Sweep2.png"></a>
+    </div>
+    <hr>
+</div>
