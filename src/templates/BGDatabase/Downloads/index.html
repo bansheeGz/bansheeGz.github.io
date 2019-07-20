@@ -1,0 +1,161 @@
+#set page=Downloads
+
+
+<p>
+    Free downloads for BGDatabase package.
+</p>
+<table class="contentTable">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Version</th>
+        <th>Description</th>
+        <th>Download</th>
+    </tr>
+
+    <tr>
+        <td>1</td>
+        <td><a href="#2dExample">2D example</a></td>
+        <td>Example</td>
+        <td>1.0</td>
+        <td>2D variant of our 3D game prototype</td>
+        <td><a href="bgdatabase1.0_2D_game_prototype.unitypackage">link</a></td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><a href="#inventory">Inventory example</a></td>
+        <td>Example</td>
+        <td>1.0</td>
+        <td>Inventory system, built with BGDatabase</td>
+        <td><a href="bgdatabase1.0_inventory.unitypackage">link</a></td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><a href="#excelEditor">Excel file monitor for Editor</a></td>
+        <td>Editor tool</td>
+        <td>1.0</td>
+        <td>Editor monitor for excel file</td>
+        <td><a href="BansheeGzExcelEditor.unitypackage">link</a></td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td><a href="#excelRuntime">Excel file monitor for Runtime</a></td>
+        <td>Runtime extension</td>
+        <td>1.0</td>
+        <td>Runtime monitor for excel file</td>
+        <td><a href="BansheeGzExcelRuntime.unitypackage">link</a></td>
+    </tr>
+</table>
+
+<div id="2dExample">
+    <h4>1. 2D example</h4>
+    <p>
+        2D variant of our <a href="../ExampleBreakdown">3D game prototype</a>, shipped with the package.
+    </p>
+    <p>
+        Video tutorial for this 2D example is available <a href="../Videos">here</a>
+    </p>
+    <div>
+        <b>How to run:</b>
+        <ol>
+            <li>Create an empty project</li>
+            <li>Import BGDatabase asset</li>
+            <li>Import downloaded example project</li>
+            <li>Run example scene (under Game/Scene)</li>
+        </ol>
+    </div>
+</div>
+
+<div id="inventory">
+    <h4>2. Inventory system</h4>
+    <p>
+        Inventory system, built with BGDatabase
+    </p>
+    <div>
+        <b>How to run:</b>
+        <ol>
+            <li>Create an empty project</li>
+            <li>Import BGDatabase asset</li>
+            <li>Import downloaded example project</li>
+            <li>Run example scene (under Game/Scene)</li>
+        </ol>
+    </div>
+</div>
+
+<div id="excelEditor">
+    <h4>3. Excel file monitor for Editor</h4>
+    <div>
+        <b>Features:</b>
+        <ol>
+            <li>Monitor and auto import Excel file in Unity Editor</li>
+        </ol>
+    </div>
+    <div>
+        <b>Setup:</b>
+        <ol>
+            <li>Import BGDatabase package and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
+            <li>Import BansheeGzExcelEditor package</li>
+            <li>Export required data to Excel file as described <a href="http://www.bansheegz.com/BGDatabase/ThirdParty/Excel/">here</a></li>
+            <li>Open up Window->BansheeGzExcelTools window</li>
+            <li>Set "File" parameter to excel file path</li>
+            <li>Turn "On" parameter on.</li>
+            <li>Open exported excel file, change some data and save the file (Ctrl+s)</li>
+            <li>Data will be imported to BGDatabase.</li>
+        </ol>
+    </div>
+</div>
+
+<div id="excelRuntime">
+    <h4>4. Excel file monitor for Runtime</h4>
+    <div>
+        <b>Features:</b>
+        <ol>
+            <li>Update database data at runtime (in builds) with data from Excel file</li>
+            <li>Monitor excel file and auto-import the data if file changes</li>
+        </ol>
+    </div>
+    <div>
+        <b>Setup:</b>
+        <ol>
+            <li>Import BGDatabase package and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
+            <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets\Libs (or to any other folder, which is not under Editor folder)</li>
+            <li>Import BansheeGzExcelRuntime package</li>
+            <li>Add Assets\BansheeGzExcelRuntime\BGExcelImportGo.cs to your scene</li>
+            <li>Export required data to Excel as described <a href="http://www.bansheegz.com/BGDatabase/ThirdParty/Excel/">here</a></li>
+            <li>Run your scene</li>
+            <li>Click to "Excel>>" button to access settings</li>
+            <li>Set "File" parameter to previously exported excel file location</li>
+            <li>Optionally set "monitoring" to true to auto monitor the file</li>
+            <li>Optionally set "importOnStart" to run import on scene load</li>
+            <li>Optionally press "Save Settings" to save the settings</li>
+            <li>Open excel file, change the data and save the file (Ctrl+s)</li>
+            <li>BGDatabase data should be updated. All binders in the scene will be executed after that.</li>
+        </ol>
+    </div>
+    <div>
+        <b>Example:</b>
+        <p>
+            Example scene is available in Assets\BansheeGzExcelRuntime\Example\ folder.
+            It works with default database, shipped with BGDatabase package.
+            This example shows, how to update Player.gold field with excel at runtime.
+        </p>
+    </div>
+    <div>
+        <b>Example setup and run:</b>
+        <ol>
+            <li>Create empty project</li>
+            <li>Import BGDatabase package</li>
+            <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets\Libs (or to any other folder, which is not under Editor folder)</li>
+            <li>Import BansheeGzExcelRuntime package</li>
+            <li>Open Assets\BansheeGzExcelRuntime\Example\BGDatabaseExcelRuntimeExample.unity scene</li>
+            <li>Run the scene</li>
+            <li>Click on "Excel>>" button, and set "File" parameter to full testData.xls file path. (file is located here: Assets\BansheeGzExcelRuntime\Example\testData.xls,
+                but the parameter should be set to full path, for example: <i>c:\MyProject\Assets\BansheeGzExcelRuntime\Example\testData.xls</i>
+            </li>
+            <li>Click on "Save Settings" button</li>
+            <li>Now open testData.xls file in Excel/OpenOffice/LibreOffice, change Player.gold value, and Save the file (Ctrl+s)</li>
+            <li>Value in the database and text on the screen will be changed</li>
+        </ol>
+    </div>
+</div>
