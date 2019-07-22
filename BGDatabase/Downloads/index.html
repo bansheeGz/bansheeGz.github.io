@@ -273,6 +273,12 @@
             <div id="content">
             
 
+<style>
+    .ver{
+        font-size: small;
+        white-space: nowrap;
+    }
+</style>
 
 <p>
     Free downloads for BGDatabase package.
@@ -291,7 +297,7 @@
         <td>1</td>
         <td><a href="#2dExample">2D example</a></td>
         <td>Example</td>
-        <td>1.0</td>
+        <td class="ver">1.0-12/12/2018</td>
         <td>2D variant of our 3D game prototype</td>
         <td><a href="bgdatabase1.0_2D_game_prototype.unitypackage">link</a></td>
     </tr>
@@ -299,7 +305,7 @@
         <td>2</td>
         <td><a href="#inventory">Inventory example</a></td>
         <td>Example</td>
-        <td>1.0</td>
+        <td class="ver">1.0-12/12/2018</td>
         <td>Inventory system, built with BGDatabase</td>
         <td><a href="bgdatabase1.0_inventory.unitypackage">link</a></td>
     </tr>
@@ -307,7 +313,7 @@
         <td>3</td>
         <td><a href="#excelEditor">Excel file monitor for Editor</a></td>
         <td>Editor tool</td>
-        <td>1.0</td>
+        <td class="ver">1.0-22/07/2019</td>
         <td>Editor monitor for excel file</td>
         <td><a href="BansheeGzExcelEditor.unitypackage">link</a></td>
     </tr>
@@ -315,7 +321,7 @@
         <td>4</td>
         <td><a href="#excelRuntime">Excel file monitor for Runtime (PC/Mac/Linux only)</a></td>
         <td>Runtime extension</td>
-        <td>1.0</td>
+        <td class="ver">1.0-22/07/2019</td>
         <td>Runtime monitor for excel file</td>
         <td><a href="BansheeGzExcelRuntime.unitypackage">link</a></td>
     </tr>
@@ -419,7 +425,8 @@
         <ol>
             <li>Create empty project</li>
             <li>Import BGDatabase package</li>
-            <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets\Libs (or to any other folder, which is not under Editor folder)</li>
+            <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets\Libs (or to any other folder, which is not under Editor folder).
+                Select all dlls under Assets\Libs\NPOI, and in the inspector toggle "Standalone" on and click "Apply"</li>
             <li>Import BansheeGzExcelRuntime package</li>
             <li>Open Assets\BansheeGzExcelRuntime\Example\BGDatabaseExcelRuntimeExample.unity scene</li>
             <li>Run the scene</li>
