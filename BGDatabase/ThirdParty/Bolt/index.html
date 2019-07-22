@@ -360,16 +360,35 @@ Custom units are generated for each table
     </tr>
 </table>
 
-<h4>How to generate</h4>
-<ul>
-    <li>Open BGDatabase window <code>Window->BGDatabase</code></li>
-    <li>Select <code>Settings</code> tab, and chose <code>Bolt</code></li>
-    <li>Fill in parameters and press <code>Generate</code> button</li>
-    <li>After units was generated, update Bolt units database, by pressing Tools->Bolt->Build Unit Options (or Full Extract if you use Bolt 2.0)</li>
-</ul>
+<div>
+    <h4>How to generate</h4>
+    <ul>
+        <li>Open BGDatabase window <code>Window->BGDatabase</code></li>
+        <li>Select <code>Settings</code> tab, and chose <code>Bolt</code></li>
+        <li>Fill in parameters and press <code>Generate</code> button</li>
+        <li>After units was generated, update Bolt units database, by pressing Tools->Bolt->Build Unit Options (or Full Extract if you use Bolt 2.0)</li>
+    </ul>
 
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/Bolt1.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt1.png"></a>
+    <div class="bg-image">
+        <a href="../../../images/BGDatabase/Bolt1.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt1.png"></a>
+    </div>
+    <div class="importantNote">
+        Once you chose your naming scheme "package" + "Classes name prefix" and used your generated actions in Bolt's graphs, please, do not change these settings,
+        otherwise the references to these action will be lost. The same applies to tables/fields names.
+    </div>
+</div>
+
+<div>
+    <h4>Difference between getters and setters</h4>
+    <ol>
+        <li> Getters are not included into control flow: you can not include them. Values are fetched when requested.</li>
+        <li>On the other hand, setters are required to be included into control flow, otherwise they will not be executed</li>
+    </ol>
+    <div class="bg-image">
+        <a href="../../../images/BGDatabase/Bolt2.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt2.png"></a>
+    </div>
+    <br>
+    <br>
 </div>
             </div>
 
