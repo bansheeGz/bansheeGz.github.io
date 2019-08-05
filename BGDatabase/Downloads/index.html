@@ -274,10 +274,11 @@
             
 
 <style>
-    .ver{
+    .ver {
         font-size: small;
         white-space: nowrap;
     }
+
     .centerTemp {
         display: block;
         margin-left: auto;
@@ -331,6 +332,18 @@
         <td>Runtime monitor for excel file</td>
         <td><a href="BansheeGzExcelRuntime.unitypackage">link</a></td>
     </tr>
+    <tr>
+        <td>5</td>
+        <td><a href="#saveLoad">Save/Load actions for Playmaker/Bolt</a></td>
+        <td>Runtime extension</td>
+        <td class="ver">1.0-05/08/2019</td>
+        <td>Save/Load actions for <a href="../ThirdParty/Playmaker">Playmaker</a>/<a href="../ThirdParty/Bolt">Bolt</a></td>
+        <td>
+            <a href="BGDatabaseSaveLoadPlaymaker.unitypackage">Playmaker</a> |
+            <a href="BGDatabaseSaveLoadBoltV1.unitypackage">Bolt v1</a> |
+            <a href="BGDatabaseSaveLoadBoltV2.unitypackage">Bolt v2</a>
+        </td>
+    </tr>
 </table>
 
 <div id="2dExample">
@@ -357,7 +370,7 @@
 <div id="inventory">
     <h4>2. Inventory system</h4>
     <p>
-        Inventory system, built with BGDatabase  (level=advanced).
+        Inventory system, built with BGDatabase (level=advanced).
     </p>
     <img src="../../images/BGDatabase/download2.gif">
     <div>
@@ -437,7 +450,8 @@
             <li>Create empty project</li>
             <li>Import BGDatabase package</li>
             <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets\Libs (or to any other folder, which is not under Editor folder).
-                Select all dlls under Assets\Libs\NPOI, and in the inspector toggle "Standalone" on and click "Apply"</li>
+                Select all dlls under Assets\Libs\NPOI, and in the inspector toggle "Standalone" on and click "Apply"
+            </li>
             <li>Import BansheeGzExcelRuntime package</li>
             <li>Open Assets\BansheeGzExcelRuntime\Example\BGDatabaseExcelRuntimeExample.unity scene</li>
             <li>Run the scene</li>
@@ -447,6 +461,33 @@
             <li>Click on "Save Settings" button</li>
             <li>Now open testData.xls file in Excel/OpenOffice/LibreOffice, change Player.gold value, and Save the file (Ctrl+s)</li>
             <li>Value in the database and text on the screen will be changed</li>
+        </ol>
+    </div>
+</div>
+
+<div id="saveLoad">
+    <h4>5. Save/Load actions for Playmaker/Bolt</h4>
+    <p>
+        Custom actions for Playmaker and Bolt to support <a href="../Addons/SaveLoad">SaveLoad addon</a>.
+        Actions allow you to save/load game to/from file(s), located in the <a href="https://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html">Unity's persistent folder</a>.
+    </p>
+    <div>
+        Following actions are available:
+        <ol>
+            <li>SaveGame: save a game to a file.</li>
+            <li>LoadGame: load a game from a file.</li>
+            <li>ListSaves: load all file names to string array (without path and extension)</li>
+            <li>DeleteSave: delete saved file.</li>
+        </ol>
+    </div>
+    <div>
+        Additional information:
+        <ol>
+            <li>All files have ".sav" extension.</li>
+            <li>SaveGame/LoadGame/DeleteSave have optional <i>fileName</i> parameter (default is "game").
+                <i>fileName</i> parameter format is a file name without path and extension.
+            </li>
+            <li>All actions have "debug" parameter- if it's turned on, information about files is printed to Unity console.</li>
         </ol>
     </div>
 </div>
