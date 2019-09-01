@@ -231,7 +231,7 @@
 </div>
 <div id="addressables">
     <h4>6. Support for Unity's addressables system</h4>
-    <p>Setup: </p>
+    <h6>Setup: </h6>
     <ol>
         <li>Use Unity version &gt; 2018.3</li>
         <li>Install Unity's addressables package via package manager</li>
@@ -240,34 +240,43 @@
         <li>If you installed our beta package with experimental addressables support, which was bundled with our asset, please,
             delete the following folders: <i>Assets\BansheeGz\BGDatabase\Pins</i> and <i>Assets\BansheeGz\BGDatabase\Editor\Pins</i></li>
         <li>Create your own database as described <a href="../Setup">here</a></li>
-        <li>Create a table with <a href="../SupportedFields#unityassets">Unity assets</a> fields and set loader=Addressables via gear icon</li>
+        <li>Create a table with <a href="../SupportedFields#unityassets">Unity assets</a> fields and set loader=Addressables or loader=AddressablesByGuid via gear icon</li>
     </ol>
+    <div class="bg-image">
+        <a href="#path images/BGDatabase/Addressables1.png"><img style="width: 400px" src="#path images/BGDatabase/Addressables1.png"></a>
+    </div>
 
-    <p>Restrictions: </p>
+
+    <h6>Loaders type: </h6>
     <ol>
-        <li>Once you assign "address" for asset and assign this address to database field, you can not change it. If you want to change it- you also need to change database value as well
-            (e.g. database is not tracing changes made to addresses)</li>
-        <li>Before reading values from database, you need to preload required values, otherwise values will not be resolved successfully (null will be returned).
-            The script below preload all values from all rows/fields, you can modify it to preload only required part of database</li>
+        <li>Addressable: Pros: Address is stored as database value in human readable form. Cons: If address is changed after it was assign to database field, you need to reassign database field value again</li>
+        <li>AddressableByGuid: Pros: you can change address without breaking connection to the asset. Cons: Asset Guid is stored as value in database instead of readable address</li>
     </ol>
 
+
+    <h6>Restriction (preloading): </h6>
     <p>
-        Preload script (for every table/field with addressables loader). Modify it to preload only part of the database:
+        Before reading values from database, you need to preload required values, otherwise values will not be resolved successfully (null will be returned).
+        You have full control over which values you want to preload: you can use database values or Addressables system to decide which values to preload.
+        The script below preload all values from all rows/fields, you can modify it to preload only required part of database.
     </p>
     <pre class="prettyprint">
-       //---------- this code is tested against 1.10 version
-        //find addresses to load
+       //---------- PRELOAD SCRIPT: this code is tested against 1.10 version
+       // This script preload all values from database. You can modify it to preload only required part.
         IList&lt;object&gt; addresses = new List&lt;object&gt;();
+        //iterate all tables
         BGRepo.I.ForEachMeta(meta =&gt;
         {
             //find all fields with addressables loader
             List&lt;BGStorable&lt;string&gt;&gt; fieldsWithLoaders = null;
             meta.ForEachField(field =&gt;
             {
+                // if not Unity asset field- skip it
                 if (!(field is BGAssetLoaderA.WithLoaderI) || !(field is BGStorable&lt;string&gt;)) return;
 
                 var fieldWithLoader = (BGAssetLoaderA.WithLoaderI) field;
 
+                // if not a field with addressables loader- skip it
                 if (!(fieldWithLoader.AssetLoader is BGAssetLoaderAddressables)) return;
 
                 fieldsWithLoaders = fieldsWithLoaders ?? new List&lt;BGStorable&lt;string&gt;&gt;();
@@ -276,12 +285,14 @@
 
             if (fieldsWithLoaders == null) return;
 
-            //find all entities with some value
+            //iterate all entities(rows)
             meta.ForEachEntity(entity =&gt;
             {
+                //iterate all fields with addressable asset
                 for (var i = 0; i &lt; fieldsWithLoaders.Count; i++)
                 {
                     var address = fieldsWithLoaders[i].GetStoredValue(entity.Index);
+                    //if it has some value- add it to addresses.
                     if (!string.IsNullOrEmpty(address)) addresses.Add(address);
                 }
             });
@@ -291,7 +302,7 @@
         //remove duplicates
         addresses=addresses.Distinct().ToList();
 
-        //load
+        //load all assets using their addresses
         var asyncOperation = Addressables.LoadAssets&lt;Object&gt;(addresses, null, Addressables.MergeMode.Union);
         asyncOperation.Completed += operation =&gt;
         {
