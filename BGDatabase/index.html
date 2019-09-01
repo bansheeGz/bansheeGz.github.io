@@ -278,10 +278,42 @@
 
 
 <style>
-    .roadmap{
+    .roadmap {
         font-size: 10px;
         margin: 0;
     }
+
+    .demoDiv {
+        margin-top: 20px;
+        height: 86px;
+        background-image: url("../images/BGDatabase/RequestADemo.png") !important;
+    }
+
+    .demoRow {
+        margin-top: 56px;
+        margin-left: 12px;
+        margin-right: 12px;
+        color: white;
+        font-size: 20px;
+    }
+
+    .demoEmail {
+        width: 210px;
+    }
+
+    .demoSubmit {
+        /*background: #0066A2;*/
+        background: rgba(0,0,0,0);
+        color: white;
+        border-style: outset;
+        border-width: 1px;
+        border-color: #ffffff;
+        height: 22px;
+        width: 80px;
+        font: bold 15px arial, sans-serif;
+        text-shadow: none;
+    }
+
 </style>
 
 <div class="bg-main-contacts">
@@ -310,9 +342,20 @@
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <div class="bg-image">
-                <a href="../images/BGDatabase/Main1.png"><img style="width: 400px" src="../images/BGDatabase/Main1.png"></a>
+                <a href="../images/BGDatabase/Main1.png"><img style="width: 376px" src="../images/BGDatabase/Main1.png"></a>
             </div>
         </div>
+<!--
+        <div class="mdl-cell mdl-cell&#45;&#45;12-col mdl-cell&#45;&#45;8-col-tablet mdl-cell&#45;&#45;4-col-phone demoDiv">
+            <div class="demoRow">
+                <table>
+                    <th>Email:</th>
+                    <th><input type="email" name="_replyto" id="email" class="demoEmail"></th>
+                    <th><input type="submit" value="Request" class="demoSubmit"></th>
+                </table>
+            </div>
+        </div>
+-->
     </div>
 </div>
 
@@ -320,10 +363,12 @@
     Please, <a href="Setup">create your own database</a> after importing BGDatabase package to your project
 </div>-->
 
+
 <h4>Features</h4>
 <ol>
     <li>Fast, In Memory, pure C# ( without SQL) database fully integrated into Unity 3D</li>
-    <li>Selective import/export from/to <a href="ThirdParty/Excel">Excel/OpenOffice</a> and <a href="ThirdParty/GoogleSheets">Google Sheets</a> (some <a href="ExportImport">restrictions apply</a>)</li>
+    <li>Selective import/export from/to <a href="ThirdParty/Excel">Excel/OpenOffice</a> and <a href="ThirdParty/GoogleSheets">Google Sheets</a> (some <a href="ExportImport">restrictions apply</a>)
+    </li>
     <li>Selective <a href="Addons/SaveLoad">Save/Load</a> during game session</li>
     <li><a href="Addons/LazyLoad">Lazy</a> loading</li>
     <li>Powerful <a href="CodeGeneration">Code Generation</a></li>
@@ -331,13 +376,13 @@
     <li>Integration with visual scripting tools: <a href="ThirdParty/Playmaker">Playmaker</a> and <a href="ThirdParty/Bolt">Bolt</a></li>
     <li>Hook up any GameObject to table row by adding a component</li>
     <li>Over <a href="SupportedFields">50 field types</a>, including relations and nested tables.
-        <br> Support for loading Unity assets from Resources, AssetBundles and Addressables system</li>
+        <br> Support for loading Unity assets from Resources, AssetBundles and <a href="Downloads">Addressables system</a></li>
     <li>Ability to create your own field.</li>
     <li>Runtime (playmode) changes saving.</li>
     <li><a href="Addons/LiveUpdate">Live update</a> from Google sheets</li>
     <li>Auto-import data from Excel file in Editor and at runtime (<a href="Downloads">details</a>)</li>
     <li>No runtime dependencies, dll size ~250Kb (0.2Mb).</li>
-    <li>Multithreading is supported with multithreading addon. Some restrictions apply. Read more <a href="Multithreading">here</a>.    </li>
+    <li>Multithreading is supported with multithreading addon. Some restrictions apply. Read more <a href="Multithreading">here</a>.</li>
     <li>BGDatabase is a client-only database, which run in Unity only, it is not meant to run in any server environment</li>
 </ol>
 <!--
