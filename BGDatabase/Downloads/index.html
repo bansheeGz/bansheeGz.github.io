@@ -273,6 +273,9 @@
             <div id="content">
             
 
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+
 <style>
     .ver {
         font-size: small;
@@ -343,6 +346,14 @@
             <a href="BGDatabaseSaveLoadBoltV1.unitypackage">Bolt v1</a> |
             <a href="BGDatabaseSaveLoadBoltV2.unitypackage">Bolt v2</a>
         </td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td><a href="#addressables">Addressables system support</a></td>
+        <td>Runtime extension</td>
+        <td class="ver">1.0-01/09/2019</td>
+        <td>Support for Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">addressables</a> system</td>
+        <td><a href="BGDatabaseAddressables.unitypackage">link</a></td>
     </tr>
 </table>
 
@@ -490,6 +501,76 @@
             <li>All actions have "debug" parameter- if it's turned on, information about files is printed to Unity console.</li>
         </ol>
     </div>
+</div>
+<div id="addressables">
+    <h4>6. Support for Unity's addressables system</h4>
+    <p>Setup: </p>
+    <ol>
+        <li>Use Unity version &gt; 2018.3</li>
+        <li>Install Unity's addressables package via package manager</li>
+        <li>Install latest BGDatabase</li>
+        <li>Download and install latest <a href="BGDatabaseAddressables.unitypackage">BGDatabase.Addressables</a> package</li>
+        <li>Create your own database as described <a href="../Setup">here</a></li>
+        <li>Create a table with <a href="../SupportedFields#unityassets">Unity assets</a> fields and set loader=Addressables via gear icon</li>
+    </ol>
+
+    <p>Restrictions: </p>
+    <ol>
+        <li>Once you assign "address" for asset and assign this address to database field, you can not change it. If you want to change it- you also need to change database value as well
+            (e.g. database is not tracing changes made to addresses)</li>
+        <li>Before reading values from database, you need to preload required values, otherwise values will not be resolved successfully (null will be returned).
+            The script below preload all values from all rows/fields, you can modify it to preload only required part of database</li>
+    </ol>
+
+    <p>
+        Preload script (for every table/field with addressables loader). Modify it to preload only part of the database:
+    </p>
+    <pre class="prettyprint">
+       //---------- this code is tested against 1.10 version
+        //find addresses to load
+        IList&lt;object&gt; addresses = new List&lt;object&gt;();
+        BGRepo.I.ForEachMeta(meta =&gt;
+        {
+            //find all fields with addressables loader
+            List&lt;BGStorable&lt;string&gt;&gt; fieldsWithLoaders = null;
+            meta.ForEachField(field =&gt;
+            {
+                if (!(field is BGAssetLoaderA.WithLoaderI) || !(field is BGStorable&lt;string&gt;)) return;
+
+                var fieldWithLoader = (BGAssetLoaderA.WithLoaderI) field;
+
+                if (!(fieldWithLoader.AssetLoader is BGAssetLoaderAddressables)) return;
+
+                fieldsWithLoaders = fieldsWithLoaders ?? new List&lt;BGStorable&lt;string&gt;&gt;();
+                fieldsWithLoaders.Add((BGStorable&lt;string&gt;) field);
+            });
+
+            if (fieldsWithLoaders == null) return;
+
+            //find all entities with some value
+            meta.ForEachEntity(entity =&gt;
+            {
+                for (var i = 0; i &lt; fieldsWithLoaders.Count; i++)
+                {
+                    var address = fieldsWithLoaders[i].GetStoredValue(entity.Index);
+                    if (!string.IsNullOrEmpty(address)) addresses.Add(address);
+                }
+            });
+
+        });
+
+        //remove duplicates
+        addresses=addresses.Distinct().ToList();
+
+        //load
+        var asyncOperation = Addressables.LoadAssets&lt;Object&gt;(addresses, null, Addressables.MergeMode.Union);
+        asyncOperation.Completed += operation =&gt;
+        {
+            //all assets are ready to use
+        };
+
+        </pre>
+
 </div>
             </div>
 

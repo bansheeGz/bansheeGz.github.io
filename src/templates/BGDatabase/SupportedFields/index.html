@@ -1,8 +1,5 @@
 #set page=Field types
 
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
-
-
 <h4>Fields overview</h4>
 <div class="bg-image">
     <a href="#path images/BGDatabase/FieldsReview.png"><img style="width: 400px"
@@ -193,70 +190,11 @@
         BGDatabase in Editor.
     </li>
     <li>
-        <p>
-            Use newly introduced Unity's <a href="https://forum.unity.com/threads/addressables-are-here.536304/">Addressables</a>
-            package (which is not ready yet, still in preview).
-            We have added experimental support for this package (built and tested against 0.3.5-preview version).
-            Just like with asset bundles, you need to preload assets to be able to properly resolve them,
-            but unlike asset bundles, you do not have to build addressables to resolve them while working with
-            BGDatabase in Editor.
-        </p>
-        <div>
-            To add support for addressables:
-            <ol>
-                <li>Install Unity's addressables package</li>
-                <li>Unpackage Assets\BansheeGz\BGDatabase\Pins\Addressables\BGDatabase.Addressables.unitypackage</li>
-                <li>Unpackage Assets\BansheeGz\BGDatabase\Editor\Pins\Addressables\BGDatabaseEditor.Addressables.unitypackage</li>
-            </ol>
-        </div>
-        <p>
-            To preload the assets, please use the following code (replace Test with actual meta name and SomeUnityField
-            with actual field name):
-        </p>
-        <pre class="prettyprint">
-       //---------- this code is tested against 0.3.5-preview version
-        //find addresses to load
-        IList&lt;object&gt; addresses = new List&lt;object&gt;();
-        BGRepo.I.ForEachMeta(meta =&gt;
-        {
-            //find all fields with addressables loader
-            List&lt;BGStorable&lt;string&gt;&gt; fieldsWithLoaders = null;
-            meta.ForEachField(field =&gt;
-            {
-                if (!(field is BGAssetLoaderA.WithLoaderI) || !(field is BGStorable&lt;string&gt;)) return;
-
-                var fieldWithLoader = (BGAssetLoaderA.WithLoaderI) field;
-
-                if (!(fieldWithLoader.AssetLoader is BGAssetLoaderAddressables)) return;
-
-                fieldsWithLoaders = fieldsWithLoaders ?? new List&lt;BGStorable&lt;string&gt;&gt;();
-                fieldsWithLoaders.Add((BGStorable&lt;string&gt;) field);
-            });
-
-            if (fieldsWithLoaders == null) return;
-
-            //find all entities with some value
-            meta.ForEachEntity(entity =&gt;
-            {
-                for (var i = 0; i &lt; fieldsWithLoaders.Count; i++)
-                {
-                    var address = fieldsWithLoaders[i].GetStoredValue(entity.Index);
-                    if (!string.IsNullOrEmpty(address)) addresses.Add(address);
-                }
-            });
-
-        });
-        
-        //remove duplicates
-        addresses=addresses.Distinct().ToList();
-
-        //load
-        var asyncOperation = Addressables.LoadAssets&lt;Object&gt;(addresses, null, Addressables.MergeMode.Union);
-        asyncOperation.Completed += operation =&gt;
-        {
-            //all assets are ready to use
-        };
-
-        </pre>
+        Use newly introduced Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a>
+        package.
+        Just like with asset bundles, you need to preload assets to be able to properly resolve them,
+        but unlike asset bundles, you do not have to build addressables to resolve them while working with
+        BGDatabase in Editor.
+        To add support for addressables, please, download the plugin and follow setup instruction on our <a href="../Downloads#addressables">download page</a>
     </li>
 </ol>
