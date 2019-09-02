@@ -352,8 +352,17 @@
         <td><a href="#addressables">Addressables system support</a></td>
         <td>Runtime extension</td>
         <td class="ver">1.0-01/09/2019</td>
-        <td>Support for Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">addressables</a> system</td>
+        <td>Support for Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a> system</td>
         <td><a href="BGDatabaseAddressables.unitypackage">link</a></td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td><a href="#addressablesQuickStart">Addressables Quick start</a></td>
+        <td>Example</td>
+        <td class="ver">1.0-02/09/2019</td>
+        <td>Example project to help you to start using Unity's
+            <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a> system with BGDatabase</td>
+        <td><a href="BGDatabaseAddressablesQuickStart.zip">link</a></td>
     </tr>
 </table>
 
@@ -506,7 +515,7 @@
     <h4>6. Support for Unity's addressables system</h4>
     <h6>Setup: </h6>
     <ol>
-        <li>Use Unity version &gt; 2018.3</li>
+        <li>Use Unity version &gt; 2018.2</li>
         <li>Install Unity's addressables package via package manager</li>
         <li>Install latest BGDatabase</li>
         <li>Download and install latest <a href="BGDatabaseAddressables.unitypackage">BGDatabase.Addressables</a> package</li>
@@ -526,63 +535,58 @@
         <li>AddressableByGuid: Pros: you can change address without breaking connection to the asset. Cons: Asset Guid is stored as value in database instead of readable address</li>
     </ol>
 
-
-    <h6>Restriction (preloading): </h6>
+    <h6>How to read values: </h6>
+    <ol>
+        <li id="preload">Usual method, by reading field value. Assets preloading is required for this method, please see below for more details</li>
+        <li id="byAddress">
+            Instead of reading field value the usual way, you can retrieve asset address from database and use this address directly with Addressables system.
+            No preloading is required in this case.
+            Each unity asset field is implementing BGStorable&lt;string&gt; interface, which can be used to read asset address (method BGStorable.GetStoredValue(entity.Index)).
+            Preload script below has an example of retrieving this address.
+        </li>
+    </ol>
     <p>
-        Before reading values from database, you need to preload required values, otherwise values will not be resolved successfully (null will be returned).
-        You have full control over which values you want to preload: you can use database values or Addressables system to decide which values to preload.
-        The script below preload all values from all rows/fields, you can modify it to preload only required part of database.
+        This <a href="#addressablesQuickStart">example project</a> has examples for both techniques
     </p>
-    <pre class="prettyprint">
-       //---------- PRELOAD SCRIPT: this code is tested against 1.10 version
-       // This script preload all values from database. You can modify it to preload only required part.
-        IList&lt;object&gt; addresses = new List&lt;object&gt;();
-        //iterate all tables
-        BGRepo.I.ForEachMeta(meta =&gt;
-        {
-            //find all fields with addressables loader
-            List&lt;BGStorable&lt;string&gt;&gt; fieldsWithLoaders = null;
-            meta.ForEachField(field =&gt;
-            {
-                // if not Unity asset field- skip it
-                if (!(field is BGAssetLoaderA.WithLoaderI) || !(field is BGStorable&lt;string&gt;)) return;
 
-                var fieldWithLoader = (BGAssetLoaderA.WithLoaderI) field;
+    <h6>Preloading: </h6>
+    <p>
+        If you access unity field with addressables loader like you normally do (How to read values, method # 1, mentioned above),
+        you need to preload required values, otherwise values will not be resolved successfully (null will be returned).
+        You have full control over which values you want to preload: you can use database values or Addressables system to decide which values to preload.
+        <br><a href="Preloader.txt">This script</a> preload all values from all rows/fields, you can modify it to preload only required part of database.
+    </p>
+</div>
 
-                // if not a field with addressables loader- skip it
-                if (!(fieldWithLoader.AssetLoader is BGAssetLoaderAddressables)) return;
+<div id="addressablesQuickStart">
+    <h4>7. Addressables Quick start Example project</h4>
+    <p>Example project to help you to use Addressables with BGDatabase quickly. AddressablesQuickStart is main folder for this project</p>
+    <h6>Setup: </h6>
+    <ol>
+        <li><a href="BGDatabaseAddressablesQuickStart.zip">Download</a> the project, unzip it and open it with Unity &gt; 2019.2.3</li>
+        <li>Import BGDatabase package</li>
+        <li>
+            Run <b>preloader.unity</b> scene to test preloading assets technique.
+            <a href="#preload">More info</a> about this technique.
+        </li>
+        <li>
+            Run <b>scene.unity</b> scene to test reading assets by addresses technique (without preloading).
+            <a href="#byAddress">More info</a> about this technique.
+        </li>
+    </ol>
 
-                fieldsWithLoaders = fieldsWithLoaders ?? new List&lt;BGStorable&lt;string&gt;&gt;();
-                fieldsWithLoaders.Add((BGStorable&lt;string&gt;) field);
-            });
-
-            if (fieldsWithLoaders == null) return;
-
-            //iterate all entities(rows)
-            meta.ForEachEntity(entity =&gt;
-            {
-                //iterate all fields with addressable asset
-                for (var i = 0; i &lt; fieldsWithLoaders.Count; i++)
-                {
-                    var address = fieldsWithLoaders[i].GetStoredValue(entity.Index);
-                    //if it has some value- add it to addresses.
-                    if (!string.IsNullOrEmpty(address)) addresses.Add(address);
-                }
-            });
-
-        });
-
-        //remove duplicates
-        addresses=addresses.Distinct().ToList();
-
-        //load all assets using their addresses
-        var asyncOperation = Addressables.LoadAssets&lt;Object&gt;(addresses, null, Addressables.MergeMode.Union);
-        asyncOperation.Completed += operation =&gt;
-        {
-            //all assets are ready to use
-        };
-
-        </pre>
+    <h6>Scripts description: </h6>
+    <ol>
+        <li>
+            PreloaderUsingAddressables.cs (preloader.unity scene) : preload assets using Addressables system label
+        </li>
+        <li>
+            PreloaderUsingDatabaseValues.cs (preloader.unity scene) : preload assets using addresses, stored in the database
+        </li>
+        <li>
+            Spawner.cs (scene.unity scene) : spawn both preloaded assets and assets, retrieved with raw address.
+        </li>
+    </ol>
 
 </div>
             </div>

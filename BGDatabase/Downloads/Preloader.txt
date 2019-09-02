@@ -1,0 +1,63 @@
+using System.Collections.Generic;
+using System.Linq;
+using BansheeGz.BGDatabase;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+
+public class Preloader : MonoBehaviour
+{
+    void Start()
+    {
+        //---------- PRELOAD SCRIPT: this code is tested against 1.10 version
+        // This script preload all values from database. You can modify it to preload only required part.
+        IList<object> addresses = new List<object>();
+        //iterate all tables
+        BGRepo.I.ForEachMeta(meta =>
+        {
+            //find all fields with addressables loader
+            List<BGStorable<string>> fieldsWithLoaders = null;
+            meta.ForEachField(field =>
+            {
+                // if not Unity asset field- skip it
+                if (!(field is BGAssetLoaderA.WithLoaderI) || !(field is BGStorable<string>)) return;
+
+                var fieldWithLoader = (BGAssetLoaderA.WithLoaderI) field;
+
+                // if not a field with addressables loader- skip it
+                if (!(fieldWithLoader.AssetLoader is BGAssetLoaderAddressables)) return;
+
+                fieldsWithLoaders = fieldsWithLoaders ?? new List<BGStorable<string>>();
+                fieldsWithLoaders.Add((BGStorable<string>) field);
+            });
+
+            if (fieldsWithLoaders == null) return;
+
+            //iterate all entities(rows)
+            meta.ForEachEntity(entity =>
+            {
+                //iterate all fields with addressable asset
+                for (var i = 0; i < fieldsWithLoaders.Count; i++)
+                {
+                    var address = fieldsWithLoaders[i].GetStoredValue(entity.Index);
+                    //if it has some value- add it to addresses.
+                    if (!string.IsNullOrEmpty(address)) addresses.Add(address);
+                }
+            });
+
+        });
+
+        //remove duplicates
+        addresses=addresses.Distinct().ToList();
+
+        //load all assets using their addresses
+        var asyncOperation = Addressables.LoadAssets<Object>(addresses, null, Addressables.MergeMode.Union);
+        asyncOperation.Completed += AllAssetsAreReady;
+    }
+
+    private void AllAssetsAreReady(AsyncOperationHandle<IList<Object>> obj)
+    {
+        //All assets are loaded - Do something here
+        
+    }
+}
