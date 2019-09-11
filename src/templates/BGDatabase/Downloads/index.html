@@ -258,8 +258,7 @@
 
     <h6>How to read values: </h6>
     <ol>
-        <li id="preload">Usual method, by reading field value. Assets preloading is required for this method, please see below for more details
-            (Currently we have an issue with Sprite/SpriteAtlas fields not working with this method- use method # 2 below for such fields)</li>
+        <li id="preload">Usual method, by reading field value. Assets preloading is required for this method, please see below for more details</li>
         <li id="byAddress">
             Instead of reading field value the usual way, you can retrieve asset address from database and use this address directly with Addressables system.
             No preloading is required in this case.
@@ -270,6 +269,9 @@
     <p>
         This <a href="#addressablesQuickStart">example project</a> has examples for both techniques
     </p>
+    <div class="importantNote">
+        Currently, Sprite/SpriteAtlas fields can be loaded with method #2 only
+    </div>
 
     <h6>Preloading: </h6>
     <p>
