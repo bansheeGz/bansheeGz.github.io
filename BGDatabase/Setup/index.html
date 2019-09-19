@@ -285,7 +285,7 @@
         Create your own database.
         Open <code>Window->BGDatabase</code>.
         Select <code>Settings-> Main->Create new database</code> tab.
-        Fill 'Database Folder' and 'Setting folder' and hit <code>Create</code> button
+        Chose the <a href="#loaders">loader</a> (Resources or StreamingAssets), fill in fields and press <code>Create</code> button
         <div class="bg-image">
             <a href="../../images/BGDatabase/Setup1.png"><img style="width: 400px" src="../../images/BGDatabase/Setup1.png"></a>
         </div>
@@ -309,10 +309,63 @@
         <div class="bg-image">
             <a href="../../images/BGDatabase/Setup4.png"><img style="width: 400px" src="../../images/BGDatabase/Setup4.png"></a>
         </div>
-
     </li>
-
 </ol>
+<div class="importantNote">
+    No further action is required. Read further below only if you wish to know more details.
+</div>
+
+<h4 id="loaders">Which loader to chose?</h4>
+<ul>
+    <li>Chose Resources loader, if you do not use Resources folders to store assets (Unity does not recommend to do it) </li>
+    <li>Chose StreamingAssets if you have a lot of assets in the Resources folders or if you want to update database file without rebuilding the game</li>
+    <li>Chose custom loader if you want to load database from custom location and do not mind to write your own loader</li>
+</ul>
+<p>
+    You can switch between Resources/StreamingAssets loaders by simply moving your database file between Resources/StreamingAssets folders.
+</p>
+<table class="contentTable">
+    <tr>
+        <th width="25%"></th>
+        <th width="25%">Resources</th>
+        <th width="25%">StreamingAssets</th>
+        <th width="25%">Custom</th>
+    </tr>
+
+    <tr>
+        <td>File location</td>
+        <td>under one of Resources folders</td>
+        <td>under Assets/StreamingAssets folder</td>
+        <td>anywhere in your project</td>
+    </tr>
+    <tr>
+        <td>Pros</td>
+        <td>Works everywhere without any extra effort</td>
+        <td>You can update database file without rebuilding your game</td>
+        <td>you can store your database file in any place under your project</td>
+    </tr>
+    <tr>
+        <td>Cons</td>
+        <td>If you store many assets under Resources folders (Unity does not recommend to do it), it may lead to slow database loading</td>
+        <td>WEBGL requires custom loader </td>
+        <td>1) you need to implement code, which loads database content.
+            2) You need to load and assign database content using BGRepo.SetDefaultRepoContent method before accessing it
+        </td>
+    </tr>
+    <tr>
+        <td valign="top">How to enable</td>
+        <td valign="top">File bansheegz_database.bytes should be placed under one of Resources folders</td>
+        <td valign="top">File bansheegz_database.bytes should be placed under Assets/StreamingAssets folder</td>
+        <td  valign="top">
+            <ol>
+                <li>Move bansheegz_database.bytes file into any location in your project using Unity Editor.</li>
+                <li>Switch to file explorer, find bansheegz_database.bytes.meta file open it in text editor and paste the following guid to it 3637ea689da0cff4b8d5c0fb5d609c15</li>
+                <li>Switch back to Unity and click on Reload button in BGDatabase window. Settings->Main>Database files->Loader should switch to Custom</li>
+                <li>Implement the code, which loads database file and once it's loaded, call BGRepo.SetDefaultRepoContent(content) method (otherwise database will not be loaded)</li>
+            </ol>
+        </td>
+    </tr>
+ </table>
 
 <h4 id="setup">Details about how database files are organized</h4>
 
