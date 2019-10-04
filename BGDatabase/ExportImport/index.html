@@ -461,6 +461,12 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     You can use this backup later to fully restore the database (including structure)
 </p>
 
+<h4>Tables naming restriction</h4>
+<p>
+    If you plan to use Excel/GoogleSheets, avoid giving your tables similar names with only difference in lower/upper letter(s) (like "test" "Test", "tESt" etc.).
+    It will work fine with BGDatabase, however both Excel and GoogleSheets consider such names to be equal, and it will result in errors when you try to export the data.
+</p>
+
 <h4 id="why">Why you do not provide an option to update GoogleSheets data from player devices?</h4>
 <p>
     We believe giving direct write GoogleSheets access to player devices does not make much sense, due to the following
