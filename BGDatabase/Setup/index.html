@@ -320,7 +320,7 @@
     Currently, Localization addon supports Resources loader only
 </div>
 <ul>
-    <li>Chose Resources loader, if you do not use Resources folders to store assets (Unity does not recommend to do it) </li>
+    <li>Chose Resources loader, if you do not use Resources folders to store assets (Unity does not recommend to do it)</li>
     <li>Chose StreamingAssets if you have a lot of assets in the Resources folders or if you want to update database file without rebuilding the game</li>
     <li>Chose custom loader if you want to load database from custom location and do not mind to write your own loader</li>
 </ul>
@@ -348,18 +348,27 @@
         <td>you can store your database file in any place under your project</td>
     </tr>
     <tr>
-        <td>Cons</td>
-        <td>If you store many assets under Resources folders (Unity does not recommend to do it), it may lead to slow database loading</td>
-        <td>WEBGL requires custom loader </td>
-        <td>1) you need to implement code, which loads database content.
-            2) You need to load and assign database content using BGRepo.SetDefaultRepoContent method before accessing it
+        <td valign="top">Cons</td>
+        <td valign="top">If you store many assets under Resources folders (Unity does not recommend to do it), it may lead to slow database loading</td>
+        <td valign="top">
+            <ol>
+                <li>WEBGL requires custom loader</li>
+                <li>Not supported by Localization addon</li>
+            </ol>
+        </td>
+        <td valign="top">
+            <ol>
+                <li>you need to implement code, which loads database content.</li>
+                <li>You need to load and assign database content using BGRepo.SetDefaultRepoContent method before accessing it</li>
+                <li>Not supported by Localization addon</li>
+            </ol>
         </td>
     </tr>
     <tr>
         <td valign="top">How to enable</td>
         <td valign="top">File bansheegz_database.bytes should be placed under one of Resources folders</td>
         <td valign="top">File bansheegz_database.bytes should be placed under Assets/StreamingAssets folder</td>
-        <td  valign="top">
+        <td valign="top">
             <ol>
                 <li>Move bansheegz_database.bytes file into any location in your project using Unity Editor.</li>
                 <li>Switch to file explorer, find bansheegz_database.bytes.meta file open it in text editor and paste the following guid to it 3637ea689da0cff4b8d5c0fb5d609c15</li>
@@ -368,7 +377,7 @@
             </ol>
         </td>
     </tr>
- </table>
+</table>
 
 <h4 id="setup">Details about how database files are organized</h4>
 
