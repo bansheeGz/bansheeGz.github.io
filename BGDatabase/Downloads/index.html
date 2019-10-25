@@ -549,7 +549,10 @@
         If you access unity field with addressables loader like you normally do (How to read values, method # 1, mentioned above),
         you need to preload required values, otherwise values will not be resolved successfully (null will be returned).
         You have full control over which values you want to preload: you can use database values or Addressables system to decide which values to preload.
-        <br><a href="Preloader.txt">This script</a> preload all values from all rows/fields, you can modify it to preload only required part of database.
+        <br>
+        Preloader script is included into the package(Assets\BGDatabaseAddressables\ScriptsNoDll\BGAddressablesPreloader.cs).
+        It preloads all values from all rows/fields, but you can modify it to preload only required part of the database.
+        Completed() method is invoked after all assets are preloaded.
     </p>
 </div>
 
