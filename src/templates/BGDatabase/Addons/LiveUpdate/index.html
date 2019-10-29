@@ -11,6 +11,22 @@
 <p>
     Live update let you update database data on player's devices using Google Sheets, using public GoogleSheets Json API.
 </p>
+
+
+<h4>Restrictions</h4>
+<ol>
+    <li>WebGl platform is not supported</li>
+    <li>Do not use this addon to update critical data.
+        There is a chance some users won't be able to download updates (due to network issues for example).</li>
+    <li>API calls have usage limits. Read more details <a href="https://developers.google.com/sheets/api/limits">here</a>
+        If you reach the limit, GoogleSheets will not return correct feed and LiveUpdate plugin will fail.
+    </li>
+    <li>
+        Plugin uses formatted values, not raw value. If you use numeric fields, please, make sure formatted value for these fields
+        are the same as raw values (you may need to change cells formatting)
+    </li>
+</ol>
+
 <h4>How it works</h4>
 <ol>
     <li>First time your game is launched and database is loaded, it'll try to read data from Google Sheets</li>
@@ -19,6 +35,7 @@
     </li>
     <li>If step 1 is unsuccessful, database data will remain intact.</li>
 </ol>
+
 
 <h4>Setting up</h4>
 <ol>
@@ -64,19 +81,6 @@
     </p>
     This is not a working example, it's just an example how to substitute parameters.
 </div>
-
-<h4>Restrictions</h4>
-<ol>
-    <li>WebGl platform is not supported</li>
-    <li>Do not use this addon to update critical data.
-        There is a chance some users won't be able to download updates (due to network issues for example).</li>
-    <li>
-        Plugin uses cell's value, not input value. Input value is raw data, and cell's value is formatted raw value
-        If you use float fields (float, float?, List&lt;float&gt;), please, make sure displayed value for these fields
-        are the same as input values
-        (you may need to change cells formatting)
-    </li>
-</ol>
 
 <h4>Parameters</h4>
 <table class="contentTable">
