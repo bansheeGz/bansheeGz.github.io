@@ -1,0 +1,41 @@
+using System;
+using System.Globalization;
+using BansheeGz.BGDatabase;
+using UnityEngine;
+
+//================================= This is a class for converting formatted currency values to proper ints
+public class LiveUpdateValueResolver : BGLiveUpdateValueResolver
+{
+    private static readonly BGId CurrencyFieldId = new BGId("XqW07lAdOUyWq8FhaY9Mfw"); 
+        
+    
+    private static readonly NumberFormatInfo  info = new NumberFormatInfo
+    {
+        CurrencySymbol = "$",
+        CurrencyGroupSeparator = ",",
+        NumberGroupSeparator = ","
+    };
+        
+    public string Resolve(BGField field, string value)
+    {
+        if (string.IsNullOrEmpty(value)) return value;
+
+        //if it's currency field
+        if (CurrencyFieldId==field.Id)
+        {
+            //convert to proper int format
+            try
+            {
+                return "" + int.Parse(value, NumberStyles.AllowCurrencySymbol | NumberStyles.AllowThousands| NumberStyles.AllowDecimalPoint, info);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("Can not convert " + value + " to int!");
+                Debug.LogException(e);
+            }
+        }
+
+
+        return value;
+    }
+}

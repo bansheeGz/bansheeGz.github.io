@@ -283,17 +283,6 @@ code::before, code::after {
     font-size: 12px;
 }
 
-.bg-image{
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-.bg-image img{
-    border: 4px solid #00bfa5;
-    /*margin: 4px 10px;*/
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
 .moreinfo{
     border: #0b0b0b dashed 1px;
     background-color: rgb(233, 241, 241);

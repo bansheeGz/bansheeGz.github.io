@@ -167,6 +167,9 @@
                         <a class="ca" href="../../../BGDatabase/Multithreading">Multithreading</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/MergeTool">Merge Tool</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
                     </li>
                     <li class="cli ">
@@ -407,6 +410,28 @@ BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load(true);
         <td>
             The same merge settings you use for Export/Import or Saving/Loading. Learn more about merge settings <a
                 href="../../ExportImport#mergeSettings">here</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Log level</td>
+        <td>
+            level of details to be used while gathering log information. Logs messages are gathered while addon tries to read information from GoogleSheets
+        </td>
+    </tr>
+    <tr>
+        <td>Print log on load</td>
+        <td>
+            If set to true, log will be printed to Unity console after load attempt
+        </td>
+    </tr>
+    <tr>
+        <td>Value resolver type</td>
+        <td>
+            Full C# type name to be used to convert GoogleSheets values to another format.
+            This type should implement BansheeGz.BGDatabase.BGLiveUpdateValueResolver interface.
+            For example, you could use currency formatted values inside GoogleSheet for int fields ($5,200).
+            To properly read such values you need to convert them to valid int values ($5,200->5200).
+            <a href="../../Downloads/LiveUpdateValueResolver.txt">Here is </a> an example implementation of such type, which do such conversion.
         </td>
     </tr>
 </table>
