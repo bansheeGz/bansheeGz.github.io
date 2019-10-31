@@ -110,7 +110,21 @@
 
 
         <!--======================================================        Content (from Root)              -->
-        <div style="width: 100%">
+        <link rel="stylesheet" href="../../css/magnific-popup.css">
+<script src="../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<div style="width: 100%">
     <div style="width: 70%;margin: 0 auto">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <div class="bg-main mdl-shadow--3dp">

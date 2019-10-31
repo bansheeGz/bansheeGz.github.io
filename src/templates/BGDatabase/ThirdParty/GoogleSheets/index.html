@@ -49,9 +49,20 @@ Setting up Google sheets may take a while, however it's one-time procedure
     </li>
 </ol>
 
+<h4>Filling Application name and Spreadsheet Id</h4>
+<ol>
+    <li>Fill <code>Application name</code> with any string value</li>
+    <li>Fill <code>Spreadsheet Id</code> with your spreadsheet ID.
+        Please, see the image below to learn how to obtain ID or read <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">this</a>
+    </li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GoogleSheets11.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets11.png"></a>
+</div>
+
 <h4>Get Oath tokens from Google</h4>
 <ol>
-    <li>Fill <code>Application name</code> with any string value, <code>Spreadsheet name</code> with the name of you spreadsheet and click <code>Get new tokens</code>
+    <li>Click on <code>Get new tokens</code> button
         <div class="bg-image">
             <a href="#path images/BGDatabase/GoogleSheets6.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets6.png"></a>
         </div>
@@ -111,5 +122,11 @@ Setting up Google sheets may take a while, however it's one-time procedure
 <h4>Using Google sheets as shared remote database</h4>
 <p>
     You can use Google Sheets as remote shared database to be used by several developers (during game development).
+</p>
+
+<h4>GoogleSheets API v.4 and Older Unity versions</h4>
+<p>
+    Since BGDatabase v.1.5 we switched from Google Sheets API v.3 to v.4.
+    If you use Unity 2017-2018, make sure your scripting runtime is set to 4.x. Read more details <a href="../../../Blog/BGDatabase-GoogleSheetsV4">here</a>
 </p>
 

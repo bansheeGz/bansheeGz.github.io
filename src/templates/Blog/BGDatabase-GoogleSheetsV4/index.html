@@ -1,0 +1,44 @@
+#set title=BG Database v1.5 switched to GoogleSheets API v4
+#set date=11/2019
+
+<h4>TLDR</h4>
+<div>
+    To continue using Google Sheets with BGDatabase version >= 1.5
+    <ul>
+        <li>Enter GoogleSheet spreadsheet ID instead of the name in datasource settings</li>
+        <li>If you use older Unity versions (2017-2018), make sure scriptingRuntime parameter is set to Net 4.x</li>
+    </ul>
+</div>
+
+<h4>Spreadsheet ID instead of name</h4>
+<p>
+    Enter spreadsheet ID instead of name in you datasource settings (under DataSources tab).
+    See the image below or read <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">this</a> to learn how to obtain this ID.
+</p>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog2.png"><img style="width: 400px" src="#path images/Blog/Blog2.png"></a>
+</div>
+
+<h4>Scripting Runtime parameter</h4>
+<p>
+    Google announced it will be shutting down API version 3 on March 2020.<a href="https://cloud.google.com/blog/products/g-suite/migrate-your-apps-use-latest-sheets-api">read more</a>
+</p>
+<p>
+    We used this API and we did not have any other choice, besides switching to API version 4
+</p>
+<p>
+    Unfortunately, Google does not provide API Net library  for Net 3.5 (which was the default Scripting Runtime for Unity 2017-2018.3).
+</p>
+<p>
+    So if you are using older Unity versions (2017-2018), please, make sure your scripting runtime is set to Net 4.x, as shown on the image below.
+</p>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog1.png"><img style="width: 400px" src="#path images/Blog/Blog1.png"></a>
+</div>
+
+
+<h4>Performance boost</h4>
+<p>
+    We rewrote code for GoogleSheets v.4 integration almost from scratch to utilize new API for maximum performance.
+    So we expect export/import jobs will be executed much faster.
+</p>

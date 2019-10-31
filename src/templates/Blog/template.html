@@ -1,3 +1,17 @@
+<link rel="stylesheet" href="#path css/magnific-popup.css">
+<script src="#path js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
 <div style="width: 100%">
     <div style="width: 70%;margin: 0 auto">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
