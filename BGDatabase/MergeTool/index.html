@@ -300,7 +300,26 @@
     <a href="../../images/BGDatabase/MergeTool2.png"><img style="width: 400px" src="../../images/BGDatabase/MergeTool2.png"></a>
 </div>
 
+<h4>Using MergeTool in multi-user environment</h4>
+<p>
+    If you have more than one developer, who can edit database values in your project, you can use MergeTool to resolve conflicts.
+</p>
+<p>
+    Once you noticed database file was changed in your source control system (Git/Perforce/etc.), do the following:
+</p>
 
+<ul>
+    <li>Copy your local database to some folder outside of your project</li>
+    <li>Resolve the conflict by replacing your local database with the file from source control system</li>
+    <li>Open MergeTool and for database#2 field uncheck "Use saved default database" and select previously saved file from Step 1</li>
+    <li>Review your changes and apply them</li>
+    <li>Please, note, in some cases, you need to discuss the changes with your colleague to avoid erasing his changes (this could happen if you changed the same row and field).
+        Alternatively, you can use Merge Tool to review the changes your colleague made.
+    </li>
+</ul>
+<p>
+    Also, another option for multi-user environment setup is to use <a href="../ThirdParty/GoogleSheets">Google Sheets</a> spreadsheet with lock sheet as primary source of data.
+</p>
             </div>
 
             <!--======================================================       BG Database Footer               -->
