@@ -96,6 +96,35 @@ you can do this:
     using generated <code>BGE_MyTable</code> class.
 </p>
 
+<h4>Generate a property for each entity (optional)</h4>
+<p>
+    Additionally, you can generate a C# property for each row(entity) and use this property to access the corresponding row directly.
+</p>
+<p>
+    Requirements:
+</p>
+<ul>
+    <li>"Entities prefix" should be defined in CodeGen addon settings (for example KEY_)</li>
+    <li>Each table, you want entities properties to be generated for, should have "Entity name is unique" toggle on under (<i>Configuration->[TableName]</i>)</li>
+    <li>Each entity should have empty or unique name, containing letters, numbers, underscores, spaces and dots only.
+        Entities with empty names will be skipped.
+        Dots and spaces will be converted to underscores
+    </li>
+    <li>Rows count (with not empty name) should be under 10000 rows</li>
+</ul>
+<p>
+    Once the properties are generated you can access particular row like so:
+</p>
+<pre class="cs">
+    BGE_MyTable entity = BGE_MyTable.KEY_MyUniqueKey;
+</pre>
+<p>
+    , where MyUniqueKey is the name of the row and KEY_ is entities prefix from CodeGen addon settings.
+</p>
+<p>
+    If this option is used, there are additional cases when you need to regenerate extension classes: if you add/delete the rows with names or if you change rows names.
+</p>
+
 <h4>How to enable/disable</h4>
 <p>
     1) Open BGDatabase window from Unity menu <code>Window->BGDatabase</code>
