@@ -374,14 +374,18 @@ you can do this:
 
 <h4 id="entities">Generate a property for each entity (optional)</h4>
 <p>
-    Additionally, you can generate a C# property for each row(entity) and use this property to access the corresponding row directly.
+    Additionally, you can generate a C# property for each row(entity) and use this property to access the corresponding row directly, without the need to locate/find it first.
 </p>
 <p>
     Requirements:
 </p>
 <ul>
-    <li>"Entities prefix" should be defined in CodeGen addon settings (for example KEY_)</li>
-    <li>Each table, you want entities properties to be generated for, should have "Entity name is unique" toggle on under (<i>Configuration->[TableName]</i>)</li>
+    <li>"Entities prefix" should be defined in CodeGen addon settings (for example KEY_). CodeGen addon settings is located here: <i>BGDatabaseWindow->Addons->CodeGen</i></li>
+    <li>
+        Each table, you want entities properties to be generated for, should have
+        "Entity name is unique" toggle on under (<i>Configuration->[TableName]</i>) and
+        "Entity name is empty" toggle off.
+    </li>
     <li>Each entity should have empty or unique name, containing letters, numbers, underscores, spaces and dots only.
         Entities with empty names will be skipped.
         Dots and spaces will be converted to underscores
