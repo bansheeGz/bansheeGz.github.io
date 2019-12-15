@@ -350,6 +350,24 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
                                                              src="../../images/BGDatabase/ExportImport3.png"></a>
 </div>
 
+
+<h4 id="firstTime">Running Export/Import for the first time</h4>
+<p>
+    To be able to sync with BGDatabase, you need a corresponding structure created in Excel/GoogleSheets,
+    e.g. you need sheets, named after your tables names and header columns, named after you field names (as described above in "General idea" section).
+</p>
+<p>
+    You can easily create this structure by exporting your data to the empty spreadsheet/xls file
+</p>
+<ul>
+    <li>Make sure to target empty spreadsheet/xls file</li>
+    <li>Make sure to include all tables/fields you want to export in the settings. Included tables/fields will be highlighted in green</li>
+    <li>Make sure all tables you want to include have "Add missing rows" toggle turned on.(cause all the rows will be "missing rows" when you export to empty spreadsheet)</li>
+    <li>Export data once- all required structure will be created for you</li>
+</ul>
+
+
+
 <h4 id="rowlevel">Row-level control for merge settings</h4>
 <p>Merge settings let you configure which table/fields you want to add/delete/update, but it does not give you the opportunity to define which rows you want to add/delete/update</p>
 <p>For row-level control, you can implement C# controller class, which can cancel any operation if some condition is met. This is how:</p>
