@@ -1,0 +1,61 @@
+﻿using System.Collections;
+using BansheeGz.BGDatabase;
+using UnityEngine;
+
+/// <summary>
+/// This is a preloader script for LiveUpdate plugin on WEBGL platform.
+/// Place this script in the preloader scene.
+/// Ready method is called once all data is loaded OR if timeout is expired, place you code in Ready method
+///
+/// Setup:
+/// 1) Enable LiveUpdate plugin
+/// 2) Make sure to toggle "Manual load" on in addons settings (Addons->LiveUpdate).
+/// 3) Place this script in your preloader scene. Make sure you access database after Ready method is called
+///
+/// Explanation:
+/// There is no way to load data from GoogleSheets synchronously on WEBGL platform.
+/// So we need to load it asynchronously, and it can take several frames.
+/// This script ensures data is updated and once it's updated Ready method is called   
+/// 
+/// </summary>
+public class LiveUpdatePreloader : MonoBehaviour
+{
+	//this is a timeout in seconds in case OnLoadComplete is not called by some unexpected reason
+	public float timeOut = 8;
+
+	//to make sure "Ready" method is not called twice
+	private bool readyIsCalled;
+	
+	void Start ()
+	{
+		var liveUpdate = BGRepo.I.Addons.Get<BGAddonLiveUpdate>();
+		liveUpdate.OnLoadComplete += LoadCompleteCallback;
+		liveUpdate.Load();
+		StartCoroutine(WaitForTimeout());
+	}
+
+	private IEnumerator WaitForTimeout()
+	{
+		yield return new WaitForSecondsRealtime(timeOut);
+		if (!readyIsCalled)
+		{
+			readyIsCalled = true;
+			Ready();
+		}
+	}
+
+	private void LoadCompleteCallback()
+	{
+		var liveUpdate = BGRepo.I.Addons.Get<BGAddonLiveUpdate>();
+		liveUpdate.OnLoadComplete -= LoadCompleteCallback;
+		if (readyIsCalled) return;
+		
+		readyIsCalled = true;
+		Ready();
+	}
+
+	private void Ready()
+	{
+		//place your code here
+	}
+}
