@@ -15,7 +15,7 @@
 
 <h4>Restrictions</h4>
 <ol>
-    <li>WebGl platform is not supported</li>
+    <li>WebGl platform requires special setup (<a href="#webgl">read below</a>)</li>
     <li>Do not use this addon to update critical data.
         There is a chance some users won't be able to download updates (due to network issues for example).</li>
     <li>API calls have usage limits. Read more details <a href="https://developers.google.com/sheets/api/limits">here</a>
@@ -81,6 +81,21 @@
     </p>
     This is not a working example, it's just an example how to substitute parameters.
 </div>
+
+<h4>WEBGL setup</h4>
+<p>
+    [BGDatabase version >=1.5.2 is required] WEBGL platform does not allow to update data synchronously. So it updates data asynchronously, over several frames.
+    It means data should be preloaded before it can be accessed.
+</p>
+<p>
+    Here are the required steps:
+</p>
+<ol>
+    <li>Make sure to toggle "Manual Load" parameter on</li>
+    <li>Download <a href="../../Downloads/LiveUpdatePreloader.txt">this preloader script</a> and attach it to any GameObject in your starting scene</li>
+    <li>Once LiveUpdate plugin finishes downloading data, LiveUpdatePreloader.Ready method will be called. Make sure to not access database until this moment</li>
+    <li>Preloader should work on any platform, no need to write platform specific code</li>
+</ol>
 
 <h4>Parameters</h4>
 <table class="contentTable">
@@ -159,3 +174,4 @@ BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load(true);
         </td>
     </tr>
 </table>
+
