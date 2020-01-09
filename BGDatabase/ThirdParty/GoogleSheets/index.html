@@ -401,7 +401,7 @@ Setting up Google sheets may take a while, however it's one-time procedure
     You can use Google Sheets as remote shared database to be used by several developers (during game development).
 </p>
 <p>
-    If there is a chance 2 developers run export task simultaneously, do the following:
+    If there is a chance 2 developers can run export task simultaneously, do the following:
     create additional sheet with name <b>_dblock_</b> and one single empty cell (A1).
     If this sheet exists, export task will read cell (A1) value before export and if it's not empty export will be aborted.
     If it's empty- export task write some value to it before modifying data to identify the spreadsheet is locked and clear it after export is complete.
