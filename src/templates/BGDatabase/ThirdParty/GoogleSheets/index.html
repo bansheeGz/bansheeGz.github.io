@@ -123,8 +123,17 @@ Setting up Google sheets may take a while, however it's one-time procedure
 <h4>Using Google sheets as shared remote database</h4>
 <p>
     You can use Google Sheets as remote shared database to be used by several developers (during game development).
-    Create additional sheet with name <b>_dblock_</b> and one single empty cell (A1).
+</p>
+<p>
+    If there is a chance 2 developers run export task simultaneously, do the following:
+    create additional sheet with name <b>_dblock_</b> and one single empty cell (A1).
+    If this sheet exists, export task will read cell (A1) value before export and if it's not empty export will be aborted.
+    If it's empty- export task write some value to it before modifying data to identify the spreadsheet is locked and clear it after export is complete.
     This will minimize the risk of data collision.
+    However, there will still be a tiny chance 2 export task run simultaneously,
+    but you will get notification about it after export is complete.
+    The result of 2 export task running simultaneously is unpredictable in case rows was added/removed
+    and you may need to run clear export after it to fix the issues.
 </p>
 
 <h4>GoogleSheets API v.4 and Older Unity versions</h4>
