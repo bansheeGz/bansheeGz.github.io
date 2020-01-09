@@ -398,7 +398,8 @@ Setting up Google sheets may take a while, however it's one-time procedure
 
 <h4>Using Google sheets as shared remote database</h4>
 <p>
-    You can use Google Sheets as remote shared database to be used by several developers (during game development).
+    You can use Google Sheets as remote shared database to be used by several developers (during game development),
+    but be aware, there is a problem of 2 export tasks running simultaneously, which can not be solved completely.
 </p>
 <p>
     If there is a chance 2 developers can run export task simultaneously, do the following:
@@ -410,6 +411,9 @@ Setting up Google sheets may take a while, however it's one-time procedure
     but you will get notification about it after export is complete.
     The result of 2 export tasks running simultaneously is unpredictable in case rows was added/removed
     and you may need to run clear export after it to fix the issues.
+</p>
+<p>
+    The ideal solution for this problem would be if Google API can provide a way to lock spreadsheet before export, but there is no such option.
 </p>
 
 <h4>GoogleSheets API v.4 and Older Unity versions</h4>
