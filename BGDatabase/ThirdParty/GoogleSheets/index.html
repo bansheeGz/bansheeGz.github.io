@@ -412,10 +412,10 @@ Setting up Google sheets may take a while, however it's one-time procedure
 <p>
     This will minimize the risk of data collision.
     However, there will still be a tiny chance 2 export task run simultaneously and
-    you should get notification about it after export is complete.
-    The result of 2 export tasks running simultaneously can be unpredictable if rows was added/removed
+    you should get a warning about it after export is complete.
+    The result of 2 export tasks running simultaneously can be unpredictable
+    if the rows from the same table was added/removed by two different export tasks
     and you may need to run clear export after it to fix the issues.
-
 <p>
     If Google API could provide a way to lock spreadsheet before export- it would be a proper solution for this problem, but there is no such option.
 </p>
@@ -448,7 +448,7 @@ Setting up Google sheets may take a while, however it's one-time procedure
                                 </script>
                             </td>
                             <td>
-                                OR
+                                or
                             </td>
                             <td>
                                 <script language="JavaScript">
