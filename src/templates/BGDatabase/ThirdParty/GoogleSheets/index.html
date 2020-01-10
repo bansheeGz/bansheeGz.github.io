@@ -6,15 +6,18 @@
 <br/>
 
 <h4>Description</h4>
-Setting up Google sheets may take a while, however it's one-time procedure
-
+<p>
+    Setting up Google sheets may take a while, however it's one-time procedure.
+    If you have more than one developer in your project who can run export tasks,
+    read <a href="#shared">"Using Google sheets as shared remote database"</a> section at the bottom of the page
+</p>
 
 <h4>Create Google Sheets DataSource</h4>
 <p>
     Open BGDatabase window <code>Window->BGDatabase</code>
 </p>
 <p>
-    Go to <code>DataSources</code> tab, press plus icon, chose <code>Datasource type</code>  to be <code>GoogleSheets</code> and click <code>Add</code> button
+    Go to <code>DataSources</code> tab, press plus icon, chose <code>Datasource type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
 </p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/GoogleSheets4.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets4.png"></a>
@@ -93,7 +96,7 @@ Setting up Google sheets may take a while, however it's one-time procedure
 
 <h4>Create Export/Import task</h4>
 <p>
-    Go to <code>Export/Import</code> tab, press plus icon, chose <code>Job type</code>  to be <code>GoogleSheets</code> and click <code>Add</code> button
+    Go to <code>Export/Import</code> tab, press plus icon, chose <code>Job type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
 </p>
 <p>
     Chose GoogleSheets datasource, created above. Set up metas (tables) you wish to update.
@@ -123,23 +126,35 @@ Setting up Google sheets may take a while, however it's one-time procedure
 <h4 id="shared">Using Google sheets as shared remote database</h4>
 <p>
     You can use Google Sheets as remote shared database to be used by several developers (during game development),
-    but be aware, there is a problem of 2 export tasks running simultaneously, which can not be solved properly.
+    but be aware, there is a problem of 2 export tasks running simultaneously, which needs to be addressed somehow.
 </p>
+<h6>Required conditions for this problem:</h6>
+<ol>
+    <li>At least two export tasks should run simultaneously</li>
+    <li>One of the tasks removes rows from the table(sheet) and another one performs any operation to the same table</li>
+    <li>Both tasks adds rows to the same table</li>
+</ol>
+<h6>Problem consequences:</h6>
 <p>
-    If there is a chance 2 developers can run export task simultaneously, do the following:
+    Data may end up in wrong rows
 </p>
+<h6>Our solution to this problem:</h6>
+<p>
+    Locking mechanism, which tries to prevent 2 export tasks from running simultaneously
+</p>
+
+<h6>How to enable it and how it works:</h6>
 <ol>
     <li>Create additional sheet with name <b>_dblock_</b> and one single empty cell (A1).</li>
     <li>If this sheet exists, export task will read cell A1 value before export and if it's not empty export will be aborted.</li>
     <li>If cell A1 is empty- export task write some value to it before modifying data to identify the spreadsheet is locked and clear it after export is complete.</li>
 </ol>
+<h6>Important notes:</h6>
 <p>
-    This will minimize the risk of data collision.
-    However, there will still be a tiny chance 2 export task run simultaneously and
-    you should get a warning about it after export is complete.
-    The result of 2 export tasks running simultaneously can be unpredictable
-    if the rows from the same table was added/removed by two different export tasks
-    and you may need to run clear export after it to fix the issues.
+    Locking mechanism minimize the risk of data collision.
+    However, there will still be a tiny chance 2 export task run simultaneously, cause obtaining the lock is not atomic operation.
+    In this case you should get a warning about possible data collision after export is complete (warning text is "Export was successful, but possible data collision was detected..")
+    and you may need to review the data and run clear export in case of any issues.
 <p>
     If Google API could provide a way to lock spreadsheet before export- it would be a proper solution for this problem, but there is no such option.
 </p>
