@@ -127,17 +127,21 @@ Setting up Google sheets may take a while, however it's one-time procedure
 </p>
 <p>
     If there is a chance 2 developers can run export task simultaneously, do the following:
-    create additional sheet with name <b>_dblock_</b> and one single empty cell (A1).
-    If this sheet exists, export task will read cell (A1) value before export and if it's not empty export will be aborted.
-    If it's empty- export task write some value to it before modifying data to identify the spreadsheet is locked and clear it after export is complete.
+</p>
+<ol>
+    <li>Create additional sheet with name <b>_dblock_</b> and one single empty cell (A1).</li>
+    <li>If this sheet exists, export task will read cell A1 value before export and if it's not empty export will be aborted.</li>
+    <li>If cell A1 is empty- export task write some value to it before modifying data to identify the spreadsheet is locked and clear it after export is complete.</li>
+</ol>
+<p>
     This will minimize the risk of data collision.
-    However, there will still be a tiny chance 2 export task run simultaneously,
-    but you will get notification about it after export is complete.
+    However, there will still be a tiny chance 2 export task run simultaneously and
+    you should get notification about it after export is complete.
     The result of 2 export tasks running simultaneously can be unpredictable if rows was added/removed
     and you may need to run clear export after it to fix the issues.
-</p>
+
 <p>
-    The ideal solution for this problem would be if Google API can provide a way to lock spreadsheet before export, but there is no such option.
+    If Google API could provide a way to lock spreadsheet before export- it would be a proper solution for this problem, but there is no such option.
 </p>
 
 <h4>GoogleSheets API v.4 and Older Unity versions</h4>
