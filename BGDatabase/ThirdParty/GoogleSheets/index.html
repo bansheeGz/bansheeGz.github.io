@@ -404,6 +404,13 @@
     You can use Google Sheets as remote shared database to be used by several developers (during game development),
     but be aware, there is a problem of 2 export tasks running simultaneously, which needs to be addressed somehow.
 </p>
+<h6>TLDR:</h6>
+<ol>
+    <li>There is a problem, which can occur during simultaneous export tasks under specific conditions, which can lead to data end up in wrong rows</li>
+    <li>To prevent the risk, create additional sheet with name _dblock_ (with underscores) and single cell (A1).
+        There still be a tiny chance to run into issues, but in this case you will get a warning.</li>
+    <li>We are researching opportunities to make prevention mechanism 100% robust with zero setup</li>
+</ol>
 <h6>Required conditions for this problem:</h6>
 <ol>
     <li>At least two export tasks should run simultaneously</li>
@@ -416,7 +423,7 @@
 </p>
 <h6>Our solution to this problem:</h6>
 <p>
-    Locking mechanism, which tries to prevent 2 export tasks from running simultaneously
+    Locking mechanism, which tries to prevent 2 export tasks from running simultaneously (not 100% robust currently)
 </p>
 
 <h6>How to enable it and how it works:</h6>
@@ -428,12 +435,13 @@
 <h6>Important notes:</h6>
 <p>
     Locking mechanism minimize the risk of data collision.
-    However, there will still be a tiny chance 2 export task run simultaneously, cause obtaining the lock is not atomic operation.
+    However, there will still be a tiny chance 2 export task run simultaneously, cause obtaining the lock is not atomic operation currently.
     In this case you should get a warning about possible data collision after export is complete (warning text is "Export was successful, but possible data collision was detected..")
     and you may need to review the data and run clear export in case of any issues.
 <p>
     If Google API could provide a way to lock spreadsheet before export- it would be a proper solution for this problem, but there is no such option.
 </p>
+
 
 <h4>GoogleSheets API v.4 and Older Unity versions</h4>
 <p>
