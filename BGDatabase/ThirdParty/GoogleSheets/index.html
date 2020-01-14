@@ -401,45 +401,13 @@
 
 <h4 id="shared">Using Google sheets as shared remote database</h4>
 <p>
-    You can use Google Sheets as remote shared database to be used by several developers (during game development),
-    but be aware, there is a problem of 2 export tasks running simultaneously, which needs to be addressed somehow.
+    You can use Google Sheets as remote shared database to be used by several developers (during game development)
 </p>
-<h6>TLDR:</h6>
-<ol>
-    <li>There is a problem, which can occur during simultaneous export tasks under specific conditions, which can lead to data end up in wrong rows</li>
-    <li>To prevent the risk, create additional sheet with name _dblock_ (with underscores) and single cell (A1).
-        There still be a tiny chance to run into issues, but in this case you will get a warning.</li>
-    <li>We are researching opportunities to make prevention mechanism 100% robust with zero setup</li>
-</ol>
-<h6>Required conditions for this problem:</h6>
-<ol>
-    <li>At least two export tasks should run simultaneously</li>
-    <li>One of the tasks removes rows from the table(sheet) and another one performs any operation to the same table</li>
-    <li>Both tasks adds rows to the same table</li>
-</ol>
-<h6>Problem consequences:</h6>
 <p>
-    Data may end up in wrong rows
-</p>
-<h6>Our solution to this problem:</h6>
-<p>
-    Locking mechanism, which tries to prevent 2 export tasks from running simultaneously (not 100% robust currently)
-</p>
-
-<h6>How to enable it and how it works:</h6>
-<ol>
-    <li>Create additional sheet with name <b>_dblock_</b> and one single empty cell (A1).</li>
-    <li>If this sheet exists, export task will read cell A1 value before export and if it's not empty export will be aborted.</li>
-    <li>If cell A1 is empty- export task write some value to it before modifying data to identify the spreadsheet is locked and clear it after export is complete.</li>
-</ol>
-<h6>Important notes:</h6>
-<p>
-    Locking mechanism minimize the risk of data collision.
-    However, there will still be a tiny chance 2 export task run simultaneously, cause obtaining the lock is not atomic operation currently.
-    In this case you should get a warning about possible data collision after export is complete (warning text is "Export was successful, but possible data collision was detected..")
-    and you may need to review the data and run clear export in case of any issues.
-<p>
-    If Google API could provide a way to lock spreadsheet before export- it would be a proper solution for this problem, but there is no such option.
+    Starting with version 1.5.4, we enforce locking mechanism to ensure only one export job is running at a time to avoid possible data collision.
+    We use separate sheet (_dblock_) with one single cell (A1) to hold the lock value.
+    Unfortunately this mechanism is not 100% solid and there is still a tiny chance 2 export jobs run at the same time- in this case you will get a warning message after the export.
+    If you see this warning- review GoogleSheets data to make sure everything is ok and export data one more time if there is any issue.
 </p>
 
 
