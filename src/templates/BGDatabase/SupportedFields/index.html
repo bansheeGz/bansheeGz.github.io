@@ -189,15 +189,19 @@
     You can reference any Unity asset (UnityObject can be used to reference any asset).
     This reference will be resolved by a path.
     It means all unity asset fields store the path to an asset.
-    There are 3 ways this path can be properly resolved:
+    We do not monitor the changes, you can make to the assets paths/addresses,
+    so if you change asset path or change Addressables address- you will need to reassign the value.
+</p>
+<p>
+    There are 3 ways this path can be properly loaded:
 </p>
 <ol>
     <li>
         Asset should be stored under Resources folder. This is very simple way to reference an asset.
-        All you have to do is to place your asset under Resources folder
+        All you have to do is to place your asset under Resources folder. It's ok to use only if you do not have a lot of assets under Resources folder (otherwise use Addressables system)
     </li>
     <li>
-        Asset should be included in the asset bundle. This is super complicated way.
+        Asset should be included in the asset bundle. This is super complicated and obsolete way and we do not recommend it under any circumstances (use Addressables instead).
         To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to
         query this field, otherwise null will be returned.
         Note, we do not manage asset bundles in any way.
@@ -207,9 +211,6 @@
     <li>
         Use newly introduced Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a>
         package.
-        Just like with asset bundles, you need to preload assets to be able to properly resolve them,
-        but unlike asset bundles, you do not have to build addressables to resolve them while working with
-        BGDatabase in Editor.
-        To add support for addressables, please, download the plugin and follow setup instruction on our <a href="../Downloads#addressables">download page</a>
+        To add support for addressables, please, download the plugin and follow setup/use manual at our <a href="../Downloads#addressables">download page</a>
     </li>
 </ol>
