@@ -1,0 +1,23 @@
+﻿using System;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using Object = UnityEngine.Object;
+
+//This script test if Addressables system works correctly
+public class AddressablesTest : MonoBehaviour
+{
+    //Assign this parameter to valid address from Addressables system
+    public string Address;
+
+    void Start()
+    {
+        if (string.IsNullOrEmpty(Address)) throw new Exception("Please, assign valid Addressables address to Address parameter");
+        var loadOperation = Addressables.LoadAssetAsync<Object>(Address);
+        loadOperation.Completed += handle =>
+        {
+            var result = handle.Result;
+            if (result == null) throw new Exception("can not load asset using address=" + Address + ", result is null");
+            print("Asset was loaded successfully, asset=" + result);
+        };
+    }
+}

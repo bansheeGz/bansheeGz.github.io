@@ -463,33 +463,122 @@
 <p>
     All these fields are read only.
     You can reference any Unity asset (UnityObject can be used to reference any asset).
-    This reference will be resolved by a path.
-    It means all unity asset fields store the path to an asset.
-    We do not monitor the changes, you can make to the assets paths/addresses,
-    so if you change asset path or change Addressables address- you will need to reassign the value.
 </p>
 <p>
-    There are 3 ways this path can be properly loaded:
+    Available loaders are:
 </p>
-<ol>
-    <li>
-        Asset should be stored under Resources folder. This is very simple way to reference an asset.
-        All you have to do is to place your asset under Resources folder. It's ok to use only if you do not have a lot of assets under Resources folder (otherwise use Addressables system)
-    </li>
-    <li>
-        Asset should be included in the asset bundle. This is super complicated and obsolete way and we do not recommend it under any circumstances (use Addressables instead).
-        To be properly resolved, asset bundle, the asset belongs to, should be properly loaded at the moment we try to
-        query this field, otherwise null will be returned.
-        Note, we do not manage asset bundles in any way.
-        Also, asset bundles should be built before assets from this bundle can be properly resolved when working with
-        BGDatabase in Editor.
-    </li>
-    <li>
-        Use newly introduced Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a>
-        package.
-        To add support for addressables, please, download the plugin and follow setup/use manual at our <a href="../Downloads#addressables">download page</a>
-    </li>
-</ol>
+<table class="contentTable">
+    <tr>
+        <th>
+        </th>
+        <th>
+            Resources
+        </th>
+        <th>
+            Asset Bundles (obsolete)
+        </th>
+        <th>
+            Addressables
+        </th>
+        <th>
+            Addressables by Guid
+        </th>
+    </tr>
+    <tr>
+        <td>Recommendation</td>
+        <td>
+            use it only if an amount of assets is small
+        </td>
+        <td>
+            not recommended under any circumstances
+        </td>
+        <td>
+            use it if you want database to store asset's address
+        </td>
+        <td>
+            use it if you want database to store asset's Guid.
+        </td>
+    </tr>
+    <tr>
+        <td>How asset is loaded</td>
+        <td>
+            using Resources.Load
+        </td>
+        <td>
+            using AssetBundle.Load
+        </td>
+        <td>
+            using Addressables.LoadAssetAsync
+        </td>
+        <td>
+            using Addressables.LoadAssetAsync
+        </td>
+    </tr>
+    <tr>
+        <td>Prerequisites</td>
+        <td>
+            asset should be placed under one of Resources folder
+        </td>
+        <td>
+            asset should be included to one of asset bundles
+        </td>
+        <td>
+            <ol>
+                <li>Addressables package should be installed</li>
+                <li>asset should be included to Addressables</li>
+                <li>BGDatabase plugin for addressables support should be installed</li>
+            </ol>
+        </td>
+        <td>
+            <ol>
+                <li>Addressables package should be installed</li>
+                <li>asset should be included to Addressables</li>
+                <li>BGDatabase plugin for addressables support should be installed</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>Stored value</td>
+        <td>
+            path, relative to Resources folder
+        </td>
+        <td>
+            path within asset bundle
+        </td>
+        <td>
+            asset address
+        </td>
+        <td>
+            asset Guid
+        </td>
+    </tr>
+    <tr>
+        <td>Limitations after asset was added to database (otherwise you need to reassign the value)</td>
+        <td>
+            path/name can not be changed
+        </td>
+        <td>
+            name can not be changed
+        </td>
+        <td>
+            asset address can not be changed, but you can freely move/rename asset
+        </td>
+        <td>
+            asset Guid can not be changed (it's stored in corresponding meta file), but you can freely move/rename asset
+        </td>
+    </tr>
+    <tr>
+        <td>More information</td>
+        <td colspan="2">
+            Read more about Resources folder and asset bundles <a href="https://docs.unity3d.com/Manual/LoadingResourcesatRuntime.html">here</a>
+        </td>
+        <td colspan="2">
+            Read Unity's Addressables manual <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.5/manual/AddressableAssetsGettingStarted.html">here</a>.
+            To add support for addressables, please, download our plugin and follow setup/use manual at our <a href="../Downloads#addressables">download page</a>
+        </td>
+    </tr>
+</table>
+
             </div>
 
             <!--======================================================       BG Database Footer               -->

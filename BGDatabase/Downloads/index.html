@@ -352,7 +352,7 @@
     </tr>
     <tr>
         <td>6</td>
-        <td><a href="#addressables">Addressables system support</a></td>
+        <td><a href="#addressables">Addressables system plugin</a></td>
         <td>Runtime extension</td>
         <td class="ver">1.1-20/09/2019</td>
         <td>Support for Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a> system. It requires BGDatabase version > 1.4</td>
@@ -527,10 +527,10 @@
 
     <h6>Loaders type: </h6>
     <ol>
-        <li>Addressable: Pros: Address is stored as database value in human readable form. Cons: If address is changed after it was assign to database field, you need to reassign database field value
+        <li>Addressable: asset address is stored as database value in human readable form. Cons: you can not change address after value was assigned to database
             again
         </li>
-        <li>AddressableByGuid: Pros: you can change address without breaking connection to the asset. Cons: Asset Guid is stored as value in database instead of readable address</li>
+        <li>AddressableByGuid: asset Guid is stored as database value. Cons: Guid is just a set of bytes, it's not readable</li>
     </ol>
 
     <h6>How to read values: </h6>
@@ -549,6 +549,7 @@
     <p>
         This <a href="#addressablesQuickStart">example project</a> has examples for both techniques
     </p>
+
     <h6>Preloading: </h6>
     <p>
         If you access unity field with addressables loader like you normally do (How to read values, method # 1, mentioned above),
@@ -559,6 +560,18 @@
         It preloads all values from all rows/fields, but you can modify it to preload only required part of the database.
         Completed() method is invoked after all assets are preloaded.
     </p>
+
+    <h6>Tesing if Addressables system setup properly:</h6>
+    <p>
+        Some people experience issues while setting Addressables up.
+        In this case, use <a href="AddressablesTest.txt">this script</a> to test if Addressables works correctly.
+    </p>
+    <ol>
+        <li>Create empty scene</li>
+        <li>Attach the script to any GameObject</li>
+        <li>Assign it's Address parameter to some valid address from your Addressables system</li>
+        <li>Run the scene and make sure asset was loaded successfully (no exceptions in the console)</li>
+    </ol>
 </div>
 
 <div id="addressablesQuickStart">
