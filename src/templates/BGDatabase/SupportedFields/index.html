@@ -209,9 +209,10 @@
         </th>
     </tr>
     <tr>
-        <td>Recommendation</td>
+        <td>Recommendations</td>
         <td>
-            use it only if an amount of assets is small
+            Use it only if an amount of assets is small.
+            Unity does not recommend to use it (<a href="https://docs.unity3d.com/2019.2/Documentation/Manual/BestPracticeUnderstandingPerformanceInUnity6.html">more info</a>)
         </td>
         <td>
             not recommended under any circumstances
@@ -231,10 +232,7 @@
         <td>
             using AssetBundle.Load
         </td>
-        <td>
-            using Addressables.LoadAssetAsync
-        </td>
-        <td>
+        <td colspan="2">
             using Addressables.LoadAssetAsync
         </td>
     </tr>
@@ -246,18 +244,11 @@
         <td>
             asset should be included to one of asset bundles
         </td>
-        <td>
+        <td colspan="2">
             <ol>
                 <li>Addressables package should be installed</li>
                 <li>asset should be included to Addressables</li>
-                <li>BGDatabase plugin for addressables support should be installed</li>
-            </ol>
-        </td>
-        <td>
-            <ol>
-                <li>Addressables package should be installed</li>
-                <li>asset should be included to Addressables</li>
-                <li>BGDatabase plugin for addressables support should be installed</li>
+                <li>BGDatabase plugin for Addressables support should be installed</li>
             </ol>
         </td>
     </tr>
