@@ -1,0 +1,113 @@
+#set page=Modding
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<h4>Description</h4>
+<p>
+    "Modding" addon let you modify default database at runtime after it's loaded. The main objective is to add support for mods.
+</p>
+
+<h4>Available methods for modifying database</h4>
+<ol>
+    <li>By creating and applying "delta" files (recommended)</li>
+    <li>By changing database using C# API (see examples below)</li>
+</ol>
+
+<h4>"Delta" files general concept</h4>
+<p>
+    The database, shipped with a game/app, is readonly and represents the world state at the beginning of the game.
+    Modders can not change this database directly, but they can create a "delta" files, which modifies this database after it was loaded at runtime.
+    All operations are supported (adding/modifying/deleting)
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ModdingAddon1.png"><img style="width: 400px" src="#path images/BGDatabase/ModdingAddon1.png"></a>
+</div>
+
+<h4>"Delta" files creation guide</h4>
+<p>
+    Modders can create delta files using our free BGDatabaseLite package (todo add link).
+    How to create:
+</p>
+<ol>
+    <li>Make sure the current database is the database you want to modify (Settings->Main)</li>
+    <li>
+        Enable "delta" mode in Settings->Delta mode
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/ModdingAddon2.png"><img style="width: 400px" src="#path images/BGDatabase/ModdingAddon2.png"></a>
+        </div>
+    </li>
+    <li>Once you enabled delta mode, you'll see "Delta mode on" indicator at the toolbar.
+        From now on, all changes you do to the database will be saved to "delta" file and default database will remain readonly.
+        Also, there will be visual feedback which rows was changed/added and additional filter will be added to the toolbar
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/ModdingAddon3.png"><img style="width: 400px" src="#path images/BGDatabase/ModdingAddon3.png"></a>
+        </div>
+    </li>
+    <li>
+        You can remove rows from default database and use delta filter's "D"(deleted) button to review them and "Revert" button to restore them.
+        Be very cautious while removing rows from default database, cause game's code may assume the rows exists and may breaks with errors if you remove them.
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/ModdingAddon4.png"><img style="width: 400px" src="#path images/BGDatabase/ModdingAddon4.png"></a>
+        </div>
+    </li>
+    <li>
+        Note, the delta mode is on only when play mode is off.
+        Once you press Play in Editor default database will be loaded and delta mode will be off.
+        This is done to simulate real behaviour during runtime.
+        Read next section to learn how to load "delta" files at runtime.
+    </li>
+</ol>
+
+<h4>Applying changes to database at runtime</h4>
+<p>
+    To apply changes at runtime you need to enable Modding addon and create C# class, extending from  BGAddonModding.ModdingSourceDefault class.
+</p>
+<ol>
+    <li>Override <code>Deltas</code> property to provide your own delta (method #1)</li>
+    <li>Override <code>void OnLoad(BGRepo repo)</code> method to make changes using C# API (method #2)</li>
+</ol>
+<p>
+    Here is an example for both 2 methods:
+</p>
+<pre class="prettyprint">
+using UnityEngine;
+using BansheeGz.BGDatabase;
+
+    //you can modify database after loading by creating a class,
+    //which extends from BGAddonModding.ModdingSourceDefault class
+    public class ModdingSource : BGAddonModding.ModdingSourceDefault
+    {
+        //Method #1 : Override Deltas property to provide Delta files.
+        //In our case, we read delta file from bgdatabase_delta.bytes file,
+        //located at Resources folder
+        public override BGRepoDelta[] Deltas
+        {
+            get { return new[] {new BGRepoDelta(Resources.Load&lt;TextAsset&gt;("bgdatabase_delta").bytes),}; }
+        }
+
+        //Method #2 : Override OnLoad method if you want to modify database using C# API.
+        //In our case we modify entity name from "test" table using provided ID
+        public override void OnLoad(BGRepo repo)
+        {
+            repo["test"][new BGId("2y2PI1012ka/kjXBhiXlDg")].Name = "Updated name";
+        }
+    }
+</pre>
+
+<h4>Parameters</h4>
+<table class="contentTable">
+    <tr>
+        <th>
+            Parameter name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>In builds only</td>
+        <td>
+            Modding addon will be ignored if application is running inside Unity Editor
+        </td>
+    </tr>
+</table>
