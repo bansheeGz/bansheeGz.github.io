@@ -51,7 +51,7 @@
 </div>
 <div class="mdl-grid bg-feature mdl-shadow--2dp">
     <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
-        Colliders pack consists of 4 components for BG Curve, which generate colliders along Bezier spline.
+        Colliders pack consists of 6 components for BG Curve, which generate colliders along Bezier spline.
     </div>
 </div>
 
@@ -67,10 +67,13 @@
             <li>Capsule - generate a set of children GameObjects with attached CapsuleCollider. GameObjects are
                 positioned and rotated properly.
             </li>
+            <li>3D Mesh - generate positions for MeshFilter inside 2D spline.
+            </li>
             <li>2D Edge- generates points for attached EdgeCollider 2D.<br/></li>
             <li>2D Box - the same as BGCcCollider3DBox, however children GameObjects may have optional Effector2D
                 attached.
             </li>
+            <li>2D Mesh - generate positions for PolygonCollider 2D inside 2D spline.
         </ol>
         <span style="color: red">Note: if you use 2d/3d Box or Capsule Colliders, please, do not attach your own 2d/3d box colliders to child GameObjects right under the spline,
             cause they may be reused and deleted.</span>
@@ -155,6 +158,26 @@
 </div>
 
 <div>
+    <h4><a href="../Cc/BGCcCollider3DMesh">BGCcCollider3DMesh</a></h4>
+</div>
+<div class="bg-feature mdl-shadow--2dp">
+    <div class="hh">
+        Generates positions for <a href="https://docs.unity3d.com/Manual/class-MeshCollider.html">Mesh Collider</a> inside the spline.
+        Spline should be in 2D mode. <a href="https://en.wikipedia.org/wiki/Simple_polygon">Simple polygons</a> only (no intersections).
+    </div>
+    <div>
+        <ol class="nlist">
+            <li>Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
+                &nbsp;&nbsp;(<a href="../UserGuide/Points/">Text Guide</a>)
+            </li>
+            <li>Set spline's 2D Mode to XY (under Points tab).</li>
+            <li>Add "Collider 3D Mesh" component (under Components tab).</li>
+        </ol>
+    </div>
+</div>
+
+
+<div>
     <h4><a href="../Cc/BGCcCollider2DBox">BGCcCollider2DBox</a></h4>
 </div>
 <div class="bg-feature mdl-shadow--2dp">
@@ -202,6 +225,25 @@
         </ol>
     </div>
 </div>
+
+<div>
+    <h4><a href="../Cc/BGCcCollider2DMesh">BGCcCollider2DMesh</a></h4>
+</div>
+<div class="bg-feature mdl-shadow--2dp">
+    <div class="hh">
+        Generates positions for <a href="https://docs.unity3d.com/Manual/class-PolygonCollider2D.html">Polygon Collider 2D</a> inside the spline
+    </div>
+    <div>
+        <ol class="nlist">
+            <li>Create a spline (<a href="https://www.youtube.com/watch?v=8WW7nYb2Rnw">Video Tutorial</a>)
+                &nbsp;&nbsp;(<a href="../UserGuide/Points/">Text Guide</a>)
+            </li>
+            <li>Set spline's 2D Mode to XY (under Points tab).</li>
+            <li>Add "Collider 2D Mesh" component (under Components tab).</li>
+        </ol>
+    </div>
+</div>
+
 
 <br/>
 <br/>
