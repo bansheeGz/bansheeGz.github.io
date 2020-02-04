@@ -5,13 +5,6 @@
 </div>
 <br/>
 
-<h4>Description</h4>
-<p>
-    Setting up Google sheets may take a while, however it's one-time procedure.
-    If you have more than one developer in your project who can run export tasks,
-    read <a href="#shared">"Using Google sheets as shared remote database"</a> section at the bottom of the page
-</p>
-
 <h4>Create Google Sheets DataSource</h4>
 <p>
     Open BGDatabase window <code>Window->BGDatabase</code>
@@ -19,80 +12,76 @@
 <p>
     Go to <code>DataSources</code> tab, press plus icon, chose <code>Datasource type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
 </p>
+<p class="redText">
+    [Important]: Keep your settings file private if you use GoogleSheets. Do not share it with anyone
+</p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/GoogleSheets4.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets4.png"></a>
 </div>
 
 
-<h4>Create Google client Id</h4>
-<p>
-    Here is our step-by-step guide how to do it (alternatively use this Google support <a href="https://support.google.com/googleapi/answer/6158849">article</a>)
-</p>
-<ol>
-    <li>Log in to <a href="https://console.developers.google.com/">Google Console</a></li>
-    <li>Select or create a project
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets1.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets1.png"></a>
-        </div>
-    </li>
-    <li>Select <code>Credentials</code> , click on <code>Create credentials</code> and chose <code>Oath client Id</code>
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets2.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets2.png"></a>
-        </div>
-    </li>
-    <li>Chose <code>Other</code> and click <code>Create</code>
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets3.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets3.png"></a>
-        </div>
-    </li>
-    <li>A popup will show up with your client id and client secret. Copy them to your Datasource settings
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets5.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets5.png"></a>
-        </div>
-    </li>
-</ol>
-
-<h4>Filling Application name and Spreadsheet Id</h4>
-<ol>
-    <li>Fill <code>Application name</code> with any string value</li>
-    <li>Fill <code>Spreadsheet Id</code> with your spreadsheet ID.
-        Please, see the image below to learn how to obtain ID or read <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">this</a>
-    </li>
-</ol>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/GoogleSheets11.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets11.png"></a>
+<h4>Setting up Google Sheets DataSource</h4>
+<div>
+    Setting up Google Sheets DataSource depends on authentication type. Chose authentication type and read setup guide for this type.
 </div>
 
-<h4>Get Oath tokens from Google</h4>
-<ol>
-    <li>Click on <code>Get new tokens</code> button
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets6.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets6.png"></a>
-        </div>
-    </li>
-    <li>Your browser will open up, with login to Google account and permission request. Login and click <code>Allow</code>
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets7.png"><img style="width: 400px; height: 100px" src="#path images/BGDatabase/GoogleSheets7.png"></a>
-        </div>
-    </li>
-    <li>Single page will be displayed with single text field. Copy it's value and switch back to Unity
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets8.png"><img style="width: 400px; height: 100px" src="#path images/BGDatabase/GoogleSheets8.png"></a>
-        </div>
-    </li>
-
-    <li>Unity will display a small popup window with single text field. Paste the copied value and press <code>Go!</code>
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets9.png"><img style="width: 400px; height: 100px" src="#path images/BGDatabase/GoogleSheets9.png"></a>
-        </div>
-    </li>
-
-    <li>That's it. Tokens field will be filled and you can save settings- datasource is ready.
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/GoogleSheets10.png"><img style="width: 400px;" src="#path images/BGDatabase/GoogleSheets10.png"></a>
-        </div>
-    </li>
-</ol>
+<table class="contentTable">
+    <tr>
+        <th width="25%">
+        </th>
+        <th width="25%">
+            OAuth 2.0 (default)
+        </th>
+        <th width="25%">
+            Service
+        </th>
+        <th width="25%">
+            API Key
+        </th>
+    </tr>
+    <tr>
+        <td>
+            Access
+        </td>
+        <td>
+            Read/Write to all spreadsheets
+        </td>
+        <td>
+            Read/Write to all spreadsheets
+        </td>
+        <td>
+            Read-only to public/shared spreadsheets
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Additional details
+        </td>
+        <td>
+            Hardest to setup
+        </td>
+        <td>
+            Required service email to be added to authorized users list for chosen spreadsheet
+        </td>
+        <td>
+            Easiest to setup but <br/>1) readonly <br/>2) requires spreadsheet to be shared or public
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Setup guide
+        </td>
+        <td>
+            <a href="setup-oauth.html" target="_blank">read</a>
+        </td>
+        <td>
+            <a href="setup-service.html" target="_blank">read</a>
+        </td>
+        <td>
+            <a href="setup-apikey.html" target="_blank">read</a>
+        </td>
+    </tr>
+</table>
 
 <h4>Create Export/Import task</h4>
 <p>
