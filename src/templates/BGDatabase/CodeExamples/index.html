@@ -6,6 +6,10 @@
 <p>
         You can copy examples below to Start() method of some MonoBehaviour class, run it and review the results.
         There are also 2 example projects, which can be downloaded from <A href="../ExampleBreakdown">this page</A>
+
+</p>
+<p>
+        Also, <a href="../CodeGeneration/ExtensionClasses/">Code generation</a> greatly simplify the code below (highly recommended)
 </p>
 
 <h4>Import dependencies</h4>
@@ -13,7 +17,7 @@
 using BansheeGz.BGDatabase;
 </pre>
 
-<h4>Working with meta data</h4>
+<h4>Working with meta data (database structure)</h4>
 <pre class="prettyprint">
         //number of tables
         int numberOfTables = BGRepo.I.CountMeta;
@@ -44,7 +48,29 @@ using BansheeGz.BGDatabase;
 
 </pre>
 
-<h4>Working with data</h4>
+<h4>Working with data (basic usage)</h4>
+<pre class="prettyprint">
+        //get reference to table NewTable
+        BGMetaEntity table = BGRepo.I["NewTable"];
+
+        //create new row
+        BGEntity row = table.NewEntity();
+
+        //get a row by index (row.Index=0)
+        BGEntity firstRow = table.GetEntity(row.Index);
+
+        //get a row by ID (alternative)
+        firstRow = table.GetEntity(row.Id);
+
+        //read "NewField" field value (first row)
+        int firstRowNewFieldValue = firstRow.Get&lt;int&gt;("NewField");
+
+        //write "NewField" field value (first row)
+        firstRow.Set&lt;int&gt;("NewField", 7);
+
+</pre>
+
+<h4>Working with data (more details)</h4>
 <pre class="prettyprint">
 
         //populate new table with 10 records
@@ -56,21 +82,25 @@ using BansheeGz.BGDatabase;
 
 
         //find entities, which names contains '5'
-        List<BGEntity> entities = newTable.FindEntities(entity => entity.Name.IndexOf('5') != -1);
+        List&lt;BGEntity&gt; entities = newTable.FindEntities(
+                entity => !string.IsNullOrEmpty(entity.Name) && entity.Name.IndexOf('5') != -1);
 
 
         //find entities, which names contains '5' and sort them by NewField
-        List<BGEntity> entities2 = newTable.FindEntities(entity => entity.Name.IndexOf('5') != -1, null,
-                (e1, e2) => e1.Get<int>("NewField").CompareTo(e2.Get<int>("NewField")));
+        List&lt;BGEntity&gt; entities2 = newTable.FindEntities(
+                entity => !string.IsNullOrEmpty(entity.Name) && entity.Name.IndexOf('5') != -1, null,
+                (e1, e2) => e1.Get&lt;int&gt;("NewField").CompareTo(e2.Get&lt;int&gt;("NewField")));
 
         //the same as above, (faster version)
-        BGField<int> fieldWithType = (BGField<int>) BGRepo.I["NewTable"].GetField("NewField");
-        List<BGEntity> entities3 = newTable.FindEntities(entity => entity.Name.IndexOf('5') != -1, null,
+        BGField&lt;int&gt; fieldWithType = (BGField&lt;int&gt;) BGRepo.I["NewTable"].GetField("NewField");
+        List&lt;BGEntity&gt; entities3 = newTable.FindEntities(
+                entity => !string.IsNullOrEmpty(entity.Name) && entity.Name.IndexOf('5') != -1, null,
                 (e1, e2) => fieldWithType[e1.Index].CompareTo(fieldWithType[e2.Index]));
 
         //the same as above with code generation, (faster and better version)
-        //List<NewTable> entities4 = NewTable.FindEntities(entity => entity.Name.IndexOf('5') != -1, null,
-        //        (e1, e2) => e1.NewField.CompareTo(e2.NewField));
+        //List&lt;NewTable&gt; entities4 = NewTable.FindEntities(
+        //        entity => !string.IsNullOrEmpty(entity.Name) && entity.Name.IndexOf('5') != -1, null,
+        //       (e1, e2) => e1.NewField.CompareTo(e2.NewField));
 
 
         //print all entities names
@@ -78,19 +108,20 @@ using BansheeGz.BGDatabase;
 
 
         //print all entities names, which contains "5"
-        newTable.ForEachEntity(entity => print(entity.Name), entity => entity.Name.IndexOf('5') != -1 );
+        newTable.ForEachEntity(entity => print(entity.Name),
+                entity => !string.IsNullOrEmpty(entity.Name) && entity.Name.IndexOf('5') != -1 );
 
 
         // query new table and increase NewField by 1, for each NewField value which is lesser than 5,
         // iteration is sorted by NewField
         newTable.ForEachEntity(entity =>
         {
-            entity.Set("NewField", entity.Get<int>("NewField") + 1);
-        },  entity => entity.Get<int>("NewField") < 5,
-           (e1, e2) => e1.Get<int>("NewField").CompareTo(e2.Get<int>("NewField")));
+            entity.Set("NewField", entity.Get&lt;int&gt;("NewField") + 1);
+        },  entity => entity.Get&lt;int&gt;("NewField") < 5,
+           (e1, e2) => e1.Get&lt;int&gt;("NewField").CompareTo(e2.Get&lt;int&gt;("NewField")));
 
         //the same as above (faster version)
-        BGField<int> fieldWithType2 = (BGField<int>) BGRepo.I["NewTable"].GetField("NewField");
+        BGField&lt;int&gt; fieldWithType2 = (BGField&lt;int&gt;) BGRepo.I["NewTable"].GetField("NewField");
         newTable.ForEachEntity(entity =>
         {
             var val = fieldWithType2[entity.Index] + 1;
