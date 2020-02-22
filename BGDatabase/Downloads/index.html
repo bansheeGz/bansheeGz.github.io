@@ -340,10 +340,10 @@
     </tr>
     <tr>
         <td>4</td>
-        <td><a href="#excelRuntime">Excel file monitor for Runtime (PC/Mac/Linux only)</a></td>
+        <td><a href="#excelRuntime">Export/import to excel file for Runtime (PC/Mac/Linux only)</a></td>
         <td>Runtime extension</td>
-        <td class="ver">1.0-22/07/2019</td>
-        <td>Runtime monitor for excel file</td>
+        <td class="ver">1.1-22/02/2020</td>
+        <td>Export/import data to excel file at runtime</td>
         <td><a href="BansheeGzExcelRuntime.unitypackage">link</a></td>
     </tr>
     <tr>
@@ -363,7 +363,7 @@
         <td><a href="#addressables">Addressables system plugin</a></td>
         <td>Runtime extension</td>
         <td class="ver">1.1-20/09/2019</td>
-        <td>Support for Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a> system. It requires BGDatabase version > 1.4</td>
+        <td>Support for Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.6/manual/AddressableAssetsGettingStarted.html">Addressables</a> system. It requires BGDatabase version > 1.4</td>
         <td><a href="BGDatabaseAddressables.unitypackage">link</a></td>
     </tr>
     <tr>
@@ -445,11 +445,11 @@
 </div>
 
 <div id="excelRuntime">
-    <h4>4. Excel file monitor for Runtime</h4>
+    <h4>4. Excel file monitor for Runtime (PC/Mac/Linux only)</h4>
     <h6>Features:</h6>
     <ol>
-        <li>Update database data at runtime (in builds) with data from Excel file (PC/Mac/Linux only)</li>
-        <li>Monitor excel file and auto-import the data if file changes (PC/Mac/Linux only)</li>
+        <li>Import/export database data from/to Excel file at runtime (in builds)</li>
+        <li>Monitor excel file and auto-import the data if file changes</li>
     </ol>
     <img src="../../images/BGDatabase/download4.gif">
     <h6>Setup:</h6>
@@ -467,6 +467,10 @@
         <li>Optionally press "Save Settings" to save the settings</li>
         <li>Open excel file, change the data and save the file (Ctrl+s)</li>
         <li>BGDatabase data should be updated. All binders in the scene will be executed after that.</li>
+        <li>
+            To export call BGExcelImportGo.Export method from your script.
+            If you set "Export Meta only if sheet exists", export will ignore all tables which does not have corresponding sheet in target xls file
+        </li>
     </ol>
     <h6>Example scene:</h6>
     <p>
@@ -491,6 +495,11 @@
         <li>Now open testData.xls file in Excel/OpenOffice/LibreOffice, change Player.gold value, and Save the file (Ctrl+s)</li>
         <li>Value in the database and text on the screen will be changed</li>
     </ol>
+    <p>
+        Some people experience "Encoding 1252 data could not be found" error while running export/import at runtime.
+        The solution: copy all "internationalization" dlls (I18N, I18N.West.dll etc. ) to your project as described
+        <a href="https://answers.unity.com/questions/42955/codepage-1252-not-supported-works-in-editor-but-no.html?page=1&pageSize=5&sort=votes">here</a>
+    </p>
 </div>
 
 <div id="saveLoad">
