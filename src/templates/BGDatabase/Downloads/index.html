@@ -78,20 +78,31 @@
         <td>6</td>
         <td><a href="#addressables">Addressables system plugin</a></td>
         <td>Runtime extension</td>
-        <td class="ver">1.1-20/09/2019</td>
-        <td>Support for Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.6/manual/AddressableAssetsGettingStarted.html">Addressables</a> system. It requires BGDatabase version > 1.4</td>
+        <td class="ver">1.2-03/03/2020</td>
+        <td>Support for Unity's <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.6/manual/AddressableAssetsGettingStarted.html">Addressables</a> system.
+            ]It requires BGDatabase version >= 1.5.6</td>
         <td><a href="BGDatabaseAddressables.unitypackage">link</a></td>
     </tr>
     <tr>
         <td>7</td>
         <td><a href="#addressablesQuickStart">Addressables Quick start</a></td>
         <td>Example</td>
-        <td class="ver">1.1-20/09/2019</td>
+        <td class="ver">1.2-03/03/2020</td>
         <td>Example project to help you to start using Unity's
-            <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a> system with BGDatabase. It requires BGDatabase version > 1.4
+            <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.1/manual/AddressableAssetsGettingStarted.html">Addressables</a> system with BGDatabase.
+            It requires BGDatabase version >= 1.5.6
         </td>
         <td><a href="BGDatabaseAddressablesQuickStart.zip">link</a></td>
     </tr>
+    <tr>
+        <td>8</td>
+        <td>AnimationCurve field</td>
+        <td>Custom fields</td>
+        <td class="ver">1.0-03/03/2020</td>
+        <td>AnimationCurve field for Unity >= 2018</td>
+        <td><a href="BGCustomFieldAnimationCurve2018.unitypackage ">link</a></td>
+    </tr>
+
 </table>
 
 <div id="2dExample">
@@ -248,8 +259,6 @@
         <li>Install Unity's addressables package via package manager</li>
         <li>Install latest BGDatabase</li>
         <li>Download and install latest <a href="BGDatabaseAddressables.unitypackage">BGDatabase.Addressables</a> package</li>
-        <li>If you installed our beta package with experimental addressables support, which was bundled with our asset, please,
-            delete the following folders: <i>Assets\BansheeGz\BGDatabase\Pins</i> and <i>Assets\BansheeGz\BGDatabase\Editor\Pins</i></li>
         <li>Create your own database as described <a href="../Setup">here</a></li>
         <li>Create a table with <a href="../SupportedFields#unityassets">Unity assets</a> fields and set loader=Addressables or loader=AddressablesByGuid via gear icon</li>
     </ol>
@@ -272,8 +281,8 @@
         <li id="byAddress">
             Instead of reading field value the usual way, you can retrieve asset address from database and use this address directly with Addressables system.
             No preloading is required in this case.
-            Each unity asset field is implementing BGStorable&lt;string&gt; interface, which can be used to read asset address (method BGStorable.GetStoredValue(entity.Index)).
-            Preload script below has an example of retrieving this address.
+            Each unity asset field is implementing BGAddressablesAssetI interface, which can be used to read asset address (using method <code>string GetAddressablesAddress(int entityIndex)</code>).
+            AddressablesQuickStart project below has an example of retrieving this address.
         </li>
     </ol>
     <p>
@@ -296,7 +305,7 @@
 
     <h6>Tesing if Addressables system setup properly:</h6>
     <p>
-        Some people experience issues while setting Addressables up.
+        Some people experience issues while setting Addressables system up.
         In this case, use <a href="AddressablesTest.txt">this script</a> to test if Addressables works correctly.
     </p>
     <ol>

@@ -311,16 +311,19 @@
 
 <table class="contentTable">
     <tr>
-        <th width="25%">
+        <th width="20%">
         </th>
-        <th width="25%">
+        <th width="20%">
             OAuth 2.0 (default)
         </th>
-        <th width="25%">
+        <th width="20%">
             Service
         </th>
-        <th width="25%">
+        <th width="20%">
             API Key
+        </th>
+        <th width="20%">
+            Anonymous
         </th>
     </tr>
     <tr>
@@ -336,6 +339,9 @@
         <td>
             Read-only to public/shared spreadsheets
         </td>
+        <td>
+            Read-only to public/shared spreadsheets. No access to input value
+        </td>
     </tr>
     <tr>
         <td>
@@ -348,7 +354,10 @@
             It requires service email to be added to authorized users list for chosen spreadsheet
         </td>
         <td>
-            Easiest to setup but <br/>1) readonly <br/>2) requires spreadsheet to be shared or public
+            Easy to setup, but <br/>1) readonly <br/>2) requires spreadsheet to be shared or public
+        </td>
+        <td>
+            Easiest to setup, no need for any credentials, but <br/>1) readonly <br/>2) requires spreadsheet to be shared or public <br/>3) no access to raw/input value
         </td>
     </tr>
     <tr>
@@ -363,6 +372,9 @@
         </td>
         <td>
             <a href="setup-apikey.html" target="_blank">read</a>
+        </td>
+        <td>
+            <a href="setup-anonymous.html" target="_blank">read</a>
         </td>
     </tr>
 </table>

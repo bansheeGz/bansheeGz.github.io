@@ -16,116 +16,349 @@
             Field Group
         </th>
         <th>
-            Field Type (Comments)
+            Field name
+        </th>
+        <th>
+            Field Type
+        </th>
+        <th>
+            Comments
         </th>
     </tr>
     <tr>
-        <td>Primitives</td>
+        <td rowspan="9">Primitives</td>
+        <td>int</td>
+        <td>int</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>long</td>
+        <td>long</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>float</td>
+        <td>float</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>double</td>
+        <td>double</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bool</td>
+        <td>bool</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>decimal</td>
+        <td>decimal</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>guid</td>
+        <td>Guid</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>string</td>
+        <td>string</td>
+        <td>single line text</td>
+    </tr>
+    <tr>
+        <td>text</td>
+        <td>string</td>
+        <td>multiple lines text</td>
+    </tr>
+    <tr>
+        <td rowspan="6">Primitive nullable</td>
+        <td>int?</td>
+        <td>int?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>long?</td>
+        <td>long?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>float?</td>
+        <td>float?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>double?</td>
+        <td>double?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bool?</td>
+        <td>bool?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>guid?</td>
+        <td>Guid?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="4">Enum <a href="#enum">#4</a></td>
+        <td>enum</td>
+        <td>Enum</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>enumByte</td>
+        <td>Enum</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>enumShort</td>
+        <td>Enum</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>enumList</td>
+        <td>List&lt;Enum&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="12">Unity Primitives</td>
+        <td>vector2</td>
+        <td>Vector2</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>vector3</td>
+        <td>Vector3</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>vector4</td>
+        <td>Vector4</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>quaternion</td>
+        <td>Quaternion</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>rect</td>
+        <td>Rect</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>bounds</td>
+        <td>Bounds</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>color</td>
+        <td>Color</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>ray</td>
+        <td>Ray</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>ray2d</td>
+        <td>Ray2D</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>keyCode</td>
+        <td>KeyCode</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>gradient</td>
+        <td>Gradient</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>animationCurve2017</td>
+        <td>AnimationCurve</td>
+        <td>Field target Unity 2017. For Unity >= 2018, download field animationCurve2018 <a href="../Downloads">here</a></td>
+    </tr>
+    <tr>
+        <td rowspan="5">Unity Primitive nullable</td>
+        <td>vector2?</td>
+        <td>Vector2?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>vector3?</td>
+        <td>Vector3?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>vector4?</td>
+        <td>Vector4?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>quaternion?</td>
+        <td>Quaternion?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>color?</td>
+        <td>Color?</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="8">Unity Assets <a href="#unityassets">#5</a></td>
+        <td>unityTexture</td>
+        <td>Texture</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>unityTexture2d</td>
+        <td>Texture2D</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>unitySprite</td>
+        <td>Sprite</td>
+        <td>Can accept a single sprite, a sprite from multiple sprite, a sprite from <a href="https://docs.unity3d.com/Manual/class-SpriteAtlas.html">SpriteAtlas</a></td>
+    </tr>
+    <tr>
+        <td>unityMaterial</td>
+        <td>Material</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>unityPrefab</td>
+        <td>GameObject</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>unityFont</td>
+        <td>Font</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>unityAudioClip</td>
+        <td>AudioClip</td>
+        <td></td>
+    </tr>
+     <tr>
+        <td>unityObject</td>
+        <td>Object</td>
         <td>
-            <p>int</p>
-            <p>long</p>
-            <p>float</p>
-            <p>double</p>
-            <p>bool</p>
-            <p>decimal</p>
-            <p>guid</p>
-            <p>string</p>
-            <p>text</p>
+            Starting with v.1.5.6 additional type constraint can be added. Code generators generate proper type (using type from constraint)
         </td>
     </tr>
     <tr>
-        <td>Primitive nullable</td>
-        <td>
-            <p>int?</p>
-            <p>long?</p>
-            <p>float?</p>
-            <p>double?</p>
-            <p>bool?</p>
-            <p>guid?</p>
-        </td>
+        <td rowspan="7">List of Primitives</td>
+        <td>listBool</td>
+        <td>List&lt;bool&gt;</td>
+        <td></td>
     </tr>
     <tr>
-        <td>Unity Primitives</td>
-        <td>
-            <p>vector2</p>
-            <p>vector3</p>
-            <p>vector4</p>
-            <p>quaternion</p>
-            <p>rect</p>
-            <p>bounds</p>
-            <p>color</p>
-            <p>ray</p>
-            <p>ray2d</p>
-            <p>keyCode</p>
-        </td>
+        <td>listDouble</td>
+        <td>List&lt;double&gt;</td>
+        <td></td>
     </tr>
     <tr>
-        <td>Unity Primitive nullable</td>
-        <td>
-            <p>vector2?</p>
-            <p>vector3?</p>
-            <p>vector4?</p>
-            <p>quaternion?</p>
-            <p>color?</p>
-        </td>
+        <td>listFloat</td>
+        <td>List&lt;float&gt;</td>
+        <td></td>
     </tr>
     <tr>
-        <td>Unity Assets <a href="#unityassets">#4</a></td>
-        <td>
-            <p>unityTexture (value type is Texture)</p>
-            <p>unityTexture2d (value type is Texture2D)</p>
-            <p>unitySprite (value type is Sprite)</p>
-            <p>unityMaterial (value type is Material)</p>
-            <p>unityPrefab (value type is GameObject)</p>
-            <p>unityFont (value type is Font)</p>
-            <p>unityAudioClip (value type is AudioClip )</p>
-            <p>unityObject (Any Unity Asset, value type is UnityEngine.Object)</p>
-        </td>
+        <td>listGuid</td>
+        <td>List&lt;Guid&gt;</td>
+        <td></td>
     </tr>
     <tr>
-        <td>List of Primitives</td>
-        <td>
-            <p>listBool (bool list, e.g. List&lt;bool&gt;)</p>
-            <p>listDouble (double list, e.g. List&lt;double&gt;)</p>
-            <p>listFloat (float list, e.g. List&lt;float&gt;)</p>
-            <p>listGuid (Guid list, e.g. List&lt;Guid&gt;)</p>
-            <p>listInt (int list, e.g. List&lt;int&gt;)</p>
-            <p>listLong (long list, e.g. List&lt;long&gt;)</p>
-            <p>listString (string list, e.g. List&lt;string&gt;)</p>
-        </td>
+        <td>listInt</td>
+        <td>List&lt;int&gt;</td>
+        <td></td>
     </tr>
     <tr>
-        <td>List of Unity Primitives</td>
-        <td>
-            <p>listVector2 (Vector2 list, e.g. List&lt;Vector2&gt;)</p>
-            <p>listVector3 (Vector3 list, e.g. List&lt;Vector3&gt;)</p>
-            <p>listVector4 (Vector4 list, e.g. List&lt;Vector4&gt;)</p>
-            <p>listQuaternion (Quaternion list, e.g. List&lt;Quaternion&gt;)</p>
-            <p>listColor (Color list, e.g. List&lt;Color&gt;)</p>
-        </td>
+        <td>listLong</td>
+        <td>List&lt;long&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>listString</td>
+        <td>List&lt;string&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td rowspan="5">List of Unity Primitives</td>
+        <td>listVector2</td>
+        <td>List&lt;Vector2&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>listVector3</td>
+        <td>List&lt;Vector3&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>listVector4</td>
+        <td>List&lt;Vector4&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>listQuaternion</td>
+        <td>List&lt;Quaternion&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>listColor</td>
+        <td>List&lt;Color&gt;</td>
+        <td></td>
     </tr>
     <tr>
         <td>Dictionary</td>
         <td>
             hashtable <a href="#hashtable">#3</a>
         </td>
+        <td>Hashtable</td>
+        <td></td>
     </tr>
     <tr>
-        <td>Relations</td>
-        <td>
-            <p>relationSingle (value type is BGEntity)</p>
-            <p>relationMultiple (value type is List&lt;BGEntity&gt;)</p>
-            <p>nested (value type is List&lt;BGEntity&gt;) <a href="#nested">#1</a></p>
-        </td>
+        <td rowspan="3">Relations</td>
+        <td>relationSingle</td>
+        <td>BGEntity</td>
+        <td></td>
     </tr>
     <tr>
-        <td>Unity Scene <a href="#unityscene">#2</a></td>
-        <td>
-            <p>entityReference (reference to entityGo, value type is BGEntityGo)</p>
-            <p>entityListReference (reference to list of entityGos, value type is List&lt;BGEntityGo&gt;)</p>
-            <p>objectReference (reference to UnityObject, value type is BGWithId)</p>
-            <p>objectListReference (reference to a list of UnityObjects, value type is List&lt;BGWithId&gt;)</p>
-        </td>
+        <td>relationMultiple</td>
+        <td>List&lt;BGEntity&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>nested</td>
+        <td>List&lt;BGEntity&gt;</td>
+        <td>read-only, <a href="#nested">#1</a></td>
+    </tr>
+    <tr>
+        <td rowspan="4">Unity Scene <a href="#unityscene">#2</a></td>
+        <td>entityReference</td>
+        <td>BGEntityGo</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>entityListReference</td>
+        <td>List&lt;BGEntityGo&gt;</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>objectReference</td>
+        <td>BGWithId</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>objectListReference</td>
+        <td>List&lt;BGWithId&gt;</td>
+        <td></td>
     </tr>
 </table>
 
@@ -179,7 +412,27 @@
     Following types are not supported as values: Unity assets, relations, hashtable, nullable structs. Null values are also not supported.
 </p>
 
-<h4 id="unityassets">Unity Asset Fields (#4)</h4>
+<h4 id="enum">Enum/enumList (#4)</h4>
+<p>
+    With enum/enumList fields you can reference your own enumerations.
+    Important notes:
+</p>
+<ol>
+    <li>Once you created your own enum field, you can not change enum type name or namespace, cause they are stored inside database.
+        To change it you can create exact copy of your enum with different name and change enum type at field's settings
+    </li>
+    <li>
+        Values are stored exactly as C# store them- with numeric value.
+        You may consider adding numeric values to your constants so constants reordering does not affect values
+    </li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SupportedFields2.png"><img style="width: 400px"
+                                                                src="#path images/BGDatabase/SupportedFields2.png"></a>
+</div>
+
+
+<h4 id="unityassets">Unity Asset Fields (#5)</h4>
 <div class="bg-image">
     <a href="#path images/BGDatabase/UnityAssets.png"><img style="width: 400px" src="#path images/BGDatabase/UnityAssets.png"></a>
 </div>

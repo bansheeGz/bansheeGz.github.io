@@ -448,7 +448,7 @@ var name = meta.Name;</pre>
         <td colspan="3">
             <pre class="cs">
 //delete all entities, which names start with 'My'
-meta.DeleteEntities(new HashSet&lt;BGEntity&gt;(meta.FindEntities(entity => entity.Name.StartsWith("My"))));</pre>
+meta.DeleteEntities(meta.FindEntities(entity => entity.Name.StartsWith("My")));</pre>
         </td>
     </tr>
 

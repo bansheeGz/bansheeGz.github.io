@@ -17,10 +17,7 @@
 <ol>
     <li>WebGl platform requires special setup (<a href="#webgl">read below</a>)</li>
     <li>Do not use this addon to update critical data.
-        There is a chance some users won't be able to download updates (due to network issues for example).</li>
-    <li>
-        API calls have free usage limits. Read more <a href="https://developers.google.com/sheets/api/limits">here</a>.
-        If you reach the limit, GoogleSheets will not return correct feed and LiveUpdate plugin will fail.
+        There is a chance some users won't be able to download updates (due to network issues for example).
     </li>
     <li>
         Plugin uses formatted values, not raw value. If you use numeric fields, please, make sure formatted value for these fields
@@ -28,9 +25,86 @@
     </li>
 </ol>
 
+<h4>DataSource types</h4>
+<table class="contentTable">
+    <tr>
+        <th width="25%">
+            DataSource type->
+        </th>
+        <th width="25%">
+            GoogleSheets API
+        </th>
+        <th width="25%">
+            Visualization API
+        </th>
+        <th width="25%">
+            Excel file export
+        </th>
+    </tr>
+    <tr>
+        <td>URL to retrieve data</td>
+        <td>https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Table Name]?key=[Your API key]</td>
+        <td>https://docs.google.com/spreadsheets/d/[Your Spreadsheet Id]/gviz/tq?tqx=out:csv&sheet=[Table Name]</td>
+        <td>https://docs.google.com/spreadsheets/d/[Your Spreadsheet Id]/export</td>
+    </tr>
+    <tr>
+        <td>Number of network calls</td>
+        <td>1 * number of tables</td>
+        <td>1 * number of tables</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>Pros</td>
+        <td>Official recommended method</td>
+        <td>Do not require any credentials</td>
+        <td>
+            <ol>
+                <li>Do not require any credentials</li>
+                <li>Fastest method if you update several tables, cause it uses one single network call to obtain all data</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>Cons</td>
+        <td>
+            <ol>
+                <li>API calls have free usage limits. Read more <a href="https://developers.google.com/sheets/api/limits">here</a>.
+                    If you reach the limit, GoogleSheets will not return correct feed and LiveUpdate plugin will fail.
+                </li>
+                <li>API key is exposed, cause database stores the value</li>
+            </ol>
+        </td>
+        <td>
+            <ol>
+                <li>Not totally clear if Google can consider it as API abuse and ToS violation</li>
+            </ol>
+        </td>
+        <td>
+            <ol>
+                <li>Not totally clear if Google can consider it as API abuse and ToS violation</li>
+                <li>Require special setup</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>Special setup</td>
+        <td>None</td>
+        <td>None</td>
+        <td>
+            <ol>
+                <li>Move Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to any folder, which is not under "Editor" folder</li>
+                <li>Select all DLLs in NPOI folder and mark them to be compatible with "Any platform"</li>
+                <li>Download and import <a href="../../Downloads/BGDatabaseLiveUpdateExcelParser.unitypackage">this package</a></li>
+            </ol>
+        </td>
+    </tr>
+</table>
+
 <h4>How it works</h4>
 <ol>
-    <li>First time your game is launched and database is loaded, it'll try to read data from Google Sheets</li>
+    <li>
+        First time your game is launched and database is loaded, it'll try to read data from Google Sheets.
+        Alternatively set "Manual load" parameter on and trigger loading manually from script at any moment</li>
     <li>If step 1 is successful, every time database is loaded, it will be merged with data from Google Sheets, thus
         applying the update.
     </li>
@@ -44,27 +118,28 @@
         Enable LiveUpdate plugin (under addons->LiveUpdate)
     </li>
     <li>
-        Get <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">"API key"</a> from Google. Assign it to <b>API key</b> LiveUpdate addon parameter
+        Chose DataSource type (GoogleSheets API/Visualization API/Excel file export)
     </li>
     <li>
         Get <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">Spreadsheet Id</a> from Google. Assign it to <b>Spreadsheet Id</b> LiveUpdate addon parameter
     </li>
     <li>
+        If you chose GoogleSheets API, get <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">"API key"</a> from Google. Assign it to <b>API key</b> LiveUpdate addon parameter
+    </li>
+    <li>
         Make sure to share target spreadsheet. Open target spreadsheet, click on Share button on the top right and set access level to "public" or "people with link".
-        Otherwise you will get 403 error from GoogleSheets
+        Otherwise plugin won't work.
     </li>
 </ol>
 
 <h4>Checking if setup was correct</h4>
 <div>
-    You can check if you set up config properly by accessing this address from your browser (make sure it returns valid json, not some error )
-    <p class="llink">
-        https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Name of one of your metas]?key=[Your API key]
-    </p>
-
+    You can check if you set up config properly by accessing specific URL from your browser without logging to Google account.
+    Each DataSource type uses it's own URL (listed in the table above), so try to access the data with corresponding URL
 </div>
 <div>
-    For example, for the following parameters
+    For example, GoogleSheets API datasource type uses this URL to access the data
+    https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Name of one of your meta]?key=[Your API key] , so for the following parameters
     <ol>
         <li>
             SpreadsheetId=MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ
@@ -76,17 +151,19 @@
             Meta=Items
         </li>
     </ol>
-        the correct URL would be:
+    the URL to check will be :
     <p class="llink">
         https://sheets.googleapis.com/v4/spreadsheets/<b>MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ</b>/values/<b>Items</b>?key=<b>RYIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc</b>
     </p>
     This is not a working example, it's just an example how to substitute parameters.
 </div>
 
-<h4 id="webgl">WEBGL setup</h4>
+<h4 id="webgl">WEBGL/Asynchronous setup</h4>
 <p>
-    [BGDatabase version >=1.5.2 is required] WEBGL platform does not allow to update data synchronously. So it updates data asynchronously, over several frames.
+    [BGDatabase version >=1.5.2 is required] WEBGL platform does not allow to update data synchronously.
+    So it updates data asynchronously, over several frames.
     It means data should be preloaded before it can be accessed.
+    Alternative way to load data asynchronously is to toggle on "Force asynchronous" parameter.
 </p>
 <p>
     Here are the required steps:
@@ -118,7 +195,7 @@
     <tr>
         <td>API key</td>
         <td>
-            API key to use for request. Learn how to create it <a
+            API key to use for GoogleSheets API datasource type. Learn how to create it <a
                 href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">here</a>
         </td>
     </tr>
@@ -143,6 +220,13 @@ BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load(true);
         <td>
             Setting this to true will disable addon if your game is run in Editor. It will work in builds only.
             It is recommended to set it to true as soon as you are sure the addon works correctly.
+        </td>
+    </tr>
+    <tr>
+        <td>Force asynchronous</td>
+        <td>
+            If set to true, data loader will use asynchronous loader, which does not block main thread and loads data over several frames.
+            WEBGl platform ignores this parameter, cause it does not support synchronous loader and uses asynchronous loader by default
         </td>
     </tr>
     <tr>

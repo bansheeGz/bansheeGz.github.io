@@ -1,0 +1,84 @@
+#set title=BG Database v1.5.6: What is new?
+#set date=03/2020
+
+<h4>Table of content</h4>
+<div>
+    <ol>
+        <li><a href="#batchUpdate">Batch update</a></li>
+        <li><a href="#sprite">Sprite field upgrade</a></li>
+        <li><a href="#enumFields">New enum and enumList fields</a></li>
+        <li><a href="#newfields">New fields for Gradient and AnimationCurve</a></li>
+        <li><a href="#googlesheets">New DataSource types for importing data from GoogleSheets and LiveUpdate add-on</a></li>
+        <li><a href="#ui">UI/UX changes to make UI compatible with newly added UnityEditor Skin (2019.3)</a></li>
+        <li><a href="#unityObject">UnityObject field now can be limited to accept asset of specified types only</a></li>
+    </ol>
+</div>
+
+<h4 id="batchUpdate">Batch update</h4>
+<ol>
+    <li>Click on "Batch update" button</li>
+    <li>Select the rows you want to update, using "S" column</li>
+    <li>Select the field you want to update</li>
+    <li>Enter the value</li>
+    <li>Press on "Batch update n rows" button to update the rows</li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog9.png"><img style="width: 400px" src="#path images/Blog/Blog9.png"></a>
+</div>
+
+<h4 id="sprite">Sprite field upgrade</h4>
+<div>
+    Sprite field now accepts:
+    <ol>
+        <li>A single sprite</li>
+        <li>a sprite from multiple sprite</li>
+        <li>a sprite from <a href="https://docs.unity3d.com/Manual/class-SpriteAtlas.html">sprite atlas</a></li>
+    </ol>
+</div>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog3.png"><img style="width: 400px" src="#path images/Blog/Blog3.png"></a>
+</div>
+<p>
+    Please, update <a href="../../BGDatabase/Downloads/">Addressables</a> plug-in, if you use it
+</p>
+
+<h4 id="enumFields">New enum and enumList fields</h4>
+<div>
+    Create enum/enumList fields for your own enumerations
+</div>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog7.png"><img style="width: 400px" src="#path images/Blog/Blog7.png"></a>
+</div>
+
+<h4 id="newfields">New fields for Gradient and AnimationCurve</h4>
+<ol>
+    <li>New field for <a href="https://docs.unity3d.com/ScriptReference/Gradient.html">Gradient</a></li>
+    <li>New field for <a href="https://docs.unity3d.com/ScriptReference/AnimationCurve.html">AnimationCurve</a></li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog5.png"><img style="width: 400px" src="#path images/Blog/Blog5.png"></a>
+</div>
+
+<h4 id="googlesheets">New DataSource types for importing data from GoogleSheets and LiveUpdate add-on</h4>
+<ol>
+    <li>"Anonymous" read-only DataSource type was added for importing data in Editor. This datasource does not require to add credentials</li>
+    <li>2 new DataSource types was added to LiveUpdate plugin: "Visualization API" and "Excel export". Unlike "GoogleSheetsAPI" type, they do not require to add API key</li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog4.png"><img style="width: 400px" src="#path images/Blog/Blog4.png"></a>
+</div>
+
+<h4 id="ui">UI/UX changes to make UI compatible with newly added UnityEditor Skin (2019.3)</h4>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog6.png"><img style="width: 400px" src="#path images/Blog/Blog6.png"></a>
+</div>
+
+<h4 id="unityObject">UnityObject field now can be limited to accept assets of specified types only</h4>
+<div>
+    UnityObject field now has type constraint to only accept assets of certain types.
+    All code generators know about this constraint and substitute property type with proper type.
+</div>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog8.png"><img style="width: 400px" src="#path images/Blog/Blog8.png"></a>
+</div>
+
