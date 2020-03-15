@@ -2,19 +2,25 @@
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
-
 <h4>General information</h4>
-Database consists of 4 main substances:
+Database consists of 4 main entities:
 <ol>
-    <li>Table (called meta)</li>
+    <li>Table (meta)</li>
     <li>Table field</li>
-    <li>Table row (called entity)</li>
+    <li>Table row (entity)</li>
     <li>Database addon</li>
 </ol>
 Every table, field and entity has unique id (based on Guid generation) and name (table and field has unique name, 32 char max)
 <div class="bg-image">
     <a href="#path images/BGDatabase/HoToUse1.png"><img style="width: 400px" src="#path images/BGDatabase/HoToUse1.png"></a>
 </div>
+
+<h4>How it works?</h4>
+<p>
+    Database works just like Unity does- it reverts all runtime changes.
+    So it basically represent the world at the beginning of the game.
+    And you can <a href="../Addons/SaveLoad">save/load</a> runtime changes.
+</p>
 
 
 <h4>Use Export/import</h4>
@@ -23,9 +29,14 @@ Every table, field and entity has unique id (based on Guid generation) and name 
     Use json export/import to create database backup.
 </p>
 
+<h4>Data binders</h4>
+<p>
+    Data binder components let you inject values from database to Unity's components (including your own ones, inherited from MonoBehaviour).
+    More information about it <a href="../DataBinding">here</a>.
+</p>
 
-<h4>Accessing the database</h4>
-Once you setup and created a new database, you can access it in 4 distinct ways:
+<h4>Accessing the database at runtime</h4>
+Once you setup and created a new database, you can access it at runtime in 4 distinct ways:
 <ol>
     <li>Through code using basic API</li>
     <li>Through code using generated classes (highly recommended over basic API)</li>
