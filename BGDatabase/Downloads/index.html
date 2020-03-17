@@ -653,7 +653,9 @@
     <ol>
         <li>Create UnityEngine.Object variable and assign required type (for example GameObject for prefab field)</li>
         <li>Add new State and add BGAddressablesGetAsset action. Assign required table, field and entity. Use variable, you created at step #1 as Result</li>
-        <li>Use FINISHED event to move to the next state and use loaded asset</li>
+        <li>Use FINISHED event to move to the next state</li>
+        <li>Use variable to access the asset. You may need to use "Convert" option to convert it to required type (for example, use GameObject prefab field to instantiate
+            the prefab with standard "Create object" Playmaker action) </li>
     </ol>
     <div class="bg-image">
         <a href="../../images/BGDatabase/Addressables2.png"><img style="width: 400px" src="../../images/BGDatabase/Addressables2.png"></a>
