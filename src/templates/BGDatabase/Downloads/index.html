@@ -102,6 +102,15 @@
         <td>AnimationCurve field for Unity >= 2018</td>
         <td><a href="BGCustomFieldAnimationCurve2018.unitypackage ">link</a></td>
     </tr>
+    <tr>
+        <td>9</td>
+        <td><a href="#playmakerAddressables">Custom action for Playmaker and Addressables</a></td>
+        <td>Runtime extension</td>
+        <td class="ver">1.0-17/03/2020</td>
+        <td>Custom action for Playmaker to load assets from Addressables system. No preloading required
+        </td>
+        <td><a href="BGDatabaseAddressablesPlaymaker.unitypackage">link</a></td>
+    </tr>
 
 </table>
 
@@ -291,6 +300,9 @@
     <p>
         This <a href="#addressablesQuickStart">example project</a> has examples for both techniques
     </p>
+    <p>
+        If you use Playmaker you can use <a href="#playmakerAddressables">this custom action</a>(Section #9). No preloading required.
+    </p>
 
     <h6>Preloading: </h6>
     <p>
@@ -348,4 +360,18 @@
         </li>
     </ol>
 
+</div>
+
+<div id="playmakerAddressables">
+    <h4>9. Custom action for Playmaker to load Addressables assets</h4>
+    <p>Custom action (BGAddressablesGetAsset under BansheeGz category) for Playmaker to load Unity assets from Addressables without any prerequisites (no preloading required)</p>
+    <h6>Setup: </h6>
+    <ol>
+        <li>Create UnityEngine.Object variable and assign required type (for example GameObject for prefab field)</li>
+        <li>Add new State and add BGAddressablesGetAsset action. Assign required table, field and entity. Use variable, you created at step #1 as Result</li>
+        <li>Use FINISHED event to move to the next state and use loaded asset</li>
+    </ol>
+    <div class="bg-image">
+        <a href="#path images/BGDatabase/Addressables2.png"><img style="width: 400px" src="#path images/BGDatabase/Addressables2.png"></a>
+    </div>
 </div>
