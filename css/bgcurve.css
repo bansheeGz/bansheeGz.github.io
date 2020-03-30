@@ -207,6 +207,7 @@ h3{
 .curveicon{
     background: url(../images/BGCurveMenuIcon.png) no-repeat 5px 15px;
     background-size: 16px;
+    background-position: 5px 10px;
 }
 #leftmenu a{
     padding-left: 24px !important;
