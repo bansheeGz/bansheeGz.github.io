@@ -1,0 +1,719 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-7');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../BGCurve">BG`Curve</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../../Support">Support</a></li>
+                <li class="mdl-menu__item"><a href="../../../About">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!--
+        <div style="min-height: 5px;background-color: #CCCCCC"></div>
+        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                Announcement: <a href="../../../BGDatabase"><b>BG Database</b></a> v. 1.1 is out!
+        </b>
+    </div>
+    -->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+
+        <!--======================================================        Content (from Root)              -->
+        
+
+
+
+
+<link rel="stylesheet" href="../../../css/bgdatabase.css">
+<link rel="stylesheet" href="../../../css/magnific-popup.css">
+<script src="../../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul id="leftmenu">
+            <li class="pli curveicon ">
+                <a class="pa" href="../../../BGDatabase">BG Database Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Setup">Setup</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/HowToUse">How to use</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/GUIOverview">GUI Overview</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeExamples">Code Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/SupportedFields">Field types</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ExportImport">Export Import</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/DataBinding">Data Binding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/MergeTool">Merge Tool</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
+                    </li>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../../BGDatabase/Downloads">Downloads</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/CodeGeneration">Code Generation</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior Classes</a>
+                    </li>
+<!--
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
+                    </li>
+-->
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/ThirdParty">Third-Party Integration</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Excel">Excel</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Bolt</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/Addons">Addons</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Settings">Settings</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/SaveLoad">Save Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Multithreading">Multithreading</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Modding">Modding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Localization">Localization</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../../BGDatabase">BG BGDatabase Home</a>
+        <a class="pa" href="../../../BGDatabase/Setup">Setup</a>
+        <a class="pa" href="../../../BGDatabase/HowToUse">How To Use</a>
+        <a class="pa" href="../../../BGDatabase/Videos">Videos</a>
+        <a class="pa" href="../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
+        <a class="pa" href="../../../BGDatabase/SupportedFields">Fields</a>
+        <a class="pa" href="../../../BGDatabase/ExportImport">Export Import</a>
+        <a class="pa" href="../../../BGDatabase/DataBinding">Data Binding</a>
+        <a class="pa" href="../../../BGDatabase/Events">Events</a>
+        <a class="pa" href="../../../BGDatabase/CodeGeneration">Code Generation</a>
+        <a class="pa" href="../../../BGDatabase/Addons">Addons</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Downloads</h3>
+            </div>
+
+            <!--======================================================        BG Database Content              -->
+            <div id="content">
+            
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<a class="backToDownloads" href="../">< Back to downloads</a>
+
+<div>
+    <img class="centered" src="../../../images/BGDatabase/download5.gif">
+</div>
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <h4>Basic 3D example</h4>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            1.0
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity project zip archive
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseBasic3DExample.zip" class="downloadButton"></a>
+        </div>
+    </div>
+</div>
+
+
+<h4>Description</h4>
+<p>
+    Project represent simple 3D game prototype.
+    It's an endless game, the player should collect objects on two levels.
+    Each object has it's own type and some gold attached to it.
+    Once all objects are collected, new objects are spawned.
+    Game can be saved and loaded.
+</p>
+
+<h4>Features</h4>
+<ol>
+    <li>Very simple project with simple scripts</li>
+    <li><a href="../../CodeGeneration">Code generation</a> usage example</li>
+    <li><a href="../../DataBinding">Data binders</a> usage example</li>
+    <li><a href="../../Addons/SaveLoad">Save Load</a> addon usage example</li>
+    <li>Text tutorial available (read below)</li>
+</ol>
+
+<h4>Setup:</h4>
+<ol>
+    <li>Download zip archive, unzip it and open the project in Unity Editor (version >= 2017)</li>
+    <li>Import BGDatabase asset</li>
+    <li>Run example scene (BGDatabaseBasic3DExample\Scenes\BGExample1.unity)</li>
+</ol>
+
+<h4>Database schema</h4>
+<p>
+    Here is the database schema, we use for that example.
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/ExampleBreakdown1.png"><img style="width: 400px" src="../../../images/BGDatabase/ExampleBreakdown1.png"></a>
+</div>
+
+
+<ol>
+    <li>
+        <code>Scene</code>- is linked to Unity scene, it's name should be equal to Unity scene name.
+        It has following fields:
+        <ol>
+            <li><code>spawnPosition [Vector3]</code>- position, the player will be moved then he's spawned in this scene
+            </li>
+            <li><code>spawnRotation [Vector3]</code>- rotation, the player will be rotated then he's spawned in this
+                scene
+            </li>
+            <li><code>bounds [Bounds]</code>- area for spawning objects</li>
+        </ol>
+    </li>
+    <li>
+        <code>Collectable</code> - is Scene's nested field, meaning it defines it's own table (meta), which is connected
+        to <code>Scene</code> table (meta).
+        It stores all collectable objects in the scene and have following fields:
+        <ol>
+            <li><code>position [Vector3]</code>- position of the object</li>
+            <li><code>gold [int]</code>- amount of gold, attached to the object</li>
+            <li><code>type [relationSingle]</code>- type of the object</li>
+        </ol>
+    </li>
+    <li>
+        <code>CollectableType</code> - type of the <code>Collectable</code>
+        <ol>
+            <li><code>prefab [unityPrefab]</code>- prefab to use as an object to spawn</li>
+            <li><code>audio [audioClip]</code>- sound to play then object is collected</li>
+        </ol>
+    </li>
+    <li>
+        <code>Player</code> - single entity table (meta), which store info about player
+        <ol>
+            <li><code>gold [int]</code>- amount of gold player gathered</li>
+            <li><code>position [Vector3]</code>- player's position, used by SaveLoad addon to save and load player's
+                position
+            </li>
+            <li><code>rotation [Quaternion]</code>- player's rotation, used by SaveLoad addon to save and load player's
+                position
+            </li>
+            <li><code>scene [string]</code>- player's scene, used by SaveLoad addon to save and load player's position
+            </li>
+        </ol>
+    </li>
+</ol>
+
+
+
+<h4>Save/Load settings</h4>
+Let's look at the save/load setting to understand how they can be used to save/load your data during gameplay.
+You can find more information about Save/Load <a href="../Addons/SaveLoad">here</a>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/ExampleBreakdown2.png"><img style="width: 400px" src="../../../images/BGDatabase/ExampleBreakdown2.png"></a>
+</div>
+
+
+
+<h4>About Code Generation</h4>
+<div>
+    <p>
+        We use code generation in this example (and we strongly recommend you to use it too).
+        The long story short- instead of using basic API like this <code>entity.Set("gold", entity.Get&lt;int&gt;("gold")
+        +1));</code>
+        code generation allows you to use code like this <code>entity.gold=entity.gold+1;</code>.
+        As you can see code generation provides huge benefit, you can learn more about code generation <a
+            href="../CodeGeneration">here</a> .
+    </p>
+    <p>
+        To distinct database fields from normal fields we use <code>f_</code>, <code>m_</code> or <code>d_</code> field
+        prefixes in the examples below.
+        We use all 3 types of code generation (for illustrative purpose), each prefix correspond to code generation
+        type:
+    </p>
+    <ol>
+        <li><code>BGM_ClassName and m_FieldName</code> - MonoBehaviour generated classes (generated classes extends from
+            MonoBehaviour and can be attached to GameObject)
+        </li>
+        <li><code>BGE_ClassName and f_FieldName</code> - Extension classes (instead of creating basic BGEntity class,
+            the database populated with classes which inherited from BGEntity and have all additional properties for all
+            fields)
+        </li>
+        <li><code>BGD_ClassName and d_FieldName</code> - Dna generated classes (this is a special case and can be
+            avoided)
+        </li>
+    </ol>
+</div>
+
+<h4>Code explanation</h4>
+<p>
+    Some non relevant code is omitted.
+</p>
+<ol>
+    <li><code>BGCollectable.cs</code>- This script is attached to every collectable object.
+        This script is hooked to a database by extending from BGM_Collectable class (generated by code generator),
+        which in turn is extended from BGEntityGo- our component we use to connect GameObjects to database.
+        When new collectable object is spawned in the scene by <code>BGSpawner.cs</code>, Entity field is assigned- and
+        object become linked to a particular table row.<br/>
+        This script has 4 tasks:
+        <ol>
+            <li>Show gold amount on the TextMesh component. This is done by this code <code>Text.text = "Gold:" +
+                m_gold;</code>.
+                <code>m_gold</code> field reads/write data from/to database
+            </li>
+            <li>Add some gold to the player</li>
+            <li>Play sound effect when object's collected.</li>
+            <li>Remove the object when it's collected from scene and from database.</li>
+        </ol>
+
+        <pre class="prettyprint">
+public class BGCollectable : BGM_Collectable
+{
+    //this callback is called then connected entity is changed
+    public override void EntityChanged()
+    {
+        Text.text = "Gold:" + m_gold;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            var player = other.GetComponent&lt;BGPlayer&gt;();
+
+            //add gold
+            player.m_gold += m_gold;
+
+            //play sound
+            var audioSource = player.GetComponent&lt;AudioSource&gt;();
+            audioSource.clip = m_type.f_audio;
+            audioSource.Play();
+
+            //remove from database & scene
+            Entity.Delete();
+            Destroy(gameObject);
+        }
+    }
+}
+        </pre>
+    </li>
+    <li><code>BGGoToScene.cs</code>- this script is attached to a portal to another scene.
+        When the player collides with this portal, he's moved to another scene.
+        This script is also hooked up to a database, namely to <code>Scene</code> row, pointing to a scene to load.
+        When the player collides with this object, script read data about this scene from database, updates Player table
+        with position and rotation from Scene table and loads target scene.
+        <pre class="prettyprint">
+public class BGGoToScene : BGM_Scene
+{
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            //get reference to player
+            var player = other.GetComponent&lt;BGPlayer&gt;();
+
+            //set player position & rotation to scene's spawn position & rotation
+            player.m_position = m_spawnPosition;
+            player.m_rotation = Quaternion.Euler(m_spawnRotation);
+
+            //load the scene
+            SceneManager.LoadScene(Entity.Name);
+        }
+    }
+}
+        </pre>
+
+    </li>
+    <li><code>BGSpawner.cs</code>- this script fills database with new objects and also spawn them to the scene.
+        It hooked up to <code>Scene</code> table. It uses database events, to find the moment all objects are collected.
+        <pre class="prettyprint">
+public class BGSpawner :BGM_Scene
+{
+    public override void  Start()
+    {
+        base.Start();
+        Spawn();
+        //use database events to keep track the moment, when all collectables are gathered
+        BGRepo.I.Events.AddAnyEntityDeletedListener(BGE_Collectable.MetaDefault.Id, CheckForNewSpawns);
+    }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+        BGRepo.I.Events.RemoveAnyEntityDeletedListener(BGE_Collectable.MetaDefault.Id, CheckForNewSpawns);
+    }
+
+    //spawn unity's gameobjects - corresponding to Repo objects
+    private void Spawn()
+    {
+        //fetch collectables from database
+        var collectables = m_Collectable;
+
+        //no collectables- no luck
+        if (BGUtil.IsEmpty(collectables)) return;
+
+        //spawn collectables objects
+        foreach (BGEntity collectable in collectables)
+        {
+            //create collectable GameObject
+            var newCollectable = Instantiate(collectable.f_type.f_prefab,
+                collectable.f_position, Quaternion.identity);
+
+            //we know - collectable prefab has BGCollectable script attached
+            // so hook it up to table's row
+            newCollectable.GetComponent&lt;BGCollectable&gt;().Entity = collectable;
+        }
+    }
+
+    //This method create new collectables randomly for all scenes if all objects are collected
+    public void CheckForNewSpawns(object sender, BGEventArgsAnyEntity args)
+    {
+        //there are still some collectables
+        if (BGE_Collectable.CountEntities > 0) return;
+
+        //ok, we gathered all objects- lets spawn new ones
+        BGE_Scene.ForEachEntity(scene =>
+        {
+
+            //number of collectables for one scene
+            var count = Random.Range(3, 6);
+            for (var i = 0; i < count; i++)
+            {
+                //nested meta has utility method, which auto assign new collectable to owner entity (scene)
+                var newCollectable = BGE_Collectable.NewEntity(scene);
+
+                //set gold
+                newCollectable.f_gold = Random.Range(1, 10);
+
+                //bounds determines scene's frontiers
+                var bounds = scene.f_bounds;
+                //set position
+                newCollectable.f_position = new Vector3(Random.Range(bounds.min.x, bounds.max.x),
+                    bounds.center.y, Random.Range(bounds.min.z, bounds.max.z));
+
+                //set type
+                newCollectable.f_type = BGE_CollectableType.GetEntity(Random.Range(0, BGE_CollectableType.CountEntities));
+            }
+        });
+
+        //spawn GameObjects for current scene
+        Spawn();
+    }
+}
+        </pre>
+    </li>
+    <li><code>BGPlayer.cs</code>- this script is attached to the player and hooked up to a first row of <code>Player</code> table via extending from BGM_Player.
+        <ol>
+            <li>It initialize it's position and rotation from database in the Start method</li>
+            <li>It implements <code>BGAddonSaveLoad.BeforeSaveReciever</code> interface to ensure <code>OnBeforeSave</code> method is called before saving.
+                In this method it saves it's own position and amount of gold to the database, so while saving those values will be put to the save file.</li>
+        </ol>
+        <pre class="prettyprint">
+public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
+{
+    public override void Start()
+    {
+        base.Start();
+        //get pos and rotation from the table
+        transform.position = m_position;
+        transform.rotation = m_rotation;
+    }
+
+    //this method is called before saving
+    void BGAddonSaveLoad.BeforeSaveReciever.OnBeforeSave()
+    {
+        //save current position, rotation and scene to the database
+        m_position = transform.position;
+        m_rotation = transform.rotation;
+        m_scene = BGE_Scene.FindEntity(scene => string.Equals(scene.Name, SceneManager.GetActiveScene().name));
+    }
+}
+        </pre>
+    </li>
+    <li>
+        <code>BGSavingLoading.cs</code>
+        It Provides Save/Load functions via SaveLoad addon. More information about Save/Load addon can be found <a href="../Addons/SaveLoad">here</a>
+        <pre class="prettyprint">
+public class BGSavingLoading : MonoBehaviour
+{
+    //... some code is omitted
+    public void Save()
+    {
+        //save
+        var bytes = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save();
+        File.WriteAllBytes(SaveFilePath, bytes);
+    }
+
+    public void Load()
+    {
+        //load
+        if (!HasSavedFile) return;
+
+        var content = File.ReadAllBytes(SaveFilePath);
+
+        BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(content);
+
+        //load saved scene
+        SceneManager.LoadScene(R.Player.d_scene.Get(PlayerEntity).Name);
+    }
+}
+        </pre>
+    </li>
+</ol>
+
+<h4>Releases</h4>
+<table class="contentTable dTable">
+    <tr>
+        <th style="width: 10%">
+            Version
+        </th>
+        <th style="width: 20%">
+            Release date
+        </th>
+        <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.0
+        </td>
+        <td class="ra">March 30, 2020</td>
+        <td>
+            Initial release
+        </td>
+    </tr>
+</table>
+            </div>
+
+            <!--======================================================       BG Database Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

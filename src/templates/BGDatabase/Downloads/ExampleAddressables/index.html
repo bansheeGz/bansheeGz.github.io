@@ -1,0 +1,110 @@
+#set page=Downloads
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<a class="backToDownloads" href="../">< Back to downloads</a>
+
+<div>
+    <img class="centered" src="#path images/BGDatabase/download12.png">
+</div>
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <h4>Addressables Quick Start</h4>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            1.2
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity project zip archive
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseAddressablesQuickStart.zip" class="downloadButton"></a>
+        </div>
+    </div>
+</div>
+
+
+<h4>Description</h4>
+<p>
+    Minimalistic example project to help you to start using Unity's
+    <a href="https://docs.unity3d.com/Manual/com.unity.addressables.html">Addressables system</a> with BGDatabase quickly.
+    It requires BGDatabase version >= 1.5.6
+</p>
+
+<h4>Setup: </h4>
+<ol>
+    <li>Download this project, unzip it and open it with Unity &gt; 2019.2.4. Ignore console errors.</li>
+    <li>Import BGDatabase package</li>
+    <li>
+        Run <b>preloader.unity</b> scene to test preloading assets technique.
+        <a href="../RuntimeAddressables#preload" target="_blank">More info</a> about this technique.
+    </li>
+    <li>
+        Run <b>scene.unity</b> scene to test reading assets by addresses technique (without preloading).
+        <a href="../RuntimeAddressables#byAddress"  target="_blank">More info</a> about this technique.
+    </li>
+    <li>[Optional] If you want to build the project to other platforms, make sure to rebuild Addressables after switching platform
+        (Window -> Asset Management -> Addressables -> Groups, Build->New Build->Default Build Script )</li>
+</ol>
+
+<h6>Scripts description: </h6>
+<ol>
+    <li>
+        PreloaderUsingAddressables.cs (preloader.unity scene) : preload assets using Addressables system label
+    </li>
+    <li>
+        PreloaderUsingDatabaseValues.cs (preloader.unity scene) : preload assets using addresses, stored in the database
+    </li>
+    <li>
+        Spawner.cs (scene.unity scene) : spawn both preloaded assets and assets, retrieved with raw address.
+    </li>
+</ol>
+
+<h4>Releases</h4>
+<table class="contentTable dTable">
+    <tr>
+        <th style="width: 10%">
+            Version
+        </th>
+        <th style="width: 20%">
+            Release date
+        </th>
+        <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.2
+        </td>
+        <td class="ra">March 06, 2020</td>
+        <td>
+            Update for <a href="../RuntimeAddressables">plugin</a> v.1.2
+        </td>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.1
+        </td>
+        <td class="ra">September 20, 2019</td>
+        <td>
+            Update for <a href="../RuntimeAddressables">plugin</a> v.1.1
+        </td>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.0
+        </td>
+        <td class="ra">January 09, 2019</td>
+        <td>
+            Initial release
+        </td>
+    </tr>
+</table>

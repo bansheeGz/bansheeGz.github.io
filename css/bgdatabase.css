@@ -211,7 +211,7 @@ h3 {
     background-size: 16px;
 }
 
-#leftmenu  a {
+#leftmenu a {
     padding-left: 24px !important;
 }
 
@@ -277,19 +277,83 @@ code::before, code::after {
 }
 
 /*code sample*/
-.cs{
+.cs {
     background-color: rgba(0, 0, 0, .06);
     margin: 0 0 10px;
     font-size: 12px;
 }
 
-.moreinfo{
+.moreinfo {
     border: #0b0b0b dashed 1px;
     background-color: rgb(233, 241, 241);
     font-size: small;
     padding-left: 15px;
     padding-right: 5px;
 }
-.moreinfo ul{
+
+.moreinfo ul {
     font-size: small;
+}
+
+.downloadButton {
+    background: url(../images/DownloadButton.png) no-repeat;
+    cursor: pointer;
+    border: none;
+    width: 120px;
+    height: 34px;
+    display: block;
+    margin: 5px auto 0 auto;
+}
+
+/* Darker background on mouse-over */
+/*
+.downloadButton:active {
+    background:url(../images/DownloadButtonH.png) no-repeat;
+}
+*/
+.downloadButton:hover {
+    background: url(../images/DownloadButtonH.png) no-repeat;
+}
+
+.centered {
+    display: block;
+    margin: 0 auto;
+}
+.backToDownloads2{
+    text-align: left;
+    background: #eeeced;
+    padding: 4px;
+    border: #bfbdbe;
+    border-style: solid;
+    border-width: thin;
+}
+.previewDownloadImage{
+    width: 400px;
+    height: 200px;
+}
+
+.backToDownloads {
+    box-shadow:inset 0px 1px 0px 0px #ffffff;
+    background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+    background-color:#ededed;
+    border-radius:3px;
+    border:1px solid #dcdcdc;
+    display:inline-block;
+    cursor:pointer;
+    color:#777777;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size:15px;
+    font-weight:bold;
+    padding:6px 12px;
+    text-decoration:none !important;
+    text-shadow:0px 1px 0px #ffffff;
+    margin-bottom: 5px;
+}
+.backToDownloads:hover {
+    background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+    background-color:#dfdfdf;
+}
+.backToDownloads:active {
+    position:relative;
+    top:1px;
 }

@@ -1,0 +1,73 @@
+#set page=Downloads
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<a class="backToDownloads" href="../">< Back to downloads</a>
+
+<div>
+    <img class="centered" src="#path images/BGDatabase/download9.png">
+</div>
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <h4>Custom action for Playmaker and Addressables</h4>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            1.0
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseAddressablesPlaymaker.unitypackage" class="downloadButton"></a>
+        </div>
+    </div>
+</div>
+
+
+<h4>Description</h4>
+<p>
+    Custom action (BGAddressablesGetAsset under BansheeGz category) for <a href="../../ThirdParty/Playmaker">Playmaker</a> to load Unity assets from Addressables and BGDatabase without any prerequisites (no preloading required)
+</p>
+
+<h4>Setup: </h4>
+<ol>
+    <li>Create UnityEngine.Object variable and assign required type (for example GameObject for prefab field)</li>
+    <li>Add new State and add BGAddressablesGetAsset action. Assign required table, field and entity. Use variable, you created at step #1 as Result</li>
+    <li>Use FINISHED event to move to the next state</li>
+    <li>Use variable to access the asset. You may need to use "Convert" option to convert it to required type (for example, use GameObject prefab field to instantiate
+        the prefab with standard "Create object" Playmaker action) </li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Addressables2.png"><img style="width: 400px" src="#path images/BGDatabase/Addressables2.png"></a>
+</div>
+
+<h4>Releases</h4>
+<table class="contentTable dTable">
+    <tr>
+        <th style="width: 10%">
+            Version
+        </th>
+        <th style="width: 20%">
+            Release date
+        </th>
+        <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.0
+        </td>
+        <td class="ra">March 17, 2020</td>
+        <td>
+            Initial release
+        </td>
+    </tr>
+</table>

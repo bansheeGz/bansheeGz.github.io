@@ -34,7 +34,8 @@
 <body>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 <style>
     #aBox a {
@@ -155,9 +156,6 @@
                         <a class="ca" href="../../BGDatabase/Videos">Videos</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
-                    </li>
-                    <li class="cli ">
                         <a class="ca" href="../../BGDatabase/SupportedFields">Field types</a>
                     </li>
                     <li class="cli ">
@@ -174,9 +172,6 @@
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGDatabase/Downloads">Downloads</a>
-                    </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../BGDatabase/BGDatabaseLite">BGDatabase Lite</a>
                     </li>
                 </ul>
             </li>
@@ -285,22 +280,17 @@
             
 
 <h4>Create your own database</h4>
-<div class="importantNote">
-    This step is required
-</div>
 <ol>
     <li>
         Import the package
     </li>
     <li>
-        Create your own database (do not use default database as your own one.)
         Open <code>Window->BGDatabase</code>.
-        Select <code>Settings-> Main->Create new database</code> tab.
+        Click on <code>Create new database file</code>.
         Chose the <a href="#loaders">loader</a> (Resources or StreamingAssets), fill in fields and press <code>Create</code> button
         <div class="bg-image">
-            <a href="../../images/BGDatabase/Setup1.png"><img style="width: 400px" src="../../images/BGDatabase/Setup1.png"></a>
+            <a href="../../images/BGDatabase/Setup5.png"><img style="width: 400px" src="../../images/BGDatabase/Setup5.png"></a>
         </div>
-        empty database will be created at specified location
     </li>
     <li>
         Go to <code>Configuration</code> and create table (called Meta)
@@ -325,9 +315,6 @@
         Make sure to commit database file to your source control system or make regular backups to prevent the risk of data loss.
     </li>
 </ol>
-<div class="importantNote">
-    No further action is required. Read further below only if you want to learn more details.
-</div>
 
 <h4 id="loaders">Which loader to chose?</h4>
 <ul>
