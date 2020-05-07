@@ -373,7 +373,6 @@ code::before, code::after {
 .flexdiv {
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
     margin-top: 6px;
-    padding-left: 64px;
     border-style: dotted;
     border-width: 1px;
     font-size: 12px;
@@ -383,6 +382,7 @@ code::before, code::after {
     background: rgb(251, 251, 251) url("../images/info_icon.png") no-repeat;
     background-size: 40px;
     background-position: 7px 5px;
+    padding: 4px 4px 4px 64px;
 }
 .flexdiv a, .flexdiv li{
     font-size: 12px;
@@ -390,4 +390,5 @@ code::before, code::after {
 .flexdiv ol{
     margin-top: 0;
     margin-bottom: 0;
+    padding-left: 12px;
 }

@@ -49,16 +49,14 @@ Chose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for sav
                                                               src="#path images/BGDatabase/SaveLoadAddon4.png"></a>
 </div>
 
-<div class="moreinfo">
-    For more information about:
-    <ul>
-        <li>
-            How to change your database and keep it compatible with old save files- read the <a href="#compatible">section below</a> .
-        </li>
-        <li>
-            How to implement row-level control over merging- read <a href="#rowlevelexample">Row-level controller</a> section below.
-        </li>
-    </ul>
+<div class="flexdiv">
+    <div>
+        Read more about:
+        <ol>
+            <li>How to change your database and keep it compatible with old save files- read the <a href="#compatible">section below</a></li>
+            <li>How to implement row-level control over merging- read <a href="#rowlevelexample">Row-level controller</a> section below.</li>
+        </ol>
+    </div>
 </div>
 
 <h4>How to use?</h4>
@@ -85,41 +83,87 @@ BGRepo.I.Load(bytes);
 <p>
     Using Merge settings you can chose which data to save/load.
     You want as less data to be saved as possible.
-    You do not need to include data, that is "static" and can not be changed during play session.
+    You do not need to include data, which is "static" and can not be changed during play session.
 </p>
 
 <p>
-    The rules are very simple:
+    There are only 2 rules for using merge settings and condition for choosing one or another is whether or not rows can be added or removed at runtime.
 </p>
-<ol>
-    <li>
-        If you have some field, which value can be changed during the play session and you want this change to be
-        persistent,
-        you need to mark this field to be included to save/load settings.
-        Example from our <a href="../../Downloads/Example3DBasic">basic 3D example</a>: we want the amount of gold, player gathered to be stored,
-        so we marked this field to be saved and loaded.
-    </li>
-    <li>
-        If you have some table, whose rows can be changed during gameplay (e.g. rows can be added or removed) and you want these changes to be stored,
-        you need to mark this table to be included to the save/load by setting following setting to true:
-        "Add missing", "Remove Orphaned", "Update matching".
-        These setting will ensure, that all rows from this table will be saved and loaded.
-        Example from our <a href="../../Downloads/Example3DBasic">basic 3D example</a>: Collectable table rows can be changed, so we marked them as described above.
-    </li>
-</ol>
+<table class="contentTable">
+    <tr>
+        <th></th>
+        <th>
+            Rule #1
+        </th>
+        <th>
+            Rule #2
+        </th>
+    </tr>
+    <tr>
+        <th>
+            Condition
+        </th>
+        <td>Rows can NOT be added/deleted at runtime</td>
+        <td>Rows can be added/deleted at runtime</td>
+    </tr>
+    <tr>
+        <th>
+            How to apply
+        </th>
+        <td>
+            Turn on "Update matching".
+            Optionally turn "Chose fields to update" on and mark the fields you want to be saved.
+            (Tip: do not mark the fields which can not be changed at runtime)
+        </td>
+        <td>Turn on "Add missing", "Remove Orphaned", "Update matching".</td>
+    </tr>
+    <tr>
+        <th  rowspan="2">
+            Example
+        </th>
+        <td colspan="2" style="text-align: center;font-size: 12px;">We use our <a href="../../Downloads/Example3DBasic">Basic 3D project</a> as an example</td>
+    </tr>
+    <tr>
+        <td>
+            Rows from <code>Player</code> table can not be added or removed, so we do not turn on  "Add missing" and "Remove Orphaned".
+            There is no need to save a <code>name</code> field, so we do not include it into settings
+        </td>
+        <td>
+            Rows from <code>Collectable</code> table can be added and removed, so we turn on "Add missing", "Remove Orphaned", "Update matching"
+        </td>
+    </tr>
+    <tr>
+        <th>
+            Screenshot for example
+        </th>
+        <td>
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/SaveLoad1.png"><img style="max-width: 200px"
+                                                                     src="#path images/BGDatabase/SaveLoad1.png"></a>
+            </div>
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/SaveLoad2.png"><img style="max-width: 200px"
+                                                                     src="#path images/BGDatabase/SaveLoad2.png"></a>
+            </div>
+        </td>
+    </tr>
+</table>
+    <div class="flexdiv">
+        <div>
+            Read more about:
+            <ol>
+                <li><a href="../../ExportImport#mergeSettings">Merge settings</a></li>
+                <li><a href="../../Downloads/Example3DBasic">Basic 3D example project</a></li>
+            </ol>
+        </div>
+    </div>
 
-<p>
-    Merge settings for this addon is the same as merge settings for Export/Import. You can learn more about merge settings <a href="../../ExportImport#mergeSettings">here</a>
-</p>
-
-<div class="bg-image">
-    <a href="#path images/BGDatabase/SaveLoad1.png"><img style="width: 400px"
-                                                         src="#path images/BGDatabase/SaveLoad1.png"></a>
-</div>
 
 
 <h4 id="compatible">How to change your database and keep it compatible with old save files?</h4>
-<ul>
+<ol>
     <li>Do not include static data (the data, which can not be changed during game session) to save/load merge settings</li>
     <li>While developing new, public version of your game- you can change <i>anything</i> in your static data with one simple exception:
         you can not delete rows which may be referenced from saved data.
@@ -128,11 +172,11 @@ BGRepo.I.Load(bytes);
     <li>As for the data, which is saved within database snapshot (save file),
         <ul>
             <li>
-                if in <a href="#mergesettings">merge settings</a> you mark the field for updating it will be updated during loading (if target row stills exist in default database),
+                if you mark the field for saving using <a href="#mergesettings">merge settings</a> ("Update Matching") it will be loaded if the target row still exists in the default database
             </li>
             <li>
-                if in merge settings you mark the rows for adding/deleting ("Add missing"/"Remove Orphaned") the whole table will be updated with values from the saved file (if this table still exists
-                in default database).
+                if you mark the rows for saving ("Add missing" and "Remove Orphaned") the whole table will be updated with values from the saved file during loading, if this table (meta) still exists
+                in the default database.
             </li>
             <li>
                 if you want fine-grained, row-level control over loading - you can do it with C# controller class (read the <a href="#rowlevelexample">next section</a> for more details).
@@ -140,7 +184,7 @@ BGRepo.I.Load(bytes);
         </ul>
 
     </li>
-</ul>
+</ol>
 <p>
     Here is an example from our <a href="../../Downloads/Example3DBasic">basic 3D example</a> project:
 </p>
@@ -236,14 +280,16 @@ using BansheeGz.BGDatabase;
         Also, you can run the same example without controller assigned to see the difference
     </li>
 </ul>
-<div class="moreinfo">
-    For more information about:
-    <ul>
-        <li>
-            row-level controller, please read article about <a href="../../ExportImport#rowlevel">export/import</a>
-        </li>
-    </ul>
+<div class="flexdiv">
+    <div>
+        Read more about:
+        <ol>
+            <li>row-level controller on <a href="../../ExportImport#rowlevel">export/import page</a></li>
+        </ol>
+    </div>
 </div>
+
+
 
 
 <h4>BeforeSave event</h4>
