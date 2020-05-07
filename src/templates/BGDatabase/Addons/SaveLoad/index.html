@@ -95,17 +95,16 @@ BGRepo.I.Load(bytes);
     <li>
         If you have some field, which value can be changed during the play session and you want this change to be
         persistent,
-        you need to mark this field to be included to save/load.
-        Example from our example scenes: we want the amount of gold, player gathered to be remembered between game
-        sessions-
+        you need to mark this field to be included to save/load settings.
+        Example from our <a href="../../Downloads/Example3DBasic">basic 3D example</a>: we want the amount of gold, player gathered to be stored,
         so we marked this field to be saved and loaded.
     </li>
     <li>
-        If you have some table, whose rows can be changed during gameplay and you want these changes to be remembered,
+        If you have some table, whose rows can be changed during gameplay (e.g. rows can be added or removed) and you want these changes to be stored,
         you need to mark this table to be included to the save/load by setting following setting to true:
         "Add missing", "Remove Orphaned", "Update matching".
         These setting will ensure, that all rows from this table will be saved and loaded.
-        Example from our example scenes: Collectable table rows can be changed, so we marked them as described above.
+        Example from our <a href="../../Downloads/Example3DBasic">basic 3D example</a>: Collectable table rows can be changed, so we marked them as described above.
     </li>
 </ol>
 
@@ -143,19 +142,11 @@ BGRepo.I.Load(bytes);
     </li>
 </ul>
 <p>
-    Here is an example from our default database and default example scenes:
+    Here is an example from our <a href="../../Downloads/Example3DBasic">basic 3D example</a> project:
 </p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/SaveLoadAddon2.png"><img style="width: 400px"
                                                               src="#path images/BGDatabase/SaveLoadAddon2.png"></a>
-</div>
-<div class="moreinfo">
-    For more information about:
-    <ul>
-        <li>
-            How our example scenes work- read <a href="../../ExampleBreakdown">example breakdown</a> article
-        </li>
-    </ul>
 </div>
 
 
@@ -169,8 +160,8 @@ BGRepo.I.Load(bytes);
     Currently there is no any merging on saving data, only on loading (but we reserved "merging on saving" option for future releases)
 </p>
 <p>
-    Here is a quick example of custom controller class, which uses the default example database, shipped with our package.
-    For detailed explanation about how our example works, please, read <a href="../../ExampleBreakdown">example breakdown</a> article.
+    Here is a quick example of custom controller class.
+    This controller is made for our <a href="../../Downloads/Example3DBasic">basic 3D example</a> project.
 </p>
 <p>
     The main objective of this example controller is to prevent deleting Collectable rows for added scenes (scenes which was added between public game releases)
