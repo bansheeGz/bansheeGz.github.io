@@ -97,42 +97,74 @@
     </tr>
 </table>
 
-<h4 id="setup">Details about how database files are organized</h4>
+<h4 id="setup">More details about database files</h4>
 
 <p>
-    There are 2 files BGDatabase operates with. The first file is the file with actual database data-
-    it's shared among all users and it's available at runtime.
-    The second file- is the file with user's settings- it's not available at runtime and it's not shared between users- each user has it's own settings.
+    There are 2 different files BGDatabase operates with:
 </p>
+
 <ol>
-    <li>
-        Database file, named <code>bansheegz_database.bytes</code> should be placed right under Resources or Assets/StreamingAssets folder.
-        Resources folder can be anywhere in your project but not under <code>Editor</code> folder.
-    </li>
-    <li>
-        Settings file (default name is <code>bansheegz_database_settings.json</code>) has some additional information about database,
-        like widths of the tables columns, data about Export/Import tasks etc. It can be placed in Resources folder next to database file,
-        however it may contain sensitive data, so it's better be placed somewhere else. Go to Settings->Main to chose its path.
-        Additionally, each user has it's own settings file. The path to this settings file is stored in EditorPrefs file.
-        This also means, that settings file location is not transferable between different PCs and need to be chosen separately for each PC.
-    </li>
+    <li>file with database data</li>
+    <li>file with user settings</li>
 </ol>
-<div class="importantNote">
-    Settings file may contain sensitive information (if you use syncing with <a href="../ThirdParty/GoogleSheets">GoogleSheets</a>),
-    so it's not recommended to keep it public in this case
-</div>
+<p>
+    More details about these files are available in the table below.
+</p>
 
-<h4 id="revert">Reverting database to default (example) database</h4>
-<p>
-    By default, BGDatabase uses default database, located at <code>Assets\BansheeGz\BGDatabase\Examples\Resources\bansheegz_database_default.bytes</code>
-    As soon as you create your own database, <code>bansheegz_database.bytes</code> file will be used as database.
-    But you may want to revert to default database temporarily, for example, to test how our example scenes are working.
-</p>
-<p>
-    This is very easy to do- locate your <code>bansheegz_database.bytes</code> file (you can find it's location under <code>Settings->Main</code>) and rename or move it to another location,
-    then return to <code>Window->BGDatabase</code> and press <code>Reload</code> button. (top left corner of BGDatabase window)
-    Default database will be loaded.
-</p>
-<p>
-    As soon as you do not need it anymore: rename your database file back to <code>bansheegz_database.bytes</code> or move it back from another folder and press <code>Reload</code> button.
-</p>
+<table class="contentTable">
+    <tr>
+        <th>&#x2193; Feature\File &#x2192;</th>
+        <th>Database file</th>
+        <th>Settings file</th>
+    </tr>
+    <tr>
+        <th>Purpose</th>
+        <td>Database file</td>
+        <td>User settings file</td>
+    </tr>
+    <tr>
+        <th>Default name</th>
+        <td>bansheegz_database.bytes</td>
+        <td>bansheegz_database_settings.json</td>
+    </tr>
+    <tr>
+        <th>Format</th>
+        <td>Binary</td>
+        <td>Json</td>
+    </tr>
+    <tr>
+        <th>Available at runtime</th>
+        <td>Yes</td>
+        <td>No</td>
+    </tr>
+    <tr>
+        <th>Shared between developers</th>
+        <td>Yes</td>
+        <td>No, each developer has a separate file</td>
+    </tr>
+    <tr>
+        <th>Location</th>
+        <td>Under Resources / StreamingAssets folders</td>
+        <td>No restrictions</td>
+    </tr>
+    <tr>
+        <th>How to change location</th>
+        <td>Move (not copy) database file along with it's meta file</td>
+        <td>Go to Settings -> Main -> "Settings file" to set/change its path.</td>
+    </tr>
+    <tr>
+        <th>How file is resolved</th>
+        <td>Naming convention is used (bansheegz_database.bytes)</td>
+        <td>File location is stored in EditorPrefs and bound to database asset GUID</td>
+    </tr>
+</table>
+
+<div class="flexdiv">
+    <div>
+        What to read next:
+        <ol>
+            <li><a href="../HowToUse">How to use</a></li>
+            <li><a href="../GUIOverview">GUI overview</a></li>
+        </ol>
+    </div>
+</div>

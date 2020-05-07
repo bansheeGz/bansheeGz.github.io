@@ -223,12 +223,10 @@ using BansheeGz.BGDatabase;
     To see this controller in action:
 </p>
 <ul>
-    <li>Run example scene (Assets\BansheeGz\BGDatabase\Examples\Scenes\BGExample1.unity) using default database.
-        (If you already created your own database, here is some information about how to temporarily <a href="../../Setup#revert">revert it to default</a>)
-    </li>
-    <li>Collect some objects and save the game</li>
+    <li>Download default 3D example project <a href="../../Downloads/Example3DBasic">here</a></li>
+    <li>Run the scene (Assets\BGDatabaseBasic3DExample\Scenes\BGExample1.unity), collect some objects and save the game</li>
     <li>
-        We pretend this was made by a real player with our game version 1, and now we want to develop version 1.1 and we want to add a new scene.
+        Let's assume this was made by a real player with our game version 1, and now we want to develop version 1.1 and we want to add a new scene.
         We could add a new scene without any controller and without any issue, but we want to populate this scene with Collectable rows,
         and we do not want them to be deleted while loading save file.
         Without this controller, all Collectable rows will be overriden with the data from the save file,

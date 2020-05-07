@@ -304,31 +304,35 @@ Every table, field and entity has unique id (based on Guid generation) and name 
 
 <h4>Use Export/import</h4>
 <p>
-    You can edit database data in external tools.
-    More information about it <a href="../ExportImport">here</a>.
+    You can edit database data in external tools (Excel/GoogleSheets).
     Use json export/import to create database backup.
 </p>
+
+<div class="flexdiv">
+    <span>Read more about <a href="../ExportImport">Export/import</a></span>
+</div>
 
 <h4>Data binders</h4>
 <p>
     Data binder components let you inject values from database to Unity's components (including your own ones, inherited from MonoBehaviour).
-    More information about it <a href="../DataBinding">here</a>.
 </p>
+<div class="flexdiv">
+    <span>Read more about <a href="../DataBinding">data binders</a></span>
+</div>
 
 <h4>Accessing the database at runtime</h4>
-Once you setup and created a new database, you can access it at runtime in 4 distinct ways:
 <ol>
-    <li>Through code using basic API</li>
+    <li>Through code using basic API (not recommended)</li>
     <li>Through code using generated classes (highly recommended over basic API)</li>
-    <li>By adding BGEntityGo component to any GameObject and choosing table and row.</li>
-    <li>Instead of using BGEntityGo component, you can use generated class. (highly recommended over using BGEntityGo)
-    </li>
+    <li>By adding BGEntityGo component to any GameObject and choosing table and row. (not recommended)</li>
+    <li>Instead of using BGEntityGo component, you can use generated class. (highly recommended over using BGEntityGo)</li>
+    <li>By using generated actions for <a href="../ThirdParty/Playmaker">Playmaker</a> and  <a href="../ThirdParty/Bolt">Bolt</a></li>
 </ol>
 <p>
-    Let's take a look at each of these methods.
+    Let's take a closer look at these methods.
 </p>
 
-<h4>1) Accessing the database using basic API</h4>
+<h6>1) Accessing the database using basic API (not recommended)</h6>
 <p>
     Here is minimalistic example about how you can access database without code generation:
 </p>
@@ -345,12 +349,20 @@ var fieldValue = entity.Get&lt;int&gt;("myField");
 entity.Set("myField", fieldValue + 1);
 </pre>
 
-<h4>2) Accessing the database using generated classes</h4>
+<div class="flexdiv">
+    <ol>
+        <li>Read more about <a href="../API">basic C# API</a></li>
+        <li>View <a href="../CodeExamples">code examples</a></li>
+    </ol>
+</div>
+
+<h6>2) Accessing the database using generated classes (recommended)</h6>
 <p>
     You can remove all boilerplate code by using generated classes.
     Here is the same example but written with help of generated classes.
 </p>
 <pre class="prettyprint">
+    //the same example with code generation
 var entity = BGE_MyTable.GetEntity(new BGId("some-id-here"));
 entity.myField = entity.myField + 1;
 </pre>
@@ -367,9 +379,11 @@ entity.myField = entity.myField + 1;
     <a href="../../images/BGDatabase/HoToUse2.png"><img style="width: 400px" src="../../images/BGDatabase/HoToUse2.png"></a>
 </div>
 
+<div class="flexdiv">
+    <span>Read more about <a href="../CodeGeneration/ExtensionClasses">Code Generation</a> for extension classes</span>
+</div>
 
-
-<h4>3) Accessing database by adding BGEntityGo component</h4>
+<h6>3) Accessing database by adding BGEntityGo component (not recommended)</h6>
 <p>
     You can easily hook up any GameObject to a database row by adding BGEntityGo component to it.
     Just add the component, select table (meta) and then select a row (entity)
@@ -386,7 +400,7 @@ entity.myField = entity.myField + 1;
     So, instead of this method, we highly recommend to use method 4, described below.
 </p>
 
-<h4>4) Instead of using BGEntityGo component, use generated classes</h4>
+<h6>4) Instead of using BGEntityGo component, use generated classes (recommended)</h6>
 <p>
     Apart from CodeGeneration, described in method 2, there is another type of CodeGeneration, which generates classes,
     inherited from Unity's MonoBehaviour class. These classes can be added to Unity's GameObject, just like BGEntityGo component,
@@ -395,6 +409,10 @@ entity.myField = entity.myField + 1;
 </p>
 <div class="bg-image">
     <a href="../../images/BGDatabase/HoToUse4.png"><img style="width: 400px" src="../../images/BGDatabase/HoToUse4.png"></a>
+</div>
+
+<div class="flexdiv">
+    <span>Read more about <a href="../CodeGeneration/MonoBehaviourClasses">Code Generation</a> for MonoBehaviour classes</span>
 </div>
             </div>
 

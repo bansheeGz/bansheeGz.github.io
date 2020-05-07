@@ -211,6 +211,7 @@ h3 {
     background-size: 16px;
     background-position: 5px 10px;
 }
+
 .downloadicon {
     background: url(../images/BGDownloadIcon.png) no-repeat 5px 15px;
     background-size: 16px;
@@ -326,7 +327,8 @@ code::before, code::after {
     display: block;
     margin: 0 auto;
 }
-.backToDownloads2{
+
+.backToDownloads2 {
     text-align: left;
     background: #eeeced;
     padding: 4px;
@@ -334,33 +336,58 @@ code::before, code::after {
     border-style: solid;
     border-width: thin;
 }
-.previewDownloadImage{
+
+.previewDownloadImage {
     width: 400px;
     height: 200px;
 }
 
 .backToDownloads {
-    box-shadow:inset 0px 1px 0px 0px #ffffff;
-    background:linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
-    background-color:#ededed;
-    border-radius:3px;
-    border:1px solid #dcdcdc;
-    display:inline-block;
-    cursor:pointer;
-    color:#777777;
+    box-shadow: inset 0px 1px 0px 0px #ffffff;
+    background: linear-gradient(to bottom, #ededed 5%, #dfdfdf 100%);
+    background-color: #ededed;
+    border-radius: 3px;
+    border: 1px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color: #777777;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-    font-size:15px;
-    font-weight:bold;
-    padding:6px 12px;
-    text-decoration:none !important;
-    text-shadow:0px 1px 0px #ffffff;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 6px 12px;
+    text-decoration: none !important;
+    text-shadow: 0px 1px 0px #ffffff;
     margin-bottom: 5px;
 }
+
 .backToDownloads:hover {
-    background:linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
-    background-color:#dfdfdf;
+    background: linear-gradient(to bottom, #dfdfdf 5%, #ededed 100%);
+    background-color: #dfdfdf;
 }
+
 .backToDownloads:active {
-    position:relative;
-    top:1px;
+    position: relative;
+    top: 1px;
+}
+
+.flexdiv {
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    margin-top: 6px;
+    padding-left: 64px;
+    border-style: dotted;
+    border-width: 1px;
+    font-size: 12px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    background: rgb(251, 251, 251) url("../images/info_icon.png") no-repeat;
+    background-size: 40px;
+    background-position: 7px 5px;
+}
+.flexdiv a, .flexdiv li{
+    font-size: 12px;
+}
+.flexdiv ol{
+    margin-top: 0;
+    margin-bottom: 0;
 }
