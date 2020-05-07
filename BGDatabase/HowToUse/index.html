@@ -282,7 +282,7 @@
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
 <h4>General information</h4>
-Database consists of 4 main entities:
+Database consists of 4 main parts:
 <ol>
     <li>Table (meta)</li>
     <li>Table field</li>
@@ -322,10 +322,10 @@ Every table, field and entity has unique id (based on Guid generation) and name 
 
 <h4>Accessing the database at runtime</h4>
 <ol>
-    <li>Through code using basic API (not recommended)</li>
-    <li>Through code using generated classes (highly recommended over basic API)</li>
-    <li>By adding BGEntityGo component to any GameObject and choosing table and row. (not recommended)</li>
-    <li>Instead of using BGEntityGo component, you can use generated class. (highly recommended over using BGEntityGo)</li>
+    <li>With C# code using basic API (not recommended, use #2 instead)</li>
+    <li>With C# code using generated classes (highly recommended over basic API)</li>
+    <li>By adding BGEntityGo component to any GameObject and choosing table and row. (not recommended, use #4 instead)</li>
+    <li>Instead of using BGEntityGo component, you can use generated components. (highly recommended over using BGEntityGo)</li>
     <li>By using generated actions for <a href="../ThirdParty/Playmaker">Playmaker</a> and  <a href="../ThirdParty/Bolt">Bolt</a></li>
 </ol>
 <p>
