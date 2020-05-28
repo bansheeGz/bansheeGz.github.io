@@ -347,25 +347,24 @@
 
 <h4>How to read values: </h4>
 <ol>
-    <li id="preload">Usual method, by reading field value. Assets preloading is required for this method, please see below for more details</li>
+    <li id="preload">[Legacy] Usual method, by reading field value. Assets preloading is required for this method, please see below for more details (not recommended)</li>
     <li id="byAddress">
         Instead of reading field value the usual way, you can retrieve asset address from database and use this address directly with Addressables system.
         No preloading is required in this case.
         Each unity asset field is implementing BGAddressablesAssetI interface, which can be used to read asset address (using method <code>string GetAddressablesAddress(int entityIndex)</code>).
-        AddressablesQuickStart project below has an example of retrieving this address.
     </li>
 </ol>
 <p>
     We recommend method #2, cause it does not involve running additional code(preloading) and it's as robust as Addressables system is.
 </p>
 <p>
-    This minimalistic <a href="../ExampleAddressables">example project</a> has examples for both techniques
+    This <a href="../ExampleAddressables">AddressablesQuickStart project</a> has examples for both techniques
 </p>
 <p>
     If you use Playmaker you can use <a href="../RuntimeAddressablesPlaymaker">this custom action</a>. No preloading required.
 </p>
 
-<h4>Preloading: </h4>
+<h4>Preloading [Legacy, not recommended]: </h4>
 <p>
     If you access unity field with addressables loader like you normally do (How to read values, method # 1, mentioned above),
     you need to preload required values, otherwise values will not be resolved successfully (null will be returned).
