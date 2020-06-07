@@ -56,15 +56,20 @@
 
     <tr>
         <td>File location</td>
-        <td>under one of Resources folders</td>
-        <td>under Assets/StreamingAssets folder</td>
-        <td>anywhere in your project</td>
+        <td>Under one of Resources folders</td>
+        <td>Under Assets/StreamingAssets folder</td>
+        <td>Anywhere in your project</td>
     </tr>
     <tr>
         <td>Pros</td>
         <td>Works everywhere without any extra effort</td>
         <td>You can update database file without rebuilding your game</td>
-        <td>you can store your database file in any place under your project</td>
+        <td>
+            <ol>
+                <li>Database file can be put to any place under your project</li>
+                <li>Database content can be loaded from any location at runtime</li>
+            </ol>
+        </td>
     </tr>
     <tr>
         <td valign="top">Cons</td>
@@ -87,12 +92,30 @@
         <td valign="top">File bansheegz_database.bytes should be placed under one of Resources folders</td>
         <td valign="top">File bansheegz_database.bytes should be placed under Assets/StreamingAssets folder</td>
         <td valign="top">
+            2 steps guide:
             <ol>
-                <li>Move bansheegz_database.bytes file into any location in your project using Unity Editor.</li>
-                <li>Switch to file explorer, find bansheegz_database.bytes.meta file open it in text editor and paste the following guid to it 3637ea689da0cff4b8d5c0fb5d609c15</li>
-                <li>Switch back to Unity and click on Reload button in BGDatabase window. Settings->Main>Database files->Database Loader should switch to Custom</li>
-                <li>Implement the code, which loads database file and once it's loaded, call BGRepo.SetDefaultRepoContent(content) method (otherwise database will not be loaded)</li>
+                <li>Override database location in Unity Editor.</li>
+                <li>Load database content manually at runtime and pass it to BGDatabase</li>
             </ol>
+            Overriding database location inside Unity Editor
+            <ol>
+                <li>Exit Unity</li>
+                <li>Backup your database files</li>
+                <li>Move all database files (bansheegz_database*.bytes* ) to any location in your project.</li>
+                <li>Open bansheegz_database.bytes.meta file in text editor and replace its guid with this value 3637ea689da0cff4b8d5c0fb5d609c15</li>
+                <li>Open up Unity and click on Reload button in BGDatabase window.</li>
+                <li>Switch to Settings->Main>Database files and make sure database is loaded from custom location and Loader is set to Custom.
+                    Also make sure all content is properly loaded.
+                </li>
+            </ol>
+            Loading database content manually at runtime
+            <ol>
+                <li>Load database content from whatever location you want and call BGRepo.SetDefaultRepoContent(byte[] content) method before accessing database.</li>
+                <li>If you use localization addon, you also need to load all localization files as well and use BGRepo.SetDefaultRepoContentModel(BGRepoCustomLoaderModel model).
+                    We have created an example project with custom loader implementation, which can be downloaded <a href="../Downloads/ExampleLocalization#customLoader">here</a>
+                </li>
+            </ol>
+
         </td>
     </tr>
 </table>
