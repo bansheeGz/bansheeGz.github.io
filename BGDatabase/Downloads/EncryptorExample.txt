@@ -1,0 +1,53 @@
+﻿using System;
+using System.IO;
+using System.Security.Cryptography;
+using BansheeGz.BGDatabase;
+
+public class EncryptorExample : BGEncryptor
+{
+    private static readonly byte[] SALT = {0x26, 0xdc, 0xff, 0x00, 0xad, 0xed, 0x7a, 0xee, 0xc5, 0xfe, 0x07, 0xaf, 0x4d, 0x08, 0x22, 0x3c};
+    private const string password = "hACKmEpLEASE";
+
+    public ArraySegment<byte> Encrypt(ArraySegment<byte> data, string config)
+    {
+        var plain = ToArray(data);
+        MemoryStream memoryStream;
+        CryptoStream cryptoStream;
+        Rijndael rijndael = Rijndael.Create();
+        Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(password, SALT);
+        rijndael.Key = pdb.GetBytes(32);
+        rijndael.IV = pdb.GetBytes(16);
+        memoryStream = new MemoryStream();
+        cryptoStream = new CryptoStream(memoryStream, rijndael.CreateEncryptor(), CryptoStreamMode.Write);
+        cryptoStream.Write(plain, 0, plain.Length);
+        cryptoStream.Close();
+        var encrypted = memoryStream.ToArray();
+        return new ArraySegment<byte>(encrypted, 0, encrypted.Length);
+    }
+
+    public ArraySegment<byte> Decrypt(ArraySegment<byte> data, string config)
+    {
+        var cipher = ToArray(data);
+        MemoryStream memoryStream;
+        CryptoStream cryptoStream;
+        Rijndael rijndael = Rijndael.Create();
+        Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(password, SALT);
+        rijndael.Key = pdb.GetBytes(32);
+        rijndael.IV = pdb.GetBytes(16);
+        memoryStream = new MemoryStream();
+        cryptoStream = new CryptoStream(memoryStream, rijndael.CreateDecryptor(), CryptoStreamMode.Write);
+        cryptoStream.Write(cipher, 0, cipher.Length);
+        cryptoStream.Close();
+        var decrypt = memoryStream.ToArray();
+        return new ArraySegment<byte>(decrypt, 0, decrypt.Length);
+    }
+
+    private byte[] ToArray(ArraySegment<byte> segment)
+    {
+        if (segment.Offset == 0 && segment.Count == segment.Array.Length) return segment.Array;
+
+        var result = new byte[segment.Count];
+        Buffer.BlockCopy(segment.Array, segment.Offset, result, 0, segment.Count);
+        return result;
+    }
+}

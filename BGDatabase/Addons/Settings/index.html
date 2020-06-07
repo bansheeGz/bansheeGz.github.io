@@ -308,7 +308,43 @@
             It can reduce the size of the database, but loading/saving will take a little bit longer.
         </td>
     </tr>
+    <tr>
+        <td>Encryptor class</td>
+        <td>
+            C# class, implementing BansheeGz.BGDatabase.BGEncryptor interface for encrypting/decrypting database data. <a href="#encryption">More info</a>
+        </td>
+    </tr>
+    <tr>
+        <td>Encryptor config</td>
+        <td>
+            String config to be passed to Encryptor. Use it to create multiple versions of encryption algorythm
+        </td>
+    </tr>
+    <tr>
+        <td>Encrypt SaveLoad addon data</td>
+        <td>
+            If this parameter is on, SaveLoad addon's data will also be encrypted.
+        </td>
+    </tr>
 </table>
+
+<h4 id="encryption">Database data encryption</h4>
+<p>
+    <i>[We do not believe efficient encryption can be implemented, but we may be wrong, so we added interface for data encryption.]</i>
+</p>
+<p>
+    To encrypt data:
+</p>
+<ol>
+    <li>[Important] Back up your database files before setting encryptor</li>
+    <li>Create your own C# class, implementing BansheeGz.BGDatabase.BGEncryptor interface. Use <a href="../../Downloads/EncryptorExample.txt">this implementation</a> as an example</li>
+    <li>[Important] Make sure that byte array after encrypting and decrypting is the same as initial (non encrypted) array</li>
+    <li>Put this class to runtime assembly</li>
+    <li>Once you encrypted the data- do not remove encryptor class- otherwise it would be not possible to decrypt the data</li>
+    <li>Use encryptor config to change encryption algorithm. Do not remove obsolete algorithm, so the data, encrypted with old algorithm can still be decrypted.</li>
+    <li>Set required parameters (Encryptor class/Encryptor config/Encrypt SaveLoad addon data) and save database.</li>
+</ol>
+
 
 <h4 id="test">How do I measure performance?</h4>
 <p>

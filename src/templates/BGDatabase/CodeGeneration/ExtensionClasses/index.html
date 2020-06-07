@@ -81,14 +81,14 @@ public static BGE_MyTable NewEntity()
 }
 </pre>
 <p>
-    so instead of doing this, for example:
+    so instead of this, for example:
 </p>
 <pre class="cs">
     var repo = BGRepo.I;
     var meta = repo["MyTable"];
     BGE_MyTable entity = (BGE_MyTable) meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
 </pre>
-you can do this:
+you can write code like this:
 <pre class="cs">
     BGE_MyTable entity = BGE_MyTable.GetEntity(new BGId("HThOdRCxlEGU1aefSG+Nbw"));
 </pre>
@@ -127,6 +127,12 @@ you can do this:
 </p>
 <p>
     If this option is used, there are additional cases when you need to regenerate extension classes: if you add/delete the rows with names or if you change rows names.
+</p>
+
+<h4 id="keys">Keys method generation</h4>
+<p>If you create <a href="../../Misc#keys">custom keys</a> for you table,
+    code generator generates additional methods for accessing row(s) by each key with following naming convention:
+    GetEntityByKey{Key name}/GetEntitiesByKey{Key name}.
 </p>
 
 <h4>How to enable/disable</h4>

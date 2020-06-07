@@ -222,3 +222,8 @@ a{
     margin-right: auto;
     display: block;
 }
+.middleAlign div, .middleAlign img{
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}

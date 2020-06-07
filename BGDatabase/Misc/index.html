@@ -281,13 +281,23 @@
 
 <script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
-<h4>Events</h4>
+<h4>Table of content</h4>
+<div>
+    <ol>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#validation">Validation</a></li>
+        <li><a href="#keys">Custom keys</a></li>
+        <li><a href="#commandline">Command line</a></li>
+    </ol>
+</div>
+
+<h4 id="events">Events</h4>
 
 <p>
     Events let use listen to database changes, like changing the field or entity, adding or removing entities.
 </p>
 
-<h4>How to use?</h4>
+<h6>How to use?</h6>
 
 <p>
     Add your listeners, like this
@@ -358,6 +368,95 @@
 <p>
     Use corresponding events.RemoveXXX method to remove a listener.
 </p>
+
+
+
+<h4 id="validation">Validation</h4>
+
+<p>
+    Data validation allows to set the rules to validate data.
+    Validation works in Unity Editor only and has no effect at runtime.
+    To turn on validation, press on "Validation off" button at the top left of BGDatabase window.
+</p>
+
+<h6>Validation types</h6>
+<ol>
+    <li><a href="#data">Database data validation</a></li>
+    <li><a href="#scene">Scene objects validation</a> (Binders and BGEntityGo components)</li>
+</ol>
+
+<h6 id="data">Database data validation</h6>
+<table class="contentTable">
+    <tr>
+        <th>
+            Validation rule
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Entity name is unique</td>
+        <td>If entity has a name, it should be unique</td>
+    </tr>
+    <tr>
+        <td>Entity name is empty</td>
+        <td>Entities should have no name (names can be cleared under Configuration tab)</td>
+    </tr>
+    <tr>
+        <td>Entity is singleton</td>
+        <td>Only one single entity should exist</td>
+    </tr>
+    <tr>
+        <td>Field is required</td>
+        <td>Field should have some value. Only class-based fields are affected, cause struct-based fields always have a value</td>
+    </tr>
+    <tr>
+        <td>Key is unique</td>
+        <td>Each <a href="#keys">key</a>, marked as unique, should have 0-1 matching rows. If there are more than 1 matching row, it's considered to be a rule violation.</td>
+    </tr>
+</table>
+<p>
+    To review validation log, hover over red E icons as shown on the screenshot below.
+    E icon is shown only if at least one error exists.
+</p>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/Validation1.png"><img style="width: 400px" src="../../images/BGDatabase/Validation1.png"></a>
+</div>
+
+<h6  id="scene">Scene objects validation</h6>
+<p>
+    Following BGDatabase scene components can also be validated (using Scene Explorer tab).
+</p>
+<ol>
+    <li>BGEntityGo components</li>
+    <li>Generated Monobehaviour classes (extending from BGEntityGo)</li>
+    <li><a href="../DataBinding">Data binders</a></li>
+</ol>
+<p>
+    Any component, which has an error, will be highlighted.
+</p>
+
+
+<h4 id="keys">Custom keys</h4>
+<p>
+    Custom key is a user defined key, which can be used to read row(s) quickly.
+    It also can be used in rows <a href="#validation">validation</a>
+</p>
+<p>
+    Each key consist of 1-n fields and can be marked as unique. Following fields can be added to a key: bool, int, long, decimal, bool?, int?, long?, string, text, enum, relationSingle.
+</p>
+<p>
+    You can access the matching row(s) directly without searching, using BGKey class or generated methods.
+    To access the key use BGMetaEntity.GetKey({keyName}) method.
+</p>
+<p>
+    Keys make row(s) access faster, but uses extra memory and may slow down write (update) operations significantly, so do not use keys for data, which is updated frequently.
+</p>
+<div class="bg-image">
+    <a href="../../images/Blog/Blog14.png"><img style="width: 400px" src="../../images/Blog/Blog14.png"></a>
+</div>
+
 
 <h4 id="commandline">Command Line</h4>
 <p>
