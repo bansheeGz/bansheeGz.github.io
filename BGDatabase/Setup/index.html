@@ -327,10 +327,10 @@
 </p>
 <table class="contentTable">
     <tr>
-        <th width="25%"></th>
-        <th width="25%">Resources</th>
-        <th width="25%">StreamingAssets</th>
-        <th width="25%">Custom</th>
+        <th></th>
+        <th>Resources</th>
+        <th>StreamingAssets</th>
+        <th>Custom</th>
     </tr>
 
     <tr>
@@ -370,32 +370,7 @@
         <td valign="top">How to enable</td>
         <td valign="top">File bansheegz_database.bytes should be placed under one of Resources folders</td>
         <td valign="top">File bansheegz_database.bytes should be placed under Assets/StreamingAssets folder</td>
-        <td valign="top">
-            2 steps guide:
-            <ol>
-                <li>Override database location in Unity Editor.</li>
-                <li>Load database content manually at runtime and pass it to BGDatabase</li>
-            </ol>
-            Overriding database location inside Unity Editor
-            <ol>
-                <li>Exit Unity</li>
-                <li>Backup your database files</li>
-                <li>Move all database files (bansheegz_database*.bytes* ) to any location in your project.</li>
-                <li>Open bansheegz_database.bytes.meta file in text editor and replace its guid with this value 3637ea689da0cff4b8d5c0fb5d609c15</li>
-                <li>Open up Unity and click on Reload button in BGDatabase window.</li>
-                <li>Switch to Settings->Main>Database files and make sure database is loaded from custom location and Loader is set to Custom.
-                    Also make sure all content is properly loaded.
-                </li>
-            </ol>
-            Loading database content manually at runtime
-            <ol>
-                <li>Load database content from whatever location you want and call BGRepo.SetDefaultRepoContent(byte[] content) method before accessing database.</li>
-                <li>If you use localization addon, you also need to load all localization files as well and use BGRepo.SetDefaultRepoContentModel(BGRepoCustomLoaderModel model).
-                    We have created an example project with custom loader implementation, which can be downloaded <a href="../Downloads/ExampleLocalization#customLoader">here</a>
-                </li>
-            </ol>
-
-        </td>
+        <td valign="top"> Read <a href="#customLoader">the guide</a> below</td>
     </tr>
 </table>
 
@@ -460,6 +435,32 @@
         <td>File location is stored in EditorPrefs and bound to database asset GUID</td>
     </tr>
 </table>
+
+<h4 id="customLoader">Custom loader implementation guide</h4>
+2 steps guide:
+<ol>
+    <li>Override database location in Unity Editor.</li>
+    <li>Load database content manually at runtime and pass it to BGDatabase</li>
+</ol>
+<h6>Overriding database location inside Unity Editor</h6>
+<ol>
+    <li>Exit Unity</li>
+    <li>Backup your database files</li>
+    <li>Move all database files (bansheegz_database*.bytes* ) to any location in your project.</li>
+    <li>Open bansheegz_database.bytes.meta file in text editor and replace its guid with this value 3637ea689da0cff4b8d5c0fb5d609c15</li>
+    <li>Open up Unity and click on Reload button in BGDatabase window.</li>
+    <li>Switch to Settings->Main>Database files and make sure database is loaded from custom location and Loader is set to Custom.
+        Also make sure all content is properly loaded.
+    </li>
+</ol>
+<h6>Loading database content manually at runtime</h6>
+<ol>
+    <li>Load database content from whatever location you want and call BGRepo.SetDefaultRepoContent(byte[] content) method before accessing database.</li>
+    <li>If you use localization addon, you also need to load all localization files as well and use BGRepo.SetDefaultRepoContentModel(BGRepoCustomLoaderModel model).
+        We have created an example project with custom loader implementation, which can be downloaded <a href="../Downloads/ExampleLocalization#customLoader">here</a>
+    </li>
+</ol>
+
 
 <div class="flexdiv">
     <div>
