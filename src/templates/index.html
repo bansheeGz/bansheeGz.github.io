@@ -3,38 +3,8 @@
 #set section=Root
 #set metadescription=BansheeGz is Games and Unity assets Developer.
 
-<style>
-    .bg-love {
-        padding-bottom: 0 !important;
-        font-family: "Helvetica", "Arial", sans-serif;
-        color: #757575 !important;
-        font-weight: 700 !important;
-        font-size: 14px !important;
-        padding: 0 10%;
-        text-align: center;
-        width: 80%;
-    }
 
-    .bg-love:hover {
-        border-bottom: 4px solid #8bc34a;
-    }
-
-    .bg-reason {
-        font-family: "Helvetica", "Arial", sans-serif;
-        font-size: 10px;
-        text-align: center;
-        width: 100%;
-    }
-
-    .bg-kiss {
-        background-image: url(images/heartC.png) !important;
-        background-size: 48px 48px;
-        background-repeat: no-repeat;
-    }
-
-</style>
-
-<link rel="stylesheet" href="css/slider-pro.min.css"/>
+<!--<link rel="stylesheet" href="css/slider-pro.min.css"/>
 <script src="js/jquery.sliderPro.min.js"></script>
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
@@ -44,28 +14,30 @@
             arrows: true,
             buttons: true,
 //            fade: true,
-            autoplayDelay:3000,
+            autoplayDelay: 3000,
 //            fadeDuration:700
         });
     });
-</script>
+</script>-->
 
+<script src="https://cdn.rawgit.com/vinayakjadhav/jR3DCarousel/v1.0.0/dist/jR3DCarousel.min.js"></script>
+<!--
 <div style="margin-top: 10px;">
     <div class="slider-pro" id="my-slider">
         <div class="sp-slides">
-            <!-- Slide 1 -->
+            &lt;!&ndash; Slide 1 &ndash;&gt;
             <div class="sp-slide">
                 <img class="sp-image" src="images/BGDatabase/Slide.png"/>
                 <p class="sp-caption"><a href="./BGDatabase">BG Database</a> is In Memory, pure C# (without SQL) Database for Unity3D with Excel and Google Sheets support</p>
             </div>
 
-            <!-- Slide 2 -->
+            &lt;!&ndash; Slide 2 &ndash;&gt;
             <div class="sp-slide">
                 <img class="sp-image" src="images/Slide1.jpg"/>
                 <p class="sp-caption"><a href="./BGCurve/BGSplineColliders">BG Spline Colliders</a> is procedural colliders for Unity3D</p>
             </div>
 
-            <!-- Slide 3 -->
+            &lt;!&ndash; Slide 3 &ndash;&gt;
             <div class="sp-slide">
                 <p>Lorem ipsum dolor sit amet</p>
                 <img class="sp-image" src="images/Slide2.jpg"/>
@@ -74,4 +46,40 @@
 
         </div>
     </div>
-</div>
+</div>-->
+<section>
+    <div style="
+    margin: 10px auto 20px auto;
+    width: 600px; height: 300px;
+    position: relative;
+    overflow: visible;
+    display: block;
+    perspective: 900px;" class="jR3DCarouselGallery">
+    </div>
+
+</section>
+<script>
+    var slides = [
+        {src: 'images/BGDatabase/Slide.png'},
+        {src: 'images/Slide1.jpg'},
+        {src: 'images/Slide2.jpg'},
+        {src: 'images/BGDatabase/Slide.png'},
+        {src: 'images/Slide1.jpg'},
+        {src: 'images/Slide2.jpg'},
+    ];
+    var myjR3DCarousel = $('.jR3DCarouselGallery').jR3DCarousel(
+        {
+            slides: slides,
+            "width": 600,
+            "height": 300,
+            "slideLayout": "fill",
+            "animation": "slide3D",
+            "animationCurve": "ease",
+            "animationDuration": 1200,
+            "animationInterval": 2000,
+            "autoplay": true,
+            "rotationDirection": "rtl",
+            "navigation": "squares",
+            "perspective": 900
+        });
+</script>
