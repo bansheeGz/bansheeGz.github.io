@@ -170,7 +170,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
                     </li>
-                    <li class="cli downloadicon ">
+                    <li class="cli downloadicon  plic ">
                         <a class="ca" href="../../../BGDatabase/Downloads">Downloads</a>
                     </li>
                 </ul>
@@ -200,7 +200,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
                     </li>
                     <li class="cli ">
@@ -272,292 +272,98 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Playmaker</h3>
+                <h3>Downloads</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<a class="backToDownloads" href="../">< Back to downloads</a>
+
+<div>
+    <img class="centered" src="../../../images/BGDatabase/download8.png">
+</div>
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <h4>Save/Load actions for Playmaker and Bolt</h4>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            1.0
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            BGDatabase, Playmaker
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseSaveLoadPlaymaker.unitypackage" class="downloadButton"></a>
+        </div>
+    </div>
+</div>
+
+
 <h4>Description</h4>
 <p>
-    Code Generator for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/playmaker-368">Playmaker</a> creates custom Actions to access BGDatabase data (many fields are supported,
-    but not all the fields)
-</p>
-<p>
-    Apart from Code Generation, you can use Playmaker's <code>GetProperty</code> and <code>SetProperty</code> actions
-    with Generated <a href="../../CodeGeneration/MonoBehaviourClasses">MonoBehaviour</a> to get/set any property
-    from GameObject, hooked up to database.
+    Save/Load actions for <a href="../../ThirdParty/Playmaker">Playmaker</a>
+    to support <a href="../../Addons/SaveLoad">SaveLoad addon</a>.
+    Actions allow you to save/load game to/from file(s), located in the <a href="https://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html">Unity's persistent folder</a>.
 </p>
 
-<h4>Supported custom actions</h4>
-With custom actions you have full control over database data- you can select/add/update/delete rows.
-Custom actions are generated for each table
-<table class="contentTable">
-    <tr>
-        <th>
-            #
-        </th>
-        <th>
-            Action
-        </th>
-        <th>
-            Description
-        </th>
-    </tr>
-    <tr>
-        <td>1</td>
-        <td>GetByIndex</td>
-        <td>
-            Retrieve field values from database by row's index. This is the best method to use inside for-each loop
-        </td>
-    </tr>
-    <tr>
-        <td>2</td>
-        <td>GetById</td>
-        <td>
-            Retrieve field values from database by row's id.
-        </td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>GetByName</td>
-        <td>
-            Retrieve field values from database by row's name.
-        </td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>SetByIndex</td>
-        <td>
-            Set field values to database by row's index.
-        </td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>SetById</td>
-        <td>
-            Set field values to database by row's id.
-        </td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>SetByName</td>
-        <td>
-            Set field values to database by row's name.
-        </td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>Count</td>
-        <td>
-            Retrieve total number of rows
-        </td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>Create</td>
-        <td>
-            Create a new row
-        </td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>Delete</td>
-        <td>
-            Delete a row by its index
-        </td>
-    </tr>
-</table>
-
-<h4>Supported fields</h4>
-<table class="contentTable">
-    <tr>
-        <th>
-            Database Field
-        </th>
-        <th>
-            Playmaker Field
-        </th>
-        <th>
-            Comments
-        </th>
-    </tr>
-    <tr>
-        <td>int</td>
-        <td>FsmInt</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>float</td>
-        <td>FsmFloat</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>bool</td>
-        <td>FsmBool</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>string</td>
-        <td>FsmString</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>color</td>
-        <td>FsmColor</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>rect</td>
-        <td>FsmRect</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>vector2</td>
-        <td>FsmVector2</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>vector3</td>
-        <td>FsmVector3</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>quaternion</td>
-        <td>FsmQuaternion</td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>relationSingle</td>
-        <td>FsmInt</td>
-        <td>Playmakers int field stores the index of related row, or -1 if field is not set</td>
-    </tr>
-    <tr>
-        <td>relationMultiple</td>
-        <td>FsmArray[int]</td>
-        <td>Playmakers int array field stores the related rows array of indices</td>
-    </tr>
-    <tr>
-        <td>nested</td>
-        <td>FsmArray[int]</td>
-        <td>Just like relationMultiple, but read only</td>
-    </tr>
-    <tr>
-        <td>GameObject</td>
-        <td>FsmGameObject</td>
-        <td>Prefab asset, field is readonly</td>
-    </tr>
-    <tr>
-        <td>Object</td>
-        <td>FsmObject</td>
-        <td>Any Unity asset, field is readonly</td>
-    </tr>
-    <tr>
-        <td>Material</td>
-        <td>FsmMaterial</td>
-        <td>Unity material asset, field is readonly</td>
-    </tr>
-    <tr>
-        <td>Texture</td>
-        <td>FsmTexture</td>
-        <td>Unity texture asset, field is readonly</td>
-    </tr>
-    <tr>
-        <td>AudioClip</td>
-        <td>FsmObject</td>
-        <td>Unity audio asset, field is readonly</td>
-    </tr>
-    <tr>
-        <td>Font</td>
-        <td>FsmObject</td>
-        <td>Unity font asset, field is readonly</td>
-    </tr>
-    <tr>
-        <td>Texture2D</td>
-        <td>FsmObject</td>
-        <td>Unity texture2D asset, field is readonly</td>
-    </tr>
-    <tr>
-        <td>Sprite</td>
-        <td>FsmObject</td>
-        <td>Unity sprite asset, field is readonly</td>
-    </tr>
-    <tr>
-        <td>Sprite[]</td>
-        <td>FsmArray</td>
-        <td>Unity sprite array asset, field is readonly</td>
-    </tr>
-</table>
-<p>
-    If field type is not supported, it will be omitted
-</p>
-
-
-<div>
-    <h4>How to generate</h4>
-    <p>
-        Open BGDatabase window <code>Window->BGDatabase</code>
-    </p>
-    <p>
-        Go to <code>Settings</code> tab, and chose <code>Playmaker</code>
-    </p>
-    <div class="bg-image">
-        <a href="../../../images/BGDatabase/Playmaker1.png"><img style="width: 400px" src="../../../images/BGDatabase/Playmaker1.png"></a>
-    </div>
-    <p>
-        Fill parameters and press <code>Generate</code> button
-    </p>
-
-    <div class="importantNote">
-        Once you chose your naming scheme "package" + "Classes name prefix" and used your generated actions in PLaymaker's graphs, please, do not change these settings,
-        otherwise the references to these action will be lost. The same applies to tables/fields names.
-    </div>
-</div>
-
-<h4>Hints</h4>
+<h4>Available actions:</h4>
 <ol>
-    <li>If you plan to use Addressables system- avoid using <code>[</code> and <code>]</code> symbols in your folders names, cause these symbols interfere with Addressables naming convention</li>
+    <li>SaveGame: save a game to a file.</li>
+    <li>LoadGame: load a game from a file.</li>
+    <li>ListSaves: load all file names to string array (without path and extension)</li>
+    <li>DeleteSave: delete saved file.</li>
 </ol>
 
-<div>
-    <h4>Parameters</h4>
-    <div class="bg-image">
-        <a href="../../../images/BGDatabase/Playmaker2.png"><img style="width: 400px" src="../../../images/BGDatabase/Playmaker2.png"></a>
-    </div>
-</div>
+<h4>Additional information:</h4>
+<ol>
+    <li>All files have ".sav" extension.</li>
+    <li>SaveGame/LoadGame/DeleteSave have optional <i>fileName</i> parameter (default is "game").
+        <i>fileName</i> parameter format is a file name without path and extension.
+    </li>
+    <li>All actions have "debug" parameter- if it's turned on, information about files is printed to Unity console.</li>
+</ol>
 
-<h4>Example</h4>
-<table class="contentTable">
+
+<h4>Releases</h4>
+<table class="contentTable dTable">
     <tr>
-        <th>
-            Link
+        <th style="width: 10%">
+            Version
         </th>
-        <th>
-            Description
+        <th style="width: 20%">
+            Release date
         </th>
+        <th style="width: 70%">Log</th>
     </tr>
     <tr>
-        <td><a href="BGDatabasePlaymakerMin.cs">BGDatabasePlaymakerMin.cs</a></td>
-        <td>
-            Minimalistic example with single table and single name field
+        <td class="ra">
+            1.0
         </td>
-    </tr>
-    <tr>
-        <td><a href="BGDatabasePlaymakerMax.cs">BGDatabasePlaymakerMax.cs</a></td>
+        <td class="ra">August 05, 2019</td>
         <td>
-            Single table with all supported fields.
+            Initial release
         </td>
     </tr>
 </table>
-
-<div>
-    <h4>Additional downloads</h4>
-    <ol>
-        <li>Custom actions to support <a href="../../Addons/SaveLoad">SaveLoad addon</a> is available for download <a href="../../Downloads/RuntimeSaveLoadPlaymaker">here</a> </li>
-        <li>Custom action to support unity assets loading from Addressables system is available for download <a href="../../Downloads/RuntimeAddressablesPlaymaker">here</a> </li>
-    </ol>
-</div>
             </div>
 
             <!--======================================================       BG Database Footer               -->
