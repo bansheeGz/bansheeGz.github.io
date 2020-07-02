@@ -340,19 +340,17 @@
 <h4>Loaders type: </h4>
 <ol>
     <li>Addressable: asset address is stored as database value in human readable form. Cons: you can not change address after value was assigned to database
-        again
     </li>
-    <li>AddressableByGuid: asset Guid is stored as database value. Cons: Guid is just a set of bytes, it's not readable</li>
+    <li>AddressableByGuid: asset Guid (from meta file) is stored as database value. Cons: Guid is just a set of bytes, it's not readable</li>
 </ol>
 
 <h4>How to read values: </h4>
 <ol>
-    <li id="preload">[Legacy] Usual method, by reading field value. Assets preloading is required for this method, please see below for more details (not recommended)</li>
     <li id="byAddress">
-        Instead of reading field value the usual way, you can retrieve asset address from database and use this address directly with Addressables system.
-        No preloading is required in this case.
+        Retrieve asset address from database and use this address directly with Addressables system API.
         Each unity asset field is implementing BGAddressablesAssetI interface, which can be used to read asset address (using method <code>string GetAddressablesAddress(int entityIndex)</code>).
     </li>
+    <li id="preload">[Legacy, not recommended] Usual method, by reading field value. Assets preloading is required for this method, please see below for more details</li>
 </ol>
 <p>
     We recommend method #2, cause it does not involve running additional code(preloading) and it's as robust as Addressables system is.
