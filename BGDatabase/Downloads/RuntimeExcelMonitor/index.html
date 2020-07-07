@@ -297,7 +297,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.1
+            1.2
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -333,7 +333,10 @@
 <h4>Setup:</h4>
 <ol>
     <li>Import BGDatabase package and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
-    <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets\Libs (or to any other folder, which is not under Editor folder)</li>
+    <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets folder (or to any other folder, which is not under Editor folder)
+        Select all dlls under Assets\NPOI,
+        and in the inspector toggle "Any Platform" on, unselect any toggle under "Excluded Platforms" and click on "Apply" button (see the screenshot below)
+    </li>
     <li>Import BansheeGzExcelRuntime package</li>
     <li>Add Assets\BansheeGzExcelRuntime\BGExcelImportGo.cs to your scene</li>
     <li>Export required data to Excel as described <a href="http://www.bansheegz.com/BGDatabase/ThirdParty/Excel/">here</a></li>
@@ -350,6 +353,9 @@
         If you set "Export Meta only if sheet exists", export will ignore all tables which does not have corresponding sheet in target xls file
     </li>
 </ol>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/download17.png"><img style="width: 400px" src="../../../images/BGDatabase/download17.png"></a>
+</div>
 
 <h4>Example scene:</h4>
 <p>
@@ -360,10 +366,11 @@
 
 <h4>Example scene setup:</h4>
 <ol>
-    <li>Create empty project</li>
+    <li>Create an empty project</li>
     <li>Import BGDatabase package</li>
-    <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets\Libs (or to any other folder, which is not under Editor folder).
-        Select all dlls under Assets\Libs\NPOI, and in the inspector toggle "Standalone" on and click "Apply"
+    <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets folder (or to any other folder, which is not under Editor folder).
+        Select all dlls under Assets\NPOI,
+        and in the inspector toggle "Any Platform" on, unselect any toggle under "Excluded Platforms" and click on "Apply" button (see the screenshot above)
     </li>
     <li>Download database file <a href="../bansheegz_database_default.bytes">here</a> </li>
     <li>Download database settings file <a href="../bansheegz_database_default_settings.json">here</a> </li>
@@ -402,6 +409,15 @@
             Release date
         </th>
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.2
+        </td>
+        <td class="ra">July 08, 2020</td>
+        <td>
+            Support for loading file from StreamingAsset folder by relative path
+        </td>
     </tr>
     <tr>
         <td class="ra">
