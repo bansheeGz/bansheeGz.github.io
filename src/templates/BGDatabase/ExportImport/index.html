@@ -235,7 +235,10 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 
 <h4 id="why">Why you do not provide an option to update GoogleSheets data from player devices?</h4>
 <p>
-    We believe giving direct write GoogleSheets access to player devices does not make much sense, due to the following
+    TLDR: Our export procedure is not meant to be executed simultaneously by multiple clients
+</p>
+<p>
+    LONG READ: We believe giving direct write GoogleSheets access to player devices does not make much sense, due to the following
     reasons:
 </p>
 <ol>
@@ -253,7 +256,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     </li>
 </ol>
 <p>
-    All this problems can be solved with a proxy server, but it means there is no need for direct access to GoogleSheets.
+    All this problems can be solved with a proxy server, but it also means there is no need for direct access to GoogleSheets.
 </p>
 <p>
     If you are still looking for a way to write data to GoogleSheets from players devices:
