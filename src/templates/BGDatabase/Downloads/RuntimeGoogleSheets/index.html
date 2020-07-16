@@ -1,0 +1,126 @@
+#set page=Downloads
+
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
+
+<a class="backToDownloads" href="../">< Back to downloads</a>
+
+<div>
+    <img class="centered" src="#path images/BGDatabase/download18.png">
+</div>
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <h4>GoogleSheets export/import for Runtime</h4>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            0.9Beta
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            BGDatabase
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BansheeGzGoogleSheetsRuntime.unitypackage" class="downloadButton"></a>
+        </div>
+    </div>
+</div>
+
+
+<h4>Description</h4>
+<p>
+    Export/import to GoogleSheets at runtime. Some restrictions apply (read below)
+</p>
+
+<h4>Restrictions:</h4>
+<div class="importantNote">
+    This plugin is not meant to work on multiple devices simultaneously.
+</div>
+<p>
+    Use it only if you have one, single device, reading/writing information from/to GoogleSheets spreadsheet
+</p>
+<div class="importantNote">
+    This plugin is currently in beta. BGDatabase version >= 1.5.11Beta 0717 is required
+</div>
+
+
+<h4>Setup:</h4>
+<ol>
+    <li>Install BGDatabase and this plug-in to your project</li>
+    <li>
+        Now we need to replace Newtonsoft.Json.dll with its AOT variant.
+        <ol>
+            <li>Mark <code>Assets\BansheeGz\BGDatabase\Editor\Libs\GDataV4\Newtonsoft.Json.dll</code> DLL file to not target any platform in the Unity Inspector.</li>
+            <li>Download and install <code>Assets\JsonDotNet\Assemblies\AOT\Newtonsoft.Json.dll</code> DLL file from this
+                <a href="https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347">JSON</a> package.
+            </li>
+            <li>Mark downloaded DLL file to target any platform in the Unity Inspector.</li>
+        </ol>
+    </li>
+    <li>Move (not copy!) following folder <code>Assets\BansheeGz\BGDatabase\Editor\Libs\GDataV4</code> to runtime assembly
+        (any folder not under Editor folder, let's say to Assets folder)
+    </li>
+    <li>Select any single DLL file under moved folder (Assets/GDataV4) except Newtonsoft.Json.dll and mark it to target Any platform in Inspector
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/download19.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/download19.png"></a>
+        </div>
+    </li>
+    <li>Repeat steps 2 and 3 for DLL file <code>Assets\BansheeGz\BGDatabase\Editor\Pluginz\BGDatabaseEditorGoogleSheets.dll</code>.
+        Move it to runtime assembly and mark it to target Any platform in Inspector
+    </li>
+    <li>Create GoogleSheets datasource in BGDatabase window (under DataSources tab) and fill in all required parameters</li>
+    <li>Add <code>Assets\BGDatabaseGoogleSheetsRuntime\BGGoogleSheetsManagerGo.cs</code> component to any GameObject inside your scene</li>
+    <li>
+        Copy all settings from GoogleSheets datasource (you created at step 6) to BGGoogleSheetsManagerGo script settings
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/download20.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/download20.png"></a>
+        </div>
+    </li>
+    <li>
+        Toggle on <code>Enable Setting</code> parameter if you want to setup which tables/fields need to be updated.
+        Settings are similar to <a href="../../ExportImport#mergeSettings">Merge settings</a>
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/download22.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/download22.png"></a>
+        </div>
+    </li>
+    <li>
+        Run the scene, expand "GoogleSheets>>" button and press "Export" or "Import" button
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/download21.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/download21.png"></a>
+        </div>
+    </li>
+</ol>
+
+<h4>Releases</h4>
+<table class="contentTable dTable">
+    <tr>
+        <th style="width: 10%">
+            Version
+        </th>
+        <th style="width: 20%">
+            Release date
+        </th>
+        <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            0.9Beta
+        </td>
+        <td class="ra">July 17, 2020</td>
+        <td>
+            Beta development
+        </td>
+    </tr>
+</table>
