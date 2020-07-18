@@ -8,7 +8,7 @@
 <p>
     Code Generation addon makes already pretty easy BGDatabase API even easier.
     If you use this addon- database will use generated classes instead of basic BGEntity while populating table rows.
-    Each generated class defines additional properties to access the data.
+    Each generated class defines additional properties/methods to access the data.
 </p>
 <p>
     Here is an example: lets assume you have a table named "MyTable" which has one single field: intField of type int.
@@ -48,23 +48,29 @@
     </tr>
     <tr>
         <td>Code Generator</td>
-        <td>Class to use for code generation. You can leave the default one, if you do not need any customization</td>
+        <td>Class to use for code generation (use default one)</td>
     </tr>
     <tr>
         <td>Source file</td>
-        <td>Source file to use for generated classes. All classes will be put into one single .cs file</td>
+        <td>Source file to use for generated C# classes. All classes will be put into one single .cs file, which should be under your project folder </td>
     </tr>
     <tr>
         <td>Package</td>
-        <td>Package for generated classes. For example (BansheeGz.BGDatabase.Example)</td>
+        <td>Package (C# namespace) for generated classes. For example <code>MySpace</code>. You can safely leave this setting blank.</td>
     </tr>
     <tr>
         <td>Class names prefix</td>
-        <td>Prefix to use for each class. So if you use BGE_ prefix, the final class for "MyTable" table will be named BGE_MyTable</td>
+        <td>
+            Prefix to use for each class name.
+            So if you use <code>E_</code> prefix, the final class for <code>MyTable</code> table will be named <code>E_MyTable</code>.
+            We have multiple code generators, so using different prefixes for different code generators helps to differentiate generated classes and avoid naming collisions
+        </td>
     </tr>
     <tr>
         <td>Field names prefix</td>
-        <td>Prefix to use for each generated property. So if you use f_ prefix, the final class for "name" field will be named f_name</td>
+        <td>Prefix to use for each generated property name. So if you use <code>f_</code> prefix, the final name for <code>intField</code> field will be <code>f_intField</code>.
+            You can safely leave this setting blank.
+        </td>
     </tr>
     <tr>
         <td>Entities prefix</td>
@@ -73,3 +79,7 @@
             Read more about it here: <a href="../../CodeGeneration/ExtensionClasses#entities">Generate a property for each entity</a></td>
     </tr>
 </table>
+
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Addon1.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/Addon1.png"></a>
+</div>

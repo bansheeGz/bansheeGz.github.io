@@ -308,8 +308,7 @@
 
 <p>
     This article describes common procedure and ideas, common for both Excel and Google Sheets.
-    You can find provider' specific instruction here:
-    for <a href="../ThirdParty/Excel">Excel/Open Office</a>, for <a href="../ThirdParty/GoogleSheets">Google Sheets</a>
+    (click to view additional guides for <a href="../ThirdParty/Excel">Excel/OpenOffice</a> and <a href="../ThirdParty/GoogleSheets">GoogleSheets</a></i>)
 </p>
 
 <h4>General idea</h4>
@@ -317,6 +316,33 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 <div class="bg-image">
     <a href="../../images/BGDatabase/ExportImport1.png"><img style="width: 400px"
                                                              src="../../images/BGDatabase/ExportImport1.png"></a>
+</div>
+
+<h4>Setup guide for export/import</h4>
+<ol>
+    <li>Create a datasource for Excel/GoogleSheets</li>
+    <li>Create a job</li>
+    <li>[Optional] Chose tables/fields you want to export/import</li>
+    <li>Export/import</li>
+</ol>
+<p>
+    <i>Click for detailed guides for <a href="../ThirdParty/Excel">Excel</a> and <a href="../ThirdParty/GoogleSheets">GoogleSheets</a></i>
+</p>
+<p>
+    Export does not require any additional steps, but if you want to import data from external datasource for the first time,
+    you need to ensure the data has a proper layout (as described in "General idea" section),
+    e.g. your sheets has the same name as your database tables and the first row has field names.
+</p>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/ExportImport6.png"><img style="width: 400px" src="../../images/BGDatabase/ExportImport6.png"></a>
+</div>
+
+<p>
+    [Optionally] Also, if you want to create a link between your external data rows and database rows, you need to add _id column to your data
+    and ensure a job's "Update ids on import" parameter is toggled on.
+</p>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/ExportImport7.png"><img style="width: 400px" src="../../images/BGDatabase/ExportImport7.png"></a>
 </div>
 
 <h4 id="mergeSettings">Using merge settings</h4>

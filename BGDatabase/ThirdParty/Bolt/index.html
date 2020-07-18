@@ -371,7 +371,7 @@ Custom units are generated for each table
     <ul>
         <li>Open BGDatabase window <code>Window->BGDatabase</code></li>
         <li>Select <code>Settings</code> tab, and chose <code>Bolt</code></li>
-        <li>Fill in parameters and press <code>Generate</code> button</li>
+        <li>Fill in <a href="#parameters">parameters</a> and press <code>Generate</code> button</li>
         <li>After units was generated, update Bolt units database, by pressing Tools->Bolt->Build Unit Options (or Full Extract if you use Bolt 2.0)</li>
     </ul>
 
@@ -379,9 +379,51 @@ Custom units are generated for each table
         <a href="../../../images/BGDatabase/Bolt1.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt1.png"></a>
     </div>
     <div class="importantNote">
-        Once you chose your naming scheme "package" + "Classes name prefix" and used your generated actions in Bolt's graphs, please, do not change these settings,
-        otherwise the references to these action will be lost. The same applies to tables/fields names.
+        Once you chose your naming scheme <b>package</b> + <b>Classes name prefix</b>/<b>Field name prefix</b>
+        and used your generated units in Bolt's graphs, you should not change these settings,
+        otherwise the references to these units will be lost. The same applies to tables/fields names.
     </div>
+</div>
+
+<h4 id="parameters">Parameters</h4>
+<table class="contentTable">
+    <tr>
+        <th>
+            Parameter name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Code Generator</td>
+        <td>Class to use for code generation (use default one)</td>
+    </tr>
+    <tr>
+        <td>Source file</td>
+        <td>Source file to use for generated C# classes (units). All classes will be put into one single .cs file, which should be under your project folder </td>
+    </tr>
+    <tr>
+        <td>Package</td>
+        <td>Package (C# namespace) for generated classes. For example <code>MySpace</code>. You can safely leave this setting blank.</td>
+    </tr>
+    <tr>
+        <td>Class names prefix</td>
+        <td>
+            Prefix to use for each class name.
+            So if you use <code>B_</code> prefix, the final class for <code>MyTable</code> table and <code>GetById</code> unit will be named <code>B_MyTableGetById</code>.
+            We have multiple code generators, so using different prefixes for different code generators helps to differentiate generated classes and avoid naming collisions
+        </td>
+    </tr>
+    <tr>
+        <td>Field names prefix</td>
+        <td>Prefix to use for each generated property name. So if you use <code>f_</code> prefix, the final name for <code>intField</code> field will be <code>f_intField</code>.
+            You can safely leave this setting blank.
+        </td>
+    </tr>
+</table>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Bolt3.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt3.png"></a>
 </div>
 
 <div>

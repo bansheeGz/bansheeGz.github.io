@@ -495,7 +495,7 @@ Custom actions are generated for each table
 
 
 <div>
-    <h4>How to generate</h4>
+    <h4>How to generate actions</h4>
     <p>
         Open BGDatabase window <code>Window->BGDatabase</code>
     </p>
@@ -510,8 +510,9 @@ Custom actions are generated for each table
     </p>
 
     <div class="importantNote">
-        Once you chose your naming scheme "package" + "Classes name prefix" and used your generated actions in PLaymaker's graphs, please, do not change these settings,
-        otherwise the references to these action will be lost. The same applies to tables/fields names.
+        Once you chose your naming scheme <b>package</b> + <b>Classes name prefix</b>/<b>Field name prefix</b>
+        and used your generated actions in PLaymaker's state machines, you should not change these settings,
+        otherwise the references to these actions will be lost. The same applies to tables/fields names.
     </div>
 </div>
 
@@ -522,6 +523,48 @@ Custom actions are generated for each table
 
 <div>
     <h4>Parameters</h4>
+
+    <table class="contentTable">
+        <tr>
+            <th>
+                Parameter name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        <tr>
+            <td>Code Generator</td>
+            <td>Class to use for code generation (use the default one)</td>
+        </tr>
+        <tr>
+            <td>Source file</td>
+            <td>Source file to use for generated C# classes (actions). All classes will be put into one single .cs file, which should be under your project folder </td>
+        </tr>
+        <tr>
+            <td>Package</td>
+            <td>Package (C# namespace) for generated classes. For example <code>MySpace</code>. You can safely leave this setting blank.</td>
+        </tr>
+        <tr>
+            <td>Class names prefix</td>
+            <td>
+                Prefix to use for each class name.
+                So if you use <code>P_</code> prefix, the final class (action) name for <code>MyTable</code> table and <code>GetById</code> action will be <code>P_MyTableGetById</code>.
+                We have multiple code generators, so using different prefixes for different code generators helps to differentiate generated classes and avoid naming collisions
+            </td>
+        </tr>
+        <tr>
+            <td>Field names prefix</td>
+            <td>Prefix to use for each generated property name. So if you use <code>f_</code> prefix, the final name for <code>intField</code> field will be <code>f_intField</code>.
+                You can safely leave this setting blank.
+            </td>
+        </tr>
+        <tr>
+            <td>Action category</td>
+            <td>
+                Playmaker's action category to put all generated classes (actions) in. Default is <code>BansheeGz</code>
+            </td>
+        </tr>    </table>
     <div class="bg-image">
         <a href="../../../images/BGDatabase/Playmaker2.png"><img style="width: 400px" src="../../../images/BGDatabase/Playmaker2.png"></a>
     </div>
