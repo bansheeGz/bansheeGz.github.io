@@ -288,6 +288,7 @@
         <li><a href="#validation">Validation</a></li>
         <li><a href="#keys">Custom keys</a></li>
         <li><a href="#commandline">Command line</a></li>
+        <li><a href="#customFields">Custom fields</a></li>
     </ol>
 </div>
 
@@ -496,6 +497,60 @@
 
     DROP TABLE MyTable
 </pre>
+
+<h4 id="customFields">Custom fields implementation guide</h4>
+<ol>
+    <li>Do not use custom fields unless all other alternatives are much worse.
+        For example, if your custom field has two properties (int and float) there is no need to create a custom field,
+        you can use two basic fields instead (int and float) to store the values.
+    </li>
+    <li>
+        Do not try to create your custom field in your actual project.
+        Create and test your custom field using a new, empty project.
+        Make sure it works correctly before transferring this field to your project.
+        A bug in your implementation can break the whole database
+    </li>
+    <li>
+        Use existing fields implementations as examples.
+        Fields implementation sources can be found in Assets\BansheeGz\BGDatabase\Scripts\BGDatabaseSourceCode.unitypackage package (Database\Field\*).
+        Fields managers implementation sources can be found in Assets\BansheeGz\BGDatabase\Editor\Scripts\BGDatabaseEditorSourceCode.unitypackage package (Database\Field\*).
+    </li>
+    <li>
+        To create a custom field you need to create two C# classes:
+        <ol>
+            <li>Class for the field (in runtime assembly)</li>
+            <li>Class for the field's manager (in Editor assembly)</li>
+        </ol>
+    </li>
+    <li>
+        [Important] Do not try to create your classes from scratch, extend them from existing classes.<br/>
+        For your field class:
+        <ol>
+            <li>If your field value is a class extend your field class from BGFieldCachedClassA class</li>
+            <li>If your field value is a struct extend your field class from BGFieldCachedStructA class</li>
+        </ol>
+        For your field's manager class:
+        <ol>
+            <li>If your field value can be edited "in place" (like primitive fields: int, float, string)- extend your field's manager class from BGFieldManagerInlinedA class</li>
+            <li>If your field value can be edited in popup window, which can be opened by clicking on cell button
+                (like complex fields: bounds, assets)- extend your field's manager class from BGFieldManagerWithButtonA class</li>
+        </ol>
+    </li>
+    <li>
+        The methods/properties, which need to be implemented for your field class:
+        <ol>
+            <li>ToBytes/FromBytes- for binary serialization</li>
+            <li>ToString/FromString- for string serialization</li>
+            <li>CreateFieldFactory- utility method for creating new fields</li>
+            <li>Implement ICloneable interface for your value type if it's a class (not struct)</li>
+            <li>ValueSize property if your value type is a struct</li>
+        </ol>
+    </li>
+    <li>
+        If you have difficulties implementing your own custom field- contact us and send us full source code for your value type (class/struct).
+        You can skip its methods but all fields which needs to be saved inside database need to be included.
+    </li>
+</ol>
             </div>
 
             <!--======================================================       BG Database Footer               -->
