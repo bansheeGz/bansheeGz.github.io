@@ -313,7 +313,7 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase
+            BGDatabase (version >= 1.5.11)
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <a href="../BansheeGzGoogleSheetsRuntime.unitypackage" class="downloadButton"></a>
@@ -334,9 +334,6 @@
 <p>
     Use it only if you have one, single device, reading/writing information from/to GoogleSheets spreadsheet
 </p>
-<div class="importantNote">
-    This plugin is currently in beta. BGDatabase version >= 1.5.11Beta 0717 is required
-</div>
 
 
 <h4>Setup:</h4>
@@ -383,6 +380,10 @@
         <div class="bg-image">
             <a href="../../../images/BGDatabase/download21.png"><img style="width:400px; height: 200px" src="../../../images/BGDatabase/download21.png"></a>
         </div>
+    </li>
+    <li>There is also an option to disable BGGoogleSheetsManagerGo's GUI and call <code>BGGoogleSheetsManagerGo.Export</code>
+        and <code>BGGoogleSheetsManagerGo.Import</code> methods from your own scripts.
+        Note, the task runs on separate thread and may take several frames to complete.
     </li>
 </ol>
 
