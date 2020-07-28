@@ -9,7 +9,8 @@
 
 <h4>Description</h4>
 <p>
-    Live update addon let you update database data on player's devices using Google Sheets, using public GoogleSheets Json API.
+    Live update addon let you update database data on player's devices using the data from Google Sheets, using public GoogleSheets Json API.
+    Export to google sheets is not supported.
 </p>
 
 
@@ -130,6 +131,10 @@
         Make sure to share target spreadsheet. Open target spreadsheet, click on Share button on the top right and set access level to "public" or "people with link".
         Otherwise plugin won't work.
     </li>
+    <li>
+        Google sheets data should have proper layout (as described <a href="../../ExportImport">here</a>). <code>_id</code> column with valid IDs is required.
+    </li>
+
 </ol>
 
 <h4>Checking if setup was correct</h4>
