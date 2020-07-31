@@ -12,13 +12,13 @@
 
     <div class="bg-main-contacts_grid mdl-grid">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <h4>Excel file monitor for Runtime</h4>
+            <h4>Excel export/import and file monitor for Runtime</h4>
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.2
+            1.3
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -30,7 +30,7 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase
+            BGDatabase (version >= 1.5.11)
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <a href="../BansheeGzExcelRuntime.unitypackage" class="downloadButton"></a>
@@ -48,15 +48,18 @@
 <h4>Features:</h4>
 <ol>
     <li>Import/export database data from/to Excel file at runtime (in builds)</li>
-    <li>Monitor excel file and auto-import the data if file changes</li>
+    <li>Monitor excel file and auto-import the data if file is modified on disk</li>
 </ol>
 
 <h4>Setup:</h4>
 <ol>
-    <li>Import BGDatabase package and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
+    <li>Import BGDatabase package (version >= 1.5.11) and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
     <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets folder (or to any other folder, which is not under Editor folder)
         Select all dlls under Assets\NPOI,
         and in the inspector toggle "Any Platform" on, unselect any toggle under "Excluded Platforms" and click on "Apply" button (see the screenshot below)
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/download17.png"><img style="width: 400px" src="#path images/BGDatabase/download17.png"></a>
+        </div>
     </li>
     <li>Import BansheeGzExcelRuntime package</li>
     <li>Add Assets\BansheeGzExcelRuntime\BGExcelImportGo.cs to your scene</li>
@@ -75,7 +78,7 @@
     </li>
 </ol>
 <div class="bg-image">
-    <a href="#path images/BGDatabase/download17.png"><img style="width: 400px" src="#path images/BGDatabase/download17.png"></a>
+    <a href="#path images/BGDatabase/download23.png"><img style="width: 400px" src="#path images/BGDatabase/download23.png"></a>
 </div>
 
 <h4>Example scene:</h4>
@@ -88,7 +91,7 @@
 <h4>Example scene setup:</h4>
 <ol>
     <li>Create an empty project</li>
-    <li>Import BGDatabase package</li>
+    <li>Import BGDatabase package  (version >= 1.5.11)</li>
     <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets folder (or to any other folder, which is not under Editor folder).
         Select all dlls under Assets\NPOI,
         and in the inspector toggle "Any Platform" on, unselect any toggle under "Excluded Platforms" and click on "Apply" button (see the screenshot above)
@@ -113,6 +116,8 @@
         Some people experienced "Encoding 1252 data could not be found" error while running export/import at runtime.
         The solution: copy all "internationalization" dlls (I18N, I18N.West.dll etc. ) to your project as described
         <a href="https://answers.unity.com/questions/42955/codepage-1252-not-supported-works-in-editor-but-no.html?page=1&pageSize=5&sort=votes">here</a>
+        Note: there are multiple folders with different versions of I18 DLL files under your Unity installation folder.
+        The DLLs which fixed the error for us (with Unity 2020) could be found under <code>{UNITY_FOLDER}\Editor\Data\MonoBleedingEdge\lib\mono\unityaot\</code> folder
     </li>
     <li>
         Some people reported "Error: No data is available for encoding 10001. For information on defining a custom encoding, see the documentation for the Encoding.RegisterProvider method."
@@ -130,6 +135,15 @@
             Release date
         </th>
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.3
+        </td>
+        <td class="ra">July 31, 2020</td>
+        <td>
+            Support for xlsx files
+        </td>
     </tr>
     <tr>
         <td class="ra">
