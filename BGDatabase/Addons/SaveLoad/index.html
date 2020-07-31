@@ -289,7 +289,7 @@
 </ul>
 
 <h4>How can I enable it?</h4>
-Chose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for saving/loading and save the database.
+Choose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for saving/loading and save the database.
 
 <div>
     <h4>Examples</h4>
@@ -372,7 +372,7 @@ BGRepo.I.Load(bytes);
 
 <h4 id="mergesettings">Using Merge settings</h4>
 <p>
-    Using Merge settings you can chose which data to save/load.
+    Using Merge settings you can choose which data to save/load.
     You want as less data to be saved as possible.
     You do not need to include data, which is "static" and can not be changed during play session.
 </p>
@@ -561,13 +561,13 @@ using BansheeGz.BGDatabase;
     <li>At this point we start to develop game version 1.1. We will omit real scene creating, cause all we want- is to make sure our save file will be loaded properly
         and it will not erase our newly added collectables for new scene
     </li>
-    <li>Open BGDatabase window, chose <code>Configuration->Scene</code> and add new int field, call it "version"</li>
-    <li>Then chose <code>Database->Scene</code> and add a new scene</li>
+    <li>Open BGDatabase window, choose <code>Configuration->Scene</code> and add new int field, call it "version"</li>
+    <li>Then choose <code>Database->Scene</code> and add a new scene</li>
     <li>For newly created scene assign "version" field to 1</li>
-    <li>Chose "Collectable" field for new scene and add some Collectables</li>
-    <li>Now chose <code>Addons->SaveLoad</code>, and assign "Controller Type" field to MyCustomSaveLoadController (this is a class name of our controller)</li>
+    <li>Choose "Collectable" field for new scene and add some Collectables</li>
+    <li>Now choose <code>Addons->SaveLoad</code>, and assign "Controller Type" field to MyCustomSaveLoadController (this is a class name of our controller)</li>
     <li>Save the database and run BGExample1.unity scene again</li>
-    <li>Load the game, chose <code>Database->Scene</code> and make sure all saved Collectables remain intact, just like newly added Collectables for our new scene.
+    <li>Load the game, choose <code>Database->Scene</code> and make sure all saved Collectables remain intact, just like newly added Collectables for our new scene.
         Also, you can run the same example without controller assigned to see the difference
     </li>
 </ul>

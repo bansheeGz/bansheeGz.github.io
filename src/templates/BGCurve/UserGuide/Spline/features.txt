@@ -17,7 +17,7 @@ title=How to add, edit and remove Components
 mode=3
 version=v11
 text=Components let you use some functionality without scripting. They are standard MonoBehaviour scripts however they have custom tree view in Inspector (you can turn it off, if you want). #
-Check Components gallery for available components. <br><br> Chose 'Components' tab and hit plus icon to add a component. Some components depend on others and will be added automatically. #
+Check Components gallery for available components. <br><br> Choose 'Components' tab and hit plus icon to add a component. Some components depend on others and will be added automatically. #
 Change settings in the Inspector. Click on Delete icon to remove.
 imageSmall=GifUGComponentsThumb.gif
 imageBig=GifUGComponents.gif

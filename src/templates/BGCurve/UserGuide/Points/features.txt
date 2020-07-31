@@ -1,7 +1,7 @@
 title=How to create a spline
 mode=2
 version=v11
-text=Chose from menu 'Game Object -> Create Other -> BansheeGz -> BG Curve'
+text=Choose from menu 'Game Object -> Create Other -> BansheeGz -> BG Curve'
 imageSmall=GifUGCreateCurveMenuThumb.gif
 imageBig=GifUGCreateCurveMenu.gif
 

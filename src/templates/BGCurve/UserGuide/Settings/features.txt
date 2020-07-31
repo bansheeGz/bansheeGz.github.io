@@ -13,7 +13,7 @@ title=How to change and Save/Load Personal Settings
 mode=3
 version=v10
 text=Settings are stored under 2 tabs- Fields (for positions and controls ) and Settings (spline related). #
-After you make all the changes you can save settings either as default or some custom profile.Chose Settings tab and open 'Save/Load' foldout.
+After you make all the changes you can save settings either as default or some custom profile. Choose Settings tab and open 'Save/Load' foldout.
 imageSmall=GifUGSettingsThumb.gif
 imageBig=GifUGSettings.gif
 

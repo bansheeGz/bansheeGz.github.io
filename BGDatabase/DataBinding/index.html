@@ -346,12 +346,12 @@ With data binding you can:
 <h4 id="fieldBinder">How to use single field binder (BGDataBindingFieldGo)</h4>
 <ol>
     <li>Attach BGDataBindingFieldGo component</li>
-    <li>Chose the type of the field to inject. The dropdown will contain all field types from your database</li>
-    <li>Chose the target field/property to inject a value to.
+    <li>Choose the type of the field to inject. The dropdown will contain all field types from your database</li>
+    <li>Choose the target field/property to inject a value to.
         The dropdown will contain all fields/properties from all attached Components, which has the same type from step 2.
         So if you chose string type, this dropdown will contain all string fields and properties from all attached Unity's Components
     </li>
-    <li>Chose the meta, entity and field to get the value from</li>
+    <li>Choose the meta, entity and field to get the value from</li>
     <li>Toggle "Live Update" on, if you want the value to be monitored. If value is changed, binder inject it again</li>
 </ol>
 <div class="bg-image">
@@ -361,7 +361,7 @@ With data binding you can:
 <h4 id="templateBinder">How to use template  binder (BGDataBindingTemplateGo)</h4>
 <ol>
     <li>Attach BGDataBindingTemplateGo component</li>
-    <li>Chose the target field/property to inject a value to.
+    <li>Choose the target field/property to inject a value to.
         The dropdown will contain all fields/properties from all attached Components, which has string type.
     </li>
     <li>Fill template text (please read about template format below)</li>
@@ -375,8 +375,8 @@ With data binding you can:
 <ol>
     <li>Attach BGDataBindingBatchGo component</li>
     <li>Drag GameObjects to either "Field Binders" or "Template Binders" table</li>
-    <li>For field binders, chose 1)target component and field/property and 2) chose source Meta, Field and Entity</li>
-    <li>For template binders, 1) chose target component and field/property and 2) fill in template (please read about template format below)</li>
+    <li>For field binders, choose 1)target component and field/property and 2) choose source Meta, Field and Entity</li>
+    <li>For template binders, 1) choose target component and field/property and 2) fill in template (please read about template format below)</li>
     <li>Important: if you plan to make a prefab out of the GameObject with attached batch binder,
         do not reference any other GameObject, than its own children
     </li>
@@ -389,8 +389,8 @@ With data binding you can:
 <ol>
     <li>Attach BGDataBindingRowGo component</li>
     <li>Create your own script and name its fields exactly like database columns (case-sensitive). They also need to have exact types</li>
-    <li>Attach you script to the same GameObject and chose it as a target component for data binding. (If your script was named exactly as table and added before BGDataBindingRowGo, it will be auto assigned as target component)</li>
-    <li>Chose the source (table and entity)</li>
+    <li>Attach you script to the same GameObject and choose it as a target component for data binding. (If your script was named exactly as table and added before BGDataBindingRowGo, it will be auto assigned as target component)</li>
+    <li>Choose the source (table and entity)</li>
     <li>Toggle "Live Update" on, if you want all field values to be monitored. If value of one of the field is changed, binder inject it again</li>
 </ol>
 <div class="bg-image">
