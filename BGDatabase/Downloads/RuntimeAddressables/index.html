@@ -320,7 +320,7 @@
 <h4>Description</h4>
 <p>
     Support for Unity's <a href="https://docs.unity3d.com/Manual/com.unity.addressables.html">Addressables system</a>
-    (BGDatabase version >= 1.5.6 is required). It adds 2 Addressables loaders for all Unity asset fields.
+    (BGDatabase version >= 1.5.6 is required). This package adds 2 Addressables loaders for all Unity asset fields.
 </p>
 
 <h4>Setup: </h4>
@@ -330,11 +330,20 @@
     <li>Install latest BGDatabase</li>
     <li>Install this package</li>
     <li>Create your own database as described <a href="../../Setup">here</a></li>
-    <li>Create a table with <a href="../../SupportedFields#unityassets">Unity assets</a> fields and set loader=Addressables or loader=AddressablesByGuid via gear icon</li>
+    <li>Create a table with any of the <a href="../../SupportedFields#unityassets">Unity assets</a> field and set loader=Addressables or loader=AddressablesByGuid
+        (while creating a field or via gear icon afterwards)</li>
+    <div class="bg-image">
+        <a href="../../../images/BGDatabase/download25.png"><img style="width: 400px" src="../../../images/BGDatabase/download25.png"></a>
+    </div>
+
+    <li>
+        [Important] Before building your application for the target platform, you need to ensure you built Addressables, cause Unity does not build Addressables automatically.
+        Choose <code>Window->Asset Management->Addressables->Groups</code> and then <code>Build->New Build->Default Build Script</code>
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/download24.png"><img style="width: 400px" src="../../../images/BGDatabase/download24.png"></a>
+        </div>
+    </li>
 </ol>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/Addressables1.png"><img style="width: 400px" src="../../../images/BGDatabase/Addressables1.png"></a>
-</div>
 
 <h4>Loaders type: </h4>
 <ol>
