@@ -280,8 +280,11 @@
 
 <h4>What can I do with export/import?</h4>
 <ol>
-    <li>Export/import any data to/from GoogleSheets/Excel in Editor (during game development)</li>
-    <li>Monitor excel file and auto-import data in Editor and at runtime (from builds) with our extension packages, which can be downloaded <a href="../Downloads">here</a> (PC/Mac/Linux only)</li>
+    <li>Export/import data to/from GoogleSheets or Excel in Unity Editor (during game development)</li>
+    <li>Export/import data from/to Excel file at runtime (from builds, PC/Mac/Linux only) with
+        <a href="../Downloads/RuntimeExcelMonitor">this plugin</a>.
+        Optional excel file monitor, which auto-import data on file change, is also available.</li>
+    <li>Excel file monitor, which auto-import excel data in Unity Editor, can be downloaded <a href="../Downloads/EditorExcelMonitor">here</a></li>
     <li>Update database data on players devices at runtime from GoogleSheets with <a href="../Addons/LiveUpdate">LiveUpdate</a> plugin</li>
     <li><span style="color: red">Currently there is no way to write to GoogleSheets at runtime from players devices </span>(<a href="#why">Why not?</a>)</li>
     <li>Backup/restore database in json format in Editor</li>
@@ -569,7 +572,10 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 <ol>
     <li>If all you need is to add data to spreadsheet, you can use <a href="https://www.google.com/forms/about/">Google Forms</a>,
         <a href="https://support.google.com/docs/answer/2917686?hl=en">linked to a spreadsheet</a>
-        and <a href="https://stackoverflow.com/questions/18073971/http-post-to-a-google-form">HTTP POST</a> to add data to spreadsheet</li>
+        and <a href="https://stackoverflow.com/questions/18073971/http-post-to-a-google-form">HTTP POST</a> to add data to spreadsheet.
+        Also, read our mini tutorial, how to use  Google Forms to update GoogleSheets
+        <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-4#post-6143082">here</a>
+    </li>
     <li>If you need more sophisticated control <a href="https://developers.google.com/sheets/api/">GoogleSheets dotnet API library v4</a> is probably the best starting point.</li>
 </ol>
 

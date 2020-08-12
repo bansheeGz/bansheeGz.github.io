@@ -326,7 +326,7 @@
 <h4>Features:</h4>
 <ol>
     <li>Import/export database data from/to Excel file at runtime (in builds)</li>
-    <li>Monitor excel file and auto-import the data if file is modified on disk</li>
+    <li>Optionally, monitor excel file and auto-import the data if file is modified on disk.</li>
 </ol>
 
 <h4>Setup:</h4>
@@ -345,13 +345,15 @@
     <li>Run your scene</li>
     <li>Click to "Excel>>" button to access settings</li>
     <li>Set "File" parameter to previously exported excel file location (absolute or relative to StreamingAssets folder).</li>
-    <li>Optionally set "monitoring" to true to auto monitor the file</li>
-    <li>Optionally set "importOnStart" to run import on scene load</li>
-    <li>Optionally press "Save Settings" to save the settings</li>
-    <li>Open excel file, change the data and save the file (Ctrl+s)</li>
-    <li>BGDatabase data should be updated. All binders in the scene will be executed after that.</li>
+    <li>[Optionally] Toggle "Monitor File" on to auto monitor the file. If set to true, background thread is started, which auto-import data on file change.</li>
+    <li>[Optionally] Toggle "Import On Start" on to run import on scene load (from Start method)</li>
+    <li>Open excel file, change the data and save the file (Ctrl+s shortcut)</li>
+    <li>If you set "Monitor File" on, BGDatabase data should be updated automatically.
+        If "Monitor File" is off, you need to open BGExcelImportGo GUI by clicking on "Excel>>" button and then click on "Import" button to import the data.
+        All binders in the scene will be executed after that.
+    </li>
     <li>
-        To export call BGExcelImportGo.Export method from your script.
+        To export click on "Export" button or call BGExcelImportGo.Export method from your script.
         If you set "Export Meta only if sheet exists", export will ignore all tables which does not have corresponding sheet in target xls file
     </li>
 </ol>
