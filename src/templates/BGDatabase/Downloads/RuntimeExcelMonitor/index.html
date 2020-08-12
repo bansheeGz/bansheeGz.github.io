@@ -111,10 +111,15 @@
     </li>
     <li>Open BGDatabase window (Window->BG Database) and choose Database->test to see database data</li>
     <li>Run Scenes\SampleScene.unity scene</li>
-    <li>Open StreamingAssets\excel.xlsx file, change <code>B2</code> cell value and save the file (Ctrl+s). Value in the database and on screen will be changed
+    <li>Open StreamingAssets\excel.xlsx file, change <code>B2</code> cell value and save the file (Ctrl+s).
+        Value in the database and on screen will be changed
         <div class="bg-image">
             <a href="#path images/BGDatabase/download27.png"><img style="width: 400px;height: 200px;" src="#path images/BGDatabase/download27.png"></a>
         </div>
+    </li>
+    <li>If you want to test it in the build, build the application and run it.
+        Since we use relative excel path (not absolute), your Excel file location will be
+        <code>{YOUR_BUILD_FOLDER}/ExcelRuntime3_Data\StreamingAssets\excel.xlsx</code>
     </li>
 </ol>
 <h6>Example project environment:</h6>
