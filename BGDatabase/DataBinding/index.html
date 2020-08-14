@@ -433,12 +433,14 @@ With data binding you can:
     <li>#FIELD(uiText@dw/e73Wm0U+faTMnh+POZQ@Ui): #FIELD(HDonu5dt1Ei/bCcUX2n93w@47xVQlfHwUav9kozM7nIaw)</li>
 </ol>
 
-<h4>Building for IOS</h4>
+<h4 id="codeStripping">Building for mobile OS (Android/IOS)</h4>
 <p>
-    We are using Reflection to inject the value to field/property
+    Our data binders use <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/reflection" target="_blank">reflection</a>
+    to inject the value from the database to field/property
 </p>
 <p>
-    If you are targeting IOS, you may encounter the situation, that property can be stripped (removed) from the build.
+    If you are targeting mobile OS (Android/IOS), you may encounter the situation, that field/property is stripped (removed) from the build.
+    (read more information about code stripping <a href="https://docs.unity3d.com/Manual/ManagedCodeStripping.html"  target="_blank">here</a>)
 </p>
 
 <p>
