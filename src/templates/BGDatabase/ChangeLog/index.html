@@ -13,6 +13,22 @@
         <th>Log</th>
     </tr>
     <tr>
+        <td class="ra">August 24, 2020</td>
+        <td class="ra">
+            version 1.5.13
+        </td>
+        <td>
+            <ol>
+                <li>CHANGED: LiveUpdate addon does not require _id column anymore</li>
+                <li>FIXED: assigning sprite value to sprite field causes Unity Editor (v. 2019.4.8) crash on MacOS.
+                    Some other Unity Editor versions for MacOS may also be affected.
+                    The root cause is Unity Editor returning invalid value (-1)
+                    for <a href="https://docs.unity3d.com/ScriptReference/TextureImporter-filterMode.html">TextureImporter.filterMode</a> property
+                </li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
         <td class="ra">August 14, 2020</td>
         <td class="ra">
             version 1.5.12
