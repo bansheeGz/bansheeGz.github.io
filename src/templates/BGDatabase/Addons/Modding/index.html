@@ -62,13 +62,10 @@
 <h4>Applying changes to database at runtime</h4>
 <p>
     To apply changes at runtime you need to enable Modding addon and create C# class, extending from  BGAddonModding.ModdingSourceDefault class.
+    Override <code>Deltas</code> property to provide your own delta files content.
 </p>
-<ol>
-    <li>Override <code>Deltas</code> property to provide your own delta (method #1)</li>
-    <li>Override <code>void OnLoad(BGRepo repo)</code> method to make changes using C# API (method #2)</li>
-</ol>
 <p>
-    Here is an example for both 2 methods:
+    Here is an example:
 </p>
 <pre class="prettyprint">
 using UnityEngine;
@@ -78,19 +75,12 @@ using BansheeGz.BGDatabase;
     //which extends from BGAddonModding.ModdingSourceDefault class
     public class ModdingSource : BGAddonModding.ModdingSourceDefault
     {
-        //Method #1 : Override Deltas property to provide Delta files.
+        //Override Deltas property to provide Delta files.
         //In our case, we read delta file from bgdatabase_delta.bytes file,
         //located at Resources folder
         public override BGRepoDelta[] Deltas
         {
             get { return new[] {new BGRepoDelta(Resources.Load&lt;TextAsset&gt;("bgdatabase_delta").bytes),}; }
-        }
-
-        //Method #2 : Override OnLoad method if you want to modify database using C# API.
-        //In our case we modify entity name from "test" table using provided ID
-        public override void OnLoad(BGRepo repo)
-        {
-            repo["test"][new BGId("2y2PI1012ka/kjXBhiXlDg")].Name = "Updated name";
         }
     }
 </pre>
