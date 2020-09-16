@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    {
+      "Version" : "1.0",
+      "PluginClass" : "BansheeGz.BGDatabase.BGGoogleSheetService",
+      "PackageClass" : null,
+      "Name" :  "Google Sheets export/import",
+      "Description" :  "Adds support for exporting/importing data to Google Sheets",
+      "Url" : "https://www.bansheegz.com/BGDatabase/Downloads/GoogleSheets" 
+    }
+  ]
+}
