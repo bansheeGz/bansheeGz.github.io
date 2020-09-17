@@ -6,10 +6,23 @@
       "releaseDate" : "09/16/20",
       "pluginClass" : "BansheeGz.BGDatabase.BGGoogleSheetService",
       "packageClass" : null,
-      "name" :  "Google Sheets export/import",
-      "description" :  "Adds support for exporting/importing data to Google Sheets",
+      "name" :  "Google Sheets export/import in Editor",
+      "description" :  "Adds support for exporting/importing data to Google Sheets in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/GoogleSheets", 
-      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGGoogleSheets.unitypackage"
+      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGGoogleSheets.unitypackage",
+      "dependencies" : null
+    },
+    {
+      "id" : "kaPDL9lalUK2QRS159PcHg",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelService",
+      "packageClass" : null,
+      "name" :  "Excel export/import in Editor",
+      "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/Excel",
+      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGExcel.unitypackage",
+      "dependencies" : null
     }
   ]
 }
