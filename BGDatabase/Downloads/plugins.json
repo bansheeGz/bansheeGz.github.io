@@ -6,11 +6,10 @@
       "releaseDate" : "09/16/20",
       "pluginClass" : "BansheeGz.BGDatabase.BGGoogleSheetService",
       "packageClass" : null,
-      "name" :  "Google Sheets export/import in Editor",
+      "name" :  "Google Sheets integration for Editor",
       "description" :  "Adds support for exporting/importing data to Google Sheets in Unity Editor",
-      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/GoogleSheets", 
-      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGGoogleSheets.unitypackage",
-      "dependencies" : null
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorGoogleSheets", 
+      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseGoogleSheetsEditor.unitypackage"
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
@@ -18,11 +17,91 @@
       "releaseDate" : "09/16/20",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelService",
       "packageClass" : null,
-      "name" :  "Excel export/import in Editor",
+      "name" :  "Excel integration for Editor",
       "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
-      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/Excel",
-      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGExcel.unitypackage",
-      "dependencies" : null
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel",
+      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor.unitypackage"
+    },
+    {
+      "id" : "65qKr3PcjEWbHsp37FUHqw",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.Editor.BGAssetLoaderManagerAddressablesDelegate",
+      "packageClass" : null,
+      "name" :  "Addressables plugin",
+      "description" :  "Adds support for Addressables.",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables",
+      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressables.unitypackage"
+    },
+    {
+      "id" : "gOj0XadX5E2AxMfKkqvueA",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.Editor.BGDatabaseExcelImportEditorTool",
+      "packageClass" : null,
+      "name" :  "Excel file monitor for Editor",
+      "description" :  "Monitor and auto-import Excel file in Unity Editor",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcelMonitor"
+    },
+    {
+      "id" : "DfJvpW8lCEGhloB7LeT6zQ",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.BGExcelImportGo",
+      "packageClass" : null,
+      "name" :  "Excel file monitor for runtime",
+      "description" :  "Monitor and auto-import Excel file at runtime",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeExcelMonitor"
+    },
+    {
+      "id" : "p8mP75IIeE2JHALqD9DzFg",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.BGPlaymakerSaveLoadPlugin",
+      "packageClass" : null,
+      "name" :  "Playmaker save/load actions",
+      "description" :  "Save load actions for Playmaker",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeSaveLoadPlaymaker"
+    },
+    {
+      "id" : "d8TAOdtMh0mhPtfjHgi98A",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.BGPlaymakerAddressablesPlugin",
+      "packageClass" : null,
+      "name" :  "Playmaker Addressables",
+      "description" :  "Support for loading addressables assets from Addressables using Playmaker",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressablesPlaymaker"
+    },
+    {
+      "id" : "eAAo1eq+xk6azC6br0sRMA",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.BGBoltSaveLoadPlugin",
+      "packageClass" : null,
+      "name" :  "Bolt save/load actions",
+      "description" :  "Save load actions for Bolt",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeSaveLoadBolt"
+    },
+    {
+      "id" : "neUkfrwI8UWCAKtyFoZJHw",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.BGBoltAddressablesPlugin",
+      "packageClass" : null,
+      "name" :  "Bolt Addressables",
+      "description" :  "Support for loading addressables assets from Addressables using Bolt",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressablesBolt"
+    },
+    {
+      "id" : "NJBWhsm/pkSvFWTBSY+ZpQ",
+      "version" : "1.0",
+      "releaseDate" : "09/16/20",
+      "pluginClass" : "BansheeGz.BGDatabase.Editor.BGTranslationServiceAmazonDelegate",
+      "packageClass" : null,
+      "name" :  "Amazon Machine Translation",
+      "description" :  "Amazon Machine Translation plugin for BGLocalization",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorAmazonTranslate"
     }
   ]
 }
