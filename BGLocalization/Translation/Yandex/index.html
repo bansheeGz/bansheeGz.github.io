@@ -156,14 +156,14 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGLocalization/Translation/Amazon">Amazon Translate</a>
                     </li>
-                    <li class="cli  plic ">
-                        <a class="ca" href="../../../BGLocalization/Translation/Yandex">Yandex Translate</a>
-                    </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGLocalization/Translation/Watson">IBM Watson Translate</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGLocalization/Translation/Google">Google Translate</a>
+                    </li>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../../BGLocalization/Translation/Yandex">Yandex Translate</a>
                     </li>
                 </ul>
             </li>
@@ -186,11 +186,10 @@
 
 <div class="importantNote">
     Yandex Translate is no more recommended, cause they removed free service.
-    Setup guide below is outdated and will be updated shortly after we will evaluate all the consequences of removing free service
 </div>
 
 
-<h4>Setup [Outdated]</h4>
+<h4>Setup</h4>
 <ol>
     <li>
         Go to Configuration->Locale and add field of type string, named "yandexLanguage"
@@ -199,7 +198,9 @@
         </div>
 
     </li>
-    <li>Get a free API key for Yandex Translate as described <a href="https://tech.yandex.com/translate/">here</a></li>
+    <li>Create account for Yandex Cloud <a href="https://cloud.yandex.com/">here</a> and optionally activate free trial </li>
+    <li>Create a <a href="https://cloud.yandex.com/docs/iam/operations/sa/create">service account</a> with proper permissions</li>
+    <li>Create API key for this service account as described <a href="https://cloud.yandex.com/docs/iam/operations/api-key/create">here</a></li>
     <li>Go to Settings->Translation, paste your API key there
 
         <div class="bg-image">

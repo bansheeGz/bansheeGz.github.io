@@ -5,12 +5,17 @@
 </div>
 <br/>
 
-<h4>Create Google Sheets DataSource</h4>
+<h4>Step 1 : Import Google sheets plugin</h4>
+<p>
+    Import <a href="../../Downloads/EditorGoogleSheets">this plugin</a>.
+</p>
+
+<h4>Step 2 : Create Google Sheets DataSource</h4>
 <p>
     Open BGDatabase window <code>Window->BGDatabase</code>
 </p>
 <p>
-    Select <code>DataSources</code> tab, press plus icon, choose <code>Datasource type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
+    Select <code>EXport/import</code> tab, then "Data sources" tab, press plus icon, choose <code>Datasource type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
 </p>
 <p class="redText">
     [Important]: Keep your settings file private if you use GoogleSheets. Do not share it with anyone
@@ -20,9 +25,10 @@
 </div>
 
 
-<h4>Setting up Google Sheets DataSource</h4>
+<h4>Step 3 : Setting up Google Sheets DataSource</h4>
 <div>
-    Setting up Google Sheets DataSource depends on authentication type. Choose authentication type and read setup guide for this type.
+    Setting up Google Sheets DataSource depends on authentication type.
+    Choose authentication type and read setup guide for this type.
 </div>
 
 <table class="contentTable">
@@ -95,17 +101,20 @@
     </tr>
 </table>
 
-<h4>Create Export/Import task</h4>
+<h4>Step 4 : Create Export/Import task</h4>
 <p>
     Select <code>Export/Import</code> tab, press plus icon, choose <code>Job type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
 </p>
 <p>
     Choose GoogleSheets datasource, created above. Set up metas (tables) you wish to update.
 </p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GoogleSheets15.png"><img style="width: 400px" src="#path images/BGDatabase/GoogleSheets15.png"></a>
+</div>
 
 <h4>Running Export/Import Task</h4>
 <p>
-    Press <code>Export</code> or <code>Import</code> button to run the task you just created.
+    Press <code>Export</code> or <code>Import</code> button to run the task you created.
 </p>
 
 <p>

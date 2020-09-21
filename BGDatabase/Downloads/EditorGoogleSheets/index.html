@@ -322,6 +322,22 @@
     This plugin adds support for export/import to Google Sheets in Unity Editor.
 </p>
 
+<h4>Newtonsoft Dlls conflict</h4>
+<p>
+    Some people already has Newtonsoft.Json.dll (JSON.NET) in their projects, and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API dlls.
+    The following error is printed to the console in this case: "PrecompiledAssemblyException: Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included or the current platform.
+    Only one assembly with the same name is allowed per platform."
+</p>
+<p>
+Here is how to resolve this issue:
+</p>
+<ol>
+    <li>Select Newtonsoft.Json.dll, shipped with our package in the Project window, uncheck all platform toggles and hit "Apply" button</li>
+    <li>Select all Google Sheets API DLLs, uncheck "Validate references" and hit "Apply" button</li>
+</ol>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/download32.png"><img style="width: 400px" src="../../../images/BGDatabase/download32.png"></a>
+</div>
 
 <h4>Releases</h4>
 <table class="contentTable dTable">

@@ -156,14 +156,14 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGLocalization/Translation/Amazon">Amazon Translate</a>
                     </li>
-                    <li class="cli ">
-                        <a class="ca" href="../../../BGLocalization/Translation/Yandex">Yandex Translate</a>
-                    </li>
                     <li class="cli  plic ">
                         <a class="ca" href="../../../BGLocalization/Translation/Watson">IBM Watson Translate</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGLocalization/Translation/Google">Google Translate</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGLocalization/Translation/Yandex">Yandex Translate</a>
                     </li>
                 </ul>
             </li>
@@ -184,21 +184,10 @@
             <div id="content">
             
 
-<div class="importantNote">
-    Watson is not recommended.
-    It has 1 month free subscription.
-    Also, Watson by default has very limited translation languages pairs available.
-    You can find out which pairs are available as described <a href="https://www.ibm.com/watson/developercloud/language-translator/api/v2/?curl#list-models">here</a>
-    If pair is not available you will encounter error message "model not found".
-    In this case, you will need to create your own model as described here
-    <a href="https://www.ibm.com/watson/developercloud/language-translator/api/v2/?curl#create-model">here</a>.
-    For us it looks as super overcomplicated procedure, so we did not try or test it.
-</div>
-
 <h4>Setup</h4>
 <ol>
     <li>
-        Go to Configuration->Locale and add field of type string, named "watsonLanguage"
+        Go to Configuration->Locale and add string field with <code>>watsonLanguage</code> name
         <div class="bg-image">
             <a href="../../../images/BGLocalization/Watson1.png"><img style="width: 400px" src="../../../images/BGLocalization/Watson1.png"></a>
         </div>
@@ -209,10 +198,12 @@
         <a href="https://console.bluemix.net/docs/services/language-translator/getting-started.html#gettingstarted">here</a>
     </li>
     <li>
-        Get your user/password pair as described <a href="https://console.bluemix.net/docs/services/watson/getting-started-credentials.html#getting-credentials-manually">here</a>
+        To access service you need 2 pieces of information- <code>Url</code> and <code>API key</code>.
+        Read how to obtain it
+        <a href="https://cloud.ibm.com/docs/language-translator?topic=language-translator-gettingstarted#getting-started-tutorial">here</a>
     </li>
     <li>
-        Go to Settings->Translation and fill in your user and password
+        Go to Settings->Translation and fill URL and API key
         <div class="bg-image">
             <a href="../../../images/BGLocalization/Watson2.png"><img style="width: 400px" src="../../../images/BGLocalization/Watson2.png"></a>
         </div>

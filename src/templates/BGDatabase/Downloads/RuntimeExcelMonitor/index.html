@@ -18,7 +18,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.4
+            1.0
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -30,7 +30,7 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase (version >= 1.5.11)
+            BGDatabase (version >= 1.6)
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <a href="../BansheeGzExcelRuntime.unitypackage" class="downloadButton"></a>
@@ -58,17 +58,23 @@
 
 <h4>Setup</h4>
 <ol>
-    <li>Import BGDatabase package (version >= 1.5.11) and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
-    <li>Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets folder (or to any other folder, which is not under Editor folder)
-        Select all dlls under Assets\NPOI,
-        and in the inspector toggle "Any Platform" on, unselect any toggle under "Excluded Platforms" and click on "Apply" button (see the screenshot below)
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/download17.png"><img style="width: 400px" src="#path images/BGDatabase/download17.png"></a>
-        </div>
+    <li>Import BGDatabase package (version >= 1.6) and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
+    <li>Import this plugin</li>
+    <li>Now you need to add NPOI dlls to runtime assembly.
+        <ol>
+            <li>If you use <a href="../EditorExcel">this plugin</a>- dlls are located in Editor assembly.
+                Move (not copy!) Assets\BansheeGz\BGDatabase\Editor\Libs\NPOI folder to Assets folder (or to any other folder, which is not under Editor folder)
+                Select all dlls under Assets\NPOI,
+                and in the inspector toggle "Any Platform" on, unselect any toggle under "Excluded Platforms" and click on "Apply" button (see the screenshot below)
+                <div class="bg-image">
+                    <a href="#path images/BGDatabase/download17.png"><img style="width: 400px" src="#path images/BGDatabase/download17.png"></a>
+                </div>
+            </li>
+            <li>If you do not use Excel plugin, download and import <a href="../NPOI.unitypackage">this package</a> with NPOI DLLs</li>
+        </ol>
     </li>
     <li>Export required data to Excel as described <a href="http://www.bansheegz.com/BGDatabase/ThirdParty/Excel/">here</a></li>
-    <li>Import BansheeGzExcelRuntime package</li>
-    <li>Add <code>Assets\BansheeGzExcelRuntime\BGExcelImportGo.cs</code> component to a new GameObject</li>
+    <li>Add <code>Assets\BansheeGz\BGDatabaseExcelRuntime\BGExcelImportGo.cs</code> component to a new GameObject</li>
     <li>Set BGExcelImportGo's "Excel File" parameter to previously exported excel file location.
         Use absolute path or path, relative to StreamingAssets folder if your excel file is located under StreamingAssets folder
         (for example, for <code>Assets\StreamingAssets\excel.xlsx</code> file the correct value would be <code>excel.xlsx</code>)</li>
@@ -98,18 +104,14 @@
 
 <h4>Example project</h4>
 <p>
-    We have created an example project, which can be downloaded <a href="../BansheeGzExcelRuntimeExample.zip">here</a>.
+    We have created an example project, which can be downloaded <a href="../ExcelRuntimeExample.zip">here</a>.
     It works in both Unity Editor and PC builds and hopefully could help to start using this plugin.
 </p>
 
 <h6>Example project setup:</h6>
 <ol>
     <li>Download the project zip file, unzip it and open in Unity Editor. Ignore console errors.</li>
-    <li>Import BGDatabase package  (version >= 1.5.11), but uncheck NPOI folder (as shown on the screenshot)
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/download26.png"><img style="width: 400px;height: 200px;" src="#path images/BGDatabase/download26.png"></a>
-        </div>
-    </li>
+    <li>Import BGDatabase package  (version >= 1.6)</li>
     <li>Open BGDatabase window (Window->BG Database) and choose Database->test to see database data</li>
     <li>Run Scenes\SampleScene.unity scene</li>
     <li>Open StreamingAssets\excel.xlsx file, change <code>B2</code> cell value and save the file (Ctrl+s).
@@ -125,7 +127,7 @@
 </ol>
 <h6>Example project environment:</h6>
 <ol>
-    <li>NPOI library is copied to Assets/NPOI folder to be included to the build</li>
+    <li><a href="../NPOI.unitypackage">NPOI library</a> is imported</li>
     <li>Internationalization DLLs (I18N*.dll) are copied from <code>{UNITY_FOLDER}\Editor\Data\MonoBleedingEdge\lib\mono\unityaot\</code> folder
         to <code>Assets/I18</code> folder to avoid issues with missing encodings (see "Troubleshooting" section below for more information)
     </li>
@@ -164,7 +166,16 @@
     </tr>
     <tr>
         <td class="ra">
-            1.4
+            1.0
+        </td>
+        <td class="ra">Sep 16, 2020</td>
+        <td>
+            Versioning reset (unified plugin infrastructure)
+        </td>
+    </tr>
+    <tr>
+        <td class="ra">
+            0.1.4
         </td>
         <td class="ra">August 12, 2020</td>
         <td>
@@ -177,7 +188,7 @@
     </tr>
     <tr>
         <td class="ra">
-            1.3
+            0.1.3
         </td>
         <td class="ra">July 31, 2020</td>
         <td>
@@ -186,7 +197,7 @@
     </tr>
     <tr>
         <td class="ra">
-            1.2
+            0.1.2
         </td>
         <td class="ra">July 08, 2020</td>
         <td>
@@ -195,7 +206,7 @@
     </tr>
     <tr>
         <td class="ra">
-            1.1
+            0.1.1
         </td>
         <td class="ra">February 22, 2020</td>
         <td>
@@ -204,7 +215,7 @@
     </tr>
     <tr>
         <td class="ra">
-            1.0
+            0.1.0
         </td>
         <td class="ra">July 22, 2019</td>
         <td>

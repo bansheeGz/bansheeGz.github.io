@@ -286,41 +286,47 @@
 You can export/import BGDatabase data to/from Excel xls format
 (supported by many programs, including Microsoft Excel, OpenOffice and LibreOffice)
 </p>
-<h4>Step 1: Create Excel Datasource</h4>
+
+<h4>Step 1: Import Excel plugin</h4>
+<p>Import <a href="../../Downloads/EditorExcel">this plugin</a></p>
+
+<h4>Step 2: Create Excel Datasource</h4>
 <p>
     Open BGDatabase window <code>Window->BGDatabase</code>
 </p>
 <p>
-    Select <code>DataSources</code> tab, press plus icon, choose <code>Datasource type</code>  to be <code>excel</code> and click <code>Add</code> button
+    Select <code>Export/import</code> tab, then <code>Data sources</code> tab,
+    press plus icon, set <code>Datasource type</code>  to <code>excel</code> and click on <code>Add</code> button
 </p>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/Excel1.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel1.png"></a>
 </div>
 
 <p>
-    Choose xls file location.
+    Choose xls/xlsx file location.
 </p>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/Excel2.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel2.png"></a>
 </div>
 
-<h4>Step 2: Create Export/Import Task</h4>
+<h4>Step 3: Create Export/Import Task</h4>
 <p>
-    Select <code>Export/Import</code> tab, press plus icon, choose <code>Job type</code>  to be <code>excel</code> and click <code>Add</code> button
+    Select <code>Export/Import</code> tab, then <code>Jobs</code> tab,
+    press plus icon, set <code>Job type</code>  to <code>excel</code> and click on <code>Add</code> button
 </p>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/Excel3.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel3.png"></a>
 </div>
 
 <p>
-    Choose xls datasource, created in step 1. Set up metas (tables) you wish to update.
+    Select xls datasource, created in step 2. Include tables/fields you wish to update.
 </p>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/Excel4.png"><img style="width: 400px" src="../../../images/BGDatabase/Excel4.png"></a>
 </div>
 
 
-<h4>Step 3: Running Export/Import Task</h4>
+<h4>Step 4: Running Export/Import Task</h4>
 <p>
     Press <code>Export</code> or <code>Import</code> button to run the task you just created.
 </p>
