@@ -46,12 +46,12 @@
 
 <h4>Newtonsoft Dlls conflict</h4>
 <p>
-    Some people already has Newtonsoft.Json.dll (JSON.NET) in their projects, and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API dlls.
-    The following error is printed to the console in this case: "PrecompiledAssemblyException: Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included or the current platform.
-    Only one assembly with the same name is allowed per platform."
+    Some people already have Newtonsoft.Json.dll (JSON.NET) in their projects, and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API dlls.
+    The following error is printed to the console in this case: <i><b>PrecompiledAssemblyException: Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included or the current platform.
+    Only one assembly with the same name is allowed per platform.</b></i>
 </p>
 <p>
-Here is how to resolve this issue:
+Here is how to resolve this conflict:
 </p>
 <ol>
     <li>Select Newtonsoft.Json.dll, shipped with our package in the Project window, uncheck all platform toggles and hit "Apply" button</li>
@@ -59,6 +59,25 @@ Here is how to resolve this issue:
 </ol>
 <div class="bg-image">
     <a href="#path images/BGDatabase/download32.png"><img style="width: 400px" src="#path images/BGDatabase/download32.png"></a>
+</div>
+
+<h4>Using source code</h4>
+<p>
+    We provide source code for our plugins, so you can use source code instead of built DLL file or build your own DLL using source code.
+</p>
+<p>
+    Guide for using source code:
+</p>
+<ol>
+    <li>While importing plugin package, check the packages with source code only</li>
+    <li>Download required library- Google APIs (min version 1.41.1) <a href="https://www.nuget.org/packages/Google.Apis/1.41.1">here</a>
+        and add library DLLs to your project to the Editor assembly (under Editor folder)
+        (the following DLLs are required- Google.Apis.dll, Google.Apis.Auth.dll, Google.Apis.Auth.PlatformServices.dll,
+        Google.Apis.Core.dll, Google.Apis.Sheets.v4.dll, Newtonsoft.Json.dll )</li>
+    <li>Import source code packages</li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/download34.png"><img style="width: 400px" src="#path images/BGDatabase/download34.png"></a>
 </div>
 
 <h4>Releases</h4>
