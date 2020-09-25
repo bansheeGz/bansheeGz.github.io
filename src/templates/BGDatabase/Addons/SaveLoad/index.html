@@ -81,6 +81,12 @@ byte[] bytes = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save();
 //to load
 BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
 </pre>
+<p>
+    Once you obtained bytes array using Save method, you need to write it to some persistent storage (file or cloud drive)
+    See <a href="../../Downloads/SaveLoadManager.txt">this minimalistic example</a> for more details.
+    There are also custom units/actions for
+    <a href="../../Downloads/RuntimeSaveLoadBolt">Bolt</a> and <a href="../../Downloads/RuntimeSaveLoadPlaymaker">Playmaker</a> are available.
+</p>
 
 <h4 id="saveAll">Is it possible to save/load the whole database?</h4>
 <pre class="prettyprint">
