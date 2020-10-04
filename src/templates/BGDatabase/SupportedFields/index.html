@@ -346,12 +346,12 @@
         <td rowspan="4">Unity Scene <a href="#unityscene">#2</a></td>
         <td>entityReference</td>
         <td>BGEntityGo</td>
-        <td></td>
+        <td>not recommended, use objectReference instead</td>
     </tr>
     <tr>
         <td>entityListReference</td>
         <td>List&lt;BGEntityGo&gt;</td>
-        <td></td>
+        <td>not recommended, use objectListReference instead</td>
     </tr>
     <tr>
         <td>objectReference</td>
@@ -361,7 +361,6 @@
     <tr>
         <td>objectListReference</td>
         <td>List&lt;BGWithId&gt;</td>
-        <td></td>
     </tr>
 </table>
 
@@ -393,20 +392,17 @@
 </p>
 
 <h4 id="unityscene">Unity Scene Fields (#2)</h4>
-<p>
-    There are 2 ways to reference GameObject in the scene
-</p>
+Referencing scene GameObjects using objectReference/objectListReference fields is implemented with the same technique, which is used in
+<a href="https://github.com/Unity-Technologies/guid-based-reference">this Unity project</a>,
+by adding additional component (BGWithId) with unique ID.
+On Awake method object is added to the internal cache and On OnDestroy method object is removed from the cache.
+There are 2 restrictions, then using these fields:
 <ol>
-    <li>if this object has BGEntityGo component attached. BGEntityGo is used to reference a row from a database and you
-        can use it's id to get reference to GameObject
-    </li>
-    <li>if this object has BGWithId component attached. BGWithId is simple component with generated id, you can use this
-        id to get reference to GameObject
-    </li>
+    <li>GameObjects can not be resolved before Awake method is called or after OnDestroy method</li>
+    <li>GameObjects can be resolved only at runtime, they will not be resolved from Editor code</li>
 </ol>
-<p>
-    Both methods use UnityObject.FindComponentOfType method and super slow.
-</p>
+entityReference/entityListReference fields are considered to be obsolete and not recommended anymore (they use UnityObject.FindComponentOfType method and very slow)
+
 
 <h4 id="hashtable">Hashtable (#3)</h4>
 <p>
