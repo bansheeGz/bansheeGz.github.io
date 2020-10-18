@@ -51,6 +51,8 @@
     <li>Unit requires a Unity Event to be called in coroutine mode. Make sure Unity event has "Coroutine" toggle on</li>
     <li>Add BGAddressablesGetAsset unit. Assign correct meta name, field name and pass correct entity identifier (Index, ID or name).
         The call may take several frames to load an asset, cause loading is asynchronous</li>
+    <li>Use "exit" out control to read the asset.</li>
+    <li>Use "exitNoWait" out control to continue execution without waiting until asset is loaded (note, the asset is available only after exit control is executed)</li>
 </ol>
 <div class="bg-image">
     <a href="#path images/BGDatabase/Addressables3.png"><img style="width: 400px" src="#path images/BGDatabase/Addressables3.png"></a>
@@ -70,6 +72,15 @@
         </th>
 
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.1
+        </td>
+        <td class="ra">Oct 18, 2020</td>
+        <td>
+            "exitNoWait" output control is added to allow to continue control flow without waiting
+        </td>
     </tr>
     <tr>
         <td class="ra">
