@@ -286,13 +286,13 @@
     <li>
         Open <code>Window->BGDatabase</code>.
         Click on <code>Create new database file</code>.
-        Choose the <a href="#loaders">loader</a> (Resources or StreamingAssets), fill in fields and press <code>Create</code> button
+        Choose the <a href="#loaders">loader</a> (Resources or StreamingAssets) and press <code>Create</code> button
         <div class="bg-image">
             <a href="../../images/BGDatabase/Setup5.png"><img style="width: 400px" src="../../images/BGDatabase/Setup5.png"></a>
         </div>
     </li>
     <li>
-        Go to <code>Configuration</code> and create table (called Meta)
+        Select <code>Configuration</code> tab and create table (called Meta)
         <div class="bg-image">
             <a href="../../images/BGDatabase/Setup2.png"><img style="width: 400px" src="../../images/BGDatabase/Setup2.png"></a>
         </div>
@@ -305,7 +305,7 @@
         </div>
     </li>
     <li>
-        Go to <code>Database</code> and create data for tables (called Entities)
+        Select <code>Database</code> tab and create data for tables (called Entities)
         <div class="bg-image">
             <a href="../../images/BGDatabase/Setup4.png"><img style="width: 400px" src="../../images/BGDatabase/Setup4.png"></a>
         </div>
@@ -402,7 +402,7 @@
     <tr>
         <th>Default name</th>
         <td>bansheegz_database.bytes</td>
-        <td>bansheegz_database_settings.json</td>
+        <td>BGS_{database asset GUID}.json</td>
     </tr>
     <tr>
         <th>Format</th>
@@ -422,17 +422,17 @@
     <tr>
         <th>Location</th>
         <td>Under Resources / StreamingAssets folders</td>
-        <td>No restrictions</td>
+        <td>Under Documents folder</td>
     </tr>
     <tr>
         <th>How to change location</th>
         <td>Move (not copy) database file along with it's meta file</td>
-        <td>Go to Settings -> Main -> "Settings file" to set/change its path.</td>
+        <td>N/A</td>
     </tr>
     <tr>
         <th>How file is resolved</th>
         <td>Naming convention is used (bansheegz_database.bytes)</td>
-        <td>File location is stored in EditorPrefs and bound to database asset GUID</td>
+        <td>File location is resolved using database asset GUID</td>
     </tr>
 </table>
 
