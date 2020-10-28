@@ -8,8 +8,7 @@
       "packageClass" : null,
       "name" :  "Google Sheets integration for Editor",
       "description" :  "Adds support for exporting/importing data to Google Sheets in Unity Editor",
-      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorGoogleSheets", 
-      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseGoogleSheetsEditor_1.1.unitypackage"
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorGoogleSheets"
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
@@ -19,8 +18,7 @@
       "packageClass" : null,
       "name" :  "Excel integration for Editor",
       "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
-      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel",
-      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor_1.2.unitypackage"
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel"
     },
     {
       "id" : "65qKr3PcjEWbHsp37FUHqw",
@@ -30,8 +28,7 @@
       "packageClass" : null,
       "name" :  "Addressables plugin",
       "description" :  "Adds support for Addressables.",
-      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables",
-      "downloadUrl" : "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressables.unitypackage"
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables"
     },
     {
       "id" : "gOj0XadX5E2AxMfKkqvueA",
