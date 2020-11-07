@@ -33,6 +33,16 @@
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables"
     },
     {
+      "id" : "zRiptqpjTkaSv1XEHk3qmw",
+      "version" : "1.0",
+      "releaseDate" : "11/08/20",
+      "pluginClass" : "BansheeGz.BGDatabase.BGRuntimeDatabaseEditor",
+      "packageClass" : null,
+      "name" :  "Runtime database editor",
+      "description" :  "Edit database data in builds.",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeEditor"
+    },
+    {
       "id" : "gOj0XadX5E2AxMfKkqvueA",
       "version" : "1.0",
       "releaseDate" : "09/16/20",

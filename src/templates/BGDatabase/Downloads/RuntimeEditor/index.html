@@ -5,14 +5,14 @@
 <a class="backToDownloads" href="../">< Back to downloads</a>
 
 <div>
-    <img class="centered" src="#path images/BGDatabase/download8.png">
+    <img class="centered" src="#path images/BGDatabase/download38.png">
 </div>
 
 <div class="bg-main-contacts">
 
     <div class="bg-main-contacts_grid mdl-grid">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <h4>Save/Load actions for Playmaker</h4>
+            <h4>Database runtime editor</h4>
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Version:
@@ -30,39 +30,36 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase, Playmaker
+            BGDatabase (version >= 1.6.2)
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BGDatabaseSaveLoadPlaymaker.unitypackage" class="downloadButton"></a>
+            <a href="../BGDatabaseRuntimeEditor.unitypackage" class="downloadButton"></a>
         </div>
     </div>
 </div>
 
 
+
 <h4>Description</h4>
 <p>
-    Save/Load actions for <a href="../../ThirdParty/Playmaker">Playmaker</a>
-    to support <a href="../../Addons/SaveLoad">SaveLoad addon</a>.
-    Actions allow you to save/load game to/from file(s), located in the
-    <a href="https://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html">Unity's persistent folder</a>.
-    WebGl platform is not supported
+    Database runtime editor (PC/Mac/Linux only).
 </p>
 
-<h4>Available actions:</h4>
+<h4>Features</h4>
 <ol>
-    <li>SaveGame: save a game to a file.</li>
-    <li>LoadGame: load a game from a file.</li>
-    <li>ListSaves: load all file names to string array (without path and extension)</li>
-    <li>DeleteSave: delete saved file.</li>
+    <li>Add/Delete/Edit data at runtime (in builds). Most of the fields are supported (Assets and Dictionary fields are not editable)</li>
+    <li>Invoke binders</li>
+    <li>Save database to a file</li>
+    <li>Load database from a file</li>
 </ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/download37.png"><img style="width: 400px;height: 200px;" src="#path images/BGDatabase/download37.png"></a>
+</div>
 
-<h4>Additional information:</h4>
+<h4>Setup</h4>
 <ol>
-    <li>All files have ".sav" extension.</li>
-    <li>SaveGame/LoadGame/DeleteSave have optional <i>fileName</i> parameter (default is "game").
-        <i>fileName</i> parameter format is a file name without path and extension.
-    </li>
-    <li>All actions have "debug" parameter- if it's turned on, information about files is printed to Unity console.</li>
+    <li>Import the package</li>
+    <li>Add Assets\BansheeGz\BGDatabaseRuntimeEditor\Prefab\Editor.prefab prefab to your scene</li>
 </ol>
 
 
@@ -81,16 +78,7 @@
         <td class="ra">
             1.0
         </td>
-        <td class="ra">Sep 16, 2020</td>
-        <td>
-            Versioning reset (unified plugin infrastructure)
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.0
-        </td>
-        <td class="ra">August 05, 2019</td>
+        <td class="ra">Nov 8, 2020</td>
         <td>
             Initial release
         </td>
