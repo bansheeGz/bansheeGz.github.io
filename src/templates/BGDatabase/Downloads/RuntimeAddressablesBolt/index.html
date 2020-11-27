@@ -18,7 +18,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.1
+            1.2
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -41,12 +41,16 @@
 
 <h4>Description</h4>
 <p>
-    Custom action (BGAddressablesGetAsset under BansheeGz category) for <a href="../../ThirdParty/Bolt">Bolt</a>
-    to load Unity assets from Addressables and BGDatabase without any prerequisites (no preloading required).
-    Loading is asynchronous and may take several frames to load an asset.
+    There are 2 different methods for loading assets- using BGAddressablesGetAsset unit or using events.
+    BGAddressablesGetAsset is suitable for loading a single asset and events are more suitable to load multiple assets at once
 </p>
 
-<h4>Setup: </h4>
+<h4>Method #1 setup: </h4>
+<p>
+    Custom action (BGAddressablesGetAsset under BansheeGz category) for <a href="../../ThirdParty/Bolt">Bolt</a>
+    Loading is asynchronous and may take several frames to load an asset.
+    This method is not suitable for loading multiple assets at once
+</p>
 <ol>
     <li>Unit requires a Unity Event to be called in coroutine mode. Make sure Unity event has "Coroutine" toggle on</li>
     <li>Add BGAddressablesGetAsset unit. Assign correct meta name, field name and pass correct entity identifier (Index, ID or name).
@@ -61,6 +65,20 @@
     <a href="#path images/BGDatabase/Addressables4.png"><img style="width: 400px" src="#path images/BGDatabase/Addressables4.png"></a>
 </div>
 
+<h4>Method #2 setup: </h4>
+<p>
+    This method is suitable for loading multiple assets at once.
+    Loading is split into 2 phases:
+</p>
+<ol>
+    <li>Requesting an asset loading (using BansheeGz/BGAddressablesGetAssetViaEvent unit)</li>
+    <li>Once the asset is loaded, an event is fired (Events/BansheeGz/BGAssetLoadedEvent) with the asset as an argument.
+        Additional information is also provided so the origin of the asset can be identified (table, field, entity, optional eventData object)</li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Addressables5.png"><img style="width: 400px" src="#path images/BGDatabase/Addressables5.png"></a>
+</div>
+
 <h4>Releases</h4>
 <table class="contentTable dTable">
     <tr>
@@ -72,6 +90,15 @@
         </th>
 
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.2
+        </td>
+        <td class="ra">Nov 27, 2020</td>
+        <td>
+            Added additional method of loading assets (via events)
+        </td>
     </tr>
     <tr>
         <td class="ra">
