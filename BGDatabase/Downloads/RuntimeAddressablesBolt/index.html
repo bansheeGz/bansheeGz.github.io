@@ -282,10 +282,6 @@
 
 <a class="backToDownloads" href="../">< Back to downloads</a>
 
-<div>
-    <img class="centered" src="../../../images/BGDatabase/download15.png">
-</div>
-
 <div class="bg-main-contacts">
 
     <div class="bg-main-contacts_grid mdl-grid">
@@ -313,19 +309,34 @@
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <a href="../BGDatabaseAddressablesBolt.unitypackage" class="downloadButton"></a>
         </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/download15.png">
+                    <img style="width: 100%" src="../../../images/BGDatabase/download15.png">
+                </a>
+            </div>
+        </div>
+
     </div>
 </div>
 
 
 <h4>Description</h4>
 <p>
-    There are 2 different methods for loading assets- using BGAddressablesGetAsset unit or using events.
-    BGAddressablesGetAsset is suitable for loading a single asset and events are more suitable to load multiple assets at once
+    There are 2 different methods for loading assets
 </p>
+<ol>
+    <li>
+        By using BGAddressablesGetAsset unit (suitable for loading a single asset)
+    </li>
+    <li>
+        By using events (suitable for loading multiple assets at once)
+    </li>
+</ol>
 
 <h4>Method #1 setup: </h4>
 <p>
-    Custom action (BGAddressablesGetAsset under BansheeGz category) for <a href="../../ThirdParty/Bolt">Bolt</a>
+    Custom action (BGAddressablesGetAsset under BansheeGz category) for <a href="../../ThirdParty/Bolt">Bolt</a>.
     Loading is asynchronous and may take several frames to load an asset.
     This method is not suitable for loading multiple assets at once
 </p>

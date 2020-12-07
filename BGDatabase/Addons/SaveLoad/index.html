@@ -313,6 +313,10 @@ Choose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for sa
 <div class="bg-image">
     <a href="../../../images/BGDatabase/SaveLoadAddonReview.png"><img style="width: 400px" src="../../../images/BGDatabase/SaveLoadAddonReview.png"></a>
 </div>
+<p>
+    [Important] Loading with SaveLoad addon results in whole database to be reloaded,
+    so if you use SaveLoad addon do not store references to tables/fields/entities, cause they will be obsolete after loading.
+</p>
 
 <h4 id="why">Why it works like this?</h4>
 <p>

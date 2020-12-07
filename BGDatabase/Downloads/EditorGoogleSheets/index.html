@@ -281,11 +281,6 @@
 
 <a class="backToDownloads" href="../">< Back to downloads</a>
 
-<div>
-    <img class="centered" src="../../../images/BGDatabase/download30.png">
-</div>
-
-
 <div class="bg-main-contacts">
 
     <div class="bg-main-contacts_grid mdl-grid">
@@ -313,6 +308,13 @@
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <a href="../BGDatabaseGoogleSheetsEditor_1.1.unitypackage" class="downloadButton"></a>
         </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/download30.png">
+                    <img style="width: 100%" src="../../../images/BGDatabase/download30.png">
+                </a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -325,11 +327,12 @@
 <h4>Newtonsoft Dlls conflict</h4>
 <p>
     Some people already have Newtonsoft.Json.dll (JSON.NET) in their projects, and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API dlls.
-    The following error is printed to the console in this case: <i><b>PrecompiledAssemblyException: Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included or the current platform.
+    The following error is printed to the console in this case: <i><b>PrecompiledAssemblyException: Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included or the current
+    platform.
     Only one assembly with the same name is allowed per platform.</b></i>
 </p>
 <p>
-Here is how to resolve this conflict:
+    Here is how to resolve this conflict:
 </p>
 <ol>
     <li>Select Newtonsoft.Json.dll, shipped with our package in the Project window, uncheck all platform toggles and hit "Apply" button</li>
@@ -351,7 +354,8 @@ Here is how to resolve this conflict:
     <li>Download required library- Google APIs (min version 1.41.1) <a href="https://www.nuget.org/packages/Google.Apis/1.41.1">here</a>
         and add library DLLs to your project to the Editor assembly (under Editor folder)
         (the following DLLs are required- Google.Apis.dll, Google.Apis.Auth.dll, Google.Apis.Auth.PlatformServices.dll,
-        Google.Apis.Core.dll, Google.Apis.Sheets.v4.dll, Newtonsoft.Json.dll )</li>
+        Google.Apis.Core.dll, Google.Apis.Sheets.v4.dll, Newtonsoft.Json.dll )
+    </li>
     <li>Import source code packages</li>
 </ol>
 <div class="bg-image">
