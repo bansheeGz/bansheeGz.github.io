@@ -70,6 +70,40 @@
     <li>All actions have "debug" parameter- if it's turned on, information about files is printed to Unity console.</li>
 </ol>
 
+<h4>WebGl platform:</h4>
+<p>
+    WebGl player does not have access to physical disk and uses <a href="https://en.wikipedia.org/wiki/Indexed_Database_API">IndexedDB</a>
+    database instead, so it requires special actions.
+    We used <a href="https://3p0ch.newgrounds.com/news/post/1086279">this guide</a> to implement them.
+</p>
+<p>
+    WebGl platform setup guide:
+</p>
+<ol>
+    <li>
+        Download actions for WebGl <a href="../BGDatabaseSaveLoadWebGlPlaymaker.unitypackage">here</a>
+    </li>
+    <li>Use BGSaveGameWebGl to save a game, BGLoadGameWebGl to load a game and BGDeleteGameWebGl to delete the saved file
+        This actions will work only in WebGl builds.
+        They will not work on any other platforms (including Unity Editor)
+    </li>
+    <li>
+        All 3 actions have GameName and SaveName parameters.
+        You need to choose it only once and stick to it.
+        If you change them afterwards- save files will not be found
+        They will be used as file path for IndexedDB database (which is used on WebGL platform instead of file system)
+        Use only latin letters for maximum compatibility
+        So if you choose "MySuperGame" as GameName and "MySave" as SaveName the final save file path will be /idbfs/MySuperGame/MySave.dat
+        You need to make sure all actions use the same names
+    </li>
+    <li>
+        Use "debug" parameter to print debug information to browser console
+    </li>
+    <li>
+        There is an additional file, which is required to flush the IndexedDB database cache to the disk, otherwise saved data may be lost.
+        This file is located under plugins folder (BGDatabaseFsSync.jslib). Do not remove it
+    </li>
+</ol>
 
 <h4>Releases</h4>
 <table class="contentTable dTable">
