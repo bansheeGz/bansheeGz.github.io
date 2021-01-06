@@ -611,6 +611,15 @@ public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
     }
 }
 </pre>
+Note, callback method is called on all loaded objects, including inactive game objects and prefabs.
+Use the following code (at the beginning of your callback function) to filter out inactive game objects and prefabs.
+<pre class="prettyprint">
+        // use the following line to filter out components, attached to inactive GameObjects
+        if (!gameObject.activeInHierarchy) return;
+
+        // use the following line to filter out prefabs
+        if (!gameObject.scene.IsValid()) return;
+</pre>
 
 <div>
     <h4>Additional downloads</h4>
