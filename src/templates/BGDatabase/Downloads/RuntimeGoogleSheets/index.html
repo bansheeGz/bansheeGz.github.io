@@ -60,32 +60,38 @@
 
 <h4>Setup:</h4>
 <ol>
-    <li>Install BGDatabase (version >= 1.5.11) and this plug-in to your project</li>
+    <li>Install BGDatabase (version >= 1.5.11)</li>
+    <li>Install <a href="../EditorGoogleSheets">GoogleSheets Editor</a> plugin</li>
+    <li>Install this plug-in</li>
+    <li>Move (not copy!) all DLL files under folder <code>Assets\BansheeGz\BGDatabaseGoogleSheetsEditor\Editor\Libs</code> to runtime assembly
+        (let's say to <code>Assets/GDataV4</code> folder, we will use this folder as a reference, but this can be any folder not under Editor folder)
+    </li>
+    <li>Move (not copy!) the following DLL file<code>Assets\BansheeGz\BGDatabaseGoogleSheetsEditor\Editor\Scripts\BGDatabaseEditorGoogleSheets.dll</code>.
+        to the same folder (<code>Assets/GDataV4</code> folder)
+    </li>
     <li>
         Now we need to replace Newtonsoft.Json.dll with its AOT variant.
         <ol>
-            <li>Mark <code>Assets\BansheeGz\BGDatabase\Editor\Libs\GDataV4\Newtonsoft.Json.dll</code> DLL file to not target any platform in the Unity Inspector.</li>
+            <li>Delete this DLL <code>Assets\GDataV4\Newtonsoft.Json.dll</code></li>
             <li>Download and install <code>Assets\JsonDotNet\Assemblies\AOT\Newtonsoft.Json.dll</code> DLL file from this
                 <a href="https://assetstore.unity.com/packages/tools/input-management/json-net-for-unity-11347">JSON</a> package.
             </li>
-            <li>Mark downloaded DLL file to target any platform in the Unity Inspector.</li>
+            <li>Move <code>Assets\JsonDotNet\Assemblies\AOT\Newtonsoft.Json.dll</code> file to <code>Assets/GDataV4</code> folder</li>
         </ol>
     </li>
-    <li>Move (not copy!) following folder <code>Assets\BansheeGz\BGDatabase\Editor\Libs\GDataV4</code> to runtime assembly
-        (any folder not under Editor folder, let's say to Assets folder)
-    </li>
-    <li>Select any single DLL file under moved folder (Assets/GDataV4) except Newtonsoft.Json.dll and mark it to target Any platform in Inspector
+    <li>Select any single DLL file under moved folder <code>Assets/GDataV4</code>.
+        Mark it to target Any platform in Inspector.
+        Make sure "Excluded platforms" are unchecked.
+        Also uncheck "Validate references" (use the screenshot as a reference).
+        Hit <code>Apply</code> button
         <div class="bg-image">
             <a href="#path images/BGDatabase/download19.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/download19.png"></a>
         </div>
     </li>
-    <li>Repeat steps 2 and 3 for DLL file <code>Assets\BansheeGz\BGDatabase\Editor\Pluginz\BGDatabaseEditorGoogleSheets.dll</code>.
-        Move it to runtime assembly and mark it to target Any platform in Inspector
-    </li>
     <li>Create GoogleSheets datasource in BGDatabase window (under DataSources tab) and fill in all required parameters</li>
     <li>Add <code>Assets\BGDatabaseGoogleSheetsRuntime\BGGoogleSheetsManagerGo.cs</code> component to any GameObject inside your scene</li>
     <li>
-        Copy all settings from GoogleSheets datasource (you created at step 6) to BGGoogleSheetsManagerGo script settings
+        Copy all settings from GoogleSheets datasource (you created at step 8 to BGGoogleSheetsManagerGo script settings
         <div class="bg-image">
             <a href="#path images/BGDatabase/download20.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/download20.png"></a>
         </div>
