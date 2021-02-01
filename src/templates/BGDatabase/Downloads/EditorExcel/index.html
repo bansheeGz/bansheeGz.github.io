@@ -13,7 +13,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.3
+            1.4
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -21,33 +21,16 @@
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Unity package
         </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            BGDatabase (v. >= 1.6.3)
+        </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <table class="contentTable dTable">
-                <tr>
-                    <th>
-                        Dependencies
-                    </th>
-                    <th>
-                        Download
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        BGDatabase 1.6.3
-                    </td>
-                    <td>
-                        <a href="../BGDatabaseExcelEditor_1.3.unitypackage">1.3</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        BGDatabase 1.6.2
-                    </td>
-                    <td>
-                        <a href="../BGDatabaseExcelEditor_1.2.unitypackage">1.2</a>
-                    </td>
-                </tr>
-            </table>
+            <a href="../BGDatabaseExcelEditor_1.4.unitypackage" class="downloadButton"></a>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <div class="bg-image">
                 <a href="#path images/BGDatabase/download29.png">
                     <img style="width: 100%" src="#path images/BGDatabase/download29.png">
@@ -75,7 +58,7 @@
     <li>Download required library- NPOI (min version 2.3.0) <a href="https://www.nuget.org/packages/NPOI/2.3.0">here</a>
         and add library DLLs to your project to the Editor assembly (under Editor folder)
         (the following DLLs are required-NPOI.dll, NPOI.OOXML.dll, NPOI.OpenXml4Net.dll,
-        NPOI.OpenXmlFormats.dll, ICSharpCode.SharpZipLib.dll)</li>
+        NPOI.OpenXmlFormats.dll, ICSharpCode.SharpZipLib.dll, BouncyCastle.Crypto.dll)</li>
     <li>Import source code packages</li>
 </ol>
 <div class="bg-image">
@@ -90,6 +73,18 @@
         <th>Download</th>
         <th>Dependencies</th>
         <th>Log</th>
+    </tr>
+    <tr>
+        <td class="ra">1.4</td>
+        <td class="ra">Feb 2, 2021</td>
+        <td><a href="../BGDatabaseExcelEditor_1.4.unitypackage">link</a></td>
+        <td>BGDatabase (v. >= 1.6.3)</td>
+        <td>
+            <ol>
+                <li>CHANGED: NPOI library upgraded to the latest version (2.3.0 -> 2.5.2)</li>
+                <li>CHANGED: target NET framework (4.5 -> 4.5.1)</li>
+            </ol>
+        </td>
     </tr>
     <tr>
         <td class="ra">1.3</td>

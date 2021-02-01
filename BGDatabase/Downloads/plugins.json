@@ -13,14 +13,14 @@
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
-      "version" : "1.2",
-      "releaseDate" : "10/27/20",
+      "version" : "1.4",
+      "releaseDate" : "02/02/21",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelService",
       "packageClass" : null,
       "name" :  "Excel integration for Editor",
       "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel",
-      "requiredVersion" : "1.6.2"
+      "requiredVersion" : "1.6.3"
     },
     {
       "id" : "65qKr3PcjEWbHsp37FUHqw",

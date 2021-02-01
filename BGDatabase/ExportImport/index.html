@@ -557,25 +557,13 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     If your app/game is running on a single device, use <a href="../Downloads/RuntimeGoogleSheets">this plug-in</a>
 </p>
 <p>
-    LONG READ: We believe giving direct write GoogleSheets access to multiple player devices does not make much sense, due to the following
-    reasons:
+    DETAILED EXPLANATION: To update data we need to read and analyse it first to determine which cells need to be updated and also optionally resize the sheet.
+    Reading, analysing and updating data are not atomic operation. 
+    If somebody else update the data during reading/analysis- writing data may result in data corruption/errors.
 </p>
-<ol>
-    <li>Durability problem: this is the main reason- there is no way to make sure some change will not erase previous change.
-        Let's say you want to store the number of times your app was launched.
-        So you read cell value, you increase it by 1 and you write it back.
-        But if 10 players launch your game simultaneously,
-        they all read initial zero value from GoogleSheets, increase it by one and write it back, so the final value will be 1, not 10.
-        This problem apply to any shared data.
-    </li>
-    <li>Security problem: giving write access means giving credentials to change data, and there is no way to make sure these credentials will not be hacked</li>
-    <li>Performance problem: GoogleSheets is not fast enough to be used as online database for big amount of users.
-        Many tasks will require to read data first before updating, and it can take a lot of time.
-        Also there is 2 million cells max restriction.
-    </li>
 </ol>
 <p>
-    All this problems can be solved with a proxy server, but it also means there is no need for direct access to GoogleSheets.
+    This problem can be solved with a proxy server, but it also means there is no need for direct access to GoogleSheets.
 </p>
 <p>
     If you are still looking for a way to write data to GoogleSheets from players devices:
