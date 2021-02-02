@@ -130,6 +130,10 @@
     });
 </script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <!--======================================================       BG Database Header               -->
 
 
@@ -277,8 +281,6 @@
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
-
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
 <a class="backToDownloads" href="../">< Back to downloads</a>
 
@@ -459,7 +461,7 @@ You can find more information about Save/Load <a href="../Addons/SaveLoad">here<
             <li>Remove the object when it's collected from scene and from database.</li>
         </ol>
 
-        <pre class="prettyprint">
+        <pre class="nomargin"><code class="language-csharp">
 public class BGCollectable : BGM_Collectable
 {
     //this callback is called then connected entity is changed
@@ -488,14 +490,14 @@ public class BGCollectable : BGM_Collectable
         }
     }
 }
-        </pre>
+        </code></pre>
     </li>
     <li><code>BGGoToScene.cs</code>- this script is attached to a portal to another scene.
         When the player collides with this portal, he's moved to another scene.
         This script is also hooked up to a database, namely to <code>Scene</code> row, pointing to a scene to load.
         When the player collides with this object, script read data about this scene from database, updates Player table
         with position and rotation from Scene table and loads target scene.
-        <pre class="prettyprint">
+        <pre class="nomargin"><code class="language-csharp">
 public class BGGoToScene : BGM_Scene
 {
     private void OnTriggerEnter(Collider other)
@@ -514,12 +516,12 @@ public class BGGoToScene : BGM_Scene
         }
     }
 }
-        </pre>
+        </code></pre>
 
     </li>
     <li><code>BGSpawner.cs</code>- this script fills database with new objects and also spawn them to the scene.
         It hooked up to <code>Scene</code> table. It uses database events, to find the moment all objects are collected.
-        <pre class="prettyprint">
+        <pre class="nomargin"><code class="language-csharp">
 public class BGSpawner :BGM_Scene
 {
     public override void  Start()
@@ -593,7 +595,7 @@ public class BGSpawner :BGM_Scene
         Spawn();
     }
 }
-        </pre>
+        </code></pre>
     </li>
     <li><code>BGPlayer.cs</code>- this script is attached to the player and hooked up to a first row of <code>Player</code> table via extending from BGM_Player.
         <ol>
@@ -601,7 +603,7 @@ public class BGSpawner :BGM_Scene
             <li>It implements <code>BGAddonSaveLoad.BeforeSaveReciever</code> interface to ensure <code>OnBeforeSave</code> method is called before saving.
                 In this method it saves it's own position and amount of gold to the database, so while saving those values will be put to the save file.</li>
         </ol>
-        <pre class="prettyprint">
+        <pre class="nomargin"><code class="language-csharp">
 public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
 {
     public override void Start()
@@ -621,12 +623,12 @@ public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
         m_scene = BGE_Scene.FindEntity(scene => string.Equals(scene.Name, SceneManager.GetActiveScene().name));
     }
 }
-        </pre>
+        </code></pre>
     </li>
     <li>
         <code>BGSavingLoading.cs</code>
         It Provides Save/Load functions via SaveLoad addon. More information about Save/Load addon can be found <a href="../Addons/SaveLoad">here</a>
-        <pre class="prettyprint">
+        <pre class="nomargin"><code class="language-csharp">
 public class BGSavingLoading : MonoBehaviour
 {
     //... some code is omitted
@@ -650,7 +652,7 @@ public class BGSavingLoading : MonoBehaviour
         SceneManager.LoadScene(R.Player.d_scene.Get(PlayerEntity).Name);
     }
 }
-        </pre>
+        </code></pre>
     </li>
 </ol>
 

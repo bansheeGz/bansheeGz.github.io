@@ -392,3 +392,18 @@ code::before, code::after {
     margin-bottom: 0;
     padding-left: 12px;
 }
+
+.nomargin{
+    padding: 0;
+    margin: 0;
+}
+pre code {
+    display: block;
+    font-family: Consolas, Monaco, monospace;
+    font-size: 10pt;
+    overflow-x: auto;
+    padding: 0.5em;
+    scrollbar-width: thin;
+    -moz-tab-size: 4;
+    tab-size: 4;
+}

@@ -130,6 +130,10 @@
     });
 </script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <!--======================================================       BG Database Header               -->
 
 
@@ -278,8 +282,6 @@
             <div id="content">
             
 
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
-
 <p>
     "Settings" addon let you specify some parameters for database
 </p>
@@ -358,7 +360,7 @@
     <li>Loading time will be printed to the console</li>
 </ol>
 
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
 using UnityEngine;
 using BansheeGz.BGDatabase;
 public class BGDatabaseLoadingBenchmark : MonoBehaviour
@@ -371,7 +373,7 @@ public class BGDatabaseLoadingBenchmark : MonoBehaviour
         });
     }
 }
-</pre>
+</code></pre>
             </div>
 
             <!--======================================================       BG Database Footer               -->

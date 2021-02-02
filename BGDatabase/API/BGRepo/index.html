@@ -130,6 +130,10 @@
     });
 </script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <!--======================================================       BG Database Header               -->
 
 
@@ -295,9 +299,8 @@ BGRepo.cs - is a database itself. use <code>BGRepo.I</code> to get access to def
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//get access to database
-var repo = BGRepo.I;</pre>
+<pre class="nomargin"><code class="language-csharp">//get access to database
+var repo = BGRepo.I;</code></pre>
         </td>
     </tr>
 
@@ -308,9 +311,8 @@ var repo = BGRepo.I;</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//get table named MyTable
-var meta = repo["MyTable"];</pre>
+<pre class="nomargin"><code class="language-csharp">//get table named MyTable
+var meta = repo["MyTable"];</code></pre>
         </td>
     </tr>
 
@@ -321,9 +323,8 @@ var meta = repo["MyTable"];</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//get table with id
-var meta = repo[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</pre>
+<pre class="nomargin"><code class="language-csharp">//get table with id
+var meta = repo[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</code></pre>
         </td>
     </tr>
 </table>
@@ -344,9 +345,8 @@ var meta = repo[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//print every table name
-repo.ForEachMeta(meta => Debug.Log(meta.Name));</pre>
+<pre class="nomargin"><code class="language-csharp">//print every table name
+repo.ForEachMeta(meta => Debug.Log(meta.Name));</code></pre>
         </td>
     </tr>
     <tr>
@@ -356,10 +356,9 @@ repo.ForEachMeta(meta => Debug.Log(meta.Name));</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//print every table name, which name starts with My
+<pre class="nomargin"><code class="language-csharp">//print every table name, which name starts with My
 repo.ForEachMeta(meta => Debug.Log(meta.Name),
-                meta => meta.Name.StartsWith("My"));</pre>
+                meta => meta.Name.StartsWith("My"));</code></pre>
         </td>
     </tr>
     <tr>
@@ -369,9 +368,8 @@ repo.ForEachMeta(meta => Debug.Log(meta.Name),
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//print the number of tables
-Debug.Log(repo.CountMeta);</pre>
+<pre class="nomargin"><code class="language-csharp">//print the number of tables
+Debug.Log(repo.CountMeta);</code></pre>
         </td>
     </tr>
 

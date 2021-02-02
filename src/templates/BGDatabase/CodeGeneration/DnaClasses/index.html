@@ -17,8 +17,7 @@
 <p>
     Here is an example:
 </p>
-<pre class="cs">
-public partial class Repo : BGDna
+<pre class="nomargin"><code class="language-csharp">public partial class Repo : BGDna
 {
     public static BGD_MyTable MyTable
     {
@@ -32,16 +31,13 @@ public partial class Repo : BGDna
     {
         public BGDnaField&lt;System.Int32&gt; myField;
     }
-}
-</pre>
+}</code></pre>
 <p>
     to access MyTable.myField int field, use this code
 </p>
-<pre class="cs">
-//getter
+<pre class="nomargin"><code class="language-csharp">//getter
 var intValue = Repo.MyTable.myField.Get(entity);
 
 //setter
-Repo.MyTable.myField.Set(entity, 1);
-</pre>
+Repo.MyTable.myField.Set(entity, 1);</code></pre>
 

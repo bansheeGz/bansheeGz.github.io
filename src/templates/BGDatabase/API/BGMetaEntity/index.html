@@ -19,9 +19,10 @@
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
+<pre class="nomargin"><code class="language-csharp">
 //get first row
-var entity = meta[0];</pre>
+var entity = meta[0];
+</code></pre>
         </td>
     </tr>
 
@@ -32,9 +33,10 @@ var entity = meta[0];</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
+<pre class="nomargin"><code class="language-csharp">
 //get row by it's id
-var entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</pre>
+var entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
+</code></pre>
         </td>
     </tr>
 
@@ -45,9 +47,8 @@ var entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//get the first row by it's name
-var entity = meta["BigSword"];</pre>
+<pre class="nomargin"><code class="language-csharp">//get the first row by it's name
+var entity = meta["BigSword"];</code></pre>
         </td>
     </tr>
 
@@ -58,9 +59,8 @@ var entity = meta["BigSword"];</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//print entities names, whose name starts with "My"
-meta.ForEachEntity(entity => Debug.Log(entity.Name), entity => entity.Name.StartsWith("My"));</pre>
+<pre class="nomargin"><code class="language-csharp">//print entities names, whose name starts with "My"
+meta.ForEachEntity(entity => Debug.Log(entity.Name), entity => entity.Name.StartsWith("My"));</code></pre>
         </td>
     </tr>
 
@@ -71,9 +71,8 @@ meta.ForEachEntity(entity => Debug.Log(entity.Name), entity => entity.Name.Start
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//find first entity, which name starts with "My"
-BGEntity result = meta.FindEntity(entity => entity.Name.StartsWith("My"));</pre>
+<pre class="nomargin"><code class="language-csharp">//find first entity, which name starts with "My"
+BGEntity result = meta.FindEntity(entity => entity.Name.StartsWith("My"));</code></pre>
         </td>
     </tr>
 
@@ -85,9 +84,8 @@ BGEntity result = meta.FindEntity(entity => entity.Name.StartsWith("My"));</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//find all entities, whose name starts with "My"
-List&lt;BGEntity&gt; result = meta.FindEntities(entity => entity.Name.StartsWith("My"));</pre>
+<pre class="nomargin"><code class="language-csharp">//find all entities, whose name starts with "My"
+List&lt;BGEntity&gt; result = meta.FindEntities(entity => entity.Name.StartsWith("My"));</code></pre>
         </td>
     </tr>
 
@@ -99,9 +97,8 @@ List&lt;BGEntity&gt; result = meta.FindEntities(entity => entity.Name.StartsWith
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//print the number of rows
-Debug.Log(meta.CountEntities);</pre>
+<pre class="nomargin"><code class="language-csharp">//print the number of rows
+Debug.Log(meta.CountEntities);</code></pre>
         </td>
     </tr>
 
@@ -112,9 +109,8 @@ Debug.Log(meta.CountEntities);</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//create new entity
-var newEntity = meta.NewEntity();</pre>
+<pre class="nomargin"><code class="language-csharp">//create new entity
+var newEntity = meta.NewEntity();</code></pre>
         </td>
     </tr>
 
@@ -136,9 +132,8 @@ var newEntity = meta.NewEntity();</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//get table id
-var id = meta.Id;</pre>
+<pre class="nomargin"><code class="language-csharp">//get table id
+var id = meta.Id;</code></pre>
         </td>
     </tr>
 
@@ -149,9 +144,8 @@ var id = meta.Id;</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//get table name
-var name = meta.Name;</pre>
+<pre class="nomargin"><code class="language-csharp">//get table name
+var name = meta.Name;</code></pre>
         </td>
     </tr>
 
@@ -162,9 +156,8 @@ var name = meta.Name;</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//delete all entities, which names start with 'My'
-meta.DeleteEntities(meta.FindEntities(entity => entity.Name.StartsWith("My")));</pre>
+<pre class="nomargin"><code class="language-csharp">//delete all entities, which names start with 'My'
+meta.DeleteEntities(meta.FindEntities(entity => entity.Name.StartsWith("My")));</code></pre>
         </td>
     </tr>
 
@@ -176,9 +169,8 @@ meta.DeleteEntities(meta.FindEntities(entity => entity.Name.StartsWith("My")));<
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//print all field names
-meta.ForEachField(field => Debug.Log(field.Name));</pre>
+<pre class="nomargin"><code class="language-csharp">//print all field names
+meta.ForEachField(field => Debug.Log(field.Name));</code></pre>
         </td>
     </tr>
 
@@ -189,9 +181,8 @@ meta.ForEachField(field => Debug.Log(field.Name));</pre>
     </tr>
     <tr>
         <td colspan="3">
-            <pre class="cs">
-//print all field names, whose value type is int
-meta.ForEachField(field => Debug.Log(field.Name), field => field.ValueType==typeof(int));</pre>
+<pre class="nomargin"><code class="language-csharp">//print all field names, whose value type is int
+meta.ForEachField(field => Debug.Log(field.Name), field => field.ValueType==typeof(int));</code></pre>
         </td>
     </tr>
 

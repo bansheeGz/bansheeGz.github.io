@@ -130,6 +130,10 @@
     });
 </script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <!--======================================================       BG Database Header               -->
 
 
@@ -277,7 +281,6 @@
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
 <h4>Description</h4>
 <p>
@@ -286,6 +289,7 @@
 <p>
     This is the main type of Code Generation. It removes all boilerplate code and provides super easy and slim API for
     accessing table rows and their fields.
+    You can enable this type of code generation by using <a href="../../Addons/CodeGeneration">CodeGen addon</a>
 </p>
 <h4>Advantages of using CodeGen</h4>
 <ol>
@@ -335,44 +339,222 @@
 </div>
 
 <p>
-    Additionally, you will get all table(meta) methods alternatives as static methods of that particular class,
-    like this:
-</p>
-<pre class="prettyprint">
-public static BGE_MyTable FindEntity(Predicate&lt;BGE_MyTable&gt; filter)
-{
-}
-public static List&lt;BGE_MyTable&gt; FindEntities(Predicate&lt;BGE_MyTable&gt; filter)
-{
-}
-public static void ForEachEntity(Action&lt;BGE_MyTable&gt; action, Predicate&lt;BGE_MyTable&gt; filter=null)
-{
-}
-public static BGE_MyTable GetEntity(BGId entityId)
-{
-}
-public static BGE_MyTable GetEntity(int index)
-{
-}
-public static BGE_MyTable NewEntity()
-{
-}
-</pre>
-<p>
+    Additionally, you will get all table(meta) methods alternatives as static methods of that particular class (see the table below for more information),
     so instead of this, for example:
 </p>
-<pre class="cs">
-    var repo = BGRepo.I;
+<pre class="nomargin"><code class="language-csharp">    var repo = BGRepo.I;
     var meta = repo["MyTable"];
-    BGE_MyTable entity = (BGE_MyTable) meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
-</pre>
+    BGE_MyTable entity = (BGE_MyTable) meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</code></pre>
 you can write code like this:
-<pre class="cs">
-    BGE_MyTable entity = BGE_MyTable.GetEntity(new BGId("HThOdRCxlEGU1aefSG+Nbw"));
-</pre>
+<pre class="nomargin"><code class="language-csharp">    BGE_MyTable entity = BGE_MyTable.GetEntity(new BGId("HThOdRCxlEGU1aefSG+Nbw"));</code></pre>
 <p>
     using generated <code>BGE_MyTable</code> class.
 </p>
+
+<h4 id="whatIsGenerated">What is generated, exactly?</h4>
+<p>
+    We will use MyTable as a table name (generated class name) and 2 fields (name string, gold int) for illustration purpose.
+</p>
+<table class="contentTable">
+    <tr>
+        <th>
+            Method/property name
+        </th>
+        <th>
+            Static
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>{field_prefix}{FieldName}</td>
+        <td>No</td>
+        <td>Properties are generated for each table field.
+            Each property has the same type as corresponding database field.
+            Use these properties to read/write values from/to database
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    MyTable firstRow = MyTable.GetEntity(0);
+    //name is generated property for "name" field
+    string name = firstRow.name;</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>GetEntity()</td>
+        <td>Yes</td>
+        <td>3 static methods for getting table row by Index/ID/Name.
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    // get the first row
+    MyTable firstRow = MyTable.GetEntity(0);
+    // get the first with specified ID
+    MyTable rowByID = MyTable.GetEntity(new BGId("SomeID"));
+    // get the first row with name="SomeName"
+    MyTable rowByName = MyTable.GetEntity("SomeName");</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>NewEntity()</td>
+        <td>Yes</td>
+        <td>Static method for adding table row.
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    //new row is added
+    MyTable newRow = MyTable.NewEntity();</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>ForEachEntity()</td>
+        <td>Yes</td>
+        <td>
+            Static method for iterating over table rows.
+            The parameters are:
+            <ol>
+                <li><code>Action&lt;MyTable&gt; action</code> : Action to execute for each row</li>
+                <li><code>Predicate&lt;MyTable&gt; filter</code> : Optional filter to filter out the rows</li>
+                <li><code>Comparison&lt;MyTable&gt; sort</code> : Optional sorter to sort the rows</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">// print every entity name
+MyTable.ForEachEntity(
+    entity => Debug.Log($"Entity={entity.name}")
+);
+// print entity name for each entity, which gold field more than 0
+MyTable.ForEachEntity(
+    entity => Debug.Log($"Entity={entity.name}"),
+    entity => entity.gold > 0
+);
+// print entity name for each entity, which gold field more than 0,
+// entities are sorted by name
+MyTable.ForEachEntity(
+    entity => Debug.Log($"Entity={entity.name}"),
+    entity => entity.gold > 0,
+    (e1, e2) => string.CompareOrdinal(e1.name, e2.name)
+);</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>FindEntity()</td>
+        <td>Yes</td>
+        <td>
+            Static method for finding the first row which comply to the provided filter.
+            The parameter is: <code>Predicate&lt;MyTable&gt; filter</code> : Filter to use for searching the row
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    //find the first row, which gold more than 0
+    MyTable entity = MyTable.FindEntity(entity => entity.gold > 0);</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>FindEntities()</td>
+        <td>Yes</td>
+        <td>
+            Static method for finding all rows which comply to the provided filter.
+            The parameters are:
+            <ol>
+                <li><code>Predicate&lt;MyTable&gt; filter</code> : Filter to use for searching the rows</li>
+                <li><code>List&lt;MyTable&gt; result</code> : Optional list to use as result (for decreasing garbage collection)</li>
+                <li><code>Comparison&lt;MyTable&gt; sort</code> : Optional sorter to sort the rows</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    //find all rows, which gold more than 0
+    List&lt;MyTable&gt; result= MyTable.FindEntities(entity => entity.gold > 0);
+    //find all rows, which gold more than 0, entities are sorted by name
+    List&lt;MyTable&gt; result= MyTable.FindEntities(
+        entity => entity.gold > 0,
+        null,
+        (e1, e2) => string.CompareOrdinal(e1.name, e2.name)
+    );</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>Delete()</td>
+        <td>No</td>
+        <td>
+            Use this method to delete the row. This method is not generated, but inherited from BGEntity class
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">
+    MyTable firstRow = MyTable.GetEntity(0);
+    firstRow.Delete();</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>MetaDefault</td>
+        <td>Yes</td>
+        <td>
+            Use this property to get access to the table (<a href="../../API/BGMetaEntity">BGMetaEntity</a> class)
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    //get reference to meta (table)
+    BGMetaEntity meta = MyTable.MetaDefault;</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>_{field_prefix}{FieldName}</td>
+        <td>Yes</td>
+        <td>
+            Use this property to get access to the field (column) (<a href="../../API/BGField">BGField</a> class)
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    //get reference to name field
+    BGFieldString nameField = MyTable._name;
+    //get reference to gold field
+    BGFieldInt goldField = MyTable._gold;</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>Related {MetaName} ListUsing {RelationName} Relation</td>
+        <td>No</td>
+        <td>
+            For each incoming relation a property is generated for traversing relation in reverse direction.
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    MyTable firstRow = MyTable.GetEntity(0);
+    // we assume "OtherTable" table exists,
+    // and it has "MyTable" relation, pointing to MyTable
+    List&lt;OtherTable&gt; entitiesWhichPointToFirstRow = firstRow.RelatedOtherTableListUsingMyTableRelation</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>{entity name prefix}{entity name}</td>
+        <td>Yes</td>
+        <td>
+            Optional static properties for each row, so you can access rows directly without need to get/search for it first.
+            See <a href="#entities">Generate a property for each entity (optional)</a> section below for more information
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    //we assume first row's name="FirstRow" and entities prefix is "E_"
+    MyTable firstRow = MyTable.E_FirstRow;</code></pre>
+        </td>
+    </tr>
+</table>
+
 
 <h4 id="entities">Generate a property for each entity (optional)</h4>
 <p>
@@ -397,9 +579,7 @@ you can write code like this:
 <p>
     Once the properties are generated you can access particular row like so:
 </p>
-<pre class="cs">
-    BGE_MyTable entity = BGE_MyTable.KEY_MyUniqueKey;
-</pre>
+<pre class="nomargin"><code class="language-csharp">    BGE_MyTable entity = BGE_MyTable.KEY_MyUniqueKey;</code></pre>
 <p>
     , where MyUniqueKey is the name of the row and KEY_ is entities prefix from CodeGen addon settings.
 </p>

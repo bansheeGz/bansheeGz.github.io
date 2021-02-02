@@ -130,6 +130,10 @@
     });
 </script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <!--======================================================       BG Database Header               -->
 
 
@@ -288,7 +292,6 @@
         background-color: #f8d2dc !important;
     }
 </style>
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
 
 <h4>Description</h4>
 <p>
@@ -355,7 +358,7 @@
 <p>
     Here is an example:
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
 using UnityEngine;
 using BansheeGz.BGDatabase;
 
@@ -371,11 +374,11 @@ using BansheeGz.BGDatabase;
             get { return new[] {new BGRepoDelta(Resources.Load&lt;TextAsset&gt;("bgdatabase_delta").bytes),}; }
         }
     }
-</pre>
+</code></pre>
 <p>
     Another example, which scans StreamingAssets folder recursively and returns every single file, which name is bgdatabase_delta.bytes:
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
 using System.IO;
 using System.Linq;
 using BansheeGz.BGDatabase;
@@ -392,7 +395,7 @@ public class ModdingSource : BGAddonModding.ModdingSourceDefault
         }
     }
 }
-</pre>
+</code></pre>
 
 
 <h4>Data protection [WIP]</h4>

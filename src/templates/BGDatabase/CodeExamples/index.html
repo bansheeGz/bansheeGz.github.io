@@ -1,7 +1,5 @@
 #set page=Code Examples
 
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
-
 <h4>Examples</h4>
 <p>
     This page shows how to use <a href="../API">basic C# API</a>
@@ -16,12 +14,12 @@
 
 
 <h4>Import dependencies</h4>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
 using BansheeGz.BGDatabase;
-</pre>
+</code></pre>
 
 <h4>Working with meta data (database structure)</h4>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
         //number of tables
         int numberOfTables = BGRepo.I.CountMeta;
 
@@ -48,11 +46,11 @@ using BansheeGz.BGDatabase;
 
         //type of field "Field" from Table "NewTable" (Int32)
         Type fieldType = BGRepo.I["NewTable"].GetField("NewField").ValueType;
+</code></pre>
 
-</pre>
 
 <h4>Working with data (basic usage)</h4>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
         //get reference to table NewTable
         BGMetaEntity table = BGRepo.I["NewTable"];
 
@@ -70,12 +68,10 @@ using BansheeGz.BGDatabase;
 
         //write "NewField" field value (first row)
         firstRow.Set&lt;int&gt;("NewField", 7);
-
-</pre>
+</code></pre>
 
 <h4>Working with data (more details)</h4>
-<pre class="prettyprint">
-
+<pre class="nomargin"><code class="language-csharp">
         //populate new table with 10 records
         for (var i = 0; i < 10; i++) newTable.NewEntity().Name ="Entity #" + i;
 
@@ -135,9 +131,7 @@ using BansheeGz.BGDatabase;
         //the same as above (version with code generation, faster and better)
         // NewTable.ForEachEntity(entity => entity.NewField++, entity => entity.NewField < 5,
         //    (e1, e2) => e1.NewField.CompareTo(e2.NewField));
-
-
-</pre>
+</code></pre>
 
 <div class="flexdiv">
     <div>

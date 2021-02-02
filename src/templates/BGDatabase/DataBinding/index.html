@@ -1,7 +1,5 @@
 #set page=Data Binding
 
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
-
 
 <h4>What is data binding?</h4>
 With data binding you can:
@@ -183,13 +181,13 @@ With data binding you can:
 <p>
     After that add link.xml to you project with following content
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
 &lt;linker&gt;
        &lt;assembly fullname="Assembly-CSharp.dll"&gt;
                &lt;type fullname="PreventIosFromStripping" preserve="all"/&gt;
        &lt;/assembly&gt;
 &lt;/linker&gt;
-</pre>
+</code></pre>
 <p>
     More info about link.xml can be found <a href="https://docs.unity3d.com/540/Documentation/Manual/iphone-playerSizeOptimization.html">here</a>
 </p>
@@ -197,7 +195,7 @@ With data binding you can:
     Here is an example:
 </p>
 
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
 public class PreventIosFromStripping : MonoBehaviour
 {
     private void Unused()
@@ -207,7 +205,7 @@ public class PreventIosFromStripping : MonoBehaviour
         //etc.
     }
 }
-</pre>
+</code></pre>
 
 <h4>Full list of recommended properties</h4>
 <ol>

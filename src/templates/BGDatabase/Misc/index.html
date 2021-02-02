@@ -1,7 +1,5 @@
 #set page=Misc
 
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
-
 <h4>Table of content</h4>
 <div>
     <ol>
@@ -24,7 +22,7 @@
 <p>
     Add your listeners, like this
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
     private void AddListeners()
     {
         var events = BGRepo.I.Events;
@@ -81,7 +79,7 @@
     {
         Debug.Log("The Entity Updated " + e.Entity.Name);
     }
-</pre>
+</code></pre>
 
 <p>
     Do not forget to remove listeners, as soon as they are not needed.

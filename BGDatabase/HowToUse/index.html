@@ -130,6 +130,10 @@
     });
 </script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
 <!--======================================================       BG Database Header               -->
 
 
@@ -278,8 +282,6 @@
             <div id="content">
             
 
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
-
 <h4>General information</h4>
 Database consists of 4 main parts:
 <ol>
@@ -335,7 +337,7 @@ Every table, field and entity has unique id (based on Guid generation) and name 
 <p>
     Here is minimalistic example about how you can access database without code generation:
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
  //get reference to database
 var repo = BGRepo.I;
 //get reference to table(called meta) MyTable by name
@@ -346,7 +348,7 @@ var entity = meta[new BGId("some-id-here")];
 var fieldValue = entity.Get&lt;int&gt;("myField");
 //set int field value
 entity.Set("myField", fieldValue + 1);
-</pre>
+</code></pre>
 
 <div class="flexdiv">
     <ol>
@@ -360,11 +362,11 @@ entity.Set("myField", fieldValue + 1);
     You can remove all boilerplate code by using generated classes.
     Here is the same example but written with help of generated classes.
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
     //the same example with code generation
 var entity = BGE_MyTable.GetEntity(new BGId("some-id-here"));
 entity.myField = entity.myField + 1;
-</pre>
+</code></pre>
 <p>
     As you can see, using generated classes removes all boilerplate code and also adds compile time check
     in case the database structure is changed.

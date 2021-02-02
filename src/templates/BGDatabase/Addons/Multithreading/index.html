@@ -1,7 +1,5 @@
 #set page=Multithreading add-on
 
-<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=cs&amp;skin=desert"></script>
-
 
 <h4>Description</h4>
 <p>
@@ -66,7 +64,7 @@
     Also, we provide code generation for MT addon.
     Start working with multithreading environment by creating read-only or write transactions.
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
         //start read-only transaction (option 1)
         BGMTRepo mtRepo = BGRepo.M.RepoReadOnly;
 
@@ -83,12 +81,12 @@
 			// This transaction can be run asynchronously (on separate thread),
 			// so do not expect changes take effect right after the method call
         });
-</pre>
+</code></pre>
 <p>
     BGMTRepo has very similar methods to ones single-threaded API has.
     For example, to iterate through "Items" table rows, which have "damage" column value more than 10:
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
         BGRepo.M.Read(mtRepo =>
         {
             mtRepo["Items"].ForEachEntity(entity =>
@@ -96,11 +94,11 @@
                 print("Weapon: " + entity.Name);
             }, entity => entity.Get&lt;int&gt;("damage") > 10);
         });
-</pre>
+</code></pre>
 <p>
     And just like with single-threaded API, Code generation greatly simplify access to database by removing all boilerplate code
 </p>
-<pre class="prettyprint">
+<pre class="nomargin"><code class="language-csharp">
 		BGRepo.M.Read(mtRepo =>
 		{
 			Items.ForEachEntity(mtRepo, item =>
@@ -108,7 +106,7 @@
 				print("Weapon: " + item.name);
 			}, item => item.damage > 10);
 		});
-</pre>
+</code></pre>
 
 
 
