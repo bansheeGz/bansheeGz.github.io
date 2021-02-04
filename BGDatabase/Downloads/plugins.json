@@ -103,6 +103,16 @@
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressablesBolt"
     },
     {
+      "id" : "Qsuu2/AIgE6rEbIJ7txUxA",
+      "version" : "1.0",
+      "releaseDate" : "02/04/21",
+      "pluginClass" : "BansheeGz.BGDatabase.BGDatabaseGetField",
+      "packageClass" : null,
+      "name" :  "Bolt generic units",
+      "description" :  "Generic units for accessing database",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeBoltGenericUnits"
+    },
+    {
       "id" : "NJBWhsm/pkSvFWTBSY+ZpQ",
       "version" : "1.0",
       "releaseDate" : "09/16/20",

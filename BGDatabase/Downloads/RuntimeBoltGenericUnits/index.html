@@ -173,7 +173,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
                     </li>
-                    <li class="cli downloadicon ">
+                    <li class="cli downloadicon  plic ">
                         <a class="ca" href="../../../BGDatabase/Downloads">Downloads</a>
                     </li>
                 </ul>
@@ -206,7 +206,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Bolt</a>
                     </li>
                 </ul>
@@ -275,204 +275,122 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Bolt</h3>
+                <h3>Downloads</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
+<a class="backToDownloads" href="../">< Back to downloads</a>
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <h4>Generic database access units for Bolt</h4>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            1.0
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            BGDatabase,  Bolt
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseBoltGenericUnits.unitypackage" class="downloadButton"></a>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/download41.png">
+                    <img style="width: 100%" src="../../../images/BGDatabase/download41.png">
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
 <h4>Description</h4>
 <p>
-    Code Generator for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/bolt-163802">Bolt</a> creates custom Units to manage BGDatabase data.
-    All fields are supported (Unity asset fields are readonly, <a href="../../SupportedFields">more info</a>)
+    This is an alternative database access units (alternative to <a href="../../ThirdParty/Bolt">generated units</a> for Bolt).
+    Instead of generated units, these units are generic, meaning you provide tables/fields names for accessing database.
+    Units are located under BansheeGz category.
 </p>
 
-<h4>Alternative package</h4>
-<p>
-    Staring from  Feb 04 2021, the alternative units for accessing database are available for download <a href="../../Downloads/RuntimeBoltGenericUnits">here</a>.
-</p>
-
-<h4>Supported custom units</h4>
-With custom units you have full control over database data- you can select/add/update/delete rows.
-Custom units are generated for each table
+<h4>Available units:</h4>
 <table class="contentTable">
     <tr>
-        <th>
-            #
-        </th>
-        <th>
-            Unit
-        </th>
-        <th>
-            Description
-        </th>
+        <th>Name</th>
+        <th>Description</th>
     </tr>
     <tr>
-        <td>1</td>
-        <td>GetByIndex</td>
-        <td>
-            Retrieve field values from database by row's index. This is the best method to use inside for-each loop
+        <td>BGDatabaseCountEntities</td>
+        <td>Count the number of rows for specified table</td>
+    </tr>
+    <tr>
+        <td>BGDatabaseCreateEntity</td>
+        <td>Create a new row for specified table</td>
+    </tr>
+    <tr>
+        <td>BGDatabaseDeleteEntity</td>
+        <td>Delete the row for provided table and row index</td>
+    </tr>
+    <tr>
+        <td>BGDatabaseGetField</td>
+        <td>Get field value for provided table/field/row (see the screenshot for details)
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/download39.png">
+                    <img style="width: 300px" src="../../../images/BGDatabase/download39.png">
+                </a>
+            </div>
         </td>
     </tr>
     <tr>
-        <td>2</td>
-        <td>GetById</td>
-        <td>
-            Retrieve field values from database by row's id.
-        </td>
-    </tr>
-    <tr>
-        <td>3</td>
-        <td>GetByName</td>
-        <td>
-            Retrieve field values from database by row's name.
-        </td>
-    </tr>
-    <tr>
-        <td>4</td>
-        <td>SetByIndex</td>
-        <td>
-            Set field values to database by row's index.
-        </td>
-    </tr>
-    <tr>
-        <td>5</td>
-        <td>SetById</td>
-        <td>
-            Set field values to database by row's id.
-        </td>
-    </tr>
-    <tr>
-        <td>6</td>
-        <td>SetByName</td>
-        <td>
-            Set field values to database by row's name.
-        </td>
-    </tr>
-    <tr>
-        <td>7</td>
-        <td>Count</td>
-        <td>
-            Retrieve total number of rows
-        </td>
-    </tr>
-    <tr>
-        <td>8</td>
-        <td>Create</td>
-        <td>
-            Create a new row
-        </td>
-    </tr>
-    <tr>
-        <td>9</td>
-        <td>Delete</td>
-        <td>
-            Delete a row by its index
+        <td>BGDatabaseSetField</td>
+        <td>Set field value for provided table/field/row (see the screenshot for details)
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/download40.png">
+                    <img style="width: 300px" src="../../../images/BGDatabase/download40.png">
+                </a>
+            </div>
         </td>
     </tr>
 </table>
 
-<div>
-    <h4>How to generate</h4>
-    <ul>
-        <li>Open BGDatabase window <code>Window->BGDatabase</code></li>
-        <li>Select <code>Settings</code> tab, and chose <code>Bolt</code></li>
-        <li>Fill in <a href="#parameters">parameters</a> and press <code>Generate</code> button</li>
-        <li>After units was generated, update Bolt units database, by pressing Tools->Bolt->Build Unit Options (or Full Extract if you use Bolt 2.0)</li>
-    </ul>
-
-    <div class="bg-image">
-        <a href="../../../images/BGDatabase/Bolt1.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt1.png"></a>
-    </div>
-    <div class="importantNote">
-        Once you chose your naming scheme <b>package</b> + <b>Classes name prefix</b>/<b>Field name prefix</b>
-        and used your generated units in Bolt's graphs, you should not change these settings,
-        otherwise the references to these units will be lost. The same applies to tables/fields names.
-    </div>
-</div>
-
-<h4 id="parameters">Parameters</h4>
-<table class="contentTable">
-    <tr>
-        <th>
-            Parameter name
-        </th>
-        <th>
-            Description
-        </th>
-    </tr>
-    <tr>
-        <td>Code Generator</td>
-        <td>Class to use for code generation (use default one)</td>
-    </tr>
-    <tr>
-        <td>Source file</td>
-        <td>Source file to use for generated C# classes (units). All classes will be put into one single .cs file, which should be under your project folder </td>
-    </tr>
-    <tr>
-        <td>Package</td>
-        <td>Package (C# namespace) for generated classes. For example <code>MySpace</code>. You can safely leave this setting blank.</td>
-    </tr>
-    <tr>
-        <td>Class names prefix</td>
-        <td>
-            Prefix to use for each class name.
-            So if you use <code>B_</code> prefix, the final class for <code>MyTable</code> table and <code>GetById</code> unit will be named <code>B_MyTableGetById</code>.
-            We have multiple code generators, so using different prefixes for different code generators helps to differentiate generated classes and avoid naming collisions
-        </td>
-    </tr>
-    <tr>
-        <td>Field names prefix</td>
-        <td>Prefix to use for each generated property name. So if you use <code>f_</code> prefix, the final name for <code>intField</code> field will be <code>f_intField</code>.
-            You can safely leave this setting blank.
-        </td>
-    </tr>
-</table>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/Bolt3.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt3.png"></a>
-</div>
-
-<div>
-    <h4>Difference between getters and setters</h4>
-    <ol>
-        <li> Getters are not included into control flow: you can not include them. Values are fetched when requested.</li>
-        <li>On the other hand, setters are required to be included into control flow, otherwise they will not be executed</li>
-    </ol>
-    <div class="bg-image">
-        <a href="../../../images/BGDatabase/Bolt2.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt2.png"></a>
-    </div>
-    <br>
-    <br>
-</div>
-
-<div>
-    <h4>Bolt v.2 status</h4>
-    <p>UPDATE 2:
-        Bolt v.2 was cancelled by Unity Technologies (read <a href="https://forum.unity.com/threads/visual-scripting-roadmap-update-august-2020.951675">more</a>)
-    </p>
-    <p>UPDATE 1:
-        <i style="text-decoration: line-through;">
-        After acquisition of Bolt, Unity <a href="https://forum.unity.com/threads/bolt-2-alpha-cycle-has-restarted.935003/">restarted</a>
-        alpha cycle for Bolt v.2 with a limited number of users.
-        We are waiting for a beta release to add support for Bolt v.2.
-        </i>
-    </p>
-    <p>
-        <i style="text-decoration: line-through;">Bolt version 2 is currently under development.
-        We are aiming to provide support for the latest alpha release.
-        Check the latest available Bolt v.2 version <a href="https://ludiq.io/bolt/download">here</a>
-        </i>
-    </p>
-</div>
-
-<div>
-    <h4>Additional downloads</h4>
-    <ol>
-        <li>Custom unit to support <a href="../../Addons/SaveLoad">SaveLoad addon</a> is available for free download  <a href="../../Downloads/RuntimeSaveLoadBolt">here</a></li>
-        <li>Custom unit to support unity assets loading from Addressables system is available for download <a href="../../Downloads/RuntimeAddressablesBolt">here</a> </li>
-    </ol>
-</div>
+    <h4>Releases</h4>
+    <table class="contentTable dTable">
+        <tr>
+            <th style="width: 10%">
+                Version
+            </th>
+            <th style="width: 20%">
+                Release date
+            </th>
+            <th style="width: 70%">Log</th>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.0
+            </td>
+            <td class="ra">Feb 04, 2021</td>
+            <td>
+                Initial release
+            </td>
+        </tr>
+    </table>
             </div>
 
             <!--======================================================       BG Database Footer               -->
