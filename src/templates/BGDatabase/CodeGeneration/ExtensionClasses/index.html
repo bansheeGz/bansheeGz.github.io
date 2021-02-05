@@ -258,6 +258,22 @@ MyTable.ForEachEntity(
         </td>
     </tr>
     <tr>
+        <td>Load{field name}Async</td>
+        <td>No</td>
+        <td>
+            For each Unity asset field, using Addressables loader, methods are generated for loading assets asynchronously
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">MyTable firstRow = MyTable.GetEntity(0);
+//we assume "asset" Unity asset field exists with Addressables loader
+firstRow.LoadAssetAsync(asset => {
+    //make use of loaded asset
+});</code></pre>
+        </td>
+    </tr>
+    <tr>
         <td>{entity name prefix}{entity name}</td>
         <td>Yes</td>
         <td>
