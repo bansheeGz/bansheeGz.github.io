@@ -1,0 +1,22 @@
+{
+  "range": "MyTable!A1:B4",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "name",
+      "test"
+    ],
+    [
+      "Test11111",
+      1
+    ],
+    [
+      "Test2222",
+      2
+    ],
+    [
+      "Test3333",
+      3
+    ]
+  ]
+}
