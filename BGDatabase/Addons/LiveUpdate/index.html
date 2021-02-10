@@ -432,16 +432,16 @@
 <h4>How it works</h4>
 <ol>
     <li>
-        First time your game is launched and database is loaded, it'll try to read data from Google Sheets.
+        First time your game is launched and database is loaded, addon tries to read data from Google Sheets/web server files.
         Alternatively set "Manual load" parameter on and trigger loading manually from script at any moment</li>
-    <li>If step 1 is successful, every time database is loaded, it will be merged with data from Google Sheets, thus
+    <li>If step 1 is successful, every time database is loaded, it will be merged with remote data, thus
         applying the update.
     </li>
     <li>If step 1 is unsuccessful, database data will remain intact.</li>
 </ol>
 
 
-<h4>Setting up</h4>
+<h4>Setup for Google Sheets</h4>
 <ol>
     <li>
         Enable LiveUpdate plugin (under addons->LiveUpdate)
@@ -453,20 +453,21 @@
         Get <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">Spreadsheet Id</a> from Google. Assign it to <b>Spreadsheet Id</b> LiveUpdate addon parameter
     </li>
     <li>
-        If you chose GoogleSheets API, get <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">"API key"</a> from Google. Assign it to <b>API key</b> LiveUpdate addon parameter
+        If you chose GoogleSheets API (the first option), get <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">"API key"</a> from Google. Assign it to <b>API key</b> LiveUpdate addon parameter
     </li>
     <li>
-        Make sure to share target spreadsheet. Open target spreadsheet, click on Share button on the top right and set access level to "public" or "people with link".
+        Make sure to share the target spreadsheet.
+        Open target spreadsheet, click on Share button on the top right and set access level to "public" or "people with link".
         Otherwise plugin won't work.
     </li>
     <li>
         Google sheets data should have proper layout (as described <a href="../../ExportImport">here</a>).
         Starting with v.1.5.13 _id column/ID value are not required anymore <i style="text-decoration: line-through;">_id column with valid IDs are required</i>
     </li>
-
 </ol>
 
-<h4>Checking if setup was correct</h4>
+
+<h4>Checking if GoogleSheets setup was correct</h4>
 <div>
     You can check if you set up config properly by accessing specific URL from your browser without logging to Google account.
     Each DataSource type uses it's own URL (listed in the table above), so try to access the data with corresponding URL
@@ -491,6 +492,22 @@
     </p>
     This is not a working example, it's just an example how to substitute parameters.
 </div>
+
+<h4>Setup for web server hosted files</h4>
+<ol>
+    <li>
+        Enable LiveUpdate plugin (under addons->LiveUpdate)
+    </li>
+    <li>
+        Select web hosted files as an update source
+    </li>
+    <li>
+        Create a list of files URL and formats
+    </li>
+    <li>
+        The files data should have proper layout (as described above in the "A web server hosted files types" section)
+    </li>
+</ol>
 
 <h4 id="webgl">WEBGL/Asynchronous setup</h4>
 <p>
