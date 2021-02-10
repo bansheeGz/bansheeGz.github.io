@@ -407,3 +407,7 @@ pre code {
     -moz-tab-size: 4;
     tab-size: 4;
 }
+.ra {
+    text-align: right;
+    vertical-align: top;
+}
