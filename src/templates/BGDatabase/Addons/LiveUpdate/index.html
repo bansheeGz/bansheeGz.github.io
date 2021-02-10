@@ -9,7 +9,7 @@
 
 <h4>Description</h4>
 <p>
-    Live update addon let you update database data on player's devices using the data from Google Sheets, using public GoogleSheets Json API.
+    Live update addon let you update database data on player's devices using the data from Google Sheets or from JSON/CSV/Excel file hosted on a web server.
     Export to google sheets is not supported.
 </p>
 
@@ -26,11 +26,11 @@
     </li>
 </ol>
 
-<h4 id="dataSourcesTypes">DataSource types</h4>
+<h4 id="dataSourcesTypes">Google Sheets API types</h4>
 <table class="contentTable">
     <tr>
         <th width="25%">
-            DataSource type->
+            API type->
         </th>
         <th width="25%">
             GoogleSheets API
@@ -100,6 +100,44 @@
         </td>
     </tr>
 </table>
+
+<h4>A web server hosted files types</h4>
+<p>BGDatabase 1.6.5 is required!</p>
+<table class="contentTable">
+    <tr>
+        <th width="25%">
+            File format->
+        </th>
+        <th width="25%">
+            Json
+        </th>
+        <th width="25%">
+            CSV
+        </th>
+        <th width="25%">
+            Excel
+        </th>
+    </tr>
+    <tr>
+        <td>Special setup</td>
+        <td>
+            For JSON file format we use the format from GoogleSheets:
+            <ol>
+                <li>Use values property with 2-dimensional array for values. The first array element contains field types (see the image below) </li>
+                <li>For values use string type even if value is not string</li>
+            </ol>
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/LiveUpdateAddon1.png"><img style="width:200px; height: 100px" src="#path images/BGDatabase/LiveUpdateAddon1.png"></a>
+            </div>
+        </td>
+        <td>None</td>
+        <td>
+            Required (Read "Excel file export" section from "Google Sheets API types" table above for more details).
+            Multiple excel files are not supported (unlike JSON and CSV).
+        </td>
+    </tr>
+</table>
+
 
 <h4>How it works</h4>
 <ol>
