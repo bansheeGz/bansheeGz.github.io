@@ -9,7 +9,7 @@
 
 <h4>Description</h4>
 <p>
-    Live update addon let you update database data on player's devices using the data from Google Sheets or from JSON/CSV/Excel file hosted on a web server.
+    Live update addon let you update database data on player's devices using the data from Google Sheets or from JSON/CSV files hosted on a web server.
     Export to google sheets is not supported.
 </p>
 
@@ -111,14 +111,11 @@
         <th width="10%">
             File format->
         </th>
-        <th width="30%">
+        <th width="40%">
             Json
         </th>
-        <th width="30%">
+        <th width="40%">
             CSV
-        </th>
-        <th width="30%">
-            Excel
         </th>
     </tr>
     <tr>
@@ -141,10 +138,6 @@
             <div class="bg-image">
                 <a href="#path images/BGDatabase/LiveUpdateAddon2.png"><img style="width:150px; height: 75px" src="#path images/BGDatabase/LiveUpdateAddon2.png"></a>
             </div>
-        </td>
-        <td class="ra" style="text-align: justify">
-            Special setup is required (Read "Excel file export" section from "Google Sheets API types" table above for more details).
-            Multiple excel files are not supported (unlike JSON and CSV).
         </td>
     </tr>
 </table>
@@ -223,7 +216,7 @@
         Select web hosted files as an update source
     </li>
     <li>
-        Create a list of files URL and formats
+        Create a list of files URL and formats (Json/CSV)
     </li>
     <li>
         The files data should have proper layout (as described above in the "A web server hosted files types" section)
