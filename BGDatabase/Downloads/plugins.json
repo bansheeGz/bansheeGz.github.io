@@ -84,8 +84,8 @@
     },
     {
       "id" : "eAAo1eq+xk6azC6br0sRMA",
-      "version" : "1.0",
-      "releaseDate" : "09/16/20",
+      "version" : "1.1",
+      "releaseDate" : "02/24/21",
       "pluginClass" : "BansheeGz.BGDatabase.BGBoltSaveLoadPlugin",
       "packageClass" : null,
       "name" :  "Bolt save/load actions",

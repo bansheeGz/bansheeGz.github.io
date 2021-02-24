@@ -12,7 +12,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.0
+            1.1
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -45,26 +45,36 @@
 <p>
     Save/Load actions for <a href="../../ThirdParty/Bolt">Bolt</a>
     to support <a href="../../Addons/SaveLoad">SaveLoad addon</a>.
-    Actions allow you to save/load game to/from file(s), located in the
+    Actions allow you to save/load game to/from byte array or file(s), located under
     <a href="https://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html">Unity's persistent folder</a>.
-    WebGl platform is not supported
+    Saving/loading to/from files on WebGl platform is not supported
 </p>
 
-<h4>Available units:</h4>
+<h4>File based units</h4>
+<p>Use these units if database content is the only thing you want to save and you want to use local files as a persistent storage
+Files are stored under <a href="https://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html">Unity's persistent folder</a>
+</p>
 <ol>
-    <li>SaveGame: save a game to a file.</li>
-    <li>LoadGame: load a game from a file.</li>
+    <li>SaveGame: save game to a file.</li>
+    <li>LoadGame: load game from a file.</li>
     <li>ListSaves: load all file names to string array (without path and extension)</li>
     <li>DeleteSave: delete saved file.</li>
 </ol>
-
-<h4>Additional information:</h4>
+<p>Additional information:</p>
 <ol>
     <li>All files have ".sav" extension.</li>
     <li>SaveGame/LoadGame/DeleteSave have optional <i>fileName</i> parameter (default is "game").
         <i>fileName</i> parameter format is a file name without path and extension.
     </li>
     <li>All actions have "debug" parameter- if it's turned on, information about files is printed to Unity console.</li>
+</ol>
+
+
+<h4>Array based units</h4>
+<p>Use these units if database content is only a part of your save data or if you want to store saved data in the cloud (not in the local file).</p>
+<ol>
+    <li>SaveGameToArray: save a game to byte array.</li>
+    <li>LoadGameFromArray: load a game from byte array.</li>
 </ol>
 
 
@@ -78,6 +88,15 @@
             Release date
         </th>
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.1
+        </td>
+        <td class="ra">Feb 24, 2021</td>
+        <td>
+            Added units for saving/loading from/to byte array
+        </td>
     </tr>
     <tr>
         <td class="ra">
