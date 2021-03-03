@@ -173,7 +173,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
                     </li>
-                    <li class="cli downloadicon  plic ">
+                    <li class="cli downloadicon ">
                         <a class="ca" href="../../../BGDatabase/Downloads">Downloads</a>
                     </li>
                 </ul>
@@ -235,7 +235,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/Settings">Settings</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/Addons/Partition">Partitions</a>
                     </li>
                     <li class="cli ">
@@ -278,115 +278,85 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Downloads</h3>
+                <h3>Partitions add-on</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-<a class="backToDownloads" href="../">< Back to downloads</a>
-
-<div class="bg-main-contacts">
-
-    <div class="bg-main-contacts_grid mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <h4>Custom action for Playmaker and Addressables</h4>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Version:
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.0
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Format:
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Unity package
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Dependencies:
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase, Addressables, Playmaker
-        </div>
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BGDatabaseAddressablesPlaymaker.unitypackage" class="downloadButton"></a>
-        </div>
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <div class="bg-image">
-                <a href="../../../images/BGDatabase/download9.png">
-                    <img style="width: 100%" src="../../../images/BGDatabase/download9.png">
-                </a>
-            </div>
-        </div>
-
-    </div>
+<div class="importantNote">
+    This is WIP, targeting version 1.6.5
 </div>
-
-
 <h4>Description</h4>
 <p>
-    Custom action (BGAddressablesGetAsset under BansheeGz category) for <a href="../../ThirdParty/Playmaker">Playmaker</a>
-    to load Unity assets from Addressables and BGDatabase without any prerequisites (no preloading required)
+    "Partitions" addon let you split database into several files.
+    All non-marked rows will be stored in the main database file and all marked rows will be stored in the corresponding partition file
 </p>
 
-<h4>Setup: </h4>
+<h4>Why use it?</h4>
+<p>
+    Partition addon can be used if you have chunks of static (read-only) data, which is required to be loaded only in specific scenes.
+    So you can load this data at scene's loading and unload it on scene unloading, thus reducing memory usage
+</p>
+
+<h4>How it works?</h4>
+<p>
+    At runtime- only main database file is loaded automatically.
+    Partition files are loaded/unloaded manually from C# code
+</p>
+<pre class="nomargin"><code class="language-csharp">        //to load a partition (partition can be index/name/ID)
+        BGRepo.I.Addons.Get&lt;BGAddonPartition&gt;().Load(partition);
+
+        //to unload a partition (partition can be index/name/ID)
+        BGRepo.I.Addons.Get&lt;BGAddonPartition&gt;().Unload(partition);</code></pre>
+
+
+<h4>Partition configuration</h4>
+<p>
+    Addon uses naming convention for creating partitions and marking rows as connected to a particular partition.
+    The rules are:
+</p>
 <ol>
-    <li>Create UnityEngine.Object variable and assign required type (for example GameObject for prefab field)</li>
-    <li>Add new State and add BGAddressablesGetAsset action. Assign required table, field and entity. Use variable, you created at step #1 as Result</li>
-    <li>Use FINISHED event to move to the next state</li>
-    <li>Use variable to access the asset. You may need to use "Convert" option to convert it to required type (for example, use GameObject prefab field to instantiate
-        the prefab with standard "Create object" Playmaker action)
+    <li>To create partitions, create a meta with name "DbPartition". Each row means a separate partition</li>
+    <li>To "move" rows to some partition, create "dbPartition" field with type(byte or short or int or relationSingle [related=DbPartition])
+        and assign some value to it.
+        For numeric fields, you need to assign partition index (1- based, 0-meaning "no partition") .
+        For relation field- connect row to a DbPartition rows.
     </li>
 </ol>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/Addressables2.png"><img style="width: 400px" src="../../../images/BGDatabase/Addressables2.png"></a>
-</div>
+<p>Alternatively, use Partition addon Editor GUI to create configuration tables/fields</p>
 
-<h4>Available actions:</h4>
+
+
+<h4>Restrictions</h4>
 <ol>
-    <li>BGAddressablesGetAsset - load asset from addressables system</li>
-    <li>BGAddressablesReleaseAsset- release asset loaded from addressables</li>
+    <li>
+        There is no way to reorder rows from different partitions, cause partition's data is loaded one-by-one.
+        So main database is loaded first, then all the partitions one-by-one, so data will always be sorted by partitions.
+    </li>
+    <li>
+        Partition addon takes effect only when saving main database in Unity Editor and loading main database at runtime.
+        It has zero effect in all other scenarios
+    </li>
+    <li>
+        Make sure, loaded/unloaded data is not referenced from main database part (e.g. no relations fields referencing partition data from main (non-partitioned) database)
+    </li>
 </ol>
 
-<h4>Releases</h4>
-<table class="contentTable dTable">
+<table class="contentTable">
     <tr>
-        <th style="width: 10%">
-            Version
+        <th>
+            Parameter name
         </th>
-        <th style="width: 20%">
-            Release date
+        <th>
+            Description
         </th>
-        <th>Log</th>
     </tr>
     <tr>
-        <td class="ra">
-            1.0
-        </td>
-        <td class="ra">Sep 16, 2020</td>
+        <td>Disable temporarily</td>
         <td>
-            Versioning reset (unified plugin infrastructure)
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.1
-        </td>
-        <td class="ra">June 09, 2020</td>
-        <td>
-            N/A
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.0
-        </td>
-        <td class="ra">March 17, 2020</td>
-        <td>
-            Initial release
+            Temporarily disable addon without deleting corresponding configuration data (e.g. DbPartition table etc.)
         </td>
     </tr>
 </table>
