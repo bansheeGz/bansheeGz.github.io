@@ -333,7 +333,7 @@
     to support <a href="../../Addons/SaveLoad">SaveLoad addon</a>.
     Actions allow you to save/load game to/from file(s), located in the
     <a href="https://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html">Unity's persistent folder</a>.
-    WebGl platform is not supported
+    WebGl platform requires <a href="#webGl">special setup</a>
 </p>
 
 <h4>Available actions:</h4>
@@ -353,7 +353,7 @@
     <li>All actions have "debug" parameter- if it's turned on, information about files is printed to Unity console.</li>
 </ol>
 
-<h4>WebGl platform:</h4>
+<h4 id="webGl">WebGl platform:</h4>
 <p>
     WebGl player does not have access to physical disk and uses <a href="https://en.wikipedia.org/wiki/Indexed_Database_API">IndexedDB</a>
     database instead, so it requires special actions.
