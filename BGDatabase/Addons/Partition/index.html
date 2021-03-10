@@ -290,20 +290,20 @@
 </div>
 <h4>Description</h4>
 <p>
-    "Partitions" addon let you split database into several files.
+    Partitioning addon let you split database into several files.
     All non-marked rows will be stored in the main database file and all marked rows will be stored in the corresponding partition file
 </p>
 
 <h4>Why use it?</h4>
 <p>
-    Partition addon can be used if you have chunks of static (read-only) data, which is required to be loaded only in specific scenes.
+    Partition addon can be used if you have chunks of data, which is required to be loaded only in specific scenes.
     So you can load this data at scene's loading and unload it on scene unloading, thus reducing memory usage
 </p>
 
 <h4>How it works?</h4>
 <p>
     At runtime- only main database file is loaded automatically.
-    Partition files are loaded/unloaded manually from C# code
+    Partition files are loaded/unloaded manually from C# scripts
 </p>
 <pre class="nomargin"><code class="language-csharp">        //to load a partition (partition can be index/name/ID)
         BGRepo.I.Addons.Get&lt;BGAddonPartition&gt;().Load(partition);
@@ -314,30 +314,33 @@
 
 <h4>Partition configuration</h4>
 <p>
-    Addon uses naming convention for creating partitions and marking rows as connected to a particular partition.
+    Addon uses naming convention for creating partitions and marking rows as belonging to a particular partition.
     The rules are:
 </p>
 <ol>
     <li>To create partitions, create a meta with name "DbPartition". Each row means a separate partition</li>
     <li>To "move" rows to some partition, create "dbPartition" field with type(byte or short or int or relationSingle [related=DbPartition])
         and assign some value to it.
-        For numeric fields, you need to assign partition index (1- based, 0-meaning "no partition") .
+        For numeric fields, you need to assign partition index (1- based, value 0 meaning "no partition", value 1 meaning 1st partition etc.) .
         For relation field- connect row to a DbPartition rows.
     </li>
 </ol>
-<p>Alternatively, use Partition addon Editor GUI to create configuration tables/fields</p>
-
+<p>Alternatively, use Partition addon Editor GUI to create configuration fields</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/PartitionAddon1.png"><img style="width:400px; height: 200px" src="../../../images/BGDatabase/PartitionAddon1.png"></a>
+</div>
 
 
 <h4>Restrictions</h4>
 <ol>
     <li>
-        There is no way to reorder rows from different partitions, cause partition's data is loaded one-by-one.
-        So main database is loaded first, then all the partitions one-by-one, so data will always be sorted by partitions.
+        There is no way to reorder rows from different partitions, cause partition's data is loaded in specific order.
+        Main database is loaded first, then all the partitions one-by-one, so data will always be sorted by partitions.
+        If you changed partitioning information during editing session, press on "Reload" button after saving database to view actual rows order.
     </li>
     <li>
         Partition addon takes effect only when saving main database in Unity Editor and loading main database at runtime.
-        It has zero effect in all other scenarios
+        It has no effect in all other scenarios
     </li>
     <li>
         Make sure, loaded/unloaded data is not referenced from main database part (e.g. no relations fields referencing partition data from main (non-partitioned) database)
