@@ -207,7 +207,7 @@
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
                     </li>
                     <li class="cli  plic ">
-                        <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Bolt</a>
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
                     </li>
                 </ul>
             </li>
@@ -278,7 +278,7 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Bolt</h3>
+                <h3>Unity Visual Scripting (ex-Bolt)</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
@@ -287,16 +287,18 @@
 
 <h4>Description</h4>
 <p>
-    Code Generator for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/bolt-163802">Bolt</a> creates custom Units to manage BGDatabase data.
-    All fields are supported (Unity asset fields are readonly, <a href="../../SupportedFields">more info</a>)
+    Code Generator for
+    <a href="https://docs.unity3d.com/2021.1/Documentation/Manual/com.unity.visualscripting.html">Unity Visual Scripting</a>
+    (ex-<a href="https://assetstore.unity.com/packages/tools/visual-scripting/bolt-163802">Bolt</a>) creates custom Units to manage BGDatabase data.
 </p>
-
-<h4>Alternative package</h4>
+<p> All fields are supported (Unity asset fields are readonly, <a href="../../SupportedFields">more info</a>).
+</p>
 <p>
-    Staring from  Feb 04 2021, the alternative units for accessing database are available for download <a href="../../Downloads/RuntimeBoltGenericUnits">here</a>.
+    "Unity Visual Scripting" package is available for Unity version >= 2021 via Package manager (installed by default),
+    Bolt is available for Unity 2018-2020 via Asset Store.
 </p>
 
-<h4>Supported custom units</h4>
+<h4>List of generated units</h4>
 With custom units you have full control over database data- you can select/add/update/delete rows.
 Custom units are generated for each table
 <table class="contentTable">
@@ -380,9 +382,12 @@ Custom units are generated for each table
     <h4>How to generate</h4>
     <ul>
         <li>Open BGDatabase window <code>Window->BGDatabase</code></li>
-        <li>Select <code>Settings</code> tab, and chose <code>Bolt</code></li>
+        <li>Select <code>Settings</code> tab, and chose <code>Visual Scripting (ex-Bolt)</code></li>
         <li>Fill in <a href="#parameters">parameters</a> and press <code>Generate</code> button</li>
-        <li>After units was generated, update Bolt units database, by pressing Tools->Bolt->Build Unit Options (or Full Extract if you use Bolt 2.0)</li>
+        <li>After units was generated, you may need to update units database.
+            If you use Visual Scripting, select Edit->Project Settings->Visual Scripting->Regenerate Units.
+            If you use Bolt, select Tools->Bolt->Build Unit Options
+        </li>
     </ul>
 
     <div class="bg-image">
@@ -431,6 +436,11 @@ Custom units are generated for each table
             You can safely leave this setting blank.
         </td>
     </tr>
+    <tr>
+        <td>Target platform</td>
+        <td>The choice between "Unity Visual Scripting" or "Bolt"
+        </td>
+    </tr>
 </table>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/Bolt3.png"><img style="width: 400px" src="../../../images/BGDatabase/Bolt3.png"></a>
@@ -439,7 +449,7 @@ Custom units are generated for each table
 <div>
     <h4>Difference between getters and setters</h4>
     <ol>
-        <li> Getters are not included into control flow: you can not include them. Values are fetched when requested.</li>
+        <li>Getters are not included into control flow: you can not include them. Values are fetched when requested.</li>
         <li>On the other hand, setters are required to be included into control flow, otherwise they will not be executed</li>
     </ol>
     <div class="bg-image">
@@ -450,23 +460,22 @@ Custom units are generated for each table
 </div>
 
 <div>
-    <h4>Bolt v.2 status</h4>
-    <p>UPDATE 2:
-        Bolt v.2 was cancelled by Unity Technologies (read <a href="https://forum.unity.com/threads/visual-scripting-roadmap-update-august-2020.951675">more</a>)
-    </p>
-    <p>UPDATE 1:
-        <i style="text-decoration: line-through;">
-        After acquisition of Bolt, Unity <a href="https://forum.unity.com/threads/bolt-2-alpha-cycle-has-restarted.935003/">restarted</a>
-        alpha cycle for Bolt v.2 with a limited number of users.
-        We are waiting for a beta release to add support for Bolt v.2.
-        </i>
-    </p>
+    <h4>Bolt to VisualScripting package migration guide</h4>
     <p>
-        <i style="text-decoration: line-through;">Bolt version 2 is currently under development.
-        We are aiming to provide support for the latest alpha release.
-        Check the latest available Bolt v.2 version <a href="https://ludiq.io/bolt/download">here</a>
-        </i>
+        This guide is for database units/plugins <b>only</b>
     </p>
+    <ol>
+        <li>Re-generate units with VisualScripting platform as a target.<br/>
+            Alternatively, open C# file with generated units for Bolt in your text editor and replace the following lines:
+<pre class="nomargin"><code class="language-csharp">using Bolt;
+using Ludiq;
+</code></pre>
+            with this line:
+<pre class="nomargin"><code class="language-csharp">using Unity.VisualScripting;</code></pre>
+            Save the file.
+        </li>
+        <li>If you use any additional Bolt plugins, download and import their VisualScripting versions from <a href="../../Downloads">download</a> page</li>
+    </ol>
 </div>
 
 <div>
@@ -474,6 +483,7 @@ Custom units are generated for each table
     <ol>
         <li>Custom unit to support <a href="../../Addons/SaveLoad">SaveLoad addon</a> is available for free download  <a href="../../Downloads/RuntimeSaveLoadBolt">here</a></li>
         <li>Custom unit to support unity assets loading from Addressables system is available for download <a href="../../Downloads/RuntimeAddressablesBolt">here</a> </li>
+        <li>Alternative (generic) units for accessing database: <a href="../../Downloads/RuntimeBoltGenericUnits">link</a> </li>
     </ol>
 </div>
             </div>

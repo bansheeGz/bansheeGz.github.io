@@ -556,3 +556,9 @@ entityReference/entityListReference fields are considered to be obsolete and not
     </tr>
 </table>
 
+<p>
+    Sprite and UnityObject fields support complex assets (when multiple assets are stored in one single file).
+    Sprite field support spritesheets/atlases.
+    UnityObject field should support other asset types (like FBX file etc.) if you assign correct "Asset Type" parameter while creating UnityObject field.
+    "Asset Type" parameter accepts valid full C# class name (for example UnityEngine.Material)
+</p>
