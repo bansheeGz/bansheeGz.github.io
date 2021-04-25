@@ -45,7 +45,7 @@
 <p>
     Minimalistic example project to help you to start using Unity's
     <a href="https://docs.unity3d.com/Manual/com.unity.addressables.html">Addressables system</a> with BGDatabase quickly.
-    It requires BGDatabase version >= 1.5.6
+    It requires BGDatabase version >= 1.6.6 and Addressables version >= 1.17.17
 </p>
 
 <h4>Setup: </h4>
@@ -53,27 +53,26 @@
     <li>Download this project, unzip it and open it with Unity &gt; 2019.2.4. Ignore console errors.</li>
     <li>Import BGDatabase package</li>
     <li>
-        Run <b>scene.unity</b> scene to test reading assets by addresses technique (without preloading).
+        Run <b>scene.unity</b> scene to test reading assets from Addressables.
         <a href="../RuntimeAddressables#byAddress"  target="_blank">More info</a> about this technique.
-    </li>
-    <li>
-        Run <b>preloader.unity</b> scene to test preloading assets technique.[This method is not recommended]
-        <a href="../RuntimeAddressables#preload" target="_blank">More info</a> about this technique.
     </li>
     <li>[Optional] If you want to build the project to other platforms, make sure to rebuild Addressables after switching platform
         (Window -> Asset Management -> Addressables -> Groups, Build->New Build->Default Build Script )</li>
 </ol>
 
-<h6>Scripts description: </h6>
+<h6>Used techniques: </h6>
+<p>
+    Spawner script (Assets\AddressablesQuickStart\Spawner.cs) uses the following techniques to load prefabs from Addressables:
+</p>
 <ol>
     <li>
-        PreloaderUsingAddressables.cs (preloader.unity scene) : preload assets using Addressables system label
+        Using Load{FieldName}Async to load asset asynchronously
     </li>
     <li>
-        PreloaderUsingDatabaseValues.cs (preloader.unity scene) : preload assets using addresses, stored in the database
+        Using generated property (f_addressable) for loading asset synchronously (Addressables v. 1.17.17 added support for sync loading)
     </li>
     <li>
-        Spawner.cs (scene.unity scene) : spawn both preloaded assets and assets, retrieved with raw address.
+        Using GetAddressablesAddress method to use raw addressables address with Addressables
     </li>
 </ol>
 
@@ -90,11 +89,24 @@
     </tr>
     <tr>
         <td class="ra">
+            1.3
+        </td>
+        <td class="ra">April 25, 2021</td>
+        <td>
+            <ol>
+                <li>Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.1.1</li>
+                <li>Preloader script is removed as outdated</li>
+            </ol>
+
+        </td>
+    </tr>
+    <tr>
+        <td class="ra">
             1.2
         </td>
         <td class="ra">March 06, 2020</td>
         <td>
-            Update for <a href="../RuntimeAddressables">plugin</a> v.1.2
+            Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.0.1.2
         </td>
     </tr>
     <tr>
@@ -103,7 +115,7 @@
         </td>
         <td class="ra">September 20, 2019</td>
         <td>
-            Update for <a href="../RuntimeAddressables">plugin</a> v.1.1
+            Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.0.1.1
         </td>
     </tr>
     <tr>

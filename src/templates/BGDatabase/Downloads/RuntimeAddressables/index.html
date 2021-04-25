@@ -12,7 +12,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.0
+            1.1
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -27,7 +27,23 @@
             BGDatabase (v. >= 1.6), Addressables
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BGDatabaseAddressables.unitypackage" class="downloadButton"></a>
+            <table class="contentTable dTable">
+                <tr>
+                    <th>Version</th>
+                    <th>Dependencies</th>
+                    <th>Download</th>
+                </tr>
+                <tr>
+                    <td>1.1</td>
+                    <td>(!) Addressables version >= 1.17.17</td>
+                    <td><a href="../BGDatabaseAddressables1.1.unitypackage">link</a></td>
+                </tr>
+                <tr>
+                    <td>1.0</td>
+                    <td></td>
+                    <td><a href="../BGDatabaseAddressables.unitypackage">link</a></td>
+                </tr>
+            </table>
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <div class="bg-image">
@@ -44,7 +60,7 @@
 <h4>Description</h4>
 <p>
     Support for Unity's <a href="https://docs.unity3d.com/Manual/com.unity.addressables.html">Addressables system</a>
-    (BGDatabase version >= 1.5.11 is required). This package adds 2 Addressables loaders for all Unity asset fields.
+    This package adds 2 Addressables loaders for all Unity asset fields.
 </p>
 
 <h4>Setup: </h4>
@@ -76,35 +92,25 @@
     <li>AddressableByGuid: asset Guid (from meta file) is stored as database value. Cons: Guid is just a set of bytes, it's not readable</li>
 </ol>
 
-<h4>How to read values: </h4>
+<h4>How to read assets: </h4>
 <ol>
-    <li id="byAddress">
-        Retrieve asset address from database and use this address directly with Addressables system API.
-        Each unity asset field is implementing BGAddressablesAssetI interface, which can be used to read asset address (using method <code>string GetAddressablesAddress(int entityIndex)</code>).
+    <li>
+        The usual way, by retrieving field value (Addressables version >= 1.17 is required).
+        In this case assets are loaded synchronously
+        (read more about loading assets synchronously <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.17/manual/SynchronousAddressables.html">here</a>)
     </li>
-    <li>If you use code generation, use <code>Read{FieldName}Async</code> generated methods (BGDatabase version >= 1.5.10 is required)</li>
-    <li>If you use Playmaker/Bolt, use custom actions (links are at the bottom of this page)</li>
-    <li id="preload">[Legacy, not recommended] Usual method, by reading field value. Assets preloading is required for this method, please see below for more details</li>
+    <li id="byAddress">
+        Retrieve asset address from database and use this address directly with Addressables system API (synchronously or asynchronously).
+        Each unity asset field is implementing BGAddressablesAssetI interface,
+        which can be used to read asset address (using method <code>string GetAddressablesAddress(int entityIndex)</code>).
+    </li>
+    <li>
+        If you use code generation, use <code>Read{FieldName}Async</code> generated methods (BGDatabase version >= 1.5.10 is required) to read values asynchronously
+    </li>
+    <li>If you use Playmaker/Bolt/Unity Visual Scripting, use custom actions (links are at the bottom of this page)</li>
 </ol>
 <p>
-    This <a href="../ExampleAddressables">AddressablesQuickStart project</a> has examples for 1 and 4 techniques
-</p>
-<p>
-    If you use Playmaker you can use <a href="../RuntimeAddressablesPlaymaker">this custom action</a>. No preloading required.
-</p>
-
-<h4>Preloading [Legacy, not recommended]: </h4>
-<div class="importantNote">
-    This method is not recommended, cause we concern it may not be 100% robust. Use it at your own risk.
-</div>
-<p>
-    If you access unity field with addressables loader like you normally do (How to read values, method # 4, mentioned above),
-    you need to preload required values, otherwise values will not be resolved successfully (null will be returned).
-    You have full control over which values you want to preload: you can use database values or Addressables system to decide which values to preload.
-    <br>
-    Preloader script is included into the package(Assets\BGDatabaseAddressables\ScriptsNoDll\BGAddressablesPreloader.cs).
-    It preloads all values from all rows/fields, but you can modify it to preload only required part of the database.
-    Completed() method is invoked after all assets are preloaded.
+    This <a href="../ExampleAddressables">AddressablesQuickStart example project</a> uses options #1, #2 and #3
 </p>
 
 <h4>Tesing if Addressables system setup properly:</h4>
@@ -117,16 +123,6 @@
     <li>Attach the script to any GameObject</li>
     <li>Assign it's Address parameter to some valid address from your Addressables system</li>
     <li>Run the scene and make sure asset was loaded successfully (no exceptions in the console)</li>
-</ol>
-
-<h4>Known issues:</h4>
-<ol>
-    <li>
-        [UPD: this bug was fixed in Addressables v. 1.10 ] <i style="text-decoration: line-through;">Addressables packages v.1.8.3-1.9.2 have a bug, preventing loading sprites from SpriteAtlases correctly using atlasAddress[spriteName] syntax (invalid key exception is thrown).
-        If you use sprites with SpriteAtlases and <a href="#byAddress">GetAddressablesAddress method</a> (without preloading), the solution would be to downgrade to Addressables v.1.7.5
-        or upgrade to next version after 1.9.2.
-        More information is available <a href="https://forum.unity.com/threads/error-loading-sprite-from-spriteatlas-using-1-8-3.890239/">here</a> </i>
-    </li>
 </ol>
 
 <h4>Using source code</h4>
@@ -147,8 +143,8 @@
 <h4>Additional downloads:</h4>
 <ol>
     <li><a href="../ExampleAddressables">Example "Quick start" project</a></li>
-    <li><a href="../RuntimeAddressablesPlaymaker">Custom action for Playmaker to load assets directly from Addressables (without preloading)</a></li>
-    <li><a href="../RuntimeAddressablesBolt">Custom action for Bolt to load assets directly from Addressables (without preloading)</a></li>
+    <li><a href="../RuntimeAddressablesPlaymaker">Custom action for Playmaker</a></li>
+    <li><a href="../RuntimeAddressablesBolt">Custom action for Bolt/Unity Visual Scripting</a></li>
 </ol>
 
 
@@ -162,6 +158,19 @@
             Release date
         </th>
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.1
+        </td>
+        <td class="ra">Apr 17, 2021</td>
+        <td>
+            <ol>
+                <li>Values are now loaded by using AsyncOperationHandle.WaitForCompletion method</li>
+                <li>Preloader script is removed, cause it's not needed anymore (supports for synchronous assets loading is officially added to Addressables)</li>
+            </ol>
+
+        </td>
     </tr>
     <tr>
         <td class="ra">
