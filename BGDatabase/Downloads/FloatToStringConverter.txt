@@ -1,0 +1,17 @@
+using System.Globalization;
+using BansheeGz.BGDatabase;
+
+public class FloatToStringConverter : BGStringFormatter<float>
+{
+    public float FromString(string value)
+    {
+        if (string.IsNullOrEmpty(value)) return 0;
+        value = value.Replace(',', '.');
+        return float.Parse(value, NumberStyles.Float, CultureInfo.InvariantCulture.NumberFormat);
+    }
+
+    public string ToString(float value)
+    {
+        return value.ToString("g7", CultureInfo.InvariantCulture);
+    }
+}

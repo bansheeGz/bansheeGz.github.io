@@ -526,7 +526,10 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     Most of the fields support custom string format (except for Unity assets and relations).
     You can create your own class, implementing BGStringFormatter&lt;T&gt; interface (T is a field value type) and assign it under "M" menu as a custom string value formatter
 </p>
-
+<p>
+    For example, default float converter uses round-trip converter to maintain bit-wise precision, which results in very long values (lot of digits after the dot).
+    If you do not want such conversion- use <a href="../Downloads/FloatToStringConverter.txt">this custom converter</a> to keep float values short
+</p>
 
 <h4>Adding rows in external tools</h4>
 <p>
