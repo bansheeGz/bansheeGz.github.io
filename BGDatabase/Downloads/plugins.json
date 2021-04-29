@@ -2,7 +2,7 @@
   "plugins": [
     {
       "id" : "HrCT9HkOK0mRQ9Z0YBjeQw",
-      "version" : "1.1",
+      "version" : "1.2",
       "releaseDate" : "10/27/20",
       "pluginClass" : "BansheeGz.BGDatabase.BGGoogleSheetService",
       "packageClass" : null,
@@ -13,7 +13,7 @@
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
-      "version" : "1.4",
+      "version" : "1.5",
       "releaseDate" : "02/02/21",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelService",
       "packageClass" : null,
