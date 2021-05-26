@@ -204,10 +204,16 @@
                         <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
                     </li>
                     <li class="cli ">
-                        <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/FlowCanvas">Flow Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/GameCreator">Game Creator</a>
                     </li>
                 </ul>
             </li>
@@ -298,7 +304,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.0
+            1.1
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -346,6 +352,17 @@
     <li>Add Assets\BansheeGz\BGDatabaseRuntimeEditor\Prefab\Editor.prefab prefab to your scene</li>
 </ol>
 
+<h4>Integrations</h4>
+<ol>
+    <li>If you need GUI for choosing files to load/save- add
+        <a href="https://assetstore.unity.com/packages/tools/gui/runtime-file-browser-113006">simple file browser</a>
+        to your project. The buttons for selecting a file to load and save will be added to Save/Load dialogs
+    </li>
+    <li>If you want to run Excel export/import tasks using this asset GUI- add
+        <a href="../RuntimeExcelMonitor">runtime excel monitor</a>
+        to your project. Buttons to run export/import tasks will be added to Tools menu
+    </li>
+</ol>
 
 <h4>Releases</h4>
 <table class="contentTable dTable">
@@ -357,6 +374,23 @@
             Release date
         </th>
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.1
+        </td>
+        <td class="ra">May 25, 2021</td>
+        <td>
+            <ol>
+                <li>Added: settings for hiding tables/fields</li>
+                <li>Added: Integration with
+                    <a href="https://assetstore.unity.com/packages/tools/gui/runtime-file-browser-113006">simple file browser</a>
+                </li>
+                <li>Added: Integration with <a href="../RuntimeExcelMonitor">runtime excel monitor</a>
+                </li>
+                <li>Fixed: unable to resize the column over window boundaries (mouseUp event is not registered) </li>
+            </ol>
+        </td>
     </tr>
     <tr>
         <td class="ra">

@@ -1,0 +1,97 @@
+#set page=Downloads
+
+<a class="backToDownloads" href="../">< Back to downloads</a>
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <h4>Custom save/load nodes for Flow Canvas</h4>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            1.0
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            BGDatabase, Flow Canvas
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseFlowCanvasSaveLoad.unitypackage" class="downloadButton"></a>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/download44.png">
+                    <img style="width: 100%" src="#path images/BGDatabase/download44.png">
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<h4>Description</h4>
+<p>
+    Custom nodes (under "BansheeGz" category) for <a href="../../ThirdParty/FlowCanvas">Flow Canvas</a>
+    to support <a href="../../Addons/SaveLoad">save/load addon</a>
+</p>
+
+<h4>File based units</h4>
+<p>Use these nodes if database content is the only thing you want to save and you want to use local files as a persistent storage
+    Files are stored under <a href="https://docs.unity3d.com/ScriptReference/Application-persistentDataPath.html">Unity's persistent folder</a>
+</p>
+<ol>
+    <li>"SL: Save game to file": save game to a file.</li>
+    <li>"SL: Load game from file": load game from a file.</li>
+    <li>"SL: List saved game files": load all file names to string array (without path and extension)</li>
+    <li>"SL: Delete saved game file": delete saved file.</li>
+</ol>
+<p>Additional information:</p>
+<ol>
+    <li>All files have ".sav" extension.</li>
+    <li>SaveGame/LoadGame/DeleteSave have optional <i>fileName</i> parameter (default is "game").
+        <i>fileName</i> parameter format is a file name without path and extension.
+    </li>
+    <li>All actions have "debug" parameter- if it's turned on, information about files is printed to Unity console.</li>
+</ol>
+
+
+<h4>Array based units</h4>
+<p>Use these nodes if database content is only a part of your save data or if you want to store saved data in the cloud (not in the local file).</p>
+<ol>
+    <li>"SL: Save game to binary array": save a game to byte array.</li>
+    <li>"SL: Load game from binary array": load a game from byte array.</li>
+</ol>
+
+<h4>Releases</h4>
+<table class="contentTable dTable">
+    <tr>
+        <th style="width: 10%">
+            Version
+        </th>
+        <th style="width: 20%">
+            Release date
+        </th>
+        <th>Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.0
+        </td>
+        <td class="ra">May 25, 2021</td>
+        <td>
+            initial release
+        </td>
+    </tr>
+</table>

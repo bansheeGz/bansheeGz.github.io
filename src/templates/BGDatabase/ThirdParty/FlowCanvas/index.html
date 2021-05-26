@@ -1,0 +1,96 @@
+#set page=FlowCanvas
+
+
+<div class="importantNote">
+    BGDatabase version 1.6.8 is required
+</div>
+
+<h4>Description</h4>
+<p>
+    Custom generated nodes for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/flowcanvas-33903">Flow Canvas</a>
+    provide control over database data- they allow to read/write field values and create/delete rows.
+    All database fields are supported (unity assets fields are readonly).
+</p>
+
+
+<h4>How to generate nodes</h4>
+<p>
+    Select "Settings->Flow Canvas", fill in parameters and click on "Generate"
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/FlowCanvas1.png"><img style="width: 400px" src="#path images/BGDatabase/FlowCanvas1.png"></a>
+</div>
+
+<h4>Full list of generated nodes</h4>
+<p>
+    Each node below is generated for all tables
+</p>
+<table class="contentTable">
+    <tr>
+        <th>#</th>
+        <th>Node</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Count</td>
+        <td>Retrieve the number of rows of specified table</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Add a row</td>
+        <td>Add a new row to specified table</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Delete a row</td>
+        <td>Delete specified row</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Get By ID</td>
+        <td>Read rows values using Rows's ID.</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Get By Index</td>
+        <td>Read rows values using Rows's index.</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Get By Name</td>
+        <td>Read rows values using Rows's name.</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Set By ID</td>
+        <td>Write rows values using row's ID. To write the value, input port needs to be connected to another node, otherwise the field value will remain intact</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Set By index</td>
+        <td>Write rows values using row's index. To write the value, input port needs to be connected to another node, otherwise the field value will remain intact</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Set By name</td>
+        <td>Write rows values using row's name. To write the value, input port needs to be connected to another node, otherwise the field value will remain intact</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>Get By Key</td>
+        <td>For each <a href="../../Misc/index.html#keys">key</a> there is a getByKey node generated to get entity(es) by key value(s)</td>
+    </tr>
+</table>
+
+<div class="bg-image">
+    <a href="#path images/BGDatabase/FlowCanvas2.png"><img style="width: 400px" src="#path images/BGDatabase/FlowCanvas2.png"></a>
+</div>
+
+<div>
+    <h4>Additional downloads</h4>
+    <ol>
+        <li>Custom nodes to support <a href="../../Addons/SaveLoad">SaveLoad addon</a> is available for download
+            <a href="../../Downloads/RuntimeSaveLoadFlowCanvas">here</a> </li>
+    </ol>
+</div>

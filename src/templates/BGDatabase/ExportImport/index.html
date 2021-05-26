@@ -114,6 +114,14 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
                                                              src="#path images/BGDatabase/ExportImport8.png"></a>
 </div>
 
+<h4>Rows mapping config</h4>
+<p>
+    By default we use _id column in the sheet to keep the link between database row and excel/GoogleSheets row and we recommend to use this default strategy.
+    However additional strategies are also available: you can use int/string field as row's id if you have such columns with unique values or rows indexes
+    (e.g. 1st database row is mapped to 1st sheet row etc.). Use these alternative strategies only if can not use additional _id column.
+    Rows mapping config is available at datasource page.
+</p>
+
 <h4>Additional parameters</h4>
 <table  class="contentTable">
     <tr>
