@@ -1,0 +1,102 @@
+#set page=NodeCanvas
+
+
+<h4>Description</h4>
+<p>
+    We provide custom <a href="https://nodecanvas.paradoxnotion.com/documentation/?section=tasks-actions-conditions">actions (tasks)</a>
+    for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/nodecanvas-14914">Node Canvas</a> asset.
+    The following actions are available- read/write field values, create/delete rows, save/load game using save/load addon (see below for detailed list).
+    Actions can be used in State machines, Behaviour trees or Dialog trees.
+    All database fields are supported (unity assets fields are readonly).
+</p>
+
+
+<h4>Setup</h4>
+<p>
+    Download and install the following <a href="../../Downloads/NodeCanvas">plugin</a>
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/NodeCanvas1.png"><img style="width: 400px" src="#path images/BGDatabase/NodeCanvas1.png"></a>
+</div>
+
+<h4>Full list of custom actions</h4>
+<table class="contentTable">
+    <tr>
+        <th>#</th>
+        <th>Action</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Count</td>
+        <td>Retrieve the number of rows for specified table</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Add a row</td>
+        <td>Add a new row to specified table</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Delete a row</td>
+        <td>Delete specified row</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Get row index</td>
+        <td>Calculate rows index by ID or name</td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>Get value</td>
+        <td>Retrieve the cell value from database. While creating this action you need to provide the correct type of the value</td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>Set value</td>
+        <td>Write cell value to database. While creating this action you need to provide the correct type of the value</td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Get related index</td>
+        <td>"Get value" override for relationSingle field, which uses related entity index of type int as result</td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Get related indexes</td>
+        <td>"Get value" override for relationMultiple and nested fields, which uses related entities indexes (List&lt;int&gt;)) as a result</td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Set related index</td>
+        <td>"Set value" override for relationSingle field, which uses related entity index of type int to set the value</td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>Set related indexes</td>
+        <td>"Set value" override for relationMultiple fields, which uses related entities indexes (List&lt;int&gt;)) to set the value</td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>Save game</td>
+        <td>Save the game to a file or byte array. Application.persistentFilePath folder and "sav" file extension is used</td>
+    </tr>
+    <tr>
+        <td>12</td>
+        <td>Load game</td>
+        <td>Load the game from a file or byte array</td>
+    </tr>
+    <tr>
+        <td>13</td>
+        <td>List saved files</td>
+        <td>List all saved files to string[] variable.</td>
+    </tr>
+    <tr>
+        <td>14</td>
+        <td>Delete saved file</td>
+        <td>Delete specified save file.</td>
+    </tr>
+</table>
+
+
+
