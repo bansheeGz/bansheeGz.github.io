@@ -300,6 +300,41 @@
             <div id="content">
             
 
+<!--
+<script src="../../../js/jquery.background-video.js"></script>
+<link rel="stylesheet" href="../../../css/jquery.background-video.css">
+-->
+
+<style>
+    .ra {
+        text-align: right;
+        vertical-align: top;
+    }
+
+    .la {
+        text-align: right;
+        vertical-align: top;
+    }
+    .green{
+        background-color: #eefadd !important;
+    }
+    .red{
+        background-color: #f8d2dc !important;
+    }
+</style>
+
+
+<!--
+<div style="height: 400px;">
+    <video data-bgvideo="true" class="my-background-video jquery-background-video" loop autoplay muted playsinline poster="../../../images/BGDatabase/download6.gif">
+        <source src="../../../video/download6.mp4" type="video/mp4">
+        &lt;!&ndash;
+                <source src="path/to/video.webm" type="video/webm">
+                <source src="path/to/video.ogv" type="video/ogg">
+        &ndash;&gt;
+    </video>
+</div>
+-->
 
 <a class="backToDownloads" href="../">< Back to downloads</a>
 
@@ -308,13 +343,13 @@
 
     <div class="bg-main-contacts_grid mdl-grid">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <h4>BGLocalization Amazon Translate plugin</h4>
+            <h4>UNode integration</h4>
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.0
+            1.0 (latest)
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -326,69 +361,43 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase (v. >= 1.6), BGLocalization (v. >= 1.6)
+            BGDatabase, UNode
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BGLocalizationAmazonTranslateEditor.unitypackage" class="downloadButton"></a>
+            <a href="../BGDatabaseUNode.unitypackage" class="downloadButton"></a>
         </div>
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <div class="bg-image">
-                <a href="../../../images/BGDatabase/download31.png">
-                    <img style="width: 100%" src="../../../images/BGDatabase/download31.png">
-                </a>
-            </div>
-        </div>
-
     </div>
 </div>
 
-
-<h4>Description</h4>
-<p>
-    This plugin adds support for Amazon machine translation service for BGLocalization.
-</p>
-
-<h4>Using source code</h4>
-<p>
-    We provide source code for our plugins, so you can use source code instead of built DLL file or build your own DLL using source code.
-</p>
-<p>
-    Guide for using source code:
-</p>
-<ol>
-    <li>Download required library- Amazon Translate APIs (min version 3.3.1.9) <a href="https://www.nuget.org/packages/AWSSDK.Translate/3.3.1.9">here</a>
-        and add library DLLs to your project to the Editor assembly (under Editor folder)
-        (the following DLLs are required- AWSSDK.Core.dll, AWSSDK.Translate.dll)
-    </li>
-    <li>While importing plugin package, check the packages with source code only </li>
-</ol>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/download36.png"><img style="width: 400px" src="../../../images/BGDatabase/download36.png"></a>
+<div>
+    <img class="centered" src="../../../images/BGDatabase/UNode1.png">
 </div>
 
-<h4>Releases</h4>
+
+
+<h4>Description</h4>
+Integration package for <a href="https://assetstore.unity.com/packages/tools/visual-scripting/unode-visual-scripting-101176">UNode</a> asset.
+Custom action are located under "BansheeGz" category.
+For more details read <a href="../../ThirdParty/UNode">this article</a>
+
+
+<h4>Downloads</h4>
 <table class="contentTable dTable">
     <tr>
-        <th style="width: 10%">
-            Version
-        </th>
-        <th style="width: 20%">
+        <th>
             Release date
         </th>
-        <th style="width: 70%">Log</th>
+        <th>
+            Download
+        </th>
     </tr>
     <tr>
+        <td class="ra">Jun 02, 2021</td>
         <td class="ra">
-            1.0
-        </td>
-        <td class="ra">Sep 16, 2020</td>
-        <td>
-            Initial release
+            <a href="../BGDatabaseUNode.unitypackage">version 1.0</a>
         </td>
     </tr>
 </table>
-
-
 
             </div>
 
