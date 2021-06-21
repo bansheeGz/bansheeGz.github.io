@@ -12,7 +12,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.1
+            1.2
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -34,9 +34,9 @@
                     <th>Download</th>
                 </tr>
                 <tr>
-                    <td>1.1</td>
+                    <td>1.2</td>
                     <td>(!) Addressables version >= 1.17.17</td>
-                    <td><a href="../BGDatabaseAddressables1.1.unitypackage">link</a></td>
+                    <td><a href="../BGDatabaseAddressables1.2.unitypackage">link</a></td>
                 </tr>
                 <tr>
                     <td>1.0</td>
@@ -71,7 +71,8 @@
     <li>Install this package</li>
     <li>Create your own database as described <a href="../../Setup">here</a></li>
     <li>Create a table with any of the <a href="../../SupportedFields#unityassets">Unity assets</a> field and set loader=Addressables or loader=AddressablesByGuid
-        (while creating a field or via gear icon afterwards)</li>
+        (while creating a field or via gear icon afterwards)
+    </li>
     <div class="bg-image">
         <a href="#path images/BGDatabase/download25.png"><img style="width: 400px" src="#path images/BGDatabase/download25.png"></a>
     </div>
@@ -91,6 +92,18 @@
     </li>
     <li>AddressableByGuid: asset Guid (from meta file) is stored as database value. Cons: Guid is just a set of bytes, it's not readable</li>
 </ol>
+
+<h4>Addressables folders: </h4>
+<p>
+    Addressables system configuration may contain folders.
+    In this case, all assets under such folders are added to addressables implicitly.
+    We support such assets, but after updating the configuration (e.g. after adding/removing an asset to/from addressables folders),
+    update our addressables cache manually, otherwise you may encounter the error, saying that asset is not addressable.
+    We used to update this cache automatically, but building the cache can be very expensive, so building it automatically is not the best idea.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Addressables6.png"><img style="width: 400px" src="#path images/BGDatabase/Addressables6.png"></a>
+</div>
 
 <h4>How to read assets: </h4>
 <ol>
@@ -158,6 +171,21 @@
             Release date
         </th>
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.2
+        </td>
+        <td class="ra">Jun 17, 2021</td>
+        <td>
+            Sub-assets cache is not updated automatically anymore.
+            Sub-assets cache is the cache for assets, located under addressables folders, e.g. for assets,
+            which implicitly added to addressables configuration, cause parent folder is added to addressables
+            Building this cache could be very expensive operation, so we decided to not update it automatically
+            (the cache can be rebuilt manually by pressing on "Update cache" button in value popup window).
+            For more details read "Addressables folders" section above.
+
+        </td>
     </tr>
     <tr>
         <td class="ra">
