@@ -304,12 +304,13 @@
 Code Generation is the key element for simplifying access to database.
 Code Generation is the process of producing C# source files using database structure/content as the source data.
 <p>
-    Here are all types of code generation:
+    Here are the full list of code generation types:
 </p>
 
 <ol>
-    <li><a href="ExtensionClasses">Extension classes</a> (highly recommended)- classes to be used inside database instead of generic BGEntity class</li>
+    <li><a href="ExtensionClasses">Extension classes</a> (highly recommended)- classes (produced by CodeGen addon generator) to be used inside database instead of generic BGEntity class</li>
     <li><a href="MonoBehaviourClasses">MonoBehaviour Classes</a> (highly recommended)- classes, which can be attached to GameObject (extended from MonoBehaviour) and pointing to a row </li>
+    <li>Reference classes (optionally produced by CodeGen addon)- classes which can be used to reference database row from your own scripts</li>
     <li><a href="../ThirdParty/Playmaker">Playmaker actions</a>- actions for Playmaker</li>
     <li><a href="../ThirdParty/Bolt">Bolt units</a>- units for Bolt</li>
     <li><a href="../ThirdParty/FlowCanvas">Flow Canvas nodes</a>- nodes to be used with Flow Canvas</li>

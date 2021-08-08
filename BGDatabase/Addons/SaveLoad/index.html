@@ -387,8 +387,7 @@ BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
 <p>
     Once you obtained bytes array using Save method, you need to write it to some persistent storage (file or cloud drive)
     See <a href="../../Downloads/SaveLoadManager.txt">this minimalistic example</a> for more details.
-    There are also custom units/actions for
-    <a href="../../Downloads/RuntimeSaveLoadBolt">Bolt</a> and <a href="../../Downloads/RuntimeSaveLoadPlaymaker">Playmaker</a> are available.
+    There are also custom units/actions for Visual Scripting tools are available (see the full list at the bottom of this page)
 </p>
 
 <h4 id="saveAll">Is it possible to save/load the whole database?</h4>
@@ -642,11 +641,17 @@ Use the following code (at the beginning of your callback function) to filter ou
         if (!gameObject.scene.IsValid()) return;
 </code></pre>
 
+
 <div>
     <h4>Additional downloads</h4>
     <ol>
-        <li>Custom action for <a href="../../ThirdParty/Playmaker">Playmaker</a> to support SaveLoad addon is available for download <a href="../../Downloads/RuntimeSaveLoadPlaymaker">here</a></li>
-        <li>Custom unit for <a href="../../ThirdParty/Bolt">Bolt</a> to support SaveLoad addon is available for download <a href="../../Downloads/RuntimeSaveLoadBolt">here</a></li>
+        <li><a href="../../Downloads/RuntimeSaveLoadPlaymaker">Custom actions</a> for Playmaker to support SaveLoad addon</li>
+        <li><a href="../../Downloads/RuntimeSaveLoadBolt">Custom units</a> for Bolt to support SaveLoad addon</li>
+        <li><a href="../../Downloads/RuntimeSaveLoadFlowCanvas">Custom nodes</a> for Flow Canvas</li>
+        <li>Node Canvas <a href="../../Downloads/NodeCanvas">integration package</a> has custom actions to use with SaveLoad addon</li>
+        <li>Behavior Designer <a href="../../Downloads/BehaviorDesigner">integration package</a> has custom actions to use with SaveLoad addon</li>
+        <li>UNode <a href="../../Downloads/UNode">integration package</a> has custom nodes to use with SaveLoad addon</li>
+        <li>Game Creator <a href="../../Downloads/GameCreator">integration package</a> has custom actions to use with SaveLoad addon</li>
     </ol>
 </div>
             </div>
