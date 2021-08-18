@@ -336,7 +336,7 @@
                 </tr>
                 <tr>
                     <td>1.2</td>
-                    <td>(!) Addressables version >= 1.17.17</td>
+                    <td class="redFont">Addressables version >= 1.17.17</td>
                     <td><a href="../BGDatabaseAddressables1.2.unitypackage">link</a></td>
                 </tr>
                 <tr>
@@ -367,8 +367,14 @@
 <h4>Setup: </h4>
 <ol>
     <li>Use Unity version &gt; 2018.2</li>
-    <li>Install Unity's addressables package via package manager</li>
-    <li>Install latest BGDatabase</li>
+    <li>
+        Install Unity's addressables package via package manager, <span class="redFont">version 1.17.17 or higher</span>.
+        If the version you see in the package manager is less than 1.17.17, install the package and 
+        use <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-8#post-7175611">this post</a>
+        as a guide to install required version manually.
+        The list of available releases is <a href="https://forum.unity.com/threads/release-announcements-and-notes.543537/page-2">here</a>
+    </li>
+    <li>Install the latest BGDatabase release</li>
     <li>Install this package</li>
     <li>Create your own database as described <a href="../../Setup">here</a></li>
     <li>Create a table with any of the <a href="../../SupportedFields#unityassets">Unity assets</a> field and set loader=Addressables or loader=AddressablesByGuid
@@ -389,9 +395,11 @@
 
 <h4>Loaders type: </h4>
 <ol>
-    <li>Addressable: asset address is stored as database value in human readable form. Cons: you can not change address after value was assigned to database
+    <li>Addressable: asset address is stored as database value in human readable form.
+        Cons: you can not change address after value was assigned to database (without re-assigning asset again)
     </li>
-    <li>AddressableByGuid: asset Guid (from meta file) is stored as database value. Cons: Guid is just a set of bytes, it's not readable</li>
+    <li>AddressableByGuid: asset Guid (from meta file) is stored as database value, the asset path can be changed after asset assignment.
+        Cons: Guid is just a set of bytes, it's not readable</li>
 </ol>
 
 <h4>Addressables folders: </h4>
@@ -406,7 +414,7 @@
     <a href="../../../images/BGDatabase/Addressables6.png"><img style="width: 400px" src="../../../images/BGDatabase/Addressables6.png"></a>
 </div>
 
-<h4>How to read assets: </h4>
+<h4>How to read assets at runtime: </h4>
 <ol>
     <li>
         The usual way, by retrieving field value (Addressables version >= 1.17 is required).

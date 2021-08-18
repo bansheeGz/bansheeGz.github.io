@@ -76,3 +76,7 @@
     padding-left: 4px;
     padding-right: 4px;
 }
+.redFont {
+    color: #c2185b;
+    font-weight: bold
+}
