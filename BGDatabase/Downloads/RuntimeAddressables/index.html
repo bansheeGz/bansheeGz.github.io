@@ -435,6 +435,12 @@
     This <a href="../ExampleAddressables">AddressablesQuickStart example project</a> uses options #1, #2 and #3
 </p>
 
+<h4>Addressables and WEBGL</h4>
+<p>
+    Addressables <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.18/manual/SynchronousAddressables.html#webgl">does not support synchronous loading on WEBGL</a>.
+    If you target WEBGL- use asynchronous options/API only.
+</p>
+
 <h4>Tesing if Addressables system setup properly:</h4>
 <p>
     Some people experience issues while setting Addressables system up.
@@ -446,12 +452,6 @@
     <li>Assign it's Address parameter to some valid address from your Addressables system</li>
     <li>Run the scene and make sure asset was loaded successfully (no exceptions in the console)</li>
 </ol>
-
-<h4>Addressables and WEBGL</h4>
-<p>
-    Addressables <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.18/manual/SynchronousAddressables.html#webgl">does not support synchronous loading on WEBGL</a>.
-    If you target WEBGL- use version 1.0 of this plugin and use asynchronous API only.
-</p>
 
 <h4>Using source code</h4>
 <p>
