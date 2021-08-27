@@ -313,7 +313,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.1
+            1.2
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -321,14 +321,24 @@
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Unity package
         </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Dependencies:
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase (version >= 1.6)
-        </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BansheeGzExcelRuntime.unitypackage" class="downloadButton"></a>
+            <table class="contentTable dTable">
+                <tr>
+                    <th>Version</th>
+                    <th>Dependencies</th>
+                    <th>Download</th>
+                </tr>
+                <tr>
+                    <td>1.2</td>
+                    <td class="redFont">BGDatabase version >= 1.6.10</td>
+                    <td><a href="../BansheeGzExcelRuntime1.2.unitypackage">link</a></td>
+                </tr>
+                <tr>
+                    <td>1.1</td>
+                    <td></td>
+                    <td><a href="../BansheeGzExcelRuntime.unitypackage">link</a></td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>
@@ -357,7 +367,7 @@
 
 <h4>Setup</h4>
 <ol>
-    <li>Import BGDatabase package (version >= 1.6) and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
+    <li>Import the latest BGDatabase package and create your own database as described <a href="http://www.bansheegz.com/BGDatabase/Setup/">here</a></li>
     <li>Import this plugin</li>
     <li>Now you need to add NPOI dlls to runtime assembly.
         <ol>
@@ -462,6 +472,19 @@
             Release date
         </th>
         <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            1.2
+        </td>
+        <td class="ra">Aug 27, 2021</td>
+        <td>
+            <ol>
+                <li>CHANGED: float and int fields are exported as numbers</li>
+                <li>ADDED: table/fields names mapping config</li>
+                <li>ADDED: rows mapping config</li>
+            </ol>
+        </td>
     </tr>
     <tr>
         <td class="ra">
