@@ -411,3 +411,9 @@ pre code {
     text-align: right;
     vertical-align: top;
 }
+.vimeo-c{
+    width: 560px;
+    height: 315px;
+    padding: 0;
+    margin: 0 auto;
+}
