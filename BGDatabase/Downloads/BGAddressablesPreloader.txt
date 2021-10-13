@@ -1,0 +1,216 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
+using UnityEngine.U2D;
+using Object = UnityEngine.Object;
+
+namespace BansheeGz.BGDatabase
+{
+    /// <summary>
+    /// [IMPORTANT] Using Addressables preloader is not recommended anymore.
+    /// Use Addressables async API with asset address instead
+    /// Each Unity asset field implements BGAddressablesAssetI interface. Use it to retrieve asset address (string GetAddressablesAddress(int entityIndex);) 
+    /// </summary>
+// this code is tested against 1.6.2 version
+// This script preload all values from database. You can modify it to preload only required part.
+    public class BGAddressablesPreloader : MonoBehaviour
+    {
+        //=====================================================================================
+        //                                        Field/Properties
+        //=====================================================================================
+        protected bool initializing;
+        protected int count;
+
+        protected int Count
+        {
+            get => count;
+            set
+            {
+                count = value;
+                if (count == 0 && !initializing) Completed();
+            }
+        }
+
+        //=====================================================================================
+        //                                        Unity callbacks
+        //=====================================================================================
+
+        protected virtual void Start()
+        {
+            Preload();
+        }
+
+        //=====================================================================================
+        //                                        Database iteration
+        //=====================================================================================
+        protected virtual void Preload()
+        {
+            initializing = true;
+            var type2Addresses = new Dictionary<Type, IList<object>>();
+            var type2Field = new Dictionary<Type, IList<BGAddressablesAssetI>>();
+
+            //iterate all tables
+            BGRepo.I.ForEachMeta(meta =>
+            {
+                //should be included?
+                if (!IsIncluded(meta)) return;
+
+                type2Field.Clear();
+
+                //PASS 0: iterate fields and gather all fields with addressables loader 
+                meta.ForEachField(field =>
+                {
+                    // if not Unity asset field- skip it
+                    if (!(field is BGAssetLoaderA.WithLoaderI) || !(field is BGAddressablesAssetI)) return;
+
+                    var fieldWithLoader = (BGAssetLoaderA.WithLoaderI) field;
+
+                    // if not a field with addressables loader- skip it
+                    if (!(fieldWithLoader.AssetLoader is BGAssetLoaderAddressables)) return;
+
+                    //should be included?
+                    if (!IsIncluded(field)) return;
+
+                    GetList(type2Field, field.ValueType).Add(field as BGAddressablesAssetI);
+                });
+
+                if (type2Field.Count == 0) return;
+
+                //PASS 1: iterate all entities(rows) and gather all addresses
+                meta.ForEachEntity(entity =>
+                {
+                    foreach (var pair in type2Field)
+                    {
+                        var type = pair.Key;
+                        var fieldList = pair.Value;
+                        foreach (var storable in fieldList)
+                        {
+                            var fieldWithCustomLoader = storable as BGAddressablesAssetCustomLoaderI;
+                            if (fieldWithCustomLoader == null)
+                            {
+                                var address = storable.GetAssetPath(entity.Index);
+                                //no value- no luck
+                                if (string.IsNullOrEmpty(address)) continue;
+                                //skip if not included
+                                if (!IsIncluded(entity, (BGField) storable, address)) continue;
+                                GetList(type2Addresses, type).Add(address);
+                            }
+                            else
+                            {
+                                //field provide custom address for each separate entity
+                                var addressModel = fieldWithCustomLoader.GetAddressablesLoaderModel(entity.Index);
+                                //no value- no luck
+                                if (addressModel==null) continue;
+                                //skip if not included
+                                if (!IsIncluded(entity, (BGField) storable, addressModel.Address)) continue;
+                                GetList(type2Addresses, addressModel.Type).Add(addressModel.Address);
+                            }
+                        }
+                    }
+                });
+            });
+
+            //PASS 2: preload all assets using their addresses in batch mode (by type)
+            if (type2Addresses.Count == 0)
+            {
+                initializing = false;
+                Completed();
+            }
+            else
+            {
+                foreach (var pair in type2Addresses) Load(pair.Key, pair.Value);
+                initializing = false;
+            }
+        }
+
+        private static  IList<TV> GetList<TK, TV>(Dictionary<TK, IList<TV>> type2Field, TK key)
+        {
+            if (type2Field.TryGetValue(key, out var list)) return list;
+            list = new List<TV>();
+            type2Field.Add(key, list);
+            return list;
+        }
+
+        //=====================================================================================
+        //                                        Load
+        //=====================================================================================
+
+        protected virtual void Load(Type type, IList<object> addresses)
+        {
+            IList<object> distinctAddresses = addresses.Distinct().ToList();
+
+            if (type == typeof(Sprite)) Load<Sprite>(distinctAddresses);
+            else if (type == typeof(SpriteAtlas)) Load<SpriteAtlas>(distinctAddresses);
+            else if (type == typeof(Sprite[])) LoadOneByOne<IList<Sprite>>(distinctAddresses);
+            else if (type == typeof(GameObject)) Load<GameObject>(distinctAddresses);
+            else if (type == typeof(Material)) Load<Material>(distinctAddresses);
+            else if (type == typeof(AudioClip)) Load<AudioClip>(distinctAddresses);
+            else if (type == typeof(Font)) Load<Font>(distinctAddresses);
+            else if (type == typeof(Texture2D)) Load<Texture2D>(distinctAddresses);
+            else if (type == typeof(Texture)) Load<Texture>(distinctAddresses);
+            else if (type == typeof(ScriptableObject)) Load<ScriptableObject>(distinctAddresses);
+            else if (type == typeof(Object)) Load<Object>(distinctAddresses);
+            else throw new Exception("Unsupported type: " + type.FullName);
+        }
+
+        private void LoadOneByOne<T>(IList<object> addresses)
+        {
+            //by some reason Addressables implementation do not resolve keys properly with LoadAssetsAsync- so we have to use LoadAssetAsync for each key
+            foreach (var address in addresses) LoadWithCounter(() => Addressables.LoadAssetAsync<T>(address));
+        }
+
+        protected virtual void Load<T>(IList<object> addresses)
+        {
+            //load all assets using their addresses 
+            LoadWithCounter(() => Addressables.LoadAssetsAsync<T>((IEnumerable) addresses, null, Addressables.MergeMode.Union));
+        }
+
+        protected virtual  void LoadWithCounter<T>(Func<AsyncOperationHandle<T>> load)
+        {
+            Count++;
+            try
+            {
+                var operation = load();
+                operation.Completed += handle => Count--;
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+                Count--;
+            }
+        }
+
+        //=====================================================================================
+        //     Should be included?- use these methods to filter which data should be preloaded
+        //=====================================================================================
+        protected virtual bool IsIncluded(BGMetaEntity meta)
+        {
+            return true;
+        }
+
+        protected  virtual bool IsIncluded(BGField field)
+        {
+            return true;
+        }
+
+        protected  virtual bool IsIncluded(BGEntity entity, BGField field, string address)
+        {
+            return true;
+        }
+
+
+        //=====================================================================================
+        //                                        Completed
+        //=====================================================================================
+
+        //this method is called when all assets are pre-loaded - override it to include your logic
+        public virtual void Completed()
+        {
+            //all assets are loaded- do something
+        }
+    }
+}
