@@ -1,0 +1,638 @@
+#set page=GraphEditor
+
+<h4>Description</h4>
+<p>
+    Graph editor allows to describe data processing algorithm as set of connected nodes, similar to Unity Visual scripting asset.
+    This editor is not a generic visual scripting tool however, but rather focused on database data processing and relatively simple calculations.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GraphEditor1.png"><img style="width: 400px" src="#path images/BGDatabase/GraphEditor1.png"></a>
+</div>
+
+<h4>Where it is used</h4>
+<table class="contentTable">
+    <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td><a href="../SupportedFields#calculated">Calculated fields</a></td>
+        <td>Database fields, which calculate their values at the moment these values are requested</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td><a href="../SupportedFields#calculated">Action field</a></td>
+        <td>
+            Like calculated fields, but it does not return value.
+            Instead, it can change database values, create/delete rows.
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td><a href="../DataBinding#graphBinder">Graph binder</a></td>
+        <td>
+            Graph binder is a unit binder, which calculates the value to be injected using graph
+        </td>
+    </tr>
+</table>
+
+<h4>How it works</h4>
+
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GraphEditor3.png"><img style="width: 400px" src="#path images/BGDatabase/GraphEditor3.png"></a>
+</div>
+<ol>
+    <li>Use "Special/SetResult" node to pass the result of calculation</li>
+    <li>Use "ByType" category to perform calculations for bool, string, int, float, enum and list types.</li>
+    <li>
+        Use "Database" category to perform operations on database- read/write field values, create/delete rows.
+        Operations, changing database state, are available for "action" field only.
+    </li>
+    <li>Use "Reflection" category to read/write objects field/properties</li>
+    <li>You can call another graph using "Special/Call calculated cell" and pass parameters to it using public graph variables</li>
+    <li>To access current entity for calculated/action fields, use "Special/Get current entity" node.
+    </li>
+    <li>To access current Game Object for graph binder, use "Special/Get current GameObject" node.
+    </li>
+</ol>
+
+<h4>Graph variables</h4>
+Each graph can have multiple variables, which can be used during graph execution.
+Calculated and action fields can have a default graph (shared between all rows if not overridden)-
+and if this default graph has public variables- these variables can be overridden for each row.
+So each row can use the same shared default graph- but with different public variable values.
+Here is an example- lets say you have a Items table with int "value" field, which can have some additional buff and debuff values
+and the final value is calculated as value+buff-debuff.
+In this case you can have this default graph with 2 public variables:
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GraphEditor6.png"><img style="width: 400px" src="#path images/BGDatabase/GraphEditor6.png"></a>
+</div>
+and override variable values for each row if needed
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GraphEditor7.png"><img style="width: 400px" src="#path images/BGDatabase/GraphEditor7.png"></a>
+</div>
+
+Also, the better alternative exist in this case- you can just add "buff" and "debuff" fields to the database and use database values instead of variables.
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GraphEditor8.png"><img style="width: 400px" src="#path images/BGDatabase/GraphEditor8.png"></a>
+</div>
+So using public variables to customize data calculation for specific rows is advised only if it's not possible to replace variables with database fields.
+
+
+<h4>Nodes reference</h4>
+<table class="contentTable">
+    <tr>
+        <th>Folder</th>
+        <th>Subfolder</th>
+        <th>Nodes</th>
+    </tr>
+    <tr>
+        <td rowspan="12">ByType</td>
+        <td colspan="2">This folder has wrapper methods on top of C#/Unity API mostly.</td>
+    </tr>
+    <tr>
+        <td>bool</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-and-operator-">And</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-or-operator-">Or</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#logical-exclusive-or-operator-">Or exclusive</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/boolean-logical-operators#logical-negation-operator-">Negate</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.boolean.parse">Bool parse</a>
+        </td>
+    </tr>
+    <tr>
+        <td>enum</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/const">Enum literal</a>,
+            Enum convert (cast enum to int),
+        </td>
+    </tr>
+    <tr>
+        <td>float</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/floating-point-numeric-types#real-literals">Float literal</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#addition-operator-">Float add</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#subtraction-operator--">Float subtract</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#multiplication-operator-">Float multiply</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#floating-point-division">Float divide</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Approximately.html">Approximately</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Ceil.html">Ceil</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.CeilToInt.html">Ceil to int</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Floor.html">Floor</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.FloorToInt.html">Floor to int</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#floating-point-remainder">Float modulo</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.single.parse">Float parse</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Pow.html">Pow</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.RoundToInt.html">RoundToInt</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Sqrt.html">Sqrt</a> |
+        </td>
+    </tr>
+    <tr>
+        <td>float/comparisons</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.single.equals">Float equal</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators#greater-than-operator-">Float greater</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators#greater-than-or-equal-operator-">Float greater or equal</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators#less-than-operator-">Float less</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators#less-than-or-equal-operator-">Float less or equal</a> |
+        </td>
+    </tr>
+    <tr>
+        <td>float/constants</td>
+        <td>
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Epsilon.html">Epsilon constant</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Infinity.html">Infinity constant</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.NegativeInfinity.html">NegativeInfinity constant</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.single.nan">NaN constant</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.PI.html">PI</a> |
+        </td>
+    </tr>
+    <tr>
+        <td>float/trigonometry</td>
+        <td>
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Acos.html">Acos</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Asin.html">Asin</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Atan.html">Atan</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Atan2.html">Atan2</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Cos.html">Cos</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Deg2Rad.html">Deg2Rad</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Rad2Deg.html">Rad2Deg</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Sin.html">Sin</a> |
+            <a href="https://docs.unity3d.com/ScriptReference/Mathf.Tan.html">Tan</a> |
+        </td>
+    </tr>
+    <tr>
+        <td>int</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/builtin-types/integral-numeric-types#integer-literals">Int literal</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#addition-operator-">Int add</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#subtraction-operator--">Int subtract</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#multiplication-operator-">Int multiply</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#integer-division">Int divide</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/arithmetic-operators#integer-remainder">Int modulo</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32.parse">Int parse</a>
+        </td>
+    </tr>
+    <tr>
+        <td>int/comparison</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.int32.equals">Int equal</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators#greater-than-operator-">Int greater</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators#greater-than-or-equal-operator-">Int greater or equal</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators#less-than-operator-">Int less</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/comparison-operators#less-than-or-equal-operator-">Int less or equal</a> 
+        </td>
+    </tr>
+    <tr>
+        <td>list</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.add">List add</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.generic.list-1.addrange">List addRange</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.clear">List clear</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.contains">List contains</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.icollection.count">List count</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.arraylist">Create list</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.item">List get</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.indexof">List indexOf</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.insert">List insert</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.remove">List remove</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.removeat">List removeAt</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.collections.ilist.item">List set</a> |
+        </td>
+    </tr>
+    <tr>
+        <td>object</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/operators/type-testing-and-cast#cast-expression">Cast</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.convert.changetype">Change type</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals">Equal</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null">IsNull</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.equals">NotEqual</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/null">null literal</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.object.tostring">Object to string</a> |
+        </td>
+    </tr>
+    <tr>
+        <td>string</td>
+        <td>
+            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/how-to/concatenate-multiple-strings#-and--operators">String add</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.indexof">IndexOf</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.isnullorempty">IsNullOrEmpty</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.join">String join</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.length">String length</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.split">Split</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.substring#System_String_Substring_System_Int32_">Substring</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.substring#System_String_Substring_System_Int32_System_Int32_">Substring2</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.tolower">ToLower</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.toupper">ToUpper</a> |
+            <a href="https://docs.microsoft.com/en-us/dotnet/api/system.string.trim">Trim</a> |
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="5">Database</td>
+        <td></td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>[MetaName] get</td>
+                    <td>
+                        Retrieve data from database row. Each field has its own output port. Each table has its own node.
+                    </td>
+                </tr>
+                <tr>
+                    <td>[MetaName] set</td>
+                    <td>
+                        Set data from database row. Each field has its own input port. Each table has its own node. Available for "Action" field only
+                    </td>
+                </tr>
+                <tr>
+                    <td>[MetaName] count</td>
+                    <td>
+                        the number of rows.  Each table has its own node.
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>Generic/meta</td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>Get meta</td>
+                    <td>
+                        Get the table object (BGMetaEntity) by index/id/name and returns table, index, id and name.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get meta entities</td>
+                    <td>
+                        Returns the list of all entities for given table
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get meta fields</td>
+                    <td>
+                        Returns the list of all fields for given table
+                    </td>
+                </tr>
+                <tr>
+                    <td>Count entities</td>
+                    <td>
+                        the number of rows for given table
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>Generic/field</td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>Get field</td>
+                    <td>
+                        Get table field (BGField) by index/id/name and  returns field, index, id and name.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get field meta</td>
+                    <td>
+                        Returns the meta for given field
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>Generic/entity</td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>Get entity</td>
+                    <td>
+                        Get entity (BGEntity) by index/id/name and returns entity, index, id and name.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get entity meta</td>
+                    <td>
+                        Returns the meta for given entity
+                    </td>
+                </tr>
+                <tr>
+                    <td>New entity</td>
+                    <td>
+                        Creates a new entity. Available for "Action" fields only
+                    </td>
+                </tr>
+                <tr>
+                    <td>Delete entity</td>
+                    <td>
+                        Deletes an existing entity. Available for "Action" fields only
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>Generic/cell</td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>Cell get value</td>
+                    <td>
+                        Get cell value. Accept a cell object as a input parameter
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cell get value2</td>
+                    <td>
+                        Get cell value. Accept a field and entity as input parameters
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cell set value</td>
+                    <td>
+                        Set cell value.  Accept a cell object as a input parameter. Available for "Action" fields only
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cell set value2</td>
+                    <td>
+                        Set cell value. Accept a field and entity as input parameters. Available for "Action" fields only
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cell construct</td>
+                    <td>
+                        Construct a cell object. Accepts a field and a entity as input parameters.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Cell deconstruct</td>
+                    <td>
+                        Returns a entity and field for given cell
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="1">Flow</td>
+        <td></td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>For</td>
+                    <td>
+                        For loop. (max iterations=10000)
+                    </td>
+                </tr>
+                <tr>
+                    <td>While</td>
+                    <td>
+                        While loop. (max iterations=10000)
+                    </td>
+                </tr>
+                <tr>
+                    <td>ForEach</td>
+                    <td>
+                        Invoke body action for each item in the list
+                    </td>
+                </tr>
+                <tr>
+                    <td>Break</td>
+                    <td>
+                        Notify loop node to exit the loop
+                    </td>
+                </tr>
+                <tr>
+                    <td>If</td>
+                    <td>
+                        Invoke "true" branch if condition==true and invoke "false" branch if condition if false
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="1">Reflection</td>
+        <td></td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>Get field(property)</td>
+                    <td>
+                        get object's field or property value using C# reflection
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get static field(property)</td>
+                    <td>
+                        get static field or property value using C# reflection
+                    </td>
+                </tr>
+                <tr>
+                    <td>Set field(property)</td>
+                    <td>
+                        set object's field or property value using C# reflection
+                    </td>
+                </tr>
+                <tr>
+                    <td>Set static field(property)</td>
+                    <td>
+                        set static field or property value using C# reflection
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="1">Special</td>
+        <td></td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>Debug</td>
+                    <td>
+                        print debug message to Unity console
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get current entity</td>
+                    <td>
+                        Returns current entity for calculated and action fields.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Get current GameObject</td>
+                    <td>
+                        Returns current GameObject for graph binder.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Set result</td>
+                    <td>
+                        This node set result value for calculated fields and graph binder
+                    </td>
+                </tr>
+                <tr>
+                    <td>Call calculated cell</td>
+                    <td>
+                        This node can be used to call another calculated field from the graph.
+                        Public variables can be used to pass parameters and return results
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="1">Unity</td>
+        <td></td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>GameObject GetComponent</td>
+                    <td>
+                        Accept GameObject as a parameter, returns a component by type name
+                    </td>
+                </tr>
+                <tr>
+                    <td>GameObject GetComponents</td>
+                    <td>
+                        Accept GameObject as a parameter, returns the list of component by type name
+                    </td>
+                </tr>
+                <tr>
+                    <td>Component GetGameObject</td>
+                    <td>
+                        Accept Component as a parameter, returns a GameObject, this component belong to
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="1">Variables</td>
+        <td></td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>[Variable name] get</td>
+                    <td>
+                        Get graph variable value. Each variable has its own node.
+                    </td>
+                </tr>
+                <tr>
+                    <td>[Variable name] set</td>
+                    <td>
+                        Set graph variable value. Each variable has its own node.
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2">Localization</td>
+        <td>Meta [MetaName]</td>
+        <td>"Get localized value" - returns localized value. Node is added for each singleValue localization table</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <table class="contentTable">
+                <tr>
+                    <td>get locale</td>
+                    <td>
+                        Return current locale as string
+                    </td>
+                </tr>
+                <tr>
+                    <td>set locale</td>
+                    <td>
+                        Set current locale. Available for action fields only
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+
+
+<h4>Graph specifications</h4>
+<table class="contentTable">
+    <tr>
+        <th>Name</th>
+        <th>Value</th>
+        <th>Comment</th>
+    </tr>
+    <tr>
+        <td>Maximum number of nodes</td>
+        <td>255</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Maximum number of ports (per node)</td>
+        <td>255</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Maximum number of graph variables</td>
+        <td>255</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Maximum number of iterations (for "For" and "While" nodes)</td>
+        <td>10000</td>
+        <td></td>
+    </tr>
+</table>
+
+<h4>Creating a custom node</h4>
+<p>
+    Here is en example custom node for "A+B-C" expression.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GraphEditor4.png"><img style="width: 400px" src="#path images/BGDatabase/GraphEditor4.png"></a>
+</div>
+
+<pre class="nomargin"><code class="language-csharp">
+using BansheeGz.BGDatabase;
+
+[BGCalcUnitDefinition("Custom/Add remove int")]
+public class AddSubtractUnit : BGCalcUnit
+{
+    private BGCalcValueInput a;
+    private BGCalcValueInput b;
+    private BGCalcValueInput c;
+
+    public override void Definition()
+    {
+        a = ValueInput<int>( "A", "a");
+        b = ValueInput<int>( "B", "b");
+        c = ValueInput<int>( "C", "c");
+
+        ValueOutput<int>("A+B-C", "d", GetValue);
+    }
+
+    private int GetValue(BGCalcFlowI flow)
+    {
+        return flow.GetValue<int>(a) + flow.GetValue<int>(b) - flow.GetValue<int>(c);
+    }
+}
+</code></pre>
+
+<p>
+    And here is an example of using this node in the graph
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/GraphEditor5.png"><img style="width: 400px" src="#path images/BGDatabase/GraphEditor5.png"></a>
+</div>
+
+<p>
+    Use the source code package for more nodes example (search for source files, starting with BGCalcUnit prefix)
+</p>

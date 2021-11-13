@@ -6,20 +6,26 @@ With data binding you can:
 <ol>
     <li>Inject value from database to any field of any component</li>
     <li>Monitor field(s) changes and inject value again if value is changed</li>
-    <li>For string fields you can combine static text with multiple values from database</li>
+    <li>For string fields you can combine static text with multiple values from database using string templates</li>
+    <li>Use <a href="../GraphEditor">graph editor tool</a> to describe calculation algorithm for graph binders as set of connected graph nodes</li>
 </ol>
 
 <h4>Why it could be useful?</h4>
 <p>
     The most obvious example- let say you want UI text component to show text like "Hit Points: [number of hit points]".
-    With data binding you can assign this value with template and monitor it, so if [number of hit points] is changed in
+    With data binding you can assign this value with template/graph binders and monitor it, so if [number of hit points] is changed in
     the database, the text field will also be updated. And with our localization addon, "Hit Points" string can be easily localized as well.
 </p>
 
 <h4>Binders overview</h4>
-
+<p>
+    Unit binders, injecting one single value to target component
+</p>
 <table class="contentTable">
     <tr>
+        <th>
+            #
+        </th>
         <th>
             Name
         </th>
@@ -28,36 +34,67 @@ With data binding you can:
         </th>
     </tr>
     <tr>
+        <td>1</td>
         <td><a href="#fieldBinder">BGDataBindingFieldGo</a></td>
         <td>
             Inject one single value from database to a component
         </td>
     </tr>
     <tr>
+        <td>2</td>
         <td><a href="#templateBinder">BGDataBindingTemplateGo</a></td>
         <td>
             Inject value, derived from a text template from database to a component
         </td>
     </tr>
     <tr>
+        <td>3</td>
+        <td><a href="#graphBinder">BGDataBindingGraphGo</a></td>
+        <td>
+            The most complicated unit binder, which calculates the value to be injected using <a href="../GraphEditor">graph editor tool</a>
+        </td>
+    </tr>
+</table>
+<br>
+<p>
+    Compound binders, injecting multiple values to multiple components at once
+</p>
+<table  class="contentTable">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>1</td>
         <td><a href="#batchBinder">BGDataBindingBatchGo</a></td>
         <td>
-            A compound binder (the same as several fields and templates binders in one single binder)
+            A compound binder (the same as several fields, templates and graph binders in one single binder)
         </td>
     </tr>
     <tr>
+        <td>2</td>
         <td>BGDataBindingUiToolkitGo</td>
         <td>
             A compound binder (just like batch binder) for Unity UI Toolkit (can be downloaded <a href="../Downloads/RuntimeUIToolkit">here</a>)
         </td>
     </tr>
     <tr>
+        <td>3</td>
         <td><a href="#rowBinder">BGDataBindingRowGo</a></td>
         <td>
-            This binder is used to inject multiple values from one single row. It uses the same naming convention to resolve fields/properties as BGDataBindingDatabaseGo
+            This binder is used to inject multiple values from one single row.
+            It uses the same naming convention to resolve fields/properties as BGDataBindingDatabaseGo binder does.
         </td>
     </tr>
     <tr>
+        <td>4</td>
         <td><a href="#databaseBinder">BGDataBindingDatabaseGo</a></td>
         <td>
             This binder is used for binder-less setup.
@@ -87,25 +124,40 @@ With data binding you can:
 <h4 id="templateBinder">How to use template  binder (BGDataBindingTemplateGo)</h4>
 <ol>
     <li>Attach BGDataBindingTemplateGo component</li>
-    <li>Choose the target field/property to inject a value to.
-        The dropdown will contain all fields/properties from all attached Components, which has string type.
+    <li>Choose the target Component and field/property to inject a value to.
+        The dropdown will contain all fields/properties from all attached Components, which have a string type.
     </li>
     <li>Fill template text (please read about template format below)</li>
-    <li>Toggle "Live Update" on, if you want all field values to be monitored. If value of one of the field is changed, binder inject it again</li>
+    <li>Toggle "Live Update" on, if you want all field values to be monitored. If value of one of the field is changed, binder injects it again</li>
 </ol>
 <div class="bg-image">
     <a href="#path images/BGDatabase/DataBinding2.png"><img style="width: 400px" src="#path images/BGDatabase/DataBinding2.png"></a>
 </div>
 
-<h4 id="batchBinder">How to use batch field binder (BGDataBindingBatchGo)</h4>
+<h4 id="graphBinder">How to use graph binder (BGDataBindingGraphGo)</h4>
+<ol>
+    <li>Attach BGDataBindingGraphGo component</li>
+    <li>Select graph return type (bool, string, int, float, object)</li>
+    <li>Choose the target Component and field/property to inject a value to.
+        The dropdown will contain all fields/properties from all attached Components, which have a compatible type.
+    </li>
+    <li>Edit the graph using <a href="../GraphEditor">graph editor</a>, use "Special/SetResult" node to pass a result</li>
+    <li>Toggle "Live Update" on, if you want all field values to be monitored.
+        If value of one of the field is changed, binder injects it again
+    </li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/DataBinding6.png"><img style="width: 400px" src="#path images/BGDatabase/DataBinding6.png"></a>
+</div>
+
+<h4 id="batchBinder">How to use batch binder (BGDataBindingBatchGo)</h4>
 <ol>
     <li>Attach BGDataBindingBatchGo component</li>
-    <li>Drag GameObjects to either "Field Binders" or "Template Binders" table</li>
-    <li>For field binders, choose 1)target component and field/property and 2) choose source Meta, Field and Entity</li>
+    <li>Drag GameObjects to either "Field Binders", "Template Binders" or "Graph Binders" table</li>
+    <li>For field binders, choose 1) target component and field/property and 2) choose source Meta, Field and Entity</li>
     <li>For template binders, 1) choose target component and field/property and 2) fill in template (please read about template format below)</li>
-    <li>Important: if you plan to make a prefab out of the GameObject with attached batch binder,
-        do not reference any other GameObject, than its own children
-    </li>
+    <li>For graph binders, 1) choose graph return type (bool, string, etc.) 2) choose target component and field/property and 3) edit calculation graph, using "Edit" button</li>
+    <li>Important: if you plan to make a prefab out of the GameObject with attached batch binder, reference child GameObjects only.</li>
 </ol>
 <div class="bg-image">
     <a href="#path images/BGDatabase/DataBinding3.png"><img style="width: 400px" src="#path images/BGDatabase/DataBinding3.png"></a>
@@ -213,7 +265,7 @@ public class PreventIosFromStripping : MonoBehaviour
 }
 </code></pre>
 
-<h4>Full list of recommended properties</h4>
+<h4>Full list of recommended properties (UGUI-related)</h4>
 <ol>
     <li>SpriteRenderer.sprite</li>
     <li>Material.mainTexture</li>

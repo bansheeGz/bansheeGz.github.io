@@ -64,6 +64,16 @@
       "requiredVersion" : "1.6.10"
     },
     {
+      "id" : "dXJXwnpafku2SNku6nA+Fg",
+      "version" : "1.0",
+      "releaseDate" : "11/11/21",
+      "pluginClass" : "BansheeGz.BGDatabase.BGDataBinderUiToolkitGo",
+      "packageClass" : null,
+      "name" :  "UI Toolkit binders pack",
+      "description" :  "Compound binder for UI toolkit runtime package",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeUIToolkit"
+    },
+    {
       "id" : "p8mP75IIeE2JHALqD9DzFg",
       "version" : "1.2",
       "releaseDate" : "10/23/21",

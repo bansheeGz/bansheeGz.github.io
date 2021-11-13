@@ -371,7 +371,40 @@
     <tr>
         <td>objectListReference</td>
         <td>List&lt;BGWithId&gt;</td>
+        <td></td>
     </tr>
+    <tr>
+        <td rowspan="6">Calculated <a href="#calculated">#6</a></td>
+        <td>calculatedBool</td>
+        <td>bool</td>
+        <td rowspan="5">
+            These fields calculate the value, when this value is requested, using <a href="../GraphEditor">graph editor tool</a>
+        </td>
+    </tr>
+    <tr>
+        <td>calculatedString</td>
+        <td>string</td>
+    </tr>
+    <tr>
+        <td>calculatedInt</td>
+        <td>int</td>
+    </tr>
+    <tr>
+        <td>calculatedFloat</td>
+        <td>float</td>
+    </tr>
+    <tr>
+        <td>calculatedObject</td>
+        <td>object</td>
+    </tr>
+    <tr>
+        <td>action</td>
+        <td>Action</td>
+        <td>
+            Action does not calculate any value, but change database values, create/delete rows.
+        </td>
+    </tr>
+
 </table>
 
 
@@ -561,4 +594,25 @@ entityReference/entityListReference fields are considered to be obsolete and not
     Sprite field support spritesheets/atlases.
     UnityObject field should support other asset types (like FBX file etc.) if you assign correct "Asset Type" parameter while creating UnityObject field.
     "Asset Type" parameter accepts valid full C# class name (for example UnityEngine.Material)
+</p>
+
+<h4 id="calculated">Calculated Fields (#6)</h4>
+<p>
+    Calculated fields store a graph, which is used for calculating result value.
+    Graph is edited using <a href="../GraphEditor">graph editor</a>.
+</p>
+<p>
+    Fields can have a default graph (edit via gears icon under "Configuration" tab) and a list of public variables
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SupportedFields3.png"><img style="width: 400px" src="#path images/BGDatabase/SupportedFields3.png"></a>
+</div>
+<p>
+    Each row can 1) override any public variable of default graph and 2) can have it's own graph.
+    The alternative and more efficient way to overriding variables is to use database fields values instead.
+    You can access the current row by using "Special/Get current entity" node.
+</p>
+<p>
+    Action is a special calculated field, which does not return value, but can change database values.
+    To invoke the action- use Invoke method on field value
 </p>

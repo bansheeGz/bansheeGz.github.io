@@ -105,16 +105,22 @@
 </ol>
 
 <h4>How to localize fields/properties </h4>
-<p>More details can be found <a href="../../BGDatabase/DataBinding">here</a></p>
-<p>If you need to localize single field/property, use BGDataBinderFieldGo component (or legacy BGLocalizationGo)</p>
+<p>More details about data binding can be found <a href="../../BGDatabase/DataBinding">here</a></p>
+<p>If you need to localize single field/property using single cell value from database, use BGDataBinderFieldGo component (or legacy BGLocalizationGo)</p>
 <div class="bg-image">
     <a href="#path images/BGLocalization/DataBinding1.png"><img style="width: 400px"
                                                              src="#path images/BGLocalization/DataBinding1.png"></a>
 </div>
-<p>If you need to use text template, use BGDataBinderTemplateGo component</p>
+<p>If you need to use text template, use BGDataBinderTemplateGo component (or use a graph binder ↓ )</p>
 <div class="bg-image">
     <a href="#path images/BGLocalization/DataBinding2.png"><img style="width: 400px"
                                                              src="#path images/BGLocalization/DataBinding2.png"></a>
+</div>
+
+<p>If you need to calculate a final value to inject- use a graph-based binder</p>
+<div class="bg-image">
+    <a href="#path images/BGLocalization/DataBinding5.png"><img style="width: 400px"
+                                                             src="#path images/BGLocalization/DataBinding5.png"></a>
 </div>
 
 <p>
@@ -127,7 +133,7 @@
 </div>
 
 <p>
-    Localization plugin adds the following features to data binding:
+    Localization add-on adds the following features to data binding:
 </p>
 <ol>
     <li>
@@ -136,11 +142,18 @@
     <li>
         For templates you can also use <b>$locale</b> as field name, if your meta has localizationSingleValue type
     </li>
+    <li>
+        For <a href="../../BGDatabase/GraphEditor">graph binder</a> it adds get/set locale units and special "GetLocalizeValue" for each single value localization table
+    </li>
 </ol>
 
 
 <h4>How to change locale</h4>
 <pre class="nomargin"><code class="language-csharp">
+    // method #1
+    BGAddonLocalization.DefaultRepoCurrentLocale = "en"; // replace en with your locale name
+
+    // method #2
     var addon = BGRepo.I.Addons.Get&lt;BGAddonLocalization&gt;();
     addon.CurrentLocale = "en"; // replace en with your locale name
 </code></pre>
