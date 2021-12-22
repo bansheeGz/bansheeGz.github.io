@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-1');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BansheeGz is Games and Unity assets Developer.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/root.css">
+
+    <link rel="icon" type="image/png" href="../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGCurve">BG`Curve</a>
+<!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+<!--                       href="../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../Support">Support</a></li>
+                <li class="mdl-menu__item"><a href="../../About">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+<!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                MESSAGE HERE
+        </b>
+    </div>-->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <!--======================================================        Content (from Root)              -->
+        <link rel="stylesheet" href="../../css/magnific-popup.css">
+<script src="../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<div style="width: 100%">
+    <div style="width: 70%;margin: 0 auto">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <div class="bg-main mdl-shadow--3dp">
+                <div id="blog" style="padding: 12px;">
+                    <a href="../">Back to blog</a>
+                    <div class="bg-main-title">
+                        <h4>BGDatabase v.1.7.1  Many tables relational fields</h4>
+                    </div>
+                    <div style="padding-bottom: 12px;">12/2021</div>
+
+                    
+
+
+<link rel="stylesheet" href="../../css/bgdatabase.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<h4>Introducing many tables relational fields</h4>
+<p>
+    BGDatabase v.1.7.1 introduced 2 new relational fields: <code>manyTablesRelationSingle</code> and <code>manyTablesRelationMultiple</code>.
+    The difference between existing <code>relationSingle</code> and <code>relationMultiple</code> fields and the new ones- is that new fields can reference multiple tables.
+    To explain the difference, let's compare <code>relationSingle</code> field and <code>manyTablesRelationSingle</code> field
+</p>
+
+<h4>relationSingle field</h4>
+<p>
+    <code>relationSingle</code> field can be used when there is only one single related table.
+    For example, let's say you have <code>Cities</code> table and <code>Countries</code> table and <code>Cities</code> table
+    has <code>country</code> <code>relationSingle</code> field, referencing <code>Countries</code> table.
+</p>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/SupportedFields4.png"><img style="width: 400px"
+                                                                src="../../images/BGDatabase/SupportedFields4.png"></a>
+</div>
+</p>
+
+<h4>manyTablesRelationSingle field</h4>
+<p>
+    <code>manyTablesRelationSingle</code> field can be used when there are many possible related tables.
+    For example, let's say you have <code>Inventory</code> table and this table has the <code>item</code> field, referencing the item in the inventory slot.
+    The problem that there are many item types and each type has it's own set of attributes.
+    Weapon item has a <code>damage</code> attribute and Armor item has a <code>defense</code> attribute etc.
+    The possible solution could be keeping all possible attributes in one single table for all item types, but a better solution would be to split
+    each type into it's own table and reference these tables with a single <code>manyTablesRelationSingle</code> field.
+</p>
+<p>
+    In this scenario, there are 2 tables: the <code>Weapon</code> table and the <code>Armor</code> table.
+</p>
+<div class="bg-image">
+    <a href="../../images/Blog/Blog16.png"><img style="width: 400px"
+                                                src="../../images/Blog/Blog16.png"></a>
+</div>
+<p>
+    <code>Inventory</code> table has an <code>item</code> field, which can reference a row from either <code>Weapon</code> or <code>Armor</code> tables.
+</p>
+<div class="bg-image">
+    <a href="../../images/Blog/Blog17.png"><img style="width: 400px"
+                                                src="../../images/Blog/Blog17.png"></a>
+</div>
+
+<h4>CodeGen addon and common attributes</h4>
+<p>
+    <code>Weapon</code> and <code>Armor</code> tables in our example have common attributes- price(int) and icon(Sprite).
+    If code generator for CodeGen addon detects that referenced tables have common attributes, it generates additional interface.
+    The generated classes for <code>Weapon</code> and <code>Armor</code> tables implement this interface and <code>item</code> field
+    has this interface as value type. This allows to access common attributes without down-casting to specific class
+</p>
+<p>
+    The generated interface:
+</p>
+<pre class="nomargin"><code class="language-csharp">public partial interface DB_Inventory_Relation_f_item : BGAbstractEntityI
+{
+	System.Int32 f_price {get; set;}
+	UnityEngine.Sprite f_icon {get;}
+}</code></pre>
+<p>
+    The generated classes for <code>Weapon</code> and <code>Armor</code> tables implement this interface:
+</p>
+<pre class="nomargin"><code class="language-csharp">public partial class DB_Armor : BGEntity, DB_Inventory_Relation_f_item
+{
+    //more code here
+}
+public partial class DB_Weapon : BGEntity, DB_Inventory_Relation_f_item
+{
+    //more code here
+}</code></pre>
+<p>
+    The <code>manyTablesRelationSingle</code> field <code>item</code> uses this interface as value type:
+</p>
+<pre class="nomargin"><code class="language-csharp">public partial class DB_Inventory : BGEntity
+{
+	public DB_Inventory_Relation_f_item f_item
+	{
+		get => //some code here
+		set => //some code here
+	}
+    //more code here
+}</code></pre>
+<p>
+    If you have any questions regarding new fields and features- please, contact us using support email
+</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+#set title=BGDatabase v.1.7.1  Many tables relational fields
+#set date=12/2021
+
+<link rel="stylesheet" href="#path css/bgdatabase.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<h4>Introducing many tables relational fields</h4>
+<p>
+    BGDatabase v.1.7.1 introduced 2 new relational fields: <code>manyTablesRelationSingle</code> and <code>manyTablesRelationMultiple</code>.
+    The difference between existing <code>relationSingle</code> and <code>relationMultiple</code> fields and the new ones- is that new fields can reference multiple tables.
+    To explain the difference, let's compare <code>relationSingle</code> field and <code>manyTablesRelationSingle</code> field
+</p>
+
+<h4>relationSingle field</h4>
+<p>
+    <code>relationSingle</code> field can be used when there is only one single related table.
+    For example, let's say you have <code>Cities</code> table and <code>Countries</code> table and <code>Cities</code> table
+    has <code>country</code> <code>relationSingle</code> field, referencing <code>Countries</code> table.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SupportedFields4.png"><img style="width: 400px"
+                                                                src="#path images/BGDatabase/SupportedFields4.png"></a>
+</div>
+</p>
+
+<h4>manyTablesRelationSingle field</h4>
+<p>
+    <code>manyTablesRelationSingle</code> field can be used when there are many possible related tables.
+    For example, let's say you have <code>Inventory</code> table and this table has the <code>item</code> field, referencing the item in the inventory slot.
+    The problem that there are many item types and each type has it's own set of attributes.
+    Weapon item has a <code>damage</code> attribute and Armor item has a <code>defense</code> attribute etc.
+    The possible solution could be keeping all possible attributes in one single table for all item types, but a better solution would be to split
+    each type into it's own table and reference these tables with a single <code>manyTablesRelationSingle</code> field.
+</p>
+<p>
+    In this scenario, there are 2 tables: the <code>Weapon</code> table and the <code>Armor</code> table.
+</p>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog16.png"><img style="width: 400px"
+                                                src="#path images/Blog/Blog16.png"></a>
+</div>
+<p>
+    <code>Inventory</code> table has an <code>item</code> field, which can reference a row from either <code>Weapon</code> or <code>Armor</code> tables.
+</p>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog17.png"><img style="width: 400px"
+                                                src="#path images/Blog/Blog17.png"></a>
+</div>
+
+<h4>CodeGen addon and common attributes</h4>
+<p>
+    <code>Weapon</code> and <code>Armor</code> tables in our example have common attributes- price(int) and icon(Sprite).
+    If code generator for CodeGen addon detects that referenced tables have common attributes, it generates additional interface.
+    The generated classes for <code>Weapon</code> and <code>Armor</code> tables implement this interface and <code>item</code> field
+    has this interface as value type. This allows to access common attributes without down-casting to specific class
+</p>
+<p>
+    The generated interface:
+</p>
+<pre class="nomargin"><code class="language-csharp">public partial interface DB_Inventory_Relation_f_item : BGAbstractEntityI
+{
+	System.Int32 f_price {get; set;}
+	UnityEngine.Sprite f_icon {get;}
+}</code></pre>
+<p>
+    The generated classes for <code>Weapon</code> and <code>Armor</code> tables implement this interface:
+</p>
+<pre class="nomargin"><code class="language-csharp">public partial class DB_Armor : BGEntity, DB_Inventory_Relation_f_item
+{
+    //more code here
+}
+public partial class DB_Weapon : BGEntity, DB_Inventory_Relation_f_item
+{
+    //more code here
+}</code></pre>
+<p>
+    The <code>manyTablesRelationSingle</code> field <code>item</code> uses this interface as value type:
+</p>
+<pre class="nomargin"><code class="language-csharp">public partial class DB_Inventory : BGEntity
+{
+	public DB_Inventory_Relation_f_item f_item
+	{
+		get => //some code here
+		set => //some code here
+	}
+    //more code here
+}</code></pre>
+<p>
+    If you have any questions regarding new fields and features- please, contact us using support email
+</p>

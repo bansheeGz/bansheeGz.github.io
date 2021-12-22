@@ -2,45 +2,47 @@
   "plugins": [
     {
       "id" : "HrCT9HkOK0mRQ9Z0YBjeQw",
-      "version" : "1.3",
-      "releaseDate" : "05/26/21",
+      "version" : "1.4",
+      "releaseDate" : "12/22/21",
       "pluginClass" : "BansheeGz.BGDatabase.BGGoogleSheetService",
       "packageClass" : null,
       "name" :  "Google Sheets integration for Editor",
       "description" :  "Adds support for exporting/importing data to Google Sheets in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorGoogleSheets",
-      "requiredVersion" : "1.6.8"
+      "requiredVersion" : "1.7.1"
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
-      "version" : "1.8",
-      "releaseDate" : "09/14/21",
+      "version" : "1.9",
+      "releaseDate" : "12/22/21",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelService",
       "packageClass" : null,
       "name" :  "Excel integration for Editor",
       "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel",
-      "requiredVersion" : "1.6.9"
+      "requiredVersion" : "1.7.1"
     },
     {
       "id" : "65qKr3PcjEWbHsp37FUHqw",
-      "version" : "1.2",
-      "releaseDate" : "06/17/21",
+      "version" : "1.3",
+      "releaseDate" : "12/22/21",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGAssetLoaderManagerAddressablesDelegate",
       "packageClass" : null,
       "name" :  "Addressables plugin",
       "description" :  "Adds support for Addressables. (Addressables version >=1.17.17)",
-      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables"
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables",
+      "requiredVersion" : "1.7.1"
     },
     {
       "id" : "zRiptqpjTkaSv1XEHk3qmw",
-      "version" : "1.2",
-      "releaseDate" : "09/14/21",
+      "version" : "1.3",
+      "releaseDate" : "12/22/21",
       "pluginClass" : "BansheeGz.BGDatabase.BGRuntimeDatabaseEditor",
       "packageClass" : null,
       "name" :  "Runtime database editor",
       "description" :  "Edit database data in builds.",
-      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeEditor"
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeEditor",
+      "requiredVersion" : "1.7.1"
     },
     {
       "id" : "gOj0XadX5E2AxMfKkqvueA",

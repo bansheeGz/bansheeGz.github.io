@@ -317,7 +317,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.3
+            1.4
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -329,7 +329,7 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase (v. >= 1.6.8)
+            BGDatabase (v. >= 1.7.1)
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <table class="contentTable dTable">
@@ -339,14 +339,14 @@
                     <th>Download</th>
                 </tr>
                 <tr>
-                    <td>1.3</td>
-                    <td class="redFont">BGDatabase version >= 1.6.8</td>
-                    <td><a href="../BGDatabaseGoogleSheetsEditor_1.3.unitypackage">link</a></td>
+                    <td>1.4</td>
+                    <td class="redFont">BGDatabase version >= 1.7.1</td>
+                    <td><a href="../BGDatabaseGoogleSheetsEditor_1.4.unitypackage">link</a></td>
                 </tr>
                 <tr>
-                    <td>1.2</td>
-                    <td></td>
-                    <td><a href="../BGDatabaseGoogleSheetsEditor_1.2.unitypackage">link</a></td>
+                    <td>1.3</td>
+                    <td>BGDatabase version >= 1.6.8</td>
+                    <td><a href="../BGDatabaseGoogleSheetsEditor_1.3.unitypackage">link</a></td>
                 </tr>
             </table>
         </div>
@@ -366,9 +366,17 @@
     This plugin adds support for export/import to Google Sheets in Unity Editor.
 </p>
 
-<h4>Newtonsoft Dlls conflict</h4>
+<h4>Setup</h4>
+<ol>
+    <li>Download and import the plugin</li>
+    <li>Check the Unity console: if you see "Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included on the current platform" error->
+        please, read the section below</li>
+</ol>
+
+
+<h4>Resolving Newtonsoft Dlls conflict</h4>
 <p>
-    Some people already have Newtonsoft.Json.dll (JSON.NET) in their projects, and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API dlls.
+    Some people already have Newtonsoft.Json.dll (JSON.NET) in their projects, and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API DLLs.
     The following error is printed to the console in this case: <i><b>PrecompiledAssemblyException: Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included or the current
     platform.
     Only one assembly with the same name is allowed per platform.</b></i>
@@ -377,7 +385,8 @@
     Here is how to resolve this conflict:
 </p>
 <ol>
-    <li>Select Newtonsoft.Json.dll, shipped with our package in the Project window, uncheck all platform toggles and hit "Apply" button</li>
+    <li>Select Newtonsoft.Json.dll, shipped with our package in the Project window, uncheck all platform toggles and hit "Apply" button
+        (alternatively- delete Newtonsoft.Json.dll file)</li>
     <li>Select all Google Sheets API DLLs, uncheck "Validate references" and hit "Apply" button</li>
 </ol>
 <div class="bg-image">
@@ -412,6 +421,18 @@
         <th>Download</th>
         <th>Dependencies</th>
         <th>Log</th>
+    </tr>
+    <tr>
+        <td class="ra">1.4</td>
+        <td class="ra">Dec 22, 2021</td>
+        <td><a href="../BGDatabaseGoogleSheetsEditor_1.4.unitypackage">link</a></td>
+        <td>BGDatabase (v. >= 1.7.1)</td>
+        <td>
+            ADDED: many tables relational fields support
+            ADDED: additional check to avoid data collision during exporting
+            CHANGED: C# language 4.0 -> 7.1
+            CHANGED: min NET 4.5 -> 4.7.1
+        </td>
     </tr>
     <tr>
         <td class="ra">1.3</td>

@@ -417,7 +417,7 @@
         <td></td>
     </tr>
     <tr>
-        <td rowspan="4">Enum <a href="#enum">#4</a></td>
+        <td rowspan="4">Enum <a href="#enum">#5</a></td>
         <td>enum</td>
         <td>Enum</td>
         <td></td>
@@ -525,7 +525,7 @@
         <td></td>
     </tr>
     <tr>
-        <td rowspan="8">Unity Assets <a href="#unityassets">#5</a></td>
+        <td rowspan="8">Unity Assets <a href="#unityassets">#6</a></td>
         <td>unityTexture</td>
         <td>Texture</td>
         <td></td>
@@ -635,29 +635,39 @@
     <tr>
         <td>Dictionary</td>
         <td>
-            hashtable <a href="#hashtable">#3</a>
+            hashtable <a href="#hashtable">#4</a>
         </td>
         <td>Hashtable</td>
         <td></td>
     </tr>
     <tr>
-        <td rowspan="3">Relations</td>
+        <td rowspan="5">Relations <a href="#relations">#1</a></td>
         <td>relationSingle</td>
         <td>BGEntity</td>
-        <td></td>
+        <td>reference to one single row from one single table</td>
     </tr>
     <tr>
         <td>relationMultiple</td>
         <td>List&lt;BGEntity&gt;</td>
-        <td></td>
+        <td>reference to several rows from one single table</td>
     </tr>
     <tr>
-        <td>nested</td>
+        <td>manyTableRelationSingle</td>
+        <td>BGEntity</td>
+        <td>reference to one single row from several tables (use field's gear icon to define multiple tables)</td>
+    </tr>
+    <tr>
+        <td>manyTableRelationMultiple</td>
         <td>List&lt;BGEntity&gt;</td>
-        <td>read-only, <a href="#nested">#1</a></td>
+        <td>reference to several rows from several tables (use field's gear icon to define multiple tables)</td>
     </tr>
     <tr>
-        <td rowspan="4">Unity Scene <a href="#unityscene">#2</a></td>
+        <td>nested <a href="#nested">#2</a></td>
+        <td>List&lt;BGEntity&gt;</td>
+        <td>read-only</td>
+    </tr>
+    <tr>
+        <td rowspan="4">Unity Scene <a href="#unityscene">#3</a></td>
         <td>entityReference</td>
         <td>BGEntityGo</td>
         <td>not recommended (obsolete), use objectReference instead</td>
@@ -678,7 +688,7 @@
         <td></td>
     </tr>
     <tr>
-        <td rowspan="6">Calculated <a href="#calculated">#6</a></td>
+        <td rowspan="6">Calculated <a href="#calculated">#7</a></td>
         <td>calculatedBool</td>
         <td>bool</td>
         <td rowspan="5">
@@ -712,7 +722,57 @@
 </table>
 
 
-<h4 id="nested">Nested Field (#1)</h4>
+<h4 id="relations">Relational fields (#1)</h4>
+<p>
+    Relational fields are used for referencing database row(s).
+    Such fields store row's primary key(s) and when the value is requested it uses these keys to resolve and return database row(s).
+    The simplest relational field (relationSingle) is like a single column nullable
+    <a href="https://www.educative.io/blog/what-is-foreign-key-database">foreign key</a>, referencing one single row from one single table.
+    Here is an example: let's say you have <code>Cities</code> table and <code>Countries</code> table and <code>Cities</code> table
+    has <code>country</code> relationSingle field, referencing <code>Countries</code> table.
+</p>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/SupportedFields4.png"><img style="width: 400px"
+                                                                src="../../images/BGDatabase/SupportedFields4.png"></a>
+</div>
+<p>
+    Relational fields differ in terms of how many tables and rows they can reference
+    (read <a href="../../Blog/BGDatabase-v1-7-1-Many-tables-relational-fields">this blog post</a> for more details)
+</p>
+<table class="contentTable">
+    <tr>
+        <th>Field (relation)
+        </th>
+        <th>
+            How many tables can be referenced
+        </th>
+        <th>
+            How many rows can be referenced
+        </th>
+    </tr>
+    <tr>
+        <td>relationSingle</td>
+        <td>1</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>relationMultiple</td>
+        <td>1</td>
+        <td>n</td>
+    </tr>
+    <tr>
+        <td>manyTablesRelationSingle</td>
+        <td>n</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>manyTablesRelationMultiple</td>
+        <td>n</td>
+        <td>n</td>
+    </tr>
+</table>
+
+<h4 id="nested">Nested Field (#2)</h4>
 <p>
     Nested field is a special field, which creates a whole new meta (table), which has many-to-one relation to owner
     meta.
@@ -738,7 +798,7 @@
     You can read more about nested table concept <a href="http://dbdesigner.page.link/xWiZ">here</a>
 </p>
 
-<h4 id="unityscene">Unity Scene Fields (#2)</h4>
+<h4 id="unityscene">Unity Scene Fields (#3)</h4>
 Referencing scene GameObjects using objectReference/objectListReference fields is implemented with the same technique, which is used in
 <a href="https://github.com/Unity-Technologies/guid-based-reference">this Unity project</a>,
 by adding additional component (BGWithId) with unique ID.
@@ -751,14 +811,14 @@ There are 2 restrictions, then using these fields:
 entityReference/entityListReference fields are considered to be obsolete and not recommended anymore (they use UnityObject.FindComponentOfType method and very slow)
 
 
-<h4 id="hashtable">Hashtable (#3)</h4>
+<h4 id="hashtable">Hashtable (#4)</h4>
 <p>
     Hashtable is a dictionary without generic parameters.
     Following types are supported as keys: int, string, bool, Guid, custom fields.
     Following types are not supported as values: Unity assets, relations, hashtable, nullable structs. Null values are also not supported.
 </p>
 
-<h4 id="enum">Enum/enumList (#4)</h4>
+<h4 id="enum">Enum/enumList (#5)</h4>
 <p>
     With enum/enumList fields you can reference your own enumerations.
     Important notes:
@@ -778,7 +838,7 @@ entityReference/entityListReference fields are considered to be obsolete and not
 </div>
 
 
-<h4 id="unityassets">Unity Asset Fields (#5)</h4>
+<h4 id="unityassets">Unity Asset Fields (#6)</h4>
 <div class="bg-image">
     <a href="../../images/BGDatabase/UnityAssets.png"><img style="width: 400px" src="../../images/BGDatabase/UnityAssets.png"></a>
 </div>
@@ -900,7 +960,7 @@ entityReference/entityListReference fields are considered to be obsolete and not
     "Asset Type" parameter accepts valid full C# class name (for example UnityEngine.Material)
 </p>
 
-<h4 id="calculated">Calculated Fields (#6)</h4>
+<h4 id="calculated">Calculated Fields (#7)</h4>
 <p>
     Calculated fields store a graph, which is used for calculating result value.
     Graph is edited using <a href="../GraphEditor">graph editor</a>.
