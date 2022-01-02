@@ -173,21 +173,28 @@
 <ol>
     <li>Exit Unity</li>
     <li>Backup your database files</li>
-    <li>Move all database files (bansheegz_database*.bytes* ) to any location in your project.</li>
+    <li>Move all database files (bansheegz_database*.bytes* ) to any location in your project (except Resources and StreamingAssets folders)</li>
     <li>Open bansheegz_database.bytes.meta file in text editor and replace its guid with this value 3637ea689da0cff4b8d5c0fb5d609c15</li>
     <li>Open up Unity and click on Reload button in BGDatabase window.</li>
-    <li>Switch to Settings->Main>Database files and make sure database is loaded from custom location and Loader is set to Custom.
+    <li>Select "Settings->Main>Database files" and make sure database is loaded from custom location and Loader is set to Custom.
         Also make sure all content is properly loaded.
     </li>
 </ol>
 <h6>Loading database content manually at runtime</h6>
 <ol>
     <li>Load database content from whatever location you want and call BGRepo.SetDefaultRepoContent(byte[] content) method before accessing database.</li>
-    <li>If you use localization addon, you also need to load all localization files as well and use BGRepo.SetDefaultRepoContentModel(BGRepoCustomLoaderModel model).
-        We have created an example project with custom loader implementation, which can be downloaded <a href="../Downloads/ExampleLocalization#customLoader">here</a>
+    <li>If you use localization addon, you also need to load all localization files as well and use BGRepo.SetDefaultRepoContentModel(BGRepoCustomLoaderModel model) method instead.
     </li>
 </ol>
-
+<h6>Example projects</h6>
+<p>
+    There are 2 example projects, demonstrating how to load database file(s) from Addressables.
+</p>
+<ol>
+    <li>For BGDatabase: <a href="../Downloads/BGDatabaseCustomLoaderExample.zip">download</a></li>
+    <li>For BGDatabase + localization addon : <a href="../Downloads/ExampleLocalization#customLoader">download</a>
+    </li>
+</ol>
 
 <div class="flexdiv">
     <div>
