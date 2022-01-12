@@ -530,6 +530,14 @@
 
 <h4 id="webgl">WEBGL/Asynchronous setup</h4>
 <p>
+    There are 2 problems on WebGl platform, the first one is solvable and another one is not solvable in 100% cases.
+</p>
+<ol>
+    <li>Loading should be asynchronous and requires additional setup (solvable)</li>
+    <li>Cross-Origin requests should be enabled in HTTP headers, which is not solvable in 100% cases</li>
+</ol>
+<h5>1) Asynchronous loading</h5>
+<p>
     WEBGL platform does not allow to update data synchronously.
     So the data on this platform is updated asynchronously, over several frames.
     It means data should be preloaded before it can be accessed.
@@ -544,6 +552,22 @@
     <li>Once LiveUpdate plugin finishes downloading data, LiveUpdatePreloader.Ready method will be called. Make sure to not access database until this moment</li>
     <li>Preloader should work on any platform, no need to write platform specific code</li>
 </ol>
+
+<h5>2) Cross-Origin requests should be allowed</h5>
+<p>
+    Loading data from GoogleSheets is considered to be a cross-origin requests and such requests should be allowed in web-server HTTP headers
+    (read more <a href="https://forum.unity.com/threads/cross-origin-request-blocked.425283/">here</a>
+    and <a href="https://docs.unity3d.com/Manual/webgl-networking.html">here</a>).
+</p>
+<p>
+    If you try to load data without CORS enabled, you may encounter the following error in the Web browser console
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/LiveUpdateAddon3.png"><img style="width:150px; height: 75px" src="../../../images/BGDatabase/LiveUpdateAddon3.png"></a>
+</div>
+<p>
+    So if you use a third-party web host for hosting your application you need to ensure that CORS is enabled
+</p>
 
 <h4>Parameters</h4>
 <table class="contentTable">
