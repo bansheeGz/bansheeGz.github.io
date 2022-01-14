@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+
+        <!--======================================================        Content (from Root)              -->
+
+
+        <link rel="stylesheet" href="../../../css/bgdatabase.css">
+        <link rel="stylesheet" href="../../../css/magnific-popup.css">
+        <script src="../../../js/jquery.magnific-popup.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('.bg-image').magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+//            gallery:{enabled:true},
+                    closeOnContentClick: true
+                });
+            });
+        </script>
+
+        <!--======================================================       BG Database Header               -->
+
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                <div class="bg-main mdl-shadow--3dp">
+                    <div class="bg-main-title">
+                        <h3>LiveUpdate add-on setup for WEBGL</h3>
+                    </div>
+
+                    <!--======================================================        BG Database Content              -->
+                    <div id="content">
+                        <h5>Use this guide only if you target WEBGL platform</h5>
+                        <ol>
+                            <li>Complete basic setup by following <a href="guide_basic.html">this guide</a></li>
+                            <li>
+                                Switch to LiveUpdate "Parameters" tab, toggle on "Manual load" and save database.
+                                Now LiveUpdate add-on will not perform the loading automatically and you need to trigger it manually
+                                <div class="bg-image">
+                                    <a href="../../../images/BGDatabase/Guide2_1.jpg"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/Guide2_1.jpg"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Add new GameObject to your startup scene (name it DatabaseLiveUpdate).
+                                Download <a href="../../Downloads/LiveUpdatePreloader.txt">this preloader script</a>,
+                                change txt extension to cs extension and attach it to DatabaseLiveUpdate GameObject.
+                                This component will trigger LiveUpdate load.
+                                <div class="bg-image">
+                                    <a href="../../../images/BGDatabase/Guide2_2.jpg"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/Guide2_2.jpg"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Data from GoogleSheet will be loaded asynchronously, over several frames,
+                                and LiveUpdatePreloader.Ready method will be invoked when data is loaded.
+                                <div class="bg-image">
+                                    <a href="../../../images/BGDatabase/Guide2_3.jpg"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/Guide2_3.jpg"></a>
+                                </div>
+
+                                To keep things simple- we will just update UI Text component with a number of loaded rows
+                                <div class="bg-image">
+                                    <a href="../../../images/BGDatabase/Guide2_4.jpg"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/Guide2_4.jpg"></a>
+                                </div>
+                            </li>
+                            <li>Open Build settings, switch to WebGl platform and build the project
+                                <div class="bg-image">
+                                    <a href="../../../images/BGDatabase/Guide2_5.jpg"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/Guide2_5.jpg"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Launch command line utility (terminal), switch to your build folder and run local web server.
+                                If you do not have web server, install python 3 and run the following command
+                                <code>python -m http.server --cgi 8360</code>
+                                This command starts local HTTP server on 8360 port
+                            </li>
+                            <li>
+                                Open you browser and navigate to <code>http://localhost:8360</code> address- if you setup everything properly you should see
+                                your application and number 4 at the center of the screen (4 rows were loaded from GoogleSheets)
+                                <div class="bg-image">
+                                    <a href="../../../images/BGDatabase/Guide2_6.jpg"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/Guide2_6.jpg"></a>
+                                </div>
+                            </li>
+                        </ol>
+
+                    </div>
+
+                    <div style="margin-top: 10px;">&nbsp;</div>
+
+                    <!--======================================================       BG Database Footer               -->
+                </div>
+
+            </div>
+        </div>
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

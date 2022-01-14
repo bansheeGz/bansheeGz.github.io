@@ -17,13 +17,18 @@
 <ol>
     <li>
         First time your game is launched and database is loaded, addon tries to read data from Google Sheets/web server files.
-        Alternatively set "Manual load" parameter on and trigger loading manually from script at any moment</li>
+        Alternatively set "Manual load" parameter on and trigger loading manually from script at any moment
+    </li>
     <li>If step 1 is successful, every time database is loaded, it will be merged with remote data, thus
         applying the update.
     </li>
     <li>If step 1 is unsuccessful, database data will remain intact.</li>
 </ol>
 
+<h4>Guides and example projects</h4>
+<p>
+    Additional guides and example projects are available <a href="../../Downloads/ExampleLiveUpdate">here</a>
+</p>
 
 <h4>Restrictions</h4>
 <ol>
@@ -127,7 +132,8 @@
         Get <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">Spreadsheet Id</a> from Google. Assign it to <b>Spreadsheet Id</b> LiveUpdate addon parameter
     </li>
     <li>
-        If you chose GoogleSheets API (the first option), get <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">"API key"</a> from Google. Assign it to <b>API key</b> LiveUpdate addon parameter
+        If you chose GoogleSheets API (the first option), get <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">"API key"</a> from Google. Assign it to <b>API key</b>
+        LiveUpdate addon parameter
     </li>
     <li>
         Make sure to share the target spreadsheet.
@@ -204,7 +210,7 @@
         <td class="ra" style="text-align: justify">
             For JSON file format we use the format from Google Sheets:
             <ol>
-                <li>Use values property with 2-dimensional array for values. The first array element contains field types (see the image below) </li>
+                <li>Use values property with 2-dimensional array for values. The first array element contains field types (see the image below)</li>
                 <li>For values use string type even if value is not string</li>
             </ol>
             <div class="bg-image">
@@ -226,11 +232,11 @@
 
 <h4 id="webgl">WEBGL/Asynchronous setup</h4>
 <p>
-    There are 2 problems on WebGl platform, the first one is solvable and another one is not solvable in 100% cases.
+    There are 2 problems on WebGl platform:
 </p>
 <ol>
-    <li>Loading should be asynchronous and requires additional setup (solvable)</li>
-    <li>Cross-Origin requests should be enabled in HTTP headers, which is not solvable in 100% cases</li>
+    <li>Loading should be asynchronous and requires additional setup</li>
+    <li>Cross-Origin requests should be enabled in web server HTTP headers</li>
 </ol>
 <h5>1) Asynchronous loading</h5>
 <p>
@@ -244,7 +250,9 @@
 </p>
 <ol>
     <li>Make sure to toggle "Manual Load" parameter on</li>
-    <li>Download <a href="../../Downloads/LiveUpdatePreloader.txt">this preloader script</a> and attach it to any GameObject in your starting scene</li>
+    <li>Download <a href="../../Downloads/LiveUpdatePreloader.txt">this preloader script</a>,
+        change txt extension to cs extension and attach it to any GameObject in your starting scene
+    </li>
     <li>Once LiveUpdate plugin finishes downloading data, LiveUpdatePreloader.Ready method will be called. Make sure to not access database until this moment</li>
     <li>Preloader should work on any platform, no need to write platform specific code</li>
 </ol>
@@ -264,6 +272,10 @@
 <p>
     So if you use a third-party web host for hosting your application you need to ensure that CORS is enabled
 </p>
+<p>
+    Additional guides for WEBGL platform and example projects are available <a href="../../Downloads/ExampleLiveUpdate">here</a>
+</p>
+
 
 <h4>Parameters</h4>
 <table class="contentTable">
