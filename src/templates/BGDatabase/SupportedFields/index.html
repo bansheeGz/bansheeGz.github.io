@@ -676,3 +676,44 @@ entityReference/entityListReference fields are considered to be obsolete and not
     Action is a special calculated field, which does not return value, but can change database values.
     To invoke the action- use Invoke method on field value
 </p>
+
+<h4 id="list">Collection values</h4>
+<p>
+    Collections fields may return the result (the list/hashtable) by reference or by value
+</p>
+<ol>
+    <li> By reference means, that the value, stored inside database is returned. So changing collection values will actually change database value without setting a new value</li>
+    <li> By value means, that the new collection is created when value is accessed and it can be modified without changing database value</li>
+</ol>
+<p>
+    The current strategy is to return a collection by reference if it's possible, and to return the collection by value only if returning value by reference is not possible
+    (to avoid GC and performance hit)
+</p>
+<table class="contentTable">
+    <tr>
+        <th>Field(s)</th>
+        <th>Basic API</th>
+        <th>CodeGen addon</th>
+    </tr>
+    <tr>
+        <td>Lists with primitive values (List&lt;string&gt; etc.)</td>
+        <td>by reference</td>
+        <td>by reference</td>
+    </tr>
+    <tr>
+        <td>Hashtable</td>
+        <td>by reference</td>
+        <td>by reference</td>
+    </tr>
+    <tr>
+        <td>Multiple relational fields (Lists with rows values)</td>
+        <td>by value</td>
+        <td>by value</td>
+    </tr>
+    <tr>
+        <td>Enum list</td>
+        <td>by value</td>
+        <td>by reference</td>
+    </tr>
+</table>
+
