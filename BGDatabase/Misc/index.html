@@ -310,7 +310,7 @@
         <li><a href="#editor">Editor assembly</a></li>
         <li><a href="#events">Events</a></li>
         <li><a href="#validation">Validation</a></li>
-        <li><a href="#keys">Custom keys</a></li>
+        <li><a href="#keys">Keys and indexes</a></li>
         <li><a href="#commandline">Command line</a></li>
         <li><a href="#customFields">Custom fields</a></li>
     </ol>
@@ -482,25 +482,84 @@
 </p>
 
 
-<h4 id="keys">Custom keys</h4>
+<h4 id="keys">Keys and indexes</h4>
+<ol>
+    <li>Key consist of 1-n fields and can be used to look up row(s) quickly.
+        It also can be used in rows <a href="#validation">validation</a>
+    </li>
+    <li>
+        Index has a reference to a single field and can be used for effective range scan
+    </li>
+</ol>
 <p>
-    Custom key is a user defined key, which can be used to read row(s) quickly.
-    It also can be used in rows <a href="#validation">validation</a>
+    Here is a table, comparing different row(s) retrieval methods efficiency
+</p>
+<table class="contentTable dTable">
+    <tr>
+        <th>Method</th>
+        <th>Underlying structure</th>
+        <th>Time complexity</th>
+        <th>Comments</th>
+    </tr>
+    <tr>
+        <td>meta.GetEntity(int index)</td>
+        <td>list</td>
+        <td>O(1)</td>
+        <td>fastest method</td>
+    </tr>
+    <tr>
+        <td>meta.GetEntity(BGId Id)</td>
+        <td>hashtable</td>
+        <td>O(1)</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>GetEntity(string name)</td>
+        <td>hashtable</td>
+        <td>O(1)</td>
+        <td>if name field data is not <a href="https://stackoverflow.com/a/35516532" target="_blank">skewed</a></td>
+    </tr>
+    <tr>
+        <td>key.GetEntityByKey(params object[] keys)</td>
+        <td>hashtable</td>
+        <td>O(1)</td>
+        <td>if key's fields values are not <a href="https://stackoverflow.com/a/35516532" target="_blank">skewed</a></td>
+    </tr>
+    <tr>
+        <td>index.FindEntitiesByIndex(indexOperator)</td>
+        <td>b-tree</td>
+        <td>O(log n)</td>
+        <td>if index field data is not <a href="https://stackoverflow.com/a/35516532" target="_blank">skewed</a></td>
+    </tr>
+    <tr>
+        <td>meta.FindEntity(predicate), meta.FindEntities(predicate)</td>
+        <td>no</td>
+        <td>O(n), fullscan</td>
+        <td></td>
+    </tr>
+</table>
+
+<h6>Keys</h6>
+<p>
+    Following fields can be added to a key: bool, int, long, decimal, bool?, int?, long?, string, text, enum, relationSingle.
 </p>
 <p>
-    Each key consist of 1-n fields and can be marked as unique. Following fields can be added to a key: bool, int, long, decimal, bool?, int?, long?, string, text, enum, relationSingle.
-</p>
-<p>
-    You can access the matching row(s) directly without searching, using BGKey class or generated methods.
+    You can access the matching row(s) directly without searching, using BGKey class or <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods</a>.
     To access the key use BGMetaEntity.GetKey({keyName}) method.
 </p>
 <p>
-    Keys make row(s) access faster, but uses extra memory and may slow down write (update) operations significantly, so do not use keys for data, which is updated frequently.
+    Keys make row(s) access faster, but uses extra memory and may slow down write (update) operations, so do not use keys for data, which is updated frequently.
 </p>
 <div class="bg-image">
     <a href="../../images/Blog/Blog14.png"><img style="width: 400px" src="../../images/Blog/Blog14.png"></a>
 </div>
 
+<h6>Indexes</h6>
+<p>
+    Currently only single field index is supported.
+    Indexes enables row(s) range scan fast operations, but uses extra memory and may slow down write (update) operations.
+    To access the index use BGMetaEntity.GetIndex({indexName}) method or use <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods</a>.
+</p>
 
 <h4 id="commandline">Command Line</h4>
 <p>

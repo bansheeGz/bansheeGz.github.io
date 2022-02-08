@@ -311,9 +311,25 @@
     Multi-threading addon creates environment, which can be accessed from multiple threads safely.
 </p>
 
-<h4 id="alternative">Alternative method</h4>
+<h4 id="alternative">Alternative methods</h4>
+
+<h6>Option # 1 : Using database in read-only mode</h6>
 <p>
-    There is alternative method to use  BGDatabase data in multi-threaded environment (for example, with Unity ECS).
+    If you use database in readonly mode, without changing fields data and without creating/deleting rows-
+    you can read data from multiple threads with some additional setup:
+</p>
+<ol>
+    <li>Use codegen addon generated classes with "Readonly mode" on</li>
+    <li>Disable lazyload addon if it's enabled</li>
+    <li>Do not use Unity scene fields or localization fields</li>
+    <li>Run the following scripts before accessing database data:
+        <a href="../../Downloads/DbFieldsInitializer.txt">DbFieldsInitializer.cs</a>
+        and <a href="../../Downloads/DbAssetsPreloader.txt">DbAssetsPreloader.cs</a> (scripts are updated at 8 Feb.2022)
+    </li>
+</ol>
+<h6>Option # 2 : Use database data to spawn thread safe objects</h6>
+<p>
+    Another alternative method to use  BGDatabase data in multi-threaded environment (for example, with Unity ECS).
     Use data from BGDatabase and create Unity ECS entities. Merge changes back to database on save if needed.
 </p>
 <ol>

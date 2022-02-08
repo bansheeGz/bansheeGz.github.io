@@ -201,6 +201,34 @@ MyTable.ForEachEntity(
         </td>
     </tr>
     <tr>
+        <td>GetEntityByKey{key}(), GetEntitiesByKey{key}()</td>
+        <td>Yes</td>
+        <td>
+            For each <a href="../../Misc#keys">key</a> static methods are generated for fast entity(s) lookups.
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    //Get the first entity which gold == 0. We assume key name="goldKey"
+    MyTable entity = MyTable.GetEntityByKeygoldKey(0);
+    //Get all entities with gold == 0. We assume key name="goldKey"
+    List&lt;MyTable&gt; entities = MyTable.GetEntitiesByKeygoldKey(0);</code></pre>
+        </td>
+    </tr>
+    <tr>
+        <td>FindEntitiesByIndex{indexName}()</td>
+        <td>Yes</td>
+        <td>
+            For each <a href="../../Misc#keys">index</a> static methods are generated for fast entity(s) searches.
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    //find all entities with "goldKey" between 0 inclusive and 10 exclusive.  We assume index name="goldIndex"
+    MyTable.FindEntitiesByIndexgoldIndex(new BGIndexOperatorBetween&lt;int&gt;(0, 10, true, false));</code></pre>
+        </td>
+    </tr>
+    <tr>
         <td>Delete()</td>
         <td>No</td>
         <td>
@@ -358,12 +386,6 @@ firstRow.LoadAssetAsync(asset => {
 <div class="bg-image">
     <a href="#path images/BGDatabase/CodeGenExtensionClasses5.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/CodeGenExtensionClasses5.png"></a>
 </div>
-
-<h4 id="keys">Keys method generation</h4>
-<p>If you create <a href="../../Misc#keys">custom keys</a> for you table,
-    code generator generates additional methods for accessing row(s) by each key with following naming convention:
-    GetEntityByKey{Key name}/GetEntitiesByKey{Key name}.
-</p>
 
 <h4>How to enable/disable</h4>
 <p>

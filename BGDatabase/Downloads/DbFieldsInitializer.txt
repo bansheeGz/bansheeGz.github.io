@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using BansheeGz.BGDatabase;
+using UnityEngine;
+
+/// <summary>
+/// Initialize  Db generated classes static fields and internal data structures, which are normally initialized on-demand
+/// </summary>
+public class DbFieldsInitializer : MonoBehaviour
+{
+    public const string Version = "1.0";
+    
+    private static readonly HashSet<BGKey> partialAccessKeys = new HashSet<BGKey>()
+    {
+        //add all the keys, which can be used for searching entities by partial key value
+        //for example the key has 2 fields, but entity is searched by 1 single field  
+    };
+
+    private static readonly HashSet<BGMetaEntity> getByNameMetas = new HashSet<BGMetaEntity>()
+    {
+        //add all the tables, which can be used for getting an entity by name, otherwise the 'name' index will be initialized for all metas 
+    };
+
+    void Awake()
+    {
+        //get code gen addon (it's used to find generated properties names)
+        var addon = BGRepo.I.Addons.Get<BGAddonCodeGen>();
+
+        //iterate over all tables
+        BGRepo.I.ForEachMeta(meta =>
+        {
+            //get generated class 
+            var metaTypeName = addon.GetMetaType(meta.Name);
+            var metaType = BGUtil.GetType(metaTypeName);
+            if (metaType == null) throw new Exception($"Can not find generated class {metaTypeName}");
+
+            //initialize "Id" key
+            meta.GetEntity(BGId.Empty);
+                
+            //initialize "name" key
+            if (getByNameMetas.Count == 0 || getByNameMetas.Contains(meta)) meta.GetEntity("");
+
+            //iterate keys
+            meta.ForEachKey(key =>
+            {
+                //make sure internal storage is created and values are indexed
+                if (partialAccessKeys.Contains(key)) key.BuildAll();
+                else key.Build();
+
+                //initialize static generated key field
+                var propertyName = "_" + key.Name;
+                var keyProperty = BGPrivate.GetProperty(metaType, propertyName);
+                if (keyProperty == null) throw new Exception($"Can not find [{key.Name}] key property with name {propertyName}, generated class [{metaType.Name}]");
+                keyProperty.GetValue(null);
+            });
+
+            //iterate fields
+            meta.ForEachField(field =>
+            {
+                //initialize static generated field field
+                var fieldPropertyName = "_" + addon.GetFieldName(field.Name);
+                var fieldProperty = BGPrivate.GetProperty(metaType, fieldPropertyName);
+                if (fieldProperty == null) throw new Exception($"Can not find [{field.Name}] field property with name {fieldPropertyName}, generated class [{metaType.Name}]");
+                fieldProperty.GetValue(null);
+            });
+        });
+        // print("DB initialized");
+    }
+}

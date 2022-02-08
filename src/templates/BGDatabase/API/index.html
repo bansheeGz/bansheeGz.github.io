@@ -2,29 +2,58 @@
 
 <p>
     This is basic BGDatabase API to use without CodeGeneration.
-    Code Generation makes these API even easier to use and we strongly recommend to use it.
+    Code Generation makes these API much easier to use and we highly recommend to use it.
     More information about Code Generation is <a href="../CodeGeneration">here</a>
 </p>
 
-<p>
-    Following 4 classes are enough to know to work with BGDatabase
-</p>
+<table class="contentTable dTable">
+    <tr>
+        <th>Name</th>
+        <th>Class</th>
+        <th>Description</th>
+        <th>API link</th>
+    </tr>
+    <tr>
+        <td>Repository</td>
+        <td>BGRepo</td>
+        <td>The whole database, containing collection of metas(tables) and addons</td>
+        <td><a href="BGRepo">API</a></td>
+    </tr>
+    <tr>
+        <td>Meta (table)</td>
+        <td>BGMetaEntity</td>
+        <td>The database table, containing collection of fields (columns) and entities (rows)</td>
+        <td><a href="BGMetaEntity">API</a></td>
+    </tr>
+    <tr>
+        <td>Field (column)</td>
+        <td>BGField</td>
+        <td>tables's column</td>
+        <td><a href="BGField">API</a></td>
+    </tr>
+    <tr>
+        <td>Entity (row)</td>
+        <td>BGEntity</td>
+        <td>tables's row</td>
+        <td><a href="BGEntity">API</a></td>
+    </tr>
+    <tr>
+        <td>Key</td>
+        <td>BGKey</td>
+        <td><a href="../Misc#keys">key</a> is a collection of fields for fast rows lookups</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Index</td>
+        <td>BGIndex</td>
+        <td><a href="../Misc#keys">index</a> is a reference to a field for fast rows searches by this field values</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>Addon</td>
+        <td>BGAddon</td>
+        <td></td>
+        <td>each addon has its own API</td>
+    </tr>
+</table>
 
-<ol>
-    <li>
-        <a href="BGRepo">BGRepo</a>
-        - Database itself
-    </li>
-    <li>
-        <a href="BGMetaEntity">BGMetaEntity</a>
-        - Database table
-    </li>
-    <li>
-        <a href="BGEntity">BGEntity</a>
-        - Table row
-    </li>
-    <li>
-        <a href="BGField">BGField</a>
-        - Table field
-    </li>
-</ol>
