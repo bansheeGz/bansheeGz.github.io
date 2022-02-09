@@ -346,64 +346,64 @@
 <p>
     Add your listeners, like this
 </p>
-<pre class="nomargin"><code class="language-csharp">
+<pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public class EventListenersDemo : MonoBehaviour
+{
+    void Start() => AddListeners();
+    private void OnDestroy() => RemoveListeners();
     private void AddListeners()
     {
-        var events = BGRepo.I.Events;
+        var meta = BGRepo.I["MyTable"];
+        var field = meta.GetField("name");
+        var entity = meta.GetEntity(0);
 
         //listen to particular entity (row)
-        events.AddEntityUpdatedListener(new BGId("some-entity-id"), EntityUpdated);
-        events.AddEntityDeletedListener(new BGId("some-entity-id"), EntityDeleted);
+        meta.AddEntityUpdatedListener(entity.Id, EntityUpdated);
+        meta.AddEntityDeletedListener(entity.Id, EntityDeleted);
 
         //listen to all entities (rows)
-        events.AddAnyEntityAddedListener(new BGId("some-meta-id"), SomeEntityAdded);
-        events.AddAnyEntityDeletedListener(new BGId("some-meta-id"), SomeEntityDeleted);
-        events.AddAnyEntityUpdatedListener(new BGId("some-meta-id"), SomeEntityUpdated);
+        meta.AnyEntityAdded += SomeEntityAdded;
+        meta.AnyEntityDeleted += SomeEntityDeleted;
+        meta.AnyEntityUpdated += SomeEntityUpdated;
 
         //listen to some field change
-        events.AddFieldListener(new BGId("some-field-id"), FieldChanged);
+        field.ValueChanged += FieldChanged;
     }
-
+    //always match adding listeners with removing listeners to prevent memory leak
+    private void RemoveListeners()
+    {
+        var meta = BGRepo.I["MyTable"];
+        var field = meta.GetField("name");
+        var entity = meta.GetEntity(0);
+        meta.RemoveEntityUpdatedListener(entity.Id, EntityUpdated);
+        meta.RemoveEntityDeletedListener(entity.Id, EntityDeleted);
+        meta.AnyEntityAdded -= SomeEntityAdded;
+        meta.AnyEntityDeleted -= SomeEntityDeleted;
+        meta.AnyEntityUpdated -= SomeEntityUpdated;
+        field.ValueChanged -= FieldChanged;
+    }
     //------------------------------------------------
     //            Field changed
     //------------------------------------------------
     private void FieldChanged(object sender, BGEventArgsField e)
     {
-        Debug.Log("The Field is changed " + e.Entity.Name);
+        if (e is BGEventArgsFieldWithValue&lt;string&gt; ev) Debug.Log($"The field {ev.Field.Name} for entity {ev.Entity.Name} was changed {ev.OldValue} -> {ev.NewValue}");
+        else Debug.Log($"The field value was changed, entity={e.Entity.Name}");
     }
-
     //------------------------------------------------
     //             any entity (row)
     //------------------------------------------------
-    private void SomeEntityUpdated(object sender, BGEventArgsAnyEntityUpdated e)
-    {
-        Debug.Log("Some Entity Updated " + e.Entity.Name);
-    }
-
-    private void SomeEntityDeleted(object sender, BGEventArgsAnyEntity e)
-    {
-        Debug.Log("Some Entity Deleted " + e.Entity.Id);
-    }
-
-    private void SomeEntityAdded(object sender, BGEventArgsAnyEntity e)
-    {
-        //note, fields are not available here
-        Debug.Log("Some Entity Added " + e.Entity.Id);
-    }
-
+    private void SomeEntityUpdated(object sender, BGEventArgsAnyEntityUpdated e) => Debug.Log("Some Entity Updated " + e.Entity.Name);
+    private void SomeEntityDeleted(object sender, BGEventArgsAnyEntity e) => Debug.Log("Some Entity Deleted " + e.Entity.Id);
+    private void SomeEntityAdded(object sender, BGEventArgsAnyEntity e) => Debug.Log("Some Entity Added " + e.Entity.Id);
     //------------------------------------------------
     //             particular entity (row)
     //------------------------------------------------
-    private void EntityDeleted(object sender, BGEventArgsEntity e)
-    {
-        Debug.Log("The Entity Deleted " + e.Entity.Id);
-    }
-
-    private void EntityUpdated(object sender, BGEventArgsEntityUpdated e)
-    {
-        Debug.Log("The Entity Updated " + e.Entity.Name);
-    }
-</code></pre>
+    private void EntityDeleted(object sender, BGEventArgsEntity e) => Debug.Log("The Entity Deleted " + e.Entity.Id);
+    private void EntityUpdated(object sender, BGEventArgsEntityUpdated e) => Debug.Log("The Entity Updated " + e.Entity.Name);
+}</code></pre>
 
 <p>
     Do not forget to remove listeners, as soon as they are not needed.
