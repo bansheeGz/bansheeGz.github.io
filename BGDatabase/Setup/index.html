@@ -486,10 +486,14 @@
 </ol>
 <h6>Loading database content manually at runtime</h6>
 <ol>
-    <li>Load database content from whatever location you want and call BGRepo.SetDefaultRepoContent(byte[] content) method before accessing database.</li>
+    <li>Load database content from whatever location you want and call BGRepo.SetDefaultRepoContent(byte[] content) method before accessing database followed by BGRepo.Load().</li>
     <li>If you use localization addon, you also need to load all localization files as well and use BGRepo.SetDefaultRepoContentModel(BGRepoCustomLoaderModel model) method instead.
     </li>
 </ol>
+<pre class="nomargin"><code class="language-csharp">    //content is database file content
+    byte[] content = someContent; //todo load content
+    BGRepo.SetDefaultRepoContent(content);
+    BGRepo.Load();</code></pre>
 <h6>Example projects</h6>
 <p>
     There are 2 example projects, demonstrating how to load database file(s) from Addressables.

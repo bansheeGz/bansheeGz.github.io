@@ -546,9 +546,7 @@ entityReference/entityListReference fields are considered to be obsolete and not
     All these fields are read only.
     You can reference any Unity asset (UnityObject can be used to reference any asset).
 </p>
-<p>
-    Available loaders are:
-</p>
+<h6>Available loaders</h6>
 <table class="contentTable">
     <tr>
         <th>
@@ -652,12 +650,20 @@ entityReference/entityListReference fields are considered to be obsolete and not
     </tr>
 </table>
 
+<h6>Sprite field and complex assets</h6>
 <p>
     Sprite and UnityObject fields support complex assets (when multiple assets are stored in one single file).
     Sprite field support spritesheets/atlases.
     UnityObject field should support other asset types (like FBX file etc.) if you assign correct "Asset Type" parameter while creating UnityObject field.
     "Asset Type" parameter accepts valid full C# class name (for example UnityEngine.Material)
 </p>
+<h6>Optional L2 cache</h6>
+<p>
+    Asset fields support optional additional cache on top of Unity API. If this cache is enabled Unity API is used to load the object for the first time
+    and all subsequent reads use the cache to retrieve the object instead of using Unity API.
+    To enable the cache use this code: BGAssetsCache.Enabled = true;
+</p>
+
 
 <h4 id="calculated">Calculated Fields (#7)</h4>
 <p>
