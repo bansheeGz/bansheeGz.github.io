@@ -20,15 +20,14 @@
 <p>
     Use generated classes to access database. To save database in Editor via C# code, use this call:
 </p>
-<pre class="nomargin"><code class="language-csharp">
+<pre class="nomargin"><code class="language-csharp">    //save database
     BansheeGz.BGDatabase.Editor.BGRepoSaver.SaveRepo();
-</code></pre>
+    //if BGDatabase window is opened- mark database as saved
+    if(BGRepoWindow.Active) BGRepoWindow.Instance.MarkRepoSaved();</code></pre>
 <p>
     To assign unity asset field values, use SetAsset method, defined on each unity asset field and available in Editor assembly (this method is not available at runtime assembly)
 </p>
-<pre class="nomargin"><code class="language-csharp">
-    SetAsset(int entityIndex, UnityEngine.Object asset)
-</code></pre>
+<pre class="nomargin"><code class="language-csharp">    SetAsset(int entityIndex, UnityEngine.Object asset)</code></pre>
 
 
 <h4 id="events">Events</h4>
