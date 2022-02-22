@@ -20,8 +20,10 @@
 <p>
     Use generated classes to access database. To save database in Editor via C# code, use this call:
 </p>
-<pre class="nomargin"><code class="language-csharp">    //save database
-    BansheeGz.BGDatabase.Editor.BGRepoSaver.SaveRepo();
+<pre class="nomargin"><code class="language-csharp">    using BansheeGz.BGDatabase.Editor;
+    //...
+    //save database
+    BGRepoSaver.SaveRepo();
     //if BGDatabase window is opened- mark database as saved
     if(BGRepoWindow.Active) BGRepoWindow.Instance.MarkRepoSaved();</code></pre>
 <p>
