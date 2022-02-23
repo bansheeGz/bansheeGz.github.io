@@ -801,7 +801,7 @@
 <h4 id="unityscene">Unity Scene Fields (#3)</h4>
 Referencing scene GameObjects using objectReference/objectListReference fields is implemented with the same technique, which is used in
 <a href="https://github.com/Unity-Technologies/guid-based-reference">this Unity project</a>,
-by adding additional component (BGWithId) with unique ID.
+by adding additional component (component name under components menu is "BansheeGz/Id", C# class is BGWithId) with unique ID.
 On Awake method object is added to the internal cache and On OnDestroy method object is removed from the cache.
 There are 2 restrictions, then using these fields:
 <ol>
