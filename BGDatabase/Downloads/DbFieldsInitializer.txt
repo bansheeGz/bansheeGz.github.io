@@ -8,14 +8,17 @@ using UnityEngine;
 /// </summary>
 public class DbFieldsInitializer : MonoBehaviour
 {
-    public const string Version = "1.0";
+    //updated at March 11 2022
+    public const string Version = "1.1";
     
+    //[ACTION MAY REQUIRE!]
     private static readonly HashSet<BGKey> partialAccessKeys = new HashSet<BGKey>()
     {
         //add all the keys, which can be used for searching entities by partial key value
         //for example the key has 2 fields, but entity is searched by 1 single field  
     };
 
+    //[ACTION MAY REQUIRE!]
     private static readonly HashSet<BGMetaEntity> getByNameMetas = new HashSet<BGMetaEntity>()
     {
         //add all the tables, which can be used for getting an entity by name, otherwise the 'name' index will be initialized for all metas 
@@ -62,6 +65,9 @@ public class DbFieldsInitializer : MonoBehaviour
                 var fieldProperty = BGPrivate.GetProperty(metaType, fieldPropertyName);
                 if (fieldProperty == null) throw new Exception($"Can not find [{field.Name}] field property with name {fieldPropertyName}, generated class [{metaType.Name}]");
                 fieldProperty.GetValue(null);
+                
+                //initialize reverse relation cache
+                if (field is BGRelationI relation) relation.GetRelatedIn(BGId.Empty);
             });
         });
         // print("DB initialized");
