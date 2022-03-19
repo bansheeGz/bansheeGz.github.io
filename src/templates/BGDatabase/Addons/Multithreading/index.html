@@ -15,9 +15,9 @@
     you can read data from multiple threads with some additional setup:
 </p>
 <ol>
+    <li>Use BGDatabase version >=1.7.4</li>
     <li>Use codegen addon generated classes with "Readonly mode" on</li>
     <li>Disable lazyload addon if it's enabled</li>
-    <li>Enable CodeGen addon and generate the classes</li>
     <li>Do not use Unity scene fields or localization fields</li>
     <li>Run the following scripts before accessing database data:
         <a href="../../Downloads/DbFieldsInitializer.txt">DbFieldsInitializer.cs</a> (may require additional setup, read source code comments)
