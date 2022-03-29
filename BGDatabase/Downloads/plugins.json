@@ -61,7 +61,7 @@
       "pluginClass" : "BansheeGz.BGDatabase.BGExcelImportGo",
       "packageClass" : null,
       "name" :  "Excel export/import for runtime",
-      "description" :  "Monitor and auto-import Excel file at runtime",
+      "description" :  "Adds support for exporting and importing data to Excel file in runtime (in builds). Optional file monitor to auto-import Excel file data if the file is changed on disk. Desktop operational systems only.",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeExcelMonitor",
       "requiredVersion" : "1.6.10"
     },
