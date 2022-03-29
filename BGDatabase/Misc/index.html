@@ -522,7 +522,7 @@
     </tr>
     <tr>
         <td>meta.FindEntity(predicate), meta.FindEntities(predicate)</td>
-        <td>no</td>
+        <td>N/A</td>
         <td>O(n), fullscan</td>
         <td></td>
     </tr>
@@ -533,9 +533,15 @@
     Following fields can be added to a key: bool, int, long, decimal, bool?, int?, long?, string, text, enum, relationSingle.
 </p>
 <p>
-    You can access the matching row(s) directly without searching, using BGKey class or <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods</a>.
-    To access the key use BGMetaEntity.GetKey({keyName}) method.
+    You can access the matching row(s) directly without searching, using BGKey class. Available options:
 </p>
+<ol>
+    <li>Use <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods (recommended)</a></li>
+    <li>Use basic API. To access the key, use <code>BGMetaEntity.GetKey({keyName})</code> method. To get a row(s), use <code>BGKey.GetEntityByKey</code> or <code>BGKey.GetEntitiesByKey</code> methods</li>
+    <li>If you use Visual Scripting assets, you can use generated unit/node if it's supported</li>
+</ol>
+
+
 <p>
     Keys make row(s) access faster, but uses extra memory and may slow down write (update) operations, so do not use keys for data, which is updated frequently.
 </p>
@@ -545,10 +551,14 @@
 
 <h6>Indexes</h6>
 <p>
-    Currently only single field index is supported.
     Indexes enables row(s) range scan fast operations, but uses extra memory and may slow down write (update) operations.
-    To access the index use BGMetaEntity.GetIndex({indexName}) method or use <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods</a>.
+    Currently only single field index is supported.
+    Available options to use an index:
 </p>
+<ol>
+    <li>Use <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods  (recommended)</a></li>
+    <li>Use basic API. To access the index use <code>BGMetaEntity.GetIndex({indexName})</code> method. To query rows use <code>index.FindEntitiesByIndex</code> method</li>
+</ol>
 
 <h4 id="commandline">Command Line</h4>
 <p>
