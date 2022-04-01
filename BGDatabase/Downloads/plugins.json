@@ -83,7 +83,8 @@
       "packageClass" : null,
       "name" :  "Read-only database for MT",
       "description" :  "Adds support for multi-threaded access for readonly database",
-      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/ReadonlyMultithreading"
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/ReadonlyMultithreading",
+      "requiredVersion" : "1.7.4"
     },
     {
       "id" : "p8mP75IIeE2JHALqD9DzFg",
