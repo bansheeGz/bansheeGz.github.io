@@ -177,7 +177,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
                     </li>
-                    <li class="cli downloadicon ">
+                    <li class="cli downloadicon  plic ">
                         <a class="ca" href="../../../BGDatabase/Downloads">Downloads</a>
                     </li>
                 </ul>
@@ -242,7 +242,7 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
                     </li>
                     <li class="cli ">
@@ -297,384 +297,131 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Live Update</h3>
+                <h3>Downloads</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
-<style>
-    .llink {
-        font-size: 12px;
-        margin: 0;
-    }
-</style>
+<a class="backToDownloads" href="../">< Back to downloads</a>
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <h4>Multithreaded access to readonly database</h4>
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            0.9
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            BGDatabase >= 1.7.4
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseReadonlyMT.unitypackage" class="downloadButton"></a>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/download50.png">
+                    <img style="width: 100%" src="../../../images/BGDatabase/download50.png">
+                </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="importantNote">
+    Code review is currently ongoing to make sure it's safe to access database in readonly mode from multi-threaded environment
+</div>
+
 
 <h4>Description</h4>
 <p>
-    Live update addon let you update database data on player's devices using the data from Google Sheets or from JSON/CSV files hosted on a web server.
-    Export to google sheets is not supported.
+    Support for multithreaded access to the database in readonly mode. No database data should be changed in runtime.
 </p>
 
-<h4>How it works</h4>
+<h4>Setup guide</h4>
 <ol>
-    <li>
-        First time your game is launched and database is loaded, addon tries to read data from Google Sheets/web server files.
-        Alternatively set "Manual load" parameter on and trigger loading manually from script at any moment
-    </li>
-    <li>If step 1 is successful, every time database is loaded, it will be merged with remote data, thus
-        applying the update.
-    </li>
-    <li>If step 1 is unsuccessful, database data will remain intact.</li>
-</ol>
-
-<h4>Guides and example projects</h4>
-<p>
-    Additional guides and example projects are available <a href="../../Downloads/ExampleLiveUpdate">here</a>
-</p>
-
-<h4>Restrictions</h4>
-<ol>
-    <li>WebGl platform requires special setup (<a href="#webgl">read below</a>)</li>
-    <li>Do not use this addon to update critical data.
-        There is a chance some users won't be able to download updates (due to network issues for example).
-    </li>
-    <li>
-        Plugin uses formatted values, not raw value. If you use numeric fields, please, make sure formatted value for these fields
-        are the same as raw values (you may need to change cells formatting)
+    <li>Import this plugin</li>
+    <li>Enable CodeGen addon and generate classes in readonly mode</li>
+    <li>Disable LazyLoad addon if it's enabled</li>
+    <li>Add Assets\BansheeGz\BGDatabaseReadonlyMT\Scripts\BGDatabaseMTManager.cs script to your startup scene
+        (make sure it's executed before accessing database from multiple threads)
     </li>
 </ol>
 
-<h4 id="dataSourcesTypes">Google Sheets API types</h4>
-<table class="contentTable">
-    <tr>
-        <th width="25%">
-            API type->
-        </th>
-        <th width="25%">
-            GoogleSheets API
-        </th>
-        <th width="25%">
-            Visualization API
-        </th>
-        <th width="25%">
-            Excel file export
-        </th>
-    </tr>
-    <tr>
-        <td>URL to retrieve data</td>
-        <td>https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Table Name]?key=[Your API key]</td>
-        <td>https://docs.google.com/spreadsheets/d/[Your Spreadsheet Id]/gviz/tq?tqx=out:csv&sheet=[Table Name]</td>
-        <td>https://docs.google.com/spreadsheets/d/[Your Spreadsheet Id]/export</td>
-    </tr>
-    <tr>
-        <td>Number of network calls</td>
-        <td>1 * number of tables</td>
-        <td>1 * number of tables</td>
-        <td>1</td>
-    </tr>
-    <tr>
-        <td>Pros</td>
-        <td>Official recommended method</td>
-        <td>Do not require any credentials</td>
-        <td>
-            <ol>
-                <li>Do not require any credentials</li>
-                <li>Fastest method if you update several tables, cause it uses one single network call to obtain all data</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td>Cons</td>
-        <td>
-            <ol>
-                <li>API calls have free usage limits. Read more <a href="https://developers.google.com/sheets/api/limits">here</a>.
-                    If you reach the limit, GoogleSheets will not return correct feed and LiveUpdate plugin will fail.
-                </li>
-                <li>API key is exposed, cause database stores the value</li>
-            </ol>
-        </td>
-        <td>
-            <ol>
-                <li>It's not clear if Google can consider it as API abuse and ToS violation</li>
-            </ol>
-        </td>
-        <td>
-            <ol>
-                <li>It's not clear if Google can consider it as API abuse and ToS violation</li>
-                <li>Require special setup</li>
-                <li>Not working on WEBGl platform</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td>Special setup</td>
-        <td>None</td>
-        <td>None</td>
-        <td>
-            <ol>
-                <li>
-                    Download and import <a href="../../Downloads/NPOI.unitypackage">NPOI DLLs</a>.
-                    If you already have NPOI DLLs in your project- delete old DLLs <b>before</b> importing.
-                </li>
-                <li>Download and import <a href="../../Downloads/BGDatabaseLiveUpdateExcelParser.unitypackage">this package</a></li>
-            </ol>
-        </td>
-    </tr>
-</table>
-
-<h4>Setup for Google Sheets</h4>
+<h4>Features</h4>
 <ol>
-    <li>
-        Enable LiveUpdate plugin (under addons->LiveUpdate)
-    </li>
-    <li>
-        Choose DataSource type (GoogleSheets API/Visualization API/Excel file export)
-    </li>
-    <li>
-        Get <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">Spreadsheet Id</a> from Google. Assign it to <b>Spreadsheet Id</b> LiveUpdate addon parameter
-    </li>
-    <li>
-        If you chose GoogleSheets API (the first option), get <a href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">"API key"</a> from Google. Assign it to <b>API key</b>
-        LiveUpdate addon parameter
-    </li>
-    <li>
-        Make sure to share the target spreadsheet.
-        Open target spreadsheet, click on Share button on the top right and set access level to "public" or "people with link".
-        Otherwise plugin won't work.
-    </li>
-    <li>
-        Google sheets data should have proper layout (as described <a href="../../ExportImport">here</a>).
-        Starting with v.1.5.13 _id column/ID value are not required anymore <i style="text-decoration: line-through;">_id column with valid IDs are required</i>
-    </li>
+    <li>Initialize data structures, which otherwise are initialized on demand</li>
+    <li>Enables L2 memory cache for Unity assets and loads all of them to this cache (make sure that all your assets does not take too much memory)</li>
+    <li>Notify code generation utils to use multi-threaded approach</li>
 </ol>
 
-
-<h4>Checking if GoogleSheets setup was correct</h4>
-<div>
-    You can check if you set up config properly by accessing specific URL from your browser without logging to Google account.
-    Each DataSource type uses it's own URL (listed in the table above), so try to access the data with corresponding URL
-</div>
-<div>
-    For example, GoogleSheets API datasource type uses this URL to access the data
-    https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Name of one of your meta]?key=[Your API key] , so for the following parameters
-    <ol>
-        <li>
-            SpreadsheetId=MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ
-        </li>
-        <li>
-            ApiKey=RYIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc
-        </li>
-        <li>
-            Meta=Items
-        </li>
-    </ol>
-    the URL to check will be :
-    <p class="llink">
-        https://sheets.googleapis.com/v4/spreadsheets/<b>MYko0fxH01GIJcBq41YAT9eFpU6Znm5I5RByHsJpupHZ</b>/values/<b>Items</b>?key=<b>RYIzaSyB0xsc_BoOBNRHfhW9xpCx1t03a-gV6qc</b>
-    </p>
-    This is not a working example, it's just an example how to substitute parameters.
-</div>
-
-<h4>Setup for web server hosted files</h4>
-<ol>
-    <li>
-        Enable LiveUpdate plugin (under addons->LiveUpdate)
-    </li>
-    <li>
-        Select web hosted files as an update source
-    </li>
-    <li>
-        Add a URL with parameters (Json/CSV, HTTP method/headers/parameters) for each table you want to update.
-        "Default" HTTP method does not support HTTP parameters/headers (use GET or POST methods if you want to submit headers/parameters)
-    </li>
-    <li>
-        The returned data should have proper data layout (as described below in the "Web server data formats" section)
-    </li>
-</ol>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/LiveUpdateAddon4.png"><img style="width:150px; height: 75px" src="../../../images/BGDatabase/LiveUpdateAddon4.png"></a>
-</div>
-
-<h4>Web server data formats</h4>
-<table class="contentTable">
-    <tr>
-        <th width="10%">
-            Data format->
-        </th>
-        <th width="40%">
-            Json
-        </th>
-        <th width="40%">
-            CSV
-        </th>
-    </tr>
-    <tr>
-        <td>Special setup</td>
-        <td class="ra" style="text-align: justify">
-            For JSON file format we use the format from Google Sheets:
-            <ol>
-                <li>Use values property with 2-dimensional array for values. The first array element contains field types (see the image below)</li>
-                <li>For values use string type even if value is not string</li>
-            </ol>
-            <div class="bg-image">
-                <a href="../../../images/BGDatabase/LiveUpdateAddon1.png"><img style="width:150px; height: 75px" src="../../../images/BGDatabase/LiveUpdateAddon1.png"></a>
-            </div>
-        </td>
-        <td class="ra" style="text-align: justify">
-            For CSV file format we use the format from Google Visualization API
-            <ol>
-                <li>For values use string type even if value is not string</li>
-            </ol>
-            <div class="bg-image">
-                <a href="../../../images/BGDatabase/LiveUpdateAddon2.png"><img style="width:150px; height: 75px" src="../../../images/BGDatabase/LiveUpdateAddon2.png"></a>
-            </div>
-        </td>
-    </tr>
-</table>
-
-<h4>Web server HTTP parameters and headers</h4>
+<h4>Settings</h4>
 <p>
-    You can assign HTTP request headers and parameters using static values or our <a href="../../GraphEditor">Graph editor</a> for dynamically calculated values.
-    "Default" HTTP method is not supported, use GET or POST methods if you want to use HTTP parameters/headers
+    This component uses 'safety first, optimization second' approach, meaning it's meant to be safe without any additional settings.
+    However, some settings are available to minimize memory usage.
+    Use this settings with care, cause if the setting rule is broken- it can result in problems.
 </p>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/LiveUpdateAddon4.png"><img style="width:150px; height: 75px" src="../../../images/BGDatabase/LiveUpdateAddon4.png"></a>
-</div>
-
-<h4 id="webgl">WEBGL/Asynchronous setup</h4>
-<p>
-    There are 2 problems on WebGl platform:
-</p>
-<ol>
-    <li>Loading should be asynchronous and requires additional setup</li>
-    <li>Cross-Origin requests should be enabled in web server HTTP headers</li>
-</ol>
-<h5>1) Asynchronous loading</h5>
-<p>
-    WEBGL platform does not allow to update data synchronously.
-    So the data on this platform is updated asynchronously, over several frames.
-    It means data should be preloaded before it can be accessed.
-    Alternative way to load data asynchronously is to toggle on "Force asynchronous" parameter.
-</p>
-<p>
-    Here are the required steps:
-</p>
-<ol>
-    <li>Make sure to toggle "Manual Load" parameter on</li>
-    <li>Download <a href="../../Downloads/LiveUpdatePreloader.txt">this preloader script</a>,
-        change txt extension to cs extension and attach it to any GameObject in your starting scene
-    </li>
-    <li>Once LiveUpdate plugin finishes downloading data, LiveUpdatePreloader.Ready method will be called. Make sure to not access database until this moment</li>
-    <li>Preloader should work on any platform, no need to write platform specific code</li>
-</ol>
-
-<h5>2) Cross-Origin requests should be allowed</h5>
-<p>
-    Loading data from GoogleSheets is considered to be a cross-origin requests and such requests should be allowed in web-server HTTP headers
-    (read more <a href="https://forum.unity.com/threads/cross-origin-request-blocked.425283/">here</a>
-    and <a href="https://docs.unity3d.com/Manual/webgl-networking.html">here</a>).
-</p>
-<p>
-    If you try to load data without CORS enabled, you may encounter the following error in the Web browser console
-</p>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/LiveUpdateAddon3.png"><img style="width:150px; height: 75px" src="../../../images/BGDatabase/LiveUpdateAddon3.png"></a>
-</div>
-<p>
-    So if you use a third-party web host for hosting your application you need to ensure that CORS is enabled
-</p>
-<p>
-    Additional guides for WEBGL platform and example projects are available <a href="../../Downloads/ExampleLiveUpdate">here</a>
-</p>
-
-
-<h4>Parameters</h4>
-<table class="contentTable">
+<table class="contentTable dTable">
     <tr>
         <th>
-            Parameter name
+            Parameter
         </th>
         <th>
             Description
         </th>
     </tr>
     <tr>
-        <td>Spreadsheet Id</td>
-        <td>
-            Id of your spreadsheet. Learn how to obtain it <a
-                href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">here</a>
-        </td>
+        <tr>List with all the tables, which 'name' index is used</tr>
+        <tr>
+            add all the tables, which can be used for getting an entity by name, otherwise the 'name' index will be initialized for all metas.
+            If you use this setting- make sure to include all the tables, which can be used for getting an entity by name.
+        </tr>
     </tr>
     <tr>
-        <td>API key</td>
-        <td>
-            API key to use for GoogleSheets API datasource type. Learn how to create it <a
-                href="https://developers.google.com/sheets/api/guides/authorizing#APIKey">here</a>
-        </td>
-    </tr>
-    <tr>
-        <td>Timeout</td>
-        <td>
-            Timeout for connection. Value (in seconds) is between 1-30, default is 5
-        </td>
-    </tr>
-    <tr>
-        <td>Manual Load</td>
-        <td>
-            Set it to true if you do not want this addon to be executed automatically.
-            In this case, you will need to manually trigger the loading by calling
-            <pre>
-BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load(true);
-</pre>
-        </td>
-    </tr>
-    <tr>
-        <td>In Builds Only</td>
-        <td>
-            Setting this to true will disable addon if your game is run in Editor. It will work in builds only.
-            It is recommended to set it to true as soon as you are sure the addon works correctly.
-        </td>
-    </tr>
-    <tr>
-        <td>Force asynchronous</td>
-        <td>
-            If set to true, data loader will use asynchronous loader, which does not block main thread and loads data over several frames.
-            WEBGl platform ignores this parameter, cause it does not support synchronous loader and uses asynchronous loader by default
-        </td>
-    </tr>
-    <tr>
-        <td>Merge Settings</td>
-        <td>
-            The same merge settings you use for Export/Import or Saving/Loading. Learn more about merge settings <a
-                href="../../ExportImport#mergeSettings">here</a>
-        </td>
-    </tr>
-    <tr>
-        <td>Log level</td>
-        <td>
-            level of details to be used while gathering log information. Logs messages are gathered while addon tries to read information from GoogleSheets
-        </td>
-    </tr>
-    <tr>
-        <td>Print log on load</td>
-        <td>
-            If set to true, log will be printed to Unity console after load attempt
-        </td>
-    </tr>
-    <tr>
-        <td>Value resolver type</td>
-        <td>
-            Full C# type name to be used to convert GoogleSheets values to another format.
-            This type should implement BansheeGz.BGDatabase.BGLiveUpdateValueResolver interface.
-            For example, you could use currency formatted values inside GoogleSheet for int fields ($5,200).
-            To properly read such values you need to convert them to valid int values ($5,200->5200).
-            <a href="../../Downloads/LiveUpdateValueResolver.txt">Here is </a> an example implementation of such type, which do such conversion.
-        </td>
+        <tr>List with all partial keys</tr>
+        <tr>add all the keys, which can be used for searching entities by partial key value, for example the key has 2 fields, but entity is searched by 1 single field.
+            If you leave this list empty- all the keys with more that 1 field will be initialized for partial access.
+            If you use this setting- make sure to include all the keys, which can be used for getting an entity by partial key value.
+        </tr>
     </tr>
 </table>
 
+<h4>Releases</h4>
+<table class="contentTable dTable">
+    <tr>
+        <th style="width: 10%">
+            Version
+        </th>
+        <th style="width: 20%">
+            Release date
+        </th>
+        <th style="width: 70%">Log</th>
+    </tr>
+    <tr>
+        <td class="ra">
+            0.9
+        </td>
+        <td class="ra">Apr 01, 2022</td>
+        <td>
+            Initial beta release
+        </td>
+    </tr>
+</table>
             </div>
 
             <!--======================================================       BG Database Footer               -->

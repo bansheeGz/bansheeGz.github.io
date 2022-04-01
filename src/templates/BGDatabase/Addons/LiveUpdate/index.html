@@ -182,21 +182,22 @@
         Select web hosted files as an update source
     </li>
     <li>
-        Create a list of files URL and formats (Json/CSV)
+        Add a URL with parameters (Json/CSV, HTTP method/headers/parameters) for each table you want to update.
+        "Default" HTTP method does not support HTTP parameters/headers (use GET or POST methods if you want to submit headers/parameters)
     </li>
     <li>
-        The files data should have proper layout (as described above in the "A web server hosted files types" section)
+        The returned data should have proper data layout (as described below in the "Web server data formats" section)
     </li>
 </ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/LiveUpdateAddon4.png"><img style="width:150px; height: 75px" src="#path images/BGDatabase/LiveUpdateAddon4.png"></a>
+</div>
 
-<h4>A web server hosted files types</h4>
-<p>
-    This is Work In Progress (BGDatabase 1.6.5 is required)
-</p>
+<h4>Web server data formats</h4>
 <table class="contentTable">
     <tr>
         <th width="10%">
-            File format->
+            Data format->
         </th>
         <th width="40%">
             Json
@@ -229,6 +230,14 @@
     </tr>
 </table>
 
+<h4>Web server HTTP parameters and headers</h4>
+<p>
+    You can assign HTTP request headers and parameters using static values or our <a href="../../GraphEditor">Graph editor</a> for dynamically calculated values.
+    "Default" HTTP method is not supported, use GET or POST methods if you want to use HTTP parameters/headers
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/LiveUpdateAddon4.png"><img style="width:150px; height: 75px" src="#path images/BGDatabase/LiveUpdateAddon4.png"></a>
+</div>
 
 <h4 id="webgl">WEBGL/Asynchronous setup</h4>
 <p>
