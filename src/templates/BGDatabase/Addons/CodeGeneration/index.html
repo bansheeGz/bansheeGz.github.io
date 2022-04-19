@@ -4,13 +4,26 @@
     Main article about Code Generation addon is <a href="../../CodeGeneration/ExtensionClasses">here</a>
 </div>
 
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Addon1.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/Addon1.png"></a>
+</div>
 <h4>Description</h4>
 <p>
     Code Generation addon makes already pretty easy BGDatabase API even easier.
-    If you use this addon- database will use generated classes instead of basic BGEntity while populating table rows.
-    Each generated class defines additional properties/methods to access the data.
-    (see the full list of generated methods/properties  <a href="../../CodeGeneration/ExtensionClasses#whatIsGenerated">here</a>)
+    Once this addon is enabled- database will use generated classes instead of basic BGEntity while populating table rows.
+    Each generated class has additional properties/methods to access the data.
 </p>
+
+<h4>What properties/methods are generated?</h4>
+The full list of generated methods/properties can be found in <a href="../../CodeGeneration/ExtensionClasses#whatIsGenerated">main article about code generation</a>)
+
+<h4>Examples</h4>
+<p>
+    All our <a href="../../Downloads">example projects</a> use CodeGen addon
+</p>
+
+
+<h4>Short explanation</h4>
 <p>
     Here is an example: lets assume you have a table named "MyTable" which has one single field: intField of type int.
 </p>
@@ -37,6 +50,7 @@
 <p>
     The only drawback CodeGen has- you need to regenerate the classes each time you change database structure (e.g. adding/removing tables or fields)
 </p>
+
 
 <table class="contentTable">
     <tr>
@@ -87,6 +101,3 @@
     </tr>
 </table>
 
-<div class="bg-image">
-    <a href="#path images/BGDatabase/Addon1.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/Addon1.png"></a>
-</div>
