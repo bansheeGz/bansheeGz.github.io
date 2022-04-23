@@ -77,12 +77,12 @@
     },
     {
       "id" : "Vfg8+Xl+40OZC6l3sV/otA",
-      "version" : "0.9",
-      "releaseDate" : "01/04/22",
+      "version" : "1.0",
+      "releaseDate" : "04/24/22",
       "pluginClass" : "BansheeGz.BGDatabase.BGDatabaseMTManager",
       "packageClass" : null,
       "name" :  "Read-only database for MT",
-      "description" :  "Adds support for multi-threaded access for readonly database",
+      "description" :  "Adds support for multi-threaded access to readonly database",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/ReadonlyMultithreading",
       "requiredVersion" : "1.7.4"
     },
