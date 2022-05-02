@@ -337,7 +337,7 @@
         <td></td>
     </tr>
     <tr>
-        <td rowspan="5">Relations <a href="#relations">#1</a></td>
+        <td rowspan="7">Relations <a href="#relations">#1</a></td>
         <td>relationSingle</td>
         <td>BGEntity</td>
         <td>reference to one single row from one single table</td>
@@ -350,12 +350,26 @@
     <tr>
         <td>manyTableRelationSingle</td>
         <td>BGEntity</td>
-        <td>reference to one single row from several tables (use field's gear icon to define multiple tables)</td>
+        <td>reference to one single row from several tables (use field's gear icon to define multiple tables).
+            Not recommended, use viewRelationSingle instead
+        </td>
     </tr>
     <tr>
         <td>manyTableRelationMultiple</td>
         <td>List&lt;BGEntity&gt;</td>
-        <td>reference to several rows from several tables (use field's gear icon to define multiple tables)</td>
+        <td>reference to several rows from several tables (use field's gear icon to define multiple tables).
+            Not recommended, use viewRelationMultiple instead
+        </td>
+    </tr>
+    <tr>
+        <td>viewRelationSingle</td>
+        <td>BGEntity</td>
+        <td>reference to one single row from a view (several tables)</td>
+    </tr>
+    <tr>
+        <td>viewRelationMultiple</td>
+        <td>List&lt;BGEntity&gt;</td>
+        <td>reference to several rows from a view (several tables)</td>
     </tr>
     <tr>
         <td>nested <a href="#nested">#2</a></td>
@@ -435,6 +449,11 @@
     Relational fields differ in terms of how many tables and rows they can reference
     (read <a href="../../Blog/BGDatabase-v1-7-1-Many-tables-relational-fields">this blog post</a> for more details)
 </p>
+<p>
+    Starting with BGDatabase 1.7.5- viewRelationSingle and viewRelationMultiple fields are recommended over
+    manyTablesRelationSingle and manyTablesRelationMultiple fields
+    (read <a href="../../Blog/BGDatabase-v1-7-5-Views-and-viewrelational-fields">this blog post</a> for more details)
+</p>
 <table class="contentTable">
     <tr>
         <th>Field (relation)
@@ -463,6 +482,16 @@
     </tr>
     <tr>
         <td>manyTablesRelationMultiple</td>
+        <td>n</td>
+        <td>n</td>
+    </tr>
+    <tr>
+        <td>viewRelationSingle</td>
+        <td>n</td>
+        <td>1</td>
+    </tr>
+    <tr>
+        <td>viewRelationMultiple</td>
         <td>n</td>
         <td>n</td>
     </tr>

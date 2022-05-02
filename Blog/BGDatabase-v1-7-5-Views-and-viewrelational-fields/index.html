@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-1');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BansheeGz is Games and Unity assets Developer.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/root.css">
+
+    <link rel="icon" type="image/png" href="../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../BGCurve">BG`Curve</a>
+<!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+<!--                       href="../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../Support">Support</a></li>
+                <li class="mdl-menu__item"><a href="../../About">About Us</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+<!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                MESSAGE HERE
+        </b>
+    </div>-->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <!--======================================================        Content (from Root)              -->
+        <link rel="stylesheet" href="../../css/magnific-popup.css">
+<script src="../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<div style="width: 100%">
+    <div style="width: 70%;margin: 0 auto">
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
+            <div class="bg-main mdl-shadow--3dp">
+                <div id="blog" style="padding: 12px;">
+                    <a href="../">Back to blog</a>
+                    <div class="bg-main-title">
+                        <h4>BGDatabase v.1.7.5  Views and view relational fields</h4>
+                    </div>
+                    <div style="padding-bottom: 12px;">05/2022</div>
+
+                    
+
+
+<link rel="stylesheet" href="../../css/bgdatabase.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<h4>Introducing views and view relational fields</h4>
+<p>
+    BGDatabase v.1.7.5 introduced <code>views</code> and 2 new view relational fields: <code>viewRelationSingle</code> and <code>viewRelationMultiple</code>
+    as better alternatives to
+    <code>manyTablesRelationSingle</code> and <code>manyTablesRelationMultiple</code> <a href="../BGDatabase-v1-7-1-Many-tables-relational-fields">fields</a>
+</p>
+
+<h4>What is view?</h4>
+<p>
+    The view is virtual table, which does not have its own rows.
+    It contains a set of table references and its own set of fields.
+    Each included table should have the same set of fields (with the same names and types).
+</p>
+<div class="bg-image">
+    <a href="../../images/Blog/Blog19.png"><img style="width: 400px" src="../../images/Blog/Blog19.png"></a>
+</div>
+
+<h4>What are view relational fields?</h4>
+<p>
+    View relational fields are the fields, referencing the rows from the view.
+    They are similar to <code>manyTablesRelationSingle</code> and <code>manyTablesRelationMultiple</code>, allowing to reference rows from multiple tables
+</p>
+
+<h4>Why view relational fields are better alternatives to many tables relational fields?</h4>
+<ol>
+    <li>View is a persistent structure. You can reference the same view from multiple tables.
+        With many tables relational fields- you need to define the set of tables, you reference, for each field
+    </li>
+    <li>
+        CodeGen addon generates one single interface for each view.
+        Each included table implements this interface and all view relations, referencing the view reuse this view interface as its value type.
+        For many tables relational fields- codegen addon generates interfaces for each field
+        and it's a big disadvantage if you want to reference the same set of tables
+    </li>
+</ol>
+
+
+<h4>Migrate from many tables relational fields to view relational fields</h4>
+<p>
+    Internal data format for these fields is compatible, so it's easy to switch to view relational field without losing any data.
+    The guide below is for <code>manyTablesRelationSingle</code>-><code>viewRelationSingle</code> conversion.
+</p>
+<ol>
+    <li>Back up database file(s) just in case</li>
+    <li>
+        Create a view, add required fields and include tables
+        <div class="bg-image">
+            <a href="../../images/Blog/Blog18.png"><img style="width: 400px" src="../../images/Blog/Blog18.png"></a>
+        </div>
+    </li>
+    <li>
+        Select manyTablesRelationSingle field and make sure it has the same set of tables in the field's settings
+        <div class="bg-image">
+            <a href="../../images/Blog/Blog20.png"><img style="width: 400px" src="../../images/Blog/Blog20.png"></a>
+        </div>
+
+    </li>
+    <li>
+        Open up field's menu by clicking on "M" menu button and choose "Change file type"
+        <div class="bg-image">
+            <a href="../../images/Blog/Blog21.png"><img style="width: 400px" src="../../images/Blog/Blog21.png"></a>
+        </div>
+    </li>
+    <li>
+        Select viewRelationSingle as target field type, select a view and click on "Change field type" button
+        <div class="bg-image">
+            <a href="../../images/Blog/Blog22.png"><img style="width: 400px" src="../../images/Blog/Blog22.png"></a>
+        </div>
+    </li>
+    <li>
+        Review the changes under database tab to make sure all values remain intact, press on "Save" to commit or "Reload" to rollback
+        <div class="bg-image">
+            <a href="../../images/Blog/Blog23.png"><img style="width: 400px" src="../../images/Blog/Blog23.png"></a>
+        </div>
+
+    </li>
+</ol>
+
+<h4>Example project</h4>
+<p>
+    <a href="../../BGDatabase/Downloads/ExampleInventory">The inventory example project</a> uses views and views relational fields
+</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

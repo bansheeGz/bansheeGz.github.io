@@ -1,0 +1,92 @@
+#set title=BGDatabase v.1.7.5  Views and view relational fields
+#set date=05/2022
+
+<link rel="stylesheet" href="#path css/bgdatabase.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+<h4>Introducing views and view relational fields</h4>
+<p>
+    BGDatabase v.1.7.5 introduced <code>views</code> and 2 new view relational fields: <code>viewRelationSingle</code> and <code>viewRelationMultiple</code>
+    as better alternatives to
+    <code>manyTablesRelationSingle</code> and <code>manyTablesRelationMultiple</code> <a href="../BGDatabase-v1-7-1-Many-tables-relational-fields">fields</a>
+</p>
+
+<h4>What is view?</h4>
+<p>
+    The view is virtual table, which does not have its own rows.
+    It contains a set of table references and its own set of fields.
+    Each included table should have the same set of fields (with the same names and types).
+</p>
+<div class="bg-image">
+    <a href="#path images/Blog/Blog19.png"><img style="width: 400px" src="#path images/Blog/Blog19.png"></a>
+</div>
+
+<h4>What are view relational fields?</h4>
+<p>
+    View relational fields are the fields, referencing the rows from the view.
+    They are similar to <code>manyTablesRelationSingle</code> and <code>manyTablesRelationMultiple</code>, allowing to reference rows from multiple tables
+</p>
+
+<h4>Why view relational fields are better alternatives to many tables relational fields?</h4>
+<ol>
+    <li>View is a persistent structure. You can reference the same view from multiple tables.
+        With many tables relational fields- you need to define the set of tables, you reference, for each field
+    </li>
+    <li>
+        CodeGen addon generates one single interface for each view.
+        Each included table implements this interface and all view relations, referencing the view reuse this view interface as its value type.
+        For many tables relational fields- codegen addon generates interfaces for each field
+        and it's a big disadvantage if you want to reference the same set of tables
+    </li>
+</ol>
+
+
+<h4>Migrate from many tables relational fields to view relational fields</h4>
+<p>
+    Internal data format for these fields is compatible, so it's easy to switch to view relational field without losing any data.
+    The guide below is for <code>manyTablesRelationSingle</code>-><code>viewRelationSingle</code> conversion.
+</p>
+<ol>
+    <li>Back up database file(s) just in case</li>
+    <li>
+        Create a view, add required fields and include tables
+        <div class="bg-image">
+            <a href="#path images/Blog/Blog18.png"><img style="width: 400px" src="#path images/Blog/Blog18.png"></a>
+        </div>
+    </li>
+    <li>
+        Select manyTablesRelationSingle field and make sure it has the same set of tables in the field's settings
+        <div class="bg-image">
+            <a href="#path images/Blog/Blog20.png"><img style="width: 400px" src="#path images/Blog/Blog20.png"></a>
+        </div>
+
+    </li>
+    <li>
+        Open up field's menu by clicking on "M" menu button and choose "Change file type"
+        <div class="bg-image">
+            <a href="#path images/Blog/Blog21.png"><img style="width: 400px" src="#path images/Blog/Blog21.png"></a>
+        </div>
+    </li>
+    <li>
+        Select viewRelationSingle as target field type, select a view and click on "Change field type" button
+        <div class="bg-image">
+            <a href="#path images/Blog/Blog22.png"><img style="width: 400px" src="#path images/Blog/Blog22.png"></a>
+        </div>
+    </li>
+    <li>
+        Review the changes under database tab to make sure all values remain intact, press on "Save" to commit or "Reload" to rollback
+        <div class="bg-image">
+            <a href="#path images/Blog/Blog23.png"><img style="width: 400px" src="#path images/Blog/Blog23.png"></a>
+        </div>
+
+    </li>
+</ol>
+
+<h4>Example project</h4>
+<p>
+    <a href="../../BGDatabase/Downloads/ExampleInventory">The inventory example project</a> uses views and views relational fields
+</p>
