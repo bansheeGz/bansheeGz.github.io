@@ -926,16 +926,16 @@ public class AddSubtractUnit : BGCalcUnit
 
     public override void Definition()
     {
-        a = ValueInput<int>( "A", "a");
-        b = ValueInput<int>( "B", "b");
-        c = ValueInput<int>( "C", "c");
+        a = ValueInput&lt;int&gt;( "A", "a");
+        b = ValueInput&lt;int&gt;( "B", "b");
+        c = ValueInput&lt;int&gt;( "C", "c");
 
-        ValueOutput<int>("A+B-C", "d", GetValue);
+        ValueOutput&lt;int&gt;("A+B-C", "d", GetValue);
     }
 
     private int GetValue(BGCalcFlowI flow)
     {
-        return flow.GetValue<int>(a) + flow.GetValue<int>(b) - flow.GetValue<int>(c);
+        return flow.GetValue&lt;int&gt;(a) + flow.GetValue&lt;int&gt;(b) - flow.GetValue&lt;int&gt;(c);
     }
 }
 </code></pre>
@@ -950,6 +950,11 @@ public class AddSubtractUnit : BGCalcUnit
 <p>
     Use the source code package for more nodes example (search for source files, starting with BGCalcUnit prefix)
 </p>
+
+<h4>Examples/Guides</h4>
+<ul>
+    <ol><a href="guide1.html" target="_blank">Iterating nested rows and calculating int field value</a></ol>
+</ul>
             </div>
 
             <!--======================================================       BG Database Footer               -->
