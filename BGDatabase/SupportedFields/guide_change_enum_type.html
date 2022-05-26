@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+
+        <!--======================================================        Content (from Root)              -->
+
+
+
+
+
+        <link rel="stylesheet" href="../../css/bgdatabase.css">
+        <link rel="stylesheet" href="../../css/magnific-popup.css">
+        <script src="../../js/jquery.magnific-popup.min.js"></script>
+
+        <script>
+            $(document).ready(function () {
+                $('.bg-image').magnificPopup({
+                    delegate: 'a',
+                    type: 'image',
+//            gallery:{enabled:true},
+                    closeOnContentClick: true
+                });
+            });
+        </script>
+
+        <!--======================================================       BG Database Header               -->
+
+
+        <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                <div class="bg-main mdl-shadow--3dp">
+                    <div class="bg-main-title">
+                        <h3>The guide for changing enum type name/namespace</h3>
+                    </div>
+
+                    <!--======================================================        BG Database Content              -->
+                    <div id="content">
+                        <h4>Description</h4>
+                        <p>
+                            This guide describe how to change enum type name/namespace, after this enum was used in database enum fields
+                        </p>
+
+                        <h4>Step by step guide</h4>
+                        <ol>
+                            <li>
+                                Let's say you have <code>MyEnum</code> enum, which is used in <code>Test.enumField</code> database field
+                                and you want to rename enum's type name to <code>MyEnumNewName</code>
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_1.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_1.png"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Create the copy of <code>MyEnum</code> enum with some unique name, let's say <code>MyEnumTemp</code>
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_2.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_2.png"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Change database field's enum type (<code>MyEnum</code> -> <code>MyEnumTemp</code>). Save database.
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_3.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_3.png"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Change C# enum type name in your IDE (<code>MyEnum</code> -> <code>MyEnumNewName</code>)
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_4.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_4.png"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Change database field's enum type (<code>MyEnumTemp</code> -> <code>MyEnumNewName</code>). Save database.
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_5.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_5.png"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Delete C# temporary enum <code>MyEnumTemp</code>
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_6.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_6.png"></a>
+                                </div>
+                            </li>
+                        </ol>
+
+                        <h4>Extra tip</h4>
+                        <p>
+                            Use custom Attribute to mark enums, which are used inside database
+                        </p>
+                        <div class="bg-image">
+                            <a href="../../images/BGDatabase/Guide7_7.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_7.png"></a>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10px;">&nbsp;</div>
+
+                    <!--======================================================       BG Database Footer               -->
+                </div>
+
+            </div>
+        </div>
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>
