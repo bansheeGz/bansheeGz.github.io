@@ -51,23 +51,22 @@
     <tr>
         <th>Package description</th>
         <th>Version</th>
+        <th>Unity version</th>
         <th>Link</th>
     </tr>
     <tr>
-        <td>
-            A package with Newtonsoft.Json.dll DLL included.
-            [Attention] Many people already have this DLL included to their projects,
-            Unity version >= 2020 LTS seems to have this DLL installed by default
-            and it leads to duplicate DLL conflict (read more below).
-            If you encounter DLL conflict error, use alternative package or read below about how to get rid of this error
-        </td>
+        <td>The plugin package WITHOUT Newtonsoft.Json.dll</td>
         <td class="ra">1.5</td>
-        <td><a href="../BGDatabaseGoogleSheetsEditor_1.5.unitypackage">download</a></td>
+        <td class="ra">>=2020 LTS</td>
+        <td><a href="../BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.5.unitypackage">download</a></td>
     </tr>
     <tr>
-        <td>This alternative package does NOT have Newtonsoft.Json.dll DLL file included</td>
+        <td>
+            Alternative plugin package WITH Newtonsoft.Json.dll DLL included.
+        </td>
         <td class="ra">1.5</td>
-        <td><a href="../BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.5.unitypackage">download</a></td>
+        <td class="ra">2019 LTS</td>
+        <td><a href="../BGDatabaseGoogleSheetsEditor_1.5.unitypackage">download</a></td>
     </tr>
 </table>
 
@@ -84,23 +83,15 @@
 
 <h4>Resolving Newtonsoft Dlls conflict</h4>
 <p>
-    Some people already have Newtonsoft.Json.dll (JSON.NET) in their project, Unity version >= 2021 seems to have this DLL installed by default,
-    and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API DLLs (which are included in this plugin).
-    The following error is printed to the console in this case:
-    <i><b>PrecompiledAssemblyException: Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included or the current
-    platform. Only one assembly with the same name is allowed per platform.</b></i>
-</p>
-<p>
-    Here is how to resolve this conflict:
+    Unity version >= 2020 LTS seems to have Newtonsoft.Json.dll (JSON.NET) installed by default,
+    and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API DLLs.
+    We provide 2 different packages of the plugin, with and without Newtonsoft.Json.dll.
 </p>
 <ol>
-    <li>Select Newtonsoft.Json.dll, shipped with our package in the Project window, uncheck all platform toggles and hit "Apply" button
-        (alternatively- delete Newtonsoft.Json.dll file)</li>
-    <li>Select all Google Sheets API DLLs, uncheck "Validate references" and hit "Apply" button</li>
+    <li>If you encounter the error  "Newtonsoft.Json.dll can not be found"- use the package with Newtonsoft.Json.dll included.</li>
+    <li>If you encounter the error "Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included for the current platform"-
+        delete installed plugin(Assets\BansheeGz\BGDatabaseGoogleSheetsEditor folder) and import the package without Newtonsoft.Json.dll included.</li>
 </ol>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/download32.png"><img style="width: 400px" src="#path images/BGDatabase/download32.png"></a>
-</div>
 
 <h4>Using source code</h4>
 <p>
