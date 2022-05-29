@@ -13,7 +13,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.4
+            1.5
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -25,7 +25,7 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase (v. >= 1.7.1)
+            <span class="redText">BGDatabase (v. >= 1.7.6)</span>
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone" style="text-align: center">
                 Download links are below &#11015;
@@ -57,26 +57,29 @@
         <td>
             A package with Newtonsoft.Json.dll DLL included.
             [Attention] Many people already have this DLL included to their projects,
-            Unity version >= 2021 seems to have this DLL installed by default
+            Unity version >= 2020 LTS seems to have this DLL installed by default
             and it leads to duplicate DLL conflict (read more below).
             If you encounter DLL conflict error, use alternative package or read below about how to get rid of this error
         </td>
-        <td class="ra">1.4</td>
-        <td><a href="../BGDatabaseGoogleSheetsEditor_1.4.unitypackage">download</a></td>
+        <td class="ra">1.5</td>
+        <td><a href="../BGDatabaseGoogleSheetsEditor_1.5.unitypackage">download</a></td>
     </tr>
     <tr>
-        <td>This alternative package does not have Newtonsoft.Json.dll DLL file included</td>
-        <td class="ra">1.4</td>
-        <td><a href="../BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.4.unitypackage">download</a></td>
+        <td>This alternative package does NOT have Newtonsoft.Json.dll DLL file included</td>
+        <td class="ra">1.5</td>
+        <td><a href="../BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.5.unitypackage">download</a></td>
     </tr>
 </table>
 
 <h4>Setup</h4>
 <ol>
-    <li>Download and import the plugin</li>
+    <li>Download and import this plugin</li>
     <li>Check the Unity console: if you see "Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included on the current platform" error->
         please, read the section below</li>
 </ol>
+<p>
+    Step-by-step guides for setting up GoogleSheet data source is available <a href="../../ThirdParty/GoogleSheets">here</a>
+</p>
 
 
 <h4>Resolving Newtonsoft Dlls conflict</h4>
@@ -127,6 +130,19 @@
         <th>Download</th>
         <th>Dependencies</th>
         <th>Log</th>
+    </tr>
+    <tr>
+        <td class="ra">1.5</td>
+        <td class="ra">May 10, 2022</td>
+        <td><a href="../BGDatabaseGoogleSheetsEditor_1.5.unitypackage">link</a></td>
+        <td>BGDatabase (v. >= 1.7.6)</td>
+        <td>
+            CHANGED: GoogleSheets OAuth 2.0 OOB (out-of-band) flow is deprecated.
+            Read <a href="https://developers.googleblog.com/2022/02/making-oauth-flows-safer.html">this blog post</a> for more information.
+            Loopback IP address is now used instead to receive authorization code.
+            You can find more information <a href="https://developers.google.com/identity/protocols/oauth2/native-app#request-parameter-redirect_uri">here</a>
+            (search for redirect_uri parameter usage)
+        </td>
     </tr>
     <tr>
         <td class="ra">1.4</td>

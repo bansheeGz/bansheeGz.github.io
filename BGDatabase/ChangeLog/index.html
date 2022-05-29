@@ -317,6 +317,24 @@
         <th>Log</th>
     </tr>
     <tr>
+        <td class="ra">May 29, 2022</td>
+        <td class="ra">
+            1.7.6
+        </td>
+        <td>
+            <ol>
+                <li>ADDED "Settings->Enumeration" tool for changing enum types names</li>
+                <li>CHANGED Google Oauth 2.0 authentication flow changed from oob to URL redirect,
+                    cause oob flow is <a href="https://developers.googleblog.com/2022/02/making-oauth-flows-safer.html">deprecated</a>.
+                    Google Sheets <a href="../Downloads/EditorGoogleSheets">plugin</a> is also updated to support new flow
+                </li>
+                <li>CHANGED improved data binders editor GUI</li>
+                <li>FIXED MonoBehaviour classes code generator generate wrong enum types is "Use addon classes" parameter is turned off</li>
+                <li>FIXED NullReferenceException is thrown in FindEntities generated methods if a table has no rows</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
         <td class="ra">May 1, 2022</td>
         <td class="ra">
             1.7.5

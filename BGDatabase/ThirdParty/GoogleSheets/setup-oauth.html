@@ -84,7 +84,10 @@
 
                     <!--======================================================        BG Database Content              -->
                     <div id="content">
-
+                        <h4>Prerequisites</h4>
+                        <p>
+                            Make sure you use BGDatabase version >= 1.7.6 (Settings->Main) and GoogleSheets plug-in version >= 1.5 (Plug-ins->GoogleSheets integration For Editor)
+                        </p>
                         <h4>Create Google client Id</h4>
                         <p>
                             Here is our step-by-step guide how to do it (alternatively use this Google support <a href="https://support.google.com/googleapi/answer/6158849">article</a>)
@@ -146,21 +149,38 @@
                                     <a href="../../../images/BGDatabase/GoogleSheets14.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets14.png"></a>
                                 </div>
                             </li>
-                            <li>Single page will be displayed with single text field. Copy it's value and switch back to Unity
-                                <div class="bg-image">
-                                    <a href="../../../images/BGDatabase/GoogleSheets8.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets8.png"></a>
+                            <li>
+                                [Last step] After that there are 2 possible scenarios:
+                                <h6>Scenario #1</h6>
+                                <div>
+                                    The following page will be displayed in your browser:
+                                    <div class="bg-image">
+                                        <a href="../../../images/BGDatabase/GoogleSheets18.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets18.png"></a>
+                                    </div>
+                                    Close this page and switch back to Unity- tokens values should be updated. Save the settings. The end of the guide.
+                                    <div class="bg-image">
+                                        <a href="../../../images/BGDatabase/GoogleSheets10.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets10.png"></a>
+                                    </div>
                                 </div>
-                            </li>
-
-                            <li>Unity will display a small popup window with single text field. Paste the copied value and press <code>Go!</code>
-                                <div class="bg-image">
-                                    <a href="../../../images/BGDatabase/GoogleSheets9.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets9.png"></a>
-                                </div>
-                            </li>
-
-                            <li>Tokens field will be filled. Save settings
-                                <div class="bg-image">
-                                    <a href="../../../images/BGDatabase/GoogleSheets10.png"><img style="width: 400px; height: 100px"  src="../../../images/BGDatabase/GoogleSheets10.png"></a>
+                                <h6>Scenario #2</h6>
+                                <div>
+                                    The following page will be displayed in your browser:
+                                    <div class="bg-image">
+                                        <a href="../../../images/BGDatabase/GoogleSheets19.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets19.png"></a>
+                                    </div>
+                                    In this case, copy URL from browser to text editor and locate the <code>code</code> HTTP GET parameter value. Copy it to the clipboard (Ctrl+c).
+                                    <div class="bg-image">
+                                        <a href="../../../images/BGDatabase/GoogleSheets20.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets20.png"></a>
+                                    </div>
+                                    Switch back to Unity Editor, click on "I want to enter code manually" button in the "Google token receiver" window and
+                                    paste <code>code</code> value to "Code" parameter and press on "Go!" button
+                                    <div class="bg-image">
+                                        <a href="../../../images/BGDatabase/GoogleSheets21.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets21.png"></a>
+                                    </div>
+                                    Tokens values should be updated. Save the settings.
+                                    <div class="bg-image">
+                                        <a href="../../../images/BGDatabase/GoogleSheets10.png"><img style="width: 400px; height: 100px" src="../../../images/BGDatabase/GoogleSheets10.png"></a>
+                                    </div>
                                 </div>
                             </li>
                         </ol>

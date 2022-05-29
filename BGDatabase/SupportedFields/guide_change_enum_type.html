@@ -86,10 +86,15 @@
                     <div id="content">
                         <h4>Description</h4>
                         <p>
-                            This guide describe how to change enum type name/namespace, after this enum was used in database enum fields
+                            This guide describe how to change enum type name/namespace, after this enum was used in database enum fields.
+                            Two options are available:
                         </p>
+                        <ol>
+                            <li><a href="#option1">Manually</a></li>
+                            <li><a href="#option2">Using "Settings->Enumerations" tool</a></li>
+                        </ol>
 
-                        <h4>Step by step guide</h4>
+                        <h4 id="option1">OPTION #1: Changing enum type manually</h4>
                         <ol>
                             <li>
                                 Let's say you have <code>MyEnum</code> enum, which is used in <code>Test.enumField</code> database field
@@ -126,6 +131,29 @@
                                 Delete C# temporary enum <code>MyEnumTemp</code>
                                 <div class="bg-image">
                                     <a href="../../images/BGDatabase/Guide7_6.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_6.png"></a>
+                                </div>
+                            </li>
+                        </ol>
+
+                        <h4 id="option2">OPTION #2: Using "Settings->Enumerations" tool</h4>
+                        <ol>
+                            <li>Rename enum type/namespace using your IDE</li>
+                            <li>
+                                Switch to BGDatabase window and click on Reload button. Database will not be loaded, cause enum type can not be loaded using old name/namespace
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_8.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_8.png"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Select "Settings->Enumerations" and add enum type name mappings (Old name->New name) for each change.
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_9.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_9.png"></a>
+                                </div>
+                            </li>
+                            <li>
+                                Click on "Reload" button. Once database is loaded, click on both "Clear the mappings" and "Save repo" buttons
+                                <div class="bg-image">
+                                    <a href="../../images/BGDatabase/Guide7_10.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide7_10.png"></a>
                                 </div>
                             </li>
                         </ol>
