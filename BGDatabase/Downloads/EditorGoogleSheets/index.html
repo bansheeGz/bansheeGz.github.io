@@ -377,15 +377,12 @@
 <h4>Setup</h4>
 <ol>
     <li>Download and import this plugin</li>
-    <li>Check the Unity console: if you see "Multiple precompiled assemblies with the same name Newtonsoft.Json.dll included on the current platform" error->
-        please, read the section below</li>
+    <li>Check the Unity console: if you see some error, related to Newtonsoft.Json.dll, read the section below</li>
+    <li>Step-by-step guides for setting up GoogleSheet data source is available <a href="../../ThirdParty/GoogleSheets">here</a></li>
 </ol>
-<p>
-    Step-by-step guides for setting up GoogleSheet data source is available <a href="../../ThirdParty/GoogleSheets">here</a>
-</p>
 
 
-<h4>Resolving Newtonsoft Dlls conflict</h4>
+<h4>Resolving Newtonsoft DLL conflict</h4>
 <p>
     Unity version >= 2020 LTS seems to have Newtonsoft.Json.dll (JSON.NET) installed by default,
     and it conflicts with Newtonsoft.Json.dll, bundled with GoogleSheets API DLLs.
