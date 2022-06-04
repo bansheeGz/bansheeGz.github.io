@@ -15,19 +15,20 @@ and save database content as a part of all saved data (as a byte array field), e
 
 <h4>How can I enable it?</h4>
 Choose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for saving/loading and save the database.
-
-<div>
-    <h4>Examples</h4>
-    <p>
-        The following projects uses SaveLoad addon to save/load data:
-    </p>
-    <ol>
-        <li><a href="../../Downloads/Example3DBasic">Basic 3D example</a></li>
-        <li><a href="../../Downloads/Example2DBasic">Basic 2D example</a></li>
-        <li><a href="../../Downloads/ExampleInventory">Inventory example</a></li>
-        <li><a href="../../Downloads/ExampleLocalization">Localization example</a> (localization addon is required)</li>
-    </ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SaveLoadAddon5.png"><img style="width: 400px" src="#path images/BGDatabase/SaveLoadAddon5.png"></a>
 </div>
+
+<h4>Examples</h4>
+<p>
+    The following projects use SaveLoad addon to save/load runtime data:
+</p>
+<ol>
+    <li><a href="../../Downloads/Example3DBasic">Basic 3D example</a></li>
+    <li><a href="../../Downloads/Example2DBasic">Basic 2D example</a></li>
+    <li><a href="../../Downloads/ExampleInventory">Inventory example</a></li>
+    <li><a href="../../Downloads/ExampleLocalization">Localization example</a> (localization addon is required)</li>
+</ol>
 
 <h4>How it works?</h4>
 <p>
@@ -143,14 +144,14 @@ BGRepo.I.Load(bytes);
         <td>Turn on "Add missing", "Remove Orphaned", "Update matching".</td>
     </tr>
     <tr>
-        <th  rowspan="2">
+        <th rowspan="2">
             Example
         </th>
         <td colspan="2" style="text-align: center;font-size: 12px;">We use our <a href="../../Downloads/Example3DBasic">Basic 3D project</a> as an example</td>
     </tr>
     <tr>
         <td>
-            Rows from <code>Player</code> table can not be added or removed, so we do not turn on  "Add missing" and "Remove Orphaned".
+            Rows from <code>Player</code> table can not be added or removed, so we do not turn on "Add missing" and "Remove Orphaned".
             There is no need to save a <code>name</code> field, so we do not include it into settings
         </td>
         <td>
@@ -175,16 +176,15 @@ BGRepo.I.Load(bytes);
         </td>
     </tr>
 </table>
-    <div class="flexdiv">
-        <div>
-            Read more about:
-            <ol>
-                <li><a href="../../ExportImport#mergeSettings">Merge settings</a></li>
-                <li><a href="../../Downloads/Example3DBasic">Basic 3D example project</a></li>
-            </ol>
-        </div>
+<div class="flexdiv">
+    <div>
+        Read more about:
+        <ol>
+            <li><a href="../../ExportImport#mergeSettings">Merge settings</a></li>
+            <li><a href="../../Downloads/Example3DBasic">Basic 3D example project</a></li>
+        </ol>
     </div>
-
+</div>
 
 
 <h4 id="compatible">How to change your database and keep it compatible with old save files?</h4>
@@ -313,8 +313,6 @@ using BansheeGz.BGDatabase;
         </ol>
     </div>
 </div>
-
-
 
 
 <h4>BeforeSave event</h4>
