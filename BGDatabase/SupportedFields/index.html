@@ -652,14 +652,14 @@
         <td>reference to several rows from one single table</td>
     </tr>
     <tr>
-        <td>manyTableRelationSingle</td>
+        <td><span style="text-decoration:line-through;">manyTableRelationSingle</span></td>
         <td>BGEntity</td>
         <td>reference to one single row from several tables (use field's gear icon to define multiple tables).
             Not recommended, use viewRelationSingle instead
         </td>
     </tr>
     <tr>
-        <td>manyTableRelationMultiple</td>
+        <td><span style="text-decoration:line-through;">manyTableRelationMultiple</span></td>
         <td>List&lt;BGEntity&gt;</td>
         <td>reference to several rows from several tables (use field's gear icon to define multiple tables).
             Not recommended, use viewRelationMultiple instead
@@ -681,25 +681,20 @@
         <td>read-only</td>
     </tr>
     <tr>
-        <td rowspan="4">Unity Scene <a href="#unityscene">#3</a></td>
-        <td>entityReference</td>
-        <td>BGEntityGo</td>
-        <td>not recommended (obsolete), use objectReference instead</td>
-    </tr>
-    <tr>
-        <td>entityListReference</td>
-        <td>List&lt;BGEntityGo&gt;</td>
-        <td>not recommended (obsolete), use objectListReference instead</td>
-    </tr>
-    <tr>
+        <td rowspan="3">Unity Scene <a href="#unityscene">#3</a></td>
         <td>objectReference</td>
         <td>BGWithId</td>
-        <td></td>
+        <td>read-only</td>
     </tr>
     <tr>
         <td>objectListReference</td>
+        <td>List<&lt;>BGWithId&gt;</td>
+        <td>read-only</td>
+    </tr>
+    <tr>
+        <td>objectListMultiValueReference</td>
         <td>List&lt;BGWithId&gt;</td>
-        <td></td>
+        <td>read-only</td>
     </tr>
     <tr>
         <td rowspan="6">Calculated <a href="#calculated">#7</a></td>
@@ -746,8 +741,7 @@
     has <code>country</code> relationSingle field, referencing <code>Countries</code> table.
 </p>
 <div class="bg-image">
-    <a href="../../images/BGDatabase/SupportedFields4.png"><img style="width: 400px"
-                                                                src="../../images/BGDatabase/SupportedFields4.png"></a>
+    <a href="../../images/BGDatabase/SupportedFields4.png"><img style="width: 400px" src="../../images/BGDatabase/SupportedFields4.png"></a>
 </div>
 <p>
     Relational fields differ in terms of how many tables and rows they can reference
@@ -780,12 +774,12 @@
         <td>n</td>
     </tr>
     <tr>
-        <td>manyTablesRelationSingle</td>
+        <td><span style="text-decoration:line-through;">manyTablesRelationSingle</span></td>
         <td>n</td>
         <td>1</td>
     </tr>
     <tr>
-        <td>manyTablesRelationMultiple</td>
+        <td><span style="text-decoration:line-through;">manyTablesRelationMultiple</span></td>
         <td>n</td>
         <td>n</td>
     </tr>
@@ -828,17 +822,55 @@
 </p>
 
 <h4 id="unityscene">Unity Scene Fields (#3)</h4>
-Referencing scene GameObjects using objectReference/objectListReference fields is implemented with the same technique, which is used in
-<a href="https://github.com/Unity-Technologies/guid-based-reference">this Unity project</a>,
+Referencing scene GameObjects using objectReference/objectListReference/objectListMultiValueReference fields is implemented with the same technique, which is used in
+<a href="https://github.com/Unity-Technologies/guid-based-reference">this example Unity project</a>,
 by adding additional component (component name under components menu is "BansheeGz/Id", C# class is BGWithId) with unique ID.
-On Awake method object is added to the internal cache and On OnDestroy method object is removed from the cache.
-There are 2 restrictions, then using these fields:
-<ol>
-    <li>GameObjects can not be resolved before Awake method is called or after OnDestroy method</li>
-    <li>GameObjects can be resolved only at runtime, they will not be resolved from Editor code</li>
-</ol>
-entityReference/entityListReference fields are considered to be obsolete and not recommended anymore (they use UnityObject.FindComponentOfType method and very slow)
-
+BGWithId is a <code>MonoBehaviour</code> component, to access GameObject- use <code>gameObject</code> property.
+On Awake method object is added to the internal cache and On OnDestroy method object is removed from this cache.
+The result depends on which objects are loaded and which objects are not and can differs during play session.
+Here is a table, describing fields features:
+<table class="contentTable">
+    <tr>
+        <th>Feature &#8595\Field &#8594</th>
+        <th>objectReference</th>
+        <th>objectListReference</th>
+        <th>objectListMultiValueReference</th>
+    </tr>
+    <tr>
+        <td>Purpose</td>
+        <td>
+            Return the first loaded GameObject with specified ID
+        </td>
+        <td>
+            Return all loaded GameObjects with specified ID
+        </td>
+        <td>
+            Return all loaded GameObjects with specified IDs
+        </td>
+    </tr>
+    <tr>
+        <td>Internal value</td>
+        <td>
+            Single ID
+        </td>
+        <td>
+            Single ID
+        </td>
+        <td>
+            Multiple ID
+        </td>
+    </tr>
+    <tr>
+        <td>Comments</td>
+        <td>
+        </td>
+        <td colspan="2">
+            These 2 fields differ in terms of how many IDs are used to reference multiple GameObjects.
+            <code>objectListReference</code> field uses the single ID value and returns all loaded GameObjects with this ID.
+            <code>objectListMultiValueReference</code> field uses multiple IDs values and returns all loaded GameObjects with these IDs.
+        </td>
+    </tr>
+</table>
 
 <h4 id="hashtable">Hashtable (#4)</h4>
 <p>
