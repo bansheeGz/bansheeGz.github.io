@@ -891,20 +891,23 @@ Here is a table, describing fields features:
         <a href="https://docs.microsoft.com/en-us/dotnet/api/system.type.fullname?view=net-6.0">Type.FullName</a> property to print enum type name to the console
         <code>Debug.Log(typeof(MyEnum).FullName);</code>
     </li>
-    <li>Once you created your own enum field, you can not change enum type name or namespace, cause they are stored inside database.
-        If you want to rename enum type or namespace, follow <a href="guide_change_enum_type.html" target="_blank">this guide</a>
+    <li>Once you created your own enum field, you can not change enum type name, namespace or underlying type, cause they are stored inside database.
+        If you want to rename enum type or namespace, follow <a href="guide_change_enum_type.html" target="_blank">this guide</a>.
+        If you want to change underlying enum type (int, short, byte),
+        follow <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-10#post-8240025" target="_blank">this guide</a>.
     </li>
     <li>
         Values are stored exactly as C# store them- with numeric value.
         You may consider adding numeric values to your constants so constants reordering does not affect values
+        <div class="bg-image">
+            <a href="../../images/BGDatabase/SupportedFields2.png"><img style="width: 400px" src="../../images/BGDatabase/SupportedFields2.png"></a>
+        </div>
     </li>
 </ol>
 <p>
-    Enums with [Flags] attribute has special GUI, allowing to select several constants
+    Enums with [Flags] attribute has special GUI, allowing to select multiple constants
 </p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/SupportedFields2.png"><img style="width: 400px" src="../../images/BGDatabase/SupportedFields2.png"></a>
-</div>
+
 
 
 <h4 id="unityassets">Unity Asset Fields (#6)</h4>
