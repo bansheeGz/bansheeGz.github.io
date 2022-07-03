@@ -347,11 +347,55 @@
 
 <h4>Description</h4>
 <p>
-    Custom action (BGAddressablesGetAsset under BansheeGz category) for <a href="../../ThirdParty/Playmaker">Playmaker</a>
-    to load Unity assets from Addressables and BGDatabase asynchronously
+    Custom actions (under BansheeGz category) for <a href="../../ThirdParty/Playmaker">Playmaker</a>
+    to load/unload/process Unity assets from Addressables system
 </p>
 
-<h4>Setup: </h4>
+<h4>Available actions:</h4>
+<table class="contentTable dTable">
+    <tr>
+        <th>Action</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>BGAddressablesGetAsset</td>
+        <td>Load an asset from addressables system for specified entity and field. For detailed guide- see the section below</td>
+    </tr>
+    <tr>
+        <td>BGAddressablesReleaseAsset</td>
+        <td>Release the asset loaded from Addressables using
+            <a target="_blank" href="https://docs.unity3d.com/Packages/com.unity.addressables@1.20/api/UnityEngine.AddressableAssets.Addressables.Release.html#UnityEngine_AddressableAssets_Addressables_Release__1___0_">Addressables.Release</a>
+            method
+        </td>
+    </tr>
+    <tr>
+        <td>BGAddressablesGetAssets</td>
+        <td>The same as BGAddressablesGetAsset, but allow to load several assets from several fields</td>
+    </tr>
+    <tr>
+        <td>BGAddressablesSetAsset</td>
+        <td>Set internal Addressables address for specified field and entity.
+            Internal address can be obtained by using LoadLocations/LoadSpriteLocations actions
+        </td>
+    </tr>
+    <tr>
+        <td>BGAddressablesLoadLocations</td>
+        <td>
+            Loads the list of internal addresses (as a string array), using provided key or tag.
+            Internal address can be used as an input for BGAddressablesSetAsset action to set database cell value
+        </td>
+    </tr>
+    <tr>
+        <td>BGAddressablesLoadSpriteLocations</td>
+        <td>
+            Loads the list of internal sprites addresses (as a string array), using provided key or tag.
+            Internal address can be used as an input for BGAddressablesSetAsset action to set database cell value
+        </td>
+    </tr>
+</table>
+
+
+<h4>How to use BGAddressablesGetAsset action: </h4>
 <ol>
     <li>Create UnityEngine.Object variable and assign required type (for example GameObject for prefab field)</li>
     <li>Add new State and add BGAddressablesGetAsset action. Assign required table, field and entity. Use variable, you created at step #1 as Result</li>
@@ -363,12 +407,6 @@
 <div class="bg-image">
     <a href="../../../images/BGDatabase/Addressables2.png"><img style="width: 400px" src="../../../images/BGDatabase/Addressables2.png"></a>
 </div>
-
-<h4>Available actions:</h4>
-<ol>
-    <li>BGAddressablesGetAsset - load asset from addressables system</li>
-    <li>BGAddressablesReleaseAsset- release asset loaded from addressables</li>
-</ol>
 
 <h4>Releases</h4>
 <table class="contentTable dTable">
