@@ -74,8 +74,17 @@
     <li><a href="Downloads">Downloadable</a> plug-ins and example projects</li>
     <li><a href="Addons/LazyLoad">Lazy</a> loading</li>
     <li>Flexible <a href="Misc">event system</a></li>
-    <li>Multithreading is supported with multithreading addon. Some restrictions apply. Read more <a href="Addons/Multithreading">here</a>.</li>
+    <li>Multithreading is partially supported with multithreading addon. Some restrictions apply. Read more <a href="Addons/Multithreading">here</a>.</li>
+</ol>
+
+<h4>Restrictions and limitations:</h4>
+<ol>
     <li>BGDatabase is a client-side database, which runs inside Unity only. <span class="redText">It can not be used in any server environment</span></li>
+    <li>BGDatabase is a in-memory database, which loads the whole data in memory.
+        This means that the size of the database should not be too big.
+        It's really hard to tell what upper limits are, cause different fields have different memory usage,
+        but if you have over 100k-200k rows in total you need to pay attention how big the database file is.
+    </li>
 </ol>
 
 <h4>Learning resources:</h4>
