@@ -80,12 +80,8 @@
 <h4>Restrictions and limitations:</h4>
 <ol>
     <li>BGDatabase is a client-side database, which runs inside Unity only. <span class="redText">It can not be used in any server environment</span></li>
-    <li>BGDatabase is a in-memory database, which loads the whole data in memory.
-        This means that the size of the database should not be too big.
-        It's really hard to tell what the upper limits are, cause different fields have different memory usage
-        and it's possible to create a huge database with only one single cell,
-        but in some cases you may need to pay attention to how big your database file is.
-        Just for the reference- a database with 10 tables with 50 000 rows and 10 int fields each takes ~26Mb on hard drive and starts getting too big for in-memory database.
+    <li>Database data is loaded fully into memory, so at some point the database size can become too big.
+        For example, if database has 10 tables and each table has 50 000 rows and 10 int fields, it takes around 26Mb on hard drive and starts getting too big.
     </li>
 </ol>
 
