@@ -32,7 +32,7 @@
     To resolve the conflict in this case, do the following:
 </p>
 
-<ul>
+<ol>
     <li>Copy your local database to some folder outside of your project</li>
     <li>Resolve the conflict by replacing your local database with the file from source control system</li>
     <li>Open MergeTool and for database#2 field uncheck "Use saved default database" and select previously saved file from Step 1</li>
@@ -40,7 +40,37 @@
     <li>Please, note, in some cases, you need to discuss the changes with your colleague to avoid erasing his/her changes (this could happen if you changed the same row and field).
         Alternatively, you can use Merge Tool to review the changes your colleague made.
     </li>
-</ul>
+</ol>
+
 <p>
     Also, another option for multi-user environment setup is to use <a href="../ThirdParty/GoogleSheets">Google Sheets</a> spreadsheet with lock sheet as primary source of data.
 </p>
+
+<h5>Alternative workflow for merging data</h5>
+<p>
+    You can also use JSON-based approach to merge database data
+</p>
+<ol>
+    <li>Create two JSON data sources under "Export/Import" tab, pointing to two different JSON files (let's say "Local" and "Remote")
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/MergeTool3.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool3.png"></a>
+        </div>
+    </li>
+    <li>
+        Create two corresponding jobs
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/MergeTool4.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool4.png"></a>
+        </div>
+    </li>
+    <li>Once you noticed a merge conflict- export database data using "Local" data source</li>
+    <li>Resolve a conflict by replacing your local database file with the file from source control system</li>
+    <li>Export database data using "Remote" data source</li>
+    <li>Merge the difference from your "local" JSON file into "remote" JSON file using text merging program
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/MergeTool5.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool5.png"></a>
+        </div>
+    </li>
+    <li>Import database data from "remote" JSON file.
+        If something go wrong- rollback the changes by fetching database file from source control and repeat steps 5-7
+    </li>
+</ol>
