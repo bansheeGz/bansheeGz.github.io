@@ -386,6 +386,7 @@
     <li>BGDatabase is a client-side database, which runs inside Unity only. <span class="redText">It can not be used in any server environment</span></li>
     <li>Database data is loaded fully into memory, so at some point the database size can become too big.
         For example, if database has 10 tables and each table has 50 000 rows and 10 int fields, it takes around 26Mb on hard drive and starts getting too big.
+        <a href="Addons/Partition">Partitioning addon</a> can mitigate this problem- but it's not a generic solution
     </li>
 </ol>
 
