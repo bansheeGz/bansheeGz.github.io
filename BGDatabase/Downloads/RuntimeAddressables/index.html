@@ -377,7 +377,7 @@
     <li>Use Unity version &gt; 2018.2</li>
     <li>
         Install Unity's addressables package via package manager, <span class="redFont">version 1.17.17 or higher</span>.
-        If the version you see in the package manager is less than 1.17.17, install the package and 
+        If the version you see in the package manager is less than 1.17.17, install the package and
         use <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-8#post-7175611">this post</a>
         as a guide to install required version manually.
         The list of available releases is <a href="https://forum.unity.com/threads/release-announcements-and-notes.543537/page-2">here</a>
@@ -408,7 +408,8 @@
         Cons: you can not change address after value was assigned to database (without re-assigning asset again)
     </li>
     <li>AddressableByGuid: asset Guid (from meta file) is stored as database value, the asset path can be changed after asset assignment.
-        Cons: Guid is just a set of bytes, it's not readable</li>
+        Cons: Guid is just a set of bytes, it's not readable
+    </li>
 </ol>
 
 <h4>Addressables folders: </h4>
@@ -436,7 +437,8 @@
         <td>1</td>
         <td>The usual way, by retrieving field value (Addressables version >= 1.17 is required).
             In this case assets are loaded synchronously
-            (read more about loading assets synchronously <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.17/manual/SynchronousAddressables.html">here</a>)</td>
+            (read more about loading assets synchronously <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.17/manual/SynchronousAddressables.html">here</a>)
+        </td>
         <td>Yes</td>
     </tr>
     <tr>
@@ -499,6 +501,8 @@
     Notices:
 </p>
 <ol>
+    <li>This solution is optional, you can use a standard approach by pairing asset loading from database with Addressables.ReleaseAsset calls</li>
+    <li>Test/debug the code to make sure assets are unloaded properly using Addressables event viewer and "Use Existing Build" play mode</li>
     <li>we only trace the number of times the asset was loaded via database,
         we can not figure out how much time the asset was loaded outside the database.
     </li>
@@ -515,9 +519,9 @@
     </li>
 </ol>
 
-<h4>Addressables and WEBGL</h4>
+<h4 id="webgl">Addressables and WEBGL</h4>
 <p>
-    Addressables <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.18/manual/SynchronousAddressables.html#webgl">does not support synchronous loading on WEBGL</a>.
+    Addressables <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.20/manual/SynchronousAddressables.html#webgl">does not support synchronous loading on WEBGL</a>.
     If you target WEBGL- use asynchronous options/API only.
 </p>
 
@@ -558,111 +562,115 @@
 
 
 <h4>Releases</h4>
-<table class="contentTable dTable">
-    <tr>
-        <th style="width: 10%">
-            Version
-        </th>
-        <th style="width: 20%">
-            Release date
-        </th>
-        <th style="width: 70%">Log</th>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.3
-        </td>
-        <td class="ra">Dec 22, 2021</td>
-        <td>
-            <ol>
-                <li>Support for releasing loaded assets</li>
-                <li>Min Net version 4.5 -> 4.7.1</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.2
-        </td>
-        <td class="ra">Jun 17, 2021</td>
-        <td>
-            Sub-assets cache is not updated automatically anymore.
-            Sub-assets cache is the cache for assets, located under addressables folders, e.g. for assets,
-            which implicitly added to addressables configuration, cause parent folder is added to addressables
-            Building this cache could be very expensive operation, so we decided to not update it automatically
-            (the cache can be rebuilt manually by pressing on "Update cache" button in value popup window).
-            For more details read "Addressables folders" section above.
+<details>
+    <summary>Click to see all releases</summary>
 
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.1
-        </td>
-        <td class="ra">Apr 17, 2021</td>
-        <td>
-            <ol>
-                <li>Values are now loaded by using AsyncOperationHandle.WaitForCompletion method</li>
-                <li>Preloader script is removed, cause it's not needed anymore (supports for synchronous assets loading is officially added to Addressables)</li>
-            </ol>
+    <table class="contentTable dTable">
+        <tr>
+            <th style="width: 10%">
+                Version
+            </th>
+            <th style="width: 20%">
+                Release date
+            </th>
+            <th style="width: 70%">Log</th>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.3
+            </td>
+            <td class="ra">Dec 22, 2021</td>
+            <td>
+                <ol>
+                    <li>Support for releasing loaded assets</li>
+                    <li>Min Net version 4.5 -> 4.7.1</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.2
+            </td>
+            <td class="ra">Jun 17, 2021</td>
+            <td>
+                Sub-assets cache is not updated automatically anymore.
+                Sub-assets cache is the cache for assets, located under addressables folders, e.g. for assets,
+                which implicitly added to addressables configuration, cause parent folder is added to addressables
+                Building this cache could be very expensive operation, so we decided to not update it automatically
+                (the cache can be rebuilt manually by pressing on "Update cache" button in value popup window).
+                For more details read "Addressables folders" section above.
 
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.0
-        </td>
-        <td class="ra">Sep 19, 2020</td>
-        <td>
-            Versioning reset (unified plugin infrastructure)
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.4
-        </td>
-        <td class="ra">Sep 06, 2020</td>
-        <td>
-            Cache (for entries in folders) update strategy changed to get rid of GUI freezes
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.3
-        </td>
-        <td class="ra">Aug 05, 2020</td>
-        <td>
-            Folders support
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.2
-        </td>
-        <td class="ra">March 06, 2020</td>
-        <td>
-            Update for BGDatabase v.1.5.6
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.1
-        </td>
-        <td class="ra">September 20, 2019</td>
-        <td>
-            Update for BGDatabase v.1.4
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.0
-        </td>
-        <td class="ra">January 09, 2019</td>
-        <td>
-            Initial release
-        </td>
-    </tr>
-</table>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.1
+            </td>
+            <td class="ra">Apr 17, 2021</td>
+            <td>
+                <ol>
+                    <li>Values are now loaded by using AsyncOperationHandle.WaitForCompletion method</li>
+                    <li>Preloader script is removed, cause it's not needed anymore (supports for synchronous assets loading is officially added to Addressables)</li>
+                </ol>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.0
+            </td>
+            <td class="ra">Sep 19, 2020</td>
+            <td>
+                Versioning reset (unified plugin infrastructure)
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                0.1.4
+            </td>
+            <td class="ra">Sep 06, 2020</td>
+            <td>
+                Cache (for entries in folders) update strategy changed to get rid of GUI freezes
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                0.1.3
+            </td>
+            <td class="ra">Aug 05, 2020</td>
+            <td>
+                Folders support
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                0.1.2
+            </td>
+            <td class="ra">March 06, 2020</td>
+            <td>
+                Update for BGDatabase v.1.5.6
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                0.1.1
+            </td>
+            <td class="ra">September 20, 2019</td>
+            <td>
+                Update for BGDatabase v.1.4
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                0.1.0
+            </td>
+            <td class="ra">January 09, 2019</td>
+            <td>
+                Initial release
+            </td>
+        </tr>
+    </table>
+</details>
             </div>
 
             <!--======================================================       BG Database Footer               -->

@@ -52,12 +52,14 @@
 <ol>
     <li>Download this project, unzip it and open it with Unity &gt; 2019 LTS. Ignore console errors.</li>
     <li>Import BGDatabase package</li>
+    <li>If you use Unity 2022, you may see compilation errors in the console. Import "Unity UI" package using Unity package manager</li>
     <li>
         Run <b>scene.unity</b> scene to test reading assets from Addressables.
-        <a href="../RuntimeAddressables#byAddress"  target="_blank">More info</a> about this technique.
+        <a href="../RuntimeAddressables#byAddress" target="_blank">More info</a> about this technique.
     </li>
     <li>[Optional] If you want to build the project to other platforms, make sure to rebuild Addressables after switching platform
-        (Window -> Asset Management -> Addressables -> Groups, Build->New Build->Default Build Script )</li>
+        (Window -> Asset Management -> Addressables -> Groups, Build->New Build->Default Build Script )
+    </li>
 </ol>
 
 <h6>Used techniques: </h6>
@@ -77,54 +79,58 @@
 </ol>
 
 <h4>Releases</h4>
-<table class="contentTable dTable">
-    <tr>
-        <th style="width: 10%">
-            Version
-        </th>
-        <th style="width: 20%">
-            Release date
-        </th>
-        <th style="width: 70%">Log</th>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.3
-        </td>
-        <td class="ra">April 25, 2021</td>
-        <td>
-            <ol>
-                <li>Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.1.1</li>
-                <li>Preloader script is removed as outdated</li>
-            </ol>
+<details>
+    <summary>Click to see all releases</summary>
 
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.2
-        </td>
-        <td class="ra">March 06, 2020</td>
-        <td>
-            Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.0.1.2
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.1
-        </td>
-        <td class="ra">September 20, 2019</td>
-        <td>
-            Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.0.1.1
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.0
-        </td>
-        <td class="ra">January 09, 2019</td>
-        <td>
-            Initial release
-        </td>
-    </tr>
-</table>
+    <table class="contentTable dTable">
+        <tr>
+            <th style="width: 10%">
+                Version
+            </th>
+            <th style="width: 20%">
+                Release date
+            </th>
+            <th style="width: 70%">Log</th>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.3
+            </td>
+            <td class="ra">April 25, 2021</td>
+            <td>
+                <ol>
+                    <li>Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.1.1</li>
+                    <li>Preloader script is removed as outdated</li>
+                </ol>
+
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.2
+            </td>
+            <td class="ra">March 06, 2020</td>
+            <td>
+                Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.0.1.2
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.1
+            </td>
+            <td class="ra">September 20, 2019</td>
+            <td>
+                Update for <a href="../RuntimeAddressables">Addressables plugin</a> v.0.1.1
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.0
+            </td>
+            <td class="ra">January 09, 2019</td>
+            <td>
+                Initial release
+            </td>
+        </tr>
+    </table>
+</details>

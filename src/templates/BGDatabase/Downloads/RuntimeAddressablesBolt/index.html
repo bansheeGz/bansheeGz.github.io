@@ -83,7 +83,8 @@
 <ol>
     <li>Unit requires a Unity Event to be called in coroutine mode. Make sure Unity event has "Coroutine" toggle on</li>
     <li>Add BGAddressablesGetAsset unit. Assign correct meta name, field name and pass correct entity identifier (Index, ID or name).
-        The call may take several frames to load an asset, cause loading is asynchronous</li>
+        The call may take several frames to load an asset, cause loading is asynchronous
+    </li>
     <li>Use "exit" out control to read the asset.</li>
     <li>Use "exitNoWait" out control to continue execution without waiting until asset is loaded (note, the asset is available only after exit control is executed)</li>
 </ol>
@@ -102,67 +103,72 @@
 <ol>
     <li>Requesting an asset loading (using BansheeGz/BGAddressablesGetAssetViaEvent unit)</li>
     <li>Once the asset is loaded, an event is fired (Events/BansheeGz/BGAssetLoadedEvent) with the asset as an argument.
-        Additional information is also provided so the origin of the asset can be identified (table, field, entity, optional eventData object)</li>
+        Additional information is also provided so the origin of the asset can be identified (table, field, entity, optional eventData object)
+    </li>
 </ol>
 <div class="bg-image">
     <a href="#path images/BGDatabase/Addressables5.png"><img style="width: 400px" src="#path images/BGDatabase/Addressables5.png"></a>
 </div>
 
 <h4>Releases</h4>
-<table class="contentTable dTable">
-    <tr>
-        <th style="width: 10%">
-            Version
-        </th>
-        <th style="width: 20%">
-            Release date
-        </th>
+<details>
+    <summary>Click to see all releases</summary>
 
-        <th style="width: 70%">Log</th>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.2
-        </td>
-        <td class="ra">Nov 27, 2020</td>
-        <td>
-            Added additional method of loading assets (via events)
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.1
-        </td>
-        <td class="ra">Oct 18, 2020</td>
-        <td>
-            "exitNoWait" output control is added to allow to continue control flow without waiting
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            1.0
-        </td>
-        <td class="ra">Sep 16, 2020</td>
-        <td>
-            Versioning reset (unified plugin infrastructure)
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.1
-        </td>
-        <td class="ra">July 14, 2020</td>
-        <td>
-            Make use of addressables cache to improve loading assets if unit is called more than once
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">
-            0.1.0
-        </td>
-        <td class="ra">June 19, 2020</td>
-        <td>
-            Initial release
-        </td>
-    </tr>
-</table>
+    <table class="contentTable dTable">
+        <tr>
+            <th style="width: 10%">
+                Version
+            </th>
+            <th style="width: 20%">
+                Release date
+            </th>
+
+            <th style="width: 70%">Log</th>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.2
+            </td>
+            <td class="ra">Nov 27, 2020</td>
+            <td>
+                Added additional method of loading assets (via events)
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.1
+            </td>
+            <td class="ra">Oct 18, 2020</td>
+            <td>
+                "exitNoWait" output control is added to allow to continue control flow without waiting
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.0
+            </td>
+            <td class="ra">Sep 16, 2020</td>
+            <td>
+                Versioning reset (unified plugin infrastructure)
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                0.1.1
+            </td>
+            <td class="ra">July 14, 2020</td>
+            <td>
+                Make use of addressables cache to improve loading assets if unit is called more than once
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">
+                0.1.0
+            </td>
+            <td class="ra">June 19, 2020</td>
+            <td>
+                Initial release
+            </td>
+        </tr>
+    </table>
+</details>

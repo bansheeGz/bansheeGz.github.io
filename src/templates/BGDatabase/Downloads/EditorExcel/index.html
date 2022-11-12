@@ -13,7 +13,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.9
+            1.10
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -25,10 +25,10 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <span class="redText">BGDatabase (v. >= 1.7.1)</span>
+            <span class="redText">BGDatabase (v. >= 1.7.11)</span>
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BGDatabaseExcelEditor_1.9.unitypackage" class="downloadButton"></a>
+            <a href="../BGDatabaseExcelEditor_1.10.unitypackage" class="downloadButton"></a>
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <div class="bg-image">
@@ -74,7 +74,8 @@
     <li>Download required library- NPOI (min version 2.3.0) <a href="https://www.nuget.org/packages/NPOI/2.3.0">here</a>
         and add library DLLs to your project to the Editor assembly (under Editor folder)
         (the following DLLs are required-NPOI.dll, NPOI.OOXML.dll, NPOI.OpenXml4Net.dll,
-        NPOI.OpenXmlFormats.dll, ICSharpCode.SharpZipLib.dll, BouncyCastle.Crypto.dll)</li>
+        NPOI.OpenXmlFormats.dll, ICSharpCode.SharpZipLib.dll, BouncyCastle.Crypto.dll)
+    </li>
     <li>Import source code packages</li>
 </ol>
 <div class="bg-image">
@@ -82,120 +83,137 @@
 </div>
 
 <h4>Releases</h4>
-<table class="contentTable dTable">
-    <tr>
-        <th>Version</th>
-        <th>Release date</th>
-        <th>Download</th>
-        <th>Dependencies</th>
-        <th>Log</th>
-    </tr>
-    <tr>
-        <td class="ra">1.9</td>
-        <td class="ra">Dec 22, 2021</td>
-        <td><a href="../BGDatabaseExcelEditor_1.9.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.7.1)</td>
-        <td>
-            <ol>
-                <li>NPOI library updated (2.5.4 -> 2.5.5) </li>
-                <li>Min NET version 4.5 -> 4.7.1</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.8</td>
-        <td class="ra">Sep 14, 2021</td>
-        <td><a href="../BGDatabaseExcelEditor_1.8.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6.9)</td>
-        <td>
-            <ol>
-                <li>NPOI library updated (2.5.2 -> 2.5.4) </li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.7</td>
-        <td class="ra">Aug 8, 2021</td>
-        <td><a href="../BGDatabaseExcelEditor_1.7.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6.9)</td>
-        <td>
-            <ol>
-                <li>FIXED: empty rows could be added to database under certain conditions (now empty rows are ignored)</li>
-                <li>CHANGED: rows swapping method was rewritten to not use intermediate row</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.6</td>
-        <td class="ra">May 26, 2021</td>
-        <td><a href="../BGDatabaseExcelEditor_1.6.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6.8)</td>
-        <td>
-            <ol>
-                <li>ADDED: rows mapping configuration</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.5</td>
-        <td class="ra">Apr 29, 2021</td>
-        <td><a href="../BGDatabaseExcelEditor_1.5.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6.3)</td>
-        <td>
-            <ol>
-                <li>CHANGED: Float numbers format is changed to G7 </li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.4</td>
-        <td class="ra">Feb 2, 2021</td>
-        <td><a href="../BGDatabaseExcelEditor_1.4.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6.3)</td>
-        <td>
-            <ol>
-                <li>CHANGED: NPOI library upgraded to the latest version (2.3.0 -> 2.5.2)</li>
-                <li>CHANGED: target NET framework (4.5 -> 4.5.1)</li>
-            </ol>
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.3</td>
-        <td class="ra">Dec 6, 2020</td>
-        <td><a href="../BGDatabaseExcelEditor_1.3.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6.3)</td>
-        <td>
-            ADDED: structure extraction wizard
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.2</td>
-        <td class="ra">Oct 28, 2020</td>
-        <td><a href="../BGDatabaseExcelEditor_1.2.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6.2)</td>
-        <td>
-            ADDED: names mapping config
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.1</td>
-        <td class="ra">Sep 26, 2020</td>
-        <td><a href="../BGDatabaseExcelEditor_1.1.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6)</td>
-        <td>
-            FIXED: Xlsx/updateIds on import options are broken
-        </td>
-    </tr>
-    <tr>
-        <td class="ra">1.0</td>
-        <td class="ra">Sep 16, 2020</td>
-        <td><a href="../BGDatabaseExcelEditor_1.0.unitypackage">link</a></td>
-        <td>BGDatabase (v. >= 1.6)</td>
-        <td>
-            Initial release
-        </td>
-    </tr>
-</table>
+<details>
+    <summary>Click to see all releases</summary>
 
+    <table class="contentTable dTable">
+        <tr>
+            <th>Version</th>
+            <th>Release date</th>
+            <th>Download</th>
+            <th>Dependencies</th>
+            <th>Log</th>
+        </tr>
+        <tr>
+            <td class="ra">1.10</td>
+            <td class="ra">Nov 12, 2022</td>
+            <td><a href="../BGDatabaseExcelEditor_1.10.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.7.11)</td>
+            <td>
+                <ol>
+                    <li>Added support for serializing relations values as string/int values, instead of using ID or Name_ID</li>
+                    <li>Performance optimization</li>
+                    <li>CHANGED when rows mapping config with int/string field as ID is used, rows with empty/duplicate ID values are not exported anymore</li>
+                    <li>NPOI library upgrade (2.5.5 -> 2.5.6)</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.9</td>
+            <td class="ra">Dec 22, 2021</td>
+            <td><a href="../BGDatabaseExcelEditor_1.9.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.7.1)</td>
+            <td>
+                <ol>
+                    <li>NPOI library updated (2.5.4 -> 2.5.5)</li>
+                    <li>Min NET version 4.5 -> 4.7.1</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.8</td>
+            <td class="ra">Sep 14, 2021</td>
+            <td><a href="../BGDatabaseExcelEditor_1.8.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6.9)</td>
+            <td>
+                <ol>
+                    <li>NPOI library updated (2.5.2 -> 2.5.4)</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.7</td>
+            <td class="ra">Aug 8, 2021</td>
+            <td><a href="../BGDatabaseExcelEditor_1.7.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6.9)</td>
+            <td>
+                <ol>
+                    <li>FIXED: empty rows could be added to database under certain conditions (now empty rows are ignored)</li>
+                    <li>CHANGED: rows swapping method was rewritten to not use intermediate row</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.6</td>
+            <td class="ra">May 26, 2021</td>
+            <td><a href="../BGDatabaseExcelEditor_1.6.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6.8)</td>
+            <td>
+                <ol>
+                    <li>ADDED: rows mapping configuration</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.5</td>
+            <td class="ra">Apr 29, 2021</td>
+            <td><a href="../BGDatabaseExcelEditor_1.5.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6.3)</td>
+            <td>
+                <ol>
+                    <li>CHANGED: Float numbers format is changed to G7</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.4</td>
+            <td class="ra">Feb 2, 2021</td>
+            <td><a href="../BGDatabaseExcelEditor_1.4.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6.3)</td>
+            <td>
+                <ol>
+                    <li>CHANGED: NPOI library upgraded to the latest version (2.3.0 -> 2.5.2)</li>
+                    <li>CHANGED: target NET framework (4.5 -> 4.5.1)</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.3</td>
+            <td class="ra">Dec 6, 2020</td>
+            <td><a href="../BGDatabaseExcelEditor_1.3.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6.3)</td>
+            <td>
+                ADDED: structure extraction wizard
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.2</td>
+            <td class="ra">Oct 28, 2020</td>
+            <td><a href="../BGDatabaseExcelEditor_1.2.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6.2)</td>
+            <td>
+                ADDED: names mapping config
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.1</td>
+            <td class="ra">Sep 26, 2020</td>
+            <td><a href="../BGDatabaseExcelEditor_1.1.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6)</td>
+            <td>
+                FIXED: Xlsx/updateIds on import options are broken
+            </td>
+        </tr>
+        <tr>
+            <td class="ra">1.0</td>
+            <td class="ra">Sep 16, 2020</td>
+            <td><a href="../BGDatabaseExcelEditor_1.0.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.6)</td>
+            <td>
+                Initial release
+            </td>
+        </tr>
+    </table>
+</details>
 
 

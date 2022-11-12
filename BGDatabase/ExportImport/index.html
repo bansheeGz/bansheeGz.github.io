@@ -407,7 +407,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
                                                              src="../../images/BGDatabase/ExportImport3.png"></a>
 </div>
 
-<h4>Names mapping config</h4>
+<h4>Names mapping config (optional)</h4>
 <p>
     By default naming convention is used to map sheets to tables and columns to fields.
     It can be overridden with names mapping config, which allows to use any names for sheets and columns and map them to tables/fields.
@@ -418,13 +418,30 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
                                                              src="../../images/BGDatabase/ExportImport8.png"></a>
 </div>
 
-<h4>Rows mapping config</h4>
+<h4>Rows mapping config (optional)</h4>
 <p>
-    By default we use _id column in the sheet to keep the link between database row and excel/GoogleSheets row and we recommend to use this default strategy.
-    However additional strategies are also available: you can use int/string field as row's id if you have such columns with unique values or rows indexes
-    (e.g. 1st database row is mapped to 1st sheet row etc.). Use these alternative strategies only if can not use additional _id column.
+    By default we use _id column in the sheet to keep the link between database row and excel/GoogleSheets row and we recommend to use this default approach.
+    However additional approaches are also available: you can use int/string field as row's id if you have such columns with unique values or rows indexes
+    (e.g. 1st database row is mapped to 1st sheet row etc.). Use these alternative strategies only if you can not use additional _id column.
     Rows mapping config is available at datasource page.
 </p>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/ExportImport9.png"><img style="width: 400px"
+                                                             src="../../images/BGDatabase/ExportImport9.png"></a>
+</div>
+
+<h4>References config (optional)</h4>
+<p>
+    References config allows to override how relational fields values are serialized.
+    The recommended(default) option is by using row's ID.
+    Additional options are by any int/string field as ID.
+    The requirements are: the values for such fields should be unique and not empty- so these values could be used to identify the row.
+    The limitations: if relational field allows multiple values- the vertical bar symbol (|) should not be used in field values, cause it's used as values separator
+</p>
+<div class="bg-image">
+    <a href="../../images/BGDatabase/ExportImport10.png"><img style="width: 400px"
+                                                             src="../../images/BGDatabase/ExportImport10.png"></a>
+</div>
 
 <h4>Additional parameters</h4>
 <table  class="contentTable">
@@ -446,7 +463,6 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
         </td>
     </tr>
 </table>
-
 
 <h4 id="firstTime">Running Export/Import for the first time</h4>
 <p>
