@@ -686,7 +686,8 @@ firstRow.LoadAssetAsync(asset => {
     Starting from version 1.6.10, reference classes can be generated optionally.
     These classes allow to reference database rows from your own scripts easily.
     To enable these classes generation- set "Reference class postfix" or "Reference list class postfix" parameters to some valid C# literals (for example _Ref and _ListRef).
-    Two additional classes will be generated- one for referencing a single row and another for referencing multiple rows (from single table)
+    Two additional classes will be generated- one for referencing a single row and another for referencing multiple rows (from single table).
+    If you use Odin inspector, version 3.1.7 has a bug and a wrong Editor drawer being shown in the Inspector- use [DrawWithUnity] attribute as a temporary workaround.
 </p>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/CodeGenExtensionClasses5.png"><img style="width:400px; height: 200px" src="../../../images/BGDatabase/CodeGenExtensionClasses5.png"></a>
