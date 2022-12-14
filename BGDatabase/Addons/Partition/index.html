@@ -314,8 +314,27 @@
 <p>
     Partition addon can be used if you have chunks of data, which is required to be loaded only in specific scenes.
     So you can load this data at scene's loading and unload it on scene unloading, thus reducing memory usage.
-    Basically <span class="redText">it works well only for read-only data</span>, cause when partition is unloaded- the data is deleted (see <a href="#limitations">Restrictions</a> section for more details).
 </p>
+
+<h4 id="limitations">Restrictions</h4>
+<ol>
+    <li>
+        <a href="../SaveLoad">Save load addon</a> does not support saving not loaded partitioned data.
+        Basically partitioning works well only for read-only data, cause when partition is unloaded- the data is deleted
+    </li>
+    <li>
+        There is no way to reorder rows from different partitions, cause partition's data is loaded in specific order.
+        Main database is loaded first, then all the partitions one-by-one, so data will always be sorted by partitions.
+        If you changed partitioning information during editing session, press on "Reload" button after saving database to view actual rows order.
+    </li>
+    <li>
+        Partition addon takes effect only when saving main database in Unity Editor and loading main database at runtime.
+        It has no effect in all other scenarios
+    </li>
+    <li>
+        Make sure, loaded/unloaded data is not referenced from main database part (e.g. no relations fields referencing partition data from main (non-partitioned) database)
+    </li>
+</ol>
 
 <h4>How it works?</h4>
 <p>
@@ -352,25 +371,6 @@
 </div>
 
 
-<h4 id="limitations">Restrictions</h4>
-<ol>
-    <li>
-        <a href="../SaveLoad">Save load addon</a> does not support saving not loaded partitioned data.
-        Basically partitioning works well only for read-only data, cause when partition is unloaded- the data is deleted
-    </li>
-    <li>
-        There is no way to reorder rows from different partitions, cause partition's data is loaded in specific order.
-        Main database is loaded first, then all the partitions one-by-one, so data will always be sorted by partitions.
-        If you changed partitioning information during editing session, press on "Reload" button after saving database to view actual rows order.
-    </li>
-    <li>
-        Partition addon takes effect only when saving main database in Unity Editor and loading main database at runtime.
-        It has no effect in all other scenarios
-    </li>
-    <li>
-        Make sure, loaded/unloaded data is not referenced from main database part (e.g. no relations fields referencing partition data from main (non-partitioned) database)
-    </li>
-</ol>
 
 <h4>Parameters</h4>
 <table class="contentTable">

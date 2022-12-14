@@ -12,6 +12,8 @@
 It's perfectly fine to use BGDatabase as the only solution for saving/loading, but it's a safer option to use a professional Save/Load solution
 and save database content as a part of all saved data (as a byte array field), even if you do not have any other data to save at the moment.
 
+<h4 id="limitations">Restrictions</h4>
+<p>Data inside partitions, created with <a href="../Partition">partitioning addon</a> can not be saved/loaded properly</p>
 
 <h4>How can I enable it?</h4>
 Choose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for saving/loading and save the database.
