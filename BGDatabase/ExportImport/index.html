@@ -407,6 +407,33 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
                                                              src="../../images/BGDatabase/ExportImport3.png"></a>
 </div>
 
+<h4 id="dataExtractionWizard">Using Data Extraction Wizard to import structure(table/fields)</h4>
+<p>Our import job currently does not change database structure, it does not create missing tables/fields, it only transfers rows.
+    Export job creates missing sheets/fields(headers) in Excel file/Google spreadsheet, but import job does not.
+</p>
+<p>To transfer new tables/fields to the database, you can use interactive "Data Extraction Wizard"
+</p>
+<ol>
+    <li>Save database before running the wizard</li>
+    <li>
+        Select your data source and click on "Data extraction wizard"
+        <div class="bg-image">
+            <a href="../../images/BGDatabase/Guide4_6.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide4_6.png"></a>
+        </div>
+    </li>
+    <li>
+        Click on "Read data", review the result, edit names/types if needed and click on "Import"
+        <div class="bg-image">
+            <a href="../../images/BGDatabase/Guide4_7.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide4_7.png"></a>
+        </div>
+    </li>
+    <li>
+        Close the wizard and review the results under "Database" or "Configuration" tab to make sure tables/fields were properly created.
+        Save database if modifications were correctly applied or revert the changes (by pressing on "Reload" button in the top left) if something went wrong.
+    </li>
+</ol>
+
+
 <h4>Names mapping config (optional)</h4>
 <p>
     By default naming convention is used to map sheets to tables and columns to fields.
