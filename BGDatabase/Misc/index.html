@@ -336,7 +336,12 @@
     To assign unity asset field values, use SetAsset method, defined on each unity asset field and available in Editor assembly (this method is not available at runtime assembly)
 </p>
 <pre class="nomargin"><code class="language-csharp">    SetAsset(int entityIndex, UnityEngine.Object asset)</code></pre>
-
+<p>
+    The method is defined at the base Unity asset field, which is BGFieldUnityAssetA&lt;T&gt; (T is the value type), so you need to downcast BGField to this class
+    if you do not use <a href="../Addons/CodeGeneration">CodeGen addon</a>. If you use CodeGen addon,
+    you can access the field directly without need to downcast, using {TableClass}._{fieldName} notation,
+    see more details <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-11#post-8780611">here</a>
+</p>
 
 <h4 id="events">Events</h4>
 
