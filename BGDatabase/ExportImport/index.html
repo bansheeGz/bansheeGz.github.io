@@ -339,7 +339,7 @@
     (click to view additional guides for <a href="../ThirdParty/Excel">Excel/OpenOffice</a> and <a href="../ThirdParty/GoogleSheets">GoogleSheets</a></i>)
 </p>
 
-<h4>General idea</h4>
+<h4 id="dataLayout">General idea</h4>
 Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 <div class="bg-image">
     <a href="../../images/BGDatabase/ExportImport1.png"><img style="width: 400px"
@@ -411,7 +411,8 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 <p>Our import job currently does not change database structure, it does not create missing tables/fields, it only transfers rows.
     Export job creates missing sheets/fields(headers) in Excel file/Google spreadsheet, but import job does not.
 </p>
-<p>To transfer new tables/fields to the database, you can use interactive "Data Extraction Wizard"
+<p>To transfer new tables/fields to the database, you can use interactive "Data Extraction Wizard" if you have the proper data layout
+    (i.e. the first row is the fields names, as described in <a href="#dataLayout">General idea</a> section)
 </p>
 <ol>
     <li>Save database before running the wizard</li>
