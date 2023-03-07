@@ -177,6 +177,7 @@
     Keep in mind, each time you read the asset from the database- you actually read the asset from Addressables system and the counter is increased.
     So to mark the asset as disposable you need to release it as many times as it was loaded
     (test the unloading using Addressables events viewer to make sure the assets are unloaded properly).
+    Use <a href="../AddressablesRelease.zip">this simple test project</a> to see how unloading works
 </p>
 <p>
     We advice to adhere to the approach, described above and also we provide an additional, alternative option to release the assets, which can be used in some very specific scenarios-
