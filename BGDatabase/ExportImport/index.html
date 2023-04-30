@@ -258,6 +258,9 @@
                         <a class="ca" href="../../BGDatabase/Addons/Partition">Partitions</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/Addons/Diagram">Diagram</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../BGDatabase/Addons/Localization">Localization</a>
                     </li>
                 </ul>
@@ -570,6 +573,16 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
             Callbacks to be called before updating the row' field. The same as <code>IUpdateMatchingReceiver</code>,
             but it's called on per field basis. <code>IUpdateMatchingReceiver</code> is called before this callback,
             and if <code>IUpdateMatchingReceiver</code> return true, this callback will never be invoked (cause updating entity will be cancelled by <code>IUpdateMatchingReceiver</code>)
+        </td>
+    </tr>
+    <tr>
+        <td>ISaveLoadAddonSavedEntityFilter</td>
+        <td>
+            <code>bool OnSaveEntity(BGEntity entity)</code>
+        </td>
+        <td>
+            Callback is called by <a href="../Addons/SaveLoad">SaveLoad addon</a> while saving the data for each row.
+            If this method returns true, the row is skipped and not included into saved data
         </td>
     </tr>
 </table>

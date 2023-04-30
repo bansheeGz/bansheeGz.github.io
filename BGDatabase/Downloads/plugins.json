@@ -34,6 +34,10 @@
       "description" :  "Adds support for Addressables. (Addressables version >=1.17.17)",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables",
       "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressables1.3.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "UnityEngine.AddressableAssets.Addressables",
+        "asset" : "Addressables"
+      }],
       "requiredVersion" : "1.7.1"
     },
     {
@@ -57,7 +61,11 @@
       "name" :  "Excel file monitor for Editor",
       "description" :  "Monitor and auto-import Excel file in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcelMonitor",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BansheeGzExcelEditor.unitypackage"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BansheeGzExcelEditor.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "BansheeGz.BGDatabase.Editor.BGExcelService",
+        "asset" : "Excel plugin"
+      }]
     },
     {
       "id" : "DfJvpW8lCEGhloB7LeT6zQ",
@@ -80,7 +88,11 @@
       "name" :  "UI Toolkit binders pack",
       "description" :  "Compound binder for UI toolkit runtime package",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeUIToolkit",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseUIToolkit.unitypackage"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseUIToolkit.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "UnityEditor.Searcher.Searcher",
+        "asset" : "Searcher"
+      }]
     },
     {
       "id" : "Vfg8+Xl+40OZC6l3sV/otA",
@@ -103,7 +115,11 @@
       "name" :  "Playmaker save/load actions",
       "description" :  "Save load actions for Playmaker",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeSaveLoadPlaymaker",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseSaveLoadPlaymaker.unitypackage"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseSaveLoadPlaymaker.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "PlayMakerFSM",
+        "asset" : "Playmaker"
+      }]
     },
     {
       "id" : "d8TAOdtMh0mhPtfjHgi98A",
@@ -114,7 +130,17 @@
       "name" :  "Playmaker Addressables",
       "description" :  "Support for loading addressables assets from Addressables using Playmaker",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressablesPlaymaker",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressablesPlaymaker.unitypackage"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressablesPlaymaker.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "PlayMakerFSM",
+        "asset" : "Playmaker"
+      },{
+        "classToCheck" : "UnityEngine.AddressableAssets.Addressables",
+        "asset" : "Addressables"
+      },{
+        "classToCheck" : "BansheeGz.BGDatabase.Editor.BGAssetLoaderManagerAddressablesDelegate",
+        "asset" : "Addressables plugin"
+      }]
     },
     {
       "id" : "eAAo1eq+xk6azC6br0sRMA",
@@ -136,7 +162,14 @@
       "name" :  "Unity Visual Scripting Addressables",
       "description" :  "Support for loading addressables assets from Addressables using Unity Visual Scripting",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressablesBolt",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressablesUVS.unitypackage"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressablesUVS.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "UnityEngine.AddressableAssets.Addressables",
+        "asset" : "Addressables"
+      },{
+        "classToCheck" : "BansheeGz.BGDatabase.Editor.BGAssetLoaderManagerAddressablesDelegate",
+        "asset" : "Addressables plugin"
+      }]
     },
     {
       "id" : "Qsuu2/AIgE6rEbIJ7txUxA",
@@ -168,7 +201,11 @@
       "name" :  "Flow Canvas save/load nodes",
       "description" :  "Custom nodes for Flow Canvas to support SaveLoad addon",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeSaveLoadFlowCanvas",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseFlowCanvasSaveLoad.unitypackage"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseFlowCanvasSaveLoad.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "FlowCanvas.FlowNode",
+        "asset" : "FlowCanvas"
+      }]
     },
     {
       "id" : "XDcOQxsDYkKNVbJZ0DCoDA",
@@ -179,7 +216,11 @@
       "name" :  "Node Canvas integration",
       "description" :  "Custom actions for Node Canvas",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/NodeCanvas",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseNodeCanvas.unitypackage"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseNodeCanvas.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "NodeCanvas.Framework.ActionTask",
+        "asset" : "NodeCanvas"
+      }]
     },
     {
       "id" : "NJBWhsm/pkSvFWTBSY+ZpQ",

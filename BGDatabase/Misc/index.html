@@ -258,6 +258,9 @@
                         <a class="ca" href="../../BGDatabase/Addons/Partition">Partitions</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../BGDatabase/Addons/Diagram">Diagram</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../BGDatabase/Addons/Localization">Localization</a>
                     </li>
                 </ul>
@@ -321,17 +324,19 @@
 <h4 id="editor">Editor assembly</h4>
 
 <p>
-    Mostly, database works inside Editor assembly the same way as it works at runtime, meaning you can develop your own Editor tools on top of the database
+    Mostly, database works inside Editor assembly the same way as it works at runtime, meaning you can develop your own Editor tools on top of the database.
+    Use generated classes to access database.
 </p>
 <p>
-    Use generated classes to access database. To save database in Editor via C# code, use this call:
+     To save database in Unity Editor via C# code from Editor assembly, use this line:
 </p>
-<pre class="nomargin"><code class="language-csharp">    using BansheeGz.BGDatabase.Editor;
-    //...
-    //save database
-    BGRepoSaver.SaveRepo();
-    //if BGDatabase window is opened- mark database as saved
-    if(BGRepoWindow.Active) BGRepoWindow.Instance.MarkRepoSaved();</code></pre>
+<pre class="nomargin"><code class="language-csharp">    //This will work ONLY inside Unity Editor from Editor Assembly
+    BansheeGz.BGDatabase.Editor.BGRepoSaver.SaveRepo();</code></pre>
+<p>
+     To save database in Unity Editor via C# code from Runtime assembly, use this line:
+</p>
+<pre class="nomargin"><code class="language-csharp">    //This will work ONLY inside Unity Editor from Runtime or Editor Assembly
+    BansheeGz.BGDatabase.BGUtil.SaveDatabaseInUnityEditor();</code></pre>
 <p>
     To assign unity asset field values, use SetAsset method, defined on each unity asset field and available in Editor assembly (this method is not available at runtime assembly)
 </p>

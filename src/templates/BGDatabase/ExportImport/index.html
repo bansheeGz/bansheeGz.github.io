@@ -268,6 +268,16 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
             and if <code>IUpdateMatchingReceiver</code> return true, this callback will never be invoked (cause updating entity will be cancelled by <code>IUpdateMatchingReceiver</code>)
         </td>
     </tr>
+    <tr>
+        <td>ISaveLoadAddonSavedEntityFilter</td>
+        <td>
+            <code>bool OnSaveEntity(BGEntity entity)</code>
+        </td>
+        <td>
+            Callback is called by <a href="../Addons/SaveLoad">SaveLoad addon</a> while saving the data for each row.
+            If this method returns true, the row is skipped and not included into saved data
+        </td>
+    </tr>
 </table>
 <p>
     You can find an example of such controller class on <a href="../Addons/SaveLoad#rowlevelexample">Save/Load</a> addon page.

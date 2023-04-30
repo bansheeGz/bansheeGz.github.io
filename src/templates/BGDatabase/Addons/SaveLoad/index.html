@@ -106,6 +106,9 @@ byte[] bytes = BGRepo.I.Save();
 //to load
 BGRepo.I.Load(bytes);
 </code></pre>
+<p>
+    The above call does not support <a href="../Partition">Partition</a> and <a href="../../../BGLocalization">localization</a> addons currently
+</p>
 
 <h4 id="mergesettings">Using Merge settings</h4>
 <p>
@@ -237,11 +240,9 @@ BGRepo.I.Load(bytes);
 <p>
     The main objective of this example controller is to prevent deleting Collectable rows for added scenes (scenes which was added between public game releases)
 </p>
-<p>
-    Here is the code
-</p>
-<pre class="nomargin"><code class="language-csharp">
-using BansheeGz.BGDatabase;
+<details>
+    <summary>Here is the code</summary>
+    <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
 
     // Warning!!! this controller is implemented without code generation
     //and may contains ugly boilerplate code
@@ -278,8 +279,9 @@ using BansheeGz.BGDatabase;
 
          return false;
      }
- }
-</code></pre>
+ }</code></pre>
+</details>
+
 
 <p>
     To see this controller in action:
@@ -316,11 +318,16 @@ using BansheeGz.BGDatabase;
     </div>
 </div>
 
+<h4 id="rowlevelonSave">Row-level control on saving</h4>
+<p>
+    To filter out rows while saving the data, your C# controller should implement ISaveLoadAddonSavedEntityFilter interface.
+    Method <code>bool OnSaveEntity(BGEntity entity);</code> will be called for every row and it should return true if you want to skip provided row.
+</p>
+
 
 <h4>BeforeSave event</h4>
 You can declare you MonoBehavior script to be a receiver of BeforeSave event, so it could update the database before saving (code from the example project)
-<pre class="nomargin"><code class="language-csharp">
-//this class implement BGAddonSaveLoad.BeforeSaveReciever interface,
+<pre class="nomargin"><code class="language-csharp">//this class implement BGAddonSaveLoad.BeforeSaveReciever interface,
 //so OnBeforeSave method will be called before saving
 public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
 {
@@ -333,18 +340,44 @@ public class BGPlayer : BGM_Player, BGAddonSaveLoad.BeforeSaveReciever
         m_rotation = transform.rotation;
         m_scene = BGE_Scene.FindEntity(scene => string.Equals(scene.Name, SceneManager.GetActiveScene().name));
     }
-}
-</code></pre>
+}</code></pre>
 Note, callback method is called on all loaded objects, including inactive game objects and prefabs.
 Use the following code (at the beginning of your callback function) to filter out inactive game objects and prefabs.
-<pre class="nomargin"><code class="language-csharp">
-        // use the following line to filter out components, attached to inactive GameObjects
+<pre class="nomargin"><code class="language-csharp">        // use the following line to filter out components, attached to inactive GameObjects
         if (!gameObject.activeInHierarchy) return;
 
         // use the following line to filter out prefabs
-        if (!gameObject.scene.IsValid()) return;
-</code></pre>
+        if (!gameObject.scene.IsValid()) return;</code></pre>
 
+<h4 id="additionalConfigs">Additional configs</h4>
+<p>
+    Starting with BGDatabase version 1.8.0, additional optional configs can be created for SaveLoad addon to save/load different data, for example game settings.
+    Here is how to use it:
+</p>
+<ol>
+    <li>Create an additional config with name <code>Settings</code> and include game settings to this config
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SaveLoadAddon6.png"><img style="width: 400px"
+                                                                      src="#path images/BGDatabase/SaveLoadAddon6.png"></a>
+        </div>
+    </li>
+    <li>To save current settings data use this code
+<pre class="nomargin"><code class="language-csharp">    var settingsSave = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save(new BGSaveLoadAddonSaveContext("Settings"));</code></pre>
+    </li>
+    <li>To load game settings on your application startup, use this code
+<pre class="nomargin"><code class="language-csharp">    GRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest("Settings", settingsData)){ReloadDatabase = false});</code></pre>
+    </li>
+    <li>To load saved game using default config, use the following code. Preserve request is required to not lost settings data during main database reloading.
+<pre class="nomargin"><code class="language-csharp">            BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(
+            new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest(BGAddonSaveLoad.DefaultSettingsName, gameSessionData))
+            {
+                //the data for "Settings" config will be saved before database is reloaded and loaded after database reloading
+                PreserveRequests = new List&lt;BGSaveLoadAddonLoadContext.PreserveRequest&gt; { new BGSaveLoadAddonLoadContext.PreserveRequest("Settings") }
+            }
+        );</code></pre>
+    </li>
+
+</ol>
 
 <div>
     <h4>Additional downloads</h4>
