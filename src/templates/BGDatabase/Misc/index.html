@@ -11,6 +11,7 @@
         <li><a href="#commandline">Command line</a></li>
         <li><a href="#customFields">Custom fields</a></li>
         <li><a href="#defaultFieldValue">Default field value</a></li>
+        <li><a href="#cellButtonText">Overriding cell button text</a></li>
     </ol>
 </div>
 
@@ -381,4 +382,60 @@
 </p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/Misc2.png"><img style="width: 400px" src="#path images/BGDatabase/Misc2.png"></a>
+</div>
+
+<h4 id="cellButtonText">Overriding cell button text</h4>
+<p>
+    There is an extension technique, which can be used for overriding cell button text for button-based fields.
+    You can provide C# class or <a href="../GraphEditor">calculation graph</a>, which can return custom text, based on database values.
+    For example, let's say you have a <code>Weapon</code> table with a nested <code>WeaponDamage</code> table and each row of the nested table has
+    <code>power</code> (int) and <code>damageType</code> (singleRelation) fields. The <code>name</code> field for the nested table is disabled and not used.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Misc3.png"><img style="width: 400px" src="#path images/BGDatabase/Misc3.png"></a>
+</div>
+<p>
+    The default button text for the nested table is composed of the nested rows names, but since we do not use the <code>name</code> field, the button caption is
+    <code>[2] [no name] | [no name]</code>, which is not very informative
+</p>
+<p>
+    The solution for this problem is providing your own C# class (or <a href="../GraphEditor">calculation graph</a>), which can be used for button text calculation.
+    Below is the C# class example, which includes the number of related rows with <code>power</code> and <code>damageType</code> fields values to the button text
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Misc4.png"><img style="width: 400px" src="#path images/BGDatabase/Misc4.png"></a>
+</div>
+
+<details>
+    <summary>The C# code for custom button text provider</summary>
+    <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase.Editor;
+
+//this class uses CodeGen addon generated classes
+public class WeaponEffectsButtonText : BGButtonTextProviderI
+{
+    public BGButtonTextResponse GetButtonText(BGButtonTextRequest request)
+    {
+        var response = new BGButtonTextResponse();
+        var entity = (D_Weapon)request.Entity;
+        var damageTypes = entity.WeaponDamage;
+        if (damageTypes == null || damageTypes.Count == 0) response.Text = "No value";
+        else
+        {
+            response.Text += $"[{damageTypes.Count}] ";
+            for (var i = 0; i < damageTypes.Count; i++)
+            {
+                var damageType = damageTypes[i];
+                if (i != 0) response.Text += " | ";
+                response.Text += (damageType.damageType?.name ?? "[not set]") + ": " + damageType.power;
+            }
+        }
+        return response;
+    }
+}</code></pre>
+</details>
+<p>
+    To assign the custom button text provider to your field, use <code>M</code> field's menu and <code>Custom button text provider</code> menu item
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Misc5.png"><img style="width: 400px; height: 200px;" src="#path images/BGDatabase/Misc5.png"></a>
 </div>
