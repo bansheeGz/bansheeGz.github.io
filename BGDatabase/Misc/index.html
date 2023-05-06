@@ -319,6 +319,7 @@
         <li><a href="#customFields">Custom fields</a></li>
         <li><a href="#defaultFieldValue">Default field value</a></li>
         <li><a href="#cellButtonText">Overriding cell button text</a></li>
+        <li><a href="#databaseReferences">Referencing tables, fields, rows and cells from your own MonoBehaviour scripts</a></li>
     </ol>
 </div>
 
@@ -329,12 +330,12 @@
     Use generated classes to access database.
 </p>
 <p>
-     To save database in Unity Editor via C# code from Editor assembly, use this line:
+    To save database in Unity Editor via C# code from Editor assembly, use this line:
 </p>
 <pre class="nomargin"><code class="language-csharp">    //This will work ONLY inside Unity Editor from Editor Assembly
     BansheeGz.BGDatabase.Editor.BGRepoSaver.SaveRepo();</code></pre>
 <p>
-     To save database in Unity Editor via C# code from Runtime assembly, use this line:
+    To save database in Unity Editor via C# code from Runtime assembly, use this line:
 </p>
 <pre class="nomargin"><code class="language-csharp">    //This will work ONLY inside Unity Editor from Runtime or Editor Assembly
     BansheeGz.BGDatabase.BGUtil.SaveDatabaseInUnityEditor();</code></pre>
@@ -408,13 +409,12 @@
     </tr>
     <tr>
         <td>Any change event</td>
-        <td>It is fired on any database change </td>
+        <td>It is fired on any database change</td>
     </tr>
 </table>
 <p>
     For usage example, see this <a href="../Downloads/EventListenersDemo.txt">demo C# script</a>
 </p>
-
 
 
 <h4 id="validation">Validation</h4>
@@ -470,7 +470,7 @@
     <a href="../../images/BGDatabase/Validation1.png"><img style="width: 400px" src="../../images/BGDatabase/Validation1.png"></a>
 </div>
 
-<h6  id="scene">Scene objects validation</h6>
+<h6 id="scene">Scene objects validation</h6>
 <p>
     Following BGDatabase scene components can also be validated (using Scene Explorer tab).
 </p>
@@ -550,7 +550,8 @@
 </p>
 <ol>
     <li>Use <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods (recommended)</a></li>
-    <li>Use basic API. To access the key, use <code>BGMetaEntity.GetKey({keyName})</code> method. To get a row(s), use <code>BGKey.GetEntityByKey</code> or <code>BGKey.GetEntitiesByKey</code> methods</li>
+    <li>Use basic API. To access the key, use <code>BGMetaEntity.GetKey({keyName})</code> method. To get a row(s), use <code>BGKey.GetEntityByKey</code> or <code>BGKey.GetEntitiesByKey</code> methods
+    </li>
     <li>If you use Visual Scripting assets, you can use generated unit/node if it's supported</li>
 </ol>
 
@@ -569,7 +570,7 @@
     Available options to use an index:
 </p>
 <ol>
-    <li>Use <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods  (recommended)</a></li>
+    <li>Use <a href="../CodeGeneration/ExtensionClasses#whatIsGenerated">generated methods (recommended)</a></li>
     <li>Use basic API. To access the index use <code>BGMetaEntity.GetIndex({indexName})</code> method. To query rows use <code>index.FindEntitiesByIndex</code> method</li>
 </ol>
 
@@ -653,7 +654,8 @@
         <ol>
             <li>If your field value can be edited "in place" (like primitive fields: int, float, string)- extend your field's manager class from BGFieldManagerInlinedA class</li>
             <li>If your field value can be edited in popup window, which can be opened by clicking on cell button
-                (like complex fields: bounds, assets)- extend your field's manager class from BGFieldManagerWithButtonA class</li>
+                (like complex fields: bounds, assets)- extend your field's manager class from BGFieldManagerWithButtonA class
+            </li>
         </ol>
     </li>
     <li>
@@ -746,6 +748,267 @@ public class WeaponEffectsButtonText : BGButtonTextProviderI
 <div class="bg-image">
     <a href="../../images/BGDatabase/Misc5.png"><img style="width: 400px; height: 200px;" src="../../images/BGDatabase/Misc5.png"></a>
 </div>
+
+<h4 id="databaseReferences">Referencing tables, fields, rows and cells from your own MonoBehaviour scripts</h4>
+<table class="contentTable">
+    <tr>
+        <th>
+            How to reference a
+        </th>
+        <th>
+            Method
+        </th>
+        <th>
+            Screenshot
+        </th>
+    </tr>
+    <tr>
+        <td rowspan="2">
+            Table
+        </td>
+        <td>
+            Use BGMetaReference class
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="../../images/BGDatabase/Misc6.png"><img style="width: 200px; height: 30px;" src="../../images/BGDatabase/Misc6.png"></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public class Temp : MonoBehaviour
+{
+    public BGMetaReference table;
+
+    private void Start()
+    {
+        BGMetaEntity meta = table.Meta;
+    }
+}
+</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="4">
+            Field
+        </td>
+        <td>
+            Option #1. Use BGFieldReference class
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="../../images/BGDatabase/Misc7.png"><img style="width: 200px; height: 30px;" src="../../images/BGDatabase/Misc7.png"></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public class Temp : MonoBehaviour
+{
+    public BGFieldReference field;
+
+    private void Start()
+    {
+        BGField dbField = field.Field;
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Option #2. Use field reference class, generated by <a href="../Addons/CodeGeneration">CodeGen addon</a>
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="../../images/BGDatabase/Misc8.png"><img style="width: 200px; height: 30px;" src="../../images/BGDatabase/Misc8.png"></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public class Temp : MonoBehaviour
+{
+    //D_Weapon_FieldRef class is generated by CodeGen addon
+    public D_Weapon_FieldRef field;
+
+    private void Start()
+    {
+        BGField dbField = field.Field;
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="8">
+            Row
+        </td>
+        <td>
+            Option #1. Use <a href="../CodeGeneration/MonoBehaviourClasses">MonoBehaviour generated components</a>
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="../../images/BGDatabase/Misc9.png"><img style="width: 200px; height: 30px;" src="../../images/BGDatabase/Misc9.png"></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using UnityEngine;
+
+public class Temp : MonoBehaviour
+{
+    private void Start()
+    {
+        // M_Weapon is a generated class
+        M_Weapon weapon = GetComponent&lt;M_Weapon&gt;();
+        print($"Weapon {weapon.name}");
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Option #2. Use BGEntityGo component (can reference a row from any table but no generated properties/methods)
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="../../images/BGDatabase/Misc10.png"><img style="width: 200px; height: 30px;" src="../../images/BGDatabase/Misc10.png"></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public class Temp : MonoBehaviour
+{
+    private void Start()
+    {
+        BGEntityGo weapon = GetComponent&lt;BGEntityGo&gt;();
+        BGEntity entity = weapon.Entity;
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Option #3. Use classes, generated by <a href="../Addons/CodeGeneration">CodeGen addon</a>
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="../../images/BGDatabase/Misc11.png"><img style="width: 200px; height: 30px;" src="../../images/BGDatabase/Misc11.png"></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using UnityEngine;
+
+public class Temp : MonoBehaviour
+{
+    public D_Weapon_RowRef row;
+
+    private void Start()
+    {
+        // D_Weapon class is also generated by CodeGen addon
+        D_Weapon dbRow = row.Entity;
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Option #4. Use BGEntityReference class
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="../../images/BGDatabase/Misc12.png"><img style="width: 200px; height: 30px;" src="../../images/BGDatabase/Misc12.png"></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public class Temp : MonoBehaviour
+{
+    public BGEntityReference row;
+
+    private void Start()
+    {
+        BGEntity dbRow = row.GetEntity();
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td rowspan="2">
+            Cell
+        </td>
+        <td>
+            Cell includes table, field and row. Use BGCellReference class
+        </td>
+        <td>
+            <div class="bg-image">
+                <a href="../../images/BGDatabase/Misc13.png"><img style="width: 200px; height: 30px;" src="../../images/BGDatabase/Misc13.png"></a>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public class Temp : MonoBehaviour
+{
+    public BGCellReference cell;
+
+    private void Start()
+    {
+        BGEntity dbRow = cell.GetEntity();
+        BGField dbField = cell.Field;
+        print(cell.Value);
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+</table>
             </div>
 
             <!--======================================================       BG Database Footer               -->
