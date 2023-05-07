@@ -1,8 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Page not found</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-1');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BansheeGz is Games and Unity assets Developer.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+    <meta name="google-site-verification" content="Y68B4YnMlKy6bx5mJqgEAQ4adbTzw99-ZQjJJksZrFo"/>
+
+    <title>BansheeGz</title>
 
     <!-- Page styles -->
     <link rel="stylesheet"
@@ -15,9 +32,12 @@
     <link rel="stylesheet" href="css/root.css">
 
     <link rel="icon" type="image/png" href="images/BGIcon.png"/>
-
 </head>
 <body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
 <style>
     #aBox a {
@@ -31,12 +51,18 @@
 </style>
 
 
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
 
     <!--======================================================       Root  Header               -->
     <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row" id="header">
-          <span class="bg-header-title mdl-layout-title">
+          <span style="margin-left: -40px;">
               <a class="bg-header-a" href="/"><img src="images/BGIconBig.png"></a>
           </span>
             <!-- Add spacer, to align navigation to the right in desktop -->
@@ -45,13 +71,15 @@
             <div class="bg-navigation-bag" id="bg-navigation">
                 <nav class="bg-navigation mdl-navigation">
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="BGDatabase">BG_DATABASE</a>
+                       href="BGDatabase">BG`Database</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="BGLocalization">BG_LOCALIZATION</a>
+                       href="BGLocalization">BG`Localization</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="BGCurve">BG_CURVE</a>
+                       href="BGCurve">BG`Curve</a>
+                    <!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+                    <!--                       href="BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="BGCurve/BGSplineColliders">BG_SPLINE_COLLIDERS</a>
+                       href="Blog">Blog</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
                        href="Support">Support</a>
                 </nav>
@@ -66,21 +94,62 @@
                 <li class="mdl-menu__item"><a href="BGLocalization">BG Localization</a></li>
                 <li class="mdl-menu__item"><a href="BGCurve">BG Curve</a></li>
                 <li class="mdl-menu__item"><a href="Support">Support</a></li>
-                <li class="mdl-menu__item"><a href="About">About Us</a></li>
             </ul>
         </div>
     </div>
 
+    <!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+    <!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+                <b>
+                    MESSAGE HERE
+            </b>
+        </div>-->
 
-    <div style="min-height: 5px;background-color: #CCCCCC"></div>
+    <div class="mdl-layout__content">
+        <a name="top"></a>
 
+        <!--======================================================        Content (from Root)              -->
 
-    <!--Content-->
+        <div style="height: 10px"></div>
+        <img src="./images/404.jpg" alt="Not found" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
+        <div style="width:150px; margin:0 auto;">
+            <a href="http://www.bansheegz.com">Return to main page</a>
+        </div>
 
-    <div style="height: 10px"></div>
-    <img src="images/404.jpg" alt="Not found" style="display: block;margin-left: auto;margin-right: auto;width: 50%;">
-    <div style="width:150px; margin:0 auto;">
-        <a href="http://www.bansheegz.com">Return to main page</a>
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
     </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
 </body>
 </html>
