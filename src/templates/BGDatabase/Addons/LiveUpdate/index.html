@@ -322,8 +322,13 @@
             Set it to true if you do not want this addon to be executed automatically.
             In this case, you will need to manually trigger the loading by calling
             <pre>
+BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load();
+</pre>
+            OR
+            <pre>
 BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load(true);
 </pre>
+            if you want to enable local cache for downloaded data to prevent several remote data loading
         </td>
     </tr>
     <tr>
