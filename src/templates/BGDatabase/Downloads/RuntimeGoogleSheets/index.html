@@ -68,7 +68,7 @@
 -->
 
 
-<h4>Setup:</h4>
+<h4>Setup (Mono)</h4>
 <ol>
     <li>Install BGDatabase (version >= 1.5.11)</li>
     <li>Install <a href="../EditorGoogleSheets">GoogleSheets Editor</a> plugin</li>
@@ -124,6 +124,20 @@
         and <code>BGGoogleSheetsManagerGo.Import</code> methods from your own scripts.
         Note, the task runs on separate thread and may take several frames to complete.
     </li>
+</ol>
+
+<h4>Setup (IL2CPP)</h4>
+<p>tested with Unity 2022 LTS</p>
+<ol>
+    <li>Switch to NetStandard 2.1 API level
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/download55.png"><img src="#path images/BGDatabase/download55.png"></a>
+        </div>
+    </li>
+    <li>Install BGDatabase (version >= 1.5.11)</li>
+    <li>Uninstall <a href="../EditorGoogleSheets">this plugin</a> if it's installed</li>
+    <li>Install <a href="../GH_IL2CPP_Runtime.unitypackage">this package</a></li>
+    <li>See the Mono setup guide (above) for setting up BGGoogleSheetsManagerGo script</li>
 </ol>
 
 <h4>Releases</h4>
