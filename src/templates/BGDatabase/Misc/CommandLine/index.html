@@ -1,0 +1,39 @@
+#set pageHeader=Command line guide
+
+<p>
+    Command line utility (Settings->Command line) let you run DDL-like commands with simplified syntax.
+</p>
+<p>
+    Syntax is (use empty line to separate commands):
+</p>
+<pre>
+    COMMAND [Options]
+    [Additional options]
+</pre>
+<p>
+    Available commands:
+</p>
+<ol>
+    <li>CREATE TABLE [TableName]<br>
+        [FieldName] [FieldType]
+    </li>
+    <li>ALTER TABLE [TableName]<br>
+        ADD [FieldName] [FieldType]<br>
+        DROP [FieldName]
+    </li>
+    <li>DROP TABLE [TableName]</li>
+</ol>
+<p>
+    Example:
+</p>
+<pre>
+    CREATE TABLE MyTable
+    MyField1 int
+    MyField2 bool
+
+    ALTER TABLE MyTable
+    ADD MyField3 int
+    DROP MyField1
+
+    DROP TABLE MyTable
+</pre>

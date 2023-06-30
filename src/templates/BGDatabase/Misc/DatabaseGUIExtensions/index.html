@@ -1,0 +1,46 @@
+#set pageHeader=Extending Database GUI
+
+<h4 id="guiExt">Database GUI extensions</h4>
+<p>
+    If you want to add your own utilities to database GUI, you can do this.
+    Custom menus can be created for table, field, row or for the whole database.
+    You need to create your own C# class, inherit it from specific class and place your script under Editor assembly (see the examples below).
+    The menu items placement is shown on the screenshot below.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Misc14.png"><img style="width: 400px" src="#path images/BGDatabase/Misc14.png"></a>
+</div>
+
+<details>
+    <summary>Code example</summary>
+    <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using BansheeGz.BGDatabase.Editor;
+using UnityEditor;
+
+//custom menu item for table
+public class CustomMetaMenu : BGMenuItemMetaDefault
+{
+    public override string GetMenuName(BGMetaEntity meta) => $"Custom menu for table {meta.Name}";
+    public override void Run(BGMetaEntity meta) => EditorUtility.DisplayDialog("Information", $"Custom menu for {meta.Name} table clicked!", "Ok");
+}
+
+//custom menu item for field
+public class CustomFieldMenu : BGMenuItemFieldDefault
+{
+    public override string GetMenuName(BGField field) => $"Custom menu for field {field.Name}";
+    public override void Run(BGField field) => EditorUtility.DisplayDialog("Information", $"Custom menu for {field.Name} field clicked!", "Ok");
+}
+//custom menu item for entity
+public class CustomEntityMenu : BGMenuItemEntityDefault
+{
+    public override string GetMenuName(BGEntity entity) => $"Custom menu for row {entity.Name}";
+    public override void Run(BGEntity entity) => EditorUtility.DisplayDialog("Information", $"Custom menu for {entity.Name} row clicked!", "Ok");
+}
+
+//custom menu item for repo
+public class CustomRepoMenu : BGMenuItemRepoDefault
+{
+    public override string GetMenuName(BGRepo repo) => $"Custom menu for DB";
+    public override void Run(BGRepo repo) => EditorUtility.DisplayDialog("Information", $"Custom menu for DB clicked!", "Ok");
+}</code></pre>
+</details>

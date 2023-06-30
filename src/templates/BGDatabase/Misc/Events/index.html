@@ -1,0 +1,65 @@
+#set pageHeader=Events guide
+
+<p>
+    Events let use listen to database changes, like changing the field or entity, adding or removing entities. Make sure
+</p>
+<ol>
+    <li>To pair adding a listener with removing a listener to prevent memory leaks</li>
+    <li>all events handlers have try/catch block to <a href="https://stackoverflow.com/a/8745599">prevent exception being fired from event handlers</a></li>
+</ol>
+<p>
+    Following events are available:
+</p>
+<table class="contentTable">
+    <tr>
+        <th width="20%">
+            Event
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Field value changed</td>
+        <td>It is fired when provided field value change (any entity)</td>
+    </tr>
+    <tr>
+        <td>Entity is updated</td>
+        <td>It is fired when provided entity value change (any field)</td>
+    </tr>
+    <tr>
+        <td>Entity is deleted</td>
+        <td>It is fired when provided entity deleted</td>
+    </tr>
+    <tr>
+        <td>Any entity is updated</td>
+        <td>It is fired when any entity updated (any field)</td>
+    </tr>
+    <tr>
+        <td>Any entity is added</td>
+        <td>It is fired when new entity is added</td>
+    </tr>
+    <tr>
+        <td>Any entity is deleted</td>
+        <td>It is fired when any entity deleted</td>
+    </tr>
+    <tr>
+        <td>Before any entity deleted</td>
+        <td>It is fired before any entity is deleted</td>
+    </tr>
+    <tr>
+        <td>Batch update event</td>
+        <td>Batch update event is fired when BGRepo.I.Events.Batch(Action action); method is used.
+            When this method is used, no individual events will be fired while action is being executed
+            and one single batch event will be fired when action is executed.
+            This is required for performance's sake when massive changes to database should be done without firing individual events
+        </td>
+    </tr>
+    <tr>
+        <td>Any change event</td>
+        <td>It is fired on any database change</td>
+    </tr>
+</table>
+<p>
+    For usage example, see this <a href="../../Downloads/EventListenersDemo.txt">demo C# script</a>
+</p>
