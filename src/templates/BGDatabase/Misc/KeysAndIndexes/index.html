@@ -1,17 +1,22 @@
 #set pageHeader=Keys and indexes guide
 
 
+<h6>What are the keys and indexes</h6>
+<p>
+    FindEntity and FindEntities methods can be used to search any row(s) with any condition(s).
+    But they are slow, cause they iterate the rows one by one.
+    To address this problem keys and indexes were introduced.
+</p>
 <ol>
-    <li>Key consist of 1-n fields and can be used to look up row(s) quickly.
+    <li>A key consists of 1-n fields and can be used to look up row(s) quickly.
         It also can be used in rows <a href="../Validation">validation</a>
     </li>
     <li>
-        Index has a reference to a single field and can be used for effective range scan
+        An index has a reference to a single field and can be used for effective range scan
     </li>
 </ol>
-<p>
-    Here is a table, comparing different row(s) retrieval methods efficiency
-</p>
+
+<h6>Different row(s) retrieval methods efficiency comparison</h6>
 <table class="contentTable dTable">
     <tr>
         <th>Method</th>
