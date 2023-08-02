@@ -174,7 +174,7 @@
                         <a class="ca" href="../../BGDatabase/GraphEditor">Graph Editor</a>
                     </li>
                     <li class="cli  plic ">
-                        <a class="ca" href="../../BGDatabase/MergeTool">Merge Tool</a>
+                        <a class="ca" href="../../BGDatabase/MergeTool">Merge Tools</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../BGDatabase/Misc">Misc</a>
@@ -302,60 +302,72 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>MergeTool</h3>
+                <h3>Merge Tools</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
+
+<style>
+    .green {
+        background-color: #eefadd !important;
+    }
+
+    .red {
+        background-color: #f8d2dc !important;
+    }
+</style>
+
 <h4>Description</h4>
 
 <p>
-    Merge tool let you overview and selectively apply changes from one database to another.
+    Merge tools let you overview and apply changes from one database to another.
+    Currently there are 2 different tools- 2-way and 3-way merging, read detailed guides below for more information
 </p>
 
-<h4>How to use</h4>
-<ul>
-    <li>Select Merge tool tab</li>
-    <li>Choose both databases. For simplicity sake, you always apply changes from database #2 to database #1</li>
-    <li>Review the changes. In detailed view you can see every single change</li>
-    <li>Apply the changes you want to apply and save database # 1</li>
-</ul>
+<h4>2-Way merge vs 3-Way merge</h4>
+<table class="contentTable">
+    <tr>
+        <th></th>
+        <th>2-way</th>
+        <th>3-way</th>
+    </tr>
+    <tr>
+        <td>Number of databases</td>
+        <td>2</td>
+        <td>3</td>
+    </tr>
+    <tr>
+        <td>Auto-merging</td>
+        <td class="red">No</td>
+        <td class="green">Yes</td>
+    </tr>
+    <tr>
+        <td>Special requirements</td>
+        <td class="green">None</td>
+        <td class="red">
+            <ol>
+                <li>Databases #1 and #2 both should originate from database #0</li>
+                <li>Databases #1 should be a direct child of database #0</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>Suited for</td>
+        <td>Any scenario</td>
+        <td>Multi-user environment with Version Control system</td>
+    </tr>
+    <tr>
+        <td>Guides</td>
+        <td><a href="2Way">2-Way merge guide</a></td>
+        <td><a href="3Way">3-Way merge guide</a></td>
+    </tr>
+</table>
 
-<div class="bg-image">
-    <a href="../../images/BGDatabase/MergeTool1.png"><img style="width: 400px" src="../../images/BGDatabase/MergeTool1.png"></a>
-</div>
 
-<div class="bg-image">
-    <a href="../../images/BGDatabase/MergeTool2.png"><img style="width: 400px" src="../../images/BGDatabase/MergeTool2.png"></a>
-</div>
-
-<h4>Using MergeTool in multi-user environment</h4>
-<p>
-    If you have more than one developer, who can edit database values in your project, you can use MergeTool to resolve conflicts.
-</p>
-<p>
-    Let's say you changed the database and want to commit the changes to your source control system (Unity Version Control/Git/Perforce/etc.),
-    however you see that database file was already changed by somebody else.
-    To resolve the conflict in this case, do the following:
-</p>
-
-<ol>
-    <li>Copy your local database to some folder outside of your project</li>
-    <li>Resolve the conflict by replacing your local database with the file from source control system and reload database</li>
-    <li>Open MergeTool and for database#2 field uncheck "Use saved default database" and select previously saved file from Step 1</li>
-    <li>Review your changes and apply them</li>
-    <li>Please, note, in some cases, you need to discuss the changes with your colleague to avoid erasing his/her changes (this could happen if you changed the same row and field).
-        Alternatively, you can use Merge Tool to review the changes your colleague made.
-    </li>
-</ol>
-
-<p>
-    Also, another option for multi-user environment setup is to use <a href="../ThirdParty/GoogleSheets">Google Sheets</a> spreadsheet with lock sheet as primary source of data.
-</p>
-
-<h5>Alternative workflow for merging data</h5>
+<h4>Alternative workflows for merging data</h4>
 <p>
     You can also use JSON-based approach to merge database data
 </p>
@@ -382,6 +394,9 @@
     <li>Import database data from "remote" JSON file.</li>
     <li>If something went wrong- rollback the changes (by fetching database file from source control and reloading database) and repeat steps 5-7</li>
 </ol>
+<p>
+    Also, another option for multi-user environment setup is to use <a href="../ThirdParty/GoogleSheets">Google Sheets</a> spreadsheet with lock sheet as primary source of data.
+</p>
             </div>
 
             <!--======================================================       BG Database Footer               -->

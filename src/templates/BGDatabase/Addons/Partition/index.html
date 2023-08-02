@@ -8,8 +8,8 @@
 
 <h4>Why use it?</h4>
 <p>
-    Partition addon can be used if you have chunks of data, which is required to be loaded only in specific scenes.
-    So you can load this data at scene's loading and unload it on scene unloading, thus reducing memory usage.
+    Partition addon can be used if you have chunks of data, which is required to be loaded only in specific scenes/scenarios.
+    So you can load this data at some event (like scene's loading) and unload it on another event (like scene unloading), thus reducing memory usage.
 </p>
 
 <h4 id="limitations">Restrictions</h4>
@@ -43,29 +43,79 @@
         //to unload a partition (partition can be index/name/ID)
         BGRepo.I.Addons.Get&lt;BGAddonPartition&gt;().Unload(partition);</code></pre>
 
-<h4>Unloading/releasing addressables assets</h4>
-<p>
-    We provide an option to release/unload partition assets while unloading a partition with additional setup (read more <a href="../../Downloads/RuntimeAddressables">here</a>)
+<h4>Setup guide</h4>
+<p>Use Partition addon Editor GUI to enable/disable partitioning support for individual tables.
+Tables with partitioning support has a "dbPartition" field with certain supported field type to reference partition
 </p>
-
-<h4>Partition configuration</h4>
-<p>
-    Addon uses naming convwebglention for creating partitions and marking rows as belonging to a particular partition.
-    The rules are:
-</p>
-<ol>
-    <li>To create partitions, create a meta with name "DbPartition". Each row means a separate partition</li>
-    <li>To "move" rows to some partition, create "dbPartition" field with type(byte or short or int or relationSingle [related=DbPartition])
-        and assign some value to it.
-        For numeric fields, you need to assign partition index (1- based, value 0 meaning "no partition", value 1 meaning 1st partition etc.) .
-        For relation field- connect row to a DbPartition rows.
-    </li>
-</ol>
-<p>Alternatively, use Partition addon Editor GUI to create configuration fields</p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/PartitionAddon1.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/PartitionAddon1.png"></a>
 </div>
 
+<ol>
+    <li>After enabling addon, a meta with name "DbPartition" is auto-created.
+        Each row of this table means a separate partition
+    </li>
+    <li>
+        If you want to "move" some table rows to some partition, "dbPartition" field is required with certain type (read more about field type below)
+        You can create this field by clicking on "Enable" button in "NonPartitionedMetas" table
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/PartitionAddon2.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/PartitionAddon2.png"></a>
+        </div>
+    </li>
+    <li>
+        Then you need to assign some valid value to this field to "move" the whole row to a certain partition.(the example below for byte? field)
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/PartitionAddon3.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/PartitionAddon3.png"></a>
+        </div>
+    </li>
+</ol>
+
+<h4>Supported field types</h4>
+<p>
+    To mark the row as belonging to some partition we use the field with name "dbPartition" and certain supported field type.
+    Use the table below to understand the differences and how values are used
+</p>
+<table class="contentTable">
+    <tr>
+        <th>
+            Field type ↓
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>relationSingle</td>
+        <td>
+            Standard single row relation, referencing DbPartition table.
+            No value- non partitioned, any other value means it belong to a partition, it's referencing.
+        </td>
+    </tr>
+    <tr>
+        <td>byte?, short?, int?</td>
+        <td>
+            Nullable number fields. No value- non partitioned, otherwise a physical index of partition, the row belongs to
+        </td>
+    </tr>
+    <tr>
+        <td>byte, short, int</td>
+        <td>
+            Simple number fields. 0- non partitioned, otherwise a physical index of partition, the row belongs to + 1.
+            So 0 means non partitioned, 1 means the first partition (partition with index=0) etc.
+        </td>
+    </tr>
+</table>
+<p>
+   There is also a tool available (under "Tools" tab), which migrates existing nullable fields(byte?, short?, int?) to non nullable ones (byte, short, int) and vice versa.
+</p>
+
+
+
+
+<h4>Unloading/releasing addressables assets</h4>
+<p>
+    We provide an option to release/unload partition assets while unloading a partition with additional setup (read more <a href="../../Downloads/RuntimeAddressables">here</a>)
+</p>
 
 
 <h4>Parameters</h4>
@@ -81,7 +131,8 @@
     <tr>
         <td>Disable temporarily</td>
         <td>
-            Temporarily disable addon without deleting corresponding configuration data (e.g. DbPartition table etc.)
+            Temporarily disable addon without deleting corresponding configuration data (e.g. DbPartition table etc.).
+            With addon temporarily disabled, the whole data is saved into main database file and partitioned files are ignored.
         </td>
     </tr>
 </table>

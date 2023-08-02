@@ -1,0 +1,61 @@
+#set pageHeader=2-way merge tool
+
+<style>
+    .green {
+        background-color: #eefadd !important;
+    }
+
+    .red {
+        background-color: #f8d2dc !important;
+    }
+</style>
+
+<h5>Description</h5>
+
+<p>
+    2-way merge tool let you overview and selectively apply changes from one database to another.
+</p>
+
+
+<h5>How to use</h5>
+<ol>
+    <li>Select "Merge" tab -> 2-Way</li>
+    <li>For simplicity sake, database #1 is always your saved database and you always apply changes from database #2 to database #1</li>
+    <li>
+        Set database #2 path.
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/MergeTool1.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool1.png"></a>
+        </div>
+        If you use localization or partition addons and you copy database files manually (without using Copy button),
+        you need to copy all localization and partition files to destination folder as well as main database file (bansheegz_database.bytes)
+    </li>
+    <li>
+        Start the merging process and review the changes.
+        In detailed view you can see every single change.
+        Use red buttons to transfer atomic changes from DB#2 to DB#1 or use "Apply" button to transfer several changes at once
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/MergeTool2.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool2.png"></a>
+        </div>
+    </li>
+    <li>Once you applied all the changes, save all changes by saving database or revert all changes by reloading database (in case something went wrong)</li>
+</ol>
+
+<h5>Using 2-way merge tool in multi-user environment</h5>
+<p>
+    You can use 2-way merge to resolve conflict in multi-user environment with Version Control system (Unity Plastic SCM/Perforce/Git etc.),
+    however <a href="../3Way">3-way merge</a> has advantages in this scenario
+</p>
+<p>
+    Conflicts occur when 2 different users modify database simultaneously.
+    Here is how to use 2 way merge to resolve these conflicts
+</p>
+<ol>
+    <li>Copy your local database to some folder outside of your project</li>
+    <li>Resolve the conflict by replacing your local database with the file from source control system and reload database</li>
+    <li>Open MergeTool and select database#2 path. Use the previously saved file from Step 1</li>
+    <li>Review your changes and apply them</li>
+    <li>
+        In some cases, you need to discuss the changes with your colleague to avoid erasing his/her changes (this could happen if you changed the same row and field).
+    </li>
+</ol>
+
