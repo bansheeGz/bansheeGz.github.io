@@ -173,13 +173,13 @@
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/GraphEditor">Graph Editor</a>
                     </li>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGDatabase/MergeTool">Merge Tools</a>
                     </li>
                     <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
                     </li>
-                    <li class="cli downloadicon  plic ">
+                    <li class="cli downloadicon ">
                         <a class="ca" href="../../../BGDatabase/Downloads">Downloads</a>
                     </li>
                 </ul>
@@ -302,29 +302,21 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Downloads</h3>
+                <h3>Merge Tools</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
-            
+            <div style="margin-top: -45px; display: flow">
+    <a class="backToDownloads" href="../">< Back to Merge tools</a>
+</div>
 
-<!--
-<script src="../../../js/jquery.background-video.js"></script>
-<link rel="stylesheet" href="../../../css/jquery.background-video.css">
--->
+<h4>Unity Version Control (Plastic SCM)</h4>
+
+
+
 
 <style>
-    .ra {
-        text-align: right;
-        vertical-align: top;
-    }
-
-    .la {
-        text-align: right;
-        vertical-align: top;
-    }
-
     .green {
         background-color: #eefadd !important;
     }
@@ -334,396 +326,94 @@
     }
 </style>
 
+<h5>Description</h5>
 
-<!--
-<div style="height: 400px;">
-    <video data-bgvideo="true" class="my-background-video jquery-background-video" loop autoplay muted playsinline poster="../../../images/BGDatabase/download6.gif">
-        <source src="../../../video/download6.mp4" type="video/mp4">
-        &lt;!&ndash;
-                <source src="path/to/video.webm" type="video/webm">
-                <source src="path/to/video.ogv" type="video/ogg">
-        &ndash;&gt;
-    </video>
-</div>
--->
-
-<a class="backToDownloads" href="../">< Back to downloads</a>
+<p>
+    Unity Version Control (Plastic SCM) integration code retrieves databases from Version Control system and launches <a href="../3Way">3-Way merge tool</a>.
+    Integration is built on top of Plastic SCM command line interface (CLI).
+</p>
 
 
-<div class="bg-main-contacts">
-
-    <div class="bg-main-contacts_grid mdl-grid">
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <h4>BGDatabase Lite</h4>
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Version:
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.8.4 (latest) (<a href="../../ChangeLog" target="_blank">change log</a>)
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Format:
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Unity package
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            Dependencies:
-        </div>
-        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            None (Unity version >= 2020 LTS)
-        </div>
-        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BGDatabaseLite1.8.3.unitypackage" class="downloadButton"></a>
-        </div>
-    </div>
-</div>
-<div>
-    <img class="centered" src="../../../images/BGDatabase/download6.gif">
-</div>
-
-
-<h4>Description</h4>
-Basic free version of the package with following features:
+<h5>Setup</h5>
 <ol>
-    <li>Creating and editing database (except addons)</li>
-    <li>Creating and editing of delta files for <a href="../../Addons/Modding">Modding addon</a></li>
+    <li>Install <a href="https://www.plasticscm.com/download">Plastic SCM desktop client</a> ( cloud edition will do just fine)</li>
+    <li>Make sure <code>cm</code> command is accessible from command line.<br/>
+        <ol>
+            <li>
+                On Windows, add <code>{installation folder}/client</code> folder to your PATH variable.
+                Run <code>cm version</code> or <code>cm location</code> commands in your command line (cmd) to make sure setup is correct
+            </li>
+            <li>
+                On MacOS, make sure cm command is accessible using this absolute path <code>/usr/local/bin/cm</code> (installer should create a proper file in this location).
+                Run <code>/usr/local/bin/cm version</code> or <code>/usr/local/bin/cm location</code> commands in your command line (terminal) to make sure setup is correct<br/>
+            </li>
+        </ol>
+    </li>
 </ol>
 
-<h4>End-user license agreement</h4>
+<h5>How to use</h5>
 <ol>
-    <li>"BGDatabase Lite" package is free for non-commercial use only</li>
-    <li>If you own BGDatabase package you can include "BGDatabase Lite" package to your game SDK to support modding</li>
+    <li>Once you detected a conflict in Plastic SCM, select Merge->PlasticSCM</li>
+    <li>Review current databases status. The article about <a href="../3Way">3-Way merge</a> provides more information about databases.
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/PlasticSCM1.png"><img style="width: 400px" src="../../../images/BGDatabase/PlasticSCM1.png"></a>
+        </div>
+    </li>
+    <li>Database #0 and #1 locations can not be changed, however Database #2 location is customizable (read more details below)
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/PlasticSCM2.png"><img style="width: 400px" src="../../../images/BGDatabase/PlasticSCM2.png"></a>
+        </div>
+    </li>
+    <li>
+        Make sure database #0 and #2 locations are correct.
+        The tool uses calculated changeset numbers to retrieve databases.
+        Make sure these changeset numbers are calculated properly
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/PlasticSCM5.png"><img style="width: 400px" src="../../../images/BGDatabase/PlasticSCM5.png"></a>
+        </div>
+    </li>
+    <li>
+        Start merging process.
+        Database #0 and Database #2 files will be retrieved from Version Control system
+        and 3-Way merge tool will start. Read more about 3-Way merge tool <a href="../3Way">here</a>
+    </li>
+    <li>
+        Review the modifications after the merge tool has finished under "Database" tab.
+        Press on "Reload" button to revert the changes or "Save repo" to save the changes.
+    </li>
+    <li>
+        After successful merge, resolve Plastic SCM conflict by accepting local database file(s).
+    </li>
 </ol>
 
-<h4>Features comparison</h4>
-<table class="contentTable dTable">
-    <tr>
-        <th>
-        </th>
-        <th>
-            BGDatabase Lite
-        </th>
-        <th>BGDatabase</th>
-    </tr>
-    <tr>
-        <td>
-            Create/write/read tables/fields/rows in Unity Editor and at runtime
-        </td>
-        <td class="green">Yes</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            <a href="../../DataBinding">Data binders</a>
-        </td>
-        <td class="green">Yes</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            Creating delta files for <a href="../../Addons/Modding">modding addon</a>
-        </td>
-        <td class="green">Yes</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            Commercial use
-        </td>
-        <td class="red">No</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            <a href="../../Addons">Addons</a> usage
-        </td>
-        <td class="red">No</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            <a href="../../ExportImport">Export/import from/to Excel/Google Sheets</a>
-        </td>
-        <td class="red">No</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            <a href="../../CodeGeneration">Code generation</a>
-        </td>
-        <td class="red">No</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            <a href="../../ThirdParty/Bolt">Bolt</a>,
-            <a href="../../ThirdParty/Playmaker">Playmaker</a> and
-            <a href="../../ThirdParty/FlowCanvas">Flow Canvas</a> support
-        </td>
-        <td class="red">No</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            <a href="../../MergeTool">Merge tools</a>
-        </td>
-        <td class="red">No</td>
-        <td class="green">Yes</td>
-    </tr>
-    <tr>
-        <td>
-            Source code included
-        </td>
-        <td class="red">No</td>
-        <td class="green">Yes</td>
-    </tr>
-</table>
+<h5>Database #2 location customization</h5>
+<p>
+    By default the latest changeset in the current branch is used as database #2 location.
+    You can override this location and use branch name, changeset number or label to set custom location.
+    After providing custom location, press on "Refresh state" button to refresh the state
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/PlasticSCM3.png"><img style="width: 400px" src="../../../images/BGDatabase/PlasticSCM3.png"></a>
+</div>
+<p>
+    Also, if database files folder was moved, you can provide a custom server folder.
+    Make sure custom server folder path starts with <code>/</code> symbol and no trailing <code>/</code> symbol is present,
+    for example <code>/Assets/Resources</code>
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/PlasticSCM4.png"><img style="width: 400px" src="../../../images/BGDatabase/PlasticSCM4.png"></a>
+</div>
 
-<h4>Releases</h4>
-<details>
-    <summary>Click to see all releases</summary>
+<h5>Limitations</h5>
+<p>
+    If you use localization or partition addons:
+</p>
+<ol>
+    <li>Always include all database files into the changeset.</li>
+    <li>Make sure only one person in your team is authorized to enable/disable these addons or add new locale for localization addon.</li>
+</ol>
 
-    <table class="contentTable dTable">
-        <tr>
-            <th>
-                Release date
-            </th>
-            <th>
-                Download
-            </th>
-        </tr>
-        <tr>
-            <td class="ra">Aug 16, 2023</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.8.5.unitypackage">version 1.8.5</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Aug 2, 2023</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.8.4.unitypackage">version 1.8.4</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">July 10, 2023</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.8.3.unitypackage">version 1.8.3</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">July 02, 2023</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.8.2.unitypackage">version 1.8.2</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">May 22, 2023</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.8.1.unitypackage">version 1.8.1</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Dec 23, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.12.unitypackage">version 1.7.12</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Nov 08, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.11.unitypackage">version 1.7.11</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Sep 14, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.10.unitypackage">version 1.7.10</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Aug 26, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.9.unitypackage">version 1.7.9</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Aug 03, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.8.unitypackage">version 1.7.8</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Jun 20, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.7.unitypackage">version 1.7.7</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">May 24, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.6.unitypackage">version 1.7.6</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">May 1, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.5.unitypackage">version 1.7.5</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Apr 1, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.4.unitypackage">version 1.7.4</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Feb 8, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.3.unitypackage">version 1.7.3</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Jan 11, 2022</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.2.unitypackage">version 1.7.2</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Dec 22, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.1.unitypackage">version 1.7.1</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Nov 11, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.7.0.unitypackage">version 1.7.0</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Aug 23, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.10.unitypackage">version 1.6.10</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Jun 17, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.9.unitypackage">version 1.6.9</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">May 26, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.8.unitypackage">version 1.6.8</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Apr 25, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.7.unitypackage">version 1.6.7</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Apr 05, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.6.unitypackage">version 1.6.6</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Mar 22, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.5.unitypackage">version 1.6.5</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Jan 23, 2021</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.4.unitypackage">version 1.6.4</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Dec 06, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.3.unitypackage">version 1.6.3</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Oct 28, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.2.unitypackage">version 1.6.2</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Oct 04, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.1.unitypackage">version 1.6.1</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Sep 21, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.6.unitypackage">version 1.6</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">August 24, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.13.unitypackage">version 1.5.13</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">August 14, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.12.unitypackage">version 1.5.12</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">July 24, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.11.unitypackage">version 1.5.11</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">July 06, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.10.unitypackage">version 1.5.10</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">June 07, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.9.unitypackage">version 1.5.9</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">May 07, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.8.unitypackage">version 1.5.8</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">March 28, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.7.unitypackage">version 1.5.7</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">March 3, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.6.unitypackage">version 1.5.6</a>
-            </td>
-        </tr>
-        <tr>
-            <td class="ra">Feb 6, 2020</td>
-            <td class="ra">
-                <a href="../BGDatabaseLite1.5.5.unitypackage">version 1.5.5</a>
-            </td>
-        </tr>
-    </table>
-</details>
+<a class="backToDownloads" style="margin-top: 10px;" href="../">< Back to Merge tools</a>
             </div>
 
             <!--======================================================       BG Database Footer               -->

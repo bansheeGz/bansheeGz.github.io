@@ -1,0 +1,98 @@
+#set pageHeader=Unity Version Control (Plastic SCM)
+
+<style>
+    .green {
+        background-color: #eefadd !important;
+    }
+
+    .red {
+        background-color: #f8d2dc !important;
+    }
+</style>
+
+<h5>Description</h5>
+
+<p>
+    Unity Version Control (Plastic SCM) integration code retrieves databases from Version Control system and launches <a href="../3Way">3-Way merge tool</a>.
+    Integration is built on top of Plastic SCM command line interface (CLI).
+</p>
+
+
+<h5>Setup</h5>
+<ol>
+    <li>Install <a href="https://www.plasticscm.com/download">Plastic SCM desktop client</a> ( cloud edition will do just fine)</li>
+    <li>Make sure <code>cm</code> command is accessible from command line.<br/>
+        <ol>
+            <li>
+                On Windows, add <code>{installation folder}/client</code> folder to your PATH variable.
+                Run <code>cm version</code> or <code>cm location</code> commands in your command line (cmd) to make sure setup is correct
+            </li>
+            <li>
+                On MacOS, make sure cm command is accessible using this absolute path <code>/usr/local/bin/cm</code> (installer should create a proper file in this location).
+                Run <code>/usr/local/bin/cm version</code> or <code>/usr/local/bin/cm location</code> commands in your command line (terminal) to make sure setup is correct<br/>
+            </li>
+        </ol>
+    </li>
+</ol>
+
+<h5>How to use</h5>
+<ol>
+    <li>Once you detected a conflict in Plastic SCM, select Merge->PlasticSCM</li>
+    <li>Review current databases status. The article about <a href="../3Way">3-Way merge</a> provides more information about databases.
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/PlasticSCM1.png"><img style="width: 400px" src="#path images/BGDatabase/PlasticSCM1.png"></a>
+        </div>
+    </li>
+    <li>Database #0 and #1 locations can not be changed, however Database #2 location is customizable (read more details below)
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/PlasticSCM2.png"><img style="width: 400px" src="#path images/BGDatabase/PlasticSCM2.png"></a>
+        </div>
+    </li>
+    <li>
+        Make sure database #0 and #2 locations are correct.
+        The tool uses calculated changeset numbers to retrieve databases.
+        Make sure these changeset numbers are calculated properly
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/PlasticSCM5.png"><img style="width: 400px" src="#path images/BGDatabase/PlasticSCM5.png"></a>
+        </div>
+    </li>
+    <li>
+        Start merging process.
+        Database #0 and Database #2 files will be retrieved from Version Control system
+        and 3-Way merge tool will start. Read more about 3-Way merge tool <a href="../3Way">here</a>
+    </li>
+    <li>
+        Review the modifications after the merge tool has finished under "Database" tab.
+        Press on "Reload" button to revert the changes or "Save repo" to save the changes.
+    </li>
+    <li>
+        After successful merge, resolve Plastic SCM conflict by accepting local database file(s).
+    </li>
+</ol>
+
+<h5>Database #2 location customization</h5>
+<p>
+    By default the latest changeset in the current branch is used as database #2 location.
+    You can override this location and use branch name, changeset number or label to set custom location.
+    After providing custom location, press on "Refresh state" button to refresh the state
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/PlasticSCM3.png"><img style="width: 400px" src="#path images/BGDatabase/PlasticSCM3.png"></a>
+</div>
+<p>
+    Also, if database files folder was moved, you can provide a custom server folder.
+    Make sure custom server folder path starts with <code>/</code> symbol and no trailing <code>/</code> symbol is present,
+    for example <code>/Assets/Resources</code>
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/PlasticSCM4.png"><img style="width: 400px" src="#path images/BGDatabase/PlasticSCM4.png"></a>
+</div>
+
+<h5>Limitations</h5>
+<p>
+    If you use localization or partition addons:
+</p>
+<ol>
+    <li>Always include all database files into the changeset.</li>
+    <li>Make sure only one person in your team is authorized to enable/disable these addons or add new locale for localization addon.</li>
+</ol>
