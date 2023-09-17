@@ -69,7 +69,13 @@
 </table>
 
 
-<h4>Alternative workflows for merging data</h4>
+<h4>Alternative workflow for merging data #1</h4>
+<p>
+    If you can split tables between developers, so each developer modify his own set of tables, you can use <a href="../Addons/Partition/Vertical">partitioning addon</a>
+    with vertical data splitting.
+</p>
+
+<h4>Alternative workflow for merging data #2</h4>
 <p>
     You can also use JSON-based approach to merge database data
 </p>
@@ -96,6 +102,8 @@
     <li>Import database data from "remote" JSON file.</li>
     <li>If something went wrong- rollback the changes (by fetching database file from source control and reloading database) and repeat steps 5-7</li>
 </ol>
+
+<h4>Alternative workflow for merging data #3</h4>
 <p>
-    Also, another option for multi-user environment setup is to use <a href="../ThirdParty/GoogleSheets">Google Sheets</a> spreadsheet with lock sheet as primary source of data.
+    Also, another option for multi-user environment setup is to use <a href="../ThirdParty/GoogleSheets">Google Sheets</a> spreadsheet data as primary source of data.
 </p>

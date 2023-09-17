@@ -1,0 +1,42 @@
+#set pageHeader=Vertical partitions
+
+<h4>Description</h4>
+<p>
+    Vertical partitioning allows to store tables rows in different files.
+    These files are automatically loaded on database loading.
+    If horizontal partitioning is also enabled, it takes precedence over vertical partitioning,
+    i.e. rows are slitted first and then tables are split
+</p>
+
+<h4>Why use it?</h4>
+<p>
+    If you have several developers in your team and if you can make an agreement, that each of them edit only certain tables data exclusively,
+    you can split database file into several files (one for each developer) and update data without using <a href="../../../MergeTool">merge tools</a>
+    Note, that database structure is always stored in main database file (bansheegz_database.bytes),
+    so it makes sense to assign one person responsible for updating database structure
+</p>
+
+<h4>Setup</h4>
+<ol>
+    <li>Enable partition addon if it's not enabled</li>
+    <li>
+        Enable vertical partitioning
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/PartitionAddon4.png"><img style="width:150px; height: 75px" src="#path images/BGDatabase/PartitionAddon4.png"></a>
+        </div>
+    </li>
+    <li>
+        After that, <code>DbPartitionVertical</code> table will be created with nested field.
+        Each row of this table represents a separate partition
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/PartitionAddon6.png"><img style="width:150px; height: 75px" src="#path images/BGDatabase/PartitionAddon6.png"></a>
+        </div>
+    </li>
+    <li>To add tables to partition, click on <code>DbPartitionVerticalMetas</code> nested field button
+        and add a separate row for each table you want to add to partition
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/PartitionAddon7.png"><img style="width:150px; height: 75px" src="#path images/BGDatabase/PartitionAddon7.png"></a>
+        </div>
+    </li>
+    <li>That's it, next time you save database- data will be split between different partitions files</li>
+</ol>

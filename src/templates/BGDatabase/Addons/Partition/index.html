@@ -1,121 +1,53 @@
 #set page=Partitions add-on
+#set _skipTemplate=true
 
 <h4>Description</h4>
 <p>
-    Partitioning addon let you split database into several files.
-    All non-marked rows will be stored in the main database file and all marked rows will be stored in the corresponding partition file.
+    Partitioning addon let you split database into several files either horizontally (on rows basis) or vertically (on tables basis).
+    Read in-depth guides below for more details
 </p>
 
-<h4>Why use it?</h4>
-<p>
-    Partition addon can be used if you have chunks of data, which is required to be loaded only in specific scenes/scenarios.
-    So you can load this data at some event (like scene's loading) and unload it on another event (like scene unloading), thus reducing memory usage.
-</p>
-
-<h4 id="limitations">Restrictions</h4>
-<ol>
-    <li>
-        <a href="../SaveLoad">Save load addon</a> does not support saving not loaded partitioned data.
-        Basically partitioning works well only for read-only data, cause when partition is unloaded- the data is deleted
-    </li>
-    <li>
-        There is no way to reorder rows from different partitions, cause partition's data is loaded in specific order.
-        Main database is loaded first, then all the partitions one-by-one, so data will always be sorted by partitions.
-        If you changed partitioning information during editing session, press on "Reload" button after saving database to view actual rows order.
-    </li>
-    <li>
-        Partition addon takes effect only when saving main database in Unity Editor and loading main database at runtime.
-        It has no effect in all other scenarios
-    </li>
-    <li>
-        Make sure, loaded/unloaded data is not referenced from main database part (e.g. no relations fields referencing partition data from main (non-partitioned) database)
-    </li>
-</ol>
-
-<h4>How it works?</h4>
-<p>
-    At runtime- only main database file is loaded automatically.
-    Partition files are loaded/unloaded manually from C# scripts
-</p>
-<pre class="nomargin"><code class="language-csharp">        //to load a partition (partition can be index/name/ID)
-        BGRepo.I.Addons.Get&lt;BGAddonPartition&gt;().Load(partition);
-
-        //to unload a partition (partition can be index/name/ID)
-        BGRepo.I.Addons.Get&lt;BGAddonPartition&gt;().Unload(partition);</code></pre>
-
-<h4>Setup guide</h4>
-<p>Use Partition addon Editor GUI to enable/disable partitioning support for individual tables.
-Tables with partitioning support has a "dbPartition" field with certain supported field type to reference partition
-</p>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/PartitionAddon1.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/PartitionAddon1.png"></a>
-</div>
-
-<ol>
-    <li>After enabling addon, a meta with name "DbPartition" is auto-created.
-        Each row of this table means a separate partition
-    </li>
-    <li>
-        If you want to "move" some table rows to some partition, "dbPartition" field is required with certain type (read more about field type below)
-        You can create this field by clicking on "Enable" button in "NonPartitionedMetas" table
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/PartitionAddon2.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/PartitionAddon2.png"></a>
-        </div>
-    </li>
-    <li>
-        Then you need to assign some valid value to this field to "move" the whole row to a certain partition.(the example below for byte? field)
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/PartitionAddon3.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/PartitionAddon3.png"></a>
-        </div>
-    </li>
-</ol>
-
-<h4>Supported field types</h4>
-<p>
-    To mark the row as belonging to some partition we use the field with name "dbPartition" and certain supported field type.
-    Use the table below to understand the differences and how values are used
-</p>
+<h4>Horizontal vs vertical partitioning</h4>
 <table class="contentTable">
     <tr>
         <th>
-            Field type ↓
         </th>
         <th>
-            Description
+            Horizontal
+        </th>
+        <th>
+            Vertical
         </th>
     </tr>
     <tr>
-        <td>relationSingle</td>
-        <td>
-            Standard single row relation, referencing DbPartition table.
-            No value- non partitioned, any other value means it belong to a partition, it's referencing.
-        </td>
+        <td>Main purpose</td>
+        <td>Split database data into several files and load/unload data at runtime manually to reduce memory usage</td>
+        <td>Split database data into several files in multi-user environment to get rid of data merging</td>
     </tr>
     <tr>
-        <td>byte?, short?, int?</td>
-        <td>
-            Nullable number fields. No value- non partitioned, otherwise a physical index of partition, the row belongs to
-        </td>
+        <td>Based on</td>
+        <td>rows</td>
+        <td>tables</td>
     </tr>
     <tr>
-        <td>byte, short, int</td>
-        <td>
-            Simple number fields. 0- non partitioned, otherwise a physical index of partition, the row belongs to + 1.
-            So 0 means non partitioned, 1 means the first partition (partition with index=0) etc.
-        </td>
+        <td>Loaded automatically</td>
+        <td>No</td>
+        <td>Yes</td>
+    </tr>
+    <tr>
+        <td>File name format</td>
+        <td>bansheegz_database_p_{ID}.bytes" </td>
+        <td>bansheegz_database_v_{ID}.bytes" </td>
+    </tr>
+    <tr>
+        <td>Read in-depth guide</td>
+        <td><a href="Horizontal">READ</a></td>
+        <td><a href="Vertical">READ</a></td>
     </tr>
 </table>
-<p>
-   There is also a tool available (under "Tools" tab), which migrates existing nullable fields(byte?, short?, int?) to non nullable ones (byte, short, int) and vice versa.
-</p>
-
-
-
-
-<h4>Unloading/releasing addressables assets</h4>
-<p>
-    We provide an option to release/unload partition assets while unloading a partition with additional setup (read more <a href="../../Downloads/RuntimeAddressables">here</a>)
-</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/PartitionAddon8.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/PartitionAddon8.png"></a>
+</div>
 
 
 <h4>Parameters</h4>
@@ -133,6 +65,7 @@ Tables with partitioning support has a "dbPartition" field with certain supporte
         <td>
             Temporarily disable addon without deleting corresponding configuration data (e.g. DbPartition table etc.).
             With addon temporarily disabled, the whole data is saved into main database file and partitioned files are ignored.
+            You can temporarily disable horizontal and vertical partitioning separately or disable all at once
         </td>
     </tr>
 </table>

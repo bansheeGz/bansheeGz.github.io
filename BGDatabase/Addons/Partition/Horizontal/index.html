@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-7');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../BGCurve">BG`Curve</a>
+<!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+<!--                       href="../../../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+<!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                MESSAGE HERE
+        </b>
+    </div>-->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <!--======================================================        Content (from Root)              -->
+        
+
+
+
+
+<link rel="stylesheet" href="../../../../css/bgdatabase.css">
+<link rel="stylesheet" href="../../../../css/magnific-popup.css">
+<script src="../../../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul id="leftmenu">
+            <li class="pli databaseicon ">
+                <script async src="https://cse.google.com/cse.js?cx=e1930f586f83c4862">
+                </script>
+                <div class="gcse-searchbox-only"></div>
+                <a class="pa" href="../../../../BGDatabase">BG Database Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Setup">Setup</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/HowToUse">How to use</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GUIOverview">GUI overview</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GUITips">GUI tips and tricks</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeExamples">Code Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/SupportedFields">Field types</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ExportImport">Export Import</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/DataBinding">Data Binding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GraphEditor">Graph Editor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/MergeTool">Merge Tools</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Misc">Misc</a>
+                    </li>
+                    <li class="cli downloadicon ">
+                        <a class="ca" href="../../../../BGDatabase/Downloads">Downloads</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/CodeGeneration">Code Generation</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior Classes</a>
+                    </li>
+<!--
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
+                    </li>
+-->
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/ThirdParty">Third-Party Integration</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Excel">Excel</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/FlowCanvas">Flow Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/NodeCanvas">Node Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/BehaviorDesigner">Behavior Designer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/UNode">UNode</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/GameCreator">Game Creator</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/Addons">Addons</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/SaveLoad">Save Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Multithreading">Multithreading</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Modding">Modding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Settings">Settings</a>
+                    </li>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Partition">Partitions</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Diagram">Diagram</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Localization">Localization</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../../../BGDatabase">BG BGDatabase Home</a>
+        <a class="pa" href="../../../../BGDatabase/Setup">Setup</a>
+        <a class="pa" href="../../../../BGDatabase/HowToUse">How To Use</a>
+        <a class="pa" href="../../../../BGDatabase/Videos">Videos</a>
+        <a class="pa" href="../../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
+        <a class="pa" href="../../../../BGDatabase/SupportedFields">Fields</a>
+        <a class="pa" href="../../../../BGDatabase/ExportImport">Export Import</a>
+        <a class="pa" href="../../../../BGDatabase/DataBinding">Data Binding</a>
+        <a class="pa" href="../../../../BGDatabase/Events">Events</a>
+        <a class="pa" href="../../../../BGDatabase/CodeGeneration">Code Generation</a>
+        <a class="pa" href="../../../../BGDatabase/Addons">Addons</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Partitions add-on</h3>
+            </div>
+
+            <!--======================================================        BG Database Content              -->
+            <div id="content">
+            <div style="margin-top: -45px; display: flow">
+    <a class="backToDownloads" href="../">< Back to main article</a>
+</div>
+
+<h5>Horizontal partitions</h5>
+
+
+
+
+<h4>Description</h4>
+<p>
+    Horizontal partitioning allows to store different rows into different files.
+    These files are not automatically loaded at runtime, they need to be loaded/unloaded from C# scripts
+</p>
+
+<h4>Why use it?</h4>
+<p>
+    Partition addon can be used if you have chunks of data, which is required to be loaded only in specific scenes/scenarios.
+    So you can load this data at some event (like scene's loading) and unload it on another event (like scene unloading), thus reducing memory usage.
+</p>
+
+<h4 id="limitations">Restrictions</h4>
+<ol>
+    <li>
+        <a href="../SaveLoad">Save load addon</a> does not support saving not loaded partitioned data.
+        Basically partitioning works well only for read-only data, cause when partition is unloaded- the data is deleted
+    </li>
+    <li>
+        There is no way to reorder rows from different partitions, cause partition's data is loaded in specific order.
+        Main database is loaded first, then all the partitions one-by-one, so data will always be sorted by partitions.
+        If you changed partitioning information during editing session, press on "Reload" button after saving database to view actual rows order.
+    </li>
+    <li>
+        Partition addon takes effect only when saving main database in Unity Editor and loading main database at runtime.
+        It has no effect in all other scenarios
+    </li>
+    <li>
+        Make sure, loaded/unloaded data is not referenced from main database part (e.g. no relations fields referencing partition data from main (non-partitioned) database)
+    </li>
+</ol>
+
+<h4>How it works?</h4>
+<p>
+    At runtime- only main database file is loaded automatically.
+    Partition files are loaded/unloaded manually from C# scripts
+</p>
+<pre class="nomargin"><code class="language-csharp">        //to load a partition (partition can be index/name/ID)
+        BGRepo.I.Addons.Get&lt;BGAddonPartition&gt;().Load(partition);
+
+        //to unload a partition (partition can be index/name/ID)
+        BGRepo.I.Addons.Get&lt;BGAddonPartition&gt;().Unload(partition);</code></pre>
+
+<h4>Setup guide</h4>
+<p>Enable partitions addon and enable horizontal partitioning </p>
+<div class="bg-image">
+    <a href="../../../../images/BGDatabase/PartitionAddon5.png"><img style="width:400px; height: 200px" src="../../../../images/BGDatabase/PartitionAddon5.png"></a>
+</div>
+
+<p>Use Partition addon Editor GUI to enable/disable partitioning support for individual tables.
+Tables with partitioning support has a "dbPartition" field with certain supported field type to reference partition
+</p>
+<div class="bg-image">
+    <a href="../../../../images/BGDatabase/PartitionAddon1.png"><img style="width:400px; height: 200px" src="../../../../images/BGDatabase/PartitionAddon1.png"></a>
+</div>
+
+<ol>
+    <li>After enabling addon, a meta with name "DbPartition" is auto-created.
+        Each row of this table means a separate partition
+    </li>
+    <li>
+        If you want to "move" some table rows to some partition, "dbPartition" field is required with certain type (read more about field type below)
+        You can create this field by clicking on "Enable" button in "NonPartitionedMetas" table
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/PartitionAddon2.png"><img style="width:400px; height: 200px" src="../../../../images/BGDatabase/PartitionAddon2.png"></a>
+        </div>
+    </li>
+    <li>
+        Then you need to assign some valid value to this field to "move" the whole row to a certain partition.(the example below for byte? field)
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/PartitionAddon3.png"><img style="width:400px; height: 200px" src="../../../../images/BGDatabase/PartitionAddon3.png"></a>
+        </div>
+    </li>
+</ol>
+
+<h4>Supported field types</h4>
+<p>
+    To mark the row as belonging to some partition we use the field with name "dbPartition" and certain supported field type.
+    Use the table below to understand the differences and how values are used
+</p>
+<table class="contentTable">
+    <tr>
+        <th>
+            Field type ↓
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>relationSingle</td>
+        <td>
+            Standard single row relation, referencing DbPartition table.
+            No value- non partitioned, any other value means it belong to a partition, it's referencing.
+        </td>
+    </tr>
+    <tr>
+        <td>byte?, short?, int?</td>
+        <td>
+            Nullable number fields. No value- non partitioned, otherwise a physical index of partition, the row belongs to
+        </td>
+    </tr>
+    <tr>
+        <td>byte, short, int</td>
+        <td>
+            Simple number fields. 0- non partitioned, otherwise a physical index of partition, the row belongs to + 1.
+            So 0 means non partitioned, 1 means the first partition (partition with index=0) etc.
+        </td>
+    </tr>
+</table>
+<p>
+   There is also a tool available (under "Tools" tab), which migrates existing nullable fields(byte?, short?, int?) to non nullable ones (byte, short, int) and vice versa.
+</p>
+
+
+
+<h4>Unloading/releasing addressables assets</h4>
+<p>
+    We provide an option to release/unload partition assets while unloading a partition with additional setup (read more <a href="../../Downloads/RuntimeAddressables">here</a>)
+</p>
+
+
+
+<a class="backToDownloads" style="margin-top: 10px;" href="../">< Back to main article</a>
+
+
+            </div>
+
+            <!--======================================================       BG Database Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>
