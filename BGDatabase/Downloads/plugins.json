@@ -81,18 +81,19 @@
     },
     {
       "id" : "dXJXwnpafku2SNku6nA+Fg",
-      "version" : "1.0",
-      "releaseDate" : "11/11/21",
+      "version" : "1.1",
+      "releaseDate" : "01/10/23",
       "pluginClass" : "BansheeGz.BGDatabase.BGDataBinderUiToolkitGo",
       "packageClass" : null,
       "name" :  "UI Toolkit binders pack",
       "description" :  "Compound binder for UI toolkit runtime package",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeUIToolkit",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseUIToolkit.unitypackage",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseUIToolkit_1.1.unitypackage",
       "dependencies" : [{
         "classToCheck" : "UnityEditor.Searcher.Searcher",
         "asset" : "Searcher"
-      }]
+      }],
+      "requiredVersion" : "1.8.0"
     },
     {
       "id" : "Vfg8+Xl+40OZC6l3sV/otA",
