@@ -918,6 +918,32 @@ Here is a table, describing fields features:
         If you can not figure out the correct C# type name for your enum, use
         <a href="https://docs.microsoft.com/en-us/dotnet/api/system.type.fullname?view=net-6.0">Type.FullName</a> property to print enum type name to the console
         <code>Debug.Log(typeof(MyEnum).FullName);</code>
+        <details>
+            <summary>Enum type name examples</summary>
+            <pre class="nomargin"><code class="language-csharp">// MyEnum
+public enum MyEnum
+{
+}
+
+// MyNameSpace.MyEnum
+namespace MyNameSpace
+{
+    public enum MyEnum
+    {
+    }
+}
+
+// MyNameSpace.MyClass+MyEnum
+namespace MyNameSpace
+{
+    public class MyClass
+    {
+        public enum MyEnum
+        {
+        }
+    }
+}</code></pre>
+        </details>
     </li>
     <li>Once you created your own enum field, you can not change enum type name, namespace or underlying type, cause they are stored inside database.
         If you want to rename enum type or namespace, follow <a href="guide_change_enum_type.html" target="_blank">this guide</a>.
