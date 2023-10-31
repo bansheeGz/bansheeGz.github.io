@@ -45,10 +45,8 @@
 <ol>
     <li>Fast, In Memory, pure C# ( without SQL) database fully integrated into Unity 3D</li>
     <li>
-        Selective import/export from/to
-        <a href="ThirdParty/Excel">Excel/OpenOffice</a> and
-        <a href="ThirdParty/GoogleSheets">Google Sheets</a>
-        (some <a href="ExportImport">restrictions apply</a>)
+        Configurable import/export from/to <a href="ThirdParty/Excel">Excel/OpenOffice</a> and <a href="ThirdParty/GoogleSheets">Google Sheets</a>
+        (one limitation apply, see <a href="#limitations">limitations</a> section below for details)
     </li>
     <li>Integration with visual scripting tools:
         <a href="ThirdParty/Bolt">Unity Visual Scripting (Bolt)</a>,
@@ -81,9 +79,10 @@
     <li>Multithreading is partially supported with multithreading addon. Some restrictions apply. Read more <a href="Addons/Multithreading">here</a>.</li>
 </ol>
 
-<h4>Restrictions and limitations:</h4>
+<h4 id="limitations">Limitations:</h4>
 <ol>
     <li>BGDatabase is a client-side database, which runs inside Unity only. <span class="redText">It can not be used in any server environment</span></li>
+    <li>Asset does not support exporting to Google Sheets in runtime from multiple devices, here is <a href="ExportImport/#why">why</a></li>
     <li>Database data is loaded fully into memory, so at some point the database size can become too big.
         For example, if database has 10 tables and each table has 50 000 rows and 10 int fields, it takes around 26Mb on hard drive and starts getting too big.
         <a href="Addons/Partition">Partitioning addon</a> can mitigate this problem- but it's not a generic solution
