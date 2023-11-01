@@ -1,0 +1,61 @@
+#set page=Live Update
+#set subPage=WEBGL platform setup guide
+
+<h5>Use this guide only if you target WEBGL platform</h5>
+<ol>
+    <li>Complete basic setup by following <a href="../Basic">this guide</a></li>
+    <li>
+        Switch to LiveUpdate "Parameters" tab, toggle on "Manual load" and save database.
+        Now LiveUpdate add-on will not perform the loading automatically and you need to trigger it manually
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide2_1.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide2_1.jpg"></a>
+        </div>
+    </li>
+    <li>
+        Add new GameObject to your startup scene (name it DatabaseLiveUpdate).
+        Download <a href="../../Downloads/LiveUpdatePreloader.txt">this preloader script</a>,
+        change txt extension to cs extension and attach it to DatabaseLiveUpdate GameObject.
+        This component will trigger LiveUpdate load.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide2_2.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide2_2.jpg"></a>
+        </div>
+    </li>
+    <li>
+        Data from GoogleSheet will be loaded asynchronously, over several frames,
+        and LiveUpdatePreloader.Ready method will be invoked when data is loaded.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide2_3.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide2_3.jpg"></a>
+        </div>
+
+        To keep things simple- we will just update UI Text component with a number of loaded rows
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide2_4.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide2_4.jpg"></a>
+        </div>
+    </li>
+    <li>Open Build settings, switch to WebGl platform and build the project
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide2_5.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide2_5.jpg"></a>
+        </div>
+    </li>
+    <li>
+        Launch command line utility (terminal), switch to your build folder and run local web server.
+        If you do not have web server, install python 3 and run the following command
+        <code>python -m http.server --cgi 8360</code>
+        This command starts local HTTP server on 8360 port
+    </li>
+    <li>
+        Open you browser and navigate to <code>http://localhost:8360</code> address- if you setup everything properly
+        you should see
+        your application and number 4 at the center of the screen (4 rows were loaded from GoogleSheets)
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide2_6.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide2_6.jpg"></a>
+        </div>
+    </li>
+</ol>
+

@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-7');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../BGCurve">BG`Curve</a>
+<!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+<!--                       href="../../../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+<!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                MESSAGE HERE
+        </b>
+    </div>-->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <!--======================================================        Content (from Root)              -->
+        
+
+
+
+
+<link rel="stylesheet" href="../../../../css/bgdatabase.css">
+<link rel="stylesheet" href="../../../../css/magnific-popup.css">
+<script src="../../../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul id="leftmenu">
+            <li class="pli databaseicon ">
+                <script async src="https://cse.google.com/cse.js?cx=e1930f586f83c4862">
+                </script>
+                <div class="gcse-searchbox-only"></div>
+                <a class="pa" href="../../../../BGDatabase">BG Database Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Setup">Setup</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/HowToUse">How to use</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GUIOverview">GUI overview</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GUITips">GUI tips and tricks</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeExamples">Code Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/SupportedFields">Field types</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ExportImport">Export Import</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/DataBinding">Data Binding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GraphEditor">Graph Editor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/MergeTool">Merge Tools</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Misc">Misc</a>
+                    </li>
+                    <li class="cli downloadicon  plic ">
+                        <a class="ca" href="../../../../BGDatabase/Downloads">Downloads</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/CodeGeneration">Code Generation</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior
+                            Classes</a>
+                    </li>
+                    <!--
+                                        <li class="cli ">
+                                            <a class="ca" href="../../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
+                                        </li>
+                    -->
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/ThirdParty">Third-Party Integration</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Excel">Excel</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/FlowCanvas">Flow Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/NodeCanvas">Node Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/BehaviorDesigner">Behavior Designer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/UNode">UNode</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/GameCreator">Game Creator</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/Addons">Addons</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/SaveLoad">Save Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Multithreading">Multithreading</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Modding">Modding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Settings">Settings</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Partition">Partitions</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Diagram">Diagram</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Localization">Localization</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../../../BGDatabase">BG BGDatabase Home</a>
+        <a class="pa" href="../../../../BGDatabase/Setup">Setup</a>
+        <a class="pa" href="../../../../BGDatabase/HowToUse">How To Use</a>
+        <a class="pa" href="../../../../BGDatabase/Videos">Videos</a>
+        <a class="pa" href="../../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
+        <a class="pa" href="../../../../BGDatabase/SupportedFields">Fields</a>
+        <a class="pa" href="../../../../BGDatabase/ExportImport">Export Import</a>
+        <a class="pa" href="../../../../BGDatabase/DataBinding">Data Binding</a>
+        <a class="pa" href="../../../../BGDatabase/Events">Events</a>
+        <a class="pa" href="../../../../BGDatabase/CodeGeneration">Code Generation</a>
+        <a class="pa" href="../../../../BGDatabase/Addons">Addons</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Downloads</h3>
+                
+                <div>
+                    <div class="subTitle"><a class="backButton" href="../">&#8592; Back</a> Excel plugin for Editor [Import]</div>
+                </div>
+                
+            </div>
+
+            <!--======================================================        BG Database Content              -->
+            <div id="content">
+                
+
+
+
+<ol>
+    <li>Import BGDatabase package</li>
+    <li>Import <a href="index.html" target="_blank">Excel plugin for Unity Editor</a>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_5.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide4_5.png"></a>
+        </div>
+    </li>
+    <li>Create a new database
+        (more information <a href="https://www.bansheegz.com/BGDatabase/Setup/" target="_blank">here </a> )
+    </li>
+    <li>
+        Make sure your Excel data layout is compatible with BGDatabase import procedure: first row should have column
+        name and the rest rows should have data
+        (this is a most commonly used data layout).
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_1.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide4_1.png"></a>
+        </div>
+    </li>
+    <li>
+        Select database "Import/Export" tab, then "Data sources" and create a new Excel data source for your Excel file.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_4.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide4_4.png"></a>
+        </div>
+    </li>
+
+    <li>Create database tables and fields to store the data from Excel. There are 2 main options: create them manually
+        or use a data extraction wizard.
+        <h6>Option # 1: Creating tables and fields manually</h6>
+        <ol>
+            <li>
+                Switch to database configuration tab and create a table for each Excel sheet you want to import.
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_2.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_2.png"></a>
+                </div>
+
+            </li>
+            <li>
+                For each table create fields for each Excel sheet column
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_3.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_3.png"></a>
+                </div>
+            </li>
+        </ol>
+        <h6>Option # 2: use data extraction wizard to create tables and fields</h6>
+        <ol>
+            <li>
+                Select your data source and click on "Data extraction wizard"
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_6.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_6.png"></a>
+                </div>
+            </li>
+            <li>
+                Click on "Read data", review the result, edit names/types if needed and click on "Import"
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_7.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_7.png"></a>
+                </div>
+            </li>
+        </ol>
+    </li>
+    <li>Now we need to configure how Excel sheets are mapped to tables and how Excel columns are mapped to database
+        fields.
+        Two options are available:
+        <h6>Option # 1: Use naming convention</h6>
+        <ol>
+            <li>
+                Naming convention is a zero-config option: if the sheets are named exactly as database tables
+                (case-sensitive)
+                and columns have the same names as Excel columns- no action is required
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_8.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_8.png"></a>
+                </div>
+
+            </li>
+        </ol>
+        <h6>Option # 2: Use names mapping config</h6>
+        <ol>
+            <li>
+                If Excel sheet names differ from database tables names or Excel column names differ from database field
+                names-
+                you can use names mapping config to map sheets names to tables names and column names to field names.
+                Select "Names mapping config" and fill in your Excel sheet names and column names.
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_9.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_9.png"></a>
+                </div>
+            </li>
+        </ol>
+    </li>
+    <li>Select database "Import/Export" tab, then "Jobs" and create a new Excel job.
+        Select previously created Excel data source as data source.
+        In "Merge settings" section turn on all global parameters (more information about "Merge settings" are available
+        <a href="../../ExportImport#mergesettings">here</a>).
+        Save settings and database and press on "Import" button to import Excel data
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_10.png"><img style="width: 400px; height: 100px"
+                                                                    src="../../../../images/BGDatabase/Guide4_10.png"></a>
+        </div>
+    </li>
+    <li>Review the changes under "Database" tab and click on "Save repo" button to save the changes or "Reload" button
+        to revert the changes
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_11.png"><img style="width: 400px; height: 100px"
+                                                                    src="../../../../images/BGDatabase/Guide4_11.png"></a>
+        </div>
+    </li>
+
+</ol>
+            </div>
+            
+            <a class="backToDownloads" href="../" style="margin-top: 10px">&#8592; Back to Downloads</a>
+            
+
+            <!--======================================================       BG Database Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

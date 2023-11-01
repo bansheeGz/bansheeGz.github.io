@@ -1,0 +1,78 @@
+#set page=Google Sheets
+#set subPage=Service data source setup
+
+<ol>
+    <li>Log in to <a href="https://console.developers.google.com/">Google Console</a></li>
+    <li>Select or create a project
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets1.png"><img style="width: 400px; height: 100px"
+                                                                        src="../../../../images/BGDatabase/GoogleSheets1.png"></a>
+        </div>
+    </li>
+    <li>
+        Enable GoogleSheets API if it's disabled. Wait several minutes after enabling API.
+        ( <a href="https://support.google.com/googleapi/answer/6158841?hl=en" target="_blank">Google's guide</a>, search
+        for sheets)
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets22.png"><img style="width: 400px; height: 100px"
+                                                                         src="../../../../images/BGDatabase/GoogleSheets22.png"></a>
+        </div>
+    </li>
+    <li>Select <code>Credentials</code> , click on <code>Create credentials</code> and choose <code>Service</code>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Service1.png"><img style="width: 400px; height: 100px"
+                                                                                src="../../../../images/BGDatabase/GoogleSheets-Service1.png"></a>
+        </div>
+    </li>
+    <li>Optionally name the service and press <code>Create</code>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Service2.png"><img style="width: 400px; height: 100px"
+                                                                                src="../../../../images/BGDatabase/GoogleSheets-Service2.png"></a>
+        </div>
+    </li>
+    <li>Click on <code>Next</code> button on next page
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Service3.png"><img style="width: 400px; height: 100px"
+                                                                                src="../../../../images/BGDatabase/GoogleSheets-Service3.png"></a>
+        </div>
+    </li>
+    <li>Click on <code>Create key</code> button, choose <code>Json</code>, click on <code>Create</code> and download
+        file on your computer
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Service4.png"><img style="width: 400px; height: 100px"
+                                                                                src="../../../../images/BGDatabase/GoogleSheets-Service4.png"></a>
+        </div>
+    </li>
+    <li>Open downloaded file in text editor and copy <code>client_email</code> and <code>private_key</code> attributes
+        to datasource parameters
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Service5.png"><img style="width: 400px; height: 100px"
+                                                                                src="../../../../images/BGDatabase/GoogleSheets-Service5.png"></a>
+        </div>
+    </li>
+    <li>Open up your spreadsheet in your browser, copy the URL, click on <code>Retrieve from URL</code> button, paste
+        the URL and click on <code>Parse</code> button
+        to fill Spreadsheet ID (alternatively
+        read <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id" target="_blank">this
+            article</a>
+        to learn how to obtain SpreadsheetID)
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Service7.png"><img style="width: 400px; height: 100px"
+                                                                                src="../../../../images/BGDatabase/GoogleSheets-Service7.png"></a>
+        </div>
+    </li>
+    <li>Save settings
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Service8.png"><img style="width: 400px; height: 100px"
+                                                                                src="../../../../images/BGDatabase/GoogleSheets-Service8.png"></a>
+        </div>
+    </li>
+
+    <li>Switch back to your browser and add service email to the list of authorized users for your spreadsheet
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Service6.png"><img style="width: 400px; height: 100px"
+                                                                                src="../../../../images/BGDatabase/GoogleSheets-Service6.png"></a>
+        </div>
+    </li>
+
+</ol>

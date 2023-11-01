@@ -1,0 +1,31 @@
+#set page=GraphEditor
+#set subPage=Nested table example
+
+<h4>Setup</h4>
+<p>
+    The following database structure is used.
+    <code>Card</code> table has nested <code>Effects</code> table with <code>heal</code> and <code>damage</code> fields
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Guide6_1.png"><img style="width: 400px; height: 100px"
+                                                        src="../../../images/BGDatabase/Guide6_1.png"></a>
+</div>
+
+<h4>The objective</h4>
+<p>
+    We want to add calculated int field <code>totalHeal</code> to <code>Card</code> table.
+    <code>totalHeal</code> is calculated by iterating all nested rows and adding a <code>heal</code> field value
+    and subtracting <code>damage</code> field value
+</p>
+
+<h4>Graph</h4>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Guide6_2.png"><img style="width: 400px; height: 100px"
+                                                        src="../../../images/BGDatabase/Guide6_2.png"></a>
+</div>
+
+<h4>The result</h4>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/Guide6_3.png"><img style="width: 400px; height: 100px"
+                                                        src="../../../images/BGDatabase/Guide6_3.png"></a>
+</div>

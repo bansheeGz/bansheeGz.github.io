@@ -1,0 +1,99 @@
+#set page=Live Update
+#set subPage=Basic setup guide
+
+
+<ol>
+    <li>Create new empty project</li>
+    <li>Import BGDatabase package</li>
+    <li>Create a new database
+        (more information about creating a new database <a href="https://www.bansheegz.com/BGDatabase/Setup/">here </a>
+        )
+    </li>
+    <li>
+        Create a new table, which will be used for storing information from Google sheet
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_1.png"><img style="width: 400px; height: 100px"
+                                                                      src="../../../../images/BGDatabase/Guide1_1.png"></a>
+        </div>
+    </li>
+    <li>
+        Add fields with proper types to newly created table
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_2.png"><img style="width: 400px; height: 100px"
+                                                                      src="../../../../images/BGDatabase/Guide1_2.png"></a>
+        </div>
+    </li>
+    <li>To setup Google Sheet spreadsheet properly, you have 2 options:
+        <ol>
+            <li>
+                You can add required rows to database table (under "Database" tab) and export this data to GoogleSheet
+                using our <a href="../../../Downloads/EditorGoogleSheets">GoogleSheet plug-in</a>.
+                Exporting data will create a required sheet with all data and proper layout.
+            </li>
+            <li>
+                If you already have your data in GoogleSheet spreadsheet, you need to give your sheet and columns the
+                same names as database table and fields (case-sensitive!).
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide1_3.jpg"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide1_3.jpg"></a>
+                </div>
+            </li>
+        </ol>
+    </li>
+    <li>
+        Share your Google sheets spreadsheet by clicking on Share button then "Change" link and then "Done" button
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_4.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide1_4.jpg"></a>
+        </div>
+    </li>
+    <li>Enable "LiveUpdate" addon and switch to "VisualizationAPI"
+        (you can also use another options, like "GoogleSheets API" or "Excel export" but these options require
+        additional parameter/setup)
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_5.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide1_5.jpg"></a>
+        </div>
+    </li>
+    <li>
+        Paste your spreadsheet ID to "Spreadsheet Id" parameter.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_6.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide1_6.jpg"></a>
+        </div>
+        You can find your spreadsheet ID in your browser URL
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_7.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide1_7.jpg"></a>
+        </div>
+
+    </li>
+    <li>
+        Switch to LiveUpdate addon "Merge settings" tab and include "GoogleSheetData" table by pressing on
+        "Create custom settings" and then toggling on these parameters : "Add missing", "Delete orphaned" and "Update
+        matching"
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_8.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide1_8.jpg"></a>
+        </div>
+    </li>
+    <li>
+        Press on "Save all" button
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_9.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide1_9.jpg"></a>
+        </div>
+    </li>
+    <li>
+        Setup is complete! Now you can enter playmode and data from GoogleSheet should be loaded properly
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_10.jpg"><img style="width: 400px; height: 100px"
+                                                                    src="../../../../images/BGDatabase/Guide1_10.jpg"></a>
+        </div>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide1_11.jpg"><img style="width: 400px; height: 100px"
+                                                                    src="../../../../images/BGDatabase/Guide1_11.jpg"></a>
+        </div>
+    </li>
+
+</ol>

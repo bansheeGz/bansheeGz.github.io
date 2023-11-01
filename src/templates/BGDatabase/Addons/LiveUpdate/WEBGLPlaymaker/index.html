@@ -1,0 +1,49 @@
+#set page=Live Update
+#set subPage=WEBGL platform + Playmaker setup guide
+
+<h5>Use this guide only if you want to use Playmaker and target WEBGL platform</h5>
+<ol>
+    <li>Complete WebGl setup by following <a href="../WEBGL">this guide</a></li>
+    <li>Import Playmaker asset</li>
+    <li>
+        Open SampleScene and attach Playmaker FSM to DatabaseLiveUpdate GameObject.
+        Open FSM and add a new "BGDatabaseDataLoaded" Event. Use this event to pass control to "DatabaseLoaded" state.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide3_1.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide3_1.jpg"></a>
+        </div>
+    </li>
+    <li>
+        Open LiveUpdatePreloader.cs script and put this code inside Ready method:
+        <code>GetComponent&lt;PlayMakerFSM&gt;().Fsm.Event("BGDatabaseDataLoaded");</code>.
+        "BGDatabaseDataLoaded" Playmaker event will be fired after data is loaded.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide3_2.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide3_2.jpg"></a>
+        </div>
+    </li>
+    <li>
+        Generate Playmaker actions for accessing database data.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide3_3.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide3_3.jpg"></a>
+        </div>
+    </li>
+    <li>
+        "DatabaseLoaded" state will be executed when data is loaded from GoogleSheet.
+        To keep things simple, we will update UIText component with a number of loaded rows,
+        using generated <code>P_Google Sheet Data Count</code> action
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide3_4.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide3_4.jpg"></a>
+        </div>
+    </li>
+    <li>Setup is complete!
+        Now build the project, run HTTP server and check if number 4 is displayed in your browser,
+        as described in <a href="../WEBGL">WEB-GL guide</a>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide2_6.jpg"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide2_6.jpg"></a>
+        </div>
+    </li>
+</ol>

@@ -1,0 +1,77 @@
+#set page=Downloads
+#set subPage=Excel plugin for Editor [Export]
+#set parentPage=Excel plugin for Editor
+
+<ol>
+    <li>Import BGDatabase package</li>
+    <li>Import <a href="index.html" target="_blank">Excel plugin for Unity Editor</a>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_5.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide4_5.png"></a>
+        </div>
+    </li>
+    <li>Create a new database
+        (more information <a href="https://www.bansheegz.com/BGDatabase/Setup/" target="_blank">here </a> )
+    </li>
+    <li>
+        Create database tables and fields
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide5_1.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide5_1.png"></a>
+        </div>
+    </li>
+    <li>
+        Create database rows
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide5_2.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide5_2.png"></a>
+        </div>
+    </li>
+    <li>
+        Select "Import/Export" tab, then "Data sources" and create a new Excel data source, set "Path" to your Excel
+        file path.
+        For the first export you may want to point to a non-existent Excel file.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide5_3.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide5_3.png"></a>
+        </div>
+    </li>
+    <li>
+        Select "Jobs" tab, create a new Excel job and select previously created data source.
+        In "Merge settings" section turn on all global parameters.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide5_4.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide5_4.png"></a>
+        </div>
+        If you do not want to export all tables/fields- you can turn off global parameters
+        and selectively mark which tables/fields you want to export.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide5_5.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide5_5.png"></a>
+        </div>
+        (more information about "Merge settings" are available <a href="../../ExportImport#mergesettings">here</a>).
+    </li>
+    <li>
+        Click on "Export" button and open Excel file to review exported data
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide5_6.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide5_6.png"></a>
+        </div>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide5_7.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide5_7.png"></a>
+        </div>
+    </li>
+    <li>
+        There is one additional column created in Excel file- the _id column.
+        This column is used to reference database row (it's like a pointer to the row).
+        Keep this column intact and change any other column- the next time you import data from Excel-
+        _id column will be used to identify the target database row and all the changes will be transferred to the
+        target row.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide5_8.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide5_8.png"></a>
+        </div>
+    </li>
+
+</ol>

@@ -1,0 +1,508 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-7');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../BGCurve">BG`Curve</a>
+<!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+<!--                       href="../../../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+<!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                MESSAGE HERE
+        </b>
+    </div>-->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <!--======================================================        Content (from Root)              -->
+        
+
+
+
+
+<link rel="stylesheet" href="../../../../css/bgdatabase.css">
+<link rel="stylesheet" href="../../../../css/magnific-popup.css">
+<script src="../../../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul id="leftmenu">
+            <li class="pli databaseicon ">
+                <script async src="https://cse.google.com/cse.js?cx=e1930f586f83c4862">
+                </script>
+                <div class="gcse-searchbox-only"></div>
+                <a class="pa" href="../../../../BGDatabase">BG Database Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Setup">Setup</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/HowToUse">How to use</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GUIOverview">GUI overview</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GUITips">GUI tips and tricks</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeExamples">Code Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/SupportedFields">Field types</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ExportImport">Export Import</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/DataBinding">Data Binding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GraphEditor">Graph Editor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/MergeTool">Merge Tools</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Misc">Misc</a>
+                    </li>
+                    <li class="cli downloadicon ">
+                        <a class="ca" href="../../../../BGDatabase/Downloads">Downloads</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/CodeGeneration">Code Generation</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior
+                            Classes</a>
+                    </li>
+                    <!--
+                                        <li class="cli ">
+                                            <a class="ca" href="../../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
+                                        </li>
+                    -->
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/ThirdParty">Third-Party Integration</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Excel">Excel</a>
+                    </li>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/FlowCanvas">Flow Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/NodeCanvas">Node Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/BehaviorDesigner">Behavior Designer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/UNode">UNode</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/GameCreator">Game Creator</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/Addons">Addons</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/SaveLoad">Save Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Multithreading">Multithreading</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Modding">Modding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Settings">Settings</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Partition">Partitions</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Diagram">Diagram</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Localization">Localization</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../../../BGDatabase">BG BGDatabase Home</a>
+        <a class="pa" href="../../../../BGDatabase/Setup">Setup</a>
+        <a class="pa" href="../../../../BGDatabase/HowToUse">How To Use</a>
+        <a class="pa" href="../../../../BGDatabase/Videos">Videos</a>
+        <a class="pa" href="../../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
+        <a class="pa" href="../../../../BGDatabase/SupportedFields">Fields</a>
+        <a class="pa" href="../../../../BGDatabase/ExportImport">Export Import</a>
+        <a class="pa" href="../../../../BGDatabase/DataBinding">Data Binding</a>
+        <a class="pa" href="../../../../BGDatabase/Events">Events</a>
+        <a class="pa" href="../../../../BGDatabase/CodeGeneration">Code Generation</a>
+        <a class="pa" href="../../../../BGDatabase/Addons">Addons</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Google Sheets</h3>
+                
+                <div>
+                    <div class="subTitle"><a class="backButton" href="../">&#8592; Back</a> OAuth data source setup</div>
+                </div>
+                
+            </div>
+
+            <!--======================================================        BG Database Content              -->
+            <div id="content">
+                
+
+
+<h4>Prerequisites</h4>
+<p>
+    Make sure you use BGDatabase version >= 1.7.6 (Settings->Main) and GoogleSheets plug-in version >= 1.5
+    (Plug-ins->GoogleSheets integration For Editor)
+</p>
+<h4>Create Google client Id</h4>
+<p>
+    Here is our step-by-step guide how to do it (alternatively use this Google support <a
+        href="https://support.google.com/googleapi/answer/6158849">article</a>)
+</p>
+<ol>
+    <li>Log in to <a href="https://console.developers.google.com/">Google Console</a></li>
+    <li>Select or create a project
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets1.png"><img style="width: 400px; height: 100px"
+                                                                        src="../../../../images/BGDatabase/GoogleSheets1.png"></a>
+        </div>
+    </li>
+    <li>
+        Enable GoogleSheets API if it's disabled. Wait several minutes after enabling API.
+        ( <a href="https://support.google.com/googleapi/answer/6158841?hl=en" target="_blank">Google's guide</a>, search
+        for sheets)
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets22.png"><img style="width: 400px; height: 100px"
+                                                                         src="../../../../images/BGDatabase/GoogleSheets22.png"></a>
+        </div>
+    </li>
+    <li>
+        Make sure your project state is "In production" under "Oauth consent screen", otherwise your tokens may expire
+        every week and you will need to renew them.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets23.png"><img style="width: 400px; height: 100px"
+                                                                         src="../../../../images/BGDatabase/GoogleSheets23.png"></a>
+        </div>
+    </li>
+    <li>Select <code>Credentials</code> , click on <code>Create credentials</code> and choose <code>Oath client
+        Id</code>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets2.png"><img style="width: 400px; height: 100px"
+                                                                        src="../../../../images/BGDatabase/GoogleSheets2.png"></a>
+        </div>
+    </li>
+    <li>Select <code>Desktop app</code> and click <code>Create</code>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets3.png"><img style="width: 400px; height: 100px"
+                                                                        src="../../../../images/BGDatabase/GoogleSheets3.png"></a>
+        </div>
+    </li>
+    <li>A popup will show up with your client id and client secret. Copy them to your Datasource settings
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets5.png"><img style="width: 400px; height: 100px"
+                                                                        src="../../../../images/BGDatabase/GoogleSheets5.png"></a>
+        </div>
+    </li>
+    <li>Fill <code>Application name</code> with any value</li>
+    <li>Open up your spreadsheet in your browser, copy the URL, click on <code>Retrieve from URL</code> button, paste
+        the URL and click on <code>Parse</code> button
+        to fill Spreadsheet ID (alternatively
+        read <a href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id" target="_blank">this
+            article</a>
+        to learn how to obtain SpreadsheetID)
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets-Oauth1.png"><img style="width: 400px; height: 100px"
+                                                                              src="../../../../images/BGDatabase/GoogleSheets-Oauth1.png"></a>
+        </div>
+    </li>
+
+</ol>
+
+
+<h4>Get Oath tokens from Google</h4>
+<ol>
+    <li>Click on <code>Get new tokens</code> button
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets6.png"><img style="width: 400px; height: 100px"
+                                                                        src="../../../../images/BGDatabase/GoogleSheets6.png"></a>
+        </div>
+    </li>
+    <li>Your browser will open up, with login screen. Login to your Google account.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets12.png"><img style="width: 400px; height: 100px"
+                                                                         src="../../../../images/BGDatabase/GoogleSheets12.png"></a>
+        </div>
+    </li>
+    <li>At this point warning screen may appear, saying application is not verified. Click on "Advanced" and then "Go"
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets13.png"><img style="width: 400px; height: 100px"
+                                                                         src="../../../../images/BGDatabase/GoogleSheets13.png"></a>
+        </div>
+    </li>
+    <li>Next screen let you grant a permission to access Google Sheets. Click on "Allow"
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/GoogleSheets14.png"><img style="width: 400px; height: 100px"
+                                                                         src="../../../../images/BGDatabase/GoogleSheets14.png"></a>
+        </div>
+    </li>
+    <li>
+        [Last step] After that there are 2 possible scenarios:
+        <h6>Scenario #1</h6>
+        <div>
+            The following page will be displayed in your browser:
+            <div class="bg-image">
+                <a href="../../../../images/BGDatabase/GoogleSheets18.png"><img style="width: 400px; height: 100px"
+                                                                             src="../../../../images/BGDatabase/GoogleSheets18.png"></a>
+            </div>
+            Close this page and switch back to Unity- tokens values should be updated. Save the settings. The end of the
+            guide.
+            <div class="bg-image">
+                <a href="../../../../images/BGDatabase/GoogleSheets10.png"><img style="width: 400px; height: 100px"
+                                                                             src="../../../../images/BGDatabase/GoogleSheets10.png"></a>
+            </div>
+        </div>
+        <h6>Scenario #2</h6>
+        <div>
+            The following page will be displayed in your browser:
+            <div class="bg-image">
+                <a href="../../../../images/BGDatabase/GoogleSheets19.png"><img style="width: 400px; height: 100px"
+                                                                             src="../../../../images/BGDatabase/GoogleSheets19.png"></a>
+            </div>
+            In this case, copy URL from browser to text editor and locate the <code>code</code> HTTP GET parameter
+            value. Copy it to the clipboard (Ctrl+c).
+            <div class="bg-image">
+                <a href="../../../../images/BGDatabase/GoogleSheets20.png"><img style="width: 400px; height: 100px"
+                                                                             src="../../../../images/BGDatabase/GoogleSheets20.png"></a>
+            </div>
+            Switch back to Unity Editor, click on "I want to enter code manually" button in the "Google token receiver"
+            window and
+            paste <code>code</code> value to "Code" parameter and press on "Go!" button
+            <div class="bg-image">
+                <a href="../../../../images/BGDatabase/GoogleSheets21.png"><img style="width: 400px; height: 100px"
+                                                                             src="../../../../images/BGDatabase/GoogleSheets21.png"></a>
+            </div>
+            Tokens values should be updated. Save the settings.
+            <div class="bg-image">
+                <a href="../../../../images/BGDatabase/GoogleSheets10.png"><img style="width: 400px; height: 100px"
+                                                                             src="../../../../images/BGDatabase/GoogleSheets10.png"></a>
+            </div>
+        </div>
+    </li>
+</ol>
+            </div>
+            
+            <a class="backToDownloads" href="../" style="margin-top: 10px">&#8592; Back to Google Sheets</a>
+            
+
+            <!--======================================================       BG Database Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

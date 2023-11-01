@@ -1,0 +1,119 @@
+#set page=Downloads
+#set subPage=Excel plugin for Editor [Import]
+#set parentPage=Excel plugin for Editor
+
+<ol>
+    <li>Import BGDatabase package</li>
+    <li>Import <a href="index.html" target="_blank">Excel plugin for Unity Editor</a>
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_5.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide4_5.png"></a>
+        </div>
+    </li>
+    <li>Create a new database
+        (more information <a href="https://www.bansheegz.com/BGDatabase/Setup/" target="_blank">here </a> )
+    </li>
+    <li>
+        Make sure your Excel data layout is compatible with BGDatabase import procedure: first row should have column
+        name and the rest rows should have data
+        (this is a most commonly used data layout).
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_1.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide4_1.png"></a>
+        </div>
+    </li>
+    <li>
+        Select database "Import/Export" tab, then "Data sources" and create a new Excel data source for your Excel file.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_4.png"><img style="width: 400px; height: 100px"
+                                                                   src="../../../../images/BGDatabase/Guide4_4.png"></a>
+        </div>
+    </li>
+
+    <li>Create database tables and fields to store the data from Excel. There are 2 main options: create them manually
+        or use a data extraction wizard.
+        <h6>Option # 1: Creating tables and fields manually</h6>
+        <ol>
+            <li>
+                Switch to database configuration tab and create a table for each Excel sheet you want to import.
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_2.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_2.png"></a>
+                </div>
+
+            </li>
+            <li>
+                For each table create fields for each Excel sheet column
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_3.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_3.png"></a>
+                </div>
+            </li>
+        </ol>
+        <h6>Option # 2: use data extraction wizard to create tables and fields</h6>
+        <ol>
+            <li>
+                Select your data source and click on "Data extraction wizard"
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_6.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_6.png"></a>
+                </div>
+            </li>
+            <li>
+                Click on "Read data", review the result, edit names/types if needed and click on "Import"
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_7.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_7.png"></a>
+                </div>
+            </li>
+        </ol>
+    </li>
+    <li>Now we need to configure how Excel sheets are mapped to tables and how Excel columns are mapped to database
+        fields.
+        Two options are available:
+        <h6>Option # 1: Use naming convention</h6>
+        <ol>
+            <li>
+                Naming convention is a zero-config option: if the sheets are named exactly as database tables
+                (case-sensitive)
+                and columns have the same names as Excel columns- no action is required
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_8.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_8.png"></a>
+                </div>
+
+            </li>
+        </ol>
+        <h6>Option # 2: Use names mapping config</h6>
+        <ol>
+            <li>
+                If Excel sheet names differ from database tables names or Excel column names differ from database field
+                names-
+                you can use names mapping config to map sheets names to tables names and column names to field names.
+                Select "Names mapping config" and fill in your Excel sheet names and column names.
+                <div class="bg-image">
+                    <a href="../../../../images/BGDatabase/Guide4_9.png"><img style="width: 400px; height: 100px"
+                                                                           src="../../../../images/BGDatabase/Guide4_9.png"></a>
+                </div>
+            </li>
+        </ol>
+    </li>
+    <li>Select database "Import/Export" tab, then "Jobs" and create a new Excel job.
+        Select previously created Excel data source as data source.
+        In "Merge settings" section turn on all global parameters (more information about "Merge settings" are available
+        <a href="../../ExportImport#mergesettings">here</a>).
+        Save settings and database and press on "Import" button to import Excel data
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_10.png"><img style="width: 400px; height: 100px"
+                                                                    src="../../../../images/BGDatabase/Guide4_10.png"></a>
+        </div>
+    </li>
+    <li>Review the changes under "Database" tab and click on "Save repo" button to save the changes or "Reload" button
+        to revert the changes
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/Guide4_11.png"><img style="width: 400px; height: 100px"
+                                                                    src="../../../../images/BGDatabase/Guide4_11.png"></a>
+        </div>
+    </li>
+
+</ol>
