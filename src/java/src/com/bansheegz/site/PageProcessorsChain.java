@@ -80,6 +80,9 @@ public class PageProcessorsChain
 
     private void processPage(Page page, StringBuilder content, Properties props, int targetLevel) throws Exception
     {
+        //#ifdefined
+        PageTags.fillTagIfDefined(page, content, props);
+
         //#iterate
         PageTags.fillTagIterate(targetProcessor, content, props);
 

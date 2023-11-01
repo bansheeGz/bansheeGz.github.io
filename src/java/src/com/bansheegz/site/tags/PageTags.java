@@ -20,6 +20,19 @@ public class PageTags
         return content;
     }
 
+    public static StringBuilder fillTagIfDefined(Page page, final StringBuilder content, final Properties result) throws PageException
+    {
+        iterate("if_defined", content, (start, builder) -> {
+            TagIfDefined tag = new TagIfDefined(page, content, start);
+            if(result.getProperty(tag.getName())!=null)
+            {
+                tag.replaceWith(tag.getContent());
+            }
+            else tag.replaceWith("");
+        });
+        return content;
+    }
+
     public static StringBuilder fillTagGet(Page page, final StringBuilder content, final Properties props) throws PageException
     {
         iterate("get", content, (start, builder) -> {

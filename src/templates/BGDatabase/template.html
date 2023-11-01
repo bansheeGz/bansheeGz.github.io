@@ -82,13 +82,14 @@
                         <a class="ca" href="#path BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
                     </li>
                     <li class="cli #if page='Code Generation (MonoBehaviour classes)' plic #endif">
-                        <a class="ca" href="#path BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior Classes</a>
+                        <a class="ca" href="#path BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior
+                            Classes</a>
                     </li>
-<!--
-                    <li class="cli #if page='Code Generation (Dna classes)' plic #endif">
-                        <a class="ca" href="#path BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
-                    </li>
--->
+                    <!--
+                                        <li class="cli #if page='Code Generation (Dna classes)' plic #endif">
+                                            <a class="ca" href="#path BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
+                                        </li>
+                    -->
                 </ul>
             </li>
             <li class="pli #if page='Third-Party Integration' plic #endif">
@@ -194,12 +195,20 @@
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
                 <h3>#get page </h3>
+                #if_defined subPage
+                <div>
+                    <div class="subTitle"><a class="backButton" href="../">&#8592; Back</a> #get subPage</div>
+                </div>
+                #end_if_defined
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
-            #get _content
+                #get _content
             </div>
+            #if_defined subPage
+            <a class="backToDownloads" href="../" style="margin-top: 10px">&#8592; Back to #get page </a>
+            #end_if_defined
 
             <!--======================================================       BG Database Footer               -->
         </div>
