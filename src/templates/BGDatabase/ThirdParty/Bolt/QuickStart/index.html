@@ -1,0 +1,70 @@
+#set page=Unity Visual Scripting (ex-Bolt)
+
+<a class="backToDownloads" href="./">< Back to Visual Scripting page</a>
+
+<h4>Unity Visual Scripting Quick guide</h4>
+<p>
+    This is a step-by-step guide and example project to help you to start using database data with Visual Scripting quickly
+</p>
+
+<h4>Description</h4>
+<p>
+    We use database data and Visual Scripting (VS) script machine to spawn prefabs at provided positions
+</p>
+
+<h4>Example project setup guide</h4>
+<ol>
+    <li>Download and unzip <a href="../../../Downloads/UVSQuickStart.zip">example project</a></li>
+    <li>Open unzipped project in Unity. Ignore the errors</li>
+    <li>Import BGDatabase package. The errors should be gone</li>
+    <li>Update VS nodes as described in step 3 of Step-by-step guide below</li>
+    <li>Run Scenes/SampleScene</li>
+</ol>
+
+<h4>Step-by-step guide</h4>
+<ol>
+    <li>
+        First of all we need to create database data.
+        One table "Prefabs" is enough for our task
+        We need to add 2 fields to it- "prefab" with prefab type (this is a prefab we want to spawn)
+        and position with Vector3 type (this is a position for spawned prefab)
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Bolt4.png"><img style="width: 400px" src="#path images/BGDatabase/Bolt4.png"></a>
+        </div>
+    </li>
+    <li>
+        Generate VS nodes for created table.
+        The full list of generated nodes can be found <a href="../#nodes">here</a>.
+        There are few nodes per each table generated, but these nodes give you full access to database data -
+        you can read and write (if the cell is not readonly) any cell, and you can access any row, and you can add new or delete existing rows.
+        Use the same settings as on the screenshot below. Press on "Generate" button to generate nodes.
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Bolt5.png"><img style="width: 400px" src="#path images/BGDatabase/Bolt5.png"></a>
+        </div>
+    </li>
+    <li>
+        At this point you probably need to update VS nodes repository, select <code>Edit->Project Settings->Visual Scripting</code> and
+        click on "Regenerate Nodes" button
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Bolt6.png"><img style="width: 400px" src="#path images/BGDatabase/Bolt6.png"></a>
+        </div>
+    </li>
+    <li>
+        Now we can use database nodes inside VS scripting machine, the generated nodes can be found under <code>BansheeGz</code> category
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Bolt7.png"><img style="width: 400px" src="#path images/BGDatabase/Bolt7.png"></a>
+        </div>
+    </li>
+    <li>
+        What we want to achieve is to iterate <code>Prefabs</code> table rows and spawn a prefab for each row at provided position.
+        Here is a node graph that perform this task
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Bolt8.png"><img style="width: 400px" src="#path images/BGDatabase/Bolt8.png"></a>
+        </div>
+    </li>
+    <li>
+        Our guide is finished. Make sure to read our main article about using database data with VS <a href="../">here</a>
+    </li>
+</ol>
+
+<a class="backToDownloads" href="./">< Back to Visual Scripting page</a>
