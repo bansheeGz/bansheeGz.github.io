@@ -444,6 +444,16 @@
     Make sure you have as many physical rows/columns as you need, delete empty rows/columns to boost performance.
 </p>
 
+<h4 id="localization">Google sheets localization</h4>
+<p>
+    Starting with <a href="../../Downloads/EditorGoogleSheets">plugin version 1.8</a> and BGDatabase v.1.8.7 all new data sources by default uses
+    spreadsheet locale (which can be found under "File->Settings") for parsing/constructing floating point numbers (which are passed as strings by GoogleSheets API).
+    Data source locale can be changed under Datasource->Misc
+</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/GoogleSheets24.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets24.png"></a>
+</div>
+
 <h4 id="shared">Using Google sheets as shared remote database</h4>
 <p>
     You can use Google Sheets as remote shared database to be used by several developers (during game development)
