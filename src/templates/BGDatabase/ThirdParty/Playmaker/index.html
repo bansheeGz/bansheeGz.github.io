@@ -30,7 +30,7 @@ Custom actions are generated for each table
         <td>1</td>
         <td>GetByIndex</td>
         <td>
-            Retrieve field values from database by row's index. This is the best method to use inside for-each loop
+            Retrieve field values from database by row's (physical) index. This is the best method to use inside for-each loop
         </td>
     </tr>
     <tr>
@@ -87,6 +87,22 @@ Custom actions are generated for each table
         <td>Delete</td>
         <td>
             Delete a row by its index
+        </td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>GetByKey</td>
+        <td>
+            For each <a href="../../Misc/KeysAndIndexes/#keys">key</a> a separate node is generated.
+            This node allows to get row(s) using key's fields values
+        </td>
+    </tr>
+    <tr>
+        <td>11</td>
+        <td>FindByIndex</td>
+        <td>
+            For each <a href="../../Misc/KeysAndIndexes/#indexes">index</a> a separate node is generated.
+            This node allows to get row(s) by using between operator, accepting min and max values.
         </td>
     </tr>
 </table>
