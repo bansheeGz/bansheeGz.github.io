@@ -1,0 +1,43 @@
+#set page=Misc
+#set subPage=Scriptable objects
+
+<h6>Description</h6>
+<p>
+    Scriptable objects data binding tool allows to inject values from database rows to scriptable objects.
+    Optionally this tool can be executed automatically on database saving. Tool location is "Settings->Data Binding->Scriptable Objects"
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Misc23.png"><img style="width: 400px" src="#path images/BGDatabase/Misc23.png"></a>
+</div>
+
+<h6>How to use the tool</h6>
+<ol>
+    <li>Rows mapping: the scriptable object class should have BGDatabaseEntityId string field.
+        This field is used to find the database row, and the value should be the target row's ID
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Misc24.png"><img style="width: 400px" src="#path images/BGDatabase/Misc24.png"></a>
+        </div>
+    </li>
+    <li>
+        Fields mappings: the tool use naming convention to map the fields.
+        Scriptable object fields should have the same name and the same type as database fields.
+        In our example both scriptable object and database row have <code>population</code>(int) field.
+        The only exception is database <code>name</code> field, which is mapped to <code>entityName</code> scriptable object field
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Misc25.png"><img style="width: 400px" src="#path images/BGDatabase/Misc25.png"></a>
+        </div>
+    </li>
+    <li>
+        The tool can be invoked either manually (by clicking on "Inject now" button)
+        or automatically on database saving (by turning "Enable SO injecting on saving" toggle on).
+        The latter option is preferable if you want to keep scriptable objects data in sync with database data without taking any extra actions
+    </li>
+    <li>
+        After tool execution is complete, you can check the execution log to make sure all data is transferred properly.
+        Enable "Detailed log" toggle for detailed information.
+        The log contains the row's name, the scriptable object name, field names and transferred values.
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/Misc26.png"><img style="width: 400px" src="#path images/BGDatabase/Misc26.png"></a>
+        </div>
+    </li>
+</ol>
