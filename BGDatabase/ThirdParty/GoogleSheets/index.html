@@ -14,7 +14,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -387,10 +387,10 @@
             It requires service email to be added to authorized users list for a chosen spreadsheet
         </td>
         <td>
-            Easy to setup, but <br/>1) readonly <br/>2) requires spreadsheet to be shared or public
+            Easy to set up, but <br/>1) readonly <br/>2) requires spreadsheet to be shared or public
         </td>
         <td>
-            Easiest to setup, no need for any credentials, but <br/>1) readonly <br/>2) requires spreadsheet to be shared or public <br/>3) no access to raw/input value
+            Easiest to set up, no need for any credentials, but <br/>1) readonly <br/>2) requires spreadsheet to be shared or public <br/>3) no access to raw/input value
         </td>
     </tr>
     <tr>
@@ -461,20 +461,20 @@
 <p>
     Starting with version 1.5.4, we enforce locking mechanism to ensure only one export job is running at a time to avoid possible data collision.
     We use separate sheet (_dblock_) with one single cell (A1) to hold the lock value.
-    Unfortunately this mechanism is not 100% solid and there is still a tiny chance 2 export jobs run at the same time- in this case you will get a warning message after the export.
-    If you see this warning- review GoogleSheets data to make sure everything is ok and export data one more time if there is any issue.
+    Unfortunately this mechanism is not 100% solid and there is still a tiny chance 2 export jobs run at the same time - in this case you will get a warning message after the export.
+    If you see this warning - review GoogleSheets data to make sure everything is ok and export data one more time if there is any issue.
 </p>
 
 
 <h4>GoogleSheets and empty rows</h4>
 <p>
-    Unlike Excel exporter, GoogleSheets exporter does not try to use the empty rows. If you have empty rows in your sheet- they will be omitted.
+    Unlike Excel exporter, GoogleSheets exporter does not try to use the empty rows. If you have empty rows in your sheet - they will be omitted.
 </p>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/GoogleSheets16.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets16.png"></a>
 </div>
 <p>
-    If you do not need these empty rows- select them and delete
+    If you do not need these empty rows - select them and delete
 </p>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/GoogleSheets17.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets17.png"></a>

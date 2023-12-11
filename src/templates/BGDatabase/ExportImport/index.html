@@ -5,10 +5,10 @@
     <li>Export/import data to/from GoogleSheets or Excel in Unity Editor (during game development)</li>
     <li>Export/import data from/to Excel file at runtime (from builds, PC/Mac/Linux only) with
         <a href="../Downloads/RuntimeExcelMonitor">this plugin</a>.
-        Optional excel file monitor, which auto-import data on file change, is also available.</li>
+        Optional Excel file monitor, which auto-import data on file change, is also available.</li>
     <li>Excel file monitor, which auto-import excel data in Unity Editor, can be downloaded <a href="../Downloads/EditorExcelMonitor">here</a></li>
     <li>Update database data on players devices at runtime from GoogleSheets with <a href="../Addons/LiveUpdate">LiveUpdate</a> plugin</li>
-    <li><span style="color: red">Currently there is no way to write to GoogleSheets at runtime from players devices </span>(<a href="#why">Why not?</a>)</li>
+    <li><span style="color: red">Currently, there is no way to write to GoogleSheets at runtime from players devices </span>(<a href="#why">Why not?</a>)</li>
     <li>Backup/restore database in json format in Editor</li>
 </ol>
 
@@ -71,13 +71,13 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 
 <h4 id="mergeSettings">Using merge settings</h4>
 <p>
-    You have full control over which data you want to synchronize: you can add, delete, update and you can choose which
+    You have full control over which data you want to synchronize: you can add/delete/update and choose which
     fields you wish to update.
 </p>
 <p>
     Here is how it works:
     Every synchronization has a source and a destination.
-    If you are exporting data from BDDatabase to, let's say, Excel file- the source is BGDatabase and a destination- is
+    If you are exporting data from BDDatabase to, let's say, Excel file - the source is BGDatabase and a destination- is
     Excel file.
     Here is how data is classified during syncing:
 </p>
@@ -89,11 +89,11 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     So, there are 3 types of rows during syncing:
 </p>
 <ol>
-    <li>Matching rows : they exists in the Source and in the Destination. Can be updated and you can choose which fields
+    <li>Matching rows : they exist in the Source and in the Destination. Can be updated, and you can choose which fields
         to update.
     </li>
-    <li>Missing rows : they exists only in the Source. Can be added to Destination.</li>
-    <li>Orphaned rows : they exists only in the Destination. Can be removed from Destination.</li>
+    <li>Missing rows : they exist only in the Source. Can be added to Destination.</li>
+    <li>Orphaned rows : they exist only in the Destination. Can be removed from Destination.</li>
 </ol>
 <p>
     Let's look at merge settings and find out how we can define actions to take during syncing
@@ -133,7 +133,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 
 <h4>Names mapping config (optional)</h4>
 <p>
-    By default naming convention is used to map sheets to tables and columns to fields.
+    By default, naming convention is used to map sheets to tables and columns to fields.
     It can be overridden with names mapping config, which allows to use any names for sheets and columns and map them to tables/fields.
     Names mapping config is available for every data source and is used while importing/exporting from Unity Editor
 </p>
@@ -144,8 +144,8 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 
 <h4>Rows mapping config (optional)</h4>
 <p>
-    By default we use _id column in the sheet to keep the link between database row and excel/GoogleSheets row and we recommend to use this default approach.
-    However additional approaches are also available: you can use int/string field as row's id if you have such columns with unique values or rows indexes
+    By default, we use _id column in the sheet to keep the link between database row and excel/GoogleSheets row, and we recommend to use this default approach.
+    However, additional approaches are also available: you can use int/string field as row's id if you have such columns with unique values or rows indexes
     (e.g. 1st database row is mapped to 1st sheet row etc.). Use these alternative strategies only if you can not use additional _id column.
     Rows mapping config is available at datasource page.
 </p>
@@ -159,8 +159,9 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     References config allows to override how relational fields values are serialized.
     The recommended(default) option is by using row's ID.
     Additional options are by any int/string field as ID.
-    The requirements are: the values for such fields should be unique and not empty- so these values could be used to identify the row.
-    The limitations: if relational field allows multiple values- the vertical bar symbol (|) should not be used in field values, cause it's used as values separator
+    The requirements are: the values for such fields should be unique and not empty - so these values could be used to identify the row.
+    The limitations: if relational field allows multiple values - the vertical bar symbol (|) should not be used in field values,
+    because it's used as values separator
 </p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/ExportImport10.png"><img style="width: 400px"
@@ -177,7 +178,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
         <td>Update Ids on import</td>
         <td>
             If you are adding new rows in external tools, leave _id column empty and enable this parameter.
-            Id values from database will be transferred to _id column when you import new rows.
+            ID values from database will be transferred to _id column when you import new rows.
         </td>
     </tr>
     <tr>
@@ -200,7 +201,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
     <li>Make sure to target empty spreadsheet/xls file</li>
     <li>Make sure to include all tables/fields you want to export in the settings. Included tables/fields will be highlighted in green</li>
     <li>Make sure all tables you want to include have "Add missing rows" toggle turned on.(cause all the rows will be "missing rows" when you export to empty spreadsheet)</li>
-    <li>Export data once- all required structure will be created for you</li>
+    <li>Export data once - all required structure will be created for you</li>
 </ul>
 
 
@@ -211,7 +212,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 <ul>
     <li>Create your own C# class with unique name, set this class name to "Controller Type" field of merge settings (using the full name with namespace).</li>
     <li>Implement any number of interfaces (namespace is <code>BansheeGz.BGDatabase</code>, interfaces defined inside class <code>BGMergeSettingsEntity</code>),
-        listed below to receive callback method invocations. Return true from this methods to cancel operation</li>
+        listed below to receive callback method invocations. Return true from these methods to cancel operation</li>
 </ul>
 <table  class="contentTable">
     <tr>
@@ -306,7 +307,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 
 <h4>Adding rows in external tools</h4>
 <p>
-    Each row has it's own id- 22 symbols string.
+    Each row has its own id- 22 symbols string.
     It's computer-generated value, based on Guid generation.
 </p>
 <p>
@@ -320,7 +321,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 
 <h4>Creating database backup in json format</h4>
 <p>
-    Exporting data to json allows you to create a full database backup in human readable form as json file.
+    Exporting data to json allows you to create a full database backup in human-readable form as json file.
     With json you can not choose which data you want to be exported/imported, full data including database structure will
     be included.
 </p>
@@ -342,7 +343,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 <p>
     DETAILED EXPLANATION: To update data we need to read and analyse it first to determine which cells need to be updated and also optionally resize the sheet.
     Reading, analysing and updating data are not atomic operation. 
-    If somebody else update the data during reading/analysis- writing data may result in data corruption/errors.
+    If somebody else updates the data during reading/analysis - writing data may result in data corruption/errors.
 </p>
 </ol>
 <p>

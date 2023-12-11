@@ -519,7 +519,7 @@
     Nested field is a special field, which creates a whole new meta (table), which has many-to-one relation to owner
     meta.
     It means, you can create a linked list with any fields that are supported by BGDatabase.
-    It is a readonly field (to change it's value- delete or add nested Entities).
+    It is a readonly field (to change its value - delete or add nested Entities).
     To create a nested Entity use special method, which accept the owner of nested entity <code>BGMetaNested.NewEntity(BGEntity
     owner)</code>.
     BGMetaNested is a class for nested tables (to be used instead of generic BGMetaRow)
@@ -534,7 +534,7 @@
 </p>
 <ol>
     <li>To access nested rows you need to choose parent row first using parent table GUI</li>
-    <li>If you delete a parent row, related nested rows will also be deleted, cause they are considered as integral part of this parent row</li>
+    <li>If you delete a parent row, related nested rows will also be deleted, because they are considered as integral part of this parent row</li>
 </ol>
 <p>
     You can read more about nested table concept <a href="http://dbdesigner.page.link/xWiZ">here</a>
@@ -546,7 +546,7 @@ Referencing scene GameObjects using objectReference/objectListReference/objectLi
 by adding additional component (component name under components menu is "BansheeGz/Id", C# class is BGWithId) with unique ID.
 BGWithId is a <code>MonoBehaviour</code> component, to access GameObject- use <code>gameObject</code> property.
 On Awake method object is added to the internal cache and On OnDestroy method object is removed from this cache.
-The result depends on which objects are loaded and which objects are not and can differs during play session.
+The result depends on which objects are loaded and which objects are not and can differ during play session.
 Here is a table, describing fields features:
 <table class="contentTable">
     <tr>
@@ -636,13 +636,13 @@ namespace MyNameSpace
 }</code></pre>
         </details>
     </li>
-    <li>Once you created your own enum field, you can not change enum type name, namespace or underlying type, cause they are stored inside database.
+    <li>Once you created your own enum field, you can not change enum type name, namespace or underlying type, because they are stored inside database.
         If you want to rename enum type or namespace, follow <a href="ChangeEnumTypeGuide" target="_blank">this guide</a>.
         If you want to change underlying enum type (int, short, byte),
         follow <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-10#post-8240025" target="_blank">this guide</a>.
     </li>
     <li>
-        Values are stored exactly as C# store them- with numeric value.
+        Values are stored exactly as C# store them - with numeric value.
         You may consider adding numeric values to your constants so constants reordering does not affect values
         <div class="bg-image">
             <a href="#path images/BGDatabase/SupportedFields2.png"><img style="width: 400px" src="#path images/BGDatabase/SupportedFields2.png"></a>
@@ -798,13 +798,13 @@ namespace MyNameSpace
     <a href="#path images/BGDatabase/SupportedFields3.png"><img style="width: 400px" src="#path images/BGDatabase/SupportedFields3.png"></a>
 </div>
 <p>
-    Each row can 1) override any public variable of default graph and 2) can have it's own graph.
+    Each row can 1) override any public variable of default graph and 2) can have its own graph.
     The alternative and more efficient way to overriding variables is to use database fields values instead.
     You can access the current row by using "Special/Get current entity" node.
 </p>
 <p>
     Action is a special calculated field, which does not return value, but can change database values.
-    To invoke the action- use Invoke method on field value
+    To invoke the action - use Invoke method on field value
 </p>
 
 <h4 id="programmable">Programmable Fields (#8)</h4>
@@ -878,7 +878,7 @@ public class CalculateC : BGCodedFieldDelegateI&lt;int&gt;
 </p>
 <ol>
     <li> By reference means, that the value, stored inside database is returned. So changing collection values will actually change database value without setting a new value</li>
-    <li> By value means, that the new collection is created when value is accessed and it can be modified without changing database value</li>
+    <li> By value means, that the new collection is created when value is accessed, and it can be modified without changing database value</li>
 </ol>
 <p>
     The current strategy is to return a collection by reference if it's possible, and to return the collection by value only if returning value by reference is not possible

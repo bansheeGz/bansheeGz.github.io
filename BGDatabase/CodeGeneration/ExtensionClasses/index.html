@@ -14,7 +14,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -313,7 +313,7 @@
 
 <h4>Description</h4>
 <p>
-    Main purpose of these classes- is to be used as table rows instead of generic BGEntity class.
+    Main purpose of these classes - is to be used as table rows instead of generic BGEntity class.
 </p>
 <p>
     This is the main type of Code Generation. It removes all boilerplate code and provides super easy and slim API for
@@ -357,7 +357,7 @@
 <h4>More Details</h4>
 <p>
     Generated classes are inherited from generic BGEntity class.
-    These classes can not be added to GameObject, cause they are not Unity's MonoBehaviour
+    These classes can not be added to GameObject, because they are not Unity's MonoBehaviour
     (there are also another generated classes, which can be added to GameObjects, learn more <a
         href="../MonoBehaviourClasses">here</a>).
     When this CodeGen is enabled, database populated not with basic BGEntity objects, but with these extension classes.
@@ -683,7 +683,7 @@ firstRow.LoadAssetAsync(asset => {
 </p>
 <pre class="nomargin"><code class="language-csharp">    BGE_MyTable entity = BGE_MyTable.KEY_MyUniqueKey;</code></pre>
 <p>
-    , where MyUniqueKey is the name of the row and KEY_ is entities prefix from CodeGen addon settings.
+    where MyUniqueKey is the name of the row and KEY_ is entities prefix from CodeGen addon settings.
 </p>
 <p>
     If this option is used, there are additional cases when you need to regenerate extension classes: if you add/delete the rows with names or if you change rows names.
@@ -693,9 +693,9 @@ firstRow.LoadAssetAsync(asset => {
 <p>
     Starting from version 1.6.10, reference classes can be generated optionally.
     These classes allow to reference database rows from your own scripts easily.
-    To enable these classes generation- set "Reference class postfix" or "Reference list class postfix" parameters to some valid C# literals (for example _Ref and _ListRef).
-    Two additional classes will be generated- one for referencing a single row and another for referencing multiple rows (from single table).
-    If you use Odin inspector, version 3.1.7 has a bug and a wrong Editor drawer being shown in the Inspector- use [DrawWithUnity] attribute as a temporary workaround.
+    To enable these classes generation - set "Reference class postfix" or "Reference list class postfix" parameters to some valid C# literals (for example _Ref and _ListRef).
+    Two additional classes will be generated - one for referencing a single row and another for referencing multiple rows (from single table).
+    If you use Odin inspector, version 3.1.7 has a bug and a wrong Editor drawer being shown in the Inspector - use [DrawWithUnity] attribute as a temporary workaround.
 </p>
 <div class="bg-image">
     <a href="../../../images/BGDatabase/CodeGenExtensionClasses5.png"><img style="width:400px; height: 200px" src="../../../images/BGDatabase/CodeGenExtensionClasses5.png"></a>
@@ -721,7 +721,7 @@ firstRow.LoadAssetAsync(asset => {
         not under Editor folder
     </li>
     <li>Package - package (namespace) for you classes.</li>
-    <li>Classes names prefix - prefix for your classes names. For example you can use prefix like D_ to distinct your
+    <li>Classes names prefix - prefix for your classes names. For example, you can use prefix like D_ to distinct your
         database classes from the rest of the project classes
     </li>
     <li>Field names prefix - the same as classes names prefix, but for fields.</li>

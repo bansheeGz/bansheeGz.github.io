@@ -36,7 +36,7 @@
     <tr>
         <td>Encryptor config</td>
         <td>
-            String config to be passed to Encryptor. Use it to create multiple versions of encryption algorythm
+            String config to be passed to Encryptor. Use it to create multiple versions of encryption algorithm
         </td>
     </tr>
     <tr>
@@ -59,7 +59,7 @@
     <li>Create your own C# class, implementing BansheeGz.BGDatabase.BGEncryptor interface. Use <a href="../../Downloads/EncryptorExample.txt">this implementation</a> as an example</li>
     <li>[Important] Make sure that byte array after encrypting and decrypting is the same as initial (non encrypted) array</li>
     <li>Put this class to runtime assembly</li>
-    <li>Once you encrypted the data- do not remove encryptor class- otherwise it would be not possible to decrypt the data</li>
+    <li>Once you encrypted the data- do not remove encryptor class - otherwise it would be not possible to decrypt the data</li>
     <li>Use encryptor config to change encryption algorithm. Do not remove obsolete algorithm, so the data, encrypted with old algorithm can still be decrypted.</li>
     <li>Set required parameters (Encryptor class/Encryptor config/Encrypt SaveLoad addon data) and save database.</li>
 </ol>

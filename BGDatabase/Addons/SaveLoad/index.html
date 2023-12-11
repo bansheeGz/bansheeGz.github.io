@@ -14,7 +14,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -345,7 +345,7 @@ Choose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for sa
 
 <h4>How it works?</h4>
 <p>
-    SaveLoad addon can create multiple, configurable snapshots of database data and it can restore database state from these snapshots.
+    SaveLoad addon can create multiple, configurable snapshots of database data, and it can restore database state from these snapshots.
     Snapshots are constructed from the data, you marked as <i>changeable</i>, using <a href="#mergesettings">Merge settings</a>, described below. (<a href="#why">Why it works like this?</a>)
     Please, make sure you marked all data you want to be saved.
 </p>
@@ -354,17 +354,17 @@ Choose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for sa
 </div>
 <p>
     [Important] Loading with SaveLoad addon results in whole database to be reloaded,
-    so if you use SaveLoad addon do not store references to tables/fields/entities, cause they will be obsolete after loading.
+    so if you use SaveLoad addon do not store references to tables/fields/entities, because they will be obsolete after loading.
 </p>
 
 <h4 id="why">Why it works like this?</h4>
 <p>
-    Here is the quick explanation and main reasons why it works the way it works and why it's much better then simply saving the whole database.
+    Here is the quick explanation and main reasons why it works the way it works and why it's much better than simply saving the whole database.
 </p>
 <ol>
     <li>we want to be able to change database between public game releases</li>
     <li>we want to make sure the old saves, which are made with old version of database will remain compatible with new database</li>
-    <li>As a result of loading old save, we want to keep all saved data and we want to keep the changes we made to default database (shipped with a game)</li>
+    <li>As a result of loading old save, we want to keep all saved data, and we want to keep the changes we made to default database (shipped with a game)</li>
 </ol>
 <p>
     Here is the detailed illustration about what we want to achieve:
@@ -387,8 +387,8 @@ Choose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for sa
     <div>
         Read more about:
         <ol>
-            <li>How to change your database and keep it compatible with old save files- read the <a href="#compatible">section below</a></li>
-            <li>How to implement row-level control over merging- read <a href="#rowlevelexample">Row-level controller</a> section below.</li>
+            <li>How to change your database and keep it compatible with old save files - read the <a href="#compatible">section below</a></li>
+            <li>How to implement row-level control over merging - read <a href="#rowlevelexample">Row-level controller</a> section below.</li>
         </ol>
     </div>
 </div>
@@ -424,12 +424,12 @@ BGRepo.I.Load(bytes);
 <h4 id="mergesettings">Using Merge settings</h4>
 <p>
     Using Merge settings you can choose which data to save/load.
-    You want as less data to be saved as possible.
+    You want as fewer data to be saved as possible.
     You do not need to include data, which is "static" and can not be changed during play session.
 </p>
 
 <p>
-    There are only 2 rules for using merge settings and condition for choosing one or another is whether or not rows can be added or removed at runtime.
+    There are only 2 rules for using merge settings and condition for choosing one or another is whether rows can be added or removed at runtime.
 </p>
 <table class="contentTable">
     <tr>
@@ -507,7 +507,7 @@ BGRepo.I.Load(bytes);
 <h4 id="compatible">How to change your database and keep it compatible with old save files?</h4>
 <ol>
     <li>Do not include static data (the data, which can not be changed during game session) to save/load merge settings</li>
-    <li>While developing new, public version of your game- you can change <i>anything</i> in your static data with one simple exception:
+    <li>While developing new, public version of your game - you can change <i>anything</i> in your static data with one simple exception:
         you can not delete rows which may be referenced from saved data.
         Well, actually you can, but in this case you need to make sure your code should handle null relation values properly.(and they will be null if you remove the rows)
     </li>
@@ -543,7 +543,7 @@ BGRepo.I.Load(bytes);
 </p>
 <p>
     This can be done with C# controller class, which can cancel update operation before it actually takes place.
-    Currently there is no any merging on saving data, only on loading (but we reserved "merging on saving" option for future releases)
+    Currently, there is no any merging on saving data, only on loading (but we reserved "merging on saving" option for future releases)
 </p>
 <p>
     Here is a quick example of custom controller class.
@@ -602,13 +602,13 @@ BGRepo.I.Load(bytes);
     <li>Download default 3D example project <a href="../../Downloads/Example3DBasic">here</a></li>
     <li>Run the scene (Assets\BGDatabaseBasic3DExample\Scenes\BGExample1.unity), collect some objects and save the game</li>
     <li>
-        Let's assume this was made by a real player with our game version 1, and now we want to develop version 1.1 and we want to add a new scene.
+        Let's assume this was made by a real player with our game version 1, and now we want to develop version 1.1, and we want to add a new scene.
         We could add a new scene without any controller and without any issue, but we want to populate this scene with Collectable rows,
         and we do not want them to be deleted while loading save file.
         Without this controller, all Collectable rows will be overriden with the data from the save file,
         cause in SaveLoad merge settings we marked this table for "addingMissing" and "removingOrphaned" (which basically mean the whole table will be restored from save file)
     </li>
-    <li>At this point we start to develop game version 1.1. We will omit real scene creating, cause all we want- is to make sure our save file will be loaded properly
+    <li>At this point we start to develop game version 1.1. We will omit real scene creating, cause all we want - is to make sure our save file will be loaded properly,
         and it will not erase our newly added collectables for new scene
     </li>
     <li>Open BGDatabase window, choose <code>Configuration->Scene</code> and add new int field, call it "version"</li>
@@ -633,7 +633,7 @@ BGRepo.I.Load(bytes);
 <h4 id="rowlevelonSave">Row-level control on saving</h4>
 <p>
     To filter out rows while saving the data, your C# controller should implement ISaveLoadAddonSavedEntityFilter interface.
-    Method <code>bool OnSaveEntity(BGEntity entity);</code> will be called for every row and it should return true if you want to skip provided row.
+    Method <code>bool OnSaveEntity(BGEntity entity);</code> will be called for every row, and it should return true if you want to skip provided row.
 </p>
 
 

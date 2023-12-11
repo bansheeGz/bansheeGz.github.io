@@ -34,12 +34,12 @@
 <h4>Why view relational fields are better alternatives to many tables relational fields?</h4>
 <ol>
     <li>View is a persistent structure. You can reference the same view from multiple tables.
-        With many tables relational fields- you need to define the set of tables, you reference, for each field
+        With many tables relational fields - you need to define the set of tables, you reference, for each field
     </li>
     <li>
         CodeGen addon generates one single interface for each view.
         Each included table implements this interface and all view relations, referencing the view reuse this view interface as its value type.
-        For many tables relational fields- codegen addon generates interfaces for each field
+        For many tables relational fields- codegen addon generates interfaces for each field,
         and it's a big disadvantage if you want to reference the same set of tables
     </li>
 </ol>

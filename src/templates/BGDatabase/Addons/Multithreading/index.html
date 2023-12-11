@@ -15,14 +15,14 @@
 </p>
 <h6>Option # 2 : Use database data to spawn thread safe objects</h6>
 <p>
-    Another alternative method to use  BGDatabase data in multi-threaded environment (for example, with Unity ECS).
+    Another alternative method to use  BGDatabase data in multithreaded environment (for example, with Unity ECS).
     Use data from BGDatabase and create Unity ECS entities. Merge changes back to database on save if needed.
 </p>
 <ol>
     <li>Make sure you call database only from main thread (e.g. from MonoBehaviour classes)</li>
     <li>Create Unity ECS entities out of database data</li>
-    <li>If you need some of these Unity ECS entities to be persistent, (e.g. they needs to be saved/loaded),
-        store them back to database the moment they needs to be persisted, e.g, when the game needs to be saved.
+    <li>If you need some of these Unity ECS entities to be persistent, (e.g. they need to be saved/loaded),
+        store them back to database the moment they need to be persisted, e.g, when the game needs to be saved.
         Run saving/loading on main thread.
     </li>
     <li>
@@ -36,10 +36,10 @@
 <ol>
     <li>You can choose which tables you want to be accessible for multi-threading operations.</li>
     <li>You can merge changes back to main database either manually or auto (on saving).
-        Otherwise changes are not synchronized.
+        Otherwise, changes are not synchronized.
         Merging changes back is pretty expensive operation.
     </li>
-    <li>MT addon has it's own code generator and API very similar to single-threaded API.</li>
+    <li>MT addon has its own code generator and API very similar to single-threaded API.</li>
     <li>Not all BGDatabase fields are available for multithreaded access.
         Read more about which fields are available below in <a href="">What I need to know before using MT Addon?</a> section.
         You can also see which fields are not supported in merge settings under "Merge" tab
@@ -128,9 +128,9 @@
         </th>
     </tr>
     <tr>
-        <td>Multi-threaded updates</td>
+        <td>Multithreaded updates</td>
         <td>
-            By default all update transaction are run on single thread one-by-one.
+            By default, all update transaction are run on single thread one-by-one.
             Toggle this parameter on if you want to enable multithreaded updates.
             Note, multithreaded updates make 'lost updates' possible. Learn more about Lost updates
             <a href="https://codingsight.com/the-lost-update-problem-in-concurrent-transactions/">here</a>
@@ -145,7 +145,7 @@
     <tr>
         <td>Merge on save</td>
         <td>
-            Should the changes from multi-threaded environment be auto-merged back to main database before saving the game with <a href="../SaveLoad">SaveLoad</a> add-on
+            Should the changes from multithreaded environment be auto-merged back to main database before saving the game with <a href="../SaveLoad">SaveLoad</a> add-on
         </td>
     </tr>
     <tr>

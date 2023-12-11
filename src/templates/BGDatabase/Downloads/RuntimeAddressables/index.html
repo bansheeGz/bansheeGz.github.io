@@ -79,7 +79,7 @@
     <li>Install this package</li>
     <li>Create your own database as described <a href="../../Setup">here</a></li>
     <li>Create a table with any of the <a href="../../SupportedFields#unityassets">Unity assets</a> field and set loader=Addressables or loader=AddressablesByGuid
-        (while creating a field or via gear icon afterwards)
+        (while creating a field or via gear icon afterward)
     </li>
     <div class="bg-image">
         <a href="#path images/BGDatabase/download25.png"><img style="width: 400px" src="#path images/BGDatabase/download25.png"></a>
@@ -165,19 +165,19 @@
 <h4 id="unloading">Unloading/releasing the assets</h4>
 <p>
     The approach, recommended by Unity, is to pair asset loading calls with asset releasing calls, for example you may load asset in Start method and release the asset in OnDestroy method.
-    This is a universal approach and it should work fine in any possible scenarios.
+    This is a universal approach, and it should work fine in any possible scenarios.
 </p>
 <p>
     Addressables system increases internal counter each time the asset is loaded and decrease the counter then the asset is released.
-    Once the counter reaches zero- the asset can be disposed
+    Once the counter reaches zero - the asset can be disposed
     (more information is <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.19/manual/MemoryManagement.html">here</a>).
-    Keep in mind, each time you read the asset from the database- you actually read the asset from Addressables system and the counter is increased.
+    Keep in mind, each time you read the asset from the database - you actually read the asset from Addressables system and the counter is increased.
     So to mark the asset as disposable you need to release it as many times as it was loaded
     (test the unloading using Addressables events viewer to make sure the assets are unloaded properly).
     Use <a href="../AddressablesRelease.zip">this simple test project</a> to see how unloading works
 </p>
 <p>
-    We advice to adhere to the approach, described above and also we provide an additional, alternative option to release the assets, which can be used in some very specific scenarios-
+    We advise to adhere to the approach, described above, and also we provide an additional, alternative option to release the assets, which can be used in some very specific scenarios -
     we keep the number of times the asset was loaded via database so this number could be used to release the asset
 
 </p>
@@ -189,7 +189,7 @@
             Add a new GameObject to your startup scene and attach BGAddressablesMonitorGo component (located in BGDatabase.Addressables.dll DLL file) to it.
             Make sure this component's Awake method is executed before database is accessed.
         </li>
-        <li>To read assets- use one of the methods (listed above), which supports asset unloading.</li>
+        <li>To read assets - use one of the methods (listed above), which supports asset unloading.</li>
     </ol>
 
     <h5>How to unload assets</h5>
@@ -212,7 +212,7 @@
             we can not figure out how much time the asset was loaded outside the database.
         </li>
         <li>
-            Once the counter reaches zero- all references to this asset become null
+            Once the counter reaches zero - all references to this asset become null
             and the asset can not be used anymore, so use unloading only when asset is not needed anymore
         </li>
         <li>
@@ -239,7 +239,7 @@
 <ol>
     <li>Create empty scene</li>
     <li>Attach the script to any GameObject</li>
-    <li>Assign it's Address parameter to some valid address from your Addressables system</li>
+    <li>Assign "Address" parameter to some valid address from your Addressables system</li>
     <li>Run the scene and make sure asset was loaded successfully (no exceptions in the console)</li>
 </ol>
 
@@ -316,7 +316,7 @@
             <td>
                 <ol>
                     <li>Values are now loaded by using AsyncOperationHandle.WaitForCompletion method</li>
-                    <li>Preloader script is removed, cause it's not needed anymore (supports for synchronous assets loading is officially added to Addressables)</li>
+                    <li>Preloader script is removed, because it's not needed anymore (supports for synchronous assets loading is officially added to Addressables)</li>
                 </ol>
 
             </td>

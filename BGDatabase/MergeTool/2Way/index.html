@@ -14,7 +14,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -336,17 +336,18 @@
 <h5>How to use</h5>
 <ol>
     <li>Select "Merge" tab -> 2-Way</li>
-    <li>For simplicity sake, database #1 is always your saved database and you always apply changes from database #2 to database #1</li>
+    <li>For simplicity’s sake, database #1 is always your saved database, and you always apply changes from database #2 to database #1</li>
     <li>
         Set database #2 path.
         <div class="bg-image">
             <a href="../../../images/BGDatabase/MergeTool1.png"><img style="width: 400px" src="../../../images/BGDatabase/MergeTool1.png"></a>
         </div>
-        If you use localization or partition addons and you copy database files manually (without using Copy button),
+        If you use localization or partition addons, and you copy database files manually (without using Copy button),
         you need to copy all localization and partition files to destination folder as well as main database file (bansheegz_database.bytes)
     </li>
     <li>
         Start the merging process and review the changes.
+        Apply the changes from top to bottom, structural changes are always on top and should be applied first.
         In detailed view you can see every single change.
         Use red buttons to transfer atomic changes from DB#2 to DB#1 or use "Apply" button to transfer several changes at once
         <div class="bg-image">
@@ -366,7 +367,7 @@
     Here is how to use 2 way merge to resolve these conflicts
 </p>
 <ol>
-    <li>Copy your local database to some folder outside of your project</li>
+    <li>Copy your local database to some folder outside your project</li>
     <li>Resolve the conflict by replacing your local database with the file from source control system and reload database</li>
     <li>Open MergeTool and select database#2 path. Use the previously saved file from Step 1</li>
     <li>Review your changes and apply them</li>

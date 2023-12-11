@@ -98,7 +98,7 @@
 </p>
 <ol>
     <li>While importing plugin package, check the packages with source code only</li>
-    <li>Download required library- Google APIs (min version 1.41.1) <a href="https://www.nuget.org/packages/Google.Apis/1.41.1">here</a>
+    <li>Download required library - Google APIs (min version 1.41.1) <a href="https://www.nuget.org/packages/Google.Apis/1.41.1">here</a>
         and add library DLLs to your project to the Editor assembly (under Editor folder)
         (the following DLLs are required- Google.Apis.dll, Google.Apis.Auth.dll, Google.Apis.Auth.PlatformServices.dll,
         Google.Apis.Core.dll, Google.Apis.Sheets.v4.dll, Newtonsoft.Json.dll )
@@ -130,7 +130,7 @@
                 <ol>
                     <li>ADDED Localization support.
                         Configurable locale settings under DataSource->Misc.
-                        By default all new data sources will use spreadsheet locale</li>
+                        By default, all new data sources will use spreadsheet locale</li>
                     <li>CHANGED minor performance improvements for data importing</li>
                 </ol>
 
@@ -143,7 +143,7 @@
             <td>BGDatabase (v. >= 1.7.11)</td>
             <td>
                 <ol>
-                    <li>ADDED support for relations configuration (option to serialize relational values as strings/ints instead of ID or Name_Id)</li>
+                    <li>ADDED support for relations configuration (option to serialize relational values as strings/ints instead of ID or Name_ID)</li>
                     <li>CHANGED when rows mapping config with int/string field as ID is used, rows with empty/duplicate ID values are not exported anymore</li>
                     <li>Export job keeps the rows with empty field ID values intact (instead of removing them),
                         when rows mapping config is on and int/string field is used instead of entity ID</li>

@@ -149,7 +149,7 @@
 <h4>Introducing many tables relational fields</h4>
 <p>
     BGDatabase v.1.7.1 introduced 2 new relational fields: <code>manyTablesRelationSingle</code> and <code>manyTablesRelationMultiple</code>.
-    The difference between existing <code>relationSingle</code> and <code>relationMultiple</code> fields and the new ones- is that new fields can reference multiple tables.
+    The difference between existing <code>relationSingle</code> and <code>relationMultiple</code> fields and the new ones - is that new fields can reference multiple tables.
     To explain the difference, let's compare <code>relationSingle</code> field and <code>manyTablesRelationSingle</code> field
 </p>
 
@@ -169,10 +169,10 @@
 <p>
     <code>manyTablesRelationSingle</code> field can be used when there are many possible related tables.
     For example, let's say you have <code>Inventory</code> table and this table has the <code>item</code> field, referencing the item in the inventory slot.
-    The problem that there are many item types and each type has it's own set of attributes.
+    The problem that there are many item types and each type has its own set of attributes.
     Weapon item has a <code>damage</code> attribute and Armor item has a <code>defense</code> attribute etc.
     The possible solution could be keeping all possible attributes in one single table for all item types, but a better solution would be to split
-    each type into it's own table and reference these tables with a single <code>manyTablesRelationSingle</code> field.
+    each type into its own table and reference these tables with a single <code>manyTablesRelationSingle</code> field.
 </p>
 <p>
     In this scenario, there are 2 tables: the <code>Weapon</code> table and the <code>Armor</code> table.
@@ -228,7 +228,7 @@ public partial class DB_Weapon : BGEntity, DB_Inventory_Relation_f_item
     //more code here
 }</code></pre>
 <p>
-    If you have any questions regarding new fields and features- please, contact us using support email
+    If you have any questions regarding new fields and features - please, contact us using support email
 </p>
                 </div>
             </div>

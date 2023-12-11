@@ -38,7 +38,7 @@
 <p>
     This project represents a simple 3D game prototype.
     It's an endless game, the player should collect objects on two levels.
-    Each object has it's own type and some gold attached to it.
+    Each object has its own type and some gold attached to it.
     Once all objects are collected, new objects are spawned.
     The game progress can be saved and loaded.
 </p>
@@ -72,7 +72,7 @@
 <ol>
     <li>
         <code>Scene</code>- is linked to Unity scene, it's name should be equal to Unity scene name.
-        It has following fields:
+        It has the following fields:
         <ol>
             <li><code>spawnPosition [Vector3]</code>- position, the player will be moved then he's spawned in this scene
             </li>
@@ -83,9 +83,9 @@
         </ol>
     </li>
     <li>
-        <code>Collectable</code> - is Scene's nested field, meaning it defines it's own table (meta), which is connected
+        <code>Collectable</code> - is Scene's nested field, meaning it defines its own table (meta), which is connected
         to <code>Scene</code> table (meta).
-        It stores all collectable objects in the scene and have following fields:
+        It stores all collectable objects in the scene and have the following fields:
         <ol>
             <li><code>position [Vector3]</code>- position of the object</li>
             <li><code>gold [int]</code>- amount of gold, attached to the object</li>
@@ -128,7 +128,7 @@ You can find more information about Save/Load <a href="../Addons/SaveLoad">here<
 <div>
     <p>
         We use code generation in this example (and we strongly recommend you to use it too).
-        The long story short- instead of using basic API like this <code>entity.Set("gold", entity.Get&lt;int&gt;("gold")
+        The long story short - instead of using basic API like this <code>entity.Set("gold", entity.Get&lt;int&gt;("gold")
         +1));</code>
         code generation allows you to use code like this <code>entity.gold=entity.gold+1;</code>.
         As you can see code generation provides huge benefit, you can learn more about code generation <a
@@ -313,9 +313,9 @@ public class BGSpawner :BGM_Scene
     </li>
     <li><code>BGPlayer.cs</code>- this script is attached to the player and hooked up to a first row of <code>Player</code> table via extending from BGM_Player.
         <ol>
-            <li>It initialize it's position and rotation from database in the Start method</li>
+            <li>It initializes its position and rotation from database in the Start method</li>
             <li>It implements <code>BGAddonSaveLoad.BeforeSaveReciever</code> interface to ensure <code>OnBeforeSave</code> method is called before saving.
-                In this method it saves it's own position and amount of gold to the database, so while saving those values will be put to the save file.
+                In this method it saves its own position and amount of gold to the database, so while saving those values will be put to the save file.
             </li>
         </ol>
         <pre class="nomargin"><code class="language-csharp">

@@ -14,7 +14,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -569,7 +569,7 @@
                 <li>ADDED table/field "readonly" user-defined bool field, affecting generated classes</li>
                 <li>ADDED table/field comments are now added to generated code</li>
                 <li>ADDED HTTP parameters/headers for LiveUpdate addon with Graph editor support</li>
-                <li>ADDED a plugin for readonly database usage from multi-threaded environment</li>
+                <li>ADDED a plugin for readonly database usage from multithreaded environment</li>
                 <li>CHANGED generated code optimization to reduce the size of generated code</li>
             </ol>
         </td>
@@ -729,10 +729,10 @@
                 <li>ADDED: partitioning addon</li>
                 <li>ADDED: liveupdate addon supports JSON/CSV files, hosted on webserver</li>
                 <li>ADDED: byte and short fields</li>
-                <li>ADDED: entering/exiting playmode while a nested table is selected now keeps nested table active</li>
+                <li>ADDED: entering/exiting play mode while a nested table is selected now keeps nested table active</li>
                 <li>FIXED: flickering while scrolling with mouse wheel</li>
                 <li>FIXED: Binders/EntityGo GUI is bugged if the database window is close and dark theme is selected</li>
-                <li>FIXED: layout exception is printed to the console while scrolling horizontally on MacOS</li>
+                <li>FIXED: layout exception is printed to the console while scrolling horizontally on macOS</li>
             </ol>
         </td>
     </tr>
@@ -816,8 +816,8 @@
         <td>
             <ol>
                 <li>CHANGED: LiveUpdate addon does not require _id column anymore</li>
-                <li>FIXED: assigning sprite value to sprite field causes Unity Editor (v. 2019.4.8) crash on MacOS.
-                    Some other Unity Editor versions for MacOS may also be affected.
+                <li>FIXED: assigning sprite value to sprite field causes Unity Editor (v. 2019.4.8) crash on macOS.
+                    Some other Unity Editor versions for macOS may also be affected.
                     The root cause is Unity Editor returning invalid value (-1)
                     for <a href="https://docs.unity3d.com/ScriptReference/TextureImporter-filterMode.html">TextureImporter.filterMode</a> property
                 </li>
@@ -834,7 +834,7 @@
                 <li>ADDED: better support for Unity dark theme</li>
                 <li>ADDED: a tool for moving/copying rows between tables</li>
                 <li>REMOVED: all tests are removed</li>
-                <li>REMOVED: all references to UnityEngine.UI assembly are removed</li>
+                <li>REMOVED: all references to "UnityEngine.UI" assembly are removed</li>
                 <li>FIXED: some private properties are missing when includePrivate parameter is used in data binders</li>
                 <li>FIXED: sporadic error "BansheeGz.BGDatabase.BGUtilForUi:GetButtonHeight Could not load file or assembly 'UnityEngine.UI" printed to the console on project load</li>
                 <li>FIXED: NewEntity () throws IndexOutOfRangeException exception after GetEntity(string) method is called</li>
@@ -914,7 +914,7 @@
                 <li>New landing page in case there is no database in the project</li>
                 <li>ADDED: current row highlighting</li>
                 <li>ADDED: optional vertical TAB key movement</li>
-                <li>ADDED: sort alphabetically option while chosing a sprite from SpriteAtlas or multiple sprite</li>
+                <li>ADDED: sort alphabetically option while choosing a sprite from SpriteAtlas or multiple sprite</li>
                 <li>ADDED: NotFoundEvent for generated Playmaker actions</li>
                 <li>FIXED: No meta is chosen error in case of export/import to json or export/import with mode=Transfer</li>
             </ol>

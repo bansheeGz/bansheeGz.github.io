@@ -14,7 +14,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -423,7 +423,7 @@
             <ol>
                 <li>
                     Download and import <a href="../../Downloads/NPOI.unitypackage">NPOI DLLs</a>.
-                    If you already have NPOI DLLs in your project- delete old DLLs <b>before</b> importing.
+                    If you already have NPOI DLLs in your project - delete old DLLs <b>before</b> importing.
                 </li>
                 <li>Download and import <a href="../../Downloads/BGDatabaseLiveUpdateExcelParser.unitypackage">this package</a></li>
             </ol>
@@ -449,7 +449,7 @@
     <li>
         Make sure to share the target spreadsheet.
         Open target spreadsheet, click on Share button on the top right and set access level to "public" or "people with link".
-        Otherwise plugin won't work.
+        Otherwise, plugin won't work.
     </li>
     <li>
         Google sheets data should have proper layout (as described <a href="../../ExportImport">here</a>).
@@ -461,7 +461,7 @@
 <h4>Checking if GoogleSheets setup was correct</h4>
 <div>
     You can check if you set up config properly by accessing specific URL from your browser without logging to Google account.
-    Each DataSource type uses it's own URL (listed in the table above), so try to access the data with corresponding URL
+    Each DataSource type uses its own URL (listed in the table above), so try to access the data with corresponding URL
 </div>
 <div>
     For example, GoogleSheets API datasource type uses this URL to access the data
@@ -608,9 +608,9 @@
         </th>
     </tr>
     <tr>
-        <td>Spreadsheet Id</td>
+        <td>Spreadsheet ID</td>
         <td>
-            Id of your spreadsheet. Learn how to obtain it <a
+            ID of your spreadsheet. Learn how to obtain it <a
                 href="https://developers.google.com/sheets/api/guides/concepts#spreadsheet_id">here</a>
         </td>
     </tr>
@@ -653,7 +653,7 @@ BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load(true);
         <td>Force asynchronous</td>
         <td>
             If set to true, data loader will use asynchronous loader, which does not block main thread and loads data over several frames.
-            WEBGl platform ignores this parameter, cause it does not support synchronous loader and uses asynchronous loader by default
+            WEBGl platform ignores this parameter, because it does not support synchronous loader and uses asynchronous loader by default
         </td>
     </tr>
     <tr>

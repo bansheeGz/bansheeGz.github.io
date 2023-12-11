@@ -51,7 +51,7 @@
     <tr>
         <td>Batch update event</td>
         <td>Batch update event is fired when BGRepo.I.Events.Batch(Action action); method is used.
-            When this method is used, no individual events will be fired while action is being executed
+            When this method is used, no individual events will be fired while action is being executed,
             and one single batch event will be fired when action is executed.
             This is required for performance's sake when massive changes to database should be done without firing individual events
         </td>

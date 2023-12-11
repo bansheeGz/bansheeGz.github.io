@@ -56,14 +56,14 @@
 <ol>
     <li>Initialize data structures, which otherwise are initialized on demand</li>
     <li>Enables L2 memory cache for Unity assets and loads all of them to this cache (make sure that all your assets does not take too much memory)</li>
-    <li>Notify code generation utils to use multi-threaded approach</li>
+    <li>Notify code generation utils to use multithreaded approach</li>
 </ol>
 
 <h4>Settings</h4>
 <p>
     This component uses 'safety first, optimization second' approach, meaning it's meant to be safe without any additional settings.
     However, some settings are available to reduce memory usage.
-    Use this settings with big care, cause if the setting rule is broken- it can result in errors.
+    Use these settings with big care, cause if the setting rule is broken - it can result in errors.
 </p>
 <table class="contentTable dTable">
     <tr>
@@ -78,14 +78,14 @@
         <td>List with all the tables, which 'name' index is used</td>
         <td>
             add all the tables, which can be used for getting an entity by name, otherwise the 'name' index will be initialized for all metas.
-            If you use this setting- make sure to include all the tables, which can be used for getting an entity by name.
+            If you use this setting - make sure to include all the tables, which can be used for getting an entity by name.
         </td>
     </tr>
     <tr>
         <td>List with all partial keys</td>
         <td>add all the keys, which can be used for searching entities by partial key value, for example the key has 2 fields, but entity is searched by 1 single field.
-            If you leave this list empty- all the keys with more that 1 field will be initialized for partial access.
-            If you use this setting- make sure to include all the keys, which can be used for getting an entity by partial key value.
+            If you leave this list empty - all the keys with more than 1 field will be initialized for partial access.
+            If you use this setting - make sure to include all the keys, which can be used for getting an entity by partial key value.
         </td>
     </tr>
 </table>

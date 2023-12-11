@@ -14,7 +14,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -332,7 +332,7 @@
 <ol>
     <li>
         <a href="../SaveLoad">Save load addon</a> does not support saving not loaded partitioned data.
-        Basically partitioning works well only for read-only data, cause when partition is unloaded- the data is deleted
+        Basically partitioning works well only for read-only data, cause when partition is unloaded - the data is deleted
     </li>
     <li>
         There is no way to reorder rows from different partitions, cause partition's data is loaded in specific order.
@@ -350,7 +350,7 @@
 
 <h4>How it works?</h4>
 <p>
-    At runtime- only main database file is loaded automatically.
+    At runtime - only main database file is loaded automatically.
     Partition files are loaded/unloaded manually from C# scripts
 </p>
 <pre class="nomargin"><code class="language-csharp">        //to load a partition (partition can be index/name/ID)
@@ -409,25 +409,25 @@ Tables with partitioning support has a "dbPartition" field with certain supporte
         <td>relationSingle</td>
         <td>
             Standard single row relation, referencing DbPartition table.
-            No value- non partitioned, any other value means it belong to a partition, it's referencing.
+            No value- non-partitioned, any other value means it belong to a partition, it's referencing.
         </td>
     </tr>
     <tr>
         <td>byte?, short?, int?</td>
         <td>
-            Nullable number fields. No value- non partitioned, otherwise a physical index of partition, the row belongs to
+            Nullable number fields. No value- non-partitioned, otherwise a physical index of partition, the row belongs to
         </td>
     </tr>
     <tr>
         <td>byte, short, int</td>
         <td>
             Simple number fields. 0- non partitioned, otherwise a physical index of partition, the row belongs to + 1.
-            So 0 means non partitioned, 1 means the first partition (partition with index=0) etc.
+            So 0 means non-partitioned, 1 means the first partition (partition with index=0) etc.
         </td>
     </tr>
 </table>
 <p>
-   There is also a tool available (under "Tools" tab), which migrates existing nullable fields(byte?, short?, int?) to non nullable ones (byte, short, int) and vice versa.
+   There is also a tool available (under "Tools" tab), which migrates existing nullable fields(byte?, short?, int?) to non-nullable ones (byte, short, int) and vice versa.
 </p>
 
 

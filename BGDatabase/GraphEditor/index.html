@@ -14,7 +14,7 @@
     <meta charset="utf-8">
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="BG Database is a in-game data management system for Unity3D game engine">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     
     <title>BansheeGz</title>
@@ -372,7 +372,7 @@
     <li>Use "Special/SetResult" node to pass the result of calculation</li>
     <li>Use "ByType" category to perform calculations for bool, string, int, float, enum and list types.</li>
     <li>
-        Use "Database" category to perform operations on database- read/write field values, create/delete rows.
+        Use "Database" category to perform operations on database - read/write field values, create/delete rows.
         Operations, changing database state, are available for "action" field only.
     </li>
     <li>Use "Reflection" category to read/write objects field/properties</li>
@@ -386,9 +386,9 @@
 <h4>Graph variables</h4>
 Each graph can have multiple variables, which can be used during graph execution.
 Calculated and action fields can have a default graph (shared between all rows if not overridden)-
-and if this default graph has public variables- these variables can be overridden for each row.
+and if this default graph has public variables - these variables can be overridden for each row.
 So each row can use the same shared default graph- but with different public variable values.
-Here is an example- lets say you have a Items table with int "value" field, which can have some additional buff and debuff values
+Here is an example - lets say you have a Items table with int "value" field, which can have some additional buff and debuff values
 and the final value is calculated as value+buff-debuff.
 In this case you can have this default graph with 2 public variables:
 <div class="bg-image">
@@ -399,7 +399,7 @@ and override variable values for each row if needed
     <a href="../../images/BGDatabase/GraphEditor7.png"><img style="width: 400px" src="../../images/BGDatabase/GraphEditor7.png"></a>
 </div>
 
-Also, the better alternative exist in this case- you can just add "buff" and "debuff" fields to the database and use database values instead of variables.
+Also, the better alternative exist in this case - you can just add "buff" and "debuff" fields to the database and use database values instead of variables.
 <div class="bg-image">
     <a href="../../images/BGDatabase/GraphEditor8.png"><img style="width: 400px" src="../../images/BGDatabase/GraphEditor8.png"></a>
 </div>
@@ -693,13 +693,13 @@ So using public variables to customize data calculation for specific rows is adv
                 <tr>
                     <td>Cell construct</td>
                     <td>
-                        Construct a cell object. Accepts a field and a entity as input parameters.
+                        Construct a cell object. Accepts a field and an entity as input parameters.
                     </td>
                 </tr>
                 <tr>
                     <td>Cell deconstruct</td>
                     <td>
-                        Returns a entity and field for given cell
+                        Returns an entity and field for given cell
                     </td>
                 </tr>
             </table>
@@ -737,7 +737,7 @@ So using public variables to customize data calculation for specific rows is adv
                 <tr>
                     <td>If</td>
                     <td>
-                        Invoke "true" branch if condition==true and invoke "false" branch if condition if false
+                        Invoke "true" branch if condition==true and invoke "false" branch if condition is false
                     </td>
                 </tr>
             </table>

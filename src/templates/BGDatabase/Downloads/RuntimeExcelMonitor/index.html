@@ -45,14 +45,14 @@
 
 <h4>Description</h4>
 <p>
-    Export/import to excel file at runtime (PC/Mac/Linux only).
+    Export/import to Excel file at runtime (PC/Mac/Linux only).
     If you are looking for Unity Editor solution, visit <a href="../EditorExcelMonitor">this page</a>.
 </p>
 
 <h4>Features</h4>
 <ol>
     <li>Import/export database data from/to Excel file at runtime (in builds)</li>
-    <li>Optionally, monitor excel file and auto-import the data if file is modified on disk.</li>
+    <li>Optionally, monitor Excel file and auto-import the data if file is modified on disk.</li>
 </ol>
 
 <h4>GUI overview</h4>
@@ -79,8 +79,8 @@
     </li>
     <li>Export required data to Excel as described <a href="http://www.bansheegz.com/BGDatabase/ThirdParty/Excel/">here</a></li>
     <li>Add <code>Assets\BansheeGz\BGDatabaseExcelRuntime\BGExcelImportGo.cs</code> component to a new GameObject</li>
-    <li>Set BGExcelImportGo's "Excel File" parameter to previously exported excel file location.
-        Use absolute path or path, relative to StreamingAssets folder if your excel file is located under StreamingAssets folder
+    <li>Set BGExcelImportGo's "Excel File" parameter to previously exported Excel file location.
+        Use absolute path or path, relative to StreamingAssets folder if your Excel file is located under StreamingAssets folder
         (for example, for <code>Assets\StreamingAssets\excel.xlsx</code> file the correct value would be <code>excel.xlsx</code>)
     </li>
     <li>[Optionally] Toggle "Monitor File" parameter on to monitor the file.
@@ -88,7 +88,7 @@
     </li>
     <li>[Optionally] Toggle "Import On Start" on to run import on scene load (from Start method)</li>
     <li>Run your scene</li>
-    <li>Open excel file, change the data and save the file (Ctrl+s shortcut)</li>
+    <li>Open Excel file, change the data and save the file (Ctrl+s shortcut)</li>
     <li>If you set "Monitor File" parameter on, database data should be updated automatically.
         If "Monitor File" is off, you need to open BGExcelImportGo GUI by clicking on "Excel>>" button and then click on "Import" button to import the data.
         All binders in the scene will be executed after that.
