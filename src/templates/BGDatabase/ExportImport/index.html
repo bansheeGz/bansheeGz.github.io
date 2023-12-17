@@ -319,7 +319,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
                                                              src="#path images/BGDatabase/ExportImport5.png"></a>
 </div>
 
-<h4>Creating database backup in json format</h4>
+<h4 id="json">Creating database backup in json format</h4>
 <p>
     Exporting data to json allows you to create a full database backup in human-readable form as json file.
     With json you can not choose which data you want to be exported/imported, full data including database structure will
@@ -328,6 +328,12 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
 <p>
     You can use this backup later to fully restore the database (including structure)
 </p>
+<p>There are 2 different json file formats available:</p>
+<ol>
+    <li>Classic - legacy format(not recommended)</li>
+    <li>CompactRowBased - best readability</li>
+    <li>CompactFieldBased - best performance</li>
+</ol>
 
 <h4>Tables naming restriction</h4>
 <p>

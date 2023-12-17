@@ -328,7 +328,7 @@
 <ol>
     <li>
         First time your game is launched and database is loaded, addon tries to read data from Google Sheets/web server files.
-        Alternatively set "Manual load" parameter on and trigger loading manually from script at any moment
+        Alternatively turn "Enable manual load" parameter on and trigger loading manually from script at any moment
     </li>
     <li>If step 1 is successful, every time database is loaded, it will be merged with remote data, thus
         applying the update.
@@ -569,7 +569,7 @@
     Here are the required steps:
 </p>
 <ol>
-    <li>Make sure to toggle "Manual Load" parameter on</li>
+    <li>Make sure to toggle "Enable manual Load" parameter on</li>
     <li>Download <a href="../../Downloads/LiveUpdatePreloader.txt">this preloader script</a>,
         change txt extension to cs extension and attach it to any GameObject in your starting scene
     </li>
@@ -628,7 +628,7 @@
         </td>
     </tr>
     <tr>
-        <td>Manual Load</td>
+        <td>Enable manual Load</td>
         <td>
             Set it to true if you do not want this addon to be executed automatically.
             In this case, you will need to manually trigger the loading by calling
@@ -637,9 +637,8 @@ BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load();
 </pre>
             OR
             <pre>
-BGRepo.I.Addons.Get&lt;BGAddonLiveUpdate&gt;().Load(true);
+BGAddonLiveUpdate.LoadDefault();
 </pre>
-            if you want to enable local cache for downloaded data to prevent several remote data loading
         </td>
     </tr>
     <tr>
