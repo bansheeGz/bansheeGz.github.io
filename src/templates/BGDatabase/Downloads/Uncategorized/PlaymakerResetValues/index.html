@@ -1,0 +1,244 @@
+#set page=Downloads
+#set subPage=Playmaker reset values
+
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            BGDatabase, Playmaker
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../../BGPlaymakerResetValues.unitypackage" class="downloadButton"></a>
+        </div>
+    </div>
+</div>
+
+<h4>Description</h4>
+<p>
+    Custom actions for Playmaker to revert values to default ones.
+</p>
+<ol>
+    <li><a href="#row">BGPlaymakerResetValuesRow</a> - reset values for one single row</li>
+    <li><a href="#table">BGPlaymakerResetValuesTable</a> - reset values for one single table</li>
+    <li><a href="#tables">BGPlaymakerResetValuesTableList</a> - reset values for multiple tables</li>
+</ol>
+
+<h4>Restrictions</h4>
+<p>
+    <code>addMissingRows</code> and <code>removeOrphanedRows</code> parameters may not work correctly
+    if <a href="../../../Addons/Partition">partition addon</a> is enabled with horizontal partitioning enabled
+</p>
+
+<h4>Actions</h4>
+<h6 id="row">1) BGPlaymakerResetValuesRow</h6>
+<p>
+    Reverts the values for one single row.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Uncategorized1.png"><img style="width: 400px"
+                                                              src="#path images/BGDatabase/Uncategorized1.png"></a>
+</div>
+<details>
+    <summary>Show parameters</summary>
+
+    <table class="contentTable dTable">
+        <tr>
+            <th>
+                Parameter name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        <tr>
+            <td>RowSource</td>
+            <td>
+                What should be used for row's retrieval (Index,Name,ID)
+            </td>
+        </tr>
+        <tr>
+            <td>RowIndex</td>
+            <td>
+                Row index to use if RowSource=RowIndex, otherwise the value is ignored
+            </td>
+        </tr>
+        <tr>
+            <td>RowName</td>
+            <td>
+                Row name to use if RowSource=RowName, otherwise the value is ignored
+            </td>
+        </tr>
+        <tr>
+            <td>RowId</td>
+            <td>
+                Row ID to use if RowSource=RowId, otherwise the value is ignored
+            </td>
+        </tr>
+        <tr>
+            <td>No error if row not found</td>
+            <td>
+                If this parameter is set to true and the row is not found in default repo, no exception will be thrown
+            </td>
+        </tr>
+        <tr>
+            <td>Meta</td>
+            <td>
+                [REQUIRED] meta (table) name
+            </td>
+        </tr>
+        <tr>
+            <td>Fields to include</td>
+            <td>
+                Comma separated list of field names to include into process. If no value is provided, all fields, except
+                "Fields to exclude" will be processed
+            </td>
+        </tr>
+        <tr>
+            <td>Fields to exclude</td>
+            <td>
+                Comma separated list of field names to exclude from process.
+            </td>
+        </tr>
+        <tr>
+            <td>Debug</td>
+            <td>
+                Print statistic information to Unity console
+            </td>
+        </tr>
+    </table>
+</details>
+
+<h6 id="table">2) BGPlaymakerResetValuesTable</h6>
+<p>
+    Reverts the values for one single table.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Uncategorized2.png"><img style="width: 400px"
+                                                              src="#path images/BGDatabase/Uncategorized2.png"></a>
+</div>
+<details>
+    <summary>Show parameters</summary>
+
+    <table class="contentTable dTable">
+        <tr>
+            <th>
+                Parameter name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        <tr>
+            <td>Update matching rows</td>
+            <td>
+                Update values for matching rows (matching row exists both in loaded repo and in the default repo)
+            </td>
+        </tr>
+        <tr>
+            <td>Included rows indexes for update</td>
+            <td>
+                Restrict matching rows to the ones, which index is added to provided list
+            </td>
+        </tr>
+        <tr>
+            <td>Add missing rows</td>
+            <td>
+                Missing rows will be added (missing row exists in the default repo only)
+            </td>
+        </tr>
+        <tr>
+            <td>Remove orphaned rows</td>
+            <td>
+                Orphaned rows will be removed (orphaned row exists in the loaded repo only)
+            </td>
+        </tr>
+        <tr>
+            <td>Meta</td>
+            <td>
+                [REQUIRED] meta (table) name
+            </td>
+        </tr>
+        <tr>
+            <td>Fields to include</td>
+            <td>
+                Comma separated list of field names to include into process. If no value is provided, all fields, except
+                "Fields to exclude" will be processed
+            </td>
+        </tr>
+        <tr>
+            <td>Fields to exclude</td>
+            <td>
+                Comma separated list of field names to exclude from process.
+            </td>
+        </tr>
+        <tr>
+            <td>Debug</td>
+            <td>
+                Print statistic information to Unity console
+            </td>
+        </tr>
+    </table>
+</details>
+
+<h6 id="tables">3) BGPlaymakerResetValuesTableList</h6>
+<p>
+    Reverts the values for multiple tables.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Uncategorized3.png"><img style="width: 400px"
+                                                              src="#path images/BGDatabase/Uncategorized3.png"></a>
+</div>
+<details>
+    <summary>Show parameters</summary>
+
+    <table class="contentTable dTable">
+        <tr>
+            <th>
+                Parameter name
+            </th>
+            <th>
+                Description
+            </th>
+        </tr>
+        <tr>
+            <td>Metas</td>
+            <td>
+                [REQUIRED] Comma separated list of metas(tables) names to include.
+            </td>
+        </tr>
+        <tr>
+            <td>Update matching</td>
+            <td>
+                Update values for matching rows (matching row exists both in loaded repo and in the default repo)
+            </td>
+        </tr>
+        <tr>
+            <td>Add missing rows</td>
+            <td>
+                Missing rows will be added (missing row exists in the default repo only)
+            </td>
+        </tr>
+        <tr>
+            <td>Remove orphaned rows</td>
+            <td>
+                Orphaned rows will be removed (orphaned row exists in the loaded repo only)
+            </td>
+        </tr>
+        <tr>
+            <td>Debug</td>
+            <td>
+                Print statistic information to Unity console
+            </td>
+        </tr>
+    </table>
+</details>
