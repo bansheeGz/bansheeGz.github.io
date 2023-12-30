@@ -674,10 +674,11 @@ Use the following code (at the beginning of your callback function) to filter ou
         </div>
     </li>
     <li>To save current settings data use this code
-<pre class="nomargin"><code class="language-csharp">    var settingsSave = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save(new BGSaveLoadAddonSaveContext("Settings"));</code></pre>
+<pre class="nomargin"><code class="language-csharp">    byte[] settingsSave = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save(new BGSaveLoadAddonSaveContext("Settings"));</code></pre>
     </li>
     <li>To load game settings on your application startup, use this code
-<pre class="nomargin"><code class="language-csharp">    GRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest("Settings", settingsData)){ReloadDatabase = false});</code></pre>
+<pre class="nomargin"><code class="language-csharp">    // ReloadDatabase parameter, set to false, prevents database reloading
+    BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest("Settings", settingsData)){ReloadDatabase = false});</code></pre>
     </li>
     <li>To load saved game using default config, use the following code. Preserve request is required to not lost settings data during main database reloading.
 <pre class="nomargin"><code class="language-csharp">            BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(
