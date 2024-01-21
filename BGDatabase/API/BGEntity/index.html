@@ -331,7 +331,7 @@
     <tr>
         <td colspan="3">
 <pre class="nomargin"><code class="language-csharp">//get int value of "intField" field
-var intValue = entity.Get&lt;int&gt;("intField");</code></pre>
+int intValue = entity.Get&lt;int&gt;("intField");</code></pre>
         </td>
     </tr>
 
@@ -344,7 +344,7 @@ var intValue = entity.Get&lt;int&gt;("intField");</code></pre>
     <tr>
         <td colspan="3">
 <pre class="nomargin"><code class="language-csharp">//set int value of "intField" field
-var intValue=0;
+int intValue=0;
 entity.Set("intField", intValue);</code></pre>
         </td>
     </tr>
@@ -368,10 +368,20 @@ entity.Set("intField", intValue);</code></pre>
     </tr>
     <tr>
         <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">
-//get entity id
-var id = entity.Id;
-</code></pre>
+<pre class="nomargin"><code class="language-csharp">//get entity id
+BGId id = entity.Id;</code></pre>
+        </td>
+    </tr>
+
+    <tr>
+        <td>Index</td>
+        <td>int</td>
+        <td>Get table row physical position</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">//get entity index
+int index = entity.Index;</code></pre>
         </td>
     </tr>
 
@@ -383,7 +393,7 @@ var id = entity.Id;
     <tr>
         <td colspan="3">
 <pre class="nomargin"><code class="language-csharp">//get entity name
-var name = entity.Name;</code></pre>
+string name = entity.Name;</code></pre>
         </td>
     </tr>
 
@@ -395,7 +405,7 @@ var name = entity.Name;</code></pre>
     <tr>
         <td colspan="3">
 <pre class="nomargin"><code class="language-csharp">//get entity Meta
-var meta = entity.Meta;</code></pre>
+BGMetaEntity meta = entity.Meta;</code></pre>
         </td>
     </tr>
 
@@ -406,10 +416,8 @@ var meta = entity.Meta;</code></pre>
     </tr>
     <tr>
         <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">
-//delete entity
-entity.Delete();
-</code></pre>
+<pre class="nomargin"><code class="language-csharp">//delete entity
+entity.Delete();</code></pre>
         </td>
     </tr>
 
