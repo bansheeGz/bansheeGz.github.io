@@ -14,14 +14,14 @@
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
-      "version" : "1.10",
-      "releaseDate" : "11/12/22",
+      "version" : "1.11",
+      "releaseDate" : "02/09/24",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelService",
       "packageClass" : null,
       "name" :  "Excel integration for Editor",
       "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor_1.10.unitypackage",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor_1.11.unitypackage",
       "requiredVersion" : "1.7.11"
     },
     {
@@ -97,14 +97,14 @@
     },
     {
       "id" : "Vfg8+Xl+40OZC6l3sV/otA",
-      "version" : "1.1",
-      "releaseDate" : "01/10/23",
+      "version" : "1.2",
+      "releaseDate" : "02/09/24",
       "pluginClass" : "BansheeGz.BGDatabase.BGDatabaseMTManager",
       "packageClass" : null,
       "name" :  "Read-only database for MT",
       "description" :  "Adds support for multi-threaded access to readonly database",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/ReadonlyMultithreading",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseReadonlyMT.unitypackage",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseReadonlyMT_1.2.unitypackage",
       "requiredVersion" : "1.7.12"
     },
     {

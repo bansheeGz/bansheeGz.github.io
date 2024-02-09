@@ -18,15 +18,20 @@ public class CopyRighter
     public CopyRighter(File dir)
     {
         this.dir = dir;
-        copyright = "/*\n" +
-                "<copyright file=\"__file__\" company=\"BansheeGz\">\n" +
-                "    Copyright (c) 2018-2020 All Rights Reserved\n" +
-                "</copyright>\n" +
+        copyright = "/*\r\n" +
+                "<copyright file=\"__file__\" company=\"BansheeGz\">\r\n" +
+                "    Copyright (c) 2018-2024 All Rights Reserved\r\n" +
+                "</copyright>\r\n" +
                 "*/";
 
         ignoreNames.add("SimpleJSON.cs");
         ignoreNames.add("LiteCsvParser.cs");
         ignoreNames.add("BGBSAStuff.cs");
+        ignoreNames.add("BaseCmdRunner.cs");
+        ignoreNames.add("CmdRunner.cs");
+        ignoreNames.add("CodiceCmdRunner.cs");
+        ignoreNames.add("LaunchCommand.cs");
+        ignoreNames.add("PlatformIdentifier.cs");
     }
 
     public static void main(String[] args) throws Exception
@@ -86,7 +91,8 @@ public class CopyRighter
         {
             //no copyright
             content = myCopyright +"\n" + content;
-            Files.writeString(file.toPath(), content, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
+//            Files.writeString(file.toPath(), content, StandardCharsets.UTF_8, StandardOpenOption.WRITE);
+            System.out.println("No copyright " + file.toPath());
         } else
         {
             //check
@@ -117,7 +123,8 @@ public class CopyRighter
 //                String prefix = content.substring(0, startIndex);
                 String result = myCopyright + postfix;
 
-                Files.writeString(file.toPath(), result, StandardCharsets.UTF_8, StandardOpenOption.CREATE);
+                System.out.println("Wrong copyright " + file.toPath());
+//                Files.writeString(file.toPath(), result, StandardCharsets.UTF_8, StandardOpenOption.CREATE);
             }
         }
     }
