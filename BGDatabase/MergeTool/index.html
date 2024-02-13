@@ -382,11 +382,16 @@
 
 <h4>Alternative workflow for merging data #1</h4>
 <p>
+    Starting with version 1.8.9 you can save database in <a href="../Addons/Settings"> JSON format</a> and use text-based merge tool
+</p>
+
+<h4>Alternative workflow for merging data #2</h4>
+<p>
     If you can split tables between developers, so each developer modify his own set of tables, you can use <a href="../Addons/Partition/Vertical">partitioning addon</a>
     with vertical data splitting.
 </p>
 
-<h4>Alternative workflow for merging data #2</h4>
+<h4>Alternative workflow for merging data #3</h4>
 <p>
     You can also use JSON-based approach to merge database data
 </p>
@@ -414,7 +419,7 @@
     <li>If something went wrong - rollback the changes (by fetching database file from source control and reloading database) and repeat steps 5-7</li>
 </ol>
 
-<h4>Alternative workflow for merging data #3</h4>
+<h4>Alternative workflow for merging data #4</h4>
 <p>
     Also, another option for multi-user environment setup is to use <a href="../ThirdParty/GoogleSheets">Google Sheets</a> spreadsheet data as primary source of data.
 </p>
