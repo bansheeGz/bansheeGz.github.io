@@ -1,0 +1,76 @@
+#set page=Misc
+#set subPage=Colorization
+
+<h6>Description</h6>
+<p>
+    Colorization allows to colorize cells for better visual feedback
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Colorization1.png"><img style="width: 200px" src="#path images/BGDatabase/Colorization1.png"></a>
+</div>
+
+<h6>Limitations</h6>
+<p>
+    Current implementation uses semi-transparent textures, drawn on top of the cells. This approach limits the color choices drastically.
+    Use the color with alpha value around 15-30
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Colorization6.png"><img style="width: 200px" src="#path images/BGDatabase/Colorization6.png"></a>
+</div>
+
+<h6>How to enable</h6>
+<p>
+    Select "Settings->Preferences", turn on the "Colorization" parameter, click on "Open setting" to open Colorization settings.
+    Changes are not saved automatically, after making changes, press on "Save" button to save the settings or "Reload" to revert
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Colorization2.png"><img style="width: 200px" src="#path images/BGDatabase/Colorization2.png"></a>
+</div>
+
+<h6>How to color table names</h6>
+<p>
+    Under "Metas" tab, select a table, select "Solid color" and select a color to color table name
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Colorization3.png"><img style="width: 200px" src="#path images/BGDatabase/Colorization3.png"></a>
+</div>
+
+<h6>How to color field cells</h6>
+<p>
+    Under "Fields" tab, select a target field and select color mode and color
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Colorization4.png"><img style="width: 200px" src="#path images/BGDatabase/Colorization4.png"></a>
+</div>
+
+<h6>How to color row cells</h6>
+<p>
+    Under "Entities" tab, select table, select color mode and color
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Colorization5.png"><img style="width: 200px" src="#path images/BGDatabase/Colorization5.png"></a>
+</div>
+
+<h6>Available coloring modes for fields (columns) and entities (rows)</h6>
+<table class="contentTable">
+    <tr>
+        <th>Mode</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Solid color</td>
+        <td>Single color for all cells (fields only)</td>
+    </tr>
+    <tr>
+        <td>Enum value based</td>
+        <td>Based on enum field value. One color per each enum constant</td>
+    </tr>
+    <tr>
+        <td>Single relation value based</td>
+        <td>Based on singleRelation field value. One color per each related entity</td>
+    </tr>
+    <tr>
+        <td>Code</td>
+        <td>C# class instance can be used to determine the color. C# class should implement BGCellColorProvider interface.</td>
+    </tr>
+</table>
