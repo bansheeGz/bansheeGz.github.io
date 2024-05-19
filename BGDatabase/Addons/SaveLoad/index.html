@@ -423,12 +423,44 @@ BGRepo.I.Load(bytes);
 
 <h4 id="mergesettings">Using Merge settings</h4>
 <p>
-    Using Merge settings you can choose which data to save/load.
+    With Merge settings you can choose which data to save/load.
     You want as fewer data to be saved as possible.
     You do not need to include data, which is "static" and can not be changed during play session.
 </p>
 
 <p>
+    Try to stick to the following 3 rules:
+</p>
+<ol>
+    <li>
+        Rule #1 -  If table's data is not changing in runtime, do not include this table to SaveLoad addon merge settings
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/SaveLoadAddon7.png">
+                <img style="width: 200px" src="../../../images/BGDatabase/SaveLoadAddon7.png">
+            </a>
+        </div>
+    </li>
+    <li>
+        Rule #2 -  If you want to save table data but at the same time you do not add or remove rows from this table in runtime,
+        do not toggle on "Add missing" and "Remove orphaned"
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/SaveLoadAddon8.png">
+                <img style="width: 200px" src="../../../images/BGDatabase/SaveLoadAddon8.png">
+            </a>
+        </div>
+    </li>
+    <li>
+        Rule #3 -  Include only those fields, that are changing in runtime.
+        If field values are not changing in runtime, do not include these fields.
+        Toggle on "Choose fields to update" and select the fields, which values are changing in runtime
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/SaveLoadAddon9.png">
+                <img style="width: 200px" src="../../../images/BGDatabase/SaveLoadAddon9.png">
+            </a>
+        </div>
+    </li>
+</ol>
+<!--<p>
     There are only 2 rules for using merge settings and condition for choosing one or another is whether rows can be added or removed at runtime.
 </p>
 <table class="contentTable">
@@ -491,7 +523,7 @@ BGRepo.I.Load(bytes);
             </div>
         </td>
     </tr>
-</table>
+</table>-->
 <div class="flexdiv">
     <div>
         Read more about:
