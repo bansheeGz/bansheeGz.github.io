@@ -360,10 +360,10 @@
             API type->
         </th>
         <th width="25%">
-            GoogleSheets API
+            Visualization API<br/>(recommended)
         </th>
         <th width="25%">
-            Visualization API
+            GoogleSheets API
         </th>
         <th width="25%">
             Excel file export
@@ -371,8 +371,8 @@
     </tr>
     <tr>
         <td>URL to retrieve data</td>
-        <td>https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Table Name]?key=[Your API key]</td>
         <td>https://docs.google.com/spreadsheets/d/[Your Spreadsheet Id]/gviz/tq?tqx=out:csv&sheet=[Table Name]</td>
+        <td>https://sheets.googleapis.com/v4/spreadsheets/[Your Spreadsheet Id]/values/[Table Name]?key=[Your API key]</td>
         <td>https://docs.google.com/spreadsheets/d/[Your Spreadsheet Id]/export</td>
     </tr>
     <tr>
@@ -383,8 +383,8 @@
     </tr>
     <tr>
         <td>Pros</td>
-        <td>Official recommended method by Google</td>
         <td>Do not require any credentials</td>
+        <td>Official recommended method by Google</td>
         <td>
             <ol>
                 <li>Do not require any credentials</li>
@@ -395,16 +395,14 @@
     <tr>
         <td>Cons</td>
         <td>
+            It's not clear if Google can consider it as API abuse and ToS violation
+        </td>
+        <td>
             <ol>
                 <li>API calls have free usage limits. Read more <a href="https://developers.google.com/sheets/api/limits">here</a>.
                     If you reach the limit, GoogleSheets will not return correct feed and LiveUpdate plugin will fail.
                 </li>
                 <li><p style="background-color:red; color: white">API key is exposed, cause database stores it</p></li>
-            </ol>
-        </td>
-        <td>
-            <ol>
-                <li>It's not clear if Google can consider it as API abuse and ToS violation</li>
             </ol>
         </td>
         <td>
