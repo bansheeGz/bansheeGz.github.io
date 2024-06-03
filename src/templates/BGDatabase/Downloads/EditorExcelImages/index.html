@@ -1,0 +1,186 @@
+#set page=Downloads
+#set subPage=Excel images
+
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            0.9
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            <span class="redText">
+                BGDatabase (v. >= 1.8.11), <a href="../EditorExcel">Excel plugin (v. >= 1.12)</a>
+            </span>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseExcelEditorAssets.unitypackage" class="downloadButton"></a>
+        </div>
+
+    </div>
+</div>
+<div>
+    <img class="centered" src="#path images/BGDatabase/ExcelImages1.png">
+</div>
+
+
+<h4>Description</h4>
+<p>
+    This plug-in is an attempt to add support for exchanging images between Excel xlsx
+    file and Unity texture(sprite) assets.
+    This plug-in is a bit tricky, read this article carefully to understand how it works.
+    Exporting images to Excel is a relatively safe operation, but
+    <span class="redText">importing images from Excel file will rewrite your Unity assets.</span>
+    The package is tested with LibreOffice and Microsoft Excel, read comparison sections below.
+</p>
+
+
+<h4 id="setup">Setup:</h4>
+<ol>
+    <li>Import BGDatabase package (v. >= 1.8.11) and create your own database as described <a
+            href="../../Setup">here</a></li>
+    <li>Import <a href="../EditorExcel">Excel plugin</a> (v. >= 1.12)</li>
+    <li>Import this package</li>
+    <li>Enable image transferring in data source settings (read more about the <a href="#settings">settings</a> )</li>
+    <li><span class="redText">[Important] Backup your project if you plan to import images from Excel file</span>
+        and backup your Excel file if you plan to export images to your existing Excel file
+    </li>
+    <li>Run import and(or) export jobs and make sure all functions work as you expected.
+        Check texture resolutions to make sure they are not scaled down (read more about <a href="#editors">Microsoft Excel</a> below)
+    </li>
+</ol>
+
+<h4 id="limitations">Limitations and restrictions</h4>
+<ol>
+    <li>texture, texture2D and sprite fields are supported</li>
+    <li>for sprite field, the assets should have "Sprite Mode"="Single", multiple mode is not supported</li>
+    <li>jpeg and png formats are supported</li>
+    <li>xlsx Excel file format is supported. Currently, there is no support for older xls format</li>
+    <li>Image and reference modes are not compatible.
+        File, created with images, should not be imported with "Reference" mode, otherwise reference values will be
+        erased.
+    </li>
+    <li>
+        Importing images is a destructive operation. With regular data importing,
+        there is an option to revert all changes by pressing on "Reload" button.
+        While importing images, existing Unity textures will be rewritten without an option to roll back the changes.
+    </li>
+</ol>
+
+<h4 id="how">How image transferring works</h4>
+<p>
+    By default, Unity asset field values are passed as string references.
+    String reference is an address, which can be used to load the asset in runtime.
+    For image fields, there is an option to pass the image itself instead of its address.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExcelImages2.png"><img style="width: 300px"
+                                                            src="#path images/BGDatabase/ExcelImages2.png"></a>
+</div>
+<p>
+    While exporting, database uses image references (string values) to find and read Unity assets (textures) and creates
+    corresponding images in Excel file.
+    Images are floating on top of the cells and anchors are used to "link" an image to the target cell.
+    Before writing images to Excel file, all existing images, "linked" to the same cells are deleted.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExcelImages3.png"><img style="width: 300px"
+                                                            src="#path images/BGDatabase/ExcelImages3.png"></a>
+</div>
+<p>
+    While importing Database read images from Excel file and uses image references to find and re-write target Unity
+    assets.
+    <span class="redText">Back up your project before trying to import data for the first time</span>.
+    Every time you import images from Excel file, the Unity assets are rewritten with images from Excel file.
+    You need to ensure that images inside Excel file are not compressed and have original resolution (read Microsoft
+    Excel vs LibreOffice section for more details)
+</p>
+
+<h4 id="settings">Settings</h4>
+<p>
+    To enable images transfer, navigate to your data source and toggle on "Enable" parameter under "Images" tab and
+</p>
+<ol>
+    <li>Option #1: Enable "Transfer images" under "Default parameters". Default parameters affect all compatible fields</li>
+    <li>Option #2: Enable "Transfer images" under "Fields" for certain field(s).
+        Field parameters override default parameters, the final status is shown under "S" column</li>
+</ol>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExcelImages6.png"><img style="width: 300px" src="#path images/BGDatabase/ExcelImages6.png"></a>
+</div>
+<p>
+    It can occur during picture import that some cell values are invalid or not set.
+    Invalid values may have different image format or in case of the sprite fields, value may reference a sprite from texture with multiple sprites mode.
+    In this case it's not possible to overwrite existing asset, and you may choose to skip the image or create a new asset.
+</p>
+<p>In case you want to create new assets, you need to</p>
+<ol>
+    <li>Select a folder for new assets.
+        For the fields with Resources loader, this folder should be under Resources folder or Resources folder itself.
+        For the fields with Addressables loader, this folder should be included into Addressables settings.
+    </li>
+    <li>
+        While adding new assets, you may also want to save database after importing.
+        There is an option to revert the changes, by clicking on "Reload" button,
+        but assets creation can not be reverted in such a way, only database data.
+        Assets will be created, but references to these assets will not be saved in database.
+        Next time you run import, asset duplicates will be created, keep this in mind.
+    </li>
+</ol>
+
+<h4 id="editors">Microsoft Excel vs LibreOffice</h4>
+<p>
+    If you use Microsoft Excel you need to turn off image compression (it's a file-level setting), otherwise the images
+    will be scaled down.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExcelImages4.png"><img style="width: 300px"
+                                                            src="#path images/BGDatabase/ExcelImages4.png"></a>
+</div>
+<p>
+    LibreOffice does not seem to compress the images by default, and also it has a very convenient menu option to scale
+    and resize image representation to fit the cell size (right click on image->fit to cell),
+    while preserving original image resolution. Also, the image anchor is shown when the image is selected.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExcelImages5.png"><img style="width: 300px"
+                                                            src="#path images/BGDatabase/ExcelImages5.png"></a>
+</div>
+
+<h4>Releases</h4>
+<details>
+    <summary>Click to see all releases</summary>
+
+    <table class="contentTable dTable">
+        <tr>
+            <th style="width: 10%">
+                Version
+            </th>
+            <th style="width: 20%">
+                Release date
+            </th>
+            <th style="width: 70%">Log</th>
+        </tr>
+        <tr>
+            <td class="ra">
+                0.9
+            </td>
+            <td class="ra">June 02, 2024</td>
+            <td>
+                Initial release
+            </td>
+        </tr>
+    </table>
+</details>

@@ -323,7 +323,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.11
+            1.12
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -335,10 +335,10 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            <span class="redText">BGDatabase (v. >= 1.7.11)</span>
+            <span class="redText">BGDatabase (v. >= 1.8.11)</span>
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BGDatabaseExcelEditor_1.11.unitypackage" class="downloadButton"></a>
+            <a href="../BGDatabaseExcelEditor_1.12.unitypackage" class="downloadButton"></a>
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
             <div class="bg-image">
@@ -381,7 +381,7 @@
 </p>
 <ol>
     <li>While importing plugin package, check the packages with source code only</li>
-    <li>Download required library- NPOI (min version 2.3.0) <a href="https://www.nuget.org/packages/NPOI/2.3.0">here</a>
+    <li>Download required library- NPOI (version >= 2.3.0 && version < 2.6) <a href="https://www.nuget.org/packages/NPOI/2.3.0">here</a>
         and add library DLLs to your project to the Editor assembly (under Editor folder)
         (the following DLLs are required-NPOI.dll, NPOI.OOXML.dll, NPOI.OpenXml4Net.dll,
         NPOI.OpenXmlFormats.dll, ICSharpCode.SharpZipLib.dll, BouncyCastle.Crypto.dll)
@@ -403,6 +403,18 @@
             <th>Download</th>
             <th>Dependencies</th>
             <th>Log</th>
+        </tr>
+        <tr>
+            <td class="ra">1.12</td>
+            <td class="ra">June 2, 2024</td>
+            <td><a href="../BGDatabaseExcelEditor_1.12.unitypackage">link</a></td>
+            <td>BGDatabase (v. >= 1.8.11)</td>
+            <td>
+                <ol>
+                    <li>ADDED images support (via <a href="../EditorExcelImages">plugin</a>)</li>
+                    <li>CHANGED row heights maintained</li>
+                </ol>
+            </td>
         </tr>
         <tr>
             <td class="ra">1.11</td>

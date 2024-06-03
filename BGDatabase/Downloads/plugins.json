@@ -14,31 +14,47 @@
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
-      "version" : "1.11",
-      "releaseDate" : "02/09/24",
+      "version" : "1.12",
+      "releaseDate" : "06/02/24",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelService",
       "packageClass" : null,
       "name" :  "Excel integration for Editor",
       "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor_1.11.unitypackage",
-      "requiredVersion" : "1.7.11"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor_1.12.unitypackage",
+      "requiredVersion" : "1.8.11"
+    },
+    {
+      "id" : "wTesaf3zf0eyIV8dDr1UTw",
+      "version" : "0.9",
+      "releaseDate" : "06/02/24",
+      "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelImageProcessor",
+      "packageClass" : null,
+      "name" :  "Excel images",
+      "description" :  "[Experimental] Support for transferring images between Excel and Unity assets",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcelImages",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditorAssets.unitypackage",
+      "dependencies" : [{
+        "classToCheck" : "BansheeGz.BGDatabase.Editor.BGExcelService",
+        "asset" : "Excel plugin"
+      }],
+      "requiredVersion" : "1.8.11"
     },
     {
       "id" : "65qKr3PcjEWbHsp37FUHqw",
-      "version" : "1.3",
-      "releaseDate" : "12/22/21",
+      "version" : "1.4",
+      "releaseDate" : "06/02/24",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGAssetLoaderManagerAddressablesDelegate",
       "packageClass" : null,
       "name" :  "Addressables plugin",
       "description" :  "Adds support for Addressables. (Addressables version >=1.17.17)",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressables1.3.unitypackage",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressables1.4.unitypackage",
       "dependencies" : [{
         "classToCheck" : "UnityEngine.AddressableAssets.Addressables",
         "asset" : "Addressables"
       }],
-      "requiredVersion" : "1.7.1"
+      "requiredVersion" : "1.8.11"
     },
     {
       "id" : "zRiptqpjTkaSv1XEHk3qmw",
@@ -54,14 +70,14 @@
     },
     {
       "id" : "gOj0XadX5E2AxMfKkqvueA",
-      "version" : "1.0",
-      "releaseDate" : "09/16/20",
+      "version" : "1.1",
+      "releaseDate" : "06/02/24",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGDatabaseExcelImportEditorTool",
       "packageClass" : null,
       "name" :  "Excel file monitor for Editor",
       "description" :  "Monitor and auto-import Excel file in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcelMonitor",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BansheeGzExcelEditor.unitypackage",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BansheeGzExcelEditor_1.1.unitypackage",
       "dependencies" : [{
         "classToCheck" : "BansheeGz.BGDatabase.Editor.BGExcelService",
         "asset" : "Excel plugin"
@@ -109,14 +125,14 @@
     },
     {
       "id" : "p8mP75IIeE2JHALqD9DzFg",
-      "version" : "1.2",
-      "releaseDate" : "10/23/21",
+      "version" : "1.3",
+      "releaseDate" : "06/02/24",
       "pluginClass" : "BansheeGz.BGDatabase.BGPlaymakerSaveLoadPlugin",
       "packageClass" : null,
       "name" :  "Playmaker save/load actions",
       "description" :  "Save load actions for Playmaker",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeSaveLoadPlaymaker",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseSaveLoadPlaymaker.unitypackage",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseSaveLoadPlaymaker_1.3.unitypackage",
       "dependencies" : [{
         "classToCheck" : "PlayMakerFSM",
         "asset" : "Playmaker"

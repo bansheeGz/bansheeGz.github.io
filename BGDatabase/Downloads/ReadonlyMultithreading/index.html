@@ -365,6 +365,9 @@
     <li>Add Assets\BansheeGz\BGDatabaseReadonlyMT\Scripts\BGDatabaseMTManager.cs script to your startup scene
         (make sure it's executed before accessing database from multiple threads)
     </li>
+    <li>If you use Addressables and asynchronous assets loading,
+        unpack Assets/BansheeGz/BGDatabaseReadonlyMT/Scripts/AddressablesSupport.unitypackage package
+    </li>
 </ol>
 
 <h4>Features</h4>
@@ -373,6 +376,11 @@
     <li>Enables L2 memory cache for Unity assets and loads all of them to this cache (make sure that all your assets does not take too much memory)</li>
     <li>Notify code generation utils to use multithreaded approach</li>
 </ol>
+
+<h4>Limitations</h4>
+<p>
+    unityObjectList field is not currently supported
+</p>
 
 <h4>Settings</h4>
 <p>
