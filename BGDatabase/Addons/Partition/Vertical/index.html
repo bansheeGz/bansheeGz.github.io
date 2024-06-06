@@ -325,12 +325,20 @@
 </p>
 
 <h4>Why use it?</h4>
+<ol>
+    <li>Keeping database data in separate files reduce the complexity of data merging in multi-user environment in case you save database
+        in <a href="../../Settings">JSON format</a> and use text-based merge tools.
+    </li>
+    <li>If you have several developers in your team and if you can make an agreement, that each of them edit only certain tables data exclusively,
+        you can split database file into several files (one for each developer) and update data without using <a href="../../../MergeTool">merge tools</a>
+    </li>
+</ol>
 <p>
-    If you have several developers in your team and if you can make an agreement, that each of them edit only certain tables data exclusively,
-    you can split database file into several files (one for each developer) and update data without using <a href="../../../MergeTool">merge tools</a>
     Note, that database structure is always stored in main database file (bansheegz_database.bytes),
-    so it makes sense to assign one person responsible for updating database structure
+    so it makes sense to assign one single person, responsible for updating database structure to avoid the necessity of
+    merging changes in database structure.
 </p>
+
 
 <h4>Setup</h4>
 <ol>
