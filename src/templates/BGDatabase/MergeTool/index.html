@@ -81,32 +81,36 @@
 </p>
 
 <h4>Alternative workflow for merging data #3</h4>
-<p>
-    You can also use JSON-based approach to merge database data
-</p>
-<ol>
-    <li>Create two JSON data sources under "Export/Import" tab, pointing to two different JSON files (let's say "Local" and "Remote")
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/MergeTool3.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool3.png"></a>
-        </div>
-    </li>
-    <li>
-        Create two corresponding jobs
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/MergeTool4.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool4.png"></a>
-        </div>
-    </li>
-    <li>Once you noticed a merge conflict- export database data using "Local" data source</li>
-    <li>Resolve a conflict by replacing your local database file with the file from source control system and reload database</li>
-    <li>Export database data using "Remote" data source</li>
-    <li>Merge the difference from your "local" JSON file into "remote" JSON file using text merging program
-        <div class="bg-image">
-            <a href="#path images/BGDatabase/MergeTool5.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool5.png"></a>
-        </div>
-    </li>
-    <li>Import database data from "remote" JSON file.</li>
-    <li>If something went wrong - rollback the changes (by fetching database file from source control and reloading database) and repeat steps 5-7</li>
-</ol>
+<details>
+    <summary>Deprecated in favor of option #1 (click to see archive)</summary>
+    <p>
+        You can also use JSON-based approach to merge database data
+    </p>
+    <ol>
+        <li>Create two JSON data sources under "Export/Import" tab, pointing to two different JSON files (let's say "Local" and "Remote")
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/MergeTool3.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool3.png"></a>
+            </div>
+        </li>
+        <li>
+            Create two corresponding jobs
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/MergeTool4.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool4.png"></a>
+            </div>
+        </li>
+        <li>Once you noticed a merge conflict- export database data using "Local" data source</li>
+        <li>Resolve a conflict by replacing your local database file with the file from source control system and reload database</li>
+        <li>Export database data using "Remote" data source</li>
+        <li>Merge the difference from your "local" JSON file into "remote" JSON file using text merging program
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/MergeTool5.png"><img style="width: 400px" src="#path images/BGDatabase/MergeTool5.png"></a>
+            </div>
+        </li>
+        <li>Import database data from "remote" JSON file.</li>
+        <li>If something went wrong - rollback the changes (by fetching database file from source control and reloading database) and repeat steps 5-7</li>
+    </ol>
+
+</details>
 
 <h4>Alternative workflow for merging data #4</h4>
 <p>
