@@ -99,7 +99,7 @@ BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
 <p>
     When you load the saved data, by default the whole database is reloaded, meaning all current database objects (tables, fields, rows) becomes obsolete.
     You can prevent database reloading by using this call
-    <code>BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest(BGAddonSaveLoad.DefaultSettingsName, bytes)));</code>
+    <code>BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest(BGAddonSaveLoad.DefaultSettingsName, bytes)){ReloadDatabase = false});</code>
     instead of this call <code>BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);</code>
 </p>
 
