@@ -406,17 +406,14 @@ BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);</code></pre>
     There are also custom units/actions for Visual Scripting tools are available (see the full list at the bottom of this page)
 </p>
 <p>
-    When you load the saved data, by default the whole database is reloaded, meaning all current database objects (tables, fields, rows) becomes obsolete.
-    You can prevent database reloading by using this call
+    When you load the saved data by using the code above, the whole database is reloaded, meaning all current database objects (tables, fields, rows) become obsolete.
+    You can prevent database reloading by using the following code instead
 </p>
 <pre class="nomargin"><code class="language-csharp">//alternative loading without database reloading
 BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(
     new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest(BGAddonSaveLoad.DefaultSettingsName, bytes))
     {ReloadDatabase = false}
 );</code></pre>
-<p>
-    instead of this call <code>BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);</code>
-</p>
 
 <h4 id="saveAll">Is it possible to save/load the whole database?</h4>
 <pre class="nomargin"><code class="language-csharp">// !!!! This is not recommended !!!!
