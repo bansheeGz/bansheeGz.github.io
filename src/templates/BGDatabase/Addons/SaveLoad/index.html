@@ -84,13 +84,11 @@ Choose <code>Addons->Save Load</code>, click "Enable", mark tables/fields for sa
 
 <h4>How to use it?</h4>
 
-<pre class="nomargin"><code class="language-csharp">
-//to save
+<pre class="nomargin"><code class="language-csharp">//to save
 byte[] bytes = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Save();
 
 //to load
-BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
-</code></pre>
+BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);</code></pre>
 <p>
     Once you obtained bytes array using Save method, you need to write it to some persistent storage (file or cloud drive)
     See <a href="../../Downloads/SaveLoadManager.txt">this minimalistic example</a> for more details.
@@ -99,19 +97,23 @@ BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);
 <p>
     When you load the saved data, by default the whole database is reloaded, meaning all current database objects (tables, fields, rows) becomes obsolete.
     You can prevent database reloading by using this call
-    <code>BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest(BGAddonSaveLoad.DefaultSettingsName, bytes)){ReloadDatabase = false});</code>
+</p>
+<pre class="nomargin"><code class="language-csharp">//alternative loading without database reloading
+BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(
+    new BGSaveLoadAddonLoadContext(new BGSaveLoadAddonLoadContext.LoadRequest(BGAddonSaveLoad.DefaultSettingsName, bytes))
+    {ReloadDatabase = false}
+);</code></pre>
+<p>
     instead of this call <code>BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;().Load(bytes);</code>
 </p>
 
 <h4 id="saveAll">Is it possible to save/load the whole database?</h4>
-<pre class="nomargin"><code class="language-csharp">
-// !!!! This is not recommended !!!!
+<pre class="nomargin"><code class="language-csharp">// !!!! This is not recommended !!!!
 //to save
 byte[] bytes = BGRepo.I.Save();
 
 //to load
-BGRepo.I.Load(bytes);
-</code></pre>
+BGRepo.I.Load(bytes);</code></pre>
 <p>
     The above call does not support <a href="../Partition">Partition</a> and <a href="../../../BGLocalization">localization</a> addons currently
 </p>
