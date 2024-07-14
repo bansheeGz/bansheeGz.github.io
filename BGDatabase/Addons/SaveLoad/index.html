@@ -449,7 +449,10 @@ BGRepo.I.Load(bytes);</code></pre>
     </li>
     <li>
         Rule #2 -  If you want to save table data but at the same time you do not add or remove rows from this table in runtime,
-        do not toggle on "Add missing" and "Remove orphaned"
+        do not toggle on "Add missing" and "Remove orphaned".
+        To understand the implications of using these 2 settings in more details,
+        read <a href="../../Downloads/Example3DBasic/SaveLoadMergeSettings">our detailed guide</a>
+        about using row controller to prevent the deletion of new rows, added to default database after game release.
         <div class="bg-image">
             <a href="../../../images/BGDatabase/SaveLoadAddon8.png">
                 <img style="width: 200px" src="../../../images/BGDatabase/SaveLoadAddon8.png">
@@ -581,89 +584,23 @@ BGRepo.I.Load(bytes);</code></pre>
     What if you want to update/add/delete only those rows which comply to some condition?
 </p>
 <p>
-    This can be done with C# controller class, which can cancel update operation before it actually takes place.
+    This can be done with C# row controller class, which can cancel update operation before it actually takes place.
     Currently, there is no any merging on saving data, only on loading (but we reserved "merging on saving" option for future releases)
 </p>
 <p>
-    Here is a quick example of custom controller class.
-    This controller is made for our <a href="../../Downloads/Example3DBasic">basic 3D example</a> project.
+    Our <a href="../../Downloads/Example3DBasic">basic 3D example</a> project uses row controller class.
+    The main objective of this controller is to prevent deleting Collectable rows for new scenes (the scenes, which was added between public game releases).
+    See the link below for detailed guide with C# source code.
 </p>
-<p>
-    The main objective of this example controller is to prevent deleting Collectable rows for added scenes (scenes which was added between public game releases)
-</p>
-<details>
-    <summary>Here is the code</summary>
-    <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
-
-    // Warning!!! this controller is implemented without code generation
-    //and may contains ugly boilerplate code
- public class MyCustomSaveLoadController : BGMergeSettingsEntity.IMergeReceiver,BGMergeSettingsEntity.IRemoveOrphanedReceiver
- {
-     private bool loading;
-
-     public bool OnBeforeMerge(BGRepo from, BGRepo to)
-     {
-         //here we want to know, if it's loading or saving?
-         //... Note (currently there is no merging on saving, but it can be implemented in future releases)
-         loading = to == BGRepo.I;
-         return false;
-     }
-
-     public void OnAfterMerge(BGRepo from, BGRepo to)
-     {
-         //no need to write anything here
-     }
-
-     //this callback is invoked before row removal. Return true to cancel this operation
-     public bool OnBeforeDelete(BGEntity toEntity)
-     {
-         if (loading)
-         {
-             if ("Collectable".Equals(toEntity.Meta.Name))
-             {
-                 //before deleting Collectable row, we want to make sure- it's not connected to newly added scene
-                 var scene = toEntity.Get&lt;BGEntity&gt;("Scene");
-                 //if scene's version more than 0 - cancel removing by returning true
-                 return scene != null && scene.Get&lt;int&gt;("version") > 0;
-             }
-         }
-
-         return false;
-     }
- }</code></pre>
-</details>
 
 
-<p>
-    To see this controller in action:
-</p>
-<ul>
-    <li>Download default 3D example project <a href="../../Downloads/Example3DBasic">here</a></li>
-    <li>Run the scene (Assets\BGDatabaseBasic3DExample\Scenes\BGExample1.unity), collect some objects and save the game</li>
-    <li>
-        Let's assume this was made by a real player with our game version 1, and now we want to develop version 1.1, and we want to add a new scene.
-        We could add a new scene without any controller and without any issue, but we want to populate this scene with Collectable rows,
-        and we do not want them to be deleted while loading save file.
-        Without this controller, all Collectable rows will be overriden with the data from the save file,
-        cause in SaveLoad merge settings we marked this table for "addingMissing" and "removingOrphaned" (which basically mean the whole table will be restored from save file)
-    </li>
-    <li>At this point we start to develop game version 1.1. We will omit real scene creating, cause all we want - is to make sure our save file will be loaded properly,
-        and it will not erase our newly added collectables for new scene
-    </li>
-    <li>Open BGDatabase window, choose <code>Configuration->Scene</code> and add new int field, call it "version"</li>
-    <li>Then choose <code>Database->Scene</code> and add a new scene</li>
-    <li>For newly created scene assign "version" field to 1</li>
-    <li>Choose "Collectable" field for new scene and add some Collectables</li>
-    <li>Now choose <code>Addons->SaveLoad</code>, and assign "Controller Type" field to MyCustomSaveLoadController (this is a class name of our controller)</li>
-    <li>Save the database and run BGExample1.unity scene again</li>
-    <li>Load the game, choose <code>Database->Scene</code> and make sure all saved Collectables remain intact, just like newly added Collectables for our new scene.
-        Also, you can run the same example without controller assigned to see the difference
-    </li>
-</ul>
 <div class="flexdiv">
     <div>
         Read more about:
         <ol>
+            <li><a href="../../Downloads/Example3DBasic">basic example project</a> has a page with
+                <a href="../../Downloads/Example3DBasic/SaveLoadMergeSettings">detailed guide</a> about row-level controller usage.
+            </li>
             <li>row-level controller on <a href="../../ExportImport#rowlevel">export/import page</a></li>
         </ol>
     </div>

@@ -1,0 +1,32 @@
+#set page=Downloads
+#set subPage=Basic 3D example (Code generation)
+
+
+<h4>About Code Generation</h4>
+<div>
+    <p>
+        We use code generation in this example (and we strongly recommend you to use it too).
+        The long story short - instead of using basic API like this <code>entity.Set("gold", entity.Get&lt;int&gt;("gold")
+        +1));</code>
+        code generation allows you to use code like this <code>entity.gold=entity.gold+1;</code>.
+        As you can see code generation provides huge benefit, you can learn more about code generation <a
+            href="../../../CodeGeneration">here</a> .
+    </p>
+    <p>
+        To distinct database fields from normal fields we use <code>f_</code>, <code>m_</code> or <code>d_</code> field
+        prefixes in the examples below.
+        We use 2 types of code generation (for illustrative purpose), each prefix correspond to code generation
+        type:
+    </p>
+    <ol>
+        <li><code>BGE_ClassName and f_FieldName</code> - Extension classes (instead of creating basic BGEntity class,
+            the database populated with classes, which inherited from BGEntity and have all additional properties for all
+            fields)
+        </li>
+        <li><code>BGM_ClassName and m_FieldName</code> - MonoBehaviour generated classes (generated classes extends from
+            MonoBehaviour and can be attached to GameObject)
+        </li>
+
+    </ol>
+</div>
+

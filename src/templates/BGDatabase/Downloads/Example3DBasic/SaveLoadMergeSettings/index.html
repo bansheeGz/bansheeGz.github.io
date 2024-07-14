@@ -1,0 +1,139 @@
+#set page=Downloads
+#set subPage=Basic 3D example (SaveLoad merge settings)
+
+
+<h4>Save/Load settings</h4>
+Let's look at the save/load setting to understand how they can be used to save/load your data during gameplay.
+You can find more information about Save/Load <a href="../Addons/SaveLoad">here</a>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExampleBreakdown2.png"><img style="width: 400px" src="#path images/BGDatabase/ExampleBreakdown2.png"></a>
+</div>
+
+<h4>Using "Row level controller" to add new scenes after game release</h4>
+<p>
+    As you can see on the screenshot above, "Collectables" table has "Add missing" and "Removed orphaned" toggles turned on in the settings.
+    It means, that after loading saved data with SaveLoad addon, all "Collectables" rows will be replaced with the saved rows.
+    But what if we want to add new scenes with new collectables?
+    These new collectables are missing in the saved data, but we do not want them to be removed after game loading.
+</p>
+<p>
+    In such cases, a row controller can be used to prevent certain rows from removing.
+    Below is in-depth guide how to achieve it.
+</p>
+<ol>
+   <li>
+       First of all we need to add "Version" table with a single row and single "version" int field to keep track of database version
+       <div class="bg-image">
+           <a href="../../../../images/BGDatabase/3dexample1.png"><img style="width: 200px; height: 100px" src="../../../../images/BGDatabase/3dexample1.png"></a>
+       </div>
+       and add this table to SaveLoad merge settings
+       <div class="bg-image">
+           <a href="../../../../images/BGDatabase/3dexample2.png"><img style="width: 200px; height: 100px" src="../../../../images/BGDatabase/3dexample2.png"></a>
+       </div>
+       Now, whenever you save the data, we can figure out which database version was used.
+   </li>
+    <li>
+        Now let's say our game was already released, and now we want to add a new scene "BEExample3".
+        We add a "version" int field to the "Scene" table.
+        For existing scenes we keep the value=0, but for the new scene, we set the value to 1 (which means the scene was added to database version 1)
+        We also set "Version.version" field value to 1.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/3dexample3.png"><img style="width: 200px; height: 100px" src="../../../../images/BGDatabase/3dexample3.png"></a>
+        </div>
+        The saved data has the "Version.version" value of 0 (or maybe the saved data does not contain "Version" table, in this case we also assume the version=0)
+        and we can tell, that all "Collectables" rows, related to scenes with version > saved "Version.version" (which is currently equal to 0) should not be removed.
+        This trick with increasing "Version.version" and adding new scenes with the new version will also work fine if you want to add new scenes in the future.
+        So next time you want to add a new scene ("BEExample4") you can set "Version.version" to 2 and "BEExample4.version" to 2 etc.
+    </li>
+    <li>
+        Now we need to add a row controller, which compare the saved version with the current version
+        and if the scene's current version > saved "Version.version" value,
+        controller should prevent this scene's "Collectables" rows from removing.
+        controller can be assign in "Controller Type" field. Below is the full controller C# code with comments.
+        <div class="bg-image">
+            <a href="../../../../images/BGDatabase/3dexample4.png"><img style="width: 200px; height: 100px" src="../../../../images/BGDatabase/3dexample4.png"></a>
+        </div>
+    </li>
+</ol>
+<details>
+    <summary>Full C# code for row controller (click to view)</summary>
+<pre class="nomargin"><code class="language-csharp">using System.Collections.Generic;
+using BansheeGz.BGDatabase;
+
+//this is SaveLoad row level controller implementation without using CodeGen classes
+public class SaveLoadController  : BGMergeSettingsEntity.IMergeReceiver, BGMergeSettingsEntity.IUpdateMatchingReceiver, BGMergeSettingsEntity.IRemoveOrphanedReceiver
+{
+    //this field is used to detect if it's loading or saving
+    private bool loading;
+    //this is a set of scene IDs with version &gt; saved version
+    private readonly HashSet&lt;BGId&gt; newScenesId = new HashSet&lt;BGId&gt;();
+    //this is a "Collectable.Scene" field, which can be used to retrieve the related Scene row for Collectable row
+    private BGFieldRelationSingle sceneRelation;
+
+    //this method is called before repos data merging
+    public bool OnBeforeMerge(BGRepo from, BGRepo to)
+    {
+        //here we want to know, if it's loading or saving? If target repo is default repo- it means loading
+        loading = to == BGRepo.I;
+
+        if (loading)
+        {
+            //let's find out the saved version
+            var savedVersion = 0;
+            var savedVersionMeta = from.GetMeta("Version");
+            var savedVersionField = (BGFieldInt)savedVersionMeta?.GetField("version", false);
+            if (savedVersionField != null) savedVersion = savedVersionField[0];
+
+            //now let's iterate the scenes and find the scenes with version &gt; savedVersion and add their IDs to newScenesId hashset
+            var sceneMeta = to.GetMeta("Scene");
+            var versionField = (BGFieldInt)sceneMeta.GetField("version");
+            sceneMeta.ForEachEntity(entity =&gt; newScenesId.Add(entity.Id), entity =&gt; versionField[entity.Index] &gt; savedVersion);
+
+            //retrieve "Collectable.Scene" field from default repo (we will use it later)
+            sceneRelation = (BGFieldRelationSingle) to.GetMeta("Collectable").GetField("Scene");
+        }
+        return false;
+    }
+
+    public void OnAfterMerge(BGRepo from, BGRepo to)
+    {
+    }
+
+    //this method is called before row removal, if it returns true, it means the removal is cancelled
+    public bool OnBeforeDelete(BGEntity toEntity)
+    {
+        if (loading)
+        {
+            //if it's Collectable row
+            if (toEntity.MetaName == "Collectable")
+            {
+                //get related scene ID
+                var sceneId = sceneRelation[toEntity.Index].Id;
+                //if scene is new, skip Collectable row removal
+                if (newScenesId.Contains(sceneId)) return true;
+            }
+        }
+        return false;
+    }
+
+    //this method is called before matching row update
+    public bool OnBeforeUpdate(BGEntity from, BGEntity to)
+    {
+        if (loading)
+        {
+            //we want to use the latest version from default database, skip update
+            if (from.MetaName == "Version") return true;
+        }
+        return false;
+    }
+}</code></pre>
+</details>
+
+<h5>How to see it in action</h5>
+<ol>
+    <li>Download the example project</li>
+    <li>Run it with 2 scenes and save the game</li>
+    <li>Add a new scene, add new Collectable rows to it, set "version" field to 1 for the new scene, change "Version.version" to 1</li>
+    <li>Run with 3 scenes and load the game. Collectable rows for the new scene should be preserved</li>
+</ol>
+, save the game,

@@ -1,0 +1,57 @@
+#set page=Downloads
+#set subPage=Basic 3D example (database schema)
+
+<h4>Database schema</h4>
+<p>
+    Here is the database schema, we use for that example.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExampleBreakdown1.png"><img style="width: 400px" src="#path images/BGDatabase/ExampleBreakdown1.png"></a>
+</div>
+
+
+<ol>
+    <li>
+        <code>Scene</code>- is linked to Unity scene, it's name should be equal to Unity scene name.
+        It has the following fields:
+        <ol>
+            <li><code>spawnPosition [Vector3]</code>- position, the player will be moved then he's spawned in this scene
+            </li>
+            <li><code>spawnRotation [Vector3]</code>- rotation, the player will be rotated then he's spawned in this
+                scene
+            </li>
+            <li><code>bounds [Bounds]</code>- area for spawning objects</li>
+        </ol>
+    </li>
+    <li>
+        <code>Collectable</code> - is Scene's nested field, meaning it defines its own table (meta), which is connected
+        to <code>Scene</code> table (meta).
+        It stores all collectable objects in the scene and have the following fields:
+        <ol>
+            <li><code>position [Vector3]</code>- position of the object</li>
+            <li><code>gold [int]</code>- amount of gold, attached to the object</li>
+            <li><code>type [relationSingle]</code>- type of the object</li>
+        </ol>
+    </li>
+    <li>
+        <code>CollectableType</code> - type of the <code>Collectable</code>
+        <ol>
+            <li><code>prefab [unityPrefab]</code>- prefab to use as an object to spawn</li>
+            <li><code>audio [audioClip]</code>- sound to play then object is collected</li>
+        </ol>
+    </li>
+    <li>
+        <code>Player</code> - single entity table (meta), which store info about player
+        <ol>
+            <li><code>gold [int]</code>- amount of gold player gathered</li>
+            <li><code>position [Vector3]</code>- player's position, used by SaveLoad addon to save and load player's
+                position
+            </li>
+            <li><code>rotation [Quaternion]</code>- player's rotation, used by SaveLoad addon to save and load player's
+                position
+            </li>
+            <li><code>scene [string]</code>- player's scene, used by SaveLoad addon to save and load player's position
+            </li>
+        </ol>
+    </li>
+</ol>
