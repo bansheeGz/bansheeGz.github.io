@@ -49,12 +49,13 @@ You can find more information about Save/Load <a href="../Addons/SaveLoad">here<
         Now we need to add a row controller, which compare the saved version with the current version
         and if the scene's current version > saved "Version.version" value,
         controller should prevent this scene's "Collectables" rows from removing.
-        controller can be assign in "Controller Type" field. Below is the full controller C# code with comments.
+        Controller class can be assigned via "Controller Type" field.
         <div class="bg-image">
             <a href="../../../../images/BGDatabase/3dexample4.png"><img style="width: 200px; height: 100px" src="../../../../images/BGDatabase/3dexample4.png"></a>
         </div>
     </li>
 </ol>
+<p>Below is the full controller C# code with comments.</p>
 <details>
     <summary>Full C# code for row controller (click to view)</summary>
 <pre class="nomargin"><code class="language-csharp">using System.Collections.Generic;
@@ -136,4 +137,4 @@ public class SaveLoadController  : BGMergeSettingsEntity.IMergeReceiver, BGMerge
     <li>Add a new scene, add new Collectable rows to it, set "version" field to 1 for the new scene, change "Version.version" to 1</li>
     <li>Run with 3 scenes and load the game. Collectable rows for the new scene should be preserved</li>
 </ol>
-, save the game,
+
