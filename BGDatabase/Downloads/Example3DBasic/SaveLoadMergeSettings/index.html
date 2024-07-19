@@ -325,6 +325,8 @@ You can find more information about Save/Load <a href="../Addons/SaveLoad">here<
 </div>
 
 <h4>Using "Row level controller" to add new scenes after game release</h4>
+<div class="importantNote">Staring with BGDatabase v.1.8.12 there is <a href="../../../Addons/SaveLoad/BuiltinController">a built-in controller</a>,
+    which implements the same approach, and it can be used without any additional code. Use the code below as an example for row level controller implementation</div>
 <p>
     As you can see on the screenshot above, "Collectables" table has "Add missing" and "Removed orphaned" toggles turned on in the settings.
     It means, that after loading saved data with SaveLoad addon, all "Collectables" rows will be replaced with the saved rows.

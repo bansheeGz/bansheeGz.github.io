@@ -1,0 +1,127 @@
+#set page=Save Load
+#set subPage=Save Load (Built-in controller)
+
+
+<h4>Description</h4>
+[version 1.8.12 is required] SaveLoad built-in controller prevents new rows, added to default database, from removal while loading data with SaveLoad addon
+for tables with "Remove orphaned" parameter on.
+If your game is not publicly available, there is no problem (just yet), cause there are no saved games,
+but if you want to be able to add new rows to default database after public release for the tables with "Remove orphaned" parameter on, please, read this article
+
+<h4>Problem description</h4>
+<p>
+    When table has "Remove orphaned" parameter on, it's not possible to add new rows to the default database, cause
+    these rows are deleted after game loading.
+</p>
+<p>
+    Here is an example from our <a href="../../../Downloads/Example3DBasic">3d example project</a>,
+    <code>Collectables</code> nested table has "Add missing" and "Remove orphaned" parameters on,
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SaveLoadAddon10.png"><img style="width: 200px"
+                                                               src="#path images/BGDatabase/SaveLoadAddon10.png"></a>
+</div>
+<p>
+    meaning after loading all rows from default database are replaced with previously saved rows
+</p>
+<p>
+    So, on the screenshot below our initial default database on the top and modified database after some game playing at
+    the bottom.
+    Modified database is saved with SaveLoad addon.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SaveLoadAddon11.png"><img style="width: 200px"
+                                                               src="#path images/BGDatabase/SaveLoadAddon11.png"></a>
+</div>
+<p>
+    Now let's say we want to add a new scene and add some collectables to it, but unfortunately, after game loading
+    these collectables are removed
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/SaveLoadAddon12.png"><img style="width: 200px"
+                                                               src="#path images/BGDatabase/SaveLoadAddon12.png"></a>
+</div>
+<p>
+    This is because the collectables were saved when NewScene did not exist, so how can we prevent NewScene's
+    collectables from removing while game loading?
+    Prior to v.1.8.12, preventing new rows from removal was possible with custom C# row controller,
+    now SaveLoad addon has a builtin controller to address this problem
+</p>
+
+<h4>How to set up built-in controller</h4>
+<ol>
+    <li>Create <code>SYS_PROPERTY</code> table, add <code>value</code> field with <code>string</code> type
+        and add a row with name=<code>dbVersion</code> and value=<code>1</code>.
+        We assume, that at this point your game is already publicly available and users already have the saved games,
+        so the initial <code>dbVersion</code>=0 and now we increase it by 1.
+        if your game is not publicly available yet, and you want to simply test this feature,
+        do not forget to revert all <code>dbVersion</code> values to zero after testing (including <code>SYS_PROPERTY.dbVersion</code>)
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SaveLoadAddon13.png"><img style="width: 200px"
+                                                                       src="#path images/BGDatabase/SaveLoadAddon13.png"></a>
+        </div>
+    </li>
+    <li>
+        Include <code>SYS_PROPERTY.value</code> field to merge settings as shown on the screenshot below
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SaveLoadAddon16.png"><img style="width: 200px"
+                                                                       src="#path images/BGDatabase/SaveLoadAddon16.png"></a>
+        </div>
+    </li>
+    <li>
+        Now you need to add <code>dbVersion</code> <code>int</code> field to every table with "Add missing" "Remove
+        orphaned" parameters turned on.
+        In our case we have only one <code>Collectables</code> table with these parameters, so we need to add this field
+        to <code>Collectables</code> table.
+        Also, if the table is a nested table, we can also add this field to the parent table, in our case it's a <code>Scene</code>
+        table.
+        Keep in mind, that adding <code>dbVersion</code> to the parent table will affect all nested tables (if they have
+        "Remove orphaned" parameter on),
+        in our case there is only one nested table, so we can safely do this.
+        <p>
+            To make sure, the setup is correct, click on the "Check status" button and make sure the builtin controller
+            status is ok
+            and the number of affected tables matches the number of tables with <code>dbVersion</code> field.
+        </p>
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SaveLoadAddon17.png"><img style="width: 200px"
+                                                                       src="#path images/BGDatabase/SaveLoadAddon17.png"></a>
+        </div>
+        For the rows, we want to preserve, we need to set the same <code>dbVersion</code> value as <code>SYS_PROPERTY.dbVersion</code>
+        value, which is currently <code>1</code> (it's very important to use the same value)
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SaveLoadAddon14.png"><img style="width: 200px"
+                                                                       src="#path images/BGDatabase/SaveLoadAddon14.png"></a>
+        </div>
+        Now, if you load previously saved game, the new collectables will be preserved
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SaveLoadAddon15.png"><img style="width: 200px"
+                                                                       src="#path images/BGDatabase/SaveLoadAddon15.png"></a>
+        </div>
+
+    </li>
+    <li>
+        The 3 steps above is actually enough, but it's worth mentioning, that the same trick will work for all future
+        updates as well.
+        Let's say you released the game update with 3 scenes, and now you want to add 2 more scenes.
+        All you need to do is to increase <code>SYS_PROPERTY.dbVersion</code> by 1, from 1 to 2, and add new scenes with <code>dbVersion</code>=2
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SaveLoadAddon18.png"><img style="width: 200px"
+                                                                       src="#path images/BGDatabase/SaveLoadAddon18.png"></a>
+        </div>
+    </li>
+</ol>
+
+<h4>How built-in controller works</h4>
+The controller has 2 functions:
+<ol>
+    <li>It prevents <code>SYS_PROPERTY.dbVersion</code> value update while saved data loading.
+        It's a very important step, so <code>SYS_PROPERTY.dbVersion</code> should always be the latest value from default database,
+        so when you save the data, this latest value should be saved.
+    </li>
+    <li>
+        During removal phase of saved data loading, the controller prevents a row removal if the row's <code>dbVersion</code> value is greater
+        than <code>SYS_PROPERTY.dbVersion</code> value from saved data.
+    </li>
+</ol>
+<a href="../../../Downloads/Example3DBasic/SaveLoadMergeSettings">This page</a> contains C# code for custom row controller, which uses the same approach

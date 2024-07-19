@@ -450,9 +450,8 @@ BGRepo.I.Load(bytes);</code></pre>
     <li>
         Rule #2 -  If you want to save table data but at the same time you do not add or remove rows from this table in runtime,
         do not toggle on "Add missing" and "Remove orphaned".
-        To understand the implications of using these 2 settings in more details,
-        read <a href="../../Downloads/Example3DBasic/SaveLoadMergeSettings">our detailed guide</a>
-        about using row controller to prevent the deletion of new rows, added to default database after game release.
+        <span class="redText">If you toggle on these parameters, the rows from default database are replaced with the saved rows after loading</span>,
+        and you need to use <a href="BuiltinController">a builtin row controller</a> or custom C# row controller to prevent new rows from removal.
         <div class="bg-image">
             <a href="../../../images/BGDatabase/SaveLoadAddon8.png">
                 <img style="width: 200px" src="../../../images/BGDatabase/SaveLoadAddon8.png">
@@ -560,7 +559,7 @@ BGRepo.I.Load(bytes);</code></pre>
             </li>
             <li>
                 if you mark the rows for saving ("Add missing" and "Remove Orphaned") the whole table will be updated with values from the saved file during loading, if this table (meta) still exists
-                in the default database.
+                in the default database. If you want to add new rows for such table, use our <a href="BuiltinController">builtin row controller</a>
             </li>
             <li>
                 if you want fine-grained, row-level control over loading - you can do it with C# controller class (read the <a href="#rowlevelexample">next section</a> for more details).
@@ -598,8 +597,11 @@ BGRepo.I.Load(bytes);</code></pre>
     <div>
         Read more about:
         <ol>
+            <li>Starting with version 1.8.12, there is <a href="BuiltinController">a builtin controller</a>
+                for adding rows to the tables with "Remove orphaned" setting
+            </li>
             <li><a href="../../Downloads/Example3DBasic">basic example project</a> has a page with
-                <a href="../../Downloads/Example3DBasic/SaveLoadMergeSettings">detailed guide</a> about row-level controller usage.
+                <a href="../../Downloads/Example3DBasic/SaveLoadMergeSettings">detailed guide</a> about row-level controller implementation.
             </li>
             <li>row-level controller on <a href="../../ExportImport#rowlevel">export/import page</a></li>
         </ol>
