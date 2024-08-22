@@ -58,14 +58,14 @@
     },
     {
       "id" : "zRiptqpjTkaSv1XEHk3qmw",
-      "version" : "1.3",
-      "releaseDate" : "12/22/21",
+      "version" : "1.4",
+      "releaseDate" : "08/22/24",
       "pluginClass" : "BansheeGz.BGDatabase.BGRuntimeDatabaseEditor",
       "packageClass" : null,
       "name" :  "Runtime database editor",
       "description" :  "Edit database data in builds.",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeEditor",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseRuntimeEditor_1.3.unitypackage",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseRuntimeEditor_1.4.unitypackage",
       "requiredVersion" : "1.7.1"
     },
     {
