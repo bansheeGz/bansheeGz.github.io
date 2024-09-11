@@ -1,0 +1,18 @@
+using System.IO;
+using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public static class DbSaveLoad
+{
+    private static string FilePath => Path.Combine(Application.persistentDataPath, "save.dat");
+
+    //call to save data in save.dat file under Application.persistentDataPath
+    public static void Save() => File.WriteAllBytes(FilePath, BGRepo.I.Addons.Get<BGAddonSaveLoad>().Save());
+
+    //call to load data from save.dat file under Application.persistentDataPath if it exists
+    public static void Load()
+    {
+        var filePath = FilePath;
+        if (File.Exists(filePath)) BGRepo.I.Addons.Get<BGAddonSaveLoad>().Load(File.ReadAllBytes(filePath));
+    }
+}
