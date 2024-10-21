@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using BansheeGz.BGDatabase;
 using UnityEngine;
 
@@ -20,42 +21,59 @@ using UnityEngine;
 /// </summary>
 public class LiveUpdatePreloader : MonoBehaviour
 {
-	//this is a timeout in seconds in case OnLoadComplete is not called by some unexpected reason
-	public float timeOut = 8;
+    //this is a timeout in seconds in case OnLoadComplete is not called by some unexpected reason
+    public float timeOut = 8;
 
-	//to make sure "Ready" method is not called twice
-	private bool readyIsCalled;
+    //to make sure "Ready" method is not called twice
+    private bool readyIsCalled;
 	
-	void Start ()
-	{
-		var liveUpdate = BGRepo.I.Addons.Get<BGAddonLiveUpdate>();
-		liveUpdate.OnLoadComplete += LoadCompleteCallback;
-		liveUpdate.Load();
-		StartCoroutine(WaitForTimeout());
-	}
+    //if loading is in progress
+    private bool isLoading;
 
-	private IEnumerator WaitForTimeout()
-	{
-		yield return new WaitForSecondsRealtime(timeOut);
-		if (!readyIsCalled)
-		{
-			readyIsCalled = true;
-			Ready();
-		}
-	}
+    /// <summary>
+    /// Returns true if the loading is currently in progress
+    /// </summary>
+    public bool IsLoading => isLoading;
 
-	private void LoadCompleteCallback()
-	{
-		var liveUpdate = BGRepo.I.Addons.Get<BGAddonLiveUpdate>();
-		liveUpdate.OnLoadComplete -= LoadCompleteCallback;
-		if (readyIsCalled) return;
+    void Start () => Load();
+
+    /// <summary>
+    /// Call this method to initialize data loading
+    /// </summary>
+    public void Load()
+    {
+        if (isLoading) throw new Exception("Data is currently being loaded");
+        isLoading = true;
+        readyIsCalled = false;
+        var liveUpdate = BGRepo.I.Addons.Get<BGAddonLiveUpdate>();
+        liveUpdate.OnLoadComplete += LoadCompleteCallback;
+        liveUpdate.Load();
+        StartCoroutine(WaitForTimeout());
+    }
+
+    private IEnumerator WaitForTimeout()
+    {
+        yield return new WaitForSecondsRealtime(timeOut);
+        if (!readyIsCalled)
+        {
+            readyIsCalled = true;
+            Ready();
+        }
+    }
+
+    private void LoadCompleteCallback()
+    {
+        isLoading = false;
+        var liveUpdate = BGRepo.I.Addons.Get<BGAddonLiveUpdate>();
+        liveUpdate.OnLoadComplete -= LoadCompleteCallback;
+        if (readyIsCalled) return;
 		
-		readyIsCalled = true;
-		Ready();
-	}
+        readyIsCalled = true;
+        Ready();
+    }
 
-	private void Ready()
-	{
-		//place your code here
-	}
+    private void Ready()
+    {
+        //place your code here
+    }
 }
