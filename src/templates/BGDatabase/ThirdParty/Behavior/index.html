@@ -1,0 +1,42 @@
+#set page=Behavior
+
+<h4>Description</h4>
+<p>
+    <a href="https://docs.unity3d.com/Packages/com.unity.behavior@1.0/manual/index.html">Unity Behavior</a>
+    is a visual tool for authoring behaviors used to control non-player characters (NPCs) or objects.
+</p>
+
+<h4>Setup guide</h4>
+<p>
+    Install Behavior package via <a href="https://docs.unity3d.com/Manual/Packages.html">Package Manager</a> (Unity 6 is required)
+</p>
+<p>
+    To generate the actions for Unity Behavior, make sure you use BGDatabase version >= 1.8.13, select "Settings->Behavior", fill in parameters as shown on the screenshot below and press on Generate.
+    "Source File" should point to a new, non-existent cs file, it will be overwritten each time you generate classes.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Behavior1.png"><img style="width: 400px" src="#path images/BGDatabase/Behavior1.png"></a>
+</div>
+<p>
+    By default, the database actions can be found under Action/BGDatabase category
+</p>
+<div class="importantNote">
+    Once you chose your naming scheme <b>package</b> + <b>Classes name prefix</b>/<b>Field name prefix</b>
+    and used your generated units in Behavior's graphs, you should not change these settings,
+    otherwise the references to these units will be lost. The same applies to tables/fields names.
+</div>
+
+
+
+<h4>How to use Get and Set actions</h4>
+<div>
+    Each database field has 2 corresponding variables in Get/Set actions, one for the value itself and another one for a boolean flag,
+    indicating that you want to get/set this value. To initialize value transfer, you need to
+    <ol>
+        <li>Turn on the flag</li>
+        <li>Assign the variable to "field value" parameter</li>
+    </ol>
+</div>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Behavior2.png"><img style="width: 400px" src="#path images/BGDatabase/Behavior2.png"></a>
+</div>
