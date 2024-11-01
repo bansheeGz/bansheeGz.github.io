@@ -2,27 +2,27 @@
   "plugins": [
     {
       "id" : "HrCT9HkOK0mRQ9Z0YBjeQw",
-      "version" : "1.8",
-      "releaseDate" : "11/11/23",
+      "version" : "1.9",
+      "releaseDate" : "11/01/24",
       "pluginClass" : "BansheeGz.BGDatabase.BGGoogleSheetService",
       "packageClass" : null,
       "name" :  "Google Sheets integration for Editor",
       "description" :  "Adds support for exporting/importing data to Google Sheets in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorGoogleSheets",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.8.unitypackage",
-      "requiredVersion" : "1.8.7"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.9.unitypackage",
+      "requiredVersion" : "1.8.13"
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
-      "version" : "1.13",
-      "releaseDate" : "09/08/24",
+      "version" : "1.14",
+      "releaseDate" : "11/01/24",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGExcelService",
       "packageClass" : null,
       "name" :  "Excel integration for Editor",
       "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor_1.13.unitypackage",
-      "requiredVersion" : "1.8.11"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor_1.14.unitypackage",
+      "requiredVersion" : "1.8.13"
     },
     {
       "id" : "wTesaf3zf0eyIV8dDr1UTw",
