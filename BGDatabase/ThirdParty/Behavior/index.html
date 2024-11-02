@@ -340,6 +340,104 @@
     otherwise the references to these units will be lost. The same applies to tables/fields names.
 </div>
 
+<h4>Which actions are generated?</h4>
+<p>
+    Foe each table the following actions are generated
+</p>
+<table class="contentTable">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Action
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>GetByIndex</td>
+        <td>
+            Retrieve field values from database by provided row's (physical) index. This is the best method to use inside for-each loop
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>GetById</td>
+        <td>
+            Retrieve field values from database by row's id.
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>GetByName</td>
+        <td>
+            Retrieve field values from database by row's name.
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>SetByIndex</td>
+        <td>
+            Set field values to database by row's index.
+        </td>
+    </tr>
+    <tr>
+        <td>5</td>
+        <td>SetById</td>
+        <td>
+            Set field values to database by row's id.
+        </td>
+    </tr>
+    <tr>
+        <td>6</td>
+        <td>SetByName</td>
+        <td>
+            Set field values to database by row's name.
+        </td>
+    </tr>
+    <tr>
+        <td>7</td>
+        <td>Count</td>
+        <td>
+            Retrieve total number of rows
+        </td>
+    </tr>
+    <tr>
+        <td>8</td>
+        <td>Create</td>
+        <td>
+            Create a new row
+        </td>
+    </tr>
+    <tr>
+        <td>9</td>
+        <td>Delete</td>
+        <td>
+            Delete a row by its index
+        </td>
+    </tr>
+    <tr>
+        <td>10</td>
+        <td>GetByKey</td>
+        <td>
+            For each <a href="../../Misc/KeysAndIndexes/#keys">key</a> a separate node is generated.
+            This node allows to get row(s) using key's fields values
+        </td>
+    </tr>
+<!--
+    <tr>
+        <td>11</td>
+        <td>FindByIndex</td>
+        <td>
+            For each <a href="../../Misc/KeysAndIndexes/#indexes">index</a> a separate node is generated.
+            This node allows to get row(s) by using between operator, accepting min and max values.
+        </td>
+    </tr>
+-->
+</table>
 
 
 <h4>How to use Get and Set actions</h4>
