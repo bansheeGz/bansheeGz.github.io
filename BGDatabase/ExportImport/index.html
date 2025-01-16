@@ -314,7 +314,7 @@
             <div id="content">
                 
 
-<h4>What can I do with export/import?</h4>
+<h4>What can I do with export/import feature?</h4>
 <ol>
     <li>Export/import data to/from GoogleSheets or Excel in Unity Editor (during game development)</li>
     <li>Export/import data from/to Excel file at runtime (from builds, PC/Mac/Linux only) with
@@ -324,6 +324,7 @@
     <li>Update database data on players devices at runtime from GoogleSheets with <a href="../Addons/LiveUpdate">LiveUpdate</a> plugin</li>
     <li><span style="color: red">Currently, there is no way to write to GoogleSheets at runtime from players devices </span>(<a href="#why">Why not?</a>)</li>
     <li>Backup/restore database in json format in Editor</li>
+    <li>Export/import data to/from CSV files in Editor</li>
 </ol>
 
 
@@ -332,7 +333,7 @@
     You can edit database data in external tools, such as Excel/Open Office/Libre Office or Google Sheets.
 </p>
 <p>
-    BG Database supports export/import to/from Excel files (xls and xlsx), Google Sheets and json (backup only).
+    BG Database supports export/import to/from Excel files (xls and xlsx) and Google Sheets, json, CSV files.
 </p>
 <p>
     Full import/export works in Editor only, but you can update database data on players devices from GoogleSheets
@@ -341,7 +342,11 @@
 </p>
 
 <p>
-    Use json export/import to create full database backup.
+    Json format, unlike other formats, does not support merge settings and also contains metadata information and can be used to create full database backup.
+</p>
+<p>
+    Current implementation of CSV files synchronization is very simplified compared to Excel/Google sheets synchronization, CSV files can only contain database data,
+    "Update Ids on import" feature is not supported and many additional settings are not supported.
 </p>
 
 <p>
@@ -492,7 +497,7 @@ Here is the illustration about how BGDatabase data is mapped to spreadsheets.
         <td>Update Ids on import</td>
         <td>
             If you are adding new rows in external tools, leave _id column empty and enable this parameter.
-            ID values from database will be transferred to _id column when you import new rows.
+            ID values from database will be transferred to _id column when you import new rows. (Excel/Google sheets only)
         </td>
     </tr>
     <tr>
