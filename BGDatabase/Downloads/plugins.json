@@ -2,15 +2,15 @@
   "plugins": [
     {
       "id" : "HrCT9HkOK0mRQ9Z0YBjeQw",
-      "version" : "1.9",
-      "releaseDate" : "11/01/24",
+      "version" : "1.10",
+      "releaseDate" : "01/15/25",
       "pluginClass" : "BansheeGz.BGDatabase.BGGoogleSheetService",
       "packageClass" : null,
       "name" :  "Google Sheets integration for Editor",
       "description" :  "Adds support for exporting/importing data to Google Sheets in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorGoogleSheets",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.9.unitypackage",
-      "requiredVersion" : "1.8.13"
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.10.unitypackage",
+      "requiredVersion" : "1.8.15"
     },
     {
       "id" : "kaPDL9lalUK2QRS159PcHg",
