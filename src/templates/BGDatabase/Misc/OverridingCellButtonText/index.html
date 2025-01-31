@@ -7,6 +7,7 @@
     You can provide C# class or <a href="../../GraphEditor">calculation graph</a>, which can return custom text, based on database values.
     For example, let's say you have a <code>Weapon</code> table with a nested <code>WeaponDamage</code> table and each row of the nested table has
     <code>power</code> (int) and <code>damageType</code> (singleRelation) fields. The <code>name</code> field for the nested table is disabled and not used.
+    The C# class should be placed into Editor assembly (under Editor folder)
 </p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/Misc3.png"><img style="width: 400px" src="#path images/BGDatabase/Misc3.png"></a>
@@ -29,6 +30,7 @@
     <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase.Editor;
 
 //this class uses CodeGen addon generated classes, "Classes prefix"="D_"
+//This C# class should be placed into Editor assembly (under Editor folder)
 public class WeaponEffectsButtonText : BGButtonTextProviderI
 {
     public BGButtonTextResponse GetButtonText(BGButtonTextRequest request)
