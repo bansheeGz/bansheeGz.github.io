@@ -327,7 +327,7 @@
             Version:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            1.4
+            1.5
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
             Format:
@@ -339,10 +339,10 @@
             Dependencies:
         </div>
         <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
-            BGDatabase (v.>=1.7.5)
+            BGDatabase (v.>=1.8.16)
         </div>
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
-            <a href="../BGDatabaseInventoryExample1.4.zip" class="downloadButton"></a>
+            <a href="../BGDatabaseInventoryExample1.5.zip" class="downloadButton"></a>
         </div>
     </div>
 </div>
@@ -354,7 +354,6 @@
 <h4>Description</h4>
 <p>
     Inventory system, built with BGDatabase (level=advanced).
-    Approximate <a href="http://dbdesigner.page.link/C1vn">DB schema</a> (for version 1.0, cause versions 1.1/1.2 have different schema)
 </p>
 
 <h4>Features</h4>
@@ -375,12 +374,34 @@
     <li>Run example scene (BGDatabaseInventoryExample/Scene/Main.unity)</li>
 </ol>
 
-<h4>Using builtin SaveLoad controller for adding new chests and merchants after game release</h4>
-Read the detailed <a href="../../Addons/SaveLoad/BuiltinController">guide</a> about using builtin controller
+<h4>Using builtin SaveLoad controller</h4>
+<p>
+    Builtin SaveLoad controller is used for adding new chests and merchants (v.1.4) or items (v.1.5) after game release.
+    Read the detailed <a href="../../Addons/SaveLoad/BuiltinController">guide</a> about using builtin controller
+</p>
+
 
 <h4>Using a view</h4>
 This <a href="../../../Blog/BGDatabase-v1-7-5-Views-and-viewrelational-fields">blog post</a> describes what view is for
 
+<h4>Version 1.5 vs version 1.4</h4>
+In version 1.4 the items are stored in nested tables (ChestItems and TraderItems) and in inventory slots.
+In version 1.5 all items are stored in "Items" table.
+<a href="../../../Blog/BGDatabase-v1-8-16-Navigating-relation-in-backward-direction">Backward relation navigation</a>,
+introduced in BGDatabase v.1.8.16, provides alternative for navigating and managing related rows in similar way as navigating and managing nested rows.
+
+<h6>Database structures (using <a href="../../Addons/Diagram">Diagram add-on</a>)</h6>
+<p>Version 1.5 structure</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/download57.png"><img style="width: 400px" src="../../../images/BGDatabase/download57.png"></a>
+</div>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/download61.png"><img style="width: 400px" src="../../../images/BGDatabase/download61.png"></a>
+</div>
+<p>Version 1.4 structure</p>
+<div class="bg-image">
+    <a href="../../../images/BGDatabase/download58.png"><img style="width: 400px" src="../../../images/BGDatabase/download58.png"></a>
+</div>
 
 <h4>Releases</h4>
 <details>
@@ -396,6 +417,16 @@ This <a href="../../../Blog/BGDatabase-v1-7-5-Views-and-viewrelational-fields">b
             </th>
             <th style="width: 10%">Download</th>
             <th style="width: 60%">Log</th>
+        </tr>
+        <tr>
+            <td class="ra">
+                1.5
+            </td>
+            <td class="ra">Jul 18, 2024</td>
+            <td class="ra"><a href="../BGDatabaseInventoryExample1.5.zip">link</a></td>
+            <td>
+                Items are stored in "Items" table now, nested tables for items (ChestItems and TraderItems) are removed
+            </td>
         </tr>
         <tr>
             <td class="ra">

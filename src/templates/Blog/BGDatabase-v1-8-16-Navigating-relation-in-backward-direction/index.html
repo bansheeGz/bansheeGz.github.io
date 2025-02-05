@@ -1,0 +1,40 @@
+#set title=BGDatabase v.1.8.16  Navigating relations in backward direction
+#set date=02/2025
+
+<link rel="stylesheet" href="#path css/bgdatabase.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<h4>Description</h4>
+<p>
+    In BGDatabase v.1.8.16 new columns were added for navigating relations in backward direction,
+    similar to how nested fields allow navigating to nested rows
+</p>
+
+<h4>Example</h4>
+<p>
+    Let's say we have 2 tables, "Artists" and "Paintings".
+    "Paintings" table can be a nested table of "Artists" table, but it also can be just a regular table as well,
+    referencing "Artists" table with relationSingle.
+    In the latter case, prior to version BGDatabase v.1.8.16 there was no way to navigate from "Artists" to their "Paintings" rows,
+    similar to navigating from parent row to its nested rows, now it's possible.
+</p>
+<div class="middleAlign">
+    <img src="#path images/Blog/Blog30.gif">
+</div>
+
+<h4>Example project</h4>
+<p>
+    We have updated our <a href="../../BGDatabase/Downloads/ExampleInventory">inventory example project</a> to version 1.5 and replaced nested tables for items
+    with one regular ROW table.
+</p>
+
+<h4>How to disable new columns?</h4>
+<p>
+    New columns can be disabled using the setting in the "Settings->Preferences"
+</p>
+<div class="middleAlign">
+    <img src="#path images/Blog/Blog29.png">
+</div>
