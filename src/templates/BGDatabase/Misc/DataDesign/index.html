@@ -1,0 +1,132 @@
+#set page=Misc
+#set subPage=Data design
+
+<style>
+    .tm {
+       margin-top: 10px;
+    }
+</style>
+
+<h4>Description</h4>
+<p>
+    BGDatabase uses <a href="https://en.wikipedia.org/wiki/Relational_database">relational database</a> design
+    and <a href="https://en.wikipedia.org/wiki/Entity-relationship_model">entity-relationship (ER)</a> model to organize
+    data.
+    Approaches, which are applicable to above-mentioned concepts, should also be applicable to BGDatabase.
+</p>
+
+<h4>Basic concepts</h4>
+<p>All data is split into several tables.
+    Each table has a set of fields (attributes,columns) and a list of rows(entities).
+    Each row has its own value for each attribute.
+    There are also four special relationship fields, which we refer to as "relations",
+    that enable referencing rows from one table to another.
+    Originally the term "relation" had different meaning, but we use it exclusively for relationship fields.
+</p>
+
+<h4>Attributes with "list" values</h4>
+<p>
+    Sometimes, the attribute should have a list of values.
+    If each list element is a primitive value (like int, float etc.) you can use listXXX fields,
+    but in many cases each list element should have several values.
+    In this case you need to create a separate table for list values and each row of this table represents one list
+    element.
+    There are 2 different options for this "list" table: the NESTED table, which is created by "nested" field and a
+    regular ROW table
+    (The difference between 2 these options is described in another section below).
+    Here is an example from our <a href="../../Downloads/Example2DBasic">2D example project</a>, about using nested
+    table for "list" values:
+    each scene row has a list of collectable objects ("Collectable" nested field and related "Collectable" NESTED
+    table), each "Collectable" object(row) has a reference to a parent "Scene" row, position, the amount of attached gold and a
+    reference (relation) to a collectable object type ("CollectableType" table).
+</p>
+<img src="../../../images/BGDatabase/DD1.gif"></img>
+
+<h4>Relationships (relations)</h4>
+<p>
+    Relationships are very important concept to understand, they allow to organize data more efficiently.
+    You can navigate the relations in both directions, both in the GUI and in the code.
+    In our <a href="../../Downloads/Example2DBasic">2D example project</a>,
+    each scene's collectable object from "Collectable" table references "CollectableType" row to indicate which object
+    type is used.
+    Each object type ("CollectableType" row) has its own prefab and pickup sound effect.
+</p>
+<img src="../../../images/BGDatabase/DD2.png"></img>
+<p>
+    There is no reason to put "prefab" and "audio" fields into "Collectable" table, because all objects of certain type
+    share this information, you only need to reference "CollectableType" row to get access to "prefab" and "audio"
+    values.
+</p>
+<p>
+    There are four different relationship fields, each varying in the number of rows or tables that can be referenced,
+    read more <a href="https://www.bansheegz.com/BGDatabase/SupportedFields/#relations">here</a>.
+    XXXRelationSingle creates <a href="https://en.wikipedia.org/wiki/One-to-many_(data_model)">one-to-many
+    relationship</a>
+    and XXXRelationMultiple creates <a href="https://en.wikipedia.org/wiki/Many-to-many_(data_model)">many-to-many
+    relationship</a>
+</p>
+<p>
+    Usually, many-to-many relationship is implemented with a junction table and 2 foreign keys, referencing rows from
+    two tables.
+    In the case of XXXRelationMultiple field, there is no need for additional table if junction table has no additional
+    attributes.
+</p>
+
+
+<h4>NESTED table vs ROW table</h4>
+<p>
+    As of version 1.8.16, the difference between "nested" field + NESTED table vs regular ROW table, referencing the
+    "parent" table with regular relation field are minimal.
+    Actually, the nested table references parent row with a regular relationSingle field.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/DD3.png"><img style="width: 300px" src="#path images/BGDatabase/DD3.png"></a>
+</div>
+<p>
+    Since BGDatabase v.1.8.16 both setups <a
+        href="../../../Blog/BGDatabase-v1-8-16-Navigating-relation-in-backward-direction">allow to navigate</a>
+    between parent and children rows easily both in GUI and in the code.
+</p>
+<h6>NESTED</h6>
+<img src="../../../images/BGDatabase/DD4.gif"></img>
+<h6>vs ROW</h6>
+<img src="../../../images/BGDatabase/DD5.gif"></img>
+<p class="tm">
+    Here are the differences
+</p>
+<ol>
+    <li>NESTED table is not shown in the tables list</li>
+    <li>When parent row is deleted, all nested rows are also deleted (it's like ON DELETE CASCADE in SQL databases)</li>
+    <li>NESTED table goes with a "nested" field, attached to the parent table, but it does not grant any advantages</li>
+    <li>Some of the settings, applied to parent row automatically applied to the nested row, because the nested rows are
+        considered as a part of the parent row, for example
+        the settings for <a href="../../Addons/Partition">partitions</a> or <a
+                href="../../Addons/SaveLoad/BuiltinController">builtin controller of SaveLoad addon</a>
+    </li>
+    <li>A regular ROW table can serve as kind-of-a-nested table for multiple tables. In our <a
+            href="../../Downloads/ExampleInventory">Inventory example</a> v.1.5
+        "Items" table can be treated as a "nested" table for any of the tables, it references with viewRelationSingle
+        fields
+    </li>
+</ol>
+
+<h4>Design advices</h4>
+<p>
+    Unfortunately, there are no strict rules, you can follow to get the best result.
+    Many aspects can be implemented in various ways.
+</p>
+<p>
+    For instance, imagine you have a character and character's attributes (Strength, Intelligence, Agility etc.)
+    The simplest way to add this attributes to a character is to add them to the "Character" table.
+</p>
+<img src="../../../images/BGDatabase/DD6.png"></img>
+<p class="tm">
+    But what if you have "Dialog" table with attributes checks, similar to Fallout games?
+    In this case, you need a separate row for an attribute, so you can reference it from "Dialogs" table
+</p>
+<img src="../../../images/BGDatabase/DD7.png"></img>
+<p class="tm">
+    In case you have only one character, you can put characters attributes values right into "Attributes" table (Attribute.level).
+    But if you have several characters, you need a separate table to store attribute level for each character
+</p>
+<img src="../../../images/BGDatabase/DD8.png"></img>
