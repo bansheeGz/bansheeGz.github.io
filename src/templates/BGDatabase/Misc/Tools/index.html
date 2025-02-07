@@ -1,0 +1,207 @@
+#set page=Misc
+#set subPage=GUI Tools
+
+<p>
+    This article lists available GUI tools for tables, fields and rows
+</p>
+
+<h4>Tables (metas)</h4>
+<table class="contentTable">
+    <tr>
+        <th width="20%">Location</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td> <img src="../../../images/BGDatabase/Tools1.png"></img> </td>
+        <td>Adding and deleting a table</td>
+    </tr>
+    <tr>
+        <td rowspan="6">
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/Tools2.png"><img style="width: 300px" src="#path images/BGDatabase/Tools2.png"></a>
+            </div>
+        </td>
+        <td>Reorder tables. Tool reorders tables by changing their physical indexes</td>
+    </tr>
+    <tr>
+        <td>Convert ROW to NESTED. Available only for ROW tables. Convert ROW tables to NESTED tables while keeping all IDs intact</td>
+    </tr>
+    <tr>
+        <td>Convert NESTED to ROW. Available only for NESTED tables. Convert NESTED tables to ROW tables while keeping all IDs intact</td>
+    </tr>
+    <tr>
+        <td>Clear entity names. Clear all values for the name field</td>
+    </tr>
+    <tr>
+        <td>Duplicate. Creates a copy of the table, optionally copies all the rows as well</td>
+    </tr>
+    <tr>
+        <td>Data extraction wizard. Retrieves the fields from C# class/struct and add them to the table</td>
+    </tr>
+</table>
+
+<h4>Fields (columns)</h4>
+<table class="contentTable">
+    <tr>
+        <th width="20%">Location</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/Tools3.png"><img style="width: 300px" src="#path images/BGDatabase/Tools3.png"></a>
+            </div>
+        </td>
+        <td>Add a field</td>
+    </tr>
+    <tr>
+        <td>
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/Tools4.png"><img style="width: 300px" src="#path images/BGDatabase/Tools4.png"></a>
+            </div>
+        </td>
+        <td>Delete a field</td>
+    </tr>
+    <tr>
+        <td rowspan="4">
+            <img src="../../../images/BGDatabase/Tools6.png"></img>
+        </td>
+        <td>Copy id to clipboard. Alternatives- click on id button or press Ctrl while hovering over "M" button</td>
+    </tr>
+    <tr>
+        <td>Change field type. For most of the fields, the values will be lost</td>
+    </tr>
+    <tr>
+        <td>Assign a custom formatter. Custom formatter is a C# class, providing a string value for the field while
+            exporting/importing to string-based formats, like Excel/Google Sheets, CSV and JSON.
+            The formatter should implement BGStringFormatter&lt;T&gt; interface, where T is field type.
+            For JSON format there is an additional setting "Use custom formatters for JSON format",
+            which must be turned on under Settings addon
+        </td>
+    </tr>
+    <tr>
+        <td>Assign a custom button text provider. Button text provider is a C# class, providing a custom string for the button text
+            for the fields, which uses a button to display its value(relations primarily).
+            For more information, read <a href="../OverridingCellButtonText">this article</a>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="bg-image">
+                <a href="#path images/BGDatabase/Tools7.png"><img style="width: 300px" src="#path images/BGDatabase/Tools7.png"></a>
+            </div>
+        </td>
+        <td>Field's settings. Some fields, like enum or Unity asset fields have additional settings, which can be access via gear icon</td>
+    </tr>
+    <tr>
+        <td>
+            <img src="../../../images/BGDatabase/Tools8.png"></img>
+        </td>
+        <td>Reorder fields. Select fields by using "S" column, then move them up or down using up and down arrows under "Selected" button groups</td>
+    </tr>
+    <tr>
+        <td  rowspan="2">
+            <img src="../../../images/BGDatabase/Tools9.png"></img>
+        </td>
+        <td>Change field type for all selected rows</td>
+    </tr>
+    <tr>
+        <td>Delete selected fields. Delete several selected fields</td>
+    </tr>
+</table>
+
+<h4>Entities (rows)</h4>
+<table class="contentTable">
+    <tr>
+        <th width="20%">Location</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td><img src="../../../images/BGDatabase/Tools10.png"></img> </td>
+        <td>Add a row</td>
+    </tr>
+    <tr>
+        <td><img src="../../../images/BGDatabase/Tools11.png"></img> </td>
+        <td>Delete a row</td>
+    </tr>
+    <tr>
+        <td rowspan="11"><img src="../../../images/BGDatabase/Tools12.png"></img> </td>
+        <td>Batch insert: Add several rows</td>
+    </tr>
+    <tr>
+        <td>Batch delete: Delete several rows</td>
+    </tr>
+    <tr>
+        <td>Batch update: Modify single field values for multiple rows</td>
+    </tr>
+    <tr>
+        <td>Batch copy: Copy values from one field to another field for multiple rows</td>
+    </tr>
+    <tr>
+        <td>Sort rows: Sort rows by field(s) values</td>
+    </tr>
+    <tr>
+        <td>Assets to row: Scans Unity assets with provided type under Resources folder, create a row for each asset and assign unity asset field value to existing asset</td>
+    </tr>
+    <tr>
+        <td>Clear field value: clear one single field values for all/selected rows</td>
+    </tr>
+    <tr>
+        <td>Copy/move rows between tables: copy or move all/selected rows from one table to another</td>
+    </tr>
+    <tr>
+        <td>Prefabs tools/Manage database components: iterate database rows and for selected prefab field adds/removes database component
+            (BGEntityGo or generated class) to referenced prefabs</td>
+    </tr>
+    <tr>
+        <td>Prefabs tools/Scan opened scene prefabs: scans all prefabs in opened scene and adds database row (if it does not exist already)
+            for each such prefab and assigns prefab field value to existing prefab</td>
+    </tr>
+    <tr>
+        <td>Scan scriptable objects: Scans scriptable objects with BGDatabaseEntityId field and add database rows for each scriptable object</td>
+    </tr>
+    <tr>
+        <td><img src="../../../images/BGDatabase/Tools13.png"></img> </td>
+        <td>Columns presets: manage hidden/pinned columns and columns order</td>
+    </tr>
+    <tr>
+        <td><img src="../../../images/BGDatabase/Tools14.png"></img> </td>
+        <td>Advanced filter: tree-based filter for filtering rows out</td>
+    </tr>
+    <tr>
+        <td rowspan="9"><img src="../../../images/BGDatabase/Tools15.png"></img> </td>
+        <td>Copy id: Copy id value to clipboard. Alternatives- click on id button or press Ctrl while hovering over "M" button</td>
+    </tr>
+    <tr>
+        <td>Edit in popup window: opens separate window to edit row's values</td>
+    </tr>
+    <tr>
+        <td>Insert before/after: insert new row before or after current row</td>
+    </tr>
+    <tr>
+        <td>Move up/down, move/swap : change row's physical index</td>
+    </tr>
+    <tr>
+        <td>Copy/paste a row: copy current row and paste it as new row</td>
+    </tr>
+    <tr>
+        <td>Duplicate a row: duplicate current row</td>
+    </tr>
+    <tr>
+        <td>Add BGEntityGo component: Add BGEntityGo component to selected Game Objects and assign BGEntityGo.Entity property to the current row</td>
+    </tr>
+    <tr>
+        <td>Add BGDataBinderGo component: Add BGDataBinderGo component to selected Game Objects and assign BGDataBinderGo.Entity property to the current row</td>
+    </tr>
+    <tr>
+        <td>Add generated MonoBehaviour component: Add generated MonoBehaviour component to selected Game Objects and assign BGEntityGo.Entity property to the current row</td>
+    </tr>
+
+</table>
+
+<h4>Custom tools</h4>
+<p>
+    in most cases, the database works in Unity Editor the same way as it works in runtime, so you can create your own custom tools.
+    <a href="../Editor">Read more</a> about creating your own tools.
+    You can put your tools <a href="../DatabaseGUIExtensions">in database GUI</a> if you want to.
+</p>
