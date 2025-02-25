@@ -1,6 +1,7 @@
 #set page=Misc
 #set subPage=Events guide
 
+<h4>Description</h4>
 <p>
     Events let use listen to database changes, like changing the field or entity, adding or removing entities. Make sure
 </p>
@@ -61,6 +62,119 @@
         <td>It is fired on any database change</td>
     </tr>
 </table>
+
+<h4>Example</h4>
 <p>
-    For usage example, see this <a href="../../Downloads/EventListenersDemo.txt">demo C# script</a>
+    The following class demonstrates the usage of events.
+    The example code does not use code generation feature, so if you use <a href="../../Addons/CodeGeneration">CodeGen addon</a>,
+    the following code can be simplified
 </p>
+
+<details>
+    <summary>Press to see the code</summary>
+    <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase;
+using UnityEngine;
+
+public class EventListenersDemo : MonoBehaviour
+{
+    void Start() => AddListeners();
+    private void OnDestroy() => RemoveListeners();
+    private void AddListeners()
+    {
+        //get target objects
+        var meta = BGRepo.I["MyTable"];
+        var field = meta.GetField("name");
+        var entity = meta.GetEntity(0);
+
+        //listen to some field change
+        field.ValueChanged += FieldChanged;
+
+        //listen to particular entity (row)
+        meta.AddEntityUpdatedListener(entity.Id, EntityUpdated);
+        meta.AddEntityDeletedListener(entity.Id, EntityDeleted);
+
+        //listen to all entities (rows) of particular table (meta)
+        meta.AnyEntityUpdated += SomeEntityUpdated;
+        meta.AnyEntityAdded += SomeEntityAdded;
+        meta.AnyEntityBeforeDeleted += SomeEntityBeforeDeleted;
+        meta.AnyEntityDeleted += SomeEntityDeleted;
+
+        //listen to batch events (any table). See BatchEventExample method below for more information
+        BGRepo.I.Events.OnBatchUpdate += BatchUpdate;
+
+        //listen on any change events (any table)
+        BGRepo.I.Events.OnAnyChange += AnyChange;
+    }
+
+    //always match adding listeners with removing listeners to prevent memory leak
+    private void RemoveListeners()
+    {
+        //get target objects
+        var meta = BGRepo.I["MyTable"];
+        var field = meta.GetField("name");
+        var entity = meta.GetEntity(0);
+
+        meta.RemoveEntityUpdatedListener(entity.Id, EntityUpdated);
+        meta.RemoveEntityDeletedListener(entity.Id, EntityDeleted);
+
+        meta.AnyEntityUpdated -= SomeEntityUpdated;
+        meta.AnyEntityAdded -= SomeEntityAdded;
+        meta.AnyEntityBeforeDeleted -= SomeEntityBeforeDeleted;
+        meta.AnyEntityDeleted -= SomeEntityDeleted;
+
+        field.ValueChanged -= FieldChanged;
+
+        BGRepo.I.Events.OnBatchUpdate -= BatchUpdate;
+
+        BGRepo.I.Events.OnAnyChange -= AnyChange;
+    }
+
+    //------------------------------------------------
+    //            Field changed
+    //------------------------------------------------
+    private void FieldChanged(object sender, BGEventArgsField e)
+    {
+        if (e is BGEventArgsFieldWithValue&lt;string&gt; ev) Debug.Log($"The field {ev.Field.Name} for entity {ev.Entity.Name} was changed {ev.OldValue} -> {ev.NewValue}");
+        else Debug.Log($"The field value was changed, entity={e.Entity.Name}");
+    }
+    //------------------------------------------------
+    //             any entity (row)
+    //------------------------------------------------
+    private void SomeEntityUpdated(object sender, BGEventArgsAnyEntityUpdated e)
+    {
+        if (e is BGEventArgsAnyEntityUpdatedWithValue ev) Debug.Log($"The field {ev.GetField().Name} for entity {ev.Entity.Name} was changed {ev.GetOldValue()} -> {ev.GetNewValue()}");
+        else Debug.Log("The entity Updated " + e.Entity.Name);
+    }
+    private void SomeEntityAdded(object sender, BGEventArgsAnyEntity e) => Debug.Log($"The entity is added {e.Entity.Id}");
+    private void SomeEntityBeforeDeleted(object sender, BGEventArgsAnyEntity e)=> Debug.Log($"The entity is about to be deleted {e.Entity.Id}");
+    private void SomeEntityDeleted(object sender, BGEventArgsAnyEntity e) => Debug.Log($"The entity is deleted {e.Entity.Id}");
+    //------------------------------------------------
+    //             particular (provided) entity (row)
+    //------------------------------------------------
+    private void EntityDeleted(object sender, BGEventArgsEntity e) => Debug.Log($"The Entity was deleted {e.Entity.Id}");
+    private void EntityUpdated(object sender, BGEventArgsEntityUpdated e) => Debug.Log($"The Entity was updated {e.Entity.Name}");
+
+    //------------------------------------------------
+    //            Batch update
+    //------------------------------------------------
+    private void BatchUpdate(object sender, BGEventArgsBatch e) => Debug.Log($"Batch update. Use WasEntitiesAdded/WasEntitiesDeleted/WasEntitiesUpdated methods to find out if entities were modified");
+
+    //this method provide example how batch event is fired
+    private void BatchEventExample()
+    {
+        BGRepo.I.Events.Batch(() =>
+        {
+            //all individual events inside this method will be disabled. One batch event will be fired when this action is executed
+            //update all "name" field values for the first table
+            BGRepo.I.GetMeta(0).ForEachEntity(entity => entity.Name += " [Updated]");
+        });
+    }
+
+
+    //------------------------------------------------
+    //            Any change
+    //------------------------------------------------
+    private void AnyChange(object sender, BGEventArgsAnyChange e) => Debug.Log($"Some change was made to the database");
+
+}</code></pre>
+</details>
