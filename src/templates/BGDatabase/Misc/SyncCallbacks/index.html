@@ -1,0 +1,54 @@
+#set page=Misc
+#set subPage=Running code before/after data syncing
+
+<h4>Description</h4>
+<p>
+    You can run your own code before or after data export/import job is executed.
+</p>
+
+<h4>How to enable the feature</h4>
+<ol>
+    <li>Create a new C# class (let's say ExportImportJobListener, the name does not matter) under Editor assembly (under Editor folder)</li>
+    <li>Add the following code to the top of your class <code>using BansheeGz.BGDatabase.Editor;</code></li>
+    <li>Implement BGEditorJobStartedCallbackI interface if you want to run the code when a job is started</li>
+    <li>Implement BGEditorJobCompletedCallbackI interface if you want to run the code when a job is completed</li>
+    <li>Context object, which is passed to the methods, provides additional information about operation:
+        the job's name, operation type (import or export) and for BGEditorJobCompletedCallbackI method,
+        the context also has an error (if there was any error)
+    </li>
+    <li>See the example below for more details</li>
+</ol>
+
+<h4>Example</h4>
+<p>
+    The following script is executed when a job is started or completed
+</p>
+
+<pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase.Editor;
+using UnityEngine;
+
+public class ExportImportJobListener : BGEditorJobStartedCallbackI, BGEditorJobCompletedCallbackI
+{
+    //BGEditorJobStartedCallbackI, called when a job is started (before execution)
+    public void OnStarted(BGEditorJobStatusContext context)
+    {
+        Debug.Log($"Job [{context.JobName}] is started, operation [{context.Operation}]");
+    }
+
+    //BGEditorJobCompletedCallbackI, called when a job is finished
+    public void OnCompleted(BGEditorJobCompletedContext context)
+    {
+        if (context.Error == null)
+        {
+            Debug.Log($"Job [{context.JobName}] is completed successfully, operation [{context.Operation}]");
+        }
+        else
+        {
+            Debug.Log($"Job [{context.JobName}] failed, the error is [{context.Error}]");
+        }
+    }
+}</code></pre>
+<p>
+    Execution result
+</p>
+<img src="#path images/BGDatabase/Misc31.png"/>
