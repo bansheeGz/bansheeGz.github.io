@@ -118,6 +118,7 @@
 <p>
     For instance, imagine you have a character and character's attributes (Strength, Intelligence, Agility etc.)
     The simplest way to add this attributes to a character is to add them to the "Character" table.
+    (<i><a href="../../Addons/Diagram">Diagram addon</a> is used for diagrams</i>)
 </p>
 <img src="../../../images/BGDatabase/DD6.png"></img>
 <p class="tm">
@@ -130,3 +131,11 @@
     But if you have several characters, you need a separate table to store attribute level for each character
 </p>
 <img src="../../../images/BGDatabase/DD8.png"></img>
+
+<h4>System ID and name fields</h4>
+<p>
+    Each row has <code>Id</code>(of type BGId) and <code>Name</code>(string) system fields.
+    <code>Id</code> identifies the row, and it's used in relation fields and during import/export to other formats, it can not be turned off.
+    On the other hand, the <code>Name</code> field is optional, but it's turned on by default.
+    We recommend to turn it off if you do not need it (under Configuration->{TableName}->Parameters->"Entity name is empty")
+</p>
