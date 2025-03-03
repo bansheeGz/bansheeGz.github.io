@@ -339,7 +339,9 @@
 
 <h4>Example</h4>
 <p>
-    The following script is executed when a job is started or completed
+    The following script is executed when a job is started or completed.
+    If you want to share some data between OnStarted and OnCompleted methods, use static fields,
+    because there could be 2 different instances of ExportImportJobListener, one for each interface
 </p>
 
 <pre class="nomargin"><code class="language-csharp">using BansheeGz.BGDatabase.Editor;
