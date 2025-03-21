@@ -281,11 +281,11 @@ using Sirenix.OdinInspector;
 public class Temp : MonoBehaviour
 {
     [DrawWithUnity]
-    public BGEntityReference row;
+    public D_Weapon_RowRef row;
 
     private void Start()
     {
-        BGEntity dbRow = row.GetEntity();
+        D_Weapon dbRow = row.Entity;
     }
 }</code></pre>
 </details>
