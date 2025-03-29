@@ -1,0 +1,124 @@
+#set page=Export Import
+#set subPage=Scriptable objects
+
+<h4>Description</h4>
+<p>
+    Generate both scriptable object C# sources (one per table) and assets (one per row).
+    Data synchronization with scriptable objects differs from other formats, please, read this guide to learn how it works and which limitations it has
+</p>
+
+<h4>Setup</h4>
+<ol>
+    <li>Read <a href="../Common">this guide</a> to learn how to create a data source and a job</li>
+    <li>Switch to a data source and select a folder for C# source files for scriptable objects (use new, empty folder)
+        and press on "Generate C# source files" button to generate C# sources for scriptable objects.
+        One C# source file for each table will be generated.
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SO3.png"><img style="width: 400px" src="#path images/BGDatabase/SO3.png"></a>
+        </div>
+    </li>
+    <li>Select a folder for scriptable object assets (use new, empty folder)</li>
+    <li>Switch to a job and setup <a href="../MergeSettings">merge settings</a>.
+        Be careful with "Remove orphaned" setting, because it can lead to rows or assets being deleted if no matching row or asset is found.
+    </li>
+    <li>
+        Click on "Export" button to generate assets or "Import" button to transfer data from assets to database
+        <div class="bg-image">
+            <a href="#path images/BGDatabase/SO4.png"><img style="width: 400px" src="#path images/BGDatabase/SO4.png"></a>
+        </div>
+    </li>
+</ol>
+
+<h4>Warnings</h4>
+<ol>
+    <li>Select 2 new, empty folders for generated C# sources and scriptable assets. Do not put other assets in these folders.
+    </li>
+    <li>Exporting data while assets are not yet exist is very slow, exporting 1000 rows can take 20-25 seconds.
+        Transferring data to existing assets or importing data is quite fast.
+    </li>
+    <li>Exporting data creates one asset(file) per each row, keep this in mind if you have a lot of rows</li>
+    <li>If you want to create a new asset and import it later to the database by duplicating existing asset,
+        make sure to clear <code>Id</code> field in duplicated asset, otherwise the asset will be ignored
+    </li>
+    <li>Though <a href="../MergeSettings">merge settings</a> are supported,
+        we recommend to use data source settings to include/exclude tables/fields instead
+    </li>
+<!--
+    <li>While importing (ScriptableObjects->database) is fast, exporting (database->ScriptableObjects) is very slow,
+        even exporting 1000 rows can be very slow
+    </li>
+-->
+    <li>When you use "Remove orphaned" toggle in <a href="../../ExportImport/MergeSettings">merge settings</a> during export,
+        it means that orphaned scriptable assets will be physically deleted.
+    </li>
+    <li>See the job's log for more information about synchronization process</li>
+    <li>Not all fields are supported (read the section below for more details).</li>
+    <li>Read the guide below about how to change settings or table/field names safely</li>
+</ol>
+
+<h4>C# sources and assets</h4>
+<p>
+    Scriptable objects consist of two parts- C# source files for scriptable objects (with cs extension),
+    which defines which fields each asset has and the assets, the instances of this C# class, stored in separate files (with asset extension).
+    Both C# source files (one for each table) and the assets (one for each row) are generated.
+</p>
+<ol>
+    <li>Generating C# sources: C# sources can be generated from data source page. You can also exclude some
+        tables/fields from generation
+    </li>
+    <li>Generating assets: assets are generated during export job execution.
+        C# source files should be up-to-date,
+        they should have all supported/included database fields, otherwise exception is thrown
+        and C# source files generation should be run to update source files.
+    </li>
+</ol>
+
+<h4>Unsupported fields</h4>
+<p>
+    Most of the fields, including assets and relations are supported.
+    The following fields are excluded because they are not supported by Unity (hashtable, guid, ray, ray2D, listGuid, decimal, all nullable fields).
+    The following fields rely on BGDatabase code and are also excluded (objectReference, objectListReference,
+    objectListMultiValueReference, entityReference, entityReferenceList, id, action).
+    If you exclude some table manually, all relational fields, referencing this table, are going to be excluded automatically.
+</p>
+
+<h4>How to change settings, table/field names</h4>
+<p>
+    If you change folders, class name prefix or table name without any further action, you are going to lose the link between database data and
+    existing assets or create duplicates next time you export/import data.
+    This section describes, how to update folders, class name prefix, table or field names without losing links with existing assets.
+    [Important] Backup your project just in case before renaming
+</p>
+<h5>Changing folders</h5>
+<p>
+    After changing folders in the settings, move the folders manually inside Unity Editor to new location.
+</p>
+
+<h5>Changing classes name prefix</h5>
+<p>
+    After changing <code>Classes name prefix</code> in the settings, rename all generated C# source files inside Unity Editor to reflect the change,
+    for example if your source file is <code>S_MyTable.cs</code>, and you change the prefix from <code>S_</code> to <code>T_</code> the new name should be
+    <code>T_MyTable.cs</code>. After changing all file names, regenerate C# sources for scriptable objects and fix all compilation errors
+    by changing class names from old name (<code>S_MyTable</code>) to new name (<code>T_MyTable</code>) in your C# code.
+</p>
+
+<h5>Renaming table name</h5>
+<p>
+    After renaming table name, rename both the C# source file name and folder name for generated assets inside Unity Editor to reflect the change.
+    For example, if the old name is <code>MyTable</code> and the new table name is <code>MyTableUpdated</code> and <code>Classes name prefix</code> is <code>S_</code>,
+    rename C# source file from <code>S_MyTable.cs</code> to <code>S_MyTableUpdated.cs</code> and folder name from <code>MyTable</code> to <code>MyTableUpdated</code>.
+    After changing C# file name and folder name, regenerate C# sources for scriptable objects and fix all compilation errors
+    by changing class name from old name (<code>S_MyTable</code>) to new name (<code>S_MyTableUpdated</code>) in your C# code.
+</p>
+
+<h5>Renaming field name</h5>
+<p>
+    if you want to change field name and then re-generate both C# sources and the assets, there is no need for extra actions.
+    If you want to rename the field and regenerate C# sources without re-generating the assets,
+    you need to add
+    <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Serialization.FormerlySerializedAsAttribute.html">FormerlySerializedAs</a>
+    attribute to the C# field with value, equal to the old name. After renaming database field, open data source page, then "C# settings",
+    then create a custom settings for the table, include the table, open fields popup, create a custom setting for the field, include it and enter old field name to
+    "FormerlySerializedAs" column. You can remove this setting after assets generating is executed.
+</p>
+<img src="#path images/BGDatabase/SO2.png"/>

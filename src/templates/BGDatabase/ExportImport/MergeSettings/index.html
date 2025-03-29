@@ -1,0 +1,116 @@
+#set page=Export Import
+#set subPage=Merge settings
+
+<h4>Description</h4>
+<p>Merge settings define which tables/fields are included in data exchange</p>
+<p>
+    You have full control over which data you want to synchronize: you can toggle on add/delete/update operations and choose which
+    tables/fields you wish to update.
+</p>
+<p>
+    Here is how it works:
+    Every synchronization has a source and a destination.
+    If you are exporting data from BDDatabase to, let's say, Excel file - the source is BGDatabase and a destination- is
+    Excel file.
+    Here is how data is classified during syncing:
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport2.png"><img style="width: 400px" src="#path images/BGDatabase/ExportImport2.png"></a>
+</div>
+<p>
+    So, there are 3 types of rows during syncing:
+</p>
+<ol>
+    <li>Matching rows : they exist in the Source and in the Destination. Can be updated, and you can choose which fields
+        to update.
+    </li>
+    <li>Missing rows : they exist only in the Source. Can be added to Destination.</li>
+    <li>Orphaned rows : they exist only in the Destination. Can be removed from Destination.</li>
+</ol>
+<p>
+    Let's look at merge settings and find out how we can define actions to take during syncing
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport3.png"><img style="width: 400px" src="#path images/BGDatabase/ExportImport3.png"></a>
+</div>
+
+<h4 id="rowlevel">Row-level control for merge settings</h4>
+<p>Merge settings let you configure which table/fields you want to add/delete/update, but it does not give you the opportunity to define which rows you want to add/delete/update</p>
+<p>For row-level control, you can implement C# controller class, which can cancel any operation if some condition is met. This is how:</p>
+<ul>
+    <li>Create your own C# class with unique name, set this class name to "Controller Type" field of merge settings (using the full name with namespace).</li>
+    <li>Implement any number of interfaces (namespace is <code>BansheeGz.BGDatabase</code>, interfaces defined inside class <code>BGMergeSettingsEntity</code>),
+        listed below to receive callback method invocations. Return true from these methods to cancel operation</li>
+</ul>
+<table  class="contentTable">
+    <tr>
+        <th width="20%">Interface type</th>
+        <th width="40%">method(s) to implement</th>
+        <th width="40%">description</th>
+    </tr>
+    <tr>
+        <td>IMergeReceiver</td>
+        <td>
+            <code>public bool OnBeforeMerge(BGRepo from, BGRepo to)</code>
+            <br>
+            <code>public void OnAfterMerge(BGRepo @from, BGRepo to)</code>
+        </td>
+        <td>
+            Callbacks to be called before after merging. Return true from OnBeforeMerge to cancel merging
+        </td>
+    </tr>
+    <tr>
+        <td>IRemoveOrphanedReceiver</td>
+        <td>
+            <code>public bool OnBeforeDelete(BGEntity toEntity)</code>
+        </td>
+        <td>
+            Callbacks to be called before deleting the row. Return true to cancel removal.
+        </td>
+    </tr>
+    <tr>
+        <td>IAddMissingReceiver</td>
+        <td>
+            <code>public bool OnBeforeAdd(BGEntity fromEntity)</code>
+        </td>
+        <td>
+            Callbacks to be called before adding the row. Return true to cancel adding.
+        </td>
+    </tr>
+    <tr>
+        <td>IUpdateMatchingReceiver</td>
+        <td>
+            <code>public bool OnBeforeUpdate(BGEntity @from, BGEntity to)</code>
+        </td>
+        <td>
+            Callbacks to be called before updating the row. Return true to cancel updating.
+        </td>
+    </tr>
+    <tr>
+        <td>IUpdateMatchingFieldReceiver</td>
+        <td>
+            <code>public bool OnBeforeFieldUpdate(BGField fromField, BGField toField, BGEntity @from, BGEntity to)</code>
+        </td>
+        <td>
+            Callbacks to be called before updating the row' field. The same as <code>IUpdateMatchingReceiver</code>,
+            but it's called on per field basis. <code>IUpdateMatchingReceiver</code> is called before this callback,
+            and if <code>IUpdateMatchingReceiver</code> return true, this callback will never be invoked (cause updating entity will be cancelled by <code>IUpdateMatchingReceiver</code>)
+        </td>
+    </tr>
+    <tr>
+        <td>ISaveLoadAddonSavedEntityFilter</td>
+        <td>
+            <code>bool OnSaveEntity(BGEntity entity)</code>
+        </td>
+        <td>
+            Callback is called by <a href="../../Addons/SaveLoad">SaveLoad addon</a> while saving the data for each row.
+            If this method returns true, the row is skipped and not included into saved data
+        </td>
+    </tr>
+</table>
+<p>
+    You can find an example of such controller class on <a href="../../Addons/SaveLoad#rowlevelexample">Save/Load</a> addon page.
+</p>
+
+
+

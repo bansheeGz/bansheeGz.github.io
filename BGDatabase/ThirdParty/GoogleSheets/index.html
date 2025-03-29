@@ -314,22 +314,33 @@
             <div id="content">
                 
 
-<div class="importantNote">
-    Main article about Export/Import is <a href="../../ExportImport">here</a>
-</div>
-<br/>
+<h4>Features</h4>
+<ol>
+    <li>Export/import data in Unity Editor (during game development) via <a href="../../Downloads/EditorGoogleSheets">this plugin</a></li>
+    <li>Update database data on players devices at runtime from Google Sheets with <a href="../../Addons/LiveUpdate">LiveUpdate</a> addon</li>
+    <li><span style="color: red">Currently, there is no way to write to Google Sheets at runtime from players devices </span>(<a href="#why">Why not?</a>)</li>
+</ol>
 
-<h4>Step 1 : Import Google sheets plugin</h4>
+<h4>Additional guides</h4>
+<ol>
+    <li>Read <a href="../../ExportImport/Common">this guide</a> to learn how to create data sources and jobs</li>
+    <li>Read <a href="../../ExportImport/ExcelAndGoogleSheets">this guide</a> to learn about advanced settings, available for Google Sheets</li>
+    <li>Read <a href="../../ExportImport/DataStructureExtractionWizard">this guide</a> to learn how to transfer tables/fields from Google Sheets</li>
+</ol>
+
+
+<h4>Setup</h4>
+<h5>Step 1 : Import Google sheets plugin</h5>
 <p>
     Import <a href="../../Downloads/EditorGoogleSheets">this plugin</a>.
 </p>
 
-<h4>Step 2 : Create Google Sheets DataSource</h4>
+<h5>Step 2 : Create Google Sheets DataSource</h5>
 <p>
     Open BGDatabase window <code>Window->BGDatabase</code>
 </p>
 <p>
-    Select <code>EXport/import</code> tab, then "Data sources" tab, press plus icon, choose <code>Datasource type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
+    Select <code>Export/import</code> tab, then "Data sources" tab, press plus icon, choose <code>Datasource type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
 </p>
 <p class="redText">
     [Important]: Keep your settings file private if you use GoogleSheets. Do not share it with anyone
@@ -339,7 +350,7 @@
 </div>
 
 
-<h4>Step 3 : Setting up Google Sheets DataSource</h4>
+<h5>Step 3 : Setting up Google Sheets DataSource</h5>
 <div>
     Setting up Google Sheets DataSource depends on authentication type.
     Choose authentication type and read setup guide for this type.
@@ -415,7 +426,7 @@
     </tr>
 </table>
 
-<h4>Step 4 : Create Export/Import task</h4>
+<h5>Step 4 : Create Export/Import task</h5>
 <p>
     Select <code>Export/Import</code> tab, press plus icon, choose <code>Job type</code> to be <code>GoogleSheets</code> and click <code>Add</code> button
 </p>
@@ -426,7 +437,7 @@
     <a href="../../../images/BGDatabase/GoogleSheets15.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets15.png"></a>
 </div>
 
-<h4>Running Export/Import Task</h4>
+<h5>Running Export/Import Task</h5>
 <p>
     Press <code>Export</code> or <code>Import</code> button to run the task you created.
 </p>
@@ -441,7 +452,7 @@
 
 <div class="importantNote">
     Target empty spreadsheet while exporting for the first time. Export job will create necessary sheets/header rows + data for you
-    (<a href="../../ExportImport/index.html#firstTime">more information</a>)
+    (<a href="../../ExportImport/ExcelAndGoogleSheets/#firstTime">more information</a>)
 </div>
 <p>
     Make sure you have as many physical rows/columns as you need, delete empty rows/columns to boost performance.
@@ -483,11 +494,34 @@
     <a href="../../../images/BGDatabase/GoogleSheets17.png"><img style="width: 400px" src="../../../images/BGDatabase/GoogleSheets17.png"></a>
 </div>
 
-<h4>What's next?</h4>
-<ol>
-    <li>Google Sheets plug-in docs: <a href="../../Downloads/EditorGoogleSheets">link</a></li>
-    <li>Export/import overview page: <a href="../../ExportImport">link</a> </li>
+
+<h4 id="why">Why you do not provide an option to update GoogleSheets data from player devices?</h4>
+<p>
+    TLDR: Our export procedure is not meant to be executed simultaneously by multiple clients.
+    If your app/game is running on a single device or if only one device can export data to GoogleSheets, you can use <a href="../../Downloads/RuntimeGoogleSheets">this plug-in</a>
+</p>
+<p>
+    DETAILED EXPLANATION: To update data we need to read and analyse it first to determine which cells need to be updated and also optionally resize the sheet.
+    Reading, analysing and updating data are not atomic operation.
+    If somebody else updates the data during reading/analysis - writing data may result in data corruption/errors.
+</p>
 </ol>
+<p>
+    This problem can be solved with a proxy server, but it also means there is no need for direct access to GoogleSheets.
+</p>
+<p>
+    If you are still looking for a way to write data to GoogleSheets from players devices:
+</p>
+<ol>
+    <li>If all you need is to add data to spreadsheet, you can use <a href="https://www.google.com/forms/about/">Google Forms</a>,
+        <a href="https://support.google.com/docs/answer/2917686?hl=en">linked to a spreadsheet</a>
+        and <a href="https://stackoverflow.com/questions/18073971/http-post-to-a-google-form">HTTP POST</a> to add data to spreadsheet.
+        Also, read our mini tutorial, how to use  Google Forms to update GoogleSheets
+        <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-4#post-6143082">here</a>
+    </li>
+    <li>If you need more sophisticated control <a href="https://developers.google.com/sheets/api/">GoogleSheets dotnet API library v4</a> is probably the best starting point.</li>
+</ol>
+
             </div>
             
 

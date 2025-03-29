@@ -1,0 +1,29 @@
+#set page=Export Import
+#set subPage=Json
+
+<h4>Description</h4>
+<p>The guide about importing and exporting data to JSON file</p>
+
+<h4>Features</h4>
+<ol>
+    <li>JSON data, unlike all other formats, contains full database information, including tables/fields/addons.
+        It can be used for full database data backups</li>
+    <li>JSON jobs do not support <a href="../MergeSettings">merge settings</a>, unlike all other formats</li>
+    <li>Main database file (bansheegz_database.bytes) can be in JSON format (see <a href="../../Addons/Settings">Settings addon</a>)</li>
+    <li>JSON file can be used to export database structure without data for debugging purpose (from data source page).</li>
+</ol>
+
+<h4>Setup</h4>
+<ol>
+    <li>Read <a href="../Common">this guide</a> to learn how to export/import data to JSON.</li>
+    <li>Enter file path to a json file on data source page</li>
+</ol>
+
+<h4>Supported formats</h4>
+<ol>
+    <li>Row-based: human-readable format, but very inefficient.
+        This format is also used by <a href="../../Addons/Settings">Settings addon</a> to save main database file in JSON.
+    </li>
+    <li>Field-based: more inefficient, than Row-based, but poor readability</li>
+    <li>Legacy: deprecated, not recommended</li>
+</ol>

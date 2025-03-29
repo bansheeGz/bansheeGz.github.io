@@ -1,74 +1,35 @@
 #set page=Excel
 
-<div class="importantNote">
-    Main article about Export/Import is <a href="../../ExportImport">here</a>
-</div>
-
+<h4>Description</h4>
 <p>
-You can export/import BGDatabase data to/from Excel xls/xlsx format
-(supported by many programs, including Microsoft Excel, OpenOffice and LibreOffice)
+You can export/import BGDatabase data to/from Excel xls/xlsx formats, supported by many programs,
+    including Microsoft Excel, OpenOffice and LibreOffice
 </p>
 
-<h4>Step 1: Import Excel plugin</h4>
-<p>Import <a href="../../Downloads/EditorExcel">this plugin</a></p>
+<h4>Features</h4>
+<ol>
+    <li>Data exchange with Excel files in Unity Editor via <a href="../../Downloads/EditorExcel">this plugin</a></li>
+    <li>Data exchange with Excel files in runtime (from builds, tested on Desktop/Android) via
+        <a href="../../Downloads/RuntimeExcelMonitor">this plugin</a></li>
+    <li>Excel file monitor, which auto-import excel data in Unity Editor,
+        via plugin <a href="../../Downloads/EditorExcelMonitor">here</a></li>
+    <li>Export/import images, stored in Excel files to Unity sprite assets (experimental)
+         in Unity Editor via <a href="../../Downloads/EditorExcelImages">this plugin</a>.
+        It includes optional Excel file monitor, which auto-import data on file change.
+    </li>
+</ol>
 
-<h4>Step 2: Create Excel Datasource</h4>
-<p>
-    Open BGDatabase window <code>Window->BGDatabase</code>
-</p>
-<p>
-    Select <code>Export/import</code> tab, then <code>Data sources</code> tab,
-    press plus icon, set <code>Datasource type</code>  to <code>excel</code> and click on <code>Add</code> button
-</p>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/Excel1.png"><img style="width: 400px" src="#path images/BGDatabase/Excel1.png"></a>
-</div>
+<h4>Additional guides</h4>
+<ol>
+    <li>Read <a href="../../ExportImport/Common">this guide</a> to learn how to create data sources and jobs</li>
+    <li>Read <a href="../../ExportImport/ExcelAndGoogleSheets">this guide</a> to learn about advanced settings, available for Excel</li>
+    <li>Read <a href="../../ExportImport/DataStructureExtractionWizard">this guide</a> to learn how to transfer tables/fields from Excel file</li>
+</ol>
 
-<p>
-    Choose xls/xlsx file location.
-</p>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/Excel2.png"><img style="width: 400px" src="#path images/BGDatabase/Excel2.png"></a>
-</div>
-
-<h4>Step 3: Create Export/Import Task</h4>
-<p>
-    Select <code>Export/Import</code> tab, then <code>Jobs</code> tab,
-    press plus icon, set <code>Job type</code>  to <code>excel</code> and click on <code>Add</code> button
-</p>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/Excel3.png"><img style="width: 400px" src="#path images/BGDatabase/Excel3.png"></a>
-</div>
-
-<p>
-    Select xls datasource, created in step 2. Include tables/fields you wish to update.
-</p>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/Excel4.png"><img style="width: 400px" src="#path images/BGDatabase/Excel4.png"></a>
-</div>
-
-
-<h4>Step 4: Running Export/Import Task</h4>
-<p>
-    Press <code>Export</code> or <code>Import</code> button to run the task you just created.
-</p>
-
-<p>
-    [Optionally] After job is finished, open <code>Log</code> tab to see full log of all actions performed.
-    Pay attention to Warning messages (colored red). Every error or unexpected event happened during syncing will be colored red.
-</p>
-<div class="bg-image">
-    <a href="#path images/BGDatabase/Excel5.png"><img style="width: 400px" src="#path images/BGDatabase/Excel5.png"></a>
-</div>
 
 <div class="importantNote">
     Target empty spreadsheet while exporting for the first time. Export job will create necessary sheets/header rows + data for you
-    (<a href="../../ExportImport/index.html#firstTime">more information</a>)
+    (<a href="../../ExportImport/ExcelAndGoogleSheets/#firstTime">more information</a>)
 </div>
 
-<h4>What's next?</h4>
-<ol>
-    <li>Excel/Open Office plug-in docs: <a href="../../Downloads/EditorExcel">link</a></li>
-    <li>Export/import overview page: <a href="../../ExportImport">link</a> </li>
-</ol>
 

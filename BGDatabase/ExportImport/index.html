@@ -314,387 +314,44 @@
             <div id="content">
                 
 
-<h4>What can I do with export/import feature?</h4>
-<ol>
-    <li>Export/import data to/from GoogleSheets or Excel in Unity Editor (during game development)</li>
-    <li>Export/import data from/to Excel file at runtime (from builds, PC/Mac/Linux only) with
-        <a href="../Downloads/RuntimeExcelMonitor">this plugin</a>.
-        Optional Excel file monitor, which auto-import data on file change, is also available.</li>
-    <li>Excel file monitor, which auto-import excel data in Unity Editor, can be downloaded <a href="../Downloads/EditorExcelMonitor">here</a></li>
-    <li>Update database data on players devices at runtime from GoogleSheets with <a href="../Addons/LiveUpdate">LiveUpdate</a> plugin</li>
-    <li><span style="color: red">Currently, there is no way to write to GoogleSheets at runtime from players devices </span>(<a href="#why">Why not?</a>)</li>
-    <li>Backup/restore database in json format in Editor</li>
-    <li>Export/import data to/from CSV files in Editor</li>
-</ol>
-
 
 <h4>Description</h4>
-<p>
-    You can edit database data in external tools, such as Excel/Open Office/Libre Office or Google Sheets.
-</p>
-<p>
-    BG Database supports export/import to/from Excel files (xls and xlsx) and Google Sheets, json, CSV files.
-</p>
-<p>
-    Full import/export works in Editor only, but you can update database data on players devices from GoogleSheets
-    with <a href="../Addons/LiveUpdate">LiveUpdate addon</a>.
-    No way to update GoogleSheets data from players devices yet.
-</p>
+<p>The guides, related to data importing and exporting</p>
 
-<p>
-    Json format, unlike other formats, does not support merge settings and also contains metadata information and can be used to create full database backup.
-</p>
-<p>
-    Current implementation of CSV files synchronization is very simplified compared to Excel/Google sheets synchronization, CSV files can only contain database data,
-    "Update Ids on import" feature is not supported and many additional settings are not supported.
-</p>
-
-<p>
-    This article describes common procedure and ideas, common for both Excel and Google Sheets.
-    (click to view additional guides for <a href="../ThirdParty/Excel">Excel/OpenOffice</a> and <a href="../ThirdParty/GoogleSheets">GoogleSheets</a></i>)
-</p>
-
-<h4 id="dataLayout">Data layout</h4>
-Here is the illustration about how BGDatabase data is mapped to spreadsheets.
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport1.png"><img style="width: 400px"
-                                                             src="../../images/BGDatabase/ExportImport1.png"></a>
-</div>
-
-<h4>Setup guide for export/import</h4>
-<ol>
-    <li>Create a datasource for Excel/GoogleSheets</li>
-    <li>Create a job</li>
-    <li>[Optional] Choose tables/fields you want to export/import</li>
-    <li>Export/import</li>
-</ol>
-<p>
-    <i>Click for detailed guides for <a href="../ThirdParty/Excel">Excel</a> and <a href="../ThirdParty/GoogleSheets">GoogleSheets</a></i>
-</p>
-<p>
-    Export does not require any additional steps, but if you want to import data from external datasource for the first time,
-    you need to ensure the data has a proper layout (as described in "Data Layout" section),
-    e.g. your sheets has the same name as your database tables and the first row has field names.
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport6.png"><img style="width: 400px" src="../../images/BGDatabase/ExportImport6.png"></a>
-</div>
-
-<p>
-    [Optionally] Also, if you want to create a link between your external data rows and database rows, you need to add _id column to your data
-    and ensure a job's "Update ids on import" parameter is toggled on.
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport7.png"><img style="width: 400px" src="../../images/BGDatabase/ExportImport7.png"></a>
-</div>
-
-<h4 id="mergeSettings">Using merge settings</h4>
-<p>
-    You have full control over which data you want to synchronize: you can add/delete/update and choose which
-    fields you wish to update.
-</p>
-<p>
-    Here is how it works:
-    Every synchronization has a source and a destination.
-    If you are exporting data from BDDatabase to, let's say, Excel file - the source is BGDatabase and a destination- is
-    Excel file.
-    Here is how data is classified during syncing:
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport2.png"><img style="width: 400px"
-                                                             src="../../images/BGDatabase/ExportImport2.png"></a>
-</div>
-<p>
-    So, there are 3 types of rows during syncing:
-</p>
-<ol>
-    <li>Matching rows : they exist in the Source and in the Destination. Can be updated, and you can choose which fields
-        to update.
-    </li>
-    <li>Missing rows : they exist only in the Source. Can be added to Destination.</li>
-    <li>Orphaned rows : they exist only in the Destination. Can be removed from Destination.</li>
-</ol>
-<p>
-    Let's look at merge settings and find out how we can define actions to take during syncing
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport3.png"><img style="width: 400px"
-                                                             src="../../images/BGDatabase/ExportImport3.png"></a>
-</div>
-
-<h4 id="dataExtractionWizard">Using Data Extraction Wizard to import structure(table/fields)</h4>
-<p>Our import job currently does not change database structure, it does not create missing tables/fields, it only transfers rows.
-    Export job creates missing sheets/fields(headers) in Excel file/Google spreadsheet, but import job does not.
-</p>
-<p>To transfer new tables/fields to the database, you can use interactive "Data Extraction Wizard" if you have the proper data layout
-    (i.e. the first row is the fields names, as described in <a href="#dataLayout">Data layout</a> section)
-</p>
-<ol>
-    <li>Save database before running the wizard</li>
-    <li>
-        Select your data source and click on "Data extraction wizard"
-        <div class="bg-image">
-            <a href="../../images/BGDatabase/Guide4_6.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide4_6.png"></a>
-        </div>
-    </li>
-    <li>
-        Click on "Read data", review the result, edit names/types if needed and click on "Import"
-        <div class="bg-image">
-            <a href="../../images/BGDatabase/Guide4_7.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/Guide4_7.png"></a>
-        </div>
-    </li>
-    <li>
-        Close the wizard and review the results under "Database" or "Configuration" tab to make sure tables/fields were properly created.
-        Save database if modifications were correctly applied or revert the changes (by pressing on "Reload" button in the top left) if something went wrong.
-    </li>
-</ol>
-
-
-<h4>Names mapping config (optional)</h4>
-<p>
-    By default, naming convention is used to map sheets to tables and columns to fields.
-    It can be overridden with names mapping config, which allows to use any names for sheets and columns and map them to tables/fields.
-    Names mapping config is available for every data source and is used while importing/exporting from Unity Editor
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport8.png"><img style="width: 400px"
-                                                             src="../../images/BGDatabase/ExportImport8.png"></a>
-</div>
-
-<h4>Rows mapping config (optional)</h4>
-<p>
-    By default, we use _id column in the sheet to keep the link between database row and excel/GoogleSheets row, and we recommend to use this default approach.
-    However, additional approaches are also available: you can use int/string field as row's id if you have such columns with unique values or rows indexes
-    (e.g. 1st database row is mapped to 1st sheet row etc.). Use these alternative strategies only if you can not use additional _id column.
-    Rows mapping config is available at datasource page.
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport9.png"><img style="width: 400px"
-                                                             src="../../images/BGDatabase/ExportImport9.png"></a>
-</div>
-
-<h4>References config (optional)</h4>
-<p>
-    References config allows to override how relational fields values are serialized.
-    The recommended(default) option is by using row's ID.
-    Additional options are by any int/string field as ID.
-    The requirements are: the values for such fields should be unique and not empty - so these values could be used to identify the row.
-    The limitations: if relational field allows multiple values - the vertical bar symbol (|) should not be used in field values,
-    because it's used as values separator
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport10.png"><img style="width: 400px"
-                                                             src="../../images/BGDatabase/ExportImport10.png"></a>
-</div>
-
-<h4>Additional parameters</h4>
-<table  class="contentTable">
+<h4>Common concept guides</h4>
+<table class="contentTable">
     <tr>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Applies to</th>
+        <th>Description and link</th>
     </tr>
     <tr>
-        <td>Update Ids on import</td>
-        <td>
-            If you are adding new rows in external tools, leave _id column empty and enable this parameter.
-            ID values from database will be transferred to _id column when you import new rows. (Excel/Google sheets only)
-        </td>
+        <td>All</td>
+        <td><a href="Common">Jobs and data sources: how export/import system works</a></td>
     </tr>
     <tr>
-        <td>Transfer rows order</td>
-        <td>
-            Rows order from the source will be transferred to the destination. Import/export and Excel/GoogleSheets are all supported.
-        </td>
+        <td>All except JSON</td>
+        <td><a href="MergeSettings">Merge settings, how to select which tables/fields should be included into data exchange</a></td>
+    </tr>
+    <tr>
+        <td>Excel/GoogleSheets</td>
+        <td><a href="ExcelAndGoogleSheets">Common concepts and advanced settings for Excel and Google Sheets</a></td>
+    </tr>
+    <tr>
+        <td>Excel/GoogleSheets</td>
+        <td><a href="DataStructureExtractionWizard">Data structure extraction wizard, the tool for transferring tables/fields from Excel and Google Sheets</a></td>
     </tr>
 </table>
 
-<h4 id="firstTime">Running Export/Import for the first time</h4>
-<p>
-    To be able to sync with BGDatabase, you need a corresponding structure created in Excel/GoogleSheets,
-    e.g. you need sheets, named after your tables names and header columns, named after you field names (as described above in "Data Layout" section).
-</p>
-<p>
-    You can easily create this structure by exporting your data to the empty spreadsheet/xls file
-</p>
-<ul>
-    <li>Make sure to target empty spreadsheet/xls file</li>
-    <li>Make sure to include all tables/fields you want to export in the settings. Included tables/fields will be highlighted in green</li>
-    <li>Make sure all tables you want to include have "Add missing rows" toggle turned on.(cause all the rows will be "missing rows" when you export to empty spreadsheet)</li>
-    <li>Export data once - all required structure will be created for you</li>
-</ul>
-
-
-
-<h4 id="rowlevel">Row-level control for merge settings</h4>
-<p>Merge settings let you configure which table/fields you want to add/delete/update, but it does not give you the opportunity to define which rows you want to add/delete/update</p>
-<p>For row-level control, you can implement C# controller class, which can cancel any operation if some condition is met. This is how:</p>
-<ul>
-    <li>Create your own C# class with unique name, set this class name to "Controller Type" field of merge settings (using the full name with namespace).</li>
-    <li>Implement any number of interfaces (namespace is <code>BansheeGz.BGDatabase</code>, interfaces defined inside class <code>BGMergeSettingsEntity</code>),
-        listed below to receive callback method invocations. Return true from these methods to cancel operation</li>
-</ul>
-<table  class="contentTable">
-    <tr>
-        <th width="20%">Interface type</th>
-        <th width="40%">method(s) to implement</th>
-        <th width="40%">description</th>
-    </tr>
-    <tr>
-        <td>IMergeReceiver</td>
-        <td>
-            <code>public bool OnBeforeMerge(BGRepo from, BGRepo to)</code>
-            <br>
-            <code>public void OnAfterMerge(BGRepo @from, BGRepo to)</code>
-        </td>
-        <td>
-            Callbacks to be called before after merging. Return true from OnBeforeMerge to cancel merging
-        </td>
-    </tr>
-    <tr>
-        <td>IRemoveOrphanedReceiver</td>
-        <td>
-            <code>public bool OnBeforeDelete(BGEntity toEntity)</code>
-        </td>
-        <td>
-            Callbacks to be called before deleting the row. Return true to cancel removal.
-        </td>
-    </tr>
-    <tr>
-        <td>IAddMissingReceiver</td>
-        <td>
-            <code>public bool OnBeforeAdd(BGEntity fromEntity)</code>
-        </td>
-        <td>
-            Callbacks to be called before adding the row. Return true to cancel adding.
-        </td>
-    </tr>
-    <tr>
-        <td>IUpdateMatchingReceiver</td>
-        <td>
-            <code>public bool OnBeforeUpdate(BGEntity @from, BGEntity to)</code>
-        </td>
-        <td>
-            Callbacks to be called before updating the row. Return true to cancel updating.
-        </td>
-    </tr>
-    <tr>
-        <td>IUpdateMatchingFieldReceiver</td>
-        <td>
-            <code>public bool OnBeforeFieldUpdate(BGField fromField, BGField toField, BGEntity @from, BGEntity to)</code>
-        </td>
-        <td>
-            Callbacks to be called before updating the row' field. The same as <code>IUpdateMatchingReceiver</code>,
-            but it's called on per field basis. <code>IUpdateMatchingReceiver</code> is called before this callback,
-            and if <code>IUpdateMatchingReceiver</code> return true, this callback will never be invoked (cause updating entity will be cancelled by <code>IUpdateMatchingReceiver</code>)
-        </td>
-    </tr>
-    <tr>
-        <td>ISaveLoadAddonSavedEntityFilter</td>
-        <td>
-            <code>bool OnSaveEntity(BGEntity entity)</code>
-        </td>
-        <td>
-            Callback is called by <a href="../Addons/SaveLoad">SaveLoad addon</a> while saving the data for each row.
-            If this method returns true, the row is skipped and not included into saved data
-        </td>
-    </tr>
-</table>
-<p>
-    You can find an example of such controller class on <a href="../Addons/SaveLoad#rowlevelexample">Save/Load</a> addon page.
-</p>
-
-<h4>Default field value string format</h4>
-<p>
-    We use Acute (Back quote) symbol <code>`</code> to separate tokens of single value, for example Vector3.zero is
-    <code>0`0`0</code>
-</p>
-<p>
-    We use Vertical bar (Pipe) symbol <code>|</code> to separate values of the list, for example List&lt;bool&gt; is
-    <code>0|1|0</code>
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport4.png"><img style="width: 400px"
-                                                             src="../../images/BGDatabase/ExportImport4.png"></a>
-</div>
-
-
-<h4>Custom field value string format</h4>
-<p>
-    Most of the fields support custom string format (except for Unity assets and relations).
-    You can create your own class, implementing BGStringFormatter&lt;T&gt; interface (T is a field value type) and assign it under "M" menu as a custom string value formatter
-</p>
-
-<h4>Adding rows in external tools</h4>
-<p>
-    Each row has its own id- 22 symbols string.
-    It's computer-generated value, based on Guid generation.
-</p>
-<p>
-    While creating rows in external tool, you can leave it blank, and it will be updated during importing procedure
-    (make sure you toggled "Update Ids on Import" on)
-</p>
-<div class="bg-image">
-    <a href="../../images/BGDatabase/ExportImport5.png"><img style="width: 400px"
-                                                             src="../../images/BGDatabase/ExportImport5.png"></a>
-</div>
-
-<h4 id="json">Creating database backup in json format</h4>
-<p>
-    Exporting data to json allows you to create a full database backup in human-readable form as json file.
-    With json you can not choose which data you want to be exported/imported, full data including database structure will
-    be included.
-</p>
-<p>
-    You can use this backup later to fully restore the database (including structure)
-</p>
-<p>There are 2 different json file formats available:</p>
+<h4>Product/format guides</h4>
 <ol>
-    <li>Classic - legacy format(not recommended)</li>
-    <li>CompactRowBased - best readability</li>
-    <li>CompactFieldBased - best performance</li>
-</ol>
-
-<h4>Tables naming restriction</h4>
-<p>
-    If you plan to use Excel/GoogleSheets, avoid giving your tables similar names with only difference in lower/upper letter(s) (like "test" "Test", "tESt" etc.).
-    It will work fine with BGDatabase, however both Excel and GoogleSheets consider such names to be equal, and it will result in errors when you try to export the data.
-</p>
-
-<h4 id="why">Why you do not provide an option to update GoogleSheets data from player devices?</h4>
-<p>
-    TLDR: Our export procedure is not meant to be executed simultaneously by multiple clients.
-    If your app/game is running on a single device or if only one device can export data to GoogleSheets, you can use <a href="../Downloads/RuntimeGoogleSheets">this plug-in</a>
-</p>
-<p>
-    DETAILED EXPLANATION: To update data we need to read and analyse it first to determine which cells need to be updated and also optionally resize the sheet.
-    Reading, analysing and updating data are not atomic operation. 
-    If somebody else updates the data during reading/analysis - writing data may result in data corruption/errors.
-</p>
-</ol>
-<p>
-    This problem can be solved with a proxy server, but it also means there is no need for direct access to GoogleSheets.
-</p>
-<p>
-    If you are still looking for a way to write data to GoogleSheets from players devices:
-</p>
-<ol>
-    <li>If all you need is to add data to spreadsheet, you can use <a href="https://www.google.com/forms/about/">Google Forms</a>,
-        <a href="https://support.google.com/docs/answer/2917686?hl=en">linked to a spreadsheet</a>
-        and <a href="https://stackoverflow.com/questions/18073971/http-post-to-a-google-form">HTTP POST</a> to add data to spreadsheet.
-        Also, read our mini tutorial, how to use  Google Forms to update GoogleSheets
-        <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-4#post-6143082">here</a>
-    </li>
-    <li>If you need more sophisticated control <a href="https://developers.google.com/sheets/api/">GoogleSheets dotnet API library v4</a> is probably the best starting point.</li>
-</ol>
-
-
-
-<h4>What's next?</h4>
-Read product specific guides next
-<ol>
-    <li><a href="../ThirdParty/Excel">Excel/Open Office</a></li>
     <li><a href="../ThirdParty/GoogleSheets">Google Sheets</a></li>
+    <li><a href="../ThirdParty/Excel">Excel</a></li>
+    <li><a href="./Json">JSON</a></li>
+    <li><a href="./Csv">CSV</a></li>
+    <li><a href="./ScriptableObjects">Scriptable objects</a></li>
 </ol>
+
+
             </div>
             
 

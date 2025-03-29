@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-7');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../BGCurve">BG`Curve</a>
+<!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+<!--                       href="../../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+<!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                MESSAGE HERE
+        </b>
+    </div>-->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <!--======================================================        Content (from Root)              -->
+        
+
+
+
+
+<link rel="stylesheet" href="../../../css/bgdatabase.css">
+<link rel="stylesheet" href="../../../css/magnific-popup.css">
+<script src="../../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul id="leftmenu">
+            <li class="pli databaseicon ">
+                <script async src="https://cse.google.com/cse.js?cx=e1930f586f83c4862">
+                </script>
+                <div class="gcse-searchbox-only"></div>
+                <a class="pa" href="../../../BGDatabase">BG Database Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Setup">Setup</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/HowToUse">How to use</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/GUIOverview">GUI overview</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/GUITips">GUI tips and tricks</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeExamples">Code Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Videos">Videos</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/SupportedFields">Field types</a>
+                    </li>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../../BGDatabase/ExportImport">Export Import</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/DataBinding">Data Binding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/GraphEditor">Graph Editor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/MergeTool">Merge Tools</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
+                    </li>
+                    <li class="cli downloadicon ">
+                        <a class="ca" href="../../../BGDatabase/Downloads">Downloads</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/CodeGeneration">Code Generation</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior
+                            Classes</a>
+                    </li>
+                    <!--
+                                        <li class="cli ">
+                                            <a class="ca" href="../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
+                                        </li>
+                    -->
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/ThirdParty">Third-Party Integration</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Excel">Excel</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Behavior">Unity Behavior</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/FlowCanvas">Flow Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/NodeCanvas">Node Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/BehaviorDesigner">Behavior Designer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/UNode">UNode</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/GameCreator">Game Creator</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/Addons">Addons</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/SaveLoad">Save Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Multithreading">Multithreading</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Modding">Modding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Settings">Settings</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Partition">Partitions</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Diagram">Diagram</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Localization">Localization</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../../BGDatabase">BG BGDatabase Home</a>
+        <a class="pa" href="../../../BGDatabase/Setup">Setup</a>
+        <a class="pa" href="../../../BGDatabase/HowToUse">How To Use</a>
+        <a class="pa" href="../../../BGDatabase/Videos">Videos</a>
+        <a class="pa" href="../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
+        <a class="pa" href="../../../BGDatabase/SupportedFields">Fields</a>
+        <a class="pa" href="../../../BGDatabase/ExportImport">Export Import</a>
+        <a class="pa" href="../../../BGDatabase/DataBinding">Data Binding</a>
+        <a class="pa" href="../../../BGDatabase/Events">Events</a>
+        <a class="pa" href="../../../BGDatabase/CodeGeneration">Code Generation</a>
+        <a class="pa" href="../../../BGDatabase/Addons">Addons</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Export Import</h3>
+                
+                <div style="margin-bottom: 10px;">
+                    <div class="subTitle"><a class="backButton" href="../">&#8592; Back</a> Scriptable objects</div>
+                </div>
+                
+            </div>
+
+            <!--======================================================        BG Database Content              -->
+            <div id="content">
+                
+
+
+<h4>Description</h4>
+<p>
+    Generate both scriptable object C# sources (one per table) and assets (one per row).
+    Data synchronization with scriptable objects differs from other formats, please, read this guide to learn how it works and which limitations it has
+</p>
+
+<h4>Setup</h4>
+<ol>
+    <li>Read <a href="../Common">this guide</a> to learn how to create a data source and a job</li>
+    <li>Switch to a data source and select a folder for C# source files for scriptable objects (use new, empty folder)
+        and press on "Generate C# source files" button to generate C# sources for scriptable objects.
+        One C# source file for each table will be generated.
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/SO3.png"><img style="width: 400px" src="../../../images/BGDatabase/SO3.png"></a>
+        </div>
+    </li>
+    <li>Select a folder for scriptable object assets (use new, empty folder)</li>
+    <li>Switch to a job and setup <a href="../MergeSettings">merge settings</a>.
+        Be careful with "Remove orphaned" setting, because it can lead to rows or assets being deleted if no matching row or asset is found.
+    </li>
+    <li>
+        Click on "Export" button to generate assets or "Import" button to transfer data from assets to database
+        <div class="bg-image">
+            <a href="../../../images/BGDatabase/SO4.png"><img style="width: 400px" src="../../../images/BGDatabase/SO4.png"></a>
+        </div>
+    </li>
+</ol>
+
+<h4>Warnings</h4>
+<ol>
+    <li>Select 2 new, empty folders for generated C# sources and scriptable assets. Do not put other assets in these folders.
+    </li>
+    <li>Exporting data while assets are not yet exist is very slow, exporting 1000 rows can take 20-25 seconds.
+        Transferring data to existing assets or importing data is quite fast.
+    </li>
+    <li>Exporting data creates one asset(file) per each row, keep this in mind if you have a lot of rows</li>
+    <li>If you want to create a new asset and import it later to the database by duplicating existing asset,
+        make sure to clear <code>Id</code> field in duplicated asset, otherwise the asset will be ignored
+    </li>
+    <li>Though <a href="../MergeSettings">merge settings</a> are supported,
+        we recommend to use data source settings to include/exclude tables/fields instead
+    </li>
+<!--
+    <li>While importing (ScriptableObjects->database) is fast, exporting (database->ScriptableObjects) is very slow,
+        even exporting 1000 rows can be very slow
+    </li>
+-->
+    <li>When you use "Remove orphaned" toggle in <a href="../../ExportImport/MergeSettings">merge settings</a> during export,
+        it means that orphaned scriptable assets will be physically deleted.
+    </li>
+    <li>See the job's log for more information about synchronization process</li>
+    <li>Not all fields are supported (read the section below for more details).</li>
+    <li>Read the guide below about how to change settings or table/field names safely</li>
+</ol>
+
+<h4>C# sources and assets</h4>
+<p>
+    Scriptable objects consist of two parts- C# source files for scriptable objects (with cs extension),
+    which defines which fields each asset has and the assets, the instances of this C# class, stored in separate files (with asset extension).
+    Both C# source files (one for each table) and the assets (one for each row) are generated.
+</p>
+<ol>
+    <li>Generating C# sources: C# sources can be generated from data source page. You can also exclude some
+        tables/fields from generation
+    </li>
+    <li>Generating assets: assets are generated during export job execution.
+        C# source files should be up-to-date,
+        they should have all supported/included database fields, otherwise exception is thrown
+        and C# source files generation should be run to update source files.
+    </li>
+</ol>
+
+<h4>Unsupported fields</h4>
+<p>
+    Most of the fields, including assets and relations are supported.
+    The following fields are excluded because they are not supported by Unity (hashtable, guid, ray, ray2D, listGuid, decimal, all nullable fields).
+    The following fields rely on BGDatabase code and are also excluded (objectReference, objectListReference,
+    objectListMultiValueReference, entityReference, entityReferenceList, id, action).
+    If you exclude some table manually, all relational fields, referencing this table, are going to be excluded automatically.
+</p>
+
+<h4>How to change settings, table/field names</h4>
+<p>
+    If you change folders, class name prefix or table name without any further action, you are going to lose the link between database data and
+    existing assets or create duplicates next time you export/import data.
+    This section describes, how to update folders, class name prefix, table or field names without losing links with existing assets.
+    [Important] Backup your project just in case before renaming
+</p>
+<h5>Changing folders</h5>
+<p>
+    After changing folders in the settings, move the folders manually inside Unity Editor to new location.
+</p>
+
+<h5>Changing classes name prefix</h5>
+<p>
+    After changing <code>Classes name prefix</code> in the settings, rename all generated C# source files inside Unity Editor to reflect the change,
+    for example if your source file is <code>S_MyTable.cs</code>, and you change the prefix from <code>S_</code> to <code>T_</code> the new name should be
+    <code>T_MyTable.cs</code>. After changing all file names, regenerate C# sources for scriptable objects and fix all compilation errors
+    by changing class names from old name (<code>S_MyTable</code>) to new name (<code>T_MyTable</code>) in your C# code.
+</p>
+
+<h5>Renaming table name</h5>
+<p>
+    After renaming table name, rename both the C# source file name and folder name for generated assets inside Unity Editor to reflect the change.
+    For example, if the old name is <code>MyTable</code> and the new table name is <code>MyTableUpdated</code> and <code>Classes name prefix</code> is <code>S_</code>,
+    rename C# source file from <code>S_MyTable.cs</code> to <code>S_MyTableUpdated.cs</code> and folder name from <code>MyTable</code> to <code>MyTableUpdated</code>.
+    After changing C# file name and folder name, regenerate C# sources for scriptable objects and fix all compilation errors
+    by changing class name from old name (<code>S_MyTable</code>) to new name (<code>S_MyTableUpdated</code>) in your C# code.
+</p>
+
+<h5>Renaming field name</h5>
+<p>
+    if you want to change field name and then re-generate both C# sources and the assets, there is no need for extra actions.
+    If you want to rename the field and regenerate C# sources without re-generating the assets,
+    you need to add
+    <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Serialization.FormerlySerializedAsAttribute.html">FormerlySerializedAs</a>
+    attribute to the C# field with value, equal to the old name. After renaming database field, open data source page, then "C# settings",
+    then create a custom settings for the table, include the table, open fields popup, create a custom setting for the field, include it and enter old field name to
+    "FormerlySerializedAs" column. You can remove this setting after assets generating is executed.
+</p>
+<img src="../../../images/BGDatabase/SO2.png"/>
+            </div>
+            
+            <a class="backToDownloads" href="../" style="margin-top: 10px">&#8592; Back to Export Import</a>
+            
+
+            <!--======================================================       BG Database Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

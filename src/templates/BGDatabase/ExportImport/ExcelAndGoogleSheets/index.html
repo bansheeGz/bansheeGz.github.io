@@ -1,0 +1,135 @@
+#set page=Export Import
+#set subPage=Common concepts for Excel and Google sheets
+
+<h4>Description</h4>
+<p>The guide describes common concepts and advanced settings, available to Excel and Google sheets</p>
+
+<h4 id="dataLayout">Data layout</h4>
+Here is the illustration about how BGDatabase data is mapped to spreadsheets.
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport1.png"><img style="width: 400px" src="#path images/BGDatabase/ExportImport1.png"></a>
+</div>
+<p>
+    If you do not have a spreadsheet, you want to import, than exporting data will create a required data layout without any additional steps.
+    If you want to import data from existing spreadsheet for the first time,
+    you need to ensure that the data has a proper layout, e.g. your sheets has the same name as your database tables and the first row has field names.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport6.png"><img style="width: 400px" src="#path images/BGDatabase/ExportImport6.png"></a>
+</div>
+<p>
+    [Optionally] Also, if you want to create a link between your external data rows and database rows, you need to add _id column to your data
+    and ensure a job's "Update ids on import" parameter is toggled on.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport7.png"><img style="width: 400px" src="#path images/BGDatabase/ExportImport7.png"></a>
+</div>
+
+
+<h4>Names mapping config (optional)</h4>
+<p>
+    By default, naming convention is used to map sheets to tables and columns to fields.
+    It can be overridden with names mapping config, which allows to use any names for sheets and columns and map them to tables/fields.
+    Names mapping config is available for every data source and is used while importing/exporting from Unity Editor
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport8.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport8.png"></a>
+</div>
+
+<h4>Rows mapping config (optional)</h4>
+<p>
+    By default, we use _id column in the sheet to keep the link between database row and excel/GoogleSheets row, and we recommend to use this default approach.
+    However, additional approaches are also available: you can use int/string field as row's id if you have such columns with unique values or rows indexes
+    (e.g. 1st database row is mapped to 1st sheet row etc.). Use these alternative strategies only if you can not use additional _id column.
+    Rows mapping config is available at datasource page.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport9.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport9.png"></a>
+</div>
+
+<h4>References config (optional)</h4>
+<p>
+    References config allows to override how relational fields values are serialized.
+    The recommended(default) option is by using row's ID.
+    Additional options are by any int/string field as ID.
+    The requirements are: the values for such fields should be unique and not empty - so these values could be used to identify the row.
+    The limitations: if relational field allows multiple values - the vertical bar symbol (|) should not be used in field values,
+    because it's used as values separator
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport10.png"><img style="width: 400px"
+                                                              src="#path images/BGDatabase/ExportImport10.png"></a>
+</div>
+
+<h4 id="firstTime">Running Export/Import for the first time</h4>
+<p>
+    To be able to sync with BGDatabase, you need a corresponding structure created in Excel/GoogleSheets,
+    e.g. you need sheets, named after your tables names and header columns, named after you field names (as described above in "Data Layout" section).
+</p>
+<p>
+    You can easily create this structure by exporting your data to the empty spreadsheet/xls file
+</p>
+<ul>
+    <li>Make sure to target empty spreadsheet/xls file</li>
+    <li>Make sure to include all tables/fields you want to export in the settings. Included tables/fields will be highlighted in green</li>
+    <li>Make sure all tables you want to include have "Add missing rows" toggle turned on.(cause all the rows will be "missing rows" when you export to empty spreadsheet)</li>
+    <li>Export data once - all required structure will be created for you</li>
+</ul>
+
+
+<h4>Adding rows in external tools</h4>
+<p>
+    Each row has its own id- 22 symbols string.
+    It's computer-generated value, based on Guid generation.
+</p>
+<p>
+    While creating rows in external tool, you can leave it blank, and it will be updated during importing procedure
+    (make sure you toggled "Update Ids on Import" on)
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport5.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport5.png"></a>
+</div>
+
+<h4>Additional jobs parameters</h4>
+<table  class="contentTable">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Update Ids on import</td>
+        <td>
+            If you are adding new rows in external tools, leave _id column empty and enable this parameter.
+            ID values from database will be transferred to _id column when you import new rows.
+        </td>
+    </tr>
+    <tr>
+        <td>Transfer rows order</td>
+        <td>
+            Rows order from the source will be transferred to the destination
+        </td>
+    </tr>
+</table>
+
+
+<h4>Tables naming restriction</h4>
+<p>
+    If you plan to use Excel/GoogleSheets, avoid giving your tables similar names with only difference in lower/upper letter(s) (like "test" "Test", "tESt" etc.).
+    It will work fine with BGDatabase, however both Excel and GoogleSheets consider such names to be equal, and it will result in errors when you try to export the data.
+    You can turn on case-insensitive check for tables under "Settings->Preferences->Enable case-insensitive table name check"
+</p>
+
+
+<div class="flexdiv">
+    <div>
+        What to read next:
+        <ol>
+            <li><a href="../../ThirdParty/GoogleSheets">Google sheets guide</a></li>
+            <li><a href="../../ThirdParty/Excel">Excel guide</a></li>
+            <li><a href="../DataStructureExtractionWizard">Data structure extraction wizard</a></li>
+        </ol>
+    </div>
+</div>

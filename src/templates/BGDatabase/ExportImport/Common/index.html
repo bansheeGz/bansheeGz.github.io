@@ -1,0 +1,93 @@
+#set page=Export Import
+#set subPage=Common concepts
+
+<h4>Description</h4>
+<p>The guide describes how export/import system works and common concepts, applicable to all formats</p>
+
+<h4>Jobs and data sources</h4>
+<p>
+    There are 2 different entities under Export/Import tab- jobs and data sources
+</p>
+<ol>
+    <li>Data sources defines where data is stored. Each format has its own set of parameters for data source.</li>
+    <li>Jobs reference data sources and defines which data is transferred. Several jobs can reference the same data source</li>
+</ol>
+
+<h4>Step-by-step guide</h4>
+<p>
+    We use Excel for this example, but all other formats work the same way
+</p>
+
+<h5>Step 1: Create Excel Datasource</h5>
+<p>
+    Open BGDatabase window <code>Window->BGDatabase</code>
+</p>
+<p>
+    Select <code>Export/import</code> tab, then <code>Data sources</code> tab,
+    press plus icon, set <code>Datasource type</code>  to <code>excel</code> and click on <code>Add</code> button
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Excel1.png"><img style="width: 400px" src="#path images/BGDatabase/Excel1.png"></a>
+</div>
+
+<p>
+    Choose xls/xlsx file location.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Excel2.png"><img style="width: 400px" src="#path images/BGDatabase/Excel2.png"></a>
+</div>
+<a>
+    Each data format has its own set of parameters for data source, see Google sheets parameters <a href="../../ThirdParty/GoogleSheets">here</a>
+</p>
+
+<h5>Step 2: Create Export/Import job</h5>
+<p>
+    Select <code>Export/Import</code> tab, then <code>Jobs</code> tab,
+    press plus icon, set <code>Job type</code>  to <code>excel</code> and click on <code>Add</code> button
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Excel3.png"><img style="width: 400px" src="#path images/BGDatabase/Excel3.png"></a>
+</div>
+
+<p>
+    Select xls datasource, created in step 1. Include tables/fields you wish to update to <a href="../MergeSettings">merge settings</a>
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Excel4.png"><img style="width: 400px" src="#path images/BGDatabase/Excel4.png"></a>
+</div>
+
+
+<h5>Step 3: Running Export/Import Task</h5>
+<p>
+    Press <code>Export</code> or <code>Import</code> button to run the task you just created.
+</p>
+
+<p>
+    [Optionally] After job is finished, open <code>Log</code> tab to see full log of all actions performed.
+    Pay attention to Warning messages (colored red). Every error or unexpected event happened during syncing will be colored red.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/Excel5.png"><img style="width: 400px" src="#path images/BGDatabase/Excel5.png"></a>
+</div>
+
+
+<h4>Default field value string format</h4>
+<p>
+    We use Acute (Back quote) symbol <code>`</code> to separate tokens of single value, for example Vector3.zero is
+    <code>0`0`0</code>
+</p>
+<p>
+    We use Vertical bar (Pipe) symbol <code>|</code> to separate values of the list, for example List&lt;bool&gt; is
+    <code>0|1|0</code>
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/ExportImport4.png"><img style="width: 400px"
+                                                             src="#path images/BGDatabase/ExportImport4.png"></a>
+</div>
+
+
+<h4>Custom field value string format</h4>
+<p>
+    Most of the fields support custom string format (except for Unity assets and relations).
+    You can create your own class, implementing BGStringFormatter&lt;T&gt; interface (T is a field value type) and assign it under "M" menu as a custom string value formatter
+</p>
