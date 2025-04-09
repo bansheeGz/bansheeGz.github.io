@@ -346,8 +346,14 @@
     </li>
 </ol>
 
-<h4>Warnings</h4>
+<h4>Limitations and warnings</h4>
 <ol>
+    <li>Data exchange with scriptable objects is not universal.
+        If scriptable assets are created with our generated C# classes, it's possible to export/import any data
+        from/to the database (as soon as <a href="#unsupported">the fields are supported</a>).
+        However, if scriptable assets are not created with our generated C# classes,
+        there is no guarantee that you will be able to export/import data from such scriptable assets into the database.
+    </li>
     <li>Select 2 new, empty folders for generated C# sources and scriptable assets. Do not put other assets in these folders.
     </li>
     <li>Exporting data while assets are not yet exist is very slow, exporting 1000 rows can take 20-25 seconds.
@@ -390,7 +396,7 @@
     </li>
 </ol>
 
-<h4>Unsupported fields</h4>
+<h4 id="unsupported">Unsupported fields</h4>
 <p>
     Most of the fields, including assets and relations are supported.
     The following fields are excluded because they are not supported by Unity (hashtable, guid, ray, ray2D, listGuid, decimal, all nullable fields).
