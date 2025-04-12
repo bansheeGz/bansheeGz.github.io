@@ -18,8 +18,19 @@
         <td>
             By default, data is serialized in binary format, but there is an option to use JSON instead
             <div class="importantNote">Do not use JSON format in final builds, cause it is much slower and uses a lot more memory (can be x10 and more)</div>
-            You can use <a href="../../Downloads/BGDatabaseSwitchFormatOnBuild.unitypackage">this package</a> to auto-switch format from JSON to binary before building your app
-            and back from binary to JSON after building is completed
+            <div>
+                You can use one of the following packages (do not use both) to auto-switch format from JSON to binary before building your app
+                and back from binary to JSON after building is completed
+            </div>
+            <ol>
+                <li><a href="../../Downloads/BGDatabaseSwitchFormatOnBuild.unitypackage">Package #1</a>-
+                    uses <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/Build.IPostprocessBuildWithReport.OnPostprocessBuild.html">IPostprocessBuildWithReport</a>
+                    interface to restore database after building, but this interface is not called if build fails, so database may remain in binary format in this case.
+                </li>
+                <li><a href="../../Downloads/BGDatabaseSwitchFormatOnBuild2.unitypackage">Package #2</a>- uses <a href="https://docs.unity3d.com/6000.0/Documentation/ScriptReference/EditorApplication-update.html">EditorApplication.update</a>
+                    delegate to detect the build completed event.
+                </li>
+            </ol>
         </td>
     </tr>
     <tr>
