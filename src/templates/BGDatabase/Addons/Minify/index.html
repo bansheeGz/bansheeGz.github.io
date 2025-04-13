@@ -1,0 +1,70 @@
+#set page=Minify add-on
+
+<h4>Notice</h4>
+<p>This is work-in-process, expected to be release in version 1.8.18</p>
+
+<h4>Description</h4>
+<p>
+    "Minify" add-on removes selected tables or fields from the database file included in the build.
+    This add-on activates during the player build start event, removing selected tables and fields,
+    and subsequently restores the full database upon the build completion event.
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/MinifyAddon2.png"><img style="width: 200px" src="#path images/BGDatabase/MinifyAddon2.png"></a>
+</div>
+
+<h4>Important note</h4>
+<p>
+    If an unexpected event occurs during the build process, such as a crash or power outage, you may end up with an
+    incomplete/minified database.
+    In this case, you need to check if database is minified and restore it from either <a href="../../Misc/LocalBackups">local backup folder</a> or from
+    temp folder, created by minify addon. You can find temp folder location under "Misc" tab
+</p>
+<div class="bg-image">
+    <a href="#path images/BGDatabase/MinifyAddon1.png"><img style="width: 200px" src="#path images/BGDatabase/MinifyAddon1.png"></a>
+</div>
+
+<h4>Detecting accidental access to removed tables or fields</h4>
+<p>
+    When you are running your game in Unity Editor, you have access to the full database,
+    so if you accidentally access table/fields, marked for exclusion, there will be no error.
+    However, when you build and run your game outside of Unity Editor, an exception will be thrown,
+    because tables or fields were removed from the database.
+    Unfortunately, there is no way to detect such accidental access to excluded tables/fields if you use <a href="../../API">basic API</a>,
+    but in case of <a href="../../CodeGeneration">code generation</a>, we can take some actions to detect such invalid access.
+    The following actions available:
+</p>
+<table class="contentTable">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>Skip Disabled</td>
+        <td>no code will be generated for excluded tables/fields, so you won't be able to access them via generated classes.</td>
+    </tr>
+    <tr>
+        <td>Surround with &#35;if UNITY_EDITOR</td>
+        <td>code for excluded tables/fields will be surrounded with <code>UNITY_EDITOR</code> directive,
+            so it works well inside Unity Editor, but if you accidentally access this code from runtime assembly, compilation error occurs
+            during player build process. This option is effective for <a href="../../CodeGeneration/ExtensionClasses">extension classes</a> and
+            <a href="../../CodeGeneration/MonoBehaviourClasses">MonoBehaviour classes</a> only.
+        </td>
+    </tr>
+    <tr>
+        <td>Throw exception </td>
+        <td>exception is thrown if you access excluded table or field during playmode is on</td>
+    </tr>
+    <tr>
+        <td>Log warning</td>
+        <td>warning is printed to the console if you access excluded table or field during playmode is on</td>
+    </tr>
+    <tr>
+        <td>Log debug</td>
+        <td>debug message is printed to the console if you access excluded table or field during playmode is on</td>
+    </tr>
+</table>
