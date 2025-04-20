@@ -27,8 +27,7 @@ Every table, field and entity has unique id (based on Guid generation) and name 
 
 <h4>Use Export/import</h4>
 <p>
-    You can edit database data in external tools (Excel/GoogleSheets).
-    Use json export/import to create database backup.
+    You can edit database data in external tools (Excel/GoogleSheets), CSV, JSON and scriptable objects are also supported.
 </p>
 
 <div class="flexdiv">
@@ -129,11 +128,17 @@ entity.myField = entity.myField + 1;
     inherited from Unity's MonoBehaviour class. These classes can be added to Unity's GameObject, just like BGEntityGo component,
     but all of them have additional properties for each table field, so you can use them instead of basic API.
     We highly recommend to use this method instead of method 3.
+    Alternatively, you can use <a href="../Misc/SerializableReferences">a field-based serializable reference to a row</a>
 </p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/HoToUse4.png"><img style="width: 400px" src="#path images/BGDatabase/HoToUse4.png"></a>
 </div>
 
 <div class="flexdiv">
-    <span>Read more about <a href="../CodeGeneration/MonoBehaviourClasses">Code Generation</a> for MonoBehaviour classes</span>
+    <div>
+        <ol>
+            <li>Read more about <a href="../CodeGeneration/MonoBehaviourClasses">Code Generation</a> for MonoBehaviour classes</li>
+            <li>Read more about <a href="../Misc/SerializableReferences">all options</a> for creating serializable references to tables/fields/rows</li>
+        </ol>
+    </div>
 </div>
