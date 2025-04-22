@@ -514,7 +514,8 @@
     <tr>
         <td>animationCurve2017</td>
         <td>AnimationCurve</td>
-        <td>Field target Unity 2017. For Unity >= 2018, download field animationCurve2018 <a href="../Downloads">here</a></td>
+        <td>Field target Unity 2017. For Unity >= 2018, download field animationCurve2018 <a
+                href="../Downloads">here</a></td>
     </tr>
     <tr>
         <td rowspan="5">Unity Primitive nullable</td>
@@ -556,9 +557,11 @@
     <tr>
         <td>unitySprite</td>
         <td>Sprite</td>
-        <td>Can accept a single sprite, a sprite from a multiple sprite, a sprite from <a href="https://docs.unity3d.com/Manual/class-SpriteAtlas.html">SpriteAtlas</a>
-        If you use SpriteAtlas, make sure to turn SpritePacker on
-            (set Edit->Project settings->Editor->SpritePacker to "Always Enabled" and press on "Pack preview" button when you change your atlas)
+        <td>Can accept a single sprite, a sprite from a multiple sprite, a sprite from <a
+                href="https://docs.unity3d.com/Manual/class-SpriteAtlas.html">SpriteAtlas</a>
+            If you use SpriteAtlas, make sure to turn SpritePacker on
+            (set Edit->Project settings->Editor->SpritePacker to "Always Enabled" and press on "Pack preview" button
+            when you change your atlas)
         </td>
     </tr>
     <tr>
@@ -581,11 +584,12 @@
         <td>AudioClip</td>
         <td></td>
     </tr>
-     <tr>
+    <tr>
         <td>unityObject</td>
         <td>Object</td>
         <td>
-            <b>Any</b> Unity asset type can be referenced. Additional type constraint can also be added and Code Generators generate proper property type
+            <b>Any</b> Unity asset type can be referenced. Additional type constraint can also be added and Code
+            Generators generate proper property type
         </td>
     </tr>
     <tr>
@@ -719,7 +723,8 @@
         <td>calculatedBool</td>
         <td>bool</td>
         <td rowspan="7">
-            These fields calculate the value, when this value is requested, using <a href="../GraphEditor">graph editor tool</a>
+            These fields calculate the value, when this value is requested, using <a href="../GraphEditor">graph editor
+            tool</a>
         </td>
     </tr>
     <tr>
@@ -782,18 +787,24 @@
 
 <h4 id="relations">Relational fields (#1)</h4>
 <p>
-    Relational fields are used for referencing database row(s).
-    Such fields store row's primary key(s) and when the value is requested it uses these keys to resolve and return database row(s).
-    The simplest relational field (relationSingle) is like a single column nullable
-    <a href="https://www.educative.io/blog/what-is-foreign-key-database">foreign key</a>, referencing one single row from one single table.
-    Here is an example: let's say you have <code>Cities</code> table and <code>Countries</code> table and <code>Cities</code> table
-    has <code>country</code> relationSingle field, referencing <code>Countries</code> table.
+    Relational fields are used to reference database rows.
+    These fields store a row's primary keys and use these keys to resolve and return the corresponding database rows
+    when requested.
+    The simplest relational field, relationSingle, functions like a nullable
+    <a href="https://www.educative.io/blog/what-is-foreign-key-database">foreign key</a> referencing a single row from a
+    single table.
+</p>
+<p>
+    For example, there are two tables a <code>Cities</code> table and a <code>Countries</code> table. The
+    <code>Cities</code> table has a
+    <code>country</code> relationSingle field referencing the <code>Countries</code> table.
 </p>
 <div class="bg-image">
-    <a href="../../images/BGDatabase/SupportedFields4.png"><img style="width: 400px" src="../../images/BGDatabase/SupportedFields4.png"></a>
+    <a href="../../images/BGDatabase/SupportedFields4.png"><img style="width: 400px"
+                                                                src="../../images/BGDatabase/SupportedFields4.png"></a>
 </div>
 <p>
-    Relational fields differ in terms of how many tables and rows they can reference
+    Relational fields differ in the number of tables and rows they can reference
     (read <a href="../../Blog/BGDatabase-v1-7-1-Many-tables-relational-fields">this blog post</a> for more details)
 </p>
 <p>
@@ -844,15 +855,13 @@
     </tr>
 </table>
 
-<h4 id="nested">Nested Field (#2)</h4>
+<h4 id="nested">Nested fields (#2)</h4>
 <p>
-    Nested field is a special field, which creates a whole new meta (table), which has many-to-one relation to owner
-    meta.
-    It means, you can create a linked list with any fields that are supported by BGDatabase.
-    It is a readonly field (to change its value - delete or add nested Entities).
-    To create a nested Entity use special method, which accept the owner of nested entity <code>BGMetaNested.NewEntity(BGEntity
-    owner)</code>.
-    BGMetaNested is a class for nested tables (to be used instead of generic BGMetaRow)
+    A nested field is a special field that creates a new meta (table) with a many-to-one relationship to its owner meta.
+    This allows you to create a linked list where each element represents a row from the nested table.
+    It is a readonly field (to change its value - delete or add nested entities).
+    To create a nested entity from C# code, use the special method that accepts the owner of the nested entity <code>BGMetaNested.NewEntity(BGEntity
+    owner)</code>. BGMetaNested is a class for nested tables (to be used instead of generic BGMetaRow)
 </p>
 <div class="bg-image">
     <a href="../../images/BGDatabase/SupportedFields1.png"><img style="width: 400px"
@@ -860,24 +869,33 @@
 </div>
 
 <p>
-    Technically, it's a usual table with many-to-one relation to parent table with 2 distinct features:
+    Technically, a nested table is a standard table with a many-to-one relationship to its parent table, distinguished
+    by two key features:
 </p>
 <ol>
-    <li>To access nested rows you need to choose parent row first using parent table GUI</li>
-    <li>If you delete a parent row, related nested rows will also be deleted, because they are considered as integral part of this parent row</li>
+    <li>To access nested rows, you must first select a parent row using the parent table’s GUI.</li>
+    <li>Deleting a parent row automatically deletes all related nested rows, as they are considered an integral part of
+        that parent row.
+    </li>
 </ol>
 <p>
-    You can read more about nested table concept <a href="http://dbdesigner.page.link/xWiZ">here</a>
+    The <a href="../Misc/DataDesign/#nested">comparison</a> between <code>nested</code> and <code>row</code> tables.
+    Also, you can read more about nested table concept <a href="http://dbdesigner.page.link/xWiZ">here</a>
 </p>
 
-<h4 id="unityscene">Unity Scene Fields (#3)</h4>
-Referencing scene GameObjects using objectReference/objectListReference/objectListMultiValueReference fields is implemented with the same technique, which is used in
-<a href="https://github.com/Unity-Technologies/guid-based-reference">this example Unity project</a>,
-by adding additional component (component name under components menu is "BansheeGz/Id", C# class is BGWithId) with unique ID.
-BGWithId is a <code>MonoBehaviour</code> component, to access GameObject- use <code>gameObject</code> property.
-On Awake method object is added to the internal cache and On OnDestroy method object is removed from this cache.
-The result depends on which objects are loaded and which objects are not and can differ during play session.
-Here is a table, describing fields features:
+<h4 id="unityscene">Unity scene fields (#3)</h4>
+<p>
+
+    Referencing scene GameObjects using objectReference/objectListReference/objectListMultiValueReference fields is
+    implemented using the same technique as demonstrated in
+    <a href="https://github.com/Unity-Technologies/guid-based-reference">this example Unity project</a>.
+    This involves adding a component (available under the "Components" menu as "BansheeGz/Id" and implemented as the C#
+    class BGWithId) that assigns a unique ID to each object.
+    BGWithId is a <code>MonoBehaviour</code> component; to access the associated GameObject- use <code>gameObject</code> property.
+    In the <code>Awake</code> method, the object is added to the internal cache and in the <code>OnDestroy</code> method, it's removed from this cache.
+    The results depend on which objects are loaded and which are not, and may vary during a play session.
+    A table describing the fields’ features follows:
+</p>
 <table class="contentTable">
     <tr>
         <th>Feature &#8595\Field &#8594</th>
@@ -888,13 +906,13 @@ Here is a table, describing fields features:
     <tr>
         <td>Purpose</td>
         <td>
-            Return the first loaded GameObject with specified ID
+            Returns the first loaded GameObject with specified ID
         </td>
         <td>
-            Return all loaded GameObjects with specified ID
+            Returns all loaded GameObjects with specified ID
         </td>
         <td>
-            Return all loaded GameObjects with specified IDs
+            Returns all loaded GameObjects with specified IDs
         </td>
     </tr>
     <tr>
@@ -914,9 +932,9 @@ Here is a table, describing fields features:
         <td>
         </td>
         <td colspan="2">
-            These 2 fields differ in terms of how many IDs are used to reference multiple GameObjects.
-            <code>objectListReference</code> field uses the single ID value and returns all loaded GameObjects with this ID.
-            <code>objectListMultiValueReference</code> field uses multiple IDs values and returns all loaded GameObjects with these IDs.
+            These two fields differ in how they use IDs to reference multiple GameObjects.
+            The <code>objectListReference</code> field uses the single ID value and returns all loaded GameObjects, associated with that ID.
+            The <code>objectListMultiValueReference</code> field uses multiple ID values and returns all loaded GameObjects associated with those IDs.
         </td>
     </tr>
 </table>
@@ -924,8 +942,9 @@ Here is a table, describing fields features:
 <h4 id="hashtable">Hashtable (#4)</h4>
 <p>
     Hashtable is a dictionary without generic parameters.
-    Following types are supported as keys: int, string, bool, Guid, custom fields.
-    Following types are not supported as values: Unity assets, relations, hashtable, nullable structs. Null values are also not supported.
+    The following types are supported as keys: int, long, short, byte, string, bool, Guid, enums.
+    The following types are not supported as values: Unity assets, relations, hashtable, nullable structs. Null values are
+    also not supported.
 </p>
 
 <h4 id="enum">Enum/enumList (#5)</h4>
@@ -935,9 +954,10 @@ Here is a table, describing fields features:
 </p>
 <ol>
     <li>
-        You need to provide correct C# enum type name while creating enum field.
-        If you can not figure out the correct C# type name for your enum, use
-        <a href="https://docs.microsoft.com/en-us/dotnet/api/system.type.fullname?view=net-6.0">Type.FullName</a> property to print enum type name to the console
+        You need to provide the correct C# enum type name when creating an enum field.
+        If you are unable to determine the correct C# type name for your enum, use
+        <a href="https://docs.microsoft.com/en-us/dotnet/api/system.type.fullname?view=net-6.0">Type.FullName</a>
+        property to print enum type name to the console
         <code>Debug.Log(typeof(MyEnum).FullName);</code>
         <details>
             <summary>Enum type name examples</summary>
@@ -966,16 +986,19 @@ namespace MyNameSpace
 }</code></pre>
         </details>
     </li>
-    <li>Once you created your own enum field, you can not change enum type name, namespace or underlying type, because they are stored inside database.
-        If you want to rename enum type or namespace, follow <a href="ChangeEnumTypeGuide" target="_blank">this guide</a>.
-        If you want to change underlying enum type (int, short, byte),
-        follow <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-10#post-8240025" target="_blank">this guide</a>.
+    <li>Once enum field is created, you cannot change the enum type name, namespace, or underlying type, as these are stored in the database.
+        If you need to rename the enum type or namespace, refer to <a href="ChangeEnumTypeGuide" target="_blank">this guide</a>.
+        If you need to change underlying enum type (int, short, byte),
+        refer to <a
+                href="https://discussions.unity.com/t/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support/700422/475"
+                target="_blank">this guide</a>.
     </li>
     <li>
-        Values are stored exactly as C# store them - with numeric value.
-        You may consider adding numeric values to your constants so constants reordering does not affect values
+        Values are stored exactly as C# stores them— with numeric values.
+        Consider assigning numeric values to your constants so that you can reorder them without affecting the stored values.
         <div class="bg-image">
-            <a href="../../images/BGDatabase/SupportedFields2.png"><img style="width: 400px" src="../../images/BGDatabase/SupportedFields2.png"></a>
+            <a href="../../images/BGDatabase/SupportedFields2.png"><img style="width: 400px"
+                                                                        src="../../images/BGDatabase/SupportedFields2.png"></a>
         </div>
     </li>
 </ol>
@@ -984,15 +1007,15 @@ namespace MyNameSpace
 </p>
 
 
-
 <h4 id="unityassets">Unity Asset Fields (#6)</h4>
 <div class="bg-image">
-    <a href="../../images/BGDatabase/UnityAssets.png"><img style="width: 400px" src="../../images/BGDatabase/UnityAssets.png"></a>
+    <a href="../../images/BGDatabase/UnityAssets.png"><img style="width: 400px"
+                                                           src="../../images/BGDatabase/UnityAssets.png"></a>
 </div>
 
 <p>
     All these fields are read only.
-    You can reference any Unity asset (UnityObject can be used to reference any asset).
+    You can reference any Unity asset (<code>unityObject</code> field can be used to reference any asset).
 </p>
 <h6>Available loaders</h6>
 <table class="contentTable">
@@ -1016,7 +1039,9 @@ namespace MyNameSpace
         <td>Recommendations</td>
         <td>
             Use it only if an amount of assets is small.
-            Unity does not recommend to use it (<a href="https://docs.unity3d.com/2019.2/Documentation/Manual/BestPracticeUnderstandingPerformanceInUnity6.html">more info</a>)
+            Unity does not recommend to use it (<a
+                href="https://docs.unity3d.com/2019.2/Documentation/Manual/BestPracticeUnderstandingPerformanceInUnity6.html">more
+            info</a>)
         </td>
         <td>
             not recommended under any circumstances
@@ -1043,15 +1068,15 @@ namespace MyNameSpace
     <tr>
         <td>Prerequisites</td>
         <td>
-            asset should be placed under one of Resources folder
+            An asset should be placed in one of the "Resources" folders.
         </td>
         <td>
-            asset should be included to one of asset bundles
+            an asset should be included into one of asset bundles
         </td>
         <td colspan="2">
             <ol>
                 <li>Addressables package should be installed</li>
-                <li>asset should be included to Addressables</li>
+                <li>an asset should be included into Addressables</li>
                 <li>BGDatabase plugin for Addressables support should be installed</li>
             </ol>
         </td>
@@ -1072,7 +1097,7 @@ namespace MyNameSpace
         </td>
     </tr>
     <tr>
-        <td>Limitations after asset was added to database (otherwise you need to reassign the value)</td>
+        <td>Limitations after an asset was referenced from database (otherwise you need to reassign the value)</td>
         <td>
             path/name can not be changed
         </td>
@@ -1080,20 +1105,23 @@ namespace MyNameSpace
             name can not be changed
         </td>
         <td>
-            asset address can not be changed, but you can freely move/rename asset
+            an asset address can not be changed, but you can freely move or rename the asset
         </td>
         <td>
-            asset Guid can not be changed (it's stored in corresponding meta file), but you can freely move/rename asset
+            an asset's Guid can not be changed (it's stored in the corresponding meta file), but you can freely move or rename the asset
         </td>
     </tr>
     <tr>
         <td>More information</td>
         <td colspan="2">
-            Read more about Resources folder and asset bundles <a href="https://docs.unity3d.com/Manual/LoadingResourcesatRuntime.html">here</a>
+            Read more about Resources folder and asset bundles <a
+                href="https://docs.unity3d.com/Manual/LoadingResourcesatRuntime.html">here</a>
         </td>
         <td colspan="2">
-            Read Unity's Addressables manual <a href="https://docs.unity3d.com/Packages/com.unity.addressables@1.5/manual/AddressableAssetsGettingStarted.html">here</a>.
-            To add support for addressables, please, download our plugin and follow setup/use manual at our <a href="../Downloads#addressables">download page</a>
+            Read Unity's Addressables manual <a
+                href="https://docs.unity3d.com/Packages/com.unity.addressables@1.5/manual/AddressableAssetsGettingStarted.html">here</a>.
+            To add support for addressables, please, download our plugin and follow setup/use manual at our <a
+                href="../Downloads#addressables">download page</a>
         </td>
     </tr>
 </table>
@@ -1104,49 +1132,50 @@ namespace MyNameSpace
 <h6>Sprite field and complex assets</h6>
 <p>
     Sprite and UnityObject fields support complex assets (when multiple assets are stored in one single file).
-    Sprite field support spritesheets/atlases.
-    UnityObject field should support other asset types (like FBX file etc.) if you assign correct "Asset Type" parameter while creating UnityObject field.
+    Sprite fields support spritesheets/atlases.
+    UnityObject field should support other asset types (like FBX file etc.) if you assign correct "Asset Type" parameter
+    while creating UnityObject field.
     "Asset Type" parameter accepts valid full C# class name (for example UnityEngine.Material)
 </p>
 <h6>Optional L2 cache</h6>
 <p>
-    Asset fields support optional additional cache on top of Unity API. If this cache is enabled Unity API is used to load the object for the first time
-    and all subsequent reads use the cache to retrieve the object instead of using Unity API.
-    To enable the cache use this code: BGAssetsCache.Enabled = true;
+    Asset fields support optional additional cache on top of Unity API. If this cache is enabled Unity API is used to
+    load the object for the first time; all subsequent reads use the cache to retrieve the object instead of using Unity API.
+    To enable the cache use  the following code: <code>BGAssetsCache.Enabled = true;</code>
 </p>
 
 
 <h4 id="calculated">Calculated Fields (#7)</h4>
 <p>
-    Calculated fields store a graph, which is used for calculating result value.
+    Calculated fields store a graph used to calculate a result value.
     Graph is edited using <a href="../GraphEditor">graph editor</a>.
 </p>
 <p>
     Fields can have a default graph (edit via gears icon under "Configuration" tab) and a list of public variables
 </p>
 <div class="bg-image">
-    <a href="../../images/BGDatabase/SupportedFields3.png"><img style="width: 400px" src="../../images/BGDatabase/SupportedFields3.png"></a>
+    <a href="../../images/BGDatabase/SupportedFields3.png"><img style="width: 400px"
+                                                                src="../../images/BGDatabase/SupportedFields3.png"></a>
 </div>
 <p>
     Each row can 1) override any public variable of default graph and 2) can have its own graph.
-    The alternative and more efficient way to overriding variables is to use database fields values instead.
-    You can access the current row by using "Special/Get current entity" node.
+    A more efficient alternative to overriding variables is to use database field values.
+    You can access the current row using the "Special/Get current entity" node.
 </p>
 <p>
-    Action is a special calculated field, which does not return value, but can change database values.
-    To invoke the action - use Invoke method on field value
+    An Action is a special calculated field that doesn’t return a value but can change database values.
+    To invoke an action, use the Invoke method on the field value.
 </p>
 
 <h4 id="programmable">Programmable Fields (#8)</h4>
 <p>
-    Programmable fields are alternatives to calculated fields, but calculation is implemented with C# code, rather than graph tool.
-    Use these fields only if you want the calculation result to show up in the database GUI,
-    otherwise you can add these fields by creating the partial class with the same name as the class,
-    generated by <a href="../Addons/CodeGeneration">CodeGen addon</a> and adding additional properties/methods to it.
+    Programmable fields are alternatives to calculated fields; however, the calculation is implemented with C# code rather than the graph tool.
+    Use these fields only if you want the calculation result to appear in the database GUI; otherwise, you can
+    extend generated classes as described <a href="../Misc/AddingMembersToGeneratedClasses">here</a>
 </p>
 <p>
-    To create programmable field you need to provide the name of C# class, implementing BGCodedFieldDelegateI&lt;type&gt; interface during field creation.
-    This class will be used for value calculation
+    To create programmable field, you must provide the name of C# class implementing BGCodedFieldDelegateI&lt;type&gt;
+    interface during field creation. The instance of this class will be used for value calculation
 </p>
 <details>
     <summary>Click to see C# example</summary>
@@ -1204,15 +1233,18 @@ public class CalculateC : BGCodedFieldDelegateI&lt;int&gt;
 
 <h4 id="list">Collection values</h4>
 <p>
-    Collections fields may return the result (the list/hashtable) by reference or by value
+    Collection fields may return the result (the list/hashtable) by reference or by value
 </p>
 <ol>
-    <li> By reference means, that the value, stored inside database is returned. So changing collection values will actually change database value without setting a new value</li>
-    <li> By value means, that the new collection is created when value is accessed, and it can be modified without changing database value</li>
+    <li>Returning by reference means the value stored inside the database is returned.
+        Consequently, changing the collection’s values will actually change the database value without setting a new value.
+    </li>
+    <li>Returning by value means a new collection is created when the value is accessed, and it can be modified without changing the database value.
+    </li>
 </ol>
 <p>
-    The current strategy is to return a collection by reference if it's possible, and to return the collection by value only if returning value by reference is not possible
-    (to avoid GC and performance hit)
+    The current strategy is to return a collection by reference whenever possible, and to return the collection by value
+    only when returning it by reference is not feasible (to avoid garbage collection and performance impact)
 </p>
 <table class="contentTable">
     <tr>
@@ -1241,9 +1273,10 @@ public class CalculateC : BGCodedFieldDelegateI&lt;int&gt;
         <td>by reference</td>
     </tr>
 </table>
-<p style="margin-top: 5px">Example using CodeGen add-on with "classes prefix"=D_</p>
+<p style="margin-top: 5px">Example using CodeGen add-on with "classes prefix"= "D_"</p>
 <div class="bg-image">
-    <a href="../../images/BGDatabase/SupportedFields5.png"><img style="width: 400px; height: 100px" src="../../images/BGDatabase/SupportedFields5.png"></a>
+    <a href="../../images/BGDatabase/SupportedFields5.png"><img style="width: 400px; height: 100px"
+                                                                src="../../images/BGDatabase/SupportedFields5.png"></a>
 </div>
 
             </div>
