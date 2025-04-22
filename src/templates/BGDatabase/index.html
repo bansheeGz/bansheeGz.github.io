@@ -38,16 +38,18 @@
 
 <h4>Description:</h4>
 <p>
-    Data manager for Unity. Excel-like GUI. Relational database design. Runtime changes are auto-reverted just like Unity components values.
+    Data manager for Unity with an Excel-like GUI and a relational database design. Runtime changes are automatically reverted, similar to Unity component values.
 </p>
 
 <h4>Features:</h4>
 <ol>
-    <li>Fast, In Memory, pure C# ( without SQL) database fully integrated into Unity 3D</li>
+    <li>Fast, in-memory database written in pure C# and fully integrated into Unity 3D (no SQL required).</li>
     <li>
-        Configurable import/export from/to <a href="ThirdParty/Excel">Excel/OpenOffice</a> and <a href="ThirdParty/GoogleSheets">Google Sheets</a>
-        (one limitation apply, see <a href="#limitations">limitations</a> section below for details),
-        <a href="./ExportImport/Json">JSON</a>, <a href="./ExportImport/Csv">CSV</a>, <a href="./ExportImport/ScriptableObjects">scriptable objects</a>.
+        Configurable import/export from/to <a href="ThirdParty/Excel">Excel/OpenOffice</a>,
+        <a href="ThirdParty/GoogleSheets">Google Sheets</a>(one limitation applies, see <a href="#limitations">limitations</a> section below for details),
+        <a href="./ExportImport/Json">JSON</a>,
+        <a href="./ExportImport/Csv">CSV</a>,
+        and <a href="./ExportImport/ScriptableObjects">scriptable objects</a>
     </li>
     <li>Integration with visual scripting tools:
         <a href="ThirdParty/Bolt">Unity Visual Scripting (Bolt)</a>,
@@ -59,35 +61,35 @@
         <a href="ThirdParty/UNode">UNode</a>,
         <a href="ThirdParty/GameCreator">Game Creator</a>.
     </li>
-    <li>Powerful <a href="CodeGeneration">Code Generation</a></li>
+    <li>Powerful <a href="CodeGeneration">code generation</a> capabilities.</li>
     <li>Selective <a href="Addons/SaveLoad">Save/Load</a> during game session</li>
-    <li>Around <a href="SupportedFields">90 different field types</a>, including relations and nested tables.
-        <br> Support for loading Unity assets from Resources and <a href="Downloads/RuntimeAddressables">Addressables system</a></li>
+    <li>
+        Supports approximately <a href="SupportedFields">90 field types</a>, including relations, and nested tables.
+        Includes support for loading Unity assets from Resources folders and <a href="Downloads/RuntimeAddressables">Addressables system</a>.
     <li><a href="DataBinding">Data binders</a> with <a href="Downloads/RuntimeUIToolkit">UI Toolkit</a> support</li>
     <li>
         <a href="GraphEditor">Graph editor</a> for <a href="SupportedFields#calculated">calculated and action fields</a>
         and <a href="DataBinding#calculated#graphBinder">graph binders</a>
     </li>
-    <li>Hook up any GameObject to table row by adding a special component or reference the row with a field</li>
+    <li>Connect <a href="Misc/SerializableReferences">any GameObject to a table row</a> by adding a dedicated component or by referencing the row with C# field.</li>
     <li>Runtime <a href="Downloads/RuntimeEditor">data editor</a></li>
-    <li>Ability to create your own <a href="Misc/CustomFields">custom field.</a></li>
     <li><a href="MergeTool/2Way">2-way</a> and <a href="MergeTool/3Way">3-way</a> merge tools for multi-user environment with <a href="MergeTool/PlasticSCM">Plastic SCM integration</a></li>
-    <li><a href="Addons/LiveUpdate">Live update</a> from Google sheets</li>
-    <li>Support for modding with <a href="Addons/Modding">Modding addon</a></li>
-    <li>Auto-import data from Excel file in Editor and at runtime (<a href="Downloads/RuntimeExcelMonitor">details</a>)</li>
+    <li><a href="Addons/LiveUpdate">Live updates</a> from Google sheets</li>
+    <li>Modding support via the <a href="Addons/Modding">Modding addon</a></li>
+    <li>Automatic <a href="Downloads/RuntimeExcelMonitor">data import</a> from Excel files in the Editor and at runtime</li>
     <li>No runtime dependencies, DLL file size around 1Mb.</li>
-    <li><a href="Downloads">Downloadable</a> plug-ins and example projects</li>
-    <li>Flexible <a href="Misc">event system</a></li>
-    <li>Multithreading is partially supported with multithreading addon. Some restrictions apply. Read more <a href="Addons/Multithreading">here</a>.</li>
+    <li>Downloadable <a href="Downloads">plug-ins and example projects</a></li>
+    <li>Flexible <a href="Misc/Events">event system</a></li>
+    <li>Multithreading is partially supported. Some restrictions apply. Read more <a href="Downloads/ReadonlyMultithreading">here</a></li> and <a href="Addons/Multithreading">here</a>
 </ol>
 
 <h4 id="limitations">Limitations:</h4>
 <ol>
-    <li>BGDatabase is a client-side database, which runs inside Unity only. <span class="redText">It can not be used in any server environment</span></li>
-    <li>Asset does not support exporting to Google Sheets in runtime from multiple devices, here is <a href="ThirdParty/GoogleSheets/#why">why</a></li>
-    <li>Database data is loaded fully into memory, so at some point the database size can become too big.
-        For example, if database has 10 tables and each table has 50 000 rows and 10 int fields, it takes around 26Mb on hard drive and starts getting too big.
-        <a href="Addons/Partition">Partitioning addon</a> can mitigate this problem- but it's not a generic solution
+    <li>BGDatabase is a client-side database that runs exclusively within Unity. <span class="redText">It cannot be used in server environments.</span></li>
+    <li>Export to Google Sheets in runtime (in builds) from multiple devices is not supported, here is <a href="ThirdParty/GoogleSheets/#why">why</a></li>
+    <li>Database data is fully loaded into memory. Consequently, large databases can consume excessive memory.
+        For example, a database with 10 tables, each containing 50,000 rows and 10 integer fields, can take ~27MB on disk and ~60Mb in memory.
+        <a href="Addons/Partition">Partitioning addon</a> can help mitigate this, but it's not a universal solution
     </li>
 </ol>
 

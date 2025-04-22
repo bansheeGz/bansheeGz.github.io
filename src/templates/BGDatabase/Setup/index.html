@@ -21,7 +21,7 @@
         </div>
     </li>
     <li>
-        Select <code>Configuration</code> tab and create table (called Meta)
+        Select <code>Configuration</code> tab and create a table (meta)
         <div class="bg-image">
             <a href="#path images/BGDatabase/Setup2.png"><img style="width: 400px" src="#path images/BGDatabase/Setup2.png"></a>
         </div>
@@ -34,13 +34,13 @@
         </div>
     </li>
     <li>
-        Select <code>Database</code> tab and create data for tables (called Entities)
+        Select <code>Database</code> tab and create rows (entities) for tables. Save the database.
         <div class="bg-image">
             <a href="#path images/BGDatabase/Setup4.png"><img style="width: 400px" src="#path images/BGDatabase/Setup4.png"></a>
         </div>
     </li>
     <li>
-        Make sure to commit database file to your source control system or make regular backups to prevent the risk of data loss.
+        To prevent data loss, commit the database file to your source control system or create regular backups.
     </li>
 </ol>
 
@@ -49,16 +49,17 @@
     <iframe src="https://player.vimeo.com/video/599578507?title=0&amp;byline=0&amp;portrait=0&amp;speed=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;h=83972cb70e" width="560" height="315" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="BGDatabase mini tutorial: Setup"></iframe>
 </div>
 
-<h4 id="loaders">Which loader to choose?</h4>
+<h4 id="loaders">Which loader should you choose?</h4>
 <ul>
-    <li>Resources loader is a recommended loader to use</li>
-    <li>Choose StreamingAssets if you want to update database file without rebuilding your game</li>
-    <li>Choose custom loader if you want to load database from custom location and do not mind to write your own loader</li>
+    <li>Resources loader: a recommended loader to use</li>
+    <li>StreamingAssets loader: use it if you need to update the database file without rebuilding your game.</li>
+    <li>Custom loader: select this option if you need to load the database from a custom location and are comfortable implementing your own loading logic.</li>
 </ul>
 <p>
-    You can switch between Resources/StreamingAssets loaders by simply moving your database file (bansheegz_database.bytes)
-    between Resources/StreamingAssets folders (if you use localization addon, move all localization files as well- bansheegz_database*.bytes).
-    Make sure to move corresponding meta files as well or move files inside Unity Editor.
+    You can switch between the Resources and StreamingAssets loaders by moving your database file (bansheegz_database.bytes)
+    between the Resources and StreamingAssets folders.
+    If you're using the localization or partition addon, move all other files (bansheegz_database*.bytes) as well.
+    Ensure you move the corresponding .meta files as well or move the files directly within the Unity Editor.
 </p>
 <table class="contentTable">
     <tr>
@@ -76,27 +77,26 @@
     </tr>
     <tr>
         <td>Pros</td>
-        <td>Works everywhere without any extra effort</td>
-        <td>You can update database file without rebuilding your game</td>
+        <td>Works seamlessly everywhere</td>
+        <td>Update the database file without rebuilding your game.</td>
         <td>
             <ol>
-                <li>Database file can be put to any place under your project</li>
-                <li>Database content can be loaded from any location at runtime</li>
+                <li>You can place the database file anywhere within your project.</li>
+                <li>Load database content from any location at runtime.</li>
             </ol>
         </td>
     </tr>
     <tr>
         <td valign="top">Cons</td>
-        <td valign="top">If you store many assets under Resources folders (Unity does not recommend to do it), it may lead to slow database loading</td>
+        <td valign="top">Storing many assets under the Resources folders (which Unity doesn't recommend) may slow down database loading.</td>
         <td valign="top">
             <ol>
-                <li>WEBGL platform requires custom loader</li>
+                <li>The WEBGL platform requires a custom loader.</li>
             </ol>
         </td>
         <td valign="top">
             <ol>
-                <li>you need to implement code, which loads database content.</li>
-                <li>You need to load and assign database content using BGRepo.SetDefaultRepoContent method before accessing it</li>
+                <li>You need to implement code to load database content and then pass it to database using BGRepo.SetDefaultRepoContent method before accessing database</li>
             </ol>
         </td>
     </tr>
@@ -108,18 +108,18 @@
     </tr>
 </table>
 
-<h4 id="setup">More details about database files</h4>
+<h4 id="setup">Database file details</h4>
 
 <p>
-    There are 2 different files BGDatabase operates with:
+    BGDatabase operates with two different file types:
 </p>
 
 <ol>
-    <li>file with database data</li>
-    <li>file with user settings</li>
+    <li>Database data file</li>
+    <li>User settings file</li>
 </ol>
 <p>
-    More details about these files are available in the table below.
+    See the table below for more details.
 </p>
 
 <table class="contentTable">
@@ -171,40 +171,44 @@
 </table>
 <p>
     You can create a single, shared settings file for all team members by placing bansheegz_database_settings.json file next to database file
-    (only resources loader is currently supported). If you use GoogleSheets, make sure to not include bansheegz_database_settings.json into your build
-    by using third-party tools or <a href="../Downloads/BGDatabaseFilterOutSettingsOnBuild.unitypackage">this package</a>
+    (only resources loader is currently supported).
+    If you're using both Google Sheets and a shared settings file, exclude bansheegz_database_settings.json from your build using third-party tools
+    or <a href="../Downloads/BGDatabaseFilterOutSettingsOnBuild.unitypackage">this package</a>, because settings file can contain sensitive data.
 </p>
 
 <h4 id="customLoader">Custom loader implementation guide</h4>
-2 steps guide:
+Follow these steps:
 <ol>
-    <li>Override database location in Unity Editor.</li>
-    <li>Load database content manually at runtime and pass it to BGDatabase</li>
+    <li>Override the database location in the Unity Editor.</li>
+    <li>Load the database content manually at runtime and pass it to BGDatabase.</li>
 </ol>
-<h6>Overriding database location inside Unity Editor</h6>
+<h6>Step 1: Overriding the database location in the Unity Editor</h6>
 <ol>
     <li>Exit Unity</li>
-    <li>Backup your database files</li>
-    <li>Move all database files (bansheegz_database*.bytes* ) to any location in your project (except Resources and StreamingAssets folders)</li>
-    <li>Open bansheegz_database.bytes.meta file in text editor and replace its guid with this value 3637ea689da0cff4b8d5c0fb5d609c15</li>
-    <li>Open up Unity and click on Reload button in BGDatabase window.</li>
-    <li>Select "Settings->Main>Database files" and make sure database is loaded from custom location and Loader is set to Custom.
-        Also make sure all content is properly loaded.
+    <li>Back up your database files</li>
+    <li>Move all database files (e.g., bansheegz_database*.bytes* ) to any location within your project (except Resources and StreamingAssets folders)</li>
+    <li>Open bansheegz_database.bytes.meta file in a text editor and replace its <code>guid</code> with the following value 3637ea689da0cff4b8d5c0fb5d609c15</li>
+    <li>Open Unity and click on <code>Reload</code> button in the BGDatabase window.</li>
+    <li>Select "Settings->Main>Database files" and ensure the database is loaded from the custom location and the Loader is set to Custom.
+        Verify that all content is properly loaded.
     </li>
 </ol>
-<h6>Loading database content manually at runtime</h6>
+<h6>Step 2: Loading database content manually at runtime</h6>
 <ol>
-    <li>Load database content from whatever location you want and call BGRepo.SetDefaultRepoContent(byte[] content) method before accessing database followed by BGRepo.Load().</li>
-    <li>If you use localization addon, you also need to load all localization files as well and use BGRepo.SetDefaultRepoContentModel(BGRepoCustomLoaderModel model) method instead.
+    <li>Load database content from your desired location and call <code>BGRepo.SetDefaultRepoContent(byte[] content)</code> method
+        followed by <code>BGRepo.Load()</code> before accessing database.</li>
+    <li>If you're using localization/partition add-ons, you also need to load all localization/partition files as well
+        and use <code>BGRepo.SetDefaultRepoContentModel(BGRepoCustomLoaderModel model)</code> method instead.
     </li>
 </ol>
 <pre class="nomargin"><code class="language-csharp">    //content is database file content
     byte[] content = someContent; //todo load content
     BGRepo.SetDefaultRepoContent(content);
     BGRepo.Load();</code></pre>
+
 <h6>Example projects</h6>
 <p>
-    There are 2 example projects, demonstrating how to load database file(s) from Addressables.
+    Two example projects demonstrate loading the database file(s) from Addressables.
 </p>
 <ol>
     <li>For BGDatabase: <a href="../Downloads/BGDatabaseCustomLoaderExample.zip">download</a></li>
