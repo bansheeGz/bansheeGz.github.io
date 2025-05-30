@@ -319,6 +319,22 @@ firstRow.LoadAssetAsync(asset => {
         </td>
     </tr>
     <tr>
+        <td>{FieldName}_Raw</td>
+        <td>No</td>
+        <td>
+            Optional {FieldName}{RawPropertyPostfix} properties can be generated for setting values without firing events for some fields.
+            Read more about it on CodeGen addons page( <a href="../../Addons/CodeGeneration">"Raw properties postfix" parameter</a>)
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">    // get the first row
+    MyTable firstRow = MyTable.GetEntity(0);
+    // increase gold value without firing events
+    firstRow.gold_Raw += 1;</code></pre>
+        </td>
+    </tr>
+    <tr>
         <td>{tableName}{reference postfix}</td>
         <td>No</td>
         <td>

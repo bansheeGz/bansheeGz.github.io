@@ -156,10 +156,10 @@
             <li class="pli ">
                 <a class="pa " href="../../../BGLocalization/Translation">Translation</a>
                 <ul>
-                    <li class="cli ">
+                    <li class="cli  plic ">
                         <a class="ca" href="../../../BGLocalization/Translation/Ollama">Ollama</a>
                     </li>
-                    <li class="cli  plic ">
+                    <li class="cli ">
                         <a class="ca" href="../../../BGLocalization/Translation/Amazon">Amazon Translate</a>
                     </li>
                     <li class="cli ">
@@ -180,62 +180,82 @@
     <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
         <div class="bg-main mdl-shadow--3dp">
             <div class="bg-main-title">
-                <h3>Amazon Translate</h3>
+                <h3>Ollama</h3>
             </div>
 
             <!--======================================================        BG Database Content              -->
             <div id="content">
             
 
+<h4>Description</h4>
+<p>
+    <a href="https://ollama.com/">Ollama</a> allows running LLM models locally.
+    We did not test all the models, so some models may not work properly.
+    "Thinking" models, like Deepseek R1, are not currently supported.
+    The full list of ollama models is available <a href="https://ollama.com/search">here</a>
+</p>
+
+<h4>The list of tested models (May 2025)</h4>
+<ol>
+    <li><a href="https://ollama.com/library/gemma3:12b-it-qat">gemma3:12b-it-qat</a></li>
+    <li><a href="https://ollama.com/library/aya:8b">aya:8b</a></li>
+    <li><a href="https://ollama.com/library/phi4:14b-q4_K_M">phi4:14b-q4_K_M</a></li>
+    <li><a href="https://ollama.com/library/llama3.1:8b">llama3.1:8b</a></li>
+    <li><a href="https://ollama.com/library/mistral:7b">mistral:7b</a></li>
+</ol>
+<p>gemma3 and aya seem to be a good choice.</p>
+
 <h4>Setup</h4>
 <ol>
-    <li>Download and install <a href="../../../BGDatabase/Downloads/EditorAmazonTranslate">this plugin</a></li>
+    <li>Install <a href="https://ollama.com/">Ollama</a></li>
+    <li>Download LLM model you want to use by running <code>ollama run {ModelName}</code> command.
+        Make sure your hardware meets requirements for running this model locally.
+    </li>
     <li>
-        Go to Configuration->Locale and add field of type string, named "amazonLanguage"
+        Go to Configuration->Locale and add a string field with <code>ollamaLanguage</code> name
         <div class="bg-image">
-            <a href="../../../images/BGLocalization/Amazon1.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon1.png"></a>
+            <a href="../../../images/BGLocalization/Ollama1.png"><img style="width: 400px" src="../../../images/BGLocalization/Ollama1.png"></a>
+        </div>
+    </li>
+    <li>
+        Navigate to Settings->Translation and enter Ollama URL and Ollama model parameters
+        <div class="bg-image">
+            <a href="../../../images/BGLocalization/Ollama2.png"><img style="width: 400px" src="../../../images/BGLocalization/Ollama2.png"></a>
+        </div>
+        Then click on "Load the model and check connection" button to verify that everything is set up correctly.
+    </li>
+
+    <li>Go to Database->Localization and for each locale fill "ollamaLanguage" field with the right language.
+        The list of supported languages may take some time to load.
+
+        <div class="bg-image">
+            <a href="../../../images/BGLocalization/Ollama3.png"><img style="width: 400px" src="../../../images/BGLocalization/Ollama3.png"></a>
         </div>
 
     </li>
-    <li>Get an API key and Secret Key for Amazon Translate as described <a href="https://aws.amazon.com/premiumsupport/knowledge-center/create-access-key/">here</a>
-        or <a href="https://aws.amazon.com/blogs/security/how-to-find-update-access-keys-password-mfa-aws-management-console/">
-            read this blog post (Generate access keys for programmatic access)</a>
-    </li>
-    <li>Go to Settings->Translation, and paste your keys
 
-        <div class="bg-image">
-            <a href="../../../images/BGLocalization/Amazon2.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon2.png"></a>
-        </div>
-
-    </li>
-    <li>Go to Database->Localization and for each locale fill "amazonLanguage" field with the right language
-
-        <div class="bg-image">
-            <a href="../../../images/BGLocalization/Amazon3.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon3.png"></a>
-        </div>
-
-    </li>
     <li>
         Choose any table with "localization" (Locale) or "localizationSingleValue" (Locale-S) types and string/text field type.
-        Click on Setup and choose Amazon as translation service.
+        Click on Setup and choose Ollama as translation service.
         Choose your source language and destination languages.
         <div class="bg-image">
-            <a href="../../../images/BGLocalization/Amazon4.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon4.png"></a>
+            <a href="../../../images/BGLocalization/Ollama4.png"><img style="width: 400px" src="../../../images/BGLocalization/Ollama4.png"></a>
         </div>
     </li>
 
     <li>Click "Run" to translate several rows. Click T↑ to translate one row to all locales. Click T↓ to translate current row to one locale
 
         <div class="bg-image">
-            <a href="../../../images/BGLocalization/Amazon5.png"><img style="width: 400px" src="../../../images/BGLocalization/Amazon5.png"></a>
+            <a href="../../../images/BGLocalization/Ollama5.png"><img style="width: 400px" src="../../../images/BGLocalization/Ollama5.png"></a>
         </div>
 
     </li>
+    <li>After completing the translations, you can free up your GPU VRAM by clicking the "Unload the model" button.
+        <div class="bg-image">
+            <a href="../../../images/BGLocalization/Ollama6.png"><img style="width: 400px" src="../../../images/BGLocalization/Ollama6.png"></a>
+        </div>
+    </li>
 </ol>
-
-<h4>Known issues</h4>
-Currently, Amazon service does not produce any error if set up is wrong.
-If you have any issue with setup, please, contact our support.
             </div>
 
             <!--======================================================       BG Database Footer               -->

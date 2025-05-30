@@ -326,7 +326,7 @@
 </div>
 <h4>Description</h4>
 <p>
-    Code Generation addon makes already pretty easy BGDatabase API even easier.
+    Code Generation addon makes accessing BGDatabase API easier.
     Once this addon is enabled - database will use generated classes instead of basic BGEntity while populating table rows.
     Each generated class has additional properties/methods to access the data.
 </p>
@@ -416,6 +416,21 @@ The full list of generated methods/properties can be found in <a href="../../Cod
             Read "Reference classes" section in the <a href="../../CodeGeneration/ExtensionClasses#refClasses">main article</a> for more information.
             Set these parameters to valid C# literals (for example <code>_Ref</code> and <code>_List_Ref</code>) to enable code generation
     </tr>
+    <tr>
+        <td>Raw properties postfix</td>
+        <td>(version >= 1.8.19) If the postfix is set, additional {FieldName}{RawPropertyPostfix}  properties are generated for setting value without firing events.
+            Standard setters trigger events, which incur a performance penalty.
+            Simple fields (such as integers, floats etc.) allow for direct value assignment, bypassing event triggers.
+            If fields are not utilized in keys or indexes and do not have any event listeners attached (note that
+            data binders with the "Live" parameter enabled can attach events to these fields)
+            values can be set directly without the overhead of firing events.
+            Database Editor GUI is also using events to detect when the window should be repainted,
+            so if you are using only raw setters, the database Editor GUI may not be updated properly.
+            In this case, you can enable the 'Repaint database window every frame in play mode' option in Settings > Preferences.
+            However, be aware that this can be performance-intensive and should only be used as a last resort.
+        </td>
+    </tr>
+
 </table>
 
             </div>

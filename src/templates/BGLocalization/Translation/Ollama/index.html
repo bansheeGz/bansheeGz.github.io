@@ -1,0 +1,71 @@
+#set page=Ollama
+
+<h4>Description</h4>
+<p>
+    <a href="https://ollama.com/">Ollama</a> allows running LLM models locally.
+    We did not test all the models, so some models may not work properly.
+    "Thinking" models, like Deepseek R1, are not currently supported.
+    The full list of ollama models is available <a href="https://ollama.com/search">here</a>
+</p>
+
+<h4>The list of tested models (May 2025)</h4>
+<ol>
+    <li><a href="https://ollama.com/library/gemma3:12b-it-qat">gemma3:12b-it-qat</a></li>
+    <li><a href="https://ollama.com/library/aya:8b">aya:8b</a></li>
+    <li><a href="https://ollama.com/library/phi4:14b-q4_K_M">phi4:14b-q4_K_M</a></li>
+    <li><a href="https://ollama.com/library/llama3.1:8b">llama3.1:8b</a></li>
+    <li><a href="https://ollama.com/library/mistral:7b">mistral:7b</a></li>
+</ol>
+<p>gemma3 and aya seem to be a good choice.</p>
+
+<h4>Setup</h4>
+<ol>
+    <li>Install <a href="https://ollama.com/">Ollama</a></li>
+    <li>Download LLM model you want to use by running <code>ollama run {ModelName}</code> command.
+        Make sure your hardware meets requirements for running this model locally.
+    </li>
+    <li>
+        Go to Configuration->Locale and add a string field with <code>ollamaLanguage</code> name
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Ollama1.png"><img style="width: 400px" src="#path images/BGLocalization/Ollama1.png"></a>
+        </div>
+    </li>
+    <li>
+        Navigate to Settings->Translation and enter Ollama URL and Ollama model parameters
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Ollama2.png"><img style="width: 400px" src="#path images/BGLocalization/Ollama2.png"></a>
+        </div>
+        Then click on "Load the model and check connection" button to verify that everything is set up correctly.
+    </li>
+
+    <li>Go to Database->Localization and for each locale fill "ollamaLanguage" field with the right language.
+        The list of supported languages may take some time to load.
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Ollama3.png"><img style="width: 400px" src="#path images/BGLocalization/Ollama3.png"></a>
+        </div>
+
+    </li>
+
+    <li>
+        Choose any table with "localization" (Locale) or "localizationSingleValue" (Locale-S) types and string/text field type.
+        Click on Setup and choose Ollama as translation service.
+        Choose your source language and destination languages.
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Ollama4.png"><img style="width: 400px" src="#path images/BGLocalization/Ollama4.png"></a>
+        </div>
+    </li>
+
+    <li>Click "Run" to translate several rows. Click T↑ to translate one row to all locales. Click T↓ to translate current row to one locale
+
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Ollama5.png"><img style="width: 400px" src="#path images/BGLocalization/Ollama5.png"></a>
+        </div>
+
+    </li>
+    <li>After completing the translations, you can free up your GPU VRAM by clicking the "Unload the model" button.
+        <div class="bg-image">
+            <a href="#path images/BGLocalization/Ollama6.png"><img style="width: 400px" src="#path images/BGLocalization/Ollama6.png"></a>
+        </div>
+    </li>
+</ol>
