@@ -23,13 +23,13 @@
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="../css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
 
-    <link rel="stylesheet" href="../css/main.css">
-    <link rel="stylesheet" href="../css/root.css">
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="../../css/root.css">
 
-    <link rel="icon" type="image/png" href="../images/BGIcon.png"/>
+    <link rel="icon" type="image/png" href="../../images/BGIcon.png"/>
 </head>
 <body>
 
@@ -61,7 +61,7 @@
     <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row" id="header">
           <span style="margin-left: -40px;">
-              <a class="bg-header-a" href="/"><img src="../images/BGIconBig.png"></a>
+              <a class="bg-header-a" href="/"><img src="../../images/BGIconBig.png"></a>
           </span>
             <!-- Add spacer, to align navigation to the right in desktop -->
             <div class="mdl-layout-spacer"></div>
@@ -69,17 +69,17 @@
             <div class="bg-navigation-bag" id="bg-navigation">
                 <nav class="bg-navigation mdl-navigation">
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="../BGDatabase">BG`Database</a>
+                       href="../../BGDatabase">BG`Database</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="../BGLocalization">BG`Localization</a>
+                       href="../../BGLocalization">BG`Localization</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="../BGCurve">BG`Curve</a>
+                       href="../../BGCurve">BG`Curve</a>
 <!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
-<!--                       href="../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+<!--                       href="../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
                     <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
-                       href="../Blog">Blog</a>
+                       href="../../Blog">Blog</a>
                     <a class="mdl-navigation__link mdl-typography--text-uppercase "
-                       href="../Support">Support</a>
+                       href="../../Support">Support</a>
                 </nav>
             </div>
             <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
@@ -88,10 +88,10 @@
             </button>
             <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
                 for="more-button">
-                <li class="mdl-menu__item"><a href="../BGDatabase">BG Database</a></li>
-                <li class="mdl-menu__item"><a href="../BGLocalization">BG Localization</a></li>
-                <li class="mdl-menu__item"><a href="../BGCurve">BG Curve</a></li>
-                <li class="mdl-menu__item"><a href="../Support">Support</a></li>
+                <li class="mdl-menu__item"><a href="../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../Support">Support</a></li>
             </ul>
         </div>
     </div>
@@ -107,82 +107,75 @@
         <a name="top"></a>
 
         <!--======================================================        Content (from Root)              -->
-        
+        <link rel="stylesheet" href="../../css/magnific-popup.css">
+<script src="../../js/jquery.magnific-popup.min.js"></script>
 
-
-
-
-
-<link rel="stylesheet" href="css/slider-pro.min.css"/>
-<script src="js/jquery.sliderPro.min.js"></script>
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $('#my-slider').sliderPro({
-            width: 700,
-            height: 439,
-            arrows: true,
-            buttons: true,
-//            fade: true,
-            autoplayDelay: 3000,
-//            fadeDuration:700
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
         });
     });
 </script>
-<style>
-    #blog div{
-        padding: 12px 0;
-    }
-</style>
 
 <div style="width: 100%">
     <div style="width: 70%;margin: 0 auto">
         <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone">
             <div class="bg-main mdl-shadow--3dp">
                 <div id="blog" style="padding: 12px;">
+                    <a href="../">Back to blog</a>
                     <div class="bg-main-title">
-                        <h3>Blog</h3>
+                        <h4>BGDatabase v.1.9.1 The performance upgrade for codegen classes</h4>
                     </div>
+                    <div style="padding-bottom: 12px;">08/2025</div>
 
-                    <div>
-                        08/2025 <a href="BGDatabase-v1-9-1-Performance-upgrade-for-codegen-classes">BGDatabase v.1.9.1 The performance upgrade for codegen classes</a>
-                    </div>
-                    <div>
-                        02/2025 <a href="BGDatabase-v1-8-16-Navigating-relation-in-backward-direction">BGDatabase v.1.8.16  Navigating relations in backward direction</a>
-                    </div>
-                    <div>
-                        08/2022 <a href="BGDatabase-v1-7-9-New-navigation-system">BGDatabase v.1.7.9  New navigation system</a>
-                    </div>
-                    <div>
-                        05/2022 <a href="BGDatabase-v1-7-5-Views-and-viewrelational-fields">BGDatabase v.1.7.5  Views and view relational fields</a>
-                    </div>
-                    <div>
-                        12/2021 <a href="BGDatabase-v1-7-1-Many-tables-relational-fields">BGDatabase v.1.7.1  Many tables relational fields</a>
-                    </div>
-                    <div>
-                        07/2020 <a href="BGDatabase-is-on-sale-07-2020">BGDatabase is on sale 50% off</a>
-                    </div>
-                    <div>
-                        06/2020 <a href="BGDatabase-v1-5-9-What-is-new">BGDatabase v.1.5.9  What is new?</a>
-                    </div>
-                    <div>
-                        03/2020 <a href="BGDatabase-v1-5-6-What-is-new">BGDatabase v.1.5.6  What is new?</a>
-                    </div>
-                    <div>
-                        11/2019 <a href="BGDatabase-GoogleSheetsV4">BGDatabase v.1.5 switched to Google Sheets API version 4</a>
-                    </div>
-                    <div>
-                        08/2018 <a href="BGDatabase-v1-2-What-is-new">BGDatabase v1.2 What is new?</a>
-                    </div>
-                    <div>
-                        11/2016 <a href="BGCurve-v1-2-What-is-new">BGCurve v1.2 What is new?</a>
-                    </div>
-                    <div>
-                        09/2016 <a href="BGCurve-v1-1-What-is-new">BGCurve v1.1 What is new?</a>
-                    </div>
+                    
 
-                    <!--======================================================        BG Curve Content              -->
 
-                    <!--======================================================       BG Curve Footer               -->
+<link rel="stylesheet" href="../../css/bgdatabase.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<h4>Description</h4>
+<p>
+    In BGDatabase v.1.9.1 we improved performance for generated classes.
+    Read <a href="../../BGDatabase/Addons/CodeGeneration/Optimization">this guide</a> for more details.
+    Backup your database file just in case before upgrading.
+</p>
+
+<h4>Minor API changes</h4>
+<p>
+    Some APIs have been changed.
+    We hope that very few people (if any) are affected by these changes.
+    Fortunately, none of our plugins are affected (some of them need to be updated to work properly with new features).
+    However, if you are using custom scripting with our API, you may encounter some breaking changes.
+    Here’s how to fix them.
+</p>
+<p>
+    Prior to version 1.2, each field and table had a single corresponding class, such as <code>BGFieldInt</code> for integer fields,  <code>BGMetaRow</code> for "row" tables etc.
+    Now, some implementing classes may differ, and we have switched to using interfaces for these classes,
+    for example, the interface for the integer fields is <code>BGFieldIntContract</code> and the interface for the "row" tables is <code>BGMetaRowContract</code> etc.
+    A few method signatures have been updated to work with interfaces instead of classes.
+    You can cast these interfaces to their corresponding base classes: <code>BGField</code> is the base class for all fields,
+    and <code>BGMetaEntity</code> is the base class for all tables.
+</p>
+<p>
+    If you encounter a compilation error related to the API change that you cannot resolve, please revert the database to version 1.8.19
+    without saving the database with the new version and contact us.
+</p>
+
+<h4>New global search tool</h4>
+<p>
+    Search all database rows with the new 'Search Anywhere' tool.
+</p>
+<div class="middleAlign">
+    <img src="../../images/Blog/Blog30.png">
+</div>
                 </div>
             </div>
 

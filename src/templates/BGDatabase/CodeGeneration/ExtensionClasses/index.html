@@ -59,7 +59,8 @@
 </div>
 
 <p>
-    Additionally, you will get all table(meta) methods alternatives as static methods of that particular class (see the table below for more information),
+    Additionally, you will get all table(meta) methods alternatives as static methods of that particular class (see the
+    table below for more information),
     so instead of this, for example:
 </p>
 <pre class="nomargin"><code class="language-csharp">    var repo = BGRepo.I;
@@ -73,7 +74,8 @@ you can write code like this:
 
 <h4 id="whatIsGenerated">What is generated, exactly?</h4>
 <p>
-    We will use MyTable as a table name (generated class name) and 2 fields (name string, gold int) for illustration purpose.
+    We will use MyTable as a table name (generated class name) and 2 fields (name string, gold int) for illustration
+    purpose.
 </p>
 <table class="contentTable">
     <tr>
@@ -93,41 +95,41 @@ you can write code like this:
         <td>Properties are generated for each table field.
             Each property has the same type as corresponding database field.
             Use these properties to read/write values from/to database
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    MyTable firstRow = MyTable.GetEntity(0);
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    MyTable firstRow = MyTable.GetEntity(0);
     //name is generated property for "name" field
     string name = firstRow.name;</code></pre>
+            </details>
         </td>
     </tr>
     <tr>
         <td>GetEntity()</td>
         <td>Yes</td>
-        <td>3 static methods for getting table row by Index/ID/Name.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    // get the first row
+        <td>
+            3 static methods for getting table row by Index/ID/Name.
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    // get the first row
     MyTable firstRow = MyTable.GetEntity(0);
     // get the first with specified ID
     MyTable rowByID = MyTable.GetEntity(new BGId("SomeID"));
     // get the first row with name="SomeName"
     MyTable rowByName = MyTable.GetEntity("SomeName");</code></pre>
+            </details>
         </td>
     </tr>
     <tr>
         <td>NewEntity()</td>
         <td>Yes</td>
-        <td>Static method for adding table row.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    //new row is added
+        <td>
+            Static method for adding table row.
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    //new row is added
     MyTable newRow = MyTable.NewEntity();</code></pre>
+            </details>
+
         </td>
     </tr>
     <tr>
@@ -141,11 +143,9 @@ you can write code like this:
                 <li><code>Predicate&lt;MyTable&gt; filter</code> : Optional filter to filter out the rows</li>
                 <li><code>Comparison&lt;MyTable&gt; sort</code> : Optional sorter to sort the rows</li>
             </ol>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">// print every entity name
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">// print every entity name
 MyTable.ForEachEntity(
     entity => Debug.Log($"Entity={entity.name}")
 );
@@ -161,6 +161,7 @@ MyTable.ForEachEntity(
     entity => entity.gold > 0,
     (e1, e2) => string.CompareOrdinal(e1.name, e2.name)
 );</code></pre>
+            </details>
         </td>
     </tr>
     <tr>
@@ -169,12 +170,12 @@ MyTable.ForEachEntity(
         <td>
             Static method for finding the first row which comply to the provided filter.
             The parameter is: <code>Predicate&lt;MyTable&gt; filter</code> : Filter to use for searching the row
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    //find the first row, which gold more than 0
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    //find the first row, which gold more than 0
     MyTable entity = MyTable.FindEntity(entity => entity.gold > 0);</code></pre>
+            </details>
+
         </td>
     </tr>
     <tr>
@@ -185,14 +186,14 @@ MyTable.ForEachEntity(
             The parameters are:
             <ol>
                 <li><code>Predicate&lt;MyTable&gt; filter</code> : Filter to use for searching the rows</li>
-                <li><code>List&lt;MyTable&gt; result</code> : Optional list to use as result (for decreasing garbage collection)</li>
+                <li><code>List&lt;MyTable&gt; result</code> : Optional list to use as result (for decreasing garbage
+                    collection)
+                </li>
                 <li><code>Comparison&lt;MyTable&gt; sort</code> : Optional sorter to sort the rows</li>
             </ol>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    //find all rows, which gold more than 0
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    //find all rows, which gold more than 0
     List&lt;MyTable&gt; result= MyTable.FindEntities(entity => entity.gold > 0);
     //find all rows, which gold more than 0, entities are sorted by name
     List&lt;MyTable&gt; result= MyTable.FindEntities(
@@ -200,35 +201,39 @@ MyTable.ForEachEntity(
         null,
         (e1, e2) => string.CompareOrdinal(e1.name, e2.name)
     );</code></pre>
+            </details>
+
         </td>
     </tr>
     <tr>
         <td>GetEntityByKey{key}(), GetEntitiesByKey{key}()</td>
         <td>Yes</td>
         <td>
-            For each <a href="../../Misc/KeysAndIndexes">key</a> static methods are generated for fast entity(s) lookups.
+            For each <a href="../../Misc/KeysAndIndexes">key</a> static methods are generated for fast entity(s)
+            lookups.
             GetEntitiesByKey method is generated only if a key is not unique.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    //Get the first entity which gold == 0. We assume key name="goldKey"
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    //Get the first entity which gold == 0. We assume key name="goldKey"
     MyTable entity = MyTable.GetEntityByKeygoldKey(0);
     //Get all entities with gold == 0. We assume key name="goldKey"
     List&lt;MyTable&gt; entities = MyTable.GetEntitiesByKeygoldKey(0);</code></pre>
+            </details>
+
         </td>
     </tr>
     <tr>
         <td>FindEntitiesByIndex{indexName}()</td>
         <td>Yes</td>
         <td>
-            For each <a href="../../Misc/KeysAndIndexes">index</a> static methods are generated for fast entity(s) searches.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    //find all entities with "goldKey" between 0 inclusive and 10 exclusive.  We assume index name="goldIndex"
+            For each <a href="../../Misc/KeysAndIndexes">index</a> static methods are generated for fast entity(s)
+            searches.
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    //find all entities with "goldKey" between 0 inclusive and 10 exclusive.  We assume index name="goldIndex"
     MyTable.FindEntitiesByIndexgoldIndex(new BGIndexOperatorBetween&lt;int&gt;(0, 10, true, false));</code></pre>
+            </details>
+
         </td>
     </tr>
     <tr>
@@ -236,13 +241,12 @@ MyTable.ForEachEntity(
         <td>No</td>
         <td>
             Use this method to delete the row. This method is not generated, but inherited from BGEntity class
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">
     MyTable firstRow = MyTable.GetEntity(0);
     firstRow.Delete();</code></pre>
+            </details>
         </td>
     </tr>
     <tr>
@@ -250,12 +254,12 @@ MyTable.ForEachEntity(
         <td>Yes</td>
         <td>
             Use this property to get access to the table (<a href="../../API/BGMetaEntity">BGMetaEntity</a> class)
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    //get reference to meta (table)
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    //get reference to meta (table)
     BGMetaEntity meta = MyTable.MetaDefault;</code></pre>
+            </details>
+
         </td>
     </tr>
     <tr>
@@ -263,75 +267,99 @@ MyTable.ForEachEntity(
         <td>Yes</td>
         <td>
             Use this property to get access to the field (column) (<a href="../../API/BGField">BGField</a> class)
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    //get reference to name field
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    //get reference to name field
     BGFieldString nameField = MyTable._name;
     //get reference to gold field
     BGFieldInt goldField = MyTable._gold;</code></pre>
+            </details>
+
         </td>
     </tr>
-    <tr>
+    <tr id="reverse">
         <td>Related {MetaName} ListUsing {RelationName} Relation</td>
         <td>No</td>
         <td>
             For each incoming relation a property is generated for traversing relation in reverse direction.
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    MyTable firstRow = MyTable.GetEntity(0);
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    MyTable firstRow = MyTable.GetEntity(0);
     // we assume "OtherTable" table exists,
     // and it has "MyTable" relation, pointing to MyTable
     List&lt;OtherTable&gt; entitiesWhichPointToFirstRow = firstRow.RelatedOtherTableListUsingMyTableRelation</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>Fill {MetaName} ListUsing {RelationName} Relation</td>
+        <td>No</td>
+        <td>
+            For each
+            <ol>
+                <li>incoming relation</li>
+                <li>relation with List values</li>
+            </ol>
+            a FillXXX method is generated, which accepts a list for result value (List&lt;Entity&gt;) to get rid of GC overhead.
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    MyTable firstRow = MyTable.GetEntity(0);
+    // we assume "OtherTable" table exists,
+    // and it has "MyTable" relation, pointing to MyTable
+    List&lt;OtherTable&gt; entitiesWhichPointToFirstRow = new List&lt;OtherTable&gt;();
+    firstRow.FillRelatedOtherTableListUsingMyTableRelation(entitiesWhichPointToFirstRow)</code></pre>
+            </details>
         </td>
     </tr>
     <tr>
         <td>Load{field name}Async</td>
         <td>No</td>
         <td>
-            For each Unity asset field, using Addressables loader, methods are generated for loading assets asynchronously
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">MyTable firstRow = MyTable.GetEntity(0);
+            For each Unity asset field, using Addressables loader, methods are generated for loading assets
+            asynchronously
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">MyTable firstRow = MyTable.GetEntity(0);
 //we assume "asset" Unity asset field exists with Addressables loader
 firstRow.LoadAssetAsync(asset => {
     //make use of loaded asset
 });</code></pre>
+            </details>
+
         </td>
     </tr>
-    <tr>
+      <tr>
         <td>{entity name prefix}{entity name}</td>
         <td>Yes</td>
         <td>
-            Optional static properties for each row, so you can access rows directly without need to get/search for it first.
-            See <a href="#entities">Generate a property for each entity (optional)</a> section below for more information
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    //we assume first row's name="FirstRow" and entities prefix is "E_"
+            Optional static properties for each row, so you can access rows directly without need to get/search for it
+            first.
+            See <a href="#entities">Generate a property for each entity (optional)</a> section below for more
+            information
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    //we assume first row's name="FirstRow" and entities prefix is "E_"
     MyTable firstRow = MyTable.E_FirstRow;</code></pre>
+            </details>
+
         </td>
     </tr>
     <tr>
         <td>{FieldName}_Raw</td>
         <td>No</td>
         <td>
-            Optional {FieldName}{RawPropertyPostfix} properties can be generated for setting values without firing events for some fields.
-            Read more about it on CodeGen addons page( <a href="../../Addons/CodeGeneration">"Raw properties postfix" parameter</a>)
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">    // get the first row
+            Optional {FieldName}{RawPropertyPostfix} properties can be generated for setting values without firing
+            events for some fields.
+            Read more about it on CodeGen addons page( <a href="../../Addons/CodeGeneration">"Raw properties postfix"
+            parameter</a>)
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">    // get the first row
     MyTable firstRow = MyTable.GetEntity(0);
     // increase gold value without firing events
     firstRow.gold_Raw += 1;</code></pre>
+            </details>
+
         </td>
     </tr>
     <tr>
@@ -340,11 +368,9 @@ firstRow.LoadAssetAsync(asset => {
         <td>
             Optional reference classes to reference database row/rows easily.
             See <a href="#refClasses">Reference classes</a> section below for more information
-        </td>
-    </tr>
-    <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">public class Temp : MonoBehaviour
+            <details>
+                <summary>Example code</summary>
+                <pre class="nomargin"><code class="language-csharp">public class Temp : MonoBehaviour
 {
     // this is a reference to one single database row from "News" table
     // DB_ is a generated classes prefix and _Ref is reference classes postfix
@@ -357,22 +383,27 @@ firstRow.LoadAssetAsync(asset => {
         print(row);
     }
 }</code></pre>
+            </details>
+
         </td>
     </tr>
 </table>
 <p>
-    Views are also treated specially, read <a href="../../../Blog/BGDatabase-v1-7-5-Views-and-viewrelational-fields">this blog post</a> for more details.
+    Views are also treated specially, read <a href="../../../Blog/BGDatabase-v1-7-5-Views-and-viewrelational-fields">this
+    blog post</a> for more details.
 </p>
 
 <h4 id="entities">Generate a property for each entity (optional)</h4>
 <p>
-    Additionally, you can generate a C# property for each row(entity) and use this property to access the corresponding row directly, without the need to locate/find it first.
+    Additionally, you can generate a C# property for each row(entity) and use this property to access the corresponding
+    row directly, without the need to locate/find it first.
 </p>
 <p>
     Requirements:
 </p>
 <ul>
-    <li>"Entities prefix" should be defined in CodeGen addon settings (for example KEY_). CodeGen addon settings is located here: <i>BGDatabaseWindow->Addons->CodeGen</i></li>
+    <li>"Entities prefix" should be defined in CodeGen addon settings (for example KEY_). CodeGen addon settings is
+        located here: <i>BGDatabaseWindow->Addons->CodeGen</i></li>
     <li>
         Each table, you want entities properties to be generated for, should have
         "Entity name is unique" toggle on under (<i>Configuration->[TableName]</i>) and
@@ -392,19 +423,23 @@ firstRow.LoadAssetAsync(asset => {
     where MyUniqueKey is the name of the row and KEY_ is entities prefix from CodeGen addon settings.
 </p>
 <p>
-    If this option is used, there are additional cases when you need to regenerate extension classes: if you add/delete the rows with names or if you change rows names.
+    If this option is used, there are additional cases when you need to regenerate extension classes: if you add/delete
+    the rows with names or if you change rows names.
 </p>
 
 <h4 id="refClasses">Reference classes (optional)</h4>
 <p>
     Starting from version 1.6.10, reference classes can be generated optionally.
     These classes allow to reference database rows from your own scripts easily.
-    To enable these classes generation - set "Reference class postfix" or "Reference list class postfix" parameters to some valid C# literals (for example _Ref and _ListRef).
-    Two additional classes will be generated - one for referencing a single row and another for referencing multiple rows (from single table).
+    To enable these classes generation - set "Reference class postfix" or "Reference list class postfix" parameters to
+    some valid C# literals (for example _Ref and _ListRef).
+    Two additional classes will be generated - one for referencing a single row and another for referencing multiple
+    rows (from single table).
     If you use Odin inspector, please, read <a href="../../Misc/SerializableReferences/#odin">this</a>.
 </p>
 <div class="bg-image">
-    <a href="#path images/BGDatabase/CodeGenExtensionClasses5.png"><img style="width:400px; height: 200px" src="#path images/BGDatabase/CodeGenExtensionClasses5.png"></a>
+    <a href="#path images/BGDatabase/CodeGenExtensionClasses5.png"><img style="width:400px; height: 200px"
+                                                                        src="#path images/BGDatabase/CodeGenExtensionClasses5.png"></a>
 </div>
 
 <h4>How to enable/disable</h4>
@@ -431,7 +466,9 @@ firstRow.LoadAssetAsync(asset => {
         database classes from the rest of the project classes
     </li>
     <li>Field names prefix - the same as classes names prefix, but for fields.</li>
-    <li>Entities prefix (optional) - fill it if you want to generate a property for each entity (<a href="#entities">read more above</a>)</li>
+    <li>Entities prefix (optional) - fill it if you want to generate a property for each entity (<a href="#entities">read
+        more above</a>)
+    </li>
 </ol>
 <p>
     After you fill all parameters, press <code>Generate</code> button to generate classes.
@@ -440,11 +477,15 @@ firstRow.LoadAssetAsync(asset => {
     Note, you should regenerate these classes after any change to database structure (e.g. if you add/remove tables or
     fields, changing their names/order etc.)
 </div>
+<p>
+    4) If you use code obfuscator/obfuscation, make sure to exclude generated classes from obfuscation process
+</p>
 
 <h4 id="extensions">Generated classes extensions</h4>
 <p>
     All generated classes are partial, so you can create your own partial class with the same namespace/name
-    and add additional methods manually to these classes (<a href="../../Misc/AddingMembersToGeneratedClasses">read detailed guide</a>)
+    and add additional methods manually to these classes (<a href="../../Misc/AddingMembersToGeneratedClasses">read
+    detailed guide</a>)
 </p>
 
 <div class="flexdiv">
@@ -452,6 +493,7 @@ firstRow.LoadAssetAsync(asset => {
         What to read next:
         <ol>
             <li><a href="../../Addons/CodeGeneration">Code generation addon</a></li>
+            <li><a href="../../Addons/CodeGeneration/Optimization">Performance optimization for generated classes</a></li>
         </ol>
     </div>
 </div>

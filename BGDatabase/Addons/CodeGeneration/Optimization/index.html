@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-7');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../../css/main.css">
+    <link rel="stylesheet" href="../../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../BGCurve">BG`Curve</a>
+<!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+<!--                       href="../../../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+<!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                MESSAGE HERE
+        </b>
+    </div>-->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <!--======================================================        Content (from Root)              -->
+        
+
+
+
+
+<link rel="stylesheet" href="../../../../css/bgdatabase.css">
+<link rel="stylesheet" href="../../../../css/magnific-popup.css">
+<script src="../../../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul id="leftmenu">
+            <li class="pli databaseicon ">
+                <script async src="https://cse.google.com/cse.js?cx=e1930f586f83c4862">
+                </script>
+                <div class="gcse-searchbox-only"></div>
+                <a class="pa" href="../../../../BGDatabase">BG Database Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Setup">Setup</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/HowToUse">How to use</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GUIOverview">GUI overview</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GUITips">GUI tips and tricks</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeExamples">Code Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Videos">Video guides</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/SupportedFields">Field types</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ExportImport">Export Import</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/DataBinding">Data Binding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/GraphEditor">Graph Editor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/MergeTool">Merge Tools</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Misc">Misc</a>
+                    </li>
+                    <li class="cli downloadicon ">
+                        <a class="ca" href="../../../../BGDatabase/Downloads">Downloads</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/CodeGeneration">Code Generation</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior
+                            Classes</a>
+                    </li>
+                    <!--
+                                        <li class="cli ">
+                                            <a class="ca" href="../../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
+                                        </li>
+                    -->
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/ThirdParty">Third-Party Integration</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Excel">Excel</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Behavior">Unity Behavior</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/FlowCanvas">Flow Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/NodeCanvas">Node Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/BehaviorDesigner">Behavior Designer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/UNode">UNode</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/ThirdParty/GameCreator">Game Creator</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/Addons">Addons</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/SaveLoad">Save Load</a>
+                    </li>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Multithreading">Multithreading</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Modding">Modding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Settings">Settings</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Partition">Partitions</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Diagram">Diagram</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Minify">Minify</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/Addons/Localization">Localization</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../../../BGDatabase">BG BGDatabase Home</a>
+        <a class="pa" href="../../../../BGDatabase/Setup">Setup</a>
+        <a class="pa" href="../../../../BGDatabase/HowToUse">How To Use</a>
+        <a class="pa" href="../../../../BGDatabase/Videos">Video guides</a>
+        <a class="pa" href="../../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
+        <a class="pa" href="../../../../BGDatabase/SupportedFields">Fields</a>
+        <a class="pa" href="../../../../BGDatabase/ExportImport">Export Import</a>
+        <a class="pa" href="../../../../BGDatabase/DataBinding">Data Binding</a>
+        <a class="pa" href="../../../../BGDatabase/Events">Events</a>
+        <a class="pa" href="../../../../BGDatabase/CodeGeneration">Code Generation</a>
+        <a class="pa" href="../../../../BGDatabase/Addons">Addons</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>Code Generation Addon</h3>
+                
+                <div style="margin-bottom: 10px;">
+                    <div class="subTitle"><a class="backButton" href="../">&#8592; Back</a> Optimization</div>
+                </div>
+                
+            </div>
+
+            <!--======================================================        BG Database Content              -->
+            <div id="content">
+                
+
+
+<h4>Description</h4>
+<p>
+    This article describes available optimization settings for CodeGen addon.
+    The classes, generated by <a href="..">CodeGen addon</a> and <a href="../../../CodeGeneration/MonoBehaviourClasses">MonoBehaviour code generator</a>
+    gain performance boost while using these settings, so if these classes is your main API for accessing database, we highly recommend to use all optimization parameters.
+    If you want generated MonoBehaviour classes to also benefit from these parameters,
+    enable them and toggle on "Use CodeGen addon generated classes" parameter in MonoBehaviour generator settings and re-generate the classes.
+</p>
+
+<h5>Generate metas</h5>
+<p>
+    Additional classes for tables (metas) are generated.
+    This eliminates the need for down-casting rows (entities).
+    This parameter is required for some other settings.
+</p>
+
+<h5>Storage</h5>
+<p>
+    The most important setting. It defines where cell values are stored and improve getters and <a href="#rawSetters">raw
+    setters</a> performance
+</p>
+<ol>
+    <li><code>Default</code> - cell values for most fields are stored in an array within the field class. (slower)</li>
+    <li><code>GeneratedClasses</code> - cell values for some fields are stored in generated class (faster). Additional
+        classes for fields are generated
+    </li>
+</ol>
+<div class="bg-image">
+    <a href="../../../../images/BGDatabase/CodeGenExtensionClasses6.png"><img style="width:400px; height: 200px"
+                                                                        src="../../../../images/BGDatabase/CodeGenExtensionClasses6.png"></a>
+</div>
+<p>
+    To ensure that the generated classes for the database fields are being used in the database,
+    navigate to 'Configuration -> $TableName' and check the 'Type & Class' column.
+    If the generated classes are used, an asterisk will be added next to the field type.
+</p>
+<div class="bg-image">
+    <a href="../../../../images/BGDatabase/CodeGenExtensionClasses7.png"><img style="width:400px; height: 200px"
+                                                                        src="../../../../images/BGDatabase/CodeGenExtensionClasses7.png"></a>
+</div>
+
+Current status of fields (as of v.1.9.1):
+<ol>
+    <li>Currently supported: primitive, Unity primitive, enums, relationSingle/relationMultiple/viewRelationSingle</li>
+    <li>Not supported yet: lists, nullable, strings</li>
+    <li>The following types will not be supported for a good reason: assets, calculated fields.</li>
+</ol>
+
+<h5>Cache relation values</h5>
+<p>
+    Caching relation field values in generated classes can significantly improve the performance of getter methods.
+    This setting is ideal for scenarios with frequent reads and infrequent writes.
+    The memory cost for
+</p>
+<ol>
+    <li>Single row relations is 9 bytes per row (1 byte for the dirty flag + pointer to the row)</li>
+    <li>Multiple rows relation depends on value size (1 byte for the dirty flag + an additional list for the value)</li>
+</ol>
+<p>
+    Important note regarding caching a List (relationMultiple) values
+</p>
+<ol>
+    <li>Values can not be null anymore, if there is no value an empty list will be returned</li>
+    <li>There is no need to use FillXXX methods to get rid of GC overhead (except for values in <a
+            href="../../../CodeGeneration/ExtensionClasses#reverse">the reverse direction</a>)
+    </li>
+    <li>When you read the value, a List object is returned, which is utilized to store the cached value.
+        If you modify this list, you must pass it back to the setter, otherwise data integrity may be compromised.
+        <pre class="nomargin"><code class="language-csharp">        var list = entity.someList;
+        list.Add(SomeTable.GetEntity(0)); // <- this call modifies the cached value, not the database value
+        entity.someList = list; // <- this call is very important</code></pre>
+    </li>
+</ol>
+
+<h5>Other relations optimizations</h5>
+<p>A new setting has been added to relational fields, called <code>Ignore list order</code>. Use it for:
+</p>
+<ol>
+    <li>Nested fields, if the order of nested rows is not important.</li>
+    <li>Other relational fields, if the order of rows returned while traversing the relation in reverse is not
+        important.
+    </li>
+</ol>
+
+<h5>Runtime initialization</h5>
+<p>
+    This parameter defines how generated classes fields are initialized
+</p>
+<ol>
+    <li><code>On Demand</code> - the C# fields for database tables and fields are initialized on demand (slow)
+    </li>
+    <li><code>Manual</code> - you need to initialize runtime manually by calling
+        <code>BGCodeGenRuntimeInitializer.InitializeCodeGenRuntime</code> method (faster).
+        You need to call <code>BGCodeGenRuntimeInitializer.InitializeCodeGenRuntime();</code> method
+        before accessing database and after loading the game with the <a href="../../SaveLoad">SaveLoad addon</a>
+        if "Reload database" parameter is used.
+        If the <code>BGCodeGenRuntimeInitializer.InitializeCodeGenRuntime</code> method is not called,
+        a NullReferenceException will be thrown on database access via generated classes.
+    </li>
+</ol>
+
+
+<h5 id="rawSetters">Raw setters</h5>
+<p>
+    Raw setters are additional properties that allow you to set values while bypassing events.
+    Regular setters are slower due to the additional event dispatching.
+    If you do not need events to be triggered, you can use faster setters to improve performance.
+    Raw setters are generated for some fields (like primitive fields) only if the fields are not included into keys or
+    indexes
+</p>
+
+<h5>Garbage Collection overhead</h5>
+<p>
+    Some methods can have heap memory allocation, producing GC overhead.
+    If you call these methods during a rare event, such as scene loading, the impact is negligible.
+    However, if you call them in a hot loop, for example, in the Update or FixedUpdate methods, you may want to ensure that
+    no heap memory is allocated. In most cases, using a reusable list solves the problem.
+</p>
+<table class="contentTable">
+    <tr>
+        <th>
+            #
+        </th>
+        <th>
+            Method
+        </th>
+        <th>
+            Solution
+        </th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>FindEntities method</td>
+        <td>Use corresponding FillXXX method and pass a reusable list to this method.
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using System.Collections.Generic;
+public class Temp : UnityEngine.MonoBehaviour
+{
+    private static readonly List&lt;D_Temp&gt; reusableList = new List&lt;D_Temp&gt;();
+
+    private void Update()
+    {
+        // List&lt;D_Temp&gt; entity = D_Temp.FindEntities(entity => entity.intField > 0);// <- produce garbage
+        D_Temp.FindEntities(entity => entity.intField > 0, reusableList); // <- no garbage
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>nested field getter</td>
+        <td>The same as #1 (FillXXX method)
+            <details>
+                <summary>Code example</summary>
+                <pre class="nomargin"><code class="language-csharp">using System.Collections.Generic;
+
+public class Temp : UnityEngine.MonoBehaviour
+{
+    private static readonly List&lt;D_nested&gt; reusableList = new List&lt;D_nested&lt;();
+
+    private void Update()
+    {
+        var entity = D_Temp.GetEntity(0);
+        //List&lt;D_nested&lt; nestedRows = entity.nested; // <- produce garbage
+        entity.Fillnested(reusableList); // <- no garbage
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>The getters for relations with List value (relationMultiple / viewRelationMultiple)</td>
+        <td>
+            <ol>Option #1: The same as #1 (FillXXX method)</ol>
+            <ol>Option #2: Use "cache relation value" optimization parameter.
+                Note, it has some memory cost (the same as using non-static reusable list, added to the generated class)
+            </ol>
+            <details>
+                <summary>Code example for option #1</summary>
+                <pre class="nomargin"><code class="language-csharp">using System.Collections.Generic;
+public class Temp : UnityEngine.MonoBehaviour
+{
+    private static readonly List&lt;D_Related1&gt; reusableList = new List&lt;D_Related1&gt;();
+
+    private void Update()
+    {
+        D_Temp entity = D_Temp.GetEntity(0);
+        // List&lt;D_Related1&gt; result = entity.mRel; // <- produce garbage
+        entity.FillmRel(reusableList); // <- no garbage
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>The getters for List values while traversing relations in reverse direction</td>
+        <td>The same as #1 (FillXXX method)
+            <details>
+                <summary>Code example for option #1</summary>
+                <pre class="nomargin"><code class="language-csharp">using System.Collections.Generic;
+public class Temp : UnityEngine.MonoBehaviour
+{
+    private static readonly List&lt;D_Temp&gt; reusableList = new List&lt;D_Temp&gt;();
+
+    private void Update()
+    {
+        D_Related1 entity = D_Related1.GetEntity(0);
+        // List&lt;D_Temp&gt; result = entity.RelatedTempListUsingsRelRelation; // <- produce garbage
+        entity.FillRelatedTempListUsingsRelRelation(reusableList); // <- no garbage
+    }
+}</code></pre>
+            </details>
+        </td>
+    </tr>
+</table>
+<p>
+    Important note: You can add reusable lists <a href="../../../Misc/AddingMembersToGeneratedClasses">directly to the generated class</a>
+    and include your own getters and setters that do not produce garbage. For example
+</p>
+<details>
+    <summary>Adding your own members to generated class</summary>
+    <pre class="nomargin"><code class="language-csharp">using System.Collections.Generic;
+//BansheeGz.BGDatabase.Example is the namespace of generated class
+namespace BansheeGz.BGDatabase.Example
+{
+    //BGE_AllFields is the name of generated class
+    partial class BGE_AllFields
+    {
+        //reusable list for enumList field
+        private static readonly List&lt;BGUtilForTest.TestEnumInt&gt; reusableEnumList = new();
+
+        //property without GC
+        public List&lt;BGUtilForTest.TestEnumInt&gt; enumListNoGC
+        {
+            get
+            {
+                Fillf_enumList(reusableEnumList);
+                return reusableEnumList;
+            }
+        }
+    }
+}</code></pre>
+</details>
+<p>Keeping a list static is much more memory efficient, but you need to remember that
+    it can only contain the result for the last row for which the property is called. You can make it non-static if you prefer.
+</p>
+
+
+<h5>Events degrade performance</h5>
+<p>
+    Database events can have negative impact on setter methods performance. If you can do without events, don't use
+    them.
+</p>
+
+<h5>"Slow" fields to be aware of</h5>
+<table class="contentTable">
+    <tr>
+        <th>
+            Field
+        </th>
+        <th>
+            Description
+        </th>
+    </tr>
+    <tr>
+        <td>asset fields</td>
+        <td>Reading a value also involves loading an asset. Loading the asset for the first time can be slow.
+            Use Addressables with asynchronous loading for such fields.
+        </td>
+    </tr>
+    <tr>
+        <td>calculated fields</td>
+        <td>Try to not read the values of such fields in hot loops.
+            Replace them with programmable fields or <a href="../../../Misc/AddingMembersToGeneratedClasses">custom C#
+                properties</a>
+        </td>
+    </tr>
+    <tr>
+        <td>relation fields</td>
+        <td>
+            These are the most troublesome fields.
+            Caching the values for such fields should resolve the problem with slow getters in "frequent reads and
+            infrequent writes" scenarios,
+            however the setters can still be relatively slow especially in some scenarios (be very careful to use
+            relation field setters in hot loops)
+        </td>
+    </tr>
+</table>
+
+<h5>Conclusion</h5>
+<p>Test your game's performance before releasing it using the minimal required hardware.
+    Contact us if you encounter performance issues with our asset.
+</p>
+            </div>
+            
+            <a class="backToDownloads" href="../" style="margin-top: 10px">&#8592; Back to Code Generation Addon</a>
+            
+
+            <!--======================================================       BG Database Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

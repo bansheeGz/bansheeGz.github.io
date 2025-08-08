@@ -1,0 +1,44 @@
+#set title=BGDatabase v.1.9.1 The performance upgrade for codegen classes
+#set date=08/2025
+
+<link rel="stylesheet" href="#path css/bgdatabase.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<h4>Description</h4>
+<p>
+    In BGDatabase v.1.9.1 we improved performance for generated classes.
+    Read <a href="../../BGDatabase/Addons/CodeGeneration/Optimization">this guide</a> for more details.
+    Backup your database file just in case before upgrading.
+</p>
+
+<h4>Minor API changes</h4>
+<p>
+    Some APIs have been changed.
+    We hope that very few people (if any) are affected by these changes.
+    Fortunately, none of our plugins are affected (some of them need to be updated to work properly with new features).
+    However, if you are using custom scripting with our API, you may encounter some breaking changes.
+    Here’s how to fix them.
+</p>
+<p>
+    Prior to version 1.2, each field and table had a single corresponding class, such as <code>BGFieldInt</code> for integer fields,  <code>BGMetaRow</code> for "row" tables etc.
+    Now, some implementing classes may differ, and we have switched to using interfaces for these classes,
+    for example, the interface for the integer fields is <code>BGFieldIntContract</code> and the interface for the "row" tables is <code>BGMetaRowContract</code> etc.
+    A few method signatures have been updated to work with interfaces instead of classes.
+    You can cast these interfaces to their corresponding base classes: <code>BGField</code> is the base class for all fields,
+    and <code>BGMetaEntity</code> is the base class for all tables.
+</p>
+<p>
+    If you encounter a compilation error related to the API change that you cannot resolve, please revert the database to version 1.8.19
+    without saving the database with the new version and contact us.
+</p>
+
+<h4>New global search tool</h4>
+<p>
+    Search all database rows with the new 'Search Anywhere' tool.
+</p>
+<div class="middleAlign">
+    <img src="#path images/Blog/Blog30.png">
+</div>

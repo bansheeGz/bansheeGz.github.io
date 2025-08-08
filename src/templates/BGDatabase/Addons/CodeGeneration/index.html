@@ -17,6 +17,16 @@
 <h4>What properties/methods are generated?</h4>
 The full list of generated methods/properties can be found in <a href="../../CodeGeneration/ExtensionClasses#whatIsGenerated">main article about code generation</a>)
 
+<h4>Performance optimizations</h4>
+Read <a href="Optimization">this guide</a> on how to improve performance
+
+<h4>Code obfuscation</h4>
+<p>
+    If you use a code obfuscator that renames classes and class members, exclude generated classes in the obfuscator settings.
+    We use a naming convention to load generated classes, and if the code obfuscator renames them, the database runtime cannot load them.
+    The simplest way is to use a custom namespace for generated classes and add this namespace to the code obfuscator's exclusion settings.
+</p>
+
 <h4>Examples</h4>
 <p>
     All our <a href="../../Downloads">example projects</a> use CodeGen addon
@@ -70,7 +80,7 @@ The full list of generated methods/properties can be found in <a href="../../Cod
         <td>Source file to use for generated C# classes. All classes will be put into one single .cs file, which should be under your project folder </td>
     </tr>
     <tr>
-        <td>Package</td>
+        <td>Package(C# namespace)</td>
         <td>Package (C# namespace) for generated classes. For example <code>MySpace</code>. You can safely leave this setting blank.</td>
     </tr>
     <tr>
