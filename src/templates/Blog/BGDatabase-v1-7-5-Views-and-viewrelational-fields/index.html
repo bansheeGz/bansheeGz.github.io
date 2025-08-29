@@ -31,6 +31,13 @@
     They are similar to <code>manyTablesRelationSingle</code> and <code>manyTablesRelationMultiple</code>, allowing to reference rows from multiple tables
 </p>
 
+<h4>Restrictions</h4>
+<p>
+    Current implementation does not support adding relations and assets fields to the view,
+    but there is an easy workaround: add them manually to the generated view interface.
+    (<a href="../../BGDatabase/Misc/AddingMembersToGeneratedClasses">more information</a>)
+</p>
+
 <h4>Why view relational fields are better alternatives to many tables relational fields?</h4>
 <ol>
     <li>View is a persistent structure. You can reference the same view from multiple tables.
