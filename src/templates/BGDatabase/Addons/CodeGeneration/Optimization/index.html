@@ -42,18 +42,12 @@
 <p>
     To ensure that the generated classes for the database fields are in use, navigate to 'Configuration -> $TableName'
     and check the 'Type & Class' column. An asterisk will appear next to the field type if the generated classes are being used.
+    Some fields are not supported (as of v. 1.9.2): nested, assets, calculated/programmable, scene object references, hashtable.
 </p>
 <div class="bg-image">
     <a href="#path images/BGDatabase/CodeGenExtensionClasses7.png"><img style="width:400px; height: 200px"
                                                                         src="#path images/BGDatabase/CodeGenExtensionClasses7.png"></a>
 </div>
-
-Current status of fields (as of v.1.9.1):
-<ol>
-    <li>Currently supported: primitive, Unity primitive, enums, relationSingle/relationMultiple/viewRelationSingle</li>
-    <li>Not supported yet: lists, nullable, strings</li>
-    <li>The following types will not be supported for a good reason: assets, calculated fields.</li>
-</ol>
 
 <h5>Cache relation values</h5>
 <p>
@@ -123,6 +117,7 @@ Current status of fields (as of v.1.9.1):
     If these methods are called during infrequent events, like scene loading, the impact is negligible.
     However, if called in a tight loop, such as in the Update or FixedUpdate methods, it's advisable to avoid heap memory allocation.
     Typically, using a reusable list addresses this issue.
+    If you use Unity profiler while running the game inside Unity Editor, close BGDatabase window to get accurate results.
 </p>
 <table class="contentTable">
     <tr>
@@ -258,10 +253,17 @@ namespace BansheeGz.BGDatabase.Example
 </p>
 
 
-<h5>Events degrade performance</h5>
+<h5>General performance tips</h5>
+<ol>
+    <li>Events degrade performance- database events can have negative impact on setter methods performance.
+        If you can do without events, don't use them.</li>
+    <li>
+        If you need to delete multiple entities, use BGMetaEntity.DeleteEntities method instead of BGEntity.Delete.
+        Version 1.9.2 delivers a significant performance boost for this method.
+    </li>
+</ol>
 <p>
-    Database events can have negative impact on setter methods performance. If you can do without events, don't use
-    them.
+
 </p>
 
 <h5>"Slow" fields to be aware of</h5>
@@ -297,6 +299,14 @@ namespace BansheeGz.BGDatabase.Example
         </td>
     </tr>
 </table>
+
+<h5>Misc</h5>
+<ol>
+    <li>Check for deletion- If you toggle on this parameter, additional checks for entity deletion is added to every getter/setter methods.
+        Without these checks, accessing or modifying field values of deleted entity are not detected.
+        If you do not use database in read-only mode, we recommend to use this parameter during development to detect accidental access to deleted entity.
+    </li>
+</ol>
 
 <h5>Conclusion</h5>
 <p>Test your game's performance on the minimum required hardware before release.

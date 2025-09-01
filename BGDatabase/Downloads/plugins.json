@@ -42,19 +42,19 @@
     },
     {
       "id" : "65qKr3PcjEWbHsp37FUHqw",
-      "version" : "1.5",
-      "releaseDate" : "06/05/24",
+      "version" : "1.6",
+      "releaseDate" : "09/01/25",
       "pluginClass" : "BansheeGz.BGDatabase.Editor.BGAssetLoaderManagerAddressablesDelegate",
       "packageClass" : null,
       "name" :  "Addressables plugin",
       "description" :  "Adds support for Addressables. (Addressables version >=1.17.17)",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressables1.5.unitypackage",
+      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressables1.6.unitypackage",
       "dependencies" : [{
         "classToCheck" : "UnityEngine.AddressableAssets.Addressables",
         "asset" : "Addressables"
       }],
-      "requiredVersion" : "1.8.11"
+      "requiredVersion" : "1.9.2"
     },
     {
       "id" : "zRiptqpjTkaSv1XEHk3qmw",
