@@ -324,18 +324,28 @@
 
 <p>
     Mostly, database works inside Editor assembly the same way as it works at runtime, meaning you can develop your own Editor tools on top of the database.
-    Use generated classes to access database.
+    Use <a href="../../Addons/CodeGeneration">generated classes</a> to access database.
+    Below are useful code snippets.
+    You may need to add the following lines to the top of your C# file so the code compiles.
 </p>
+<pre class="nomargin"><code class="language-csharp">
+using BansheeGz.BGDatabase;
+using BansheeGz.BGDatabase.Editor;</code></pre>
+
+
+<h5>Saving database</h5>
 <p>
     To save database in Unity Editor via C# code from Editor assembly, use this line:
 </p>
 <pre class="nomargin"><code class="language-csharp">    //This will work ONLY inside Unity Editor from Editor Assembly
-    BansheeGz.BGDatabase.Editor.BGRepoSaver.SaveRepo();</code></pre>
+    BGRepoSaver.SaveRepo();</code></pre>
 <p>
     To save database in Unity Editor via C# code from Runtime assembly, use this line:
 </p>
 <pre class="nomargin"><code class="language-csharp">    //This will work ONLY inside Unity Editor from Runtime or Editor Assembly
-    BansheeGz.BGDatabase.BGUtil.SaveDatabaseInUnityEditor();</code></pre>
+    BGUtil.SaveDatabaseInUnityEditor();</code></pre>
+
+<h5>Assigning assets to asset fields</h5>
 <p>
     To assign unity asset field values, use SetAsset method, defined on each unity asset field and available in Editor assembly (this method is not available at runtime assembly)
 </p>
@@ -346,6 +356,15 @@
     you can access the field directly without need to downcast, using {TableClass}._{fieldName} notation,
     see more details <a href="https://forum.unity.com/threads/bg-database-inmemory-database-excel-google-sheets-syncing-codegen-save-load-support.529740/page-11#post-8780611">here</a>
 </p>
+
+<h5>Ensuring the database is loaded</h5>
+<pre class="nomargin"><code class="language-csharp">    if (!BGRepo.DefaultRepoLoaded) BGRepo.Load();</code></pre>
+
+<h5>Running export/import job</h5>
+<pre class="nomargin"><code class="language-csharp">    //find the job by it's name (replace SomeName with actual job's name)
+    var job = BGSettingsEditor.Model.SyncList.Find(job => job.Name == "SomeName");
+    //run the job (false is for import, true for export)
+    BGSync.RunTask(job, false);</code></pre>
             </div>
             
             <a class="backToDownloads" href="../" style="margin-top: 10px">&#8592; Back to Misc</a>
