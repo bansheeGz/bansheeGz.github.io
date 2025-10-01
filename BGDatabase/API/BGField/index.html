@@ -323,7 +323,7 @@
 <p>
     Strictly speaking, each type has its own field.
     For example, BGFieldInt.cs - is a field of type int, etc.
-    However, you do not have to know anything about these classes, all you need to know is field's type
+    However, you do not need to know anything about these classes, all you need to know is field's type
 </p>
 
 <h4>Main API</h4>
@@ -335,9 +335,22 @@
     </tr>
 
     <tr>
+        <td>GetValue</td>
+        <td>object</td>
+        <td>Get field's value for provided entity</td>
+    </tr>
+    <tr>
+        <td>SetValue</td>
+        <td>void</td>
+        <td>Set field's value for provided entity</td>
+    </tr>
+    <tr>
         <td>this[int entityIndex]</td>
         <td>T</td>
-        <td>Get/Set value by entity index. This is the fastest method to get entity value. T means generic is used, so for int field- T meas int value, for long T means long etc.</td>
+        <td>Get/Set value by entity index. This is the fastest method to get entity value.
+            T means generic is used, so for int field- T meas int value, for long T means long etc.
+            The method is defined on BGField&lt;T&gt; class
+        </td>
     </tr>
     <tr>
         <td colspan="3">
@@ -366,6 +379,23 @@ field[new BGId("HThOdRCxlEGU1aefSG+Nbw")] = entityValue;</code></pre>
 </table>
 
 <h4>Additional API</h4>
+<table class="contentTable">
+    <tr>
+        <th>Method/Property</th>
+        <th>Returns</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>IsDeleted</td>
+        <td>bool</td>
+        <td>was the field deleted or unloaded</td>
+    </tr>
+    <tr>
+        <td>CopyValue(BGCopyCellRequest request)</td>
+        <td>void</td>
+        <td>copy the value from one entity to another</td>
+    </tr>
+</table>
             </div>
             
 

@@ -90,4 +90,15 @@ repo.ForEachMeta(meta => Debug.Log(meta.Name),
 Debug.Log(repo.CountMeta);</code></pre>
         </td>
     </tr>
+    <tr>
+        <td>Addons.Get&lt;T&gt;</td>
+        <td>T</td>
+        <td>Get the addon of specified type</td>
+    </tr>
+    <tr>
+        <td colspan="3">
+<pre class="nomargin"><code class="language-csharp">//get SaveLoad addon
+BGAddonSaveLoad addon = BGRepo.I.Addons.Get&lt;BGAddonSaveLoad&gt;();</code></pre>
+        </td>
+    </tr>
 </table>

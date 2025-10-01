@@ -18,11 +18,8 @@
         <td>Get table row by its index</td>
     </tr>
     <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">
-//get first row
-var entity = meta[0];
-</code></pre>
+        <td colspan="3"><pre class="nomargin"><code class="language-csharp">//get first row
+BGEntity entity = meta[0];</code></pre>
         </td>
     </tr>
 
@@ -32,11 +29,8 @@ var entity = meta[0];
         <td>Get table row by its id</td>
     </tr>
     <tr>
-        <td colspan="3">
-<pre class="nomargin"><code class="language-csharp">
-//get row by it's id
-var entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
-</code></pre>
+        <td colspan="3"><pre class="nomargin"><code class="language-csharp">//get row by it's id
+BGEntity entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];</code></pre>
         </td>
     </tr>
 
@@ -48,14 +42,15 @@ var entity = meta[new BGId("HThOdRCxlEGU1aefSG+Nbw")];
     <tr>
         <td colspan="3">
 <pre class="nomargin"><code class="language-csharp">//get the first row by it's name
-var entity = meta["BigSword"];</code></pre>
+BGEntity entity = meta["BigSword"];</code></pre>
         </td>
     </tr>
 
     <tr>
         <td>ForEachEntity(Action&lt;BGEntity&gt; action, Predicate&lt;BGEntity&gt; filter=null, Comparison&lt;BGEntity&gt; sort=null)</td>
         <td>void</td>
-        <td>Search and iterate entities by filter. For each found entity action will be called. Sort delegate allows to sort entities</td>
+        <td>Search and iterate entities by filter. For each found entity action will be called. Sort delegate allows to sort entities.
+        This method is slow, especially if sort is provided</td>
     </tr>
     <tr>
         <td colspan="3">
@@ -67,7 +62,7 @@ meta.ForEachEntity(entity => Debug.Log(entity.Name), entity => entity.Name.Start
     <tr>
         <td>FindEntity(Predicate&lt;BGEntity&gt; filter)</td>
         <td>BGEntity</td>
-        <td>Find the first entity by filter</td>
+        <td>Find the first entity by filter. This method is slow</td>
     </tr>
     <tr>
         <td colspan="3">
@@ -79,7 +74,8 @@ BGEntity result = meta.FindEntity(entity => entity.Name.StartsWith("My"));</code
     <tr>
         <td>FindEntities(Predicate&lt;BGEntity&gt; filter, List&lt;BGEntity&gt; result=null, Comparison&lt;BGEntity&gt; sort=null)</td>
         <td>List&lt;BGEntity&gt;</td>
-        <td>Search entities by filter. Pass in 'result' list to get rid of Garbage Collection. 'sort' allows to sort entities
+        <td>Search entities by filter. Pass in 'result' list to get rid of Garbage Collection. 'sort' allows to sort entities.
+            This method is slow, especially if sort is provided
         </td>
     </tr>
     <tr>
@@ -148,11 +144,16 @@ var id = meta.Id;</code></pre>
 var name = meta.Name;</code></pre>
         </td>
     </tr>
+    <tr>
+        <td>IsDeleted</td>
+        <td>bool</td>
+        <td>was the table deleted or unloaded</td>
+    </tr>
 
     <tr>
         <td>DeleteEntities</td>
         <td>void</td>
-        <td>Delete several rows</td>
+        <td>Delete several rows. This method is much faster for several rows, compared to BGEntity.Delete</td>
     </tr>
     <tr>
         <td colspan="3">
@@ -160,7 +161,27 @@ var name = meta.Name;</code></pre>
 meta.DeleteEntities(meta.FindEntities(entity => entity.Name.StartsWith("My")));</code></pre>
         </td>
     </tr>
+    <tr>
+        <td>SwapEntities</td>
+        <td>int</td>
+        <td>swap two rows</td>
+    </tr>
 
+    <tr>
+        <td>CountFields</td>
+        <td>int</td>
+        <td>get the number of fields</td>
+    </tr>
+    <tr>
+        <td>GetField</td>
+        <td>BGField</td>
+        <td>get the field by index/name/ID</td>
+    </tr>
+    <tr>
+        <td>FindField(Predicate&lt;BGField&gt; filter)</td>
+        <td>BGField</td>
+        <td>find the field by using predicate</td>
+    </tr>
 
     <tr>
         <td>ForEachField(Action&lt;BGField&gt; action)</td>
@@ -186,14 +207,36 @@ meta.ForEachField(field => Debug.Log(field.Name), field => field.ValueType==type
         </td>
     </tr>
     <tr>
+        <td>SwapFields</td>
+        <td>int</td>
+        <td>swap two fields</td>
+    </tr>
+    <tr>
+        <td>RelationsInboundNullable</td>
+        <td>List&lt;BGAbstractRelationI&gt;</td>
+        <td>get the list of incoming relations</td>
+    </tr>
+
+    <tr>
+        <td>CountKeys</td>
+        <td>int</td>
+        <td>get the number of keys</td>
+    </tr>
+    <tr>
         <td>GetKey</td>
         <td>BGKey</td>
-        <td>get key by index/ID/name</td>
+        <td>get the key by index/ID/name</td>
+    </tr>
+    <tr>
+        <td>CountIndexes</td>
+        <td>int</td>
+        <td>get the number of indexes</td>
     </tr>
     <tr>
         <td>GetIndex</td>
         <td>BGIndex</td>
-        <td>get index by index/ID/name</td>
+        <td>get the index by index/ID/name</td>
     </tr>
+
 
 </table>

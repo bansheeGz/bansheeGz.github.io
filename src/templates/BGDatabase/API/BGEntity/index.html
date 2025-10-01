@@ -53,7 +53,7 @@ entity.Set("intField", intValue);</code></pre>
     <tr>
         <td>Id</td>
         <td>BGId</td>
-        <td>Get table row id</td>
+        <td>Get entity id</td>
     </tr>
     <tr>
         <td colspan="3">
@@ -65,7 +65,7 @@ BGId id = entity.Id;</code></pre>
     <tr>
         <td>Index</td>
         <td>int</td>
-        <td>Get table row physical position</td>
+        <td>Get entity physical position</td>
     </tr>
     <tr>
         <td colspan="3">
@@ -99,9 +99,17 @@ BGMetaEntity meta = entity.Meta;</code></pre>
     </tr>
 
     <tr>
+        <td>IsDeleted</td>
+        <td>bool</td>
+        <td>was the entity deleted or unloaded</td>
+    </tr>
+
+    <tr>
         <td>Delete()</td>
         <td>void</td>
-        <td>Delete the row. Do not use this method to delete several rows, because it's way too slow for this. Use BGMetaEntity.DeleteEntities instead</td>
+        <td>Delete the row. Do not use this method to delete several rows, because it's way too slow for this. Use BGMetaEntity.DeleteEntities instead
+            (make sure you use version >= 1.9.2)
+        </td>
     </tr>
     <tr>
         <td colspan="3">
@@ -109,5 +117,19 @@ BGMetaEntity meta = entity.Meta;</code></pre>
 entity.Delete();</code></pre>
         </td>
     </tr>
-
+    <tr>
+        <td>Duplicate</td>
+        <td>BGEntity</td>
+        <td>duplicate the entity</td>
+    </tr>
+    <tr>
+        <td>CopyFieldsValuesFrom</td>
+        <td>void</td>
+        <td>copy field values from another entity</td>
+    </tr>
+    <tr>
+        <td>ClearFieldValue(BGId fieldId)</td>
+        <td>void</td>
+        <td>clear field value</td>
+    </tr>
 </table>
