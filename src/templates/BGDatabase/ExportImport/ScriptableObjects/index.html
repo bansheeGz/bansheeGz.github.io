@@ -3,7 +3,8 @@
 
 <h4>Description</h4>
 <p>
-    Generate both scriptable object C# sources (one per table) and assets (one per row).
+    Generate both scriptable object C# sources (one per table) and assets
+    (one per row or inlined <a href="https://learn.microsoft.com/en-us/dotnet/api/system.serializableattribute?view=net-9.0">Serializable</a> objects).
 </p>
 
 <h4>Setup</h4>
@@ -30,11 +31,17 @@
 
 <h4>Limitations and warnings</h4>
 <ol>
-    <li>Data exchange with scriptable objects is not universal.
-        If scriptable assets are created with our generated C# classes, it's possible to export/import any data
-        from/to the database (as soon as <a href="#unsupported">the fields are supported</a>).
-        However, if scriptable assets are not created with our generated C# classes,
-        there is no guarantee that you will be able to export/import data from such scriptable assets into the database.
+    <li>
+        With <a href="#inlining">inline config</a> and <a href="#processor">custom field processors</a>, introduced in BGDatabase version 1.9.3,
+        we believe that almost any scriptable object can be mapped to the database structure.
+        <details>
+            <summary>Archived warning</summary>
+            Data exchange with scriptable objects is not universal.
+            If scriptable assets are created with our generated C# classes, it's possible to export/import any data
+            from/to the database (as soon as <a href="#unsupported">the fields are supported</a>).
+            However, if scriptable assets are not created with our generated C# classes,
+            there may be a chance that you will not be able to export/import data from such scriptable assets into the database.
+        </details>
     </li>
     <li>Select 2 new, empty folders for generated C# sources and scriptable assets. Do not put other assets in these folders.
     </li>
@@ -65,11 +72,12 @@
 <p>
     Scriptable objects consist of two parts- C# source files for scriptable objects (with cs extension),
     which defines which fields each asset has and the assets, the instances of this C# class, stored in separate files (with asset extension).
-    Both C# source files (one for each table) and the assets (one for each row) are generated.
+    Both C# source files (one for each table) and the assets/inlined objects (one for each row) are generated.
 </p>
 <ol>
     <li>Generating C# sources: C# sources can be generated from data source page. You can also exclude some
-        tables/fields from generation
+        tables/fields from generation. If you want to add your own fields/methods to generated classes,
+        read <a href="../../Misc/AddingMembersToGeneratedClasses">this guide</a>.
     </li>
     <li>Generating assets: assets are generated during export job execution.
         C# source files should be up-to-date,
@@ -127,3 +135,113 @@
     "FormerlySerializedAs" column. You can remove this setting after assets generating is executed.
 </p>
 <img src="#path images/BGDatabase/SO2.png"/>
+
+<h4 id="inlining">Inlining objects</h4>
+<p class="importantNote">
+    If you already use export/import with ScriptableObjects, back up your project before experimenting with object inlining.
+    Classes generated with object inlining are not compatible with classes generated without it.
+    If you switch from a ScriptableObject to a plain [Serializable] class, any existing assets created from that ScriptableObject will no longer be valid.
+</p>
+<p>Inlining stores entities (rows) inside their parent objects.
+    When a meta is inlined, its class is a regular serializable class, not a ScriptableObject.
+    Instead of creating a separate ScriptableObject asset for each row, rows are stored inline within the parent asset or object.
+    The parent object is determined by a relationSingle field, each child row references its parent row.
+</p>
+<p>
+    Example: suppose we have two tables, Countries and Cities.
+    Each City row references a Country row. If City rows are inlined within Country rows,
+</p>
+<img src="#path images/BGDatabase/SO5.png"/>
+<p>
+    the City class becomes a regular serializable C# class, and the Country ScriptableObject contains a list of inlined cities.
+</p>
+<img src="#path images/BGDatabase/SO6.png"/>
+<p>
+    How it appears in the Unity Inspector
+</p>
+<img src="#path images/BGDatabase/SO7.png"/>
+<p>
+    You can also inline a single entity instead of a list.
+    In that case, ensure each child row references exactly one parent row and each parent row is referenced by exactly one child row, forming a 1:1 relation.
+    During data export, this requirement is checked and an error is thrown if it's violated
+</p>
+<img src="#path images/BGDatabase/SO8.png"/>
+
+<p>
+Two restrictions on inlining entities:
+</p>
+<ol>
+    <li>No direct references: You cannot reference an inlined object directly from scripts, access is only via its parent object.</li>
+    <li>No incoming relations: Inlined entities must not have incoming relations, except for relations from other meta rows that are also inlined.</li>
+</ol>
+
+<h5 id="processor">Customizing individual fields</h5>
+<p>
+    You can customize export, import, and code generation for individual fields using C#.
+    Create a class that inherits from BGSOFieldProcessor and place it in an Editor folder.
+    BGSOFieldProcessor provides four methods you can override to control how a field is processed.
+</p>
+<ol>
+    <li>IsApplicableTo: activates your processor for a particular field.</li>
+    <li>OnCodeGeneration: customize the generated C# field name and type.</li>
+    <li>OnEntityExport: transfer the value from the database to the ScriptableObject.</li>
+    <li>OnEntityImport: transfer the value from the ScriptableObject back to the database.</li>
+</ol>
+Here is example code, which transform database "stringList" field with type List&lt;string&gt; to ScriptableObject's "intList" C# field with type List&lt;int&gt;
+
+<details>
+    <summary>Example code</summary>
+<pre class="nomargin"><code class="language-csharp">
+using System.Collections.Generic;
+using System.Linq;
+using BansheeGz.BGDatabase;
+using BansheeGz.BGDatabase.Editor;
+
+//custom processor for converting DB Test.stringList field with List&lt;string&gt; type
+//to scriptableObject intList with List&lt;int&gt; type
+public class SOStringListToIntList : BGSOFieldProcessor
+{
+    //activates this processor for Test.stringList field
+    public override bool IsApplicableTo(IsApplicableToRequest request) => request.Field.FullName == "Test.stringList";
+
+    //adds C# field with "intList" name and List&lt;int&gt; type to the generated C# class instead of "stringList"
+    public override void OnCodeGeneration(OnCodeGenerationRequest request) =>
+        request.ClassBuilder.Add(new BGCodeGenClass.Field
+        {
+            Name = "intList",
+            Type = "System.Collections.Generic.List&lt;int&gt;",
+            IsPublic = true,
+        });
+
+    //copy value from the database row to the scriptable object (executed on export)
+    public override void OnEntityExport(OnEntityExportRequest request)
+    {
+        //S_Test is the name of the scriptable object C# class
+        var scriptableObject = (S_Test)request.Asset;
+        //downcast field to the target type
+        var stringListField = (BGFieldListStringContract) request.Field;
+        //get db value
+        List&lt;string&gt; dbList = stringListField[request.Entity];
+        //convert the list of strings to the list of ints
+        List&lt;int&gt; intList = dbList?.Select(int.Parse).ToList();
+        // scriptableObject.intList field should be generated in OnCodeGeneration method
+        scriptableObject.intList = intList;
+    }
+
+    //copy value from the scriptable object to the database row (executed on import)
+    public override void OnEntityImport(OnEntityImportRequest request)
+    {
+        //S_Test is the name of the scriptable object C# class
+        var scriptableObject = (S_Test)request.Asset;
+        //downcast field to the target type
+        var stringListField = (BGFieldListStringContract) request.Field;
+        //get SO value (intList should be generated in OnCodeGeneration method)
+        List&lt;int&gt; intList =  scriptableObject.intList;
+        //convert the list of ints to the list of strings
+        List&lt;string&gt; dbList = intList?.Select(value => value.ToString()).ToList();
+        // set database value
+        stringListField[request.Entity] = dbList;
+    }
+}
+</code></pre>
+</details>

@@ -1,0 +1,88 @@
+#set page=Downloads
+#set subPage=SQLite for Editor
+
+
+<div class="bg-main-contacts">
+
+    <div class="bg-main-contacts_grid mdl-grid">
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Version:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            1.0 (latest)
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Format:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Unity package
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            Dependencies:
+        </div>
+        <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--2-col-phone">
+            BGDatabase, sqlite3.dll (native)
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <a href="../BGDatabaseSqliteEditor.unitypackage" class="downloadButton"></a>
+        </div>
+        <div class="mdl-cell mdl-cell--12-col mdl-cell--8-col-tablet mdl-cell--4-col-phone bg-desc">
+            <img style="width: 100%" src="#path images/BGDatabase/download62.png">
+        </div>
+    </div>
+</div>
+
+
+<h4>Description</h4>
+<p>
+    This plugin adds support for data exchange between BGDatabase and SQLite database in Unity Editor.
+</p>
+
+<h4>Setup</h4>
+<ol>
+    <li>Download and install this plugin</li>
+    <li>
+        <p>
+            If you want to use SQLite, you probably already have sqlite.dll added to your project.
+            If not, <a href="https://www.sqlite.org/download.html">download</a> sqlite3.dll for your OS and add it to your project.
+            Make sure sqlite3.dll targets at least Unity Editor
+        </p>
+        <img  src="#path images/BGDatabase/SQLite1.png">
+
+        <!--
+                <div class="bg-image">
+                    <a href="#path images/BGDatabase/SQLite1.png">
+                        <img style="width: 200px;height: 100px;" src="#path images/BGDatabase/SQLite1.png">
+                    </a>
+                </div>
+        -->
+        <p>
+            If you do not add sqlite3.dll, a DllNotFoundException will be thrown when you try to connect to a SQLite database
+        </p>
+        <img src="#path images/BGDatabase/SQLite2.png">
+    </li>
+    <li>Follow <a href="../../ExportImport/Common">this guide</a> to create a SQLite data source and job for data exchange</li>
+    <li>Read <a href="../../ThirdParty/SQLite">this guide</a> to learn about the available operations ofr SQLite database</li>
+</ol>
+
+<h4>Downloads</h4>
+<details>
+    <summary>Click to see all releases</summary>
+
+    <table class="contentTable dTable">
+        <tr>
+            <th>
+                Release date
+            </th>
+            <th>
+                Download
+            </th>
+        </tr>
+        <tr>
+            <td class="ra">Oct 12, 2025</td>
+            <td class="ra">
+                <a href="../BGDatabaseSqliteEditor.unitypackage">version 1.0</a>
+            </td>
+        </tr>
+    </table>
+</details>

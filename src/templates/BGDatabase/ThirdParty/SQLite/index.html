@@ -1,0 +1,256 @@
+#set page=SQLite
+
+
+<h4>Description</h4>
+<p>
+    There is a <a href="../../Downloads/EditorSQLite">downloadable plugin</a>, which adds support for data exchange
+    between BGDatabase and SQLite in Unity Editor. See the list of available operations below.
+</p>
+
+<h4>Available operations</h4>
+<table class="contentTable">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Check structure</td>
+        <td>Checks if SQLite database has required structure for data.
+            The following requirements apply
+            <ol>
+                <li>Each BGDatabase table should have a corresponding SQLite table with a Guid compatible primary key
+                    (ID column). ID column is used to identify matching rows and for relations values
+                </li>
+                <li>Each database field should have a corresponding SQLite column with compatible type</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>Sync structure</td>
+        <td>Creates missing SQLite tables and fields for data exchange using BGDatabase structure as a source.
+            This function only creates missing tables/fields, it does not change or delete existing columns.
+            For example, if the required column exists, but does not have compatible type, exception will be thrown, and
+            it should be fixed manually
+        </td>
+    </tr>
+    <tr>
+        <td>Export</td>
+        <td>Export data from BGDatabase to SQLite
+        </td>
+    </tr>
+    <tr>
+        <td>Import</td>
+        <td>Import data from SQLite to BGDatabase
+        </td>
+    </tr>
+</table>
+
+<h4>Restrictions</h4>
+<ol>
+    <li>Tables should have <a href="#idColumn">ID column</a> with PRIMARY KEY constraint and Guid-compatible type (TEXT or BLOB)</li>
+    <li>Export/import is slightly different compared to Excel or Google Sheets.
+        A SQLite database has value constraints that can prevent SQL statements from executing.
+    </li>
+</ol>
+
+
+<h4 id="idColumn">ID column</h4>
+<div>The ID column, with a PRIMARY KEY constraint, is used to keep the link between a BGDatabase row and a SQLite row.
+    It is also used by relation fields to reference rows.
+    The ID column is created when the table is created.
+    It can have the following types (choose the one and stick to it):
+    <ol>
+        <li> TEXT: Default Guid text format (36 characters, more characters, faster serialization)</li>
+        <li> TEXT: Default BGDatabase text format (22 characters, less characters, slower serialization)</li>
+        <li> BLOB: 16 bytes long binary array (not human-readable)</li>
+    </ol>
+    <p>
+        The types are all based on Guid values and can be converted from one to another,
+        but ID column is created during table creation and can not be changed later automatically.
+        Choose one type and stick with it.
+    </p>
+</div>
+
+<h4>Supported fields</h4>
+<p>There are several fields that have built‑in support. Other fields can be added with custom C# code (read <a
+        href="#customFields">below</a>)
+</p>
+<table class="contentTable">
+    <tr>
+        <th>BGDatabase type</th>
+        <th>SQLite type</th>
+    </tr>
+    <tr>
+        <td>bool, byte, short, int, long, bool?, int?, long?</td>
+        <td>INTEGER</td>
+    </tr>
+    <tr>
+        <td>float, double, float?, double?</td>
+        <td>REAL</td>
+    </tr>
+    <tr>
+        <td>string, text</td>
+        <td>TEXT</td>
+    </tr>
+    <tr>
+        <td>relationSingle</td>
+        <td>TEXT or BLOB</td>
+    </tr>
+    <tr>
+        <td>relationMultiple</td>
+        <td>additional table(<a href="#ref1">#1</a>) is used</td>
+    </tr>
+</table>
+<p id="ref1">
+    relationMultiple field requires an additional, <a href="https://en.wikipedia.org/wiki/Associative_entity">junction
+    table</a> to store the values.
+    The name of the table is <code>{TableName}_{RelationName}</code>(without braces).
+    It has two columns: FROM_REF, which references a relation-owner entity, and TO_REF, which references a second row.
+</p>
+
+<h4 id="customFields">Custom field processors</h4>
+<p>You can customize the export/import process to some extent by using custom field processors.
+    Here is the 2 options, you could use, to add support for Vector2 field
+</p>
+<h5>Option #1:</h5>
+<p>Store the value in a single BLOB field as a 8 bytes long byte array</p>
+<details>
+    <summary>Custom Vector2 field processor code</summary>
+    <pre class="nomargin"><code class="language-csharp">using System;
+using System.Buffers.Binary;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace BansheeGz.BGDatabase.Editor
+{
+    public class SQLiteVector2Processor : BGSQLiteFieldProcessor
+    {
+        public override bool IsApplicableTo(BGSQLiteFPGetProcessorRequest request) => request.Field is BGFieldVector2Contract;
+
+        public override List%lt;BGSQLiteMappingColumn%gt; GetColumns(BGSQLiteFPGetColumnsRequest request) => new() { new Vector2Column(request.Field) { NotNull = true, DefaultValue = "X'0000000000000000'" } };
+
+        private class Vector2Column : BGSQLiteMappingColumn
+        {
+            public Vector2Column(BGField field) : base(field, "BLOB")
+            {
+            }
+
+            public override object GetValue(BGField field, BGEntity entity)
+            {
+                //read BGDatabase value
+                var vector2 = ((BGFieldVector2Contract)field)[entity];
+                //convert Vector2 to byte array
+                Span%lt;byte%gt; span = stackalloc byte[8];
+                BinaryPrimitives.WriteInt32LittleEndian(span[..4], BitConverter.SingleToInt32Bits(vector2.x));
+                BinaryPrimitives.WriteInt32LittleEndian(span.Slice(4, 4), BitConverter.SingleToInt32Bits(vector2.y));
+                return span.ToArray();
+            }
+
+            public override void SetValue(BGField field, BGEntity entity, object value)
+            {
+                // convert byte array to Vector2
+                Span%lt;byte%gt; span = (byte[])value;
+                if (span.Length != 8) throw new ArgumentException("The span must be 8 bytes long.", nameof(span));
+                var x = BinaryPrimitives.ReadInt32LittleEndian(span[..4]);
+                var y = BinaryPrimitives.ReadInt32LittleEndian(span.Slice(4, 4));
+                //write to BGDatabase
+                field.SetValue(entity, new Vector2(BitConverter.Int32BitsToSingle(x), BitConverter.Int32BitsToSingle(y)));
+            }
+        }
+    }
+}</code></pre>
+</details>
+
+<h5>Option #2:</h5>
+<p>Store the value in two REAL fields ({FieldName}_X and {FieldName}_Y)</p>
+<details>
+    <summary>Custom Vector2 field processor code</summary>
+    <pre class="nomargin"><code class="language-csharp">using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace BansheeGz.BGDatabase.Editor
+{
+    public class SQLiteVector2Processor : BGSQLiteFieldProcessor
+    {
+        public override bool IsApplicableTo(BGSQLiteFPGetProcessorRequest request) => request.Field is BGFieldVector2Contract;
+
+        public override List%lt;BGSQLiteMappingColumn%gt; GetColumns(BGSQLiteFPGetColumnsRequest request) => new()
+        {
+            new Vector2Column(request.Field, 'X') { NotNull = true, DefaultValue = "0" },
+            new Vector2Column(request.Field, 'Y') { NotNull = true, DefaultValue = "0" },
+        };
+
+        private class Vector2Column : BGSQLiteMappingColumn
+        {
+            private readonly char property;
+
+            public Vector2Column(BGField field, char property) : base(field, "REAL")
+            {
+                this.property = property;
+                Name = field.Name + "_" + property;
+            }
+
+            public override object GetValue(BGField field, BGEntity entity)
+            {
+                //read BGDatabase value
+                var vector2 = ((BGFieldVector2Contract)field)[entity];
+                //return property value
+                return property switch
+                {
+                    'X' => vector2.x,
+                    'Y' => vector2.y,
+                    _ => throw new ArgumentOutOfRangeException(nameof(property))
+                };
+            }
+
+            public override void SetValue(BGField field, BGEntity entity, object value)
+            {
+                //cast to required types
+                var castedValue = (float)(double)value;
+                var castedField = (BGFieldVector2Contract)field;
+                var currentValue = castedField[entity];
+
+                // set value
+                castedField[entity] = property switch
+                {
+                    'X' => new Vector2(castedValue, currentValue.y),
+                    'Y' => new Vector2(currentValue.x, castedValue),
+                    _ => throw new ArgumentOutOfRangeException(nameof(property))
+                };
+            }
+        }
+    }
+}</code></pre>
+</details>
+
+<h4>Data source parameters</h4>
+<p>These parameters apply to all the jobs that reference this data source.</p>
+<table class="contentTable">
+    <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Table name prefix</td>
+        <td>A prefix to prepend to the table name.
+            For example, if prefix = "B_" and the table name is "Test", the final name becomes "B_Test".
+            This is useful when you have other tables and want to make the tables from BGDatabase distinguishable.
+        </td>
+    </tr>
+    <tr>
+        <td>ID format</td>
+        <td>The format for <a href="#idColumn">ID column</a> and foreign key columns. It should be chosen beforehand because it can not be changed later (at least automatically)</td>
+    </tr>
+    <tr>
+        <td>Update schema on export</td>
+        <td>If set to true, "Sync structure" operation is executed before exporting data</td>
+    </tr>
+    <tr>
+        <td>Settings</td>
+        <td>You can include and exclude tables and fields using the Settings tab.
+        </td>
+    </tr>
+
+</table>
+

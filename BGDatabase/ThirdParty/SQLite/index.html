@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-76367732-7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-76367732-7');
+    </script>
+
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="BG Database is an in-game data management system for Unity3D game engine with Google Sheets and Excel integration">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    
+    <title>BansheeGz</title>
+
+    <!-- Page styles -->
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../../css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.min.css">
+
+    <link rel="stylesheet" href="../../../css/main.css">
+    <link rel="stylesheet" href="../../../css/page.css">
+
+    <link rel="icon" type="image/png" href="../../../images/BGIcon.png"/>
+</head>
+<body>
+
+
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+
+<style>
+    #aBox a {
+        color: white;
+        font: 15px Helvetica, Arial, Sans-Serif;
+    }
+
+    #bg-navigation a {
+        background-position: 50px;
+    }
+</style>
+
+
+<script>
+    function writeEmail(whom, at) {
+        document.write("<a href='mail" + "to:" + whom + "@" + at + "'>" + whom + "@" + at + "</a>");
+    }
+</script>
+
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+
+    <!--======================================================       Root  Header               -->
+    <div class="bg-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row" id="header">
+          <span style="margin-left: -40px;">
+              <a class="bg-header-a" href="/"><img src="../../../images/BGIconBig.png"></a>
+          </span>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="mdl-layout-spacer"></div>
+            <!-- Navigation -->
+            <div class="bg-navigation-bag" id="bg-navigation">
+                <nav class="bg-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase bg-navigation_link_active"
+                       href="../../../BGDatabase">BG`Database</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../BGLocalization">BG`Localization</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../BGCurve">BG`Curve</a>
+<!--                    <a class="mdl-navigation__link mdl-typography&#45;&#45;text-uppercase "-->
+<!--                       href="../../../BGCurve/BGSplineColliders">BG`Spline_Colliders</a>-->
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../Blog">Blog</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase "
+                       href="../../../Support">Support</a>
+                </nav>
+            </div>
+            <button class="bg-menu-mobile mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect"
+                    id="more-button">
+                <i class="material-icons">more_vert</i>
+            </button>
+            <ul class="bg-menusub-mobile mdl-menu mdl-js-menu mdl-menu--bottom-right mdl-js-ripple-effect"
+                for="more-button">
+                <li class="mdl-menu__item"><a href="../../../BGDatabase">BG Database</a></li>
+                <li class="mdl-menu__item"><a href="../../../BGLocalization">BG Localization</a></li>
+                <li class="mdl-menu__item"><a href="../../../BGCurve">BG Curve</a></li>
+                <li class="mdl-menu__item"><a href="../../../Support">Support</a></li>
+            </ul>
+        </div>
+    </div>
+
+<!--        <div style="min-height: 5px;background-color: #CCCCCC"></div>-->
+<!--        <div id="aBox" style="background-color: #ff69b4;height: 20px;color: white;text-align: center;">
+            <b>
+                MESSAGE HERE
+        </b>
+    </div>-->
+
+    <div class="mdl-layout__content">
+        <a name="top"></a>
+
+        <!--======================================================        Content (from Root)              -->
+        
+
+
+
+
+<link rel="stylesheet" href="../../../css/bgdatabase.css">
+<link rel="stylesheet" href="../../../css/magnific-popup.css">
+<script src="../../../js/jquery.magnific-popup.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('.bg-image').magnificPopup({
+            delegate: 'a',
+            type: 'image',
+//            gallery:{enabled:true},
+            closeOnContentClick: true
+        });
+    });
+</script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/rainbow.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<!--======================================================       BG Database Header               -->
+
+
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--3-col mdl-cell--2-col-tablet mdl-cell--hide-phone bg-sm  mdl-shadow--3dp">
+        <ul id="leftmenu">
+            <li class="pli databaseicon ">
+                <script async src="https://cse.google.com/cse.js?cx=e1930f586f83c4862">
+                </script>
+                <div class="gcse-searchbox-only"></div>
+                <a class="pa" href="../../../BGDatabase">BG Database Home</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Setup">Setup</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/HowToUse">How to use</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/GUIOverview">GUI overview</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/GUITips">GUI tips and tricks</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeExamples">Code Examples</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Videos">Video guides</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/SupportedFields">Field types</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ExportImport">Export Import</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/DataBinding">Data Binding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/GraphEditor">Graph Editor</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/MergeTool">Merge Tools</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Misc">Misc</a>
+                    </li>
+                    <li class="cli downloadicon ">
+                        <a class="ca" href="../../../BGDatabase/Downloads">Downloads</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/CodeGeneration">Code Generation</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeGeneration/ExtensionClasses">Extension Classes</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/CodeGeneration/MonoBehaviourClasses">MonoBehavior
+                            Classes</a>
+                    </li>
+                    <!--
+                                        <li class="cli ">
+                                            <a class="ca" href="../../../BGDatabase/CodeGeneration/DnaClasses">Dna Classes</a>
+                                        </li>
+                    -->
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/ThirdParty">Third-Party Integration</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Excel">Excel</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
+                    </li>
+                    <li class="cli  plic ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/SQLite">SQLite</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/UnityRemoteConfig">Unity Remote Config</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Behavior">Unity Behavior</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/Playmaker">Playmaker</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/FlowCanvas">Flow Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/NodeCanvas">Node Canvas</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/BehaviorDesigner">Behavior Designer</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/UNode">UNode</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/GameCreator">Game Creator</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/Addons">Addons</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/SaveLoad">Save Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/CodeGeneration">Code Generation</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/LazyLoad">Lazy Load</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/LiveUpdate">Live Update</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Multithreading">Multithreading</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Modding">Modding</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Settings">Settings</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Partition">Partitions</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Diagram">Diagram</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Minify">Minify</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/Addons/Localization">Localization</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="pli ">
+                <a class="pa " href="../../../BGDatabase/API">API</a>
+                <ul>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGRepo">BGRepo</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGMetaEntity">BGMetaEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGEntity">BGEntity</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/API/BGField">BGField</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="mdl-cell--hide-desktop mdl-cell--hide-tablet mdl-cell--4-col-phone">
+        <a class="pa" href="../../../BGDatabase">BG BGDatabase Home</a>
+        <a class="pa" href="../../../BGDatabase/Setup">Setup</a>
+        <a class="pa" href="../../../BGDatabase/HowToUse">How To Use</a>
+        <a class="pa" href="../../../BGDatabase/Videos">Video guides</a>
+        <a class="pa" href="../../../BGDatabase/ExampleBreakdown">Example Breakdown</a>
+        <a class="pa" href="../../../BGDatabase/SupportedFields">Fields</a>
+        <a class="pa" href="../../../BGDatabase/ExportImport">Export Import</a>
+        <a class="pa" href="../../../BGDatabase/DataBinding">Data Binding</a>
+        <a class="pa" href="../../../BGDatabase/Events">Events</a>
+        <a class="pa" href="../../../BGDatabase/CodeGeneration">Code Generation</a>
+        <a class="pa" href="../../../BGDatabase/Addons">Addons</a>
+    </div>
+    <div class="mdl-cell mdl-cell--9-col mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+        <div class="bg-main mdl-shadow--3dp">
+            <div class="bg-main-title">
+                <h3>SQLite</h3>
+                
+            </div>
+
+            <!--======================================================        BG Database Content              -->
+            <div id="content">
+                
+
+
+<h4>Description</h4>
+<p>
+    There is a <a href="../../Downloads/EditorSQLite">downloadable plugin</a>, which adds support for data exchange
+    between BGDatabase and SQLite in Unity Editor. See the list of available operations below.
+</p>
+
+<h4>Available operations</h4>
+<table class="contentTable">
+    <tr>
+        <th>Name</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Check structure</td>
+        <td>Checks if SQLite database has required structure for data.
+            The following requirements apply
+            <ol>
+                <li>Each BGDatabase table should have a corresponding SQLite table with a Guid compatible primary key
+                    (ID column). ID column is used to identify matching rows and for relations values
+                </li>
+                <li>Each database field should have a corresponding SQLite column with compatible type</li>
+            </ol>
+        </td>
+    </tr>
+    <tr>
+        <td>Sync structure</td>
+        <td>Creates missing SQLite tables and fields for data exchange using BGDatabase structure as a source.
+            This function only creates missing tables/fields, it does not change or delete existing columns.
+            For example, if the required column exists, but does not have compatible type, exception will be thrown, and
+            it should be fixed manually
+        </td>
+    </tr>
+    <tr>
+        <td>Export</td>
+        <td>Export data from BGDatabase to SQLite
+        </td>
+    </tr>
+    <tr>
+        <td>Import</td>
+        <td>Import data from SQLite to BGDatabase
+        </td>
+    </tr>
+</table>
+
+<h4>Restrictions</h4>
+<ol>
+    <li>Tables should have <a href="#idColumn">ID column</a> with PRIMARY KEY constraint and Guid-compatible type (TEXT or BLOB)</li>
+    <li>Export/import is slightly different compared to Excel or Google Sheets.
+        A SQLite database has value constraints that can prevent SQL statements from executing.
+    </li>
+</ol>
+
+
+<h4 id="idColumn">ID column</h4>
+<div>The ID column, with a PRIMARY KEY constraint, is used to keep the link between a BGDatabase row and a SQLite row.
+    It is also used by relation fields to reference rows.
+    The ID column is created when the table is created.
+    It can have the following types (choose the one and stick to it):
+    <ol>
+        <li> TEXT: Default Guid text format (36 characters, more characters, faster serialization)</li>
+        <li> TEXT: Default BGDatabase text format (22 characters, less characters, slower serialization)</li>
+        <li> BLOB: 16 bytes long binary array (not human-readable)</li>
+    </ol>
+    <p>
+        The types are all based on Guid values and can be converted from one to another,
+        but ID column is created during table creation and can not be changed later automatically.
+        Choose one type and stick with it.
+    </p>
+</div>
+
+<h4>Supported fields</h4>
+<p>There are several fields that have built‑in support. Other fields can be added with custom C# code (read <a
+        href="#customFields">below</a>)
+</p>
+<table class="contentTable">
+    <tr>
+        <th>BGDatabase type</th>
+        <th>SQLite type</th>
+    </tr>
+    <tr>
+        <td>bool, byte, short, int, long, bool?, int?, long?</td>
+        <td>INTEGER</td>
+    </tr>
+    <tr>
+        <td>float, double, float?, double?</td>
+        <td>REAL</td>
+    </tr>
+    <tr>
+        <td>string, text</td>
+        <td>TEXT</td>
+    </tr>
+    <tr>
+        <td>relationSingle</td>
+        <td>TEXT or BLOB</td>
+    </tr>
+    <tr>
+        <td>relationMultiple</td>
+        <td>additional table(<a href="#ref1">#1</a>) is used</td>
+    </tr>
+</table>
+<p id="ref1">
+    relationMultiple field requires an additional, <a href="https://en.wikipedia.org/wiki/Associative_entity">junction
+    table</a> to store the values.
+    The name of the table is <code>{TableName}_{RelationName}</code>(without braces).
+    It has two columns: FROM_REF, which references a relation-owner entity, and TO_REF, which references a second row.
+</p>
+
+<h4 id="customFields">Custom field processors</h4>
+<p>You can customize the export/import process to some extent by using custom field processors.
+    Here is the 2 options, you could use, to add support for Vector2 field
+</p>
+<h5>Option #1:</h5>
+<p>Store the value in a single BLOB field as a 8 bytes long byte array</p>
+<details>
+    <summary>Custom Vector2 field processor code</summary>
+    <pre class="nomargin"><code class="language-csharp">using System;
+using System.Buffers.Binary;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace BansheeGz.BGDatabase.Editor
+{
+    public class SQLiteVector2Processor : BGSQLiteFieldProcessor
+    {
+        public override bool IsApplicableTo(BGSQLiteFPGetProcessorRequest request) => request.Field is BGFieldVector2Contract;
+
+        public override List%lt;BGSQLiteMappingColumn%gt; GetColumns(BGSQLiteFPGetColumnsRequest request) => new() { new Vector2Column(request.Field) { NotNull = true, DefaultValue = "X'0000000000000000'" } };
+
+        private class Vector2Column : BGSQLiteMappingColumn
+        {
+            public Vector2Column(BGField field) : base(field, "BLOB")
+            {
+            }
+
+            public override object GetValue(BGField field, BGEntity entity)
+            {
+                //read BGDatabase value
+                var vector2 = ((BGFieldVector2Contract)field)[entity];
+                //convert Vector2 to byte array
+                Span%lt;byte%gt; span = stackalloc byte[8];
+                BinaryPrimitives.WriteInt32LittleEndian(span[..4], BitConverter.SingleToInt32Bits(vector2.x));
+                BinaryPrimitives.WriteInt32LittleEndian(span.Slice(4, 4), BitConverter.SingleToInt32Bits(vector2.y));
+                return span.ToArray();
+            }
+
+            public override void SetValue(BGField field, BGEntity entity, object value)
+            {
+                // convert byte array to Vector2
+                Span%lt;byte%gt; span = (byte[])value;
+                if (span.Length != 8) throw new ArgumentException("The span must be 8 bytes long.", nameof(span));
+                var x = BinaryPrimitives.ReadInt32LittleEndian(span[..4]);
+                var y = BinaryPrimitives.ReadInt32LittleEndian(span.Slice(4, 4));
+                //write to BGDatabase
+                field.SetValue(entity, new Vector2(BitConverter.Int32BitsToSingle(x), BitConverter.Int32BitsToSingle(y)));
+            }
+        }
+    }
+}</code></pre>
+</details>
+
+<h5>Option #2:</h5>
+<p>Store the value in two REAL fields ({FieldName}_X and {FieldName}_Y)</p>
+<details>
+    <summary>Custom Vector2 field processor code</summary>
+    <pre class="nomargin"><code class="language-csharp">using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace BansheeGz.BGDatabase.Editor
+{
+    public class SQLiteVector2Processor : BGSQLiteFieldProcessor
+    {
+        public override bool IsApplicableTo(BGSQLiteFPGetProcessorRequest request) => request.Field is BGFieldVector2Contract;
+
+        public override List%lt;BGSQLiteMappingColumn%gt; GetColumns(BGSQLiteFPGetColumnsRequest request) => new()
+        {
+            new Vector2Column(request.Field, 'X') { NotNull = true, DefaultValue = "0" },
+            new Vector2Column(request.Field, 'Y') { NotNull = true, DefaultValue = "0" },
+        };
+
+        private class Vector2Column : BGSQLiteMappingColumn
+        {
+            private readonly char property;
+
+            public Vector2Column(BGField field, char property) : base(field, "REAL")
+            {
+                this.property = property;
+                Name = field.Name + "_" + property;
+            }
+
+            public override object GetValue(BGField field, BGEntity entity)
+            {
+                //read BGDatabase value
+                var vector2 = ((BGFieldVector2Contract)field)[entity];
+                //return property value
+                return property switch
+                {
+                    'X' => vector2.x,
+                    'Y' => vector2.y,
+                    _ => throw new ArgumentOutOfRangeException(nameof(property))
+                };
+            }
+
+            public override void SetValue(BGField field, BGEntity entity, object value)
+            {
+                //cast to required types
+                var castedValue = (float)(double)value;
+                var castedField = (BGFieldVector2Contract)field;
+                var currentValue = castedField[entity];
+
+                // set value
+                castedField[entity] = property switch
+                {
+                    'X' => new Vector2(castedValue, currentValue.y),
+                    'Y' => new Vector2(currentValue.x, castedValue),
+                    _ => throw new ArgumentOutOfRangeException(nameof(property))
+                };
+            }
+        }
+    }
+}</code></pre>
+</details>
+
+<h4>Data source parameters</h4>
+<p>These parameters apply to all the jobs that reference this data source.</p>
+<table class="contentTable">
+    <tr>
+        <th>Parameter</th>
+        <th>Description</th>
+    </tr>
+    <tr>
+        <td>Table name prefix</td>
+        <td>A prefix to prepend to the table name.
+            For example, if prefix = "B_" and the table name is "Test", the final name becomes "B_Test".
+            This is useful when you have other tables and want to make the tables from BGDatabase distinguishable.
+        </td>
+    </tr>
+    <tr>
+        <td>ID format</td>
+        <td>The format for <a href="#idColumn">ID column</a> and foreign key columns. It should be chosen beforehand because it can not be changed later (at least automatically)</td>
+    </tr>
+    <tr>
+        <td>Update schema on export</td>
+        <td>If set to true, "Sync structure" operation is executed before exporting data</td>
+    </tr>
+    <tr>
+        <td>Settings</td>
+        <td>You can include and exclude tables and fields using the Settings tab.
+        </td>
+    </tr>
+
+</table>
+
+            </div>
+            
+
+            <!--======================================================       BG Database Footer               -->
+        </div>
+
+    </div>
+</div>
+
+
+
+        <!--======================================================      Root Footer               -->
+        <footer class="bg-footer mdl-mega-footer" style="clear:both;">
+            <div class="mdl-mega-footer--top-section">
+                <div class="mdl-mega-footer--middle-section bg-footer-email">
+                    <table>
+                        <tr>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("support", "bansheegz.com")
+                                </script>
+                            </td>
+                            <td>
+                                or
+                            </td>
+                            <td>
+                                <script language="JavaScript">
+                                    writeEmail("admin", "bansheegz.com")
+                                </script>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div style="text-align: center">
+                <div id="share" style="display: inline-block;"></div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+
+</div>
+
+<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+</body>
+</html>

@@ -57,6 +57,17 @@
       "requiredVersion" : "1.9.2"
     },
     {
+      "id" : "GVey+ALGok6muYzZfdTsOg",
+      "version" : "1.0",
+      "releaseDate" : "10/15/25",
+      "pluginClass" : "BansheeGz.BGDatabase.Editor.BGSQLiteService",
+      "packageClass" : null,
+      "name" :  "SQLite integration for Editor",
+      "description" :  "Support for export/import data between BGDatabase and SQLite",
+      "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorSQLite",
+      "requiredVersion" : "1.9.3"
+    },
+    {
       "id" : "zRiptqpjTkaSv1XEHk3qmw",
       "version" : "1.5",
       "releaseDate" : "08/08/25",

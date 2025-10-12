@@ -1,0 +1,48 @@
+#set page=Export Import
+#set subPage=Database segment
+
+<h4>Description</h4>
+<p>
+    A database segment is a part of the full database (vertical or/and horizontal),
+    similar to those created by the <a href="../../Addons/SaveLoad">SaveLoad addon</a>.
+    You can use segment files to transfer or exchange data.
+    For example, a database segment can be used with <a href="../../ThirdParty/UnityRemoteConfig">Unity Remote config</a>
+    to update databases on player devices.
+    The following formats are supported: binary (most compact),
+    JSON-row-based (good readability, big memory consumption) and
+    JSON-field-based (average readability, less memory consumption)
+    To create a database segment use "Segment" data source and job.
+</p>
+<img src="#path images/BGDatabase/ExportImport12.png"/>
+
+<p>
+    Which parts are included is defined by <a href="../MergeSettings">merge settings</a>.
+    To merge a database segment with the default repository, use the following code (modify settings if needed)
+</p>
+<details>
+    <summary>Example code (binary format)</summary>
+    <pre class="nomargin"><code class="language-csharp">    var databasePart = new BGRepo(File.ReadAllBytes(filePath));
+    BGRepo.I.Merge(databasePart, new BGMergeSettingsEntity
+    {
+        AddMissing = true,
+        RemoveOrphaned = true,
+        UpdateMatching = true,
+    });
+    </code></pre>
+</details>
+<details>
+    <summary>Example code (JSON format)</summary>
+    <pre class="nomargin"><code class="language-csharp">    var databasePart = new BGRepo(File.ReadAllText(filePath, Encoding.UTF8));
+        BGRepo.I.Merge(
+            databasePart,
+            new BGMergeSettingsEntity
+            {
+                AddMissing = true,
+                UpdateMatching = true,
+                RemoveOrphaned = true,
+            }
+        );
+    </code></pre>
+</details>
+
+

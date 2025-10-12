@@ -211,6 +211,12 @@
                         <a class="ca" href="../../../BGDatabase/ThirdParty/GoogleSheets">Google Sheets</a>
                     </li>
                     <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/SQLite">SQLite</a>
+                    </li>
+                    <li class="cli ">
+                        <a class="ca" href="../../../BGDatabase/ThirdParty/UnityRemoteConfig">Unity Remote Config</a>
+                    </li>
+                    <li class="cli ">
                         <a class="ca" href="../../../BGDatabase/ThirdParty/Bolt">Unity Visual Scripting (ex-Bolt)</a>
                     </li>
                     <li class="cli ">
@@ -324,97 +330,125 @@
 
 <h4>Description</h4>
 <p>
-    This guide describe how to change enum type name/namespace, after this enum was used in database enum fields.
-    Two options are available:
+    This guide describes how to change an enum's type name and namespace after the enum has been used in the database for enum, enumShort and enumByte fields.
+    Starting with BGDatabase 1.9.3, changing enum type or namespace is greatly simplified.
+    For earlier versions, please, refer to the archived content below.
 </p>
-<ol>
-    <li><a href="#option1">Manually</a></li>
-    <li><a href="#option2">Using "Settings->Enumerations" tool</a></li>
-</ol>
 
-<h4 id="option1">OPTION #1: Changing enum type manually</h4>
+<h4>The Guide for BGDatabase >= 1.9.3</h4>
 <ol>
     <li>
-        Let's say you have <code>MyEnum</code> enum, which is used in <code>Test.enumField</code> database field,
-        and you want to rename enum's type name to <code>MyEnumNewName</code>
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_1.png"><img style="width: 400px; height: 100px"
-                                                                src="../../../images/BGDatabase/Guide7_1.png"></a>
-        </div>
+        Make sure your database is saved in binary format.
+        If you use <a href="../../Addons/Settings">Settings add-on</a> and JSON format, switch to the Binary format and save the database.
     </li>
     <li>
-        Create the copy of <code>MyEnum</code> enum with some unique name, let's say <code>MyEnumTemp</code>
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_2.png"><img style="width: 400px; height: 100px"
-                                                                src="../../../images/BGDatabase/Guide7_2.png"></a>
-        </div>
+        Rename enum class in your IDE and switch to Unity.
     </li>
     <li>
-        Change database field's enum type (<code>MyEnum</code> -> <code>MyEnumTemp</code>). Save database.
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_3.png"><img style="width: 400px; height: 100px"
-                                                                src="../../../images/BGDatabase/Guide7_3.png"></a>
-        </div>
+        The database should load properly, but an error will be printed in the console about being unable to load the enum type.
+        Open enum field settings, enter the new enum type and save the database. Reload database and confirm  there are no errors in the console.
     </li>
     <li>
-        Change C# enum type name in your IDE (<code>MyEnum</code> -> <code>MyEnumNewName</code>)
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_4.png"><img style="width: 400px; height: 100px"
-                                                                src="../../../images/BGDatabase/Guide7_4.png"></a>
-        </div>
-    </li>
-    <li>
-        Change database field's enum type (<code>MyEnumTemp</code> -> <code>MyEnumNewName</code>). Save database.
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_5.png"><img style="width: 400px; height: 100px"
-                                                                src="../../../images/BGDatabase/Guide7_5.png"></a>
-        </div>
-    </li>
-    <li>
-        Delete C# temporary enum <code>MyEnumTemp</code>
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_6.png"><img style="width: 400px; height: 100px"
-                                                                src="../../../images/BGDatabase/Guide7_6.png"></a>
-        </div>
+        Restore the settings add-on format if it was changed in step 1.
     </li>
 </ol>
 
-<h4 id="option2">OPTION #2: Using "Settings->Enumerations" tool</h4>
-<ol>
-    <li>Rename enum type/namespace using your IDE</li>
-    <li>
-        Switch to BGDatabase window and click on Reload button. Database will not be loaded, cause enum type can not be
-        loaded using old name/namespace
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_8.png"><img style="width: 400px; height: 100px"
-                                                                src="../../../images/BGDatabase/Guide7_8.png"></a>
-        </div>
-    </li>
-    <li>
-        Select "Settings->Enumerations" and add enum type name mappings (Old name->New name) for each change.
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_9.png"><img style="width: 400px; height: 100px"
-                                                                src="../../../images/BGDatabase/Guide7_9.png"></a>
-        </div>
-    </li>
-    <li>
-        Click on "Reload" button. Once database is loaded, click on both "Clear the mappings" and "Save repo" buttons
-        <div class="bg-image">
-            <a href="../../../images/BGDatabase/Guide7_10.png"><img style="width: 400px; height: 100px"
-                                                                 src="../../../images/BGDatabase/Guide7_10.png"></a>
-        </div>
-    </li>
-</ol>
+<h4>The Guide for BGDatabase < 1.9.3</h4>
+<details>
+    <summary>Archived guide (click to view)</summary>
+    <h4>Description</h4>
+    <p>
+        This guide describe how to change enum type name/namespace, after this enum was used in database enum fields.
+        Two options are available:
+    </p>
+    <ol>
+        <li><a href="#option1">Manually</a></li>
+        <li><a href="#option2">Using "Settings->Enumerations" tool</a></li>
+    </ol>
 
-<h4>Extra tip</h4>
-<p>
-    Use custom Attribute to mark enums, which are used inside database
-</p>
-<div class="bg-image">
-    <a href="../../../images/BGDatabase/Guide7_7.png"><img style="width: 400px; height: 100px"
-                                                        src="../../../images/BGDatabase/Guide7_7.png"></a>
-</div>
-                  
+    <h4 id="option1">OPTION #1: Changing enum type manually</h4>
+    <ol>
+        <li>
+            Let's say you have <code>MyEnum</code> enum, which is used in <code>Test.enumField</code> database field,
+            and you want to rename enum's type name to <code>MyEnumNewName</code>
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_1.png"><img style="width: 400px; height: 100px"
+                                                                       src="../../../images/BGDatabase/Guide7_1.png"></a>
+            </div>
+        </li>
+        <li>
+            Create the copy of <code>MyEnum</code> enum with some unique name, let's say <code>MyEnumTemp</code>
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_2.png"><img style="width: 400px; height: 100px"
+                                                                       src="../../../images/BGDatabase/Guide7_2.png"></a>
+            </div>
+        </li>
+        <li>
+            Change database field's enum type (<code>MyEnum</code> -> <code>MyEnumTemp</code>). Save database.
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_3.png"><img style="width: 400px; height: 100px"
+                                                                       src="../../../images/BGDatabase/Guide7_3.png"></a>
+            </div>
+        </li>
+        <li>
+            Change C# enum type name in your IDE (<code>MyEnum</code> -> <code>MyEnumNewName</code>)
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_4.png"><img style="width: 400px; height: 100px"
+                                                                       src="../../../images/BGDatabase/Guide7_4.png"></a>
+            </div>
+        </li>
+        <li>
+            Change database field's enum type (<code>MyEnumTemp</code> -> <code>MyEnumNewName</code>). Save database.
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_5.png"><img style="width: 400px; height: 100px"
+                                                                       src="../../../images/BGDatabase/Guide7_5.png"></a>
+            </div>
+        </li>
+        <li>
+            Delete C# temporary enum <code>MyEnumTemp</code>
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_6.png"><img style="width: 400px; height: 100px"
+                                                                       src="../../../images/BGDatabase/Guide7_6.png"></a>
+            </div>
+        </li>
+    </ol>
+
+    <h4 id="option2">OPTION #2: Using "Settings->Enumerations" tool</h4>
+    <ol>
+        <li>Rename enum type/namespace using your IDE</li>
+        <li>
+            Switch to BGDatabase window and click on Reload button. Database will not be loaded, cause enum type can not be
+            loaded using old name/namespace
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_8.png"><img style="width: 400px; height: 100px"
+                                                                       src="../../../images/BGDatabase/Guide7_8.png"></a>
+            </div>
+        </li>
+        <li>
+            Select "Settings->Enumerations" and add enum type name mappings (Old name->New name) for each change.
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_9.png"><img style="width: 400px; height: 100px"
+                                                                       src="../../../images/BGDatabase/Guide7_9.png"></a>
+            </div>
+        </li>
+        <li>
+            Click on "Reload" button. Once database is loaded, click on both "Clear the mappings" and "Save repo" buttons
+            <div class="bg-image">
+                <a href="../../../images/BGDatabase/Guide7_10.png"><img style="width: 400px; height: 100px"
+                                                                        src="../../../images/BGDatabase/Guide7_10.png"></a>
+            </div>
+        </li>
+    </ol>
+
+    <h4>Extra tip</h4>
+    <p>
+        Use custom Attribute to mark enums, which are used inside database
+    </p>
+    <div class="bg-image">
+        <a href="../../../images/BGDatabase/Guide7_7.png"><img style="width: 400px; height: 100px"
+                                                               src="../../../images/BGDatabase/Guide7_7.png"></a>
+    </div>
+</details>
             </div>
             
             <a class="backToDownloads" href="../" style="margin-top: 10px">&#8592; Back to Field types</a>

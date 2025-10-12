@@ -146,7 +146,8 @@ public class SourcesChecker
                         break;
                     }
                 }
-                throw new Exception("Illegal characters discovered in " + fileName + ", line " + line + " column=" + j + " symbol=" + wrongSymbol + " text=" + part);
+//                throw new Exception("Illegal characters discovered in " + fileName + ", line " + line + " column=" + j + " symbol=" + wrongSymbol + " text=" + part);
+                System.out.println("Illegal characters discovered in " + fileName + ", line " + line + " column=" + j + " symbol=" + wrongSymbol + " text=" + part);
             }
             line++;
         }

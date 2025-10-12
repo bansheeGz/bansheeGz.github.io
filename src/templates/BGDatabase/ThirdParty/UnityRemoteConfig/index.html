@@ -1,0 +1,26 @@
+#set page=Unity Remote config
+
+<h4>Description</h4>
+<p>
+    You can use <a href="https://docs.unity3d.com/Packages/com.unity.remote-config@4.2/manual/index.html">Unity Remote Config</a>
+    (or similar services) to update the database on player devices, similar to how the
+    <a href="../../Addons/LiveUpdate">LiveUpdate plugin</a> updates data from Google Sheets and web servers.
+</p>
+
+<h4>Setup guide</h4>
+<ol>
+    <li>
+        Create a <a href="../../ExportImport/DatabaseSegment">database segment</a>.
+        If the service supports binary data, use binary format, otherwise use JSON (field-based).
+        For Unity Remote Config, use the JSON (field-based) file produced by the database segment export.
+    </li>
+    </li>
+    <li>On player devices, use service API to load the data.
+        (the <a href="https://docs.unity3d.com/Packages/com.unity.remote-config@4.2/manual/CodeIntegration.html">code</a> for Unity Remote Config)</li>
+    <li>Once JSON string (or binary data) is loaded, use it to construct a database and merge it with default database
+        (example code can be found <a href="../../ExportImport/DatabaseSegment">here</a> )
+    </li>
+</ol>
+
+<h4>Limitations</h4>
+<p>Services like can have a limit for data length. Make sure the file size does not exceed service limits</p>
