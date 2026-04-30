@@ -9,7 +9,7 @@
       "name" :  "Google Sheets integration for Editor",
       "description" :  "Adds support for exporting/importing data to Google Sheets in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorGoogleSheets",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.11.unitypackage",
+      "downloadUrl" : "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseGoogleSheetsEditorNoNewtonsoft_1.11.unitypackage",
       "requiredVersion" : "1.9.1"
     },
     {
@@ -21,7 +21,7 @@
       "name" :  "Excel integration for Editor",
       "description" :  "Adds support for exporting/importing data to Excel in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcel",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditor_1.15.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseExcelEditor_1.15.unitypackage",
       "requiredVersion" : "1.9.1"
     },
     {
@@ -33,7 +33,7 @@
       "name" :  "Excel images",
       "description" :  "[Experimental] Support for transferring images between Excel and Unity assets",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcelImages",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseExcelEditorAssets.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseExcelEditorAssets.unitypackage",
       "dependencies" : [{
         "classToCheck" : "BansheeGz.BGDatabase.Editor.BGExcelService",
         "asset" : "Excel plugin"
@@ -49,7 +49,7 @@
       "name" :  "Addressables plugin",
       "description" :  "Adds support for Addressables. (Addressables version >=1.17.17)",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressables",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressables1.6.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseAddressables1.6.unitypackage",
       "dependencies" : [{
         "classToCheck" : "UnityEngine.AddressableAssets.Addressables",
         "asset" : "Addressables"
@@ -76,7 +76,7 @@
       "name" :  "Runtime database editor",
       "description" :  "Edit database data in builds.",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeEditor",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseRuntimeEditor_1.5.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseRuntimeEditor_1.5.unitypackage",
       "requiredVersion" : "1.9.1"
     },
     {
@@ -88,7 +88,7 @@
       "name" :  "Excel file monitor for Editor",
       "description" :  "Monitor and auto-import Excel file in Unity Editor",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorExcelMonitor",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BansheeGzExcelEditor_1.1.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BansheeGzExcelEditor_1.1.unitypackage",
       "dependencies" : [{
         "classToCheck" : "BansheeGz.BGDatabase.Editor.BGExcelService",
         "asset" : "Excel plugin"
@@ -103,7 +103,7 @@
       "name" :  "Excel export/import for runtime",
       "description" :  "Adds support for exporting and importing data to Excel file in runtime (in builds). Optional file monitor to auto-import Excel file data if the file is changed on disk. Desktop operational systems only.",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeExcelMonitor",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BansheeGzExcelRuntime1.5.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BansheeGzExcelRuntime1.5.unitypackage",
       "requiredVersion" : "1.9.1"
     },
     {
@@ -115,7 +115,7 @@
       "name" :  "UI Toolkit binders pack",
       "description" :  "Compound binder for UI toolkit runtime package",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeUIToolkit",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseUIToolkit_1.1.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseUIToolkit_1.1.unitypackage",
       "dependencies" : [{
         "classToCheck" : "UnityEditor.Searcher.Searcher",
         "asset" : "Searcher"
@@ -131,7 +131,7 @@
       "name" :  "Read-only database for MT",
       "description" :  "Adds support for multi-threaded access to readonly database",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/ReadonlyMultithreading",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseReadonlyMT_1.3.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseReadonlyMT_1.3.unitypackage",
       "requiredVersion" : "1.9.1"
     },
     {
@@ -143,7 +143,7 @@
       "name" :  "Playmaker save/load actions",
       "description" :  "Save load actions for Playmaker",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeSaveLoadPlaymaker",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseSaveLoadPlaymaker_1.3.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseSaveLoadPlaymaker_1.3.unitypackage",
       "dependencies" : [{
         "classToCheck" : "PlayMakerFSM",
         "asset" : "Playmaker"
@@ -158,7 +158,7 @@
       "name" :  "Playmaker Addressables",
       "description" :  "Support for loading addressables assets from Addressables using Playmaker",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressablesPlaymaker",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressablesPlaymaker.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseAddressablesPlaymaker.unitypackage",
       "dependencies" : [{
         "classToCheck" : "PlayMakerFSM",
         "asset" : "Playmaker"
@@ -179,7 +179,7 @@
       "name" :  "Bolt save/load actions",
       "description" :  "Save load actions for Bolt",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeSaveLoadBolt",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseSaveLoadUVS.unitypackage"
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseSaveLoadUVS.unitypackage"
     },
     {
       "id" : "neUkfrwI8UWCAKtyFoZJHw",
@@ -190,7 +190,7 @@
       "name" :  "Unity Visual Scripting Addressables",
       "description" :  "Support for loading addressables assets from Addressables using Unity Visual Scripting",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeAddressablesBolt",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseAddressablesUVS.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseAddressablesUVS.unitypackage",
       "dependencies" : [{
         "classToCheck" : "UnityEngine.AddressableAssets.Addressables",
         "asset" : "Addressables"
@@ -208,7 +208,7 @@
       "name" :  "Bolt generic units",
       "description" :  "Generic units for accessing database",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeBoltGenericUnits",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseUVSGenericUnits.unitypackage"
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseUVSGenericUnits.unitypackage"
     },
     {
       "id" : "T+5hkvtykkKjjnitJQeJNA",
@@ -229,7 +229,7 @@
       "name" :  "Flow Canvas save/load nodes",
       "description" :  "Custom nodes for Flow Canvas to support SaveLoad addon",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/RuntimeSaveLoadFlowCanvas",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseFlowCanvasSaveLoad.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseFlowCanvasSaveLoad.unitypackage",
       "dependencies" : [{
         "classToCheck" : "FlowCanvas.FlowNode",
         "asset" : "FlowCanvas"
@@ -244,7 +244,7 @@
       "name" :  "Node Canvas integration",
       "description" :  "Custom actions for Node Canvas",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/NodeCanvas",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGDatabaseNodeCanvas.unitypackage",
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGDatabaseNodeCanvas.unitypackage",
       "dependencies" : [{
         "classToCheck" : "NodeCanvas.Framework.ActionTask",
         "asset" : "NodeCanvas"
@@ -259,7 +259,7 @@
       "name" :  "Amazon Machine Translation",
       "description" :  "Amazon Machine Translation plugin for BGLocalization",
       "url" : "https://www.bansheegz.com/BGDatabase/Downloads/EditorAmazonTranslate",
-      "downloadUrl" :  "https://www.bansheegz.com/BGDatabase/Downloads/BGLocalizationAmazonTranslateEditor.unitypackage"
+      "downloadUrl" :  "https://raw.githubusercontent.com/bansheeGz/bansheeGz.github.io/master/BGDatabase/Downloads/BGLocalizationAmazonTranslateEditor.unitypackage"
     }
   ]
 }
